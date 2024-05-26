@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LubriTech.Model
 {
-    internal class Vehiculo
+    internal class Vehicle_Model
     {
     }
 }
