@@ -8,5 +8,6 @@ namespace LubriTech.Model
 {
     internal class Client_Model
     {
+
     }
 }
