@@ -20,7 +20,16 @@ namespace LubriTech.Model.Client
 
         public string Address { get; set; }
 
+        public Client(string id, string fullName, int mainPhoneNum, int additionalPhoneNum, string email, string address)
+        {
+            Id = id;
+            FullName = fullName;
+            MainPhoneNum = mainPhoneNum;
+            AdditionalPhoneNum = additionalPhoneNum;
+            Email = email;
+            Address = address;
+        }
+
+
     }
-
-
-}//End Client Class
+}
