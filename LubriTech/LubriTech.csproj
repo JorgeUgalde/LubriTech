@@ -50,6 +50,8 @@
     <Compile Include="Controller\Vehicle_Controller.cs" />
     <Compile Include="Model\Appointment_Model.cs" />
     <Compile Include="Model\Client_Model.cs" />
+    <Compile Include="Model\Supplier\Supplier.cs" />
+    <Compile Include="Model\Supplier\Supplier_Model.cs" />
     <Compile Include="Model\Vehicle_Model.cs" />
     <Compile Include="Model\Work_Order_Model.cs" />
     <Compile Include="View\Clients.cs">
