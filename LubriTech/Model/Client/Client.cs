@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LubriTech.Model.Client
 {
-    internal class Client
+    public class Client
     {
         public string Id { get; set; }
 
@@ -21,4 +21,6 @@ namespace LubriTech.Model.Client
         public string Address { get; set; }
 
     }
+
+
 }//End Client Class
