@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Controller\Clients_Controller.cs" />
     <Compile Include="Controller\Vehicle_Controller.cs" />
+    <Compile Include="Controller\Work_Order_Controller.cs" />
     <Compile Include="Model\Appointment_Model.cs" />
     <Compile Include="Model\Client\Client.cs" />
     <Compile Include="Model\Client\Client_Model.cs" />

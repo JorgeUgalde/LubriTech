@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,16 +20,17 @@ namespace LubriTech.Model.Client
 
                 DataTable tblCliente = new DataTable();
                 SqlDataAdapter adp = new SqlDataAdapter();
-                adp.SelectCommand = new SqlCommand(selectQuery /* , agregar la conexion*/);
+                adp.SelectCommand = new SqlCommand(selectQuery);
+
                 foreach (DataRow dr in tblCliente.Rows)
                 {
-                    client.Add(new Client((string)dr[""]);
+                    //client.Add(new Client((string)dr[""]);
                 }
                 return client;
             }
             catch (Exception ex)
             {
-                throw(ex);
+                throw (ex);
             }
         }
     }
