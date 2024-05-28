@@ -1,17 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public class Client
+namespace LubriTech.Model.Client
 {
-    public string Identification { get; set; }
+    internal class Client
+    {
+        public string Identification { get; set; }
 
-    public string FullName { get; set; }
-    
-    public int MainPhoneNumber { get; set; }
+        public string FullName { get; set; }
 
-    public int AdditionalPhoneNumber { get; set; }
+        public int MainPhoneNumber { get; set; }
 
-    public string Email { get; set; }
+        public int AdditionalPhoneNumber { get; set; }
 
-    public string Address { get; set; }
+        public string Email { get; set; }
 
+        public string Address { get; set; }
+    }
 }//End Client Class
