@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LubriTech.Model.Product
+namespace LubriTech.Model.Product_Information
 {
-    public  class Product_Model
+    public class Product_Model
     {
         SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
 
@@ -37,8 +40,5 @@ namespace LubriTech.Model.Product
                 conn.Close();
             }
         }
-
-
-
     }
 }

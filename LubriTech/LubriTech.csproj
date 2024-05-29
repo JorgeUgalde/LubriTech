@@ -53,16 +53,14 @@
     <Compile Include="Controller\Product_Controller.cs" />
     <Compile Include="Controller\Vehicle_Controller.cs" />
     <Compile Include="Controller\Work_Order_Controller.cs" />
-    <Compile Include="Model\Appointment_Model.cs" />
-    <Compile Include="Model\Client\Client.cs" />
-    <Compile Include="Model\Client\Client_Model.cs" />
-    <Compile Include="Model\Product\Product.cs" />
-    <Compile Include="Model\Product\Product_Model.cs" />
-    <Compile Include="Model\Supplier\Supplier.cs" />
-    <Compile Include="Model\Supplier\Supplier_Model.cs" />
-    <Compile Include="Model\Vehicle\Vehicle.cs" />
-    <Compile Include="Model\Vehicle\Vehicle_Model.cs" />
-    <Compile Include="Model\Work_Order_Model.cs" />
+    <Compile Include="Model\Client_Information\Client.cs" />
+    <Compile Include="Model\Client_Information\Client_Model.cs" />
+    <Compile Include="Model\Product_Information\Product.cs" />
+    <Compile Include="Model\Product_Information\Product_Model.cs" />
+    <Compile Include="Model\Supplier_Information\Supplier.cs" />
+    <Compile Include="Model\Supplier_Information\Supplier_Model.cs" />
+    <Compile Include="Model\Vehicle_Information\Vehicle.cs" />
+    <Compile Include="Model\Vehicle_Information\Vehicle_Model.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="obj\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="View\frmClients.cs">

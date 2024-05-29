@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LubriTech.Model
+namespace LubriTech.Model.Vehicle_Information
 {
     public class Vehicle_Model
     {

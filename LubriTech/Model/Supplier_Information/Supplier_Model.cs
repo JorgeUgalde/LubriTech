@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LubriTech.Model
+namespace LubriTech.Model.Supplier_Information
 {
-    internal class Appointment_Model
+    internal class Supplier_Model
     {
-
     }
 }

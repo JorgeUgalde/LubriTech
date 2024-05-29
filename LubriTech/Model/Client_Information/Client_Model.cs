@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LubriTech.Model.Client
+namespace LubriTech.Model.Client_Information
 {
     public class Client_Model
     {
