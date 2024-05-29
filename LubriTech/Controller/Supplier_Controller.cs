@@ -1,5 +1,5 @@
-﻿using LubriTech.Model.Client;
-using LubriTech.Model.Supplier;
+﻿using LubriTech.Model.Client_Information;
+using LubriTech.Model.Supplier_Information;
 using System;
 using System.Collections.Generic;
 using System.Linq;
