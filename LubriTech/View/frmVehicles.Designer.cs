@@ -35,19 +35,23 @@
             // dgvVehicles
             // 
             this.dgvVehicles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVehicles.Location = new System.Drawing.Point(77, 53);
+            this.dgvVehicles.Location = new System.Drawing.Point(103, 65);
+            this.dgvVehicles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvVehicles.Name = "dgvVehicles";
-            this.dgvVehicles.Size = new System.Drawing.Size(654, 351);
+            this.dgvVehicles.RowHeadersWidth = 51;
+            this.dgvVehicles.Size = new System.Drawing.Size(872, 432);
             this.dgvVehicles.TabIndex = 0;
             // 
-            // Vehicles
+            // frmVehicles
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.dgvVehicles);
-            this.Name = "Vehicles";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "frmVehicles";
             this.Text = "Vehicles";
+            this.Load += new System.EventHandler(this.frmVehicles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVehicles)).EndInit();
             this.ResumeLayout(false);
 

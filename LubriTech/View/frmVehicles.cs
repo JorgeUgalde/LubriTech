@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LubriTech.Controller;
 
 namespace LubriTech.View
 {
@@ -15,6 +16,14 @@ namespace LubriTech.View
         public frmVehicles()
         {
             InitializeComponent();
+        }
+
+        private void frmVehicles_Load(object sender, EventArgs e)
+        {
+            Vehicle_Controller vehicleController = new Vehicle_Controller();
+            dgvVehicles.DataSource = vehicleController.getAll();
+
+
         }
     }
 }

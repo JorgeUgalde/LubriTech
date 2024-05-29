@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LubriTech.Model.Client
+namespace LubriTech.Model.Client_Information
 {
     public class Client
     {
@@ -30,6 +30,11 @@ namespace LubriTech.Model.Client
             Address = address;
         }
 
+        override
+        public string ToString()
+        {
+            return FullName;
+        }
 
     }
 }

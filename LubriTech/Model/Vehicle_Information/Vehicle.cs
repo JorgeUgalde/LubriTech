@@ -1,12 +1,11 @@
-﻿using System;
+﻿using LubriTech.Model.Client_Information;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using System.Xml.Linq;
 
-namespace LubriTech.Model
+namespace LubriTech.Model.Vehicle_Information
 {
     public class Vehicle
     {
@@ -24,18 +23,18 @@ namespace LubriTech.Model
 
         public string Transmission { get; set; }
 
-        public string CustomerId { get; set; }
+        public Client Client { get; set; }
 
-        public Vehicle(string licensePlate, string engine, double mileage, string brand, string model, int year, string transmission, string customerId)
+        public Vehicle(string licensePlate, string engine, double mileage, string brand, string model, int year, string transmission, Client client)
         {
-            LicensePlate = licensePlate;
-            Engine = engine;
-            Mileage = mileage;
-            Brand = brand;
-            Model = model;
-            Year = year;
-            Transmission = transmission;
-            CustomerId = customerId;
+            this.LicensePlate = licensePlate;
+            this.Engine = engine;
+            this.Mileage = mileage;
+            this.Brand = brand;
+            this.Model = model;
+            this.Year = year;
+            this.Transmission = transmission;
+            this.Client = client;
         }
 
         public string ToString()
@@ -47,7 +46,7 @@ namespace LubriTech.Model
                 "\nModel: " + Model +
                 "\nYear: " + Year +
                 "\nTransmission: " + Transmission +
-                "\nCustomer ID: " + CustomerId;
+                "\nClient name: " + Client.FullName;
         }
 
     }

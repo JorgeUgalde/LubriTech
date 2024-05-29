@@ -6,28 +6,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LubriTech.Model
+namespace LubriTech.Model.Product_Information
 {
-    public class Vehicle_Model
+    public class Product_Model
     {
         SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
 
-        public List<Vehicle> loadAllVehicles()
+        public List<Product> loadAllProducts()
         {
-            List<Vehicle> vehicles = new List<Vehicle>();
+            List<Product> products = new List<Product>();
 
             try
             {
                 conn.Open();
-                String selectQuery = "SELECT * FROM Vehiculo";
+                String selectQuery = "select * from Producto";
+
                 SqlCommand cmd = new SqlCommand(selectQuery, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    vehicles.Add(new Vehicle(reader["Placa"].ToString(), reader["TipoMotor"].ToString(), Convert.ToDouble(reader["Kilometraje"]), reader["Marca"].ToString(), reader["Modelo"].ToString(), Convert.ToInt32(reader["Anio"]), reader["Transmision"].ToString(), reader["IdentificacionCliente"].ToString()));
+                    products.Add(new Product(reader["Codigo"].ToString(), reader["Nombre"].ToString(), Convert.ToDouble(reader["Precio"]), reader["UnidadMedida"].ToString(), reader["Estado"].ToString()));
                 }
-                return vehicles;
+                return products;
             }
             catch (Exception ex)
             {

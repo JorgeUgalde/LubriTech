@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LubriTech.Model.Supplier
+namespace LubriTech.Model.Supplier_Information
 {
     public class Supplier_Model
     {

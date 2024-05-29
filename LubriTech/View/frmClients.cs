@@ -18,12 +18,6 @@ namespace LubriTech.View
             InitializeComponent();
         }
 
-        private void Vehicles_Load(object sender, EventArgs e)
-        {
-            Vehicle_Controller vehicleController = new Vehicle_Controller();
-            dgvVehicles.DataSource = vehicleController.getAll();
-
-
-        }
+    
     }
 }
