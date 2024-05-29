@@ -60,10 +60,10 @@
     <Compile Include="Model\Product\Product_Model.cs" />
     <Compile Include="Model\Supplier\Supplier.cs" />
     <Compile Include="Model\Supplier\Supplier_Model.cs" />
-    <Compile Include="Model\Vehicle_Model.cs" />
+    <Compile Include="Model\Vehicle\Vehicle.cs" />
+    <Compile Include="Model\Vehicle\Vehicle_Model.cs" />
     <Compile Include="Model\Work_Order_Model.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
-    <Compile Include="obj\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="View\Clients.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,8 +102,10 @@
     <EmbeddedResource Include="View\Products.resx">
       <DependentUpon>Products.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Vehicles.resx">
+      <DependentUpon>Vehicles.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="bin\Debug\LubriTech.exe.config" />
-    <None Include="obj\Release\LubriTech.csproj.AssemblyReference.cache" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -123,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
+    <Folder Include="obj\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
