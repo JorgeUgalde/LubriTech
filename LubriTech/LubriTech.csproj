@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Controller\Clients_Controller.cs" />
     <Compile Include="Controller\Product_Controller.cs" />
+    <Compile Include="Controller\Supplier_Controller.cs" />
     <Compile Include="Controller\Vehicle_Controller.cs" />
     <Compile Include="Controller\Work_Order_Controller.cs" />
     <Compile Include="Model\Appointment_Model.cs" />
@@ -85,6 +86,12 @@
     <Compile Include="View\frmProducts.Designer.cs">
       <DependentUpon>frmProducts.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmSuppliers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmSuppliers.Designer.cs">
+      <DependentUpon>frmSuppliers.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmVehicles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +109,9 @@
     </Compile>
     <EmbeddedResource Include="View\frmProducts.resx">
       <DependentUpon>frmProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmSuppliers.resx">
+      <DependentUpon>frmSuppliers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Vehicles.resx">
       <DependentUpon>Vehicles.cs</DependentUpon>
@@ -126,7 +136,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
-    <Folder Include="obj\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

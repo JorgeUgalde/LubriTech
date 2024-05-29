@@ -21,6 +21,7 @@ namespace LubriTech.Model.Supplier
             this.phone = phone;
         }
 
+        override
         public string ToString()
         {
             return "Id: " + id + "\nName: " + name + "\nEmail: " + email + "\nPhone number: " + phone;
