@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LubriTech.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,14 @@ namespace LubriTech.View
         public frmClients()
         {
             InitializeComponent();
+        }
+
+        private void Vehicles_Load(object sender, EventArgs e)
+        {
+            Vehicle_Controller vehicleController = new Vehicle_Controller();
+            dgvVehicles.DataSource = vehicleController.getAll();
+
+
         }
     }
 }

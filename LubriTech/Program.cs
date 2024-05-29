@@ -1,4 +1,4 @@
-﻿using LubriTech.View;
+using LubriTech.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +9,6 @@ namespace LubriTech
 {
     internal static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {

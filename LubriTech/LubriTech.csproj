@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -60,7 +60,8 @@
     <Compile Include="Model\Product\Product_Model.cs" />
     <Compile Include="Model\Supplier\Supplier.cs" />
     <Compile Include="Model\Supplier\Supplier_Model.cs" />
-    <Compile Include="Model\Vehicle_Model.cs" />
+    <Compile Include="Model\Vehicle\Vehicle.cs" />
+    <Compile Include="Model\Vehicle\Vehicle_Model.cs" />
     <Compile Include="Model\Work_Order_Model.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="obj\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
@@ -102,8 +103,10 @@
     <EmbeddedResource Include="View\frmProducts.resx">
       <DependentUpon>frmProducts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Vehicles.resx">
+      <DependentUpon>Vehicles.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="bin\Debug\LubriTech.exe.config" />
-    <None Include="obj\Release\LubriTech.csproj.AssemblyReference.cache" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -123,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
+    <Folder Include="obj\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

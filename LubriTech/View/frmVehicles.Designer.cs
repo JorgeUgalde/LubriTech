@@ -28,12 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.dgvVehicles = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVehicles)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dgvVehicles
+            // 
+            this.dgvVehicles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVehicles.Location = new System.Drawing.Point(77, 53);
+            this.dgvVehicles.Name = "dgvVehicles";
+            this.dgvVehicles.Size = new System.Drawing.Size(654, 351);
+            this.dgvVehicles.TabIndex = 0;
+            // 
+            // Vehicles
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dgvVehicles);
+            this.Name = "Vehicles";
             this.Text = "Vehicles";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVehicles)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView dgvVehicles;
     }
 }
