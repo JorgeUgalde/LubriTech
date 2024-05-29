@@ -46,7 +46,7 @@ namespace LubriTech.Model.Vehicle_Information
                 "\nModel: " + Model +
                 "\nYear: " + Year +
                 "\nTransmission: " + Transmission +
-                "\nclient name" + Client.FullName;
+                "\nClient name: " + Client.FullName;
         }
 
     }

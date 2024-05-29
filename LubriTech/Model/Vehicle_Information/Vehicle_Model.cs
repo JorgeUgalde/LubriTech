@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LubriTech.Model.Client_Information;
 
 namespace LubriTech.Model.Vehicle_Information
 {
@@ -21,12 +23,17 @@ namespace LubriTech.Model.Vehicle_Information
                 conn.Open();
                 String selectQuery = "SELECT * FROM Vehiculo";
                 SqlCommand cmd = new SqlCommand(selectQuery, conn);
-                SqlDataReader reader = cmd.ExecuteReader();
+                DataTable tblVehicles = new DataTable();
+                SqlDataAdapter adp = new SqlDataAdapter();
 
-                //while (reader.Read())
-                //{
-                //    vehicles.Add(new Vehicle(reader["Placa"].ToString(), reader["TipoMotor"].ToString(), Convert.ToDouble(reader["Kilometraje"]), reader["Marca"].ToString(), reader["Modelo"].ToString(), Convert.ToInt32(reader["Anio"]), reader["Transmision"].ToString(), reader["IdentificacionCliente"].ToString()));
-                //}
+                adp.SelectCommand = cmd;
+
+                adp.Fill(tblVehicles);
+
+                foreach (DataRow dr in tblVehicles.Rows)
+                {
+                    vehicles.Add(new Vehicle(dr["Placa"].ToString(), dr["TipoMotor"].ToString(), Convert.ToDouble(dr["Kilometraje"]), dr["Marca"].ToString(), dr["Modelo"].ToString(), Convert.ToInt32(dr["Anio"]), dr["Transmision"].ToString(), (getClient((string)dr["IdentificacionCliente"]))));
+                }
                 return vehicles;
             }
             catch (Exception ex)
@@ -38,6 +45,42 @@ namespace LubriTech.Model.Vehicle_Information
             {
                 conn.Close();
             }
+        }
+
+        private Client getClient(string ClientId)
+        {
+            String selectQueryClients = "SELECT * FROM Cliente where Cliente.Identificacion = @identificacion";
+            SqlCommand select = new SqlCommand(selectQueryClients, conn);
+            select.Parameters.AddWithValue("@identificacion", ClientId);
+
+            DataTable tblClients = new DataTable();
+            SqlDataAdapter adp = new SqlDataAdapter();
+
+            adp.SelectCommand = select;
+
+            adp.Fill(tblClients);
+            Client client = null;
+
+            foreach (DataRow dr in tblClients.Rows)
+            {
+                client = new Client(dr["Identificacion"].ToString(), dr["NombreCompleto"].ToString(), 0, 0, dr["CorreoElectronico"].ToString(), dr["Direccion"].ToString());
+            }
+
+            if (conn.State != System.Data.ConnectionState.Open)
+            {
+                conn.Open();
+
+            }
+
+            select.ExecuteNonQuery();
+
+            if (conn.State != System.Data.ConnectionState.Closed)
+            {
+                conn.Close();
+
+            }
+
+            return client;
         }
     }
 }

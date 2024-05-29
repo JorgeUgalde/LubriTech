@@ -22,14 +22,19 @@ namespace LubriTech.Model.Client_Information
 
         public Client(string id, string fullName, int mainPhoneNum, int additionalPhoneNum, string email, string address)
         {
-            this.Id = id;
-            this.FullName = fullName;
-            this.MainPhoneNum = mainPhoneNum;
-            this.AdditionalPhoneNum = additionalPhoneNum;
-            this.Email = email;
-            this.Address = address;
+            Id = id;
+            FullName = fullName;
+            MainPhoneNum = mainPhoneNum;
+            AdditionalPhoneNum = additionalPhoneNum;
+            Email = email;
+            Address = address;
         }
 
+        override
+        public string ToString()
+        {
+            return FullName;
+        }
 
     }
 }

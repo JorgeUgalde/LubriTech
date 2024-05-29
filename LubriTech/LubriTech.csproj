@@ -62,7 +62,6 @@
     <Compile Include="Model\Vehicle_Information\Vehicle.cs" />
     <Compile Include="Model\Vehicle_Information\Vehicle_Model.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
-    <Compile Include="obj\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="View\frmClients.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,9 +97,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\frmClients.resx">
-      <DependentUpon>frmClients.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\frmProducts.resx">
       <DependentUpon>frmProducts.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
+    <Folder Include="obj\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
