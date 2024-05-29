@@ -1,6 +1,6 @@
 ﻿namespace LubriTech.View
 {
-    partial class Products
+    partial class frmProducts
     {
         /// <summary>
         /// Required designer variable.

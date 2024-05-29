@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LubriTech.View
 {
-    public partial class Clients : Form
+    public partial class frmClients : Form
     {
-        public Clients()
+        public frmClients()
         {
             InitializeComponent();
         }

@@ -23,7 +23,7 @@ namespace LubriTech.Model.Product
 
                 while (reader.Read())
                 {
-                    products.Add(new Product(reader["Codigo"].ToString(), reader["Nombre"].ToString(), reader["IdentificacionProveedor"].ToString(), Convert.ToDouble(reader["Precio"]), reader["UnidadMedida"].ToString(), reader["Estado"].ToString()));
+                    products.Add(new Product(reader["Codigo"].ToString(), reader["Nombre"].ToString(), Convert.ToDouble(reader["Precio"]), reader["UnidadMedida"].ToString(), reader["Estado"].ToString()));
                 }
                 return products;
             }

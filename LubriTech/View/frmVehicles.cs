@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LubriTech
+namespace LubriTech.View
 {
-    public partial class Login : Form
+    public partial class frmVehicles : Form
     {
-        public Login()
+        public frmVehicles()
         {
             InitializeComponent();
         }

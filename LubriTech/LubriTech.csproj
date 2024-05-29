@@ -64,31 +64,31 @@
     <Compile Include="Model\Work_Order_Model.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="obj\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
-    <Compile Include="View\Clients.cs">
+    <Compile Include="View\frmClients.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Clients.Designer.cs">
-      <DependentUpon>Clients.cs</DependentUpon>
+    <Compile Include="View\frmClients.Designer.cs">
+      <DependentUpon>frmClients.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Login.cs">
+    <Compile Include="View\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="View\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\Products.cs">
+    <Compile Include="View\frmProducts.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Products.Designer.cs">
-      <DependentUpon>Products.cs</DependentUpon>
+    <Compile Include="View\frmProducts.Designer.cs">
+      <DependentUpon>frmProducts.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Vehicles.cs">
+    <Compile Include="View\frmVehicles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Vehicles.Designer.cs">
-      <DependentUpon>Vehicles.cs</DependentUpon>
+    <Compile Include="View\frmVehicles.Designer.cs">
+      <DependentUpon>frmVehicles.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -99,8 +99,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\Products.resx">
-      <DependentUpon>Products.cs</DependentUpon>
+    <EmbeddedResource Include="View\frmProducts.resx">
+      <DependentUpon>frmProducts.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="bin\Debug\LubriTech.exe.config" />
     <None Include="obj\Release\LubriTech.csproj.AssemblyReference.cache" />

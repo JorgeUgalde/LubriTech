@@ -8,13 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LubriTech.Model.Product;
 
 namespace LubriTech.View
 {
-    public partial class Products : Form
+    public partial class frmProducts : Form
     {
-        public Products()
+        public frmProducts()
         {
             InitializeComponent();
         }

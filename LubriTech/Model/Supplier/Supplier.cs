@@ -9,10 +9,10 @@ namespace LubriTech.Model.Supplier
     public class Supplier
     {
 
-        private string id {  get; set; }
-        private string name { get; set; }
-        private string email {  get; set; }
-        private int phone { get; set; }
+        public string id {  get; set; }
+        public string name { get; set; }
+        public string email {  get; set; }
+        public int phone { get; set; }
 
         public Supplier(string id, string name, string email, int phone) {
             this.id = id;
