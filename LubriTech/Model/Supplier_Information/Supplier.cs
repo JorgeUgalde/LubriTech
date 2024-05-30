@@ -22,6 +22,8 @@ namespace LubriTech.Model.Supplier_Information
             this.phone = phone;
         }
 
+        public Supplier() { }
+
         override
         public string ToString()
         {
