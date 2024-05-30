@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LubriTech.Model.Supplier_Information;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace LubriTech.Model.Product_Information
 {
     public class Product_Model
     {
-        SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
+        SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.conn);
 
         public List<Product> loadAllProducts()
         {
@@ -18,7 +19,9 @@ namespace LubriTech.Model.Product_Information
 
             try
             {
-                conn.Open();
+                    conn.Open();
+          
+
                 String selectQuery = "select * from Producto";
 
                 SqlCommand cmd = new SqlCommand(selectQuery, conn);
@@ -26,7 +29,9 @@ namespace LubriTech.Model.Product_Information
 
                 while (reader.Read())
                 {
-                    products.Add(new Product(reader["Codigo"].ToString(), reader["Nombre"].ToString(), Convert.ToDouble(reader["Precio"]), reader["UnidadMedida"].ToString(), reader["Estado"].ToString()));
+                    products.Add(new Product(reader["Codigo"].ToString(), reader["Nombre"].ToString(), 
+                        Convert.ToDouble(reader["Precio"]), reader["UnidadMedida"].ToString(),
+                        reader["Estado"].ToString(), getSuppliers(reader["Codigo"].ToString())));
                 }
                 return products;
             }
@@ -39,6 +44,24 @@ namespace LubriTech.Model.Product_Information
             {
                 conn.Close();
             }
+        }
+
+        private List<Supplier> getSuppliers(string productCode)
+        {
+
+            List<Supplier> suppliers = new List<Supplier>();
+            string selectQuery = "select IdentificacionProveedor from Provee where Provee.CodigoProducto = @productCode";
+            SqlCommand cmd = new SqlCommand(selectQuery, conn);
+            cmd.Parameters.AddWithValue("@productCode", productCode);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+               // suppliers.Add(new Supplier_Model().getSupplier(reader["IdentificacionProveedor"].ToString()));
+            }
+
+            return null;
+
         }
     }
 }

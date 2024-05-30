@@ -18,12 +18,15 @@ namespace LubriTech.View
             InitializeComponent();
         }
 
+
+
+
         private void Products_Load(object sender, EventArgs e)
         {
             Product_Controller productController = new Product_Controller();
             dgvProducts.DataSource = productController.getAll();
-
-
         }
+
+
     }
 }

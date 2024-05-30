@@ -10,7 +10,7 @@ namespace LubriTech.Model.Vehicle_Information
 {
     public class Vehicle_Model
     {
-        SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
+        SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.conn);
 
         public List<Vehicle> loadAllVehicles()
         {

@@ -89,6 +89,12 @@
     <Compile Include="View\frmVehicles.Designer.cs">
       <DependentUpon>frmVehicles.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\MDI_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MDI_View.Designer.cs">
+      <DependentUpon>MDI_View.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -98,11 +104,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmProducts.resx">
       <DependentUpon>frmProducts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmVehicles.resx">
       <DependentUpon>frmVehicles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MDI_View.resx">
+      <DependentUpon>MDI_View.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="bin\Debug\LubriTech.exe.config" />
     <None Include="Properties\Settings.settings">
