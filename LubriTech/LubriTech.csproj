@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -51,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Controller\Clients_Controller.cs" />
     <Compile Include="Controller\Product_Controller.cs" />
+    <Compile Include="Controller\Supplier_Controller.cs" />
     <Compile Include="Controller\Vehicle_Controller.cs" />
     <Compile Include="Controller\Work_Order_Controller.cs" />
     <Compile Include="Model\Client_Information\Client.cs" />
@@ -62,7 +78,6 @@
     <Compile Include="Model\Vehicle_Information\Vehicle.cs" />
     <Compile Include="Model\Vehicle_Information\Vehicle_Model.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
-    <Compile Include="obj\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="View\frmClients.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +97,12 @@
     </Compile>
     <Compile Include="View\frmProducts.Designer.cs">
       <DependentUpon>frmProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmSuppliers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmSuppliers.Designer.cs">
+      <DependentUpon>frmSuppliers.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmVehicles.cs">
       <SubType>Form</SubType>
@@ -110,6 +131,9 @@
     <EmbeddedResource Include="View\frmProducts.resx">
       <DependentUpon>frmProducts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\frmSuppliers.resx">
+      <DependentUpon>frmSuppliers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmVehicles.resx">
       <DependentUpon>frmVehicles.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +160,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

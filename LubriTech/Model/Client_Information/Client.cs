@@ -12,9 +12,9 @@ namespace LubriTech.Model.Client_Information
 
         public string FullName { get; set; }
 
-        public int MainPhoneNum { get; set; }
+        public int? MainPhoneNum { get; set; }
 
-        public int AdditionalPhoneNum { get; set; }
+        public int? AdditionalPhoneNum { get; set; }
 
         public string Email { get; set; }
 
@@ -30,6 +30,11 @@ namespace LubriTech.Model.Client_Information
             Address = address;
         }
 
+        override
+        public string ToString()
+        {
+            return FullName;
+        }
 
     }
 }
