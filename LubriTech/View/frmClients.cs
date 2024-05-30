@@ -24,6 +24,11 @@ namespace LubriTech.View
             dgvClients.DataSource = clients_Controller.getAll();
         }
 
-       
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmUpsert_Client frmUpsert_Client = new frmUpsert_Client();
+            frmUpsert_Client.Show();
+
+        }
     }
 }

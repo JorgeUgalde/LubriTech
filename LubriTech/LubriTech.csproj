@@ -110,6 +110,12 @@
     <Compile Include="View\frmSuppliers.Designer.cs">
       <DependentUpon>frmSuppliers.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmUpsert_Client.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmUpsert_Client.Designer.cs">
+      <DependentUpon>frmUpsert_Client.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmVehicles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\frmClients.resx">
+      <DependentUpon>frmClients.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmNewVehicle.resx">
       <DependentUpon>frmNewVehicle.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmSuppliers.resx">
       <DependentUpon>frmSuppliers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmUpsert_Client.resx">
+      <DependentUpon>frmUpsert_Client.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmVehicles.resx">
       <DependentUpon>frmVehicles.cs</DependentUpon>

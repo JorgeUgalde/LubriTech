@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LubriTech.Model.Vehicle_Information;
 using System.Windows.Forms;
+using System.IO;
 
 namespace LubriTech.Model.Client_Information
 {
@@ -47,10 +48,11 @@ namespace LubriTech.Model.Client_Information
             {
                 conn.Close();
             }
-        }
+        }//End of loadAllClients
 
-        private Vehicle GetVehicle(string ClientId)
+        private List<Vehicle> GetVehicle(string ClientId)
         {
+            List<Vehicle> vehicles = new List<Vehicle>();
             String selectQueryClients = "SELECT * FROM Vehiculo WHERE Vehiculo.IdentificacionCliente = @identificacion;";
             SqlCommand select = new SqlCommand(selectQueryClients, conn);
             select.Parameters.AddWithValue("@identificacion", ClientId);
@@ -61,11 +63,10 @@ namespace LubriTech.Model.Client_Information
             adp.SelectCommand = select;
 
             adp.Fill(tblVehicles);
-            Vehicle vehicles = null;
 
             foreach (DataRow dr in tblVehicles.Rows)
             {
-                vehicles = new Vehicle(dr["Placa"].ToString(), dr["TipoMotor"].ToString(), Convert.ToDouble(dr["Kilometraje"]), dr["Marca"].ToString(), dr["Modelo"].ToString(), Convert.ToInt32(dr["Anio"]), dr["Transmision"].ToString());
+                vehicles.Add( new Vehicle(dr["Placa"].ToString(), dr["TipoMotor"].ToString(), Convert.ToDouble(dr["Kilometraje"]), dr["Marca"].ToString(), dr["Modelo"].ToString(), Convert.ToInt32(dr["Anio"]), dr["Transmision"].ToString()));
             }
 
             if (conn.State != System.Data.ConnectionState.Open)
@@ -83,6 +84,111 @@ namespace LubriTech.Model.Client_Information
             }
 
             return vehicles;
-        }
+        }//End of GetVehicle
+
+        public Boolean SaveClient(Client client)
+        {
+            try
+            {
+                String insertQuery = "insert into Cliente(Identificacion, NombreCompleto, NumeroTelefonoPrincipal, NumeroTelefonoAdicional, CorreoElectronico, Direccion) values (@id, @fullname, @mainphone, @additionalphone, @email, @addresse)";
+
+                SqlCommand insert = new SqlCommand(insertQuery, conn);
+
+                insert.Parameters.AddWithValue("@id", client.Id);
+                insert.Parameters.AddWithValue("@fullname", client.FullName);
+                insert.Parameters.AddWithValue("@mainphone", client.MainPhoneNum);
+                insert.Parameters.AddWithValue("@additionalphone", client.AdditionalPhoneNum);
+                insert.Parameters.AddWithValue("@email", client.Email);
+                insert.Parameters.AddWithValue("@addresse", client.Address);
+
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                insert.ExecuteNonQuery();
+                return true;
+
+            }
+            catch (SqlException ex)
+            {
+
+                throw ex;
+            }
+            finally 
+            { 
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+
+                } 
+            }
+        }//End of SaveClient
+
+        public Boolean UpdateClient(Client client)
+        {
+            try
+            {
+                String updateQuery = "update Cliente set NombreCompleto = @fullname, NumeroTelefonoPrincipal = @mainphone@mainphone, NumeroTelefonoAdicional = @additionalphone, CorreoElectronico = @email, Direccion = @addresse where [Cliente].Identificacion = @id";
+
+                SqlCommand update = new SqlCommand(updateQuery, conn);
+
+                update.Parameters.AddWithValue("@id", client.Id);
+                update.Parameters.AddWithValue("@fullname", client.FullName);
+                update.Parameters.AddWithValue("@mainphone", client.MainPhoneNum);
+                update.Parameters.AddWithValue("@additionalphone", client.AdditionalPhoneNum);
+                update.Parameters.AddWithValue("@email", client.Email);
+                update.Parameters.AddWithValue("@addresse", client.Address);
+
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                update.ExecuteNonQuery();
+                return true;
+
+            }
+            catch (SqlException ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+
+                }
+            }
+        }//End of UpdateClient
+
+        public void deleteClient(string clientId)
+        {
+            try
+            {
+                string deleteQuery = "delete from Cliente where [Cliente].Identificacion = @id";
+                SqlCommand delete = new SqlCommand(deleteQuery, conn);
+
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                delete.Parameters.AddWithValue("@id", clientId);
+                delete.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+        }//End of DeleteClient
     }
 }
