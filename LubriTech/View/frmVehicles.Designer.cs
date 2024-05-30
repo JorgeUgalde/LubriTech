@@ -93,6 +93,7 @@
             this.btnNewVehicle.TabIndex = 3;
             this.btnNewVehicle.Text = "Nuevo Vehículo";
             this.btnNewVehicle.UseVisualStyleBackColor = false;
+            this.btnNewVehicle.Click += new System.EventHandler(this.btnNewVehicle_Click);
             // 
             // frmVehicles
             // 

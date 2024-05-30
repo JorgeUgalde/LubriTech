@@ -25,5 +25,11 @@ namespace LubriTech.View
 
 
         }
+
+        private void btnNewVehicle_Click(object sender, EventArgs e)
+        {
+            frmNewVehicle frmNewVehicle = new frmNewVehicle();
+            frmNewVehicle.ShowDialog();
+        }
     }
 }
