@@ -18,6 +18,12 @@ namespace LubriTech.View
             InitializeComponent();
         }
 
-    
+        private void frmClients_Load(object sender, EventArgs e)
+        {
+            Clients_Controller clients_Controller = new Clients_Controller();
+            dgvClients.DataSource = clients_Controller.getAll();
+        }
+
+       
     }
 }
