@@ -26,7 +26,9 @@ namespace LubriTech.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"Server=tcp:lubritech.database.windows.net,1433;Initial Catalog=LubriTech;Persist Security Info=False;User ID=lubriadm;Password=LubriTech*;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30; Data Source=(local);Initial Catalog=LubriTech;Integrated Security=True;TrustServerCertificate=trData Source=(local);Initial Catalog=LubriTech;Integrated Security=True;TrustServerCertificate=true")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=tcp:lubritech.database.windows.net,1433;Initial Catalog=LubriTech;Persist " +
+            "Security Info=False;User ID=lubriadm;Password=LubriTech*;MultipleActiveResultSet" +
+            "s=False;Encrypt=True;TrustServerCertificate=True; ")]
         public string connString {
             get {
                 return ((string)(this["connString"]));
