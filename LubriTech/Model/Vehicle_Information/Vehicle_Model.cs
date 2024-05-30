@@ -49,7 +49,7 @@ namespace LubriTech.Model.Vehicle_Information
 
         private Client getClient(string ClientId)
         {
-            String selectQueryClients = "SELECT * FROM Cliente where Cliente.Identificacion = @identificacion";
+            String selectQueryClients = "SELECT * FROM Cliente WHERE Cliente.Identificacion = @identificacion;";
             SqlCommand select = new SqlCommand(selectQueryClients, conn);
             select.Parameters.AddWithValue("@identificacion", ClientId);
 
@@ -63,7 +63,7 @@ namespace LubriTech.Model.Vehicle_Information
 
             foreach (DataRow dr in tblClients.Rows)
             {
-                client = new Client(dr["Identificacion"].ToString(), dr["NombreCompleto"].ToString(), 0, 0, dr["CorreoElectronico"].ToString(), dr["Direccion"].ToString());
+                client = new Client(dr["Identificacion"].ToString(), dr["NombreCompleto"].ToString(), Convert.ToInt32(dr["NumeroTelefonoPrincipal"]), Convert.ToInt32(dr["NumeroTelefonoAdicional"]), dr["CorreoElectronico"].ToString(), dr["Direccion"].ToString());
             }
 
             if (conn.State != System.Data.ConnectionState.Open)
