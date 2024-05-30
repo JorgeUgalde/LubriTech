@@ -49,38 +49,87 @@ namespace LubriTech.Model.Vehicle_Information
 
         private Client getClient(string ClientId)
         {
-            String selectQueryClients = "SELECT * FROM Cliente WHERE Cliente.Identificacion = @identificacion;";
-            SqlCommand select = new SqlCommand(selectQueryClients, conn);
-            select.Parameters.AddWithValue("@identificacion", ClientId);
-
-            DataTable tblClients = new DataTable();
-            SqlDataAdapter adp = new SqlDataAdapter();
-
-            adp.SelectCommand = select;
-
-            adp.Fill(tblClients);
-            Client client = null;
-
-            foreach (DataRow dr in tblClients.Rows)
+            try
             {
-                client = new Client(dr["Identificacion"].ToString(), dr["NombreCompleto"].ToString(), Convert.ToInt32(dr["NumeroTelefonoPrincipal"]), Convert.ToInt32(dr["NumeroTelefonoAdicional"]), dr["CorreoElectronico"].ToString(), dr["Direccion"].ToString());
-            }
+                String selectQueryClients = "SELECT * FROM Cliente WHERE Cliente.Identificacion = @identificacion;";
+                SqlCommand select = new SqlCommand(selectQueryClients, conn);
+                select.Parameters.AddWithValue("@identificacion", ClientId);
 
-            if (conn.State != System.Data.ConnectionState.Open)
+                DataTable tblClients = new DataTable();
+                SqlDataAdapter adp = new SqlDataAdapter();
+
+                adp.SelectCommand = select;
+
+                adp.Fill(tblClients);
+                Client client = null;
+
+                foreach (DataRow dr in tblClients.Rows)
+                {
+                    client = new Client(dr["Identificacion"].ToString(), dr["NombreCompleto"].ToString(), Convert.ToInt32(dr["NumeroTelefonoPrincipal"]), Convert.ToInt32(dr["NumeroTelefonoAdicional"]), dr["CorreoElectronico"].ToString(), dr["Direccion"].ToString());
+                }
+
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+
+                }
+
+                select.ExecuteNonQuery();
+
+                return client;
+            }
+            catch (Exception ex)
             {
-                conn.Open();
-
+                MessageBox.Show("Error: " + ex.Message);
+                return null;
             }
-
-            select.ExecuteNonQuery();
-
-            if (conn.State != System.Data.ConnectionState.Closed)
+            finally
             {
-                conn.Close();
-
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
             }
+        }
 
-            return client;
+        public Boolean addVehicle(string LicensePlate, string Engine, double Mileage, string Brand, string Model, int Year, string Transmission, string ClientId)
+        {
+            try
+            {
+                string query = "INSERT INTO Vehiculo VALUES (@licensePlate, @engine, @mileage, @brand, @model, @year, @transmission, @clientId)";
+                SqlCommand insert = new SqlCommand(query, conn);
+
+                insert.Parameters.AddWithValue("@licensePlate", LicensePlate);
+                insert.Parameters.AddWithValue("@engine", Engine);
+                insert.Parameters.AddWithValue("@mileage", Mileage);
+                insert.Parameters.AddWithValue("@brand", Brand);
+                insert.Parameters.AddWithValue("@model", Model);
+                insert.Parameters.AddWithValue("@year", Year);
+                insert.Parameters.AddWithValue("@transmission", Transmission);
+                insert.Parameters.AddWithValue("@clientId", ClientId);
+
+
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                insert.ExecuteNonQuery();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
         }
     }
 }
