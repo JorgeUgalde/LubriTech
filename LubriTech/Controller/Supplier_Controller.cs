@@ -14,7 +14,7 @@ namespace LubriTech.Controller
             return new Supplier_Model().loadAllSuppliers();
         }
 
-        public Supplier GetSupplier(int id)
+        public Supplier GetSupplier(string id)
         {
             return new Supplier_Model().getSupplier(id);
         }
