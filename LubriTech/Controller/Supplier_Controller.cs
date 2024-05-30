@@ -1,5 +1,4 @@
-﻿using LubriTech.Model.Client_Information;
-using LubriTech.Model.Supplier_Information;
+﻿using LubriTech.Model.Supplier_Information;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +12,11 @@ namespace LubriTech.Controller
         public List<Supplier> getAll()
         {
             return new Supplier_Model().loadAllSuppliers();
+        }
+
+        public Supplier GetSupplier(string id)
+        {
+            return new Supplier_Model().getSupplier(id);
         }
 
         public Boolean Save(Supplier supplier)

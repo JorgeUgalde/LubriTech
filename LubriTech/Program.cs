@@ -14,7 +14,7 @@ namespace LubriTech
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmClients());
+            Application.Run(new MDI_View());
         }
     }
 }

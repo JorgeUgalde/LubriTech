@@ -19,15 +19,22 @@ namespace LubriTech.Model.Supplier_Information
 
                 try
                 {
-                    String selectQuery = "select * from Proveedor";
 
-                    DataTable tblSupplier = new DataTable();
-                    SqlDataAdapter adp = new SqlDataAdapter();
-                    adp.SelectCommand = new SqlCommand(selectQuery);
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                string selectQuery = "select * from Proveedor";
 
-                    foreach (DataRow dr in tblSupplier.Rows)
+                DataTable tblSupplier = new DataTable();
+                SqlCommand cmd = new SqlCommand(selectQuery, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+               
+
+                while (reader.Read())
                     {
-                        suppliers.Add(new Supplier(dr["Identificacion"].ToString(), dr["Nombre"].ToString(), dr["CorreoElectronico"].ToString(), (int)dr["NumeroTelefono"]));
+                        suppliers.Add(new Supplier(reader["Identificacion"].ToString(), reader["Nombre"].ToString(), reader["CorreoElectronico"].ToString(), Convert.ToInt32(reader["NumeroTelefono"])));
                     }
                     return suppliers;
                 }
@@ -35,7 +42,49 @@ namespace LubriTech.Model.Supplier_Information
                 {
                     throw (ex);
                 }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
             }
+        }
+
+            public Supplier getSupplier(string id)
+            {
+
+            Supplier supplier = null;
+            try
+            {
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                string query = "Select * from Proveedor where [Proveedor].Identificacion = @id";
+                DataTable tblSupplier = new DataTable();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@id", id);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    supplier = new Supplier(reader["Identificacion"].ToString(), reader["Nombre"].ToString(), reader["CorreoElectronico"].ToString(), Convert.ToInt32(reader["NumeroTelefono"]));
+                }
+                return supplier;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+        }
 
             public Boolean SaveSupplier(Supplier supplier)
             {
@@ -81,7 +130,7 @@ namespace LubriTech.Model.Supplier_Information
             {
                 try
                 {
-                    string updateQuery = "update Proveedor set Nombre= @name, CorreoElectronico = @email, NumeroTelefono = @phone where @id = Supplier.id";
+                    string updateQuery = "update Proveedor set Nombre= @name, CorreoElectronico = @email, NumeroTelefono = @phone where [Proveedor].Identificacion = @id";
                     SqlCommand update = new SqlCommand(updateQuery, conn);
 
                     update.Parameters.AddWithValue("@name", supplier.name);
@@ -117,7 +166,7 @@ namespace LubriTech.Model.Supplier_Information
             {
                 try
                 {
-                    string deleteQuery = "delete from Proveedor where @id = Supplier.id";
+                    string deleteQuery = "delete from Proveedor where [Proveedor].Identificacion = @id";
                     SqlCommand delete = new SqlCommand(deleteQuery, conn);
 
                     if (conn.State != System.Data.ConnectionState.Open)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LubriTech.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,12 @@ namespace LubriTech.View
         public frmSuppliers()
         {
             InitializeComponent();
+        }
+
+        private void frmSuppliers_Load(object sender, EventArgs e)
+        {
+            Supplier_Controller sp = new Supplier_Controller();
+            dgvSuppliers.DataSource = sp.getAll();
         }
     }
 }
