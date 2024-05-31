@@ -1,4 +1,5 @@
 ﻿using LubriTech.Model.Client_Information;
+using LubriTech.Model.Product_Information;
 using LubriTech.Model.Vehicle_Information;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,19 @@ namespace LubriTech.Controller
             return new Client_Model().loadAllClients();
         }
 
-        public Boolean saveClient(Client client)
+        public bool upsert(Client client)
         {
-            return new Client_Model().SaveClient(client);
+            return new Client_Model().UpSertClient(client);
+        }
+
+        public bool remove(String Id)
+        {
+            return new Client_Model().removeClient(Id);
+        }
+
+        public Client get(string Id)
+        {
+            return new Client_Model().getClient(Id);
         }
     }
 }

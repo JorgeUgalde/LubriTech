@@ -111,13 +111,16 @@ namespace LubriTech.View
             //frmLogin.WindowState = FormWindowState.Maximized;
             //frmLogin.Dock = DockStyle.Fill;
             //frmLogin.Show();
+
             //frmProducts frmProducts = new frmProducts();
-            frmClients frmClients = new frmClients();
-            frmClients.MdiParent = this;
-            frmClients.WindowState = FormWindowState.Maximized;
             //frmProducts.MdiParent = this;
             //frmProducts.WindowState = FormWindowState.Maximized;
             //frmProducts.Dock = DockStyle.Fill;
+            //frmProducts.Show();
+
+            frmClients frmClients = new frmClients();
+            frmClients.MdiParent = this;
+            frmClients.WindowState = FormWindowState.Maximized;
             frmClients.Show();
 
 

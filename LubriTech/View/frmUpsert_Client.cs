@@ -1,7 +1,10 @@
 ﻿using LubriTech.Controller;
 using LubriTech.Model.Client_Information;
+using LubriTech.Model.Product_Information;
 using System;
 using System.Windows.Forms;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
+using System.Xml.Linq;
 
 namespace LubriTech.View
 {
@@ -11,6 +14,25 @@ namespace LubriTech.View
         {
             InitializeComponent();
         }
+
+        public frmUpsert_Client(Client client)
+        {
+            InitializeComponent();
+            txtID.Text = client.Id;
+            this.txtFullName.Text = client.FullName;
+            txtMainPhone.Text = client.MainPhoneNum.ToString();
+            txtAdditionalPhone.Text = client.AdditionalPhoneNum.ToString();
+            txtEmail.Text = client.Email;
+            txtAddresse.Text = client.Address;
+        }
+
+        public event EventHandler DataChanged;
+
+        protected virtual void OnDataChanged(EventArgs e)
+        {
+            DataChanged?.Invoke(this, e);
+        }
+
 
         private void btnSaveClient_Click(object sender, EventArgs e)
         {
@@ -23,6 +45,7 @@ namespace LubriTech.View
                     !string.IsNullOrEmpty(this.txtEmail.Text) ||
                     !string.IsNullOrEmpty(this.txtAddresse.Text))
                 {
+                    
                     Clients_Controller clientsController = new Clients_Controller();
 
                     string id = this.txtID.Text.Trim();
@@ -32,9 +55,16 @@ namespace LubriTech.View
                     string email = this.txtEmail.Text.Trim();
                     string addresse = this.txtAddresse.Text.Trim();
                     Client client = new Client(id, fullname, mainPhone, additionalPhone, email, addresse);
-                    clientsController.saveClient(client);
 
-                    MessageBox.Show("Cliente registrado correctamente", "Confirmado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (clientsController.upsert(client))
+                    {
+                        OnDataChanged(EventArgs.Empty);
+                        this.Dispose();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El Cliente no se ha agregado correctamente");
+                    }
 
                 }
                 else
@@ -65,6 +95,15 @@ namespace LubriTech.View
         {
             frmNewVehicle frmNewVehicle = new frmNewVehicle();
             frmNewVehicle.ShowDialog();
+        }
+
+        private void dgvVehiclesClients_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
+            {
+                this.dgvVehiclesClients.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            }
         }
     }
 }

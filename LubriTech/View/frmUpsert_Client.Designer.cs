@@ -42,8 +42,8 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dgvVehiclesClients = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnSaveClient = new System.Windows.Forms.Button();
+            this.btnAddVehicle = new System.Windows.Forms.Button();
+            this.btnAddClient = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVehiclesClients)).BeginInit();
@@ -115,6 +115,7 @@
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(205, 20);
             this.txtID.TabIndex = 6;
+            this.txtID.Text = "Ingrese la identificacion";
             // 
             // txtMainPhone
             // 
@@ -176,46 +177,46 @@
             this.dgvVehiclesClients.ReadOnly = true;
             this.dgvVehiclesClients.Size = new System.Drawing.Size(924, 213);
             this.dgvVehiclesClients.TabIndex = 15;
+            this.dgvVehiclesClients.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvVehiclesClients_CellFormatting);
             // 
-            // button1
+            // btnAddVehicle
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(152)))), ((int)(((byte)(92)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(843, 314);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(128, 33);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Agregar Vehículo";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAddVehicle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(152)))), ((int)(((byte)(92)))));
+            this.btnAddVehicle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAddVehicle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddVehicle.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAddVehicle.Location = new System.Drawing.Point(843, 314);
+            this.btnAddVehicle.Name = "btnAddVehicle";
+            this.btnAddVehicle.Size = new System.Drawing.Size(128, 33);
+            this.btnAddVehicle.TabIndex = 16;
+            this.btnAddVehicle.Text = "Agregar Vehículo";
+            this.btnAddVehicle.UseVisualStyleBackColor = false;
+            this.btnAddVehicle.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnSaveClient
+            // btnAddClient
             // 
-            this.btnSaveClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(152)))), ((int)(((byte)(92)))));
-            this.btnSaveClient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSaveClient.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveClient.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSaveClient.Location = new System.Drawing.Point(843, 97);
-            this.btnSaveClient.Name = "btnSaveClient";
-            this.btnSaveClient.Size = new System.Drawing.Size(135, 33);
-            this.btnSaveClient.TabIndex = 17;
-            this.btnSaveClient.Text = "Agregar Cliente";
-            this.btnSaveClient.UseVisualStyleBackColor = false;
-            this.btnSaveClient.Click += new System.EventHandler(this.btnSaveClient_Click);
+            this.btnAddClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(152)))), ((int)(((byte)(92)))));
+            this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAddClient.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddClient.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAddClient.Location = new System.Drawing.Point(843, 97);
+            this.btnAddClient.Name = "btnAddClient";
+            this.btnAddClient.Size = new System.Drawing.Size(135, 33);
+            this.btnAddClient.TabIndex = 17;
+            this.btnAddClient.Text = "Agregar Cliente";
+            this.btnAddClient.UseVisualStyleBackColor = false;
+            this.btnAddClient.Click += new System.EventHandler(this.btnSaveClient_Click);
             // 
             // button2
             // 
             this.button2.Cursor = System.Windows.Forms.Cursors.Default;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Image = global::LubriTech.Properties.Resources.Imagen_flecha;
-            this.button2.Location = new System.Drawing.Point(21, 29);
+            this.button2.Image = global::LubriTech.Properties.Resources.Back;
+            this.button2.Location = new System.Drawing.Point(22, 29);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(52, 31);
             this.button2.TabIndex = 18;
-            this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -236,8 +237,8 @@
             this.ClientSize = new System.Drawing.Size(1023, 596);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.btnSaveClient);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAddClient);
+            this.Controls.Add(this.btnAddVehicle);
             this.Controls.Add(this.dgvVehiclesClients);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtEmail);
@@ -278,8 +279,8 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dgvVehiclesClients;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnSaveClient;
+        private System.Windows.Forms.Button btnAddVehicle;
+        private System.Windows.Forms.Button btnAddClient;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label7;
     }
