@@ -16,6 +16,9 @@ namespace LubriTech.Model.Product_Information
         public string state { set; get; }
         public List<Supplier> suppliers { set; get; }
 
+        public Product()
+        {
+        }
 
         public Product(string code, string name, double price, string measureUnit, string state, List<Supplier> suppliers)
         {

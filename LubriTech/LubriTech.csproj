@@ -84,6 +84,12 @@
     <Compile Include="View\frmClients.Designer.cs">
       <DependentUpon>frmClients.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmInsert_Product.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmInsert_Product.Designer.cs">
+      <DependentUpon>frmInsert_Product.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,7 +130,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\frmInsert_Product.resx">
+      <DependentUpon>frmInsert_Product.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,6 +167,7 @@
   <ItemGroup>
     <Content Include="bin\Debug\LubriTech.exe" />
     <Content Include="bin\Debug\LubriTech.pdb" />
+    <None Include="Images\Back.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />

@@ -13,5 +13,18 @@ namespace LubriTech.Controller
         {
             return new Product_Model().loadAllProducts();
         }
+
+        public Product get(string code)
+        {
+            return new Product_Model().getProduct(code);
+        }
+
+        public bool UpSert(Product product)
+        {
+            return new Product_Model().UpSertProduct(product);
+        }
+        public bool remove(string code) {
+            return new Product_Model().removeProduct(code);
+        }
     }
 }
