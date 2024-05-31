@@ -84,6 +84,12 @@
     <Compile Include="View\frmClients.Designer.cs">
       <DependentUpon>frmClients.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmInsertUpdateSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmInsertUpdateSupplier.Designer.cs">
+      <DependentUpon>frmInsertUpdateSupplier.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmInsert_Product.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\frmInsertUpdateSupplier.resx">
+      <DependentUpon>frmInsertUpdateSupplier.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmInsert_Product.resx">
       <DependentUpon>frmInsert_Product.cs</DependentUpon>
     </EmbeddedResource>

@@ -72,7 +72,7 @@ namespace LubriTech.View
             dgvSelectedSuppliers.Refresh(); 
 
             dgvSelectedSuppliers.DataSource = addedSuppliers;
-            dgvSelectedSuppliers.Columns["id"].Visible = true;
+            dgvSelectedSuppliers.Columns["id"].Visible = false;
             dgvSelectedSuppliers.Columns["name"].HeaderText = "Nombre";
             dgvSelectedSuppliers.Columns["phone"].Visible = false;
             dgvSelectedSuppliers.Columns["email"].Visible = false;
@@ -278,9 +278,11 @@ namespace LubriTech.View
 
         private void btnAddSupplier_Click(object sender, EventArgs e)
         {
-            //frm frmSuppliers = new frmSuppliers();
-            //frmSuppliers.DataChanged += new EventHandler(frmInsert_Product_Load);
-            //frmSuppliers.ShowDialog();
+            frmInsertUpdateSupplier frmSuppliers = new frmInsertUpdateSupplier();
+            frmSuppliers.DataChanged += new EventHandler(frmInsert_Product_Load);
+            frmSuppliers.ShowDialog();
+            load_Suppliers(null);
         }
     }
+    
 }
