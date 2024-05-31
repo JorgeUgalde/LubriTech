@@ -37,16 +37,16 @@
             this.lblMileage = new System.Windows.Forms.Label();
             this.lblLicensePlate = new System.Windows.Forms.Label();
             this.lblEngine = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.tbClientId = new System.Windows.Forms.TextBox();
+            this.tbMileage = new System.Windows.Forms.TextBox();
+            this.tbLicensePlate = new System.Windows.Forms.TextBox();
+            this.tbBrand = new System.Windows.Forms.TextBox();
+            this.tbEngine = new System.Windows.Forms.TextBox();
+            this.tbYear = new System.Windows.Forms.TextBox();
+            this.tbModel = new System.Windows.Forms.TextBox();
             this.cbTransmission = new System.Windows.Forms.ComboBox();
             this.btnAddVehicle = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblNewVehicle
@@ -93,7 +93,7 @@
             // 
             this.lblYear.AutoSize = true;
             this.lblYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblYear.Location = new System.Drawing.Point(149, 320);
+            this.lblYear.Location = new System.Drawing.Point(122, 320);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(45, 24);
             this.lblYear.TabIndex = 3;
@@ -139,54 +139,54 @@
             this.lblEngine.TabIndex = 7;
             this.lblEngine.Text = "Tipo de motor";
             // 
-            // textBox1
+            // tbClientId
             // 
-            this.textBox1.Location = new System.Drawing.Point(126, 187);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(206, 20);
-            this.textBox1.TabIndex = 8;
+            this.tbClientId.Location = new System.Drawing.Point(126, 187);
+            this.tbClientId.Name = "tbClientId";
+            this.tbClientId.Size = new System.Drawing.Size(206, 20);
+            this.tbClientId.TabIndex = 8;
             // 
-            // textBox2
+            // tbMileage
             // 
-            this.textBox2.Location = new System.Drawing.Point(602, 347);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(206, 20);
-            this.textBox2.TabIndex = 9;
+            this.tbMileage.Location = new System.Drawing.Point(602, 347);
+            this.tbMileage.Name = "tbMileage";
+            this.tbMileage.Size = new System.Drawing.Size(206, 20);
+            this.tbMileage.TabIndex = 9;
             // 
-            // textBox3
+            // tbLicensePlate
             // 
-            this.textBox3.Location = new System.Drawing.Point(603, 267);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(206, 20);
-            this.textBox3.TabIndex = 10;
+            this.tbLicensePlate.Location = new System.Drawing.Point(603, 267);
+            this.tbLicensePlate.Name = "tbLicensePlate";
+            this.tbLicensePlate.Size = new System.Drawing.Size(206, 20);
+            this.tbLicensePlate.TabIndex = 10;
             // 
-            // textBox4
+            // tbBrand
             // 
-            this.textBox4.Location = new System.Drawing.Point(602, 187);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(206, 20);
-            this.textBox4.TabIndex = 11;
+            this.tbBrand.Location = new System.Drawing.Point(602, 187);
+            this.tbBrand.Name = "tbBrand";
+            this.tbBrand.Size = new System.Drawing.Size(206, 20);
+            this.tbBrand.TabIndex = 11;
             // 
-            // textBox5
+            // tbEngine
             // 
-            this.textBox5.Location = new System.Drawing.Point(125, 427);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(206, 20);
-            this.textBox5.TabIndex = 12;
+            this.tbEngine.Location = new System.Drawing.Point(125, 427);
+            this.tbEngine.Name = "tbEngine";
+            this.tbEngine.Size = new System.Drawing.Size(206, 20);
+            this.tbEngine.TabIndex = 12;
             // 
-            // textBox6
+            // tbYear
             // 
-            this.textBox6.Location = new System.Drawing.Point(126, 347);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(206, 20);
-            this.textBox6.TabIndex = 13;
+            this.tbYear.Location = new System.Drawing.Point(126, 347);
+            this.tbYear.Name = "tbYear";
+            this.tbYear.Size = new System.Drawing.Size(206, 20);
+            this.tbYear.TabIndex = 13;
             // 
-            // textBox7
+            // tbModel
             // 
-            this.textBox7.Location = new System.Drawing.Point(126, 267);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(206, 20);
-            this.textBox7.TabIndex = 14;
+            this.tbModel.Location = new System.Drawing.Point(126, 267);
+            this.tbModel.Name = "tbModel";
+            this.tbModel.Size = new System.Drawing.Size(206, 20);
+            this.tbModel.TabIndex = 14;
             // 
             // cbTransmission
             // 
@@ -198,9 +198,7 @@
             // 
             // btnAddVehicle
             // 
-            this.btnAddVehicle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddVehicle.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnAddVehicle.BackColor = System.Drawing.Color.ForestGreen;
             this.btnAddVehicle.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnAddVehicle.FlatAppearance.BorderSize = 0;
@@ -215,31 +213,31 @@
             this.btnAddVehicle.UseVisualStyleBackColor = false;
             this.btnAddVehicle.Click += new System.EventHandler(this.btnNewVehicle_Click);
             // 
-            // button1
+            // btnBack
             // 
-            this.button1.Image = global::LubriTech.Properties.Resources.Imagen_flecha;
-            this.button1.Location = new System.Drawing.Point(39, 77);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 29);
-            this.button1.TabIndex = 17;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnBack.Image = global::LubriTech.Properties.Resources.Imagen_flecha;
+            this.btnBack.Location = new System.Drawing.Point(39, 77);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 29);
+            this.btnBack.TabIndex = 17;
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // frmNewVehicle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(941, 559);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAddVehicle);
             this.Controls.Add(this.cbTransmission);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbModel);
+            this.Controls.Add(this.tbYear);
+            this.Controls.Add(this.tbEngine);
+            this.Controls.Add(this.tbBrand);
+            this.Controls.Add(this.tbLicensePlate);
+            this.Controls.Add(this.tbMileage);
+            this.Controls.Add(this.tbClientId);
             this.Controls.Add(this.lblEngine);
             this.Controls.Add(this.lblLicensePlate);
             this.Controls.Add(this.lblMileage);
@@ -267,15 +265,15 @@
         private System.Windows.Forms.Label lblMileage;
         private System.Windows.Forms.Label lblLicensePlate;
         private System.Windows.Forms.Label lblEngine;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox tbClientId;
+        private System.Windows.Forms.TextBox tbMileage;
+        private System.Windows.Forms.TextBox tbLicensePlate;
+        private System.Windows.Forms.TextBox tbBrand;
+        private System.Windows.Forms.TextBox tbEngine;
+        private System.Windows.Forms.TextBox tbYear;
+        private System.Windows.Forms.TextBox tbModel;
         private System.Windows.Forms.ComboBox cbTransmission;
         private System.Windows.Forms.Button btnAddVehicle;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnBack;
     }
 }
