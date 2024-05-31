@@ -15,5 +15,10 @@ namespace LubriTech.Controller
         {
             return new Client_Model().loadAllClients();
         }
+
+        public Boolean saveClient(Client client)
+        {
+            return new Client_Model().SaveClient(client);
+        }
     }
 }

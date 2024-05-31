@@ -248,6 +248,7 @@
             this.Controls.Add(this.lblClientId);
             this.Controls.Add(this.lblNewVehicle);
             this.Name = "frmNewVehicle";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmNewVehicle";
             this.ResumeLayout(false);
             this.PerformLayout();
