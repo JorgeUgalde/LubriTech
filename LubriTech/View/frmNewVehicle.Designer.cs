@@ -215,7 +215,7 @@
             // 
             // btnBack
             // 
-            this.btnBack.Image = global::LubriTech.Properties.Resources.Imagen_flecha;
+            //this.btnBack.Image = global::LubriTech.Properties.Resources.Back;
             this.btnBack.Location = new System.Drawing.Point(39, 77);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 29);

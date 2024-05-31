@@ -78,11 +78,22 @@
     <Compile Include="Model\Vehicle_Information\Vehicle.cs" />
     <Compile Include="Model\Vehicle_Information\Vehicle_Model.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="View\frmClients.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\frmClients.Designer.cs">
       <DependentUpon>frmClients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmInsertUpdateSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmInsertUpdateSupplier.Designer.cs">
+      <DependentUpon>frmInsertUpdateSupplier.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmInsert_Product.cs">
       <SubType>Form</SubType>
@@ -128,16 +139,20 @@
     <Compile Include="View\MDI_View.Designer.cs">
       <DependentUpon>MDI_View.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <EmbeddedResource Include="View\frmInsertUpdateSupplier.resx">
+      <DependentUpon>frmInsertUpdateSupplier.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmInsert_Product.resx">
       <DependentUpon>frmInsert_Product.cs</DependentUpon>
     </EmbeddedResource>
@@ -156,6 +171,9 @@
     <EmbeddedResource Include="View\MDI_View.resx">
       <DependentUpon>MDI_View.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="bin\Debug\LubriTech.exe.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -173,7 +191,21 @@
   <ItemGroup>
     <Content Include="bin\Debug\LubriTech.exe" />
     <Content Include="bin\Debug\LubriTech.pdb" />
-    <None Include="Images\Back.png" />
+    <Content Include="Images\appointment.png" />
+    <Content Include="Images\Back.png" />
+    <Content Include="Images\inventory.png" />
+    <Content Include="Images\logo1.jpg" />
+    <Content Include="Images\logoCrop.jpg" />
+    <Content Include="Images\logoLubritech.jpg" />
+    <Content Include="Images\Logout.jpg" />
+    <Content Include="Images\Logout1.jpg" />
+    <Content Include="Images\menu.jpg" />
+    <Content Include="Images\people.png" />
+    <Content Include="Images\products.png" />
+    <Content Include="Images\services.png" />
+    <Content Include="Images\suppliers.png" />
+    <Content Include="Images\vehicle.png" />
+    <Content Include="Images\work order.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />

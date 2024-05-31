@@ -13,18 +13,11 @@ namespace LubriTech.View
     public partial class MDI_View : Form
     {
         private int childFormNumber = 0;
+        private bool sideBarExpanded = true;
 
         public MDI_View()
         {
             InitializeComponent();
-        }
-
-        private void ShowNewForm(object sender, EventArgs e)
-        {
-            Form childForm = new Form();
-            childForm.MdiParent = this;
-            childForm.Text = "Window " + childFormNumber++;
-            childForm.Show();
         }
 
         private void OpenFile(object sender, EventArgs e)
@@ -66,16 +59,6 @@ namespace LubriTech.View
         {
         }
 
-        private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            toolStrip.Visible = toolBarToolStripMenuItem.Checked;
-        }
-
-        private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            statusStrip.Visible = statusBarToolStripMenuItem.Checked;
-        }
-
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LayoutMdi(MdiLayout.Cascade);
@@ -106,18 +89,89 @@ namespace LubriTech.View
 
         private void MDI_View_Load(object sender, EventArgs e)
         {
-            //frmLogin frmLogin = new frmLogin();
-            //frmLogin.MdiParent = this;
-            //frmLogin.WindowState = FormWindowState.Maximized;
-            //frmLogin.Dock = DockStyle.Fill;
-            //frmLogin.Show();
+
+        }
+
+        private void btnClients_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel12_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void sideBarTimer_Tick(object sender, EventArgs e)
+        {
+            if(sideBarExpanded)
+            {
+                sideBarContainer.Width -= 10;
+                if (sideBarContainer.Width == sideBarContainer.MinimumSize.Width)
+                {
+                    sideBarExpanded = false;
+                    sideBarTimer.Stop();
+                }
+            }
+            else
+            {
+                sideBarContainer.Width += 10;
+                if (sideBarContainer.Width == sideBarContainer.MaximumSize.Width)
+                {
+                    sideBarExpanded = true;
+                    sideBarTimer.Stop();
+                }
+            }
+        }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            sideBarTimer.Start();
+        }
+
+        private void btnClients_ShowNewForm(object sender, EventArgs e)
+        {
+            frmClients frmClients = new frmClients();
+            OpenChildForm(frmClients);
+        }
+
+        private void btnProducts_ShowNewForm(object sender, EventArgs e)
+        {
+            frmProducts frmProducts = new frmProducts();
+            OpenChildForm(frmProducts);
+        }
+
+        private void btnSuppliers_ShowNewForm(object sender, EventArgs e)
+        {
+            frmSuppliers frmSuppliers = new frmSuppliers();
+            OpenChildForm(frmSuppliers);
+        }
+
+        private void btnVehicles_ShowNewForm(object sender, EventArgs e)
+        {
             frmVehicles frmVehicles = new frmVehicles();
-            frmVehicles.MdiParent = this;
-            frmVehicles.WindowState = FormWindowState.Maximized;
-            frmVehicles.Dock = DockStyle.Fill;
-            frmVehicles.Show();
+            OpenChildForm(frmVehicles);
+        }
 
+        private void OpenChildForm(Form childForm)
+        {
+            // Recorrer todos los formularios hijos abiertos
+            foreach (Form form in this.MdiChildren)
+            {
+                // Cerrar el formulario hijo si está abierto
+                form.Close();
+            }
 
+            // Configurar y mostrar el nuevo formulario hijo
+            childForm.MdiParent = this;
+            childForm.WindowState = FormWindowState.Maximized;
+            childForm.Dock = DockStyle.Fill; // Esto asegura que el formulario ocupe todo el espacio disponible
+            childForm.Show();
         }
     }
 }
