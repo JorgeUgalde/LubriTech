@@ -1,4 +1,4 @@
-﻿namespace LubriTech.View
+namespace LubriTech.View
 {
     partial class frmInsertUpdate_Product
     {
@@ -193,7 +193,7 @@
             // 
             this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnBack.Image = global::LubriTech.Properties.Resources.Back1;
+            //this.btnBack.Image = global::LubriTech.Properties.Resources.Back;
             this.btnBack.Location = new System.Drawing.Point(41, 50);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(79, 32);

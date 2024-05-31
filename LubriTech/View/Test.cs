@@ -10,21 +10,61 @@ using System.Windows.Forms;
 
 namespace LubriTech.View
 {
-    public partial class MDI_View : Form
+    public partial class Test : Form
     {
         private int childFormNumber = 0;
-        private bool sideBarExpanded = true;
 
-        public MDI_View()
+        public Test()
         {
             InitializeComponent();
+            //itializeCustomComponents();
+        }
+
+
+        private void InitializeCustomComponents()
+        {
+            // Panel contenedor principal
+            Panel mainPanel = new Panel
+            {
+                Dock = DockStyle.Fill
+            };
+            this.Controls.Add(mainPanel);
+
+            // Panel superior (header)
+            Panel panelHeader = new Panel
+            {
+                BackColor = Color.White,
+                Height = 50, // Altura del header
+                Dock = DockStyle.Top
+            };
+            mainPanel.Controls.Add(panelHeader);
+
+            // FlowLayoutPanel
+            FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel
+            {
+                BackColor = Color.Maroon,
+                Dock = DockStyle.Left,
+                Width = 200 // Ancho del FlowLayoutPanel
+            };
+            mainPanel.Controls.Add(flowLayoutPanel);
+
+            // Asegurarse de que el panel superior esté por encima
+            panelHeader.BringToFront();
+        }
+
+        private void ShowNewForm(object sender, EventArgs e)
+        {
+            Form childForm = new Form();
+            childForm.MdiParent = this;
+            childForm.Text = "Ventana " + childFormNumber++;
+            childForm.Show();
         }
 
         private void OpenFile(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+            openFileDialog.Filter = "Archivos de texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*";
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 string FileName = openFileDialog.FileName;
@@ -35,7 +75,7 @@ namespace LubriTech.View
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+            saveFileDialog.Filter = "Archivos de texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*";
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 string FileName = saveFileDialog.FileName;
@@ -87,73 +127,9 @@ namespace LubriTech.View
             }
         }
 
-        private void MDI_View_Load(object sender, EventArgs e)
+        private void Test_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void btnClients_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel12_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void sideBarTimer_Tick(object sender, EventArgs e)
-        {
-            if(sideBarExpanded)
-            {
-                sideBarContainer.Width -= 10;
-                if (sideBarContainer.Width == sideBarContainer.MinimumSize.Width)
-                {
-                    sideBarExpanded = false;
-                    sideBarTimer.Stop();
-                }
-            }
-            else
-            {
-                sideBarContainer.Width += 10;
-                if (sideBarContainer.Width == sideBarContainer.MaximumSize.Width)
-                {
-                    sideBarExpanded = true;
-                    sideBarTimer.Stop();
-                }
-            }
-        }
-
-            //frmProducts frmProducts = new frmProducts();
-            //frmProducts.MdiParent = this;
-            //frmProducts.WindowState = FormWindowState.Maximized;
-            //frmProducts.Dock = DockStyle.Fill;
-            //frmProducts.Show();
-
-            frmClients frmClients = new frmClients();
-            frmClients.MdiParent = this;
-            frmClients.WindowState = FormWindowState.Maximized;
-            frmClients.Show();
-
-        private void OpenChildForm(Form childForm)
-        {
-            // Recorrer todos los formularios hijos abiertos
-            foreach (Form form in this.MdiChildren)
-            {
-                // Cerrar el formulario hijo si está abierto
-                form.Close();
-            }
-
-            // Configurar y mostrar el nuevo formulario hijo
-            childForm.MdiParent = this;
-            childForm.WindowState = FormWindowState.Maximized;
-            childForm.Dock = DockStyle.Fill; // Esto asegura que el formulario ocupe todo el espacio disponible
-            childForm.Show();
         }
     }
 }
