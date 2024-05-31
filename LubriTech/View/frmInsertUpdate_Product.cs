@@ -13,13 +13,13 @@ using LubriTech.Model.Supplier_Information;
 
 namespace LubriTech.View
 {
-    public partial class frmInsert_Product : Form
+    public partial class frmInsertUpdate_Product : Form
     {
         List<Supplier> addedSuppliers;
         List<Supplier> suppliers;
 
 
-        public frmInsert_Product()
+        public frmInsertUpdate_Product()
         {
             addedSuppliers = new List<Supplier>();
             suppliers = new List<Supplier>();
@@ -28,7 +28,7 @@ namespace LubriTech.View
             SetupSuppliersDGV();
         }
 
-        public frmInsert_Product(Product product)
+        public frmInsertUpdate_Product(Product product)
         {
             suppliers = new List<Supplier>();
 
