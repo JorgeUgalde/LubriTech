@@ -278,9 +278,9 @@ namespace LubriTech.View
 
         private void btnAddSupplier_Click(object sender, EventArgs e)
         {
-            frm frmSuppliers = new frmSuppliers();
-            frmSuppliers.DataChanged += new EventHandler(frmInsert_Product_Load);
-            frmSuppliers.ShowDialog();
+            //frm frmSuppliers = new frmSuppliers();
+            //frmSuppliers.DataChanged += new EventHandler(frmInsert_Product_Load);
+            //frmSuppliers.ShowDialog();
         }
     }
 }
