@@ -23,12 +23,9 @@ namespace LubriTech.View
             SetupDataGridView();
         }
 
-
-
-
         private void Products_Load(object sender, EventArgs e)
         {
-            load_Products();
+            
         }
 
         private void load_Products()
@@ -64,8 +61,6 @@ namespace LubriTech.View
 
         private void ChildFormDataChangedHandler(object sender, EventArgs e)
         {
-            // Refresh DataGridView here
-            // For example:
             load_Products();
         }
 
@@ -89,7 +84,6 @@ namespace LubriTech.View
                 frmInsertProduct.Owner = this;
                 frmInsertProduct.DataChanged += ChildFormDataChangedHandler;
                 frmInsertProduct.Show();
-                load_Products();
                 return;
             }
 
@@ -101,7 +95,6 @@ namespace LubriTech.View
                     string idToDelete = dgvProducts.Rows[e.RowIndex].Cells["code"].Value.ToString();
                     Product_Controller pc = new Product_Controller();
                     pc.remove(idToDelete);
-                    load_Products();
                     return;
                 }
             }

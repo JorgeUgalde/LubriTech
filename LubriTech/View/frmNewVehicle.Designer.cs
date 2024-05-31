@@ -1,4 +1,4 @@
-﻿namespace LubriTech.View
+namespace LubriTech.View
 {
     partial class frmNewVehicle
     {
