@@ -37,16 +37,21 @@ namespace LubriTech.Model.Vehicle_Information
             this.Client = client;
         }
 
+        public Vehicle(string licensePlate, string engine, double mileage, string brand, string model, int year, string transmission)
+        {
+            LicensePlate = licensePlate;
+            Engine = engine;
+            Mileage = mileage;
+            Brand = brand;
+            Model = model;
+            Year = year;
+            Transmission = transmission;
+        }
+
+        override
         public string ToString()
         {
-            return "License Plate: " + LicensePlate +
-                "\nEngine: " + Engine +
-                "\nMileage: " + Mileage +
-                "\nBrand: " + Brand +
-                "\nModel: " + Model +
-                "\nYear: " + Year +
-                "\nTransmission: " + Transmission +
-                "\nClient name: " + Client.FullName;
+            return LicensePlate;
         }
 
     }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.CompilerServices;
 
 namespace LubriTech.Model.Supplier_Information
 {
@@ -111,7 +112,7 @@ namespace LubriTech.Model.Supplier_Information
                 }
                 catch (SqlException ex)
                 {
-                    //Guardar los datos del error en un log
+                return false;
                     throw ex;
 
                 }
@@ -126,7 +127,26 @@ namespace LubriTech.Model.Supplier_Information
 
             }
 
-            public Boolean updateSupplier(Supplier supplier)
+        public Boolean upsertSupplier(Supplier supplier)
+        {
+            try
+            {
+                if (getSupplier(supplier.id) == null)
+                {
+                    return SaveSupplier(supplier);
+                }
+                else
+                {
+                    return updateSupplier(supplier);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+        }   
+
+        public Boolean updateSupplier(Supplier supplier)
             {
                 try
                 {
@@ -151,6 +171,7 @@ namespace LubriTech.Model.Supplier_Information
                 }
                 catch (SqlException ex)
                 {
+                return false;
                     throw ex;
                 }
                 finally
@@ -162,7 +183,7 @@ namespace LubriTech.Model.Supplier_Information
                 }
             }
 
-            public void deleteSupplier(int supplierId)
+            public void deleteSupplier(string supplierId)
             {
                 try
                 {

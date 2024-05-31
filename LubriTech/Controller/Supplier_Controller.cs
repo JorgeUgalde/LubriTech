@@ -19,18 +19,12 @@ namespace LubriTech.Controller
             return new Supplier_Model().getSupplier(id);
         }
 
-        public Boolean Save(Supplier supplier)
+        public Boolean Upsert(Supplier supplier)
         {
-            Supplier_Model sm = new Supplier_Model();
-            return sm.SaveSupplier(supplier);
+            return new Supplier_Model().upsertSupplier(supplier);
         }
 
-        public Boolean Update(Supplier supplier)
-        {
-            return new Supplier_Model().updateSupplier(supplier);
-        }
-
-        public void Delete(int supplierId)
+        public void Delete(string supplierId)
         {
             new Supplier_Model().deleteSupplier(supplierId);
         }
