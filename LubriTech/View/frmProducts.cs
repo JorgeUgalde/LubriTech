@@ -56,7 +56,7 @@ namespace LubriTech.View
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            frmInsert_Product frmInsertProduct = new frmInsert_Product();
+            frmInsertUpdate_Product frmInsertProduct = new frmInsertUpdate_Product();
             frmInsertProduct.Owner = this;
             frmInsertProduct.DataChanged += ChildFormDataChangedHandler;
             frmInsertProduct.Show();
@@ -85,7 +85,7 @@ namespace LubriTech.View
                     }
                 }
 
-                frmInsert_Product frmInsertProduct = new frmInsert_Product(productSelected);
+                frmInsertUpdate_Product frmInsertProduct = new frmInsertUpdate_Product(productSelected);
                 frmInsertProduct.Owner = this;
                 frmInsertProduct.DataChanged += ChildFormDataChangedHandler;
                 frmInsertProduct.Show();

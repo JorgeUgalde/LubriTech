@@ -1,6 +1,6 @@
 ﻿namespace LubriTech.View
 {
-    partial class frmInsert_Product
+    partial class frmInsertUpdate_Product
     {
         /// <summary>
         /// Required designer variable.
@@ -103,6 +103,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(700, 205);
@@ -113,6 +114,7 @@
             // 
             // label7
             // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(702, 99);
@@ -139,6 +141,7 @@
             // 
             // txtName
             // 
+            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtName.Location = new System.Drawing.Point(707, 149);
             this.txtName.Margin = new System.Windows.Forms.Padding(3, 3, 8, 8);
             this.txtName.Name = "txtName";
@@ -172,7 +175,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(146)))), ((int)(((byte)(69)))));
             this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -200,6 +203,7 @@
             // 
             // dgvSuppliers
             // 
+            this.dgvSuppliers.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.dgvSuppliers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSuppliers.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvSuppliers.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -221,6 +225,7 @@
             // 
             // txtSupplierInfo
             // 
+            this.txtSupplierInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSupplierInfo.Location = new System.Drawing.Point(832, 212);
             this.txtSupplierInfo.Margin = new System.Windows.Forms.Padding(3, 3, 8, 8);
             this.txtSupplierInfo.Name = "txtSupplierInfo";
@@ -230,6 +235,7 @@
             // 
             // dgvSelectedSuppliers
             // 
+            this.dgvSelectedSuppliers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvSelectedSuppliers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSelectedSuppliers.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvSelectedSuppliers.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -251,6 +257,7 @@
             // 
             // label8
             // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(703, 408);
