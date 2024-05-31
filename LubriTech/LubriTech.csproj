@@ -84,6 +84,18 @@
     <Compile Include="View\frmClients.Designer.cs">
       <DependentUpon>frmClients.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmInsertUpdateSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmInsertUpdateSupplier.Designer.cs">
+      <DependentUpon>frmInsertUpdateSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmInsertUpdate_Product.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmInsertUpdate_Product.Designer.cs">
+      <DependentUpon>frmInsertUpdate_Product.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,7 +188,7 @@
   <ItemGroup>
     <Content Include="bin\Debug\LubriTech.exe" />
     <Content Include="bin\Debug\LubriTech.pdb" />
-    <None Include="Resources\Imagen flecha.png" />
+    <None Include="Images\Back.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
