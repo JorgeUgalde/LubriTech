@@ -129,34 +129,16 @@ namespace LubriTech.View
             }
         }
 
-        private void btnMenu_Click(object sender, EventArgs e)
-        {
-            sideBarTimer.Start();
-        }
+            //frmProducts frmProducts = new frmProducts();
+            //frmProducts.MdiParent = this;
+            //frmProducts.WindowState = FormWindowState.Maximized;
+            //frmProducts.Dock = DockStyle.Fill;
+            //frmProducts.Show();
 
-        private void btnClients_ShowNewForm(object sender, EventArgs e)
-        {
             frmClients frmClients = new frmClients();
-            OpenChildForm(frmClients);
-        }
-
-        private void btnProducts_ShowNewForm(object sender, EventArgs e)
-        {
-            frmProducts frmProducts = new frmProducts();
-            OpenChildForm(frmProducts);
-        }
-
-        private void btnSuppliers_ShowNewForm(object sender, EventArgs e)
-        {
-            frmSuppliers frmSuppliers = new frmSuppliers();
-            OpenChildForm(frmSuppliers);
-        }
-
-        private void btnVehicles_ShowNewForm(object sender, EventArgs e)
-        {
-            frmVehicles frmVehicles = new frmVehicles();
-            OpenChildForm(frmVehicles);
-        }
+            frmClients.MdiParent = this;
+            frmClients.WindowState = FormWindowState.Maximized;
+            frmClients.Show();
 
         private void OpenChildForm(Form childForm)
         {

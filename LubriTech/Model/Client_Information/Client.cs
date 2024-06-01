@@ -21,9 +21,9 @@ namespace LubriTech.Model.Client_Information
 
         public string Address { get; set; }
 
-        public Vehicle Vehicle { get; set; }
+        public List<Vehicle> Vehicle { get; set; }
 
-        public Client(string id, string fullName, int mainPhoneNum, int additionalPhoneNum, string email, string address, Vehicle vehicle)
+        public Client(string id, string fullName, int mainPhoneNum, int additionalPhoneNum, string email, string address, List<Vehicle> vehicle)
         {
             Id = id;
             FullName = fullName;

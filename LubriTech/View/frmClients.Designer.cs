@@ -32,7 +32,7 @@
             this.dgvClients = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAddClient = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,11 +42,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvClients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvClients.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
+            this.dgvClients.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvClients.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvClients.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClients.Location = new System.Drawing.Point(32, 212);
+            this.dgvClients.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dgvClients.Location = new System.Drawing.Point(32, 216);
             this.dgvClients.Name = "dgvClients";
+            this.dgvClients.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -55,8 +58,11 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvClients.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvClients.RowHeadersVisible = false;
             this.dgvClients.Size = new System.Drawing.Size(736, 212);
             this.dgvClients.TabIndex = 0;
+            this.dgvClients.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClients_CellContentClick);
+            this.dgvClients.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvClients_RowPrePaint);
             // 
             // label1
             // 
@@ -78,26 +84,27 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Lista de Clientes";
             // 
-            // button1
+            // btnAddClient
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(153)))), ((int)(((byte)(92)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(478, 167);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(290, 31);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Agregar Nuevo Cliente";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnAddClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(153)))), ((int)(((byte)(92)))));
+            this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAddClient.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddClient.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAddClient.Location = new System.Drawing.Point(478, 167);
+            this.btnAddClient.Name = "btnAddClient";
+            this.btnAddClient.Size = new System.Drawing.Size(290, 31);
+            this.btnAddClient.TabIndex = 3;
+            this.btnAddClient.Text = "Agregar Nuevo Cliente";
+            this.btnAddClient.UseVisualStyleBackColor = false;
+            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
             // 
             // frmClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAddClient);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvClients);
@@ -117,6 +124,6 @@
         private System.Windows.Forms.DataGridView dgvClients;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAddClient;
     }
 }

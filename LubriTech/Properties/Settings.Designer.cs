@@ -12,7 +12,7 @@ namespace LubriTech.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.9.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.7.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -28,7 +28,7 @@ namespace LubriTech.Properties {
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Server=tcp:lubritech.database.windows.net,1433;Initial Catalog=LubriTech;Persist " +
             "Security Info=False;User ID=lubriadm;Password=LubriTech*;MultipleActiveResultSet" +
-            "s=False;Encrypt=True;TrustServerCertificate=True; ")]
+            "s=False;Encrypt=True;TrustServerCertificate=True;")]
         public string connString {
             get {
                 return ((string)(this["connString"]));
