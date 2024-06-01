@@ -135,10 +135,10 @@ namespace LubriTech.View
             //frmProducts.Dock = DockStyle.Fill;
             //frmProducts.Show();
 
-            frmClients frmClients = new frmClients();
-            frmClients.MdiParent = this;
-            frmClients.WindowState = FormWindowState.Maximized;
-            frmClients.Show();
+            //frmClients frmClients = new frmClients();
+            //frmClients.MdiParent = this;
+            //frmClients.WindowState = FormWindowState.Maximized;
+            //frmClients.Show();
 
         private void OpenChildForm(Form childForm)
         {
