@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Controller\Clients_Controller.cs" />
     <Compile Include="Controller\Product_Controller.cs" />
+    <Compile Include="Controller\Service_Controller.cs" />
     <Compile Include="Controller\Supplier_Controller.cs" />
     <Compile Include="Controller\Vehicle_Controller.cs" />
     <Compile Include="Controller\Work_Order_Controller.cs" />
@@ -73,6 +74,8 @@
     <Compile Include="Model\Client_Information\Client_Model.cs" />
     <Compile Include="Model\Product_Information\Product.cs" />
     <Compile Include="Model\Product_Information\Product_Model.cs" />
+    <Compile Include="Model\Service_Information\Service.cs" />
+    <Compile Include="Model\Service_Information\Service_Model.cs" />
     <Compile Include="Model\Supplier_Information\Supplier.cs" />
     <Compile Include="Model\Supplier_Information\Supplier_Model.cs" />
     <Compile Include="Model\Vehicle_Information\Vehicle.cs" />
@@ -101,6 +104,12 @@
     <Compile Include="View\frmInsertUpdate_Product.Designer.cs">
       <DependentUpon>frmInsertUpdate_Product.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmInsertUpdate_Service.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmInsertUpdate_Service.Designer.cs">
+      <DependentUpon>frmInsertUpdate_Service.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +129,12 @@
     </Compile>
     <Compile Include="View\frmProducts.Designer.cs">
       <DependentUpon>frmProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmServices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmServices.Designer.cs">
+      <DependentUpon>frmServices.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmSuppliers.cs">
       <SubType>Form</SubType>
@@ -145,12 +160,6 @@
     <Compile Include="View\MDI_View.Designer.cs">
       <DependentUpon>MDI_View.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Test.Designer.cs">
-      <DependentUpon>Test.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -167,8 +176,20 @@
     <EmbeddedResource Include="View\frmNewVehicle.resx">
       <DependentUpon>frmNewVehicle.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\frmInsertUpdate_Service.resx">
+      <DependentUpon>frmInsertUpdate_Service.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmNewVehicle.resx">
+      <DependentUpon>frmNewVehicle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmProducts.resx">
       <DependentUpon>frmProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmServices.resx">
+      <DependentUpon>frmServices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmSuppliers.resx">
       <DependentUpon>frmSuppliers.cs</DependentUpon>
@@ -181,9 +202,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MDI_View.resx">
       <DependentUpon>MDI_View.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Test.resx">
-      <DependentUpon>Test.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="bin\Debug\LubriTech.exe.config" />
     <None Include="Properties\Settings.settings">
@@ -217,6 +235,21 @@
     <Content Include="Images\suppliers.png" />
     <Content Include="Images\vehicle.png" />
     <Content Include="Images\work order.jpg" />
+    <Content Include="Resources\appointment.png" />
+    <Content Include="Resources\Back.png" />
+    <Content Include="Resources\inventory.png" />
+    <Content Include="Resources\logo1.jpg" />
+    <Content Include="Resources\logoCrop.jpg" />
+    <Content Include="Resources\logoLubritech.jpg" />
+    <Content Include="Resources\Logout.jpg" />
+    <Content Include="Resources\Logout1.jpg" />
+    <Content Include="Resources\menu.jpg" />
+    <Content Include="Resources\people.png" />
+    <Content Include="Resources\products.png" />
+    <Content Include="Resources\services.png" />
+    <Content Include="Resources\suppliers.png" />
+    <Content Include="Resources\vehicle.png" />
+    <Content Include="Resources\work order.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />

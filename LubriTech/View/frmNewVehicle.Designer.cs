@@ -53,9 +53,10 @@ namespace LubriTech.View
             // 
             this.lblNewVehicle.AutoSize = true;
             this.lblNewVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
-            this.lblNewVehicle.Location = new System.Drawing.Point(120, 77);
+            this.lblNewVehicle.Location = new System.Drawing.Point(160, 95);
+            this.lblNewVehicle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNewVehicle.Name = "lblNewVehicle";
-            this.lblNewVehicle.Size = new System.Drawing.Size(310, 29);
+            this.lblNewVehicle.Size = new System.Drawing.Size(380, 36);
             this.lblNewVehicle.TabIndex = 0;
             this.lblNewVehicle.Text = "Registrar Nuevo Vehículo";
             // 
@@ -63,9 +64,10 @@ namespace LubriTech.View
             // 
             this.lblClientId.AutoSize = true;
             this.lblClientId.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblClientId.Location = new System.Drawing.Point(121, 160);
+            this.lblClientId.Location = new System.Drawing.Point(161, 197);
+            this.lblClientId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblClientId.Name = "lblClientId";
-            this.lblClientId.Size = new System.Drawing.Size(210, 24);
+            this.lblClientId.Size = new System.Drawing.Size(271, 29);
             this.lblClientId.TabIndex = 1;
             this.lblClientId.Text = "Identificación del cliente";
             // 
@@ -73,9 +75,10 @@ namespace LubriTech.View
             // 
             this.lblModel.AutoSize = true;
             this.lblModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblModel.Location = new System.Drawing.Point(121, 240);
+            this.lblModel.Location = new System.Drawing.Point(161, 295);
+            this.lblModel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblModel.Name = "lblModel";
-            this.lblModel.Size = new System.Drawing.Size(74, 24);
+            this.lblModel.Size = new System.Drawing.Size(95, 29);
             this.lblModel.TabIndex = 2;
             this.lblModel.Text = "Modelo";
             // 
@@ -83,9 +86,10 @@ namespace LubriTech.View
             // 
             this.lblBrand.AutoSize = true;
             this.lblBrand.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblBrand.Location = new System.Drawing.Point(599, 160);
+            this.lblBrand.Location = new System.Drawing.Point(799, 197);
+            this.lblBrand.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBrand.Name = "lblBrand";
-            this.lblBrand.Size = new System.Drawing.Size(62, 24);
+            this.lblBrand.Size = new System.Drawing.Size(79, 29);
             this.lblBrand.TabIndex = 3;
             this.lblBrand.Text = "Marca";
             // 
@@ -93,9 +97,10 @@ namespace LubriTech.View
             // 
             this.lblYear.AutoSize = true;
             this.lblYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblYear.Location = new System.Drawing.Point(122, 320);
+            this.lblYear.Location = new System.Drawing.Point(163, 394);
+            this.lblYear.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblYear.Name = "lblYear";
-            this.lblYear.Size = new System.Drawing.Size(45, 24);
+            this.lblYear.Size = new System.Drawing.Size(55, 29);
             this.lblYear.TabIndex = 3;
             this.lblYear.Text = "Año";
             // 
@@ -103,9 +108,10 @@ namespace LubriTech.View
             // 
             this.lblTransmission.AutoSize = true;
             this.lblTransmission.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblTransmission.Location = new System.Drawing.Point(599, 400);
+            this.lblTransmission.Location = new System.Drawing.Point(799, 492);
+            this.lblTransmission.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTransmission.Name = "lblTransmission";
-            this.lblTransmission.Size = new System.Drawing.Size(113, 24);
+            this.lblTransmission.Size = new System.Drawing.Size(146, 29);
             this.lblTransmission.TabIndex = 4;
             this.lblTransmission.Text = "Transmisión";
             // 
@@ -113,9 +119,10 @@ namespace LubriTech.View
             // 
             this.lblMileage.AutoSize = true;
             this.lblMileage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblMileage.Location = new System.Drawing.Point(599, 320);
+            this.lblMileage.Location = new System.Drawing.Point(799, 394);
+            this.lblMileage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMileage.Name = "lblMileage";
-            this.lblMileage.Size = new System.Drawing.Size(103, 24);
+            this.lblMileage.Size = new System.Drawing.Size(136, 29);
             this.lblMileage.TabIndex = 5;
             this.lblMileage.Text = "Kilometraje";
             // 
@@ -123,9 +130,10 @@ namespace LubriTech.View
             // 
             this.lblLicensePlate.AutoSize = true;
             this.lblLicensePlate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblLicensePlate.Location = new System.Drawing.Point(599, 240);
+            this.lblLicensePlate.Location = new System.Drawing.Point(799, 295);
+            this.lblLicensePlate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLicensePlate.Name = "lblLicensePlate";
-            this.lblLicensePlate.Size = new System.Drawing.Size(56, 24);
+            this.lblLicensePlate.Size = new System.Drawing.Size(73, 29);
             this.lblLicensePlate.TabIndex = 6;
             this.lblLicensePlate.Text = "Placa";
             // 
@@ -133,67 +141,76 @@ namespace LubriTech.View
             // 
             this.lblEngine.AutoSize = true;
             this.lblEngine.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblEngine.Location = new System.Drawing.Point(121, 400);
+            this.lblEngine.Location = new System.Drawing.Point(161, 492);
+            this.lblEngine.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEngine.Name = "lblEngine";
-            this.lblEngine.Size = new System.Drawing.Size(128, 24);
+            this.lblEngine.Size = new System.Drawing.Size(165, 29);
             this.lblEngine.TabIndex = 7;
             this.lblEngine.Text = "Tipo de motor";
             // 
             // tbClientId
             // 
-            this.tbClientId.Location = new System.Drawing.Point(126, 187);
+            this.tbClientId.Location = new System.Drawing.Point(168, 230);
+            this.tbClientId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbClientId.Name = "tbClientId";
-            this.tbClientId.Size = new System.Drawing.Size(206, 20);
+            this.tbClientId.Size = new System.Drawing.Size(273, 22);
             this.tbClientId.TabIndex = 8;
             // 
             // tbMileage
             // 
-            this.tbMileage.Location = new System.Drawing.Point(602, 347);
+            this.tbMileage.Location = new System.Drawing.Point(803, 427);
+            this.tbMileage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbMileage.Name = "tbMileage";
-            this.tbMileage.Size = new System.Drawing.Size(206, 20);
+            this.tbMileage.Size = new System.Drawing.Size(273, 22);
             this.tbMileage.TabIndex = 9;
             // 
             // tbLicensePlate
             // 
-            this.tbLicensePlate.Location = new System.Drawing.Point(603, 267);
+            this.tbLicensePlate.Location = new System.Drawing.Point(804, 329);
+            this.tbLicensePlate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbLicensePlate.Name = "tbLicensePlate";
-            this.tbLicensePlate.Size = new System.Drawing.Size(206, 20);
+            this.tbLicensePlate.Size = new System.Drawing.Size(273, 22);
             this.tbLicensePlate.TabIndex = 10;
             // 
             // tbBrand
             // 
-            this.tbBrand.Location = new System.Drawing.Point(602, 187);
+            this.tbBrand.Location = new System.Drawing.Point(803, 230);
+            this.tbBrand.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbBrand.Name = "tbBrand";
-            this.tbBrand.Size = new System.Drawing.Size(206, 20);
+            this.tbBrand.Size = new System.Drawing.Size(273, 22);
             this.tbBrand.TabIndex = 11;
             // 
             // tbEngine
             // 
-            this.tbEngine.Location = new System.Drawing.Point(125, 427);
+            this.tbEngine.Location = new System.Drawing.Point(167, 526);
+            this.tbEngine.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbEngine.Name = "tbEngine";
-            this.tbEngine.Size = new System.Drawing.Size(206, 20);
+            this.tbEngine.Size = new System.Drawing.Size(273, 22);
             this.tbEngine.TabIndex = 12;
             // 
             // tbYear
             // 
-            this.tbYear.Location = new System.Drawing.Point(126, 347);
+            this.tbYear.Location = new System.Drawing.Point(168, 427);
+            this.tbYear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbYear.Name = "tbYear";
-            this.tbYear.Size = new System.Drawing.Size(206, 20);
+            this.tbYear.Size = new System.Drawing.Size(273, 22);
             this.tbYear.TabIndex = 13;
             // 
             // tbModel
             // 
-            this.tbModel.Location = new System.Drawing.Point(126, 267);
+            this.tbModel.Location = new System.Drawing.Point(168, 329);
+            this.tbModel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbModel.Name = "tbModel";
-            this.tbModel.Size = new System.Drawing.Size(206, 20);
+            this.tbModel.Size = new System.Drawing.Size(273, 22);
             this.tbModel.TabIndex = 14;
             // 
             // cbTransmission
             // 
             this.cbTransmission.FormattingEnabled = true;
-            this.cbTransmission.Location = new System.Drawing.Point(603, 427);
+            this.cbTransmission.Location = new System.Drawing.Point(804, 526);
+            this.cbTransmission.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbTransmission.Name = "cbTransmission";
-            this.cbTransmission.Size = new System.Drawing.Size(206, 21);
+            this.cbTransmission.Size = new System.Drawing.Size(273, 24);
             this.cbTransmission.TabIndex = 15;
             // 
             // btnAddVehicle
@@ -205,9 +222,10 @@ namespace LubriTech.View
             this.btnAddVehicle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnAddVehicle.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAddVehicle.Location = new System.Drawing.Point(397, 477);
+            this.btnAddVehicle.Location = new System.Drawing.Point(529, 587);
+            this.btnAddVehicle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddVehicle.Name = "btnAddVehicle";
-            this.btnAddVehicle.Size = new System.Drawing.Size(138, 30);
+            this.btnAddVehicle.Size = new System.Drawing.Size(184, 37);
             this.btnAddVehicle.TabIndex = 16;
             this.btnAddVehicle.Text = "Agregar";
             this.btnAddVehicle.UseVisualStyleBackColor = false;
@@ -215,19 +233,20 @@ namespace LubriTech.View
             // 
             // btnBack
             // 
-            //this.btnBack.Image = global::LubriTech.Properties.Resources.Back;
-            this.btnBack.Location = new System.Drawing.Point(39, 77);
+            this.btnBack.Image = global::LubriTech.Properties.Resources.Back;
+            this.btnBack.Location = new System.Drawing.Point(52, 95);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(75, 29);
+            this.btnBack.Size = new System.Drawing.Size(100, 36);
             this.btnBack.TabIndex = 17;
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // frmNewVehicle
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(941, 559);
+            this.ClientSize = new System.Drawing.Size(1255, 688);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAddVehicle);
             this.Controls.Add(this.cbTransmission);
@@ -247,6 +266,7 @@ namespace LubriTech.View
             this.Controls.Add(this.lblModel);
             this.Controls.Add(this.lblClientId);
             this.Controls.Add(this.lblNewVehicle);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmNewVehicle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmNewVehicle";

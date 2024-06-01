@@ -23,11 +23,6 @@ namespace LubriTech.View
             SetupDataGridView();
         }
 
-        private void Products_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         private void load_Products()
         {
             dgvProducts.DataSource = new Product_Controller().getAll();
@@ -95,6 +90,7 @@ namespace LubriTech.View
                     string idToDelete = dgvProducts.Rows[e.RowIndex].Cells["code"].Value.ToString();
                     Product_Controller pc = new Product_Controller();
                     pc.remove(idToDelete);
+                    load_Products();
                     return;
                 }
             }
@@ -121,6 +117,11 @@ namespace LubriTech.View
             {
                 dgvProducts.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
             }
+        }
+
+        private void frmProducts_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

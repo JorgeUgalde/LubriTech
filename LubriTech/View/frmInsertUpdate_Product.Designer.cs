@@ -193,7 +193,7 @@ namespace LubriTech.View
             // 
             this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            //this.btnBack.Image = global::LubriTech.Properties.Resources.Back;
+            this.btnBack.Image = global::LubriTech.Properties.Resources.Back;
             this.btnBack.Location = new System.Drawing.Point(41, 50);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(79, 32);
@@ -282,7 +282,7 @@ namespace LubriTech.View
             this.btnAddSupplier.UseVisualStyleBackColor = false;
             this.btnAddSupplier.Click += new System.EventHandler(this.btnAddSupplier_Click);
             // 
-            // frmInsert_Product
+            // frmInsertUpdate_Product
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -307,7 +307,7 @@ namespace LubriTech.View
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "frmInsert_Product";
+            this.Name = "frmInsertUpdate_Product";
             this.Text = "Insertar - Modificar Producto";
             this.Load += new System.EventHandler(this.frmInsert_Product_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuppliers)).EndInit();

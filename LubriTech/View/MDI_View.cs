@@ -140,6 +140,12 @@ namespace LubriTech.View
             frmClients.WindowState = FormWindowState.Maximized;
             frmClients.Show();
 
+        private void btnServices_Click(object sender, EventArgs e)
+        {
+            frmServices frmServices = new frmServices();
+            OpenChildForm(frmServices);
+        }
+
         private void OpenChildForm(Form childForm)
         {
             // Recorrer todos los formularios hijos abiertos
@@ -155,5 +161,7 @@ namespace LubriTech.View
             childForm.Dock = DockStyle.Fill; // Esto asegura que el formulario ocupe todo el espacio disponible
             childForm.Show();
         }
+
+       
     }
 }
