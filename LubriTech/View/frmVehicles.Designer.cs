@@ -49,6 +49,9 @@
             this.dgvVehicles.RowHeadersWidth = 51;
             this.dgvVehicles.Size = new System.Drawing.Size(654, 269);
             this.dgvVehicles.TabIndex = 0;
+            this.dgvVehicles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVehicles_CellContentClick);
+            this.dgvVehicles.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvVehicles_CellFormatting);
+            this.dgvVehicles.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvVehicles_RowPrePaint);
             // 
             // lblVehicle
             // 

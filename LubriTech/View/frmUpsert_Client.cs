@@ -93,7 +93,7 @@ namespace LubriTech.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frmNewVehicle frmNewVehicle = new frmNewVehicle();
+            frmInsertUpdate_Vehicle frmNewVehicle = new frmInsertUpdate_Vehicle();
             frmNewVehicle.ShowDialog();
         }
 

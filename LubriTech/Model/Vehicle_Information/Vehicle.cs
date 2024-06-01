@@ -25,6 +25,8 @@ namespace LubriTech.Model.Vehicle_Information
 
         public Client Client { get; set; }
 
+        public Vehicle() { }
+
         public Vehicle(string licensePlate, string engine, double mileage, string brand, string model, int year, string transmission, Client client)
         {
             this.LicensePlate = licensePlate;
@@ -37,15 +39,9 @@ namespace LubriTech.Model.Vehicle_Information
             this.Client = client;
         }
 
-        public Vehicle(string licensePlate, string engine, double mileage, string brand, string model, int year, string transmission)
+        public string getClientId()
         {
-            LicensePlate = licensePlate;
-            Engine = engine;
-            Mileage = mileage;
-            Brand = brand;
-            Model = model;
-            Year = year;
-            Transmission = transmission;
+            return this.Client.Id;
         }
 
         override

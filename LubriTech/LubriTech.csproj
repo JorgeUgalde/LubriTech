@@ -118,11 +118,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\frmNewVehicle.cs">
+    <Compile Include="View\frmInsertUpdate_Vehicle.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\frmNewVehicle.Designer.cs">
-      <DependentUpon>frmNewVehicle.cs</DependentUpon>
+    <Compile Include="View\frmInsertUpdate_Vehicle.Designer.cs">
+      <DependentUpon>frmInsertUpdate_Vehicle.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmProducts.cs">
       <SubType>Form</SubType>
@@ -173,8 +173,11 @@
     <EmbeddedResource Include="View\frmClients.resx">
       <DependentUpon>frmClients.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\frmNewVehicle.resx">
-      <DependentUpon>frmNewVehicle.cs</DependentUpon>
+    <EmbeddedResource Include="View\frmInsertUpdate_Product.resx">
+      <DependentUpon>frmInsertUpdate_Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmInsertUpdate_Vehicle.resx">
+      <DependentUpon>frmInsertUpdate_Vehicle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmInsertUpdate_Service.resx">
       <DependentUpon>frmInsertUpdate_Service.cs</DependentUpon>
