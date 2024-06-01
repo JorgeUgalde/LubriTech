@@ -117,7 +117,6 @@ namespace LubriTech.View
             this.btnMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.btnMenu.TabIndex = 4;
             this.btnMenu.TabStop = false;
-            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
             // panel4
             // 
@@ -159,7 +158,7 @@ namespace LubriTech.View
             this.btnVehicles.Text = "          Vehículos";
             this.btnVehicles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVehicles.UseVisualStyleBackColor = true;
-            this.btnVehicles.Click += new System.EventHandler(this.btnVehicles_ShowNewForm);
+            this.btnVehicles.Click += new System.EventHandler(this.btnVehicles_Click);
             // 
             // panel10
             // 
@@ -185,7 +184,7 @@ namespace LubriTech.View
             this.btnSuppliers.Text = "          Proveedores";
             this.btnSuppliers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSuppliers.UseVisualStyleBackColor = true;
-            this.btnSuppliers.Click += new System.EventHandler(this.btnSuppliers_ShowNewForm);
+            this.btnSuppliers.Click += new System.EventHandler(this.btnSuppliers_Click);
             // 
             // panel9
             // 
@@ -237,7 +236,7 @@ namespace LubriTech.View
             this.btnProducts.Text = "          Productos";
             this.btnProducts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnProducts.UseVisualStyleBackColor = true;
-            this.btnProducts.Click += new System.EventHandler(this.btnProducts_ShowNewForm);
+            this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
             // 
             // panel7
             // 
@@ -338,7 +337,7 @@ namespace LubriTech.View
             this.btnClients.Text = "          Clientes";
             this.btnClients.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClients.UseVisualStyleBackColor = true;
-            this.btnClients.Click += new System.EventHandler(this.btnClients_ShowNewForm);
+            this.btnClients.Click += new System.EventHandler(this.btnClients_Click);
             // 
             // button1
             // 

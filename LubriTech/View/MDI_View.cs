@@ -94,18 +94,12 @@ namespace LubriTech.View
 
         private void btnClients_Click(object sender, EventArgs e)
         {
+            frmClients frmClients = new frmClients();
+            OpenChildForm(frmClients);
 
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
-
-        private void panel12_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void sideBarTimer_Tick(object sender, EventArgs e)
         {
@@ -129,17 +123,8 @@ namespace LubriTech.View
             }
         }
 
-            //frmProducts frmProducts = new frmProducts();
-            //frmProducts.MdiParent = this;
-            //frmProducts.WindowState = FormWindowState.Maximized;
-            //frmProducts.Dock = DockStyle.Fill;
-            //frmProducts.Show();
 
-            frmClients frmClients = new frmClients();
-            frmClients.MdiParent = this;
-            frmClients.WindowState = FormWindowState.Maximized;
-            frmClients.Show();
-
+           
         private void btnServices_Click(object sender, EventArgs e)
         {
             frmServices frmServices = new frmServices();
@@ -162,6 +147,22 @@ namespace LubriTech.View
             childForm.Show();
         }
 
-       
+        private void btnProducts_Click(object sender, EventArgs e)
+        {
+            frmProducts frmProducts = new frmProducts();
+            OpenChildForm(frmProducts);
+        }
+
+        private void btnSuppliers_Click(object sender, EventArgs e)
+        {
+            frmSuppliers frmSuppliers = new frmSuppliers();
+            OpenChildForm(frmSuppliers);
+        }
+
+        private void btnVehicles_Click(object sender, EventArgs e)
+        {
+            frmVehicles frmVehicles = new frmVehicles();
+            OpenChildForm(frmVehicles);
+        }
     }
 }
