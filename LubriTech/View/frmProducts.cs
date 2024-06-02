@@ -15,18 +15,86 @@ namespace LubriTech.View
 {
     public partial class frmProducts : Form
     {
+        private List<Product> products;
 
         public frmProducts()
         {
             InitializeComponent();
-            load_Products();
+            products = new List<Product>();
             SetupDataGridView();
+            load_Products(null);
         }
 
-        private void load_Products()
+        // **************************************** Filtrado inicio  ***************************************************//
+         
+        // ************************* crear lista de lo que hacen, en mi caso la linea 18 tiene la lista de productos global
+        private void frmProducts_Load(object sender, EventArgs e)
         {
-            dgvProducts.DataSource = new Product_Controller().getAll();
+            txtFilter.TextChanged += new EventHandler(txtFilter_TextChanged);
+
         }
+
+        private void load_Products(List<Product> filteredList)
+        {
+            if (filteredList != null)
+            {
+                if (filteredList.Count == 0)
+                {
+                    dgvProducts.DataSource = products;
+                    
+                }else
+                {
+                    dgvProducts.DataSource = filteredList;
+                }
+            }
+            else
+            {
+                products = new Product_Controller().getAll();
+                dgvProducts.DataSource = products;
+                
+            }
+            dgvProducts.Columns["code"].HeaderText = "Código";
+            dgvProducts.Columns["name"].HeaderText = "Nombre";
+            dgvProducts.Columns["price"].HeaderText = "Precio";
+            dgvProducts.Columns["measureUnit"].HeaderText = "Unidad de Medida";
+            dgvProducts.Columns["state"].HeaderText = "Estado";
+            SetColumnOrder();
+        }
+
+        private void SetColumnOrder()
+        {
+            dgvProducts.Columns["code"].DisplayIndex = 0;
+            dgvProducts.Columns["name"].DisplayIndex = 1;
+            dgvProducts.Columns["price"].DisplayIndex = 2;
+            dgvProducts.Columns["measureUnit"].DisplayIndex = 3;
+            dgvProducts.Columns["state"].DisplayIndex = 4;
+            dgvProducts.Columns["ModifyButtonColumn"].DisplayIndex = 5;
+            dgvProducts.Columns["DeleteButtonColumn"].DisplayIndex = 6;
+        }
+
+        private void txtFilter_TextChanged(object sender, EventArgs e)
+        {
+            ApplyFilter();
+        }
+
+        private void ApplyFilter()
+        {
+            string filterValue = txtFilter.Text.ToLower();
+
+            // Filtrar la lista de productos
+            var filteredList = products.Where(p =>
+                p.code.ToLower().Contains(filterValue) ||
+                p.name.ToLower().Contains(filterValue) ||
+                p.price.ToString().ToLower().Contains(filterValue) ||
+                p.measureUnit.ToLower().Contains(filterValue) ||
+                p.state.ToLower().Contains(filterValue)
+            ).ToList();
+
+            // Refrescar el DataGridView
+            dgvProducts.DataSource = null;
+            load_Products(filteredList);
+        }
+        //**************************************** Filtrado final ***************************************************//
 
         private void SetupDataGridView()
         {
@@ -37,6 +105,7 @@ namespace LubriTech.View
             modifyButtonColumn.Text = "Detalles - Modificar";
             modifyButtonColumn.UseColumnTextForButtonValue = true;
             dgvProducts.Columns.Add(modifyButtonColumn);
+
 
             DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
             deleteButtonColumn.Name = "DeleteButtonColumn";
@@ -56,7 +125,7 @@ namespace LubriTech.View
 
         private void ChildFormDataChangedHandler(object sender, EventArgs e)
         {
-            load_Products();
+            load_Products(null);
         }
 
         private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -90,7 +159,7 @@ namespace LubriTech.View
                     string idToDelete = dgvProducts.Rows[e.RowIndex].Cells["code"].Value.ToString();
                     Product_Controller pc = new Product_Controller();
                     pc.remove(idToDelete);
-                    load_Products();
+                    load_Products(null);
                     return;
                 }
             }
@@ -103,6 +172,17 @@ namespace LubriTech.View
             {
                 this.dgvProducts.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
+
+            // Estilo de las celdas
+            // Headers de columnas
+            this.dgvProducts.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 16, FontStyle.Bold);
+            this.dgvProducts.ColumnHeadersDefaultCellStyle.Padding = new Padding(10, 10, 10, 10);
+            this.dgvProducts.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.dgvProducts.RowHeadersVisible = false;
+
+            // Celdas
+            this.dgvProducts.Rows[e.RowIndex].DefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Regular);
+            this.dgvProducts.Rows[e.RowIndex].DefaultCellStyle.Padding = new Padding(5, 5, 5, 5);
         }
 
 
@@ -117,11 +197,13 @@ namespace LubriTech.View
             {
                 dgvProducts.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
             }
-        }
-
-        private void frmProducts_Load(object sender, EventArgs e)
-        {
+            
 
         }
+
+     
+
+        
+
     }
 }
