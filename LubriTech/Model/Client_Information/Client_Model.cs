@@ -67,7 +67,7 @@ namespace LubriTech.Model.Client_Information
 
             foreach (DataRow dr in tblVehicles.Rows)
             {
-                vehicles.Add( new Vehicle(dr["Placa"].ToString(), dr["TipoMotor"].ToString(), Convert.ToDouble(dr["Kilometraje"]), dr["Marca"].ToString(), dr["Modelo"].ToString(), Convert.ToInt32(dr["Anio"]), dr["Transmision"].ToString(), (getClient((string)dr["IdentificacionCliente"]))));
+                vehicles.Add( new Vehicle(dr["Placa"].ToString(), dr["TipoMotor"].ToString(), Convert.ToInt32(dr["Kilometraje"]), dr["Marca"].ToString(), dr["Modelo"].ToString(), Convert.ToInt32(dr["Anio"]), dr["Transmision"].ToString(), (getClient((string)dr["IdentificacionCliente"]))));
             }
 
             if (conn.State != System.Data.ConnectionState.Open)

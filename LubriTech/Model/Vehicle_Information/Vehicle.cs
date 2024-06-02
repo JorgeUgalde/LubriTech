@@ -13,7 +13,7 @@ namespace LubriTech.Model.Vehicle_Information
 
         public string Engine { get; set; }
 
-        public double Mileage { get; set; }
+        public int Mileage { get; set; }
 
         public string Brand { get; set; }
 
@@ -27,7 +27,7 @@ namespace LubriTech.Model.Vehicle_Information
 
         public Vehicle() { }
 
-        public Vehicle(string licensePlate, string engine, double mileage, string brand, string model, int year, string transmission, Client client)
+        public Vehicle(string licensePlate, string engine, int mileage, string brand, string model, int year, string transmission, Client client)
         {
             this.LicensePlate = licensePlate;
             this.Engine = engine;

@@ -66,7 +66,7 @@ namespace LubriTech.View
                 vehicle.Model = tbModel.Text.Trim();
                 vehicle.LicensePlate = tbLicensePlate.Text.Trim();
                 vehicle.Year = Convert.ToInt32(tbYear.Text.Trim());
-                vehicle.Mileage = Convert.ToDouble(tbMileage.Text.Trim());
+                vehicle.Mileage = Convert.ToInt32(tbMileage.Text.Trim());
                 vehicle.Engine = tbEngine.Text.Trim();
                 vehicle.Transmission = cbTransmission.Text.Trim();
 

@@ -36,7 +36,7 @@ namespace LubriTech.Model.Vehicle_Information
                 {
                     vehicles.Add(new Vehicle(dr["Placa"].ToString(),
                                                 dr["TipoMotor"].ToString(),
-                                                Convert.ToDouble(dr["Kilometraje"]),
+                                                Convert.ToInt32(dr["Kilometraje"]),
                                                 dr["Marca"].ToString(),
                                                 dr["Modelo"].ToString(),
                                                 Convert.ToInt32(dr["Anio"]),
@@ -142,7 +142,7 @@ namespace LubriTech.Model.Vehicle_Information
 
                 Vehicle vehicle = new Vehicle(dr["Placa"].ToString(),
                                                 dr["TipoMotor"].ToString(),
-                                                Convert.ToDouble(dr["Kilometraje"].ToString()),
+                                                Convert.ToInt32(dr["Kilometraje"].ToString()),
                                                 dr["Marca"].ToString(),
                                                 dr["Modelo"].ToString(),
                                                 Convert.ToInt32(dr["Anio"].ToString()),
