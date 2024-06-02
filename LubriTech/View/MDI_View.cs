@@ -89,7 +89,10 @@ namespace LubriTech.View
 
         private void MDI_View_Load(object sender, EventArgs e)
         {
-
+            this.Visible = false;
+            frmLogin frmLogin = new frmLogin();
+            frmLogin.ShowDialog();
+            this.Visible = true;
         }
 
         private void btnClients_Click(object sender, EventArgs e)
@@ -163,6 +166,15 @@ namespace LubriTech.View
         {
             frmVehicles frmVehicles = new frmVehicles();
             OpenChildForm(frmVehicles);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            frmLogin frmLogin = new frmLogin();
+            frmLogin.ShowDialog();
+            this.Refresh();
+            this.Visible = true;
         }
     }
 }

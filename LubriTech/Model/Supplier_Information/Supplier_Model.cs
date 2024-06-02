@@ -63,7 +63,6 @@ namespace LubriTech.Model.Supplier_Information
                     conn.Open();
                 }
                 string query = "Select * from Proveedor where [Proveedor].Identificacion = @id";
-                DataTable tblSupplier = new DataTable();
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@id", id);
                 SqlDataReader reader = cmd.ExecuteReader();
