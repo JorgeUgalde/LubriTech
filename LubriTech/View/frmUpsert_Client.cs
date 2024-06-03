@@ -118,8 +118,18 @@ namespace LubriTech.View
 
         private void btnAddVehicle_Click(object sender, EventArgs e)
         {
-            this.Dispose();
-            frmNewVehicle frmNewVehicle = new frmNewVehicle();
+            this.Close();
+        }
+
+        //private void frmUpsert_Client_Load(object sender, EventArgs e)
+        //{
+        //    Vehicle_Controller vehicleController = new Vehicle_Controller();
+        //    dgvVehiclesClients.DataSource = vehicleController.getAll();
+        //}
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmInsertUpdate_Vehicle frmNewVehicle = new frmInsertUpdate_Vehicle();
             frmNewVehicle.ShowDialog();
         }
 

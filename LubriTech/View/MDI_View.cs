@@ -14,10 +14,54 @@ namespace LubriTech.View
     {
         private int childFormNumber = 0;
         private bool sideBarExpanded = true;
+        TableLayoutPanel tableLayoutPanel = new TableLayoutPanel();
 
         public MDI_View()
         {
             InitializeComponent();
+            InitializeMenu();
+            this.Resize += new EventHandler(OnFormResize);
+            OnFormResize(this, EventArgs.Empty); // Ajustar el tamaño inicial
+        }
+
+        private void InitializeMenu()
+        {
+            // Crear el TableLayoutPanel
+            tableLayoutPanel = new TableLayoutPanel();
+            tableLayoutPanel.BackColor = Color.FromArgb(156, 29, 29);
+            tableLayoutPanel.Dock = DockStyle.Left;
+            tableLayoutPanel.ColumnCount = 1;
+            tableLayoutPanel.RowCount = 3;
+            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+
+            // Crear el panel para los botones del menú
+            this.panel1.Dock = DockStyle.Top;
+            tableLayoutPanel.Controls.Add(panel1, 0, 0);
+            panel1.Controls.Add(btnMenu);
+
+            this.panelBtns.Dock = DockStyle.Fill;
+            tableLayoutPanel.Controls.Add(panelBtns, 0, 1);
+
+            // Crear y agregar botones al panel del menú
+            panelBtns.Controls.Add(btnClients);
+            panelBtns.Controls.Add(btnWorkOrders);
+            panelBtns.Controls.Add(btnAppointments);
+            panelBtns.Controls.Add(btnInventory);
+            panelBtns.Controls.Add(btnProducts);
+            panelBtns.Controls.Add(btnServices);
+            panelBtns.Controls.Add(btnSuppliers);
+            panelBtns.Controls.Add(btnVehicles);
+
+            // Crear el botón de cerrar sesión
+            btnLogout.Dock = DockStyle.Bottom;
+            tableLayoutPanel.Controls.Add(btnLogout, 0, 2);
+
+            // Agregar el TableLayoutPanel al formulario
+            this.Controls.Add(tableLayoutPanel);
+            tableLayoutPanel.MinimumSize = new Size(42, 500);
+            tableLayoutPanel.MaximumSize = new Size(200, this.ClientSize.Height);
         }
 
         private void OpenFile(object sender, EventArgs e)
@@ -89,7 +133,10 @@ namespace LubriTech.View
 
         private void MDI_View_Load(object sender, EventArgs e)
         {
-
+            //this.Visible = false;
+            //frmLogin frmLogin = new frmLogin();
+            //frmLogin.ShowDialog();
+            //this.Visible = true;
         }
 
         private void btnClients_Click(object sender, EventArgs e)
@@ -105,8 +152,8 @@ namespace LubriTech.View
         {
             if(sideBarExpanded)
             {
-                sideBarContainer.Width -= 10;
-                if (sideBarContainer.Width == sideBarContainer.MinimumSize.Width)
+                tableLayoutPanel.Width -= 10;
+                if (tableLayoutPanel.Width == tableLayoutPanel.MinimumSize.Width)
                 {
                     sideBarExpanded = false;
                     sideBarTimer.Stop();
@@ -114,8 +161,8 @@ namespace LubriTech.View
             }
             else
             {
-                sideBarContainer.Width += 10;
-                if (sideBarContainer.Width == sideBarContainer.MaximumSize.Width)
+                tableLayoutPanel.Width += 10;
+                if (tableLayoutPanel.Width == tableLayoutPanel.MaximumSize.Width)
                 {
                     sideBarExpanded = true;
                     sideBarTimer.Stop();
@@ -163,6 +210,28 @@ namespace LubriTech.View
         {
             frmVehicles frmVehicles = new frmVehicles();
             OpenChildForm(frmVehicles);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            // Iniciar el temporizador
+            sideBarTimer.Start();
+
+        }
+
+        private void OnFormResize(object sender, EventArgs e)
+        {
+            tableLayoutPanel.MaximumSize = new Size(200, this.ClientSize.Height);
         }
     }
 }
