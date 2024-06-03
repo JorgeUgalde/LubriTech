@@ -12,6 +12,7 @@ using static System.Runtime.CompilerServices.RuntimeHelpers;
 using System.Xml.Linq;
 using LubriTech.Model.Vehicle_Information;
 using LubriTech.Model.Client_Information;
+using LubriTech.Model.Supplier_Information;
 
 namespace LubriTech.View
 {
@@ -19,24 +20,21 @@ namespace LubriTech.View
     {
 
         List<Client> clients;
+
         public frmInsertUpdate_Vehicle()
         {
+            clients = new List<Client>();
             InitializeComponent();
             load_Clients(null);
             SetupClientsDGV();
         }
 
-        public event EventHandler DataChanged;
-
-        protected virtual void OnDataChanged(EventArgs e)
-        {
-            DataChanged?.Invoke(this, e);
-        }
-
         public frmInsertUpdate_Vehicle(Vehicle vehicle)
         {
+            clients = new List<Client>();
             InitializeComponent();
             load_Clients(null);
+            SetupClientsDGV();
             tbClientName.Text = vehicle.Client.FullName;
             tbClientId.Text = vehicle.Client.Id;
             tbBrand.Text = vehicle.Brand;
@@ -46,8 +44,13 @@ namespace LubriTech.View
             tbMileage.Text = vehicle.Mileage.ToString();
             tbEngine.Text = vehicle.Engine;
             cbTransmission.Text = vehicle.Transmission;
+        }
 
-            SetupClientsDGV();
+        public event EventHandler DataChanged;
+
+        protected virtual void OnDataChanged(EventArgs e)
+        {
+            DataChanged?.Invoke(this, e);
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
