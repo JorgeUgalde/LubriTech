@@ -15,21 +15,89 @@ namespace LubriTech.View
 {
     public partial class frmVehicles : Form
     {
+        private List<Vehicle> vehicles;
+
         public frmVehicles()
         {
             InitializeComponent();
-            load_Vehicles();
+            vehicles = new List<Vehicle>();
             SetupDataGridView();
-        }
-
-        private void load_Vehicles()
-        {
-            dgvVehicles.DataSource = new Vehicle_Controller().getAll();
+            load_Vehicles(null);
         }
 
         private void frmVehicles_Load(object sender, EventArgs e)
         {
+            txtFilter.TextChanged += new EventHandler(txtFilter_TextChanged);
+        }
 
+        private void load_Vehicles(List<Vehicle> filteredList)
+        {
+            if (filteredList != null)
+            {
+                if (filteredList.Count == 0)
+                {
+                    dgvVehicles.DataSource = vehicles;
+
+                }
+                else
+                {
+                    dgvVehicles.DataSource = filteredList;
+                }
+            }
+            else
+            {
+                vehicles = new Vehicle_Controller().getAll();
+                dgvVehicles.DataSource = vehicles;
+            }
+            dgvVehicles.Columns["LicensePlate"].HeaderText = "Placa";
+            dgvVehicles.Columns["Engine"].HeaderText = "Tipo Motor";
+            dgvVehicles.Columns["Mileage"].HeaderText = "Kilometraje";
+            dgvVehicles.Columns["Brand"].HeaderText = "Marca";
+            dgvVehicles.Columns["Model"].HeaderText = "Modelo";
+            dgvVehicles.Columns["Year"].HeaderText = "Año";
+            dgvVehicles.Columns["Transmission"].HeaderText = "Transmisión";
+            dgvVehicles.Columns["Client"].HeaderText = "Nombre cliente";
+            SetColumnOrder();
+        }
+
+        private void SetColumnOrder()
+        {
+            dgvVehicles.Columns["LicensePlate"].DisplayIndex = 0;
+            dgvVehicles.Columns["Engine"].DisplayIndex = 1;
+            dgvVehicles.Columns["Mileage"].DisplayIndex = 2;
+            dgvVehicles.Columns["Brand"].DisplayIndex = 3;
+            dgvVehicles.Columns["Model"].DisplayIndex = 4;
+            dgvVehicles.Columns["Year"].DisplayIndex = 5;
+            dgvVehicles.Columns["Transmission"].DisplayIndex = 6;
+            dgvVehicles.Columns["Client"].DisplayIndex = 7;
+            dgvVehicles.Columns["ModifyButtonColumn"].DisplayIndex = 8;
+            dgvVehicles.Columns["DeleteButtonColumn"].DisplayIndex = 9;
+        }
+
+        private void txtFilter_TextChanged(object sender, EventArgs e)
+        {
+            ApplyFilter();
+        }
+
+        private void ApplyFilter()
+        {
+            string filterValue = txtFilter.Text.ToLower();
+
+            // Filtrar la lista de vehiculos
+            var filteredList = vehicles.Where(p =>
+                p.LicensePlate.ToLower().Contains(filterValue) ||
+                p.Engine.ToLower().Contains(filterValue) ||
+                p.Mileage.ToString().ToLower().Contains(filterValue) ||
+                p.Brand.ToLower().Contains(filterValue) ||
+                p.Model.ToLower().Contains(filterValue) ||
+                p.Year.ToString().ToLower().Contains(filterValue) ||
+                p.Transmission.ToLower().Contains(filterValue) ||
+                p.Client.FullName.ToLower().Contains(filterValue)
+            ).ToList();
+
+            // Refrescar el DataGridView
+            dgvVehicles.DataSource = null;
+            load_Vehicles(filteredList);
         }
 
         private void SetupDataGridView()
@@ -37,7 +105,7 @@ namespace LubriTech.View
             DataGridViewButtonColumn modifyButtonColumn = new DataGridViewButtonColumn();
             modifyButtonColumn.Name = "ModifyButtonColumn";
             modifyButtonColumn.HeaderText = "Ver Detalles";
-            modifyButtonColumn.Text = "Detalles - Modificar";
+            modifyButtonColumn.Text = "Detalles-Modificar";
             modifyButtonColumn.UseColumnTextForButtonValue = true;
             dgvVehicles.Columns.Add(modifyButtonColumn);
 
@@ -59,7 +127,7 @@ namespace LubriTech.View
 
         private void ChildFormDataChangedHandler(object sender, EventArgs e)
         {
-            load_Vehicles();
+            load_Vehicles(null);
         }
 
         private void dgvVehicles_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -93,7 +161,7 @@ namespace LubriTech.View
                     string selectedLicensePlate = dgvVehicles.Rows[e.RowIndex].Cells["LicensePlate"].Value.ToString();
                     Vehicle_Controller vehicleController = new Vehicle_Controller();
                     vehicleController.delete(selectedLicensePlate);
-                    load_Vehicles();
+                    load_Vehicles(null);
                     return;
                 }
             }
@@ -105,6 +173,17 @@ namespace LubriTech.View
             {
                 this.dgvVehicles.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
+
+            // Estilo de las celdas
+            // Headers de columnas
+            this.dgvVehicles.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 16, FontStyle.Bold);
+            this.dgvVehicles.ColumnHeadersDefaultCellStyle.Padding = new Padding(10, 10, 10, 10);
+            this.dgvVehicles.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.dgvVehicles.RowHeadersVisible = false;
+
+            // Celdas
+            this.dgvVehicles.Rows[e.RowIndex].DefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Regular);
+            this.dgvVehicles.Rows[e.RowIndex].DefaultCellStyle.Padding = new Padding(5, 5, 5, 5);
         }
 
         private void dgvVehicles_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)

@@ -153,7 +153,7 @@ namespace LubriTech.View
 
             if (e.ColumnIndex == dgvProducts.Columns["DeleteButtonColumn"].Index && e.RowIndex >= 0)
             {
-                DialogResult result = MessageBox.Show("Estás seguro de eliminar al proveedor?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Estás seguro de eliminar este producto?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     string idToDelete = dgvProducts.Rows[e.RowIndex].Cells["code"].Value.ToString();

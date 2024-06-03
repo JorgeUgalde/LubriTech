@@ -52,12 +52,12 @@ namespace LubriTech.View
             this.dgvProducts.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProducts.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dgvProducts.Location = new System.Drawing.Point(57, 145);
-            this.dgvProducts.Margin = new System.Windows.Forms.Padding(3, 2, 5, 5);
+            this.dgvProducts.Location = new System.Drawing.Point(43, 118);
+            this.dgvProducts.Margin = new System.Windows.Forms.Padding(2, 2, 4, 4);
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.RowHeadersWidth = 51;
             this.dgvProducts.RowTemplate.Height = 24;
-            this.dgvProducts.Size = new System.Drawing.Size(1045, 526);
+            this.dgvProducts.Size = new System.Drawing.Size(784, 427);
             this.dgvProducts.TabIndex = 0;
             this.dgvProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellContentClick);
             this.dgvProducts.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProducts_CellFormatting);
@@ -67,9 +67,10 @@ namespace LubriTech.View
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(52, 25);
+            this.lblTitle.Location = new System.Drawing.Point(39, 20);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(231, 48);
+            this.lblTitle.Size = new System.Drawing.Size(186, 38);
             this.lblTitle.TabIndex = 1;
             this.lblTitle.Text = "Productos ";
             // 
@@ -77,9 +78,10 @@ namespace LubriTech.View
             // 
             this.lblSubtitle.AutoSize = true;
             this.lblSubtitle.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubtitle.Location = new System.Drawing.Point(53, 98);
+            this.lblSubtitle.Location = new System.Drawing.Point(40, 80);
+            this.lblSubtitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSubtitle.Name = "lblSubtitle";
-            this.lblSubtitle.Size = new System.Drawing.Size(276, 34);
+            this.lblSubtitle.Size = new System.Drawing.Size(213, 26);
             this.lblSubtitle.TabIndex = 2;
             this.lblSubtitle.Text = "Lista de Productos";
             // 
@@ -91,10 +93,10 @@ namespace LubriTech.View
             this.btnAddProduct.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddProduct.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddProduct.ForeColor = System.Drawing.Color.White;
-            this.btnAddProduct.Location = new System.Drawing.Point(892, 98);
-            this.btnAddProduct.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddProduct.Location = new System.Drawing.Point(669, 80);
+            this.btnAddProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(210, 43);
+            this.btnAddProduct.Size = new System.Drawing.Size(158, 35);
             this.btnAddProduct.TabIndex = 3;
             this.btnAddProduct.Text = "Agregar nuevo producto";
             this.btnAddProduct.UseVisualStyleBackColor = false;
@@ -104,9 +106,10 @@ namespace LubriTech.View
             // 
             this.txtFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFilter.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFilter.Location = new System.Drawing.Point(659, 102);
+            this.txtFilter.Location = new System.Drawing.Point(494, 83);
+            this.txtFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(227, 35);
+            this.txtFilter.Size = new System.Drawing.Size(171, 30);
             this.txtFilter.TabIndex = 4;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
@@ -115,27 +118,27 @@ namespace LubriTech.View
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(573, 105);
+            this.label1.Location = new System.Drawing.Point(423, 85);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 28);
+            this.label1.Size = new System.Drawing.Size(67, 23);
             this.label1.TabIndex = 5;
             this.label1.Text = "Filtrar";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // frmProducts
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(244)))));
-            this.ClientSize = new System.Drawing.Size(1163, 725);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(872, 589);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.lblSubtitle);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.dgvProducts);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmProducts";
             this.Text = "Productos";
             this.Load += new System.EventHandler(this.frmProducts_Load);
