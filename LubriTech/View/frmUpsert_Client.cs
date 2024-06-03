@@ -5,11 +5,14 @@ using System;
 using System.Windows.Forms;
 using static System.Runtime.CompilerServices.RuntimeHelpers;
 using System.Xml.Linq;
+using LubriTech.Model.Vehicle_Information;
+using System.Collections.Generic;
 
 namespace LubriTech.View
 {
     public partial class frmUpsert_Client : Form
     {
+        private Client newClient;
         public frmUpsert_Client()
         {
             InitializeComponent();
@@ -24,6 +27,7 @@ namespace LubriTech.View
             txtAdditionalPhone.Text = client.AdditionalPhoneNum.ToString();
             txtEmail.Text = client.Email;
             txtAddresse.Text = client.Address;
+            newClient = client;
         }
 
         public event EventHandler DataChanged;
@@ -33,8 +37,40 @@ namespace LubriTech.View
             DataChanged?.Invoke(this, e);
         }
 
+        
 
-        private void btnSaveClient_Click(object sender, EventArgs e)
+        private void frmUpsert_Client_Load(object sender, EventArgs e)
+        {
+            if (newClient == null)
+            {
+                Clients_Controller clients_Controller = new Clients_Controller();
+            }
+            else
+            {
+                Clients_Controller clients_Controller = new Clients_Controller();
+                List<Vehicle> vehicles = clients_Controller.getVehicle(newClient.Id);
+                dgvVehiclesClients.DataSource = vehicles;
+            }
+
+        }
+
+       
+
+        private void dgvVehiclesClients_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
+            {
+                this.dgvVehiclesClients.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void btnAddClient_Click(object sender, EventArgs e)
         {
             try
             {
@@ -45,7 +81,7 @@ namespace LubriTech.View
                     !string.IsNullOrEmpty(this.txtEmail.Text) ||
                     !string.IsNullOrEmpty(this.txtAddresse.Text))
                 {
-                    
+
                     Clients_Controller clientsController = new Clients_Controller();
 
                     string id = this.txtID.Text.Trim();
@@ -78,32 +114,15 @@ namespace LubriTech.View
 
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-}
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
-        private void frmUpsert_Client_Load(object sender, EventArgs e)
+        private void btnAddVehicle_Click(object sender, EventArgs e)
         {
-            Vehicle_Controller vehicleController = new Vehicle_Controller();
-            dgvVehiclesClients.DataSource = vehicleController.getAll();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
+            this.Dispose();
             frmNewVehicle frmNewVehicle = new frmNewVehicle();
             frmNewVehicle.ShowDialog();
         }
 
-        private void dgvVehiclesClients_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
-            {
-                this.dgvVehiclesClients.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            }
-        }
+        
     }
 }

@@ -59,6 +59,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.AutoSize = true;
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(146)))), ((int)(((byte)(69)))));
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -66,7 +67,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button1.Location = new System.Drawing.Point(727, 150);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(231, 32);
             this.button1.TabIndex = 2;
@@ -79,6 +80,9 @@
             this.dgvSuppliers.AllowUserToAddRows = false;
             this.dgvSuppliers.AllowUserToDeleteRows = false;
             this.dgvSuppliers.AllowUserToResizeRows = false;
+            this.dgvSuppliers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvSuppliers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSuppliers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvSuppliers.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -87,7 +91,7 @@
             this.dgvSuppliers.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dgvSuppliers.GridColor = System.Drawing.SystemColors.Control;
             this.dgvSuppliers.Location = new System.Drawing.Point(100, 190);
-            this.dgvSuppliers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvSuppliers.Margin = new System.Windows.Forms.Padding(4);
             this.dgvSuppliers.Name = "dgvSuppliers";
             this.dgvSuppliers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvSuppliers.RowHeadersVisible = false;
@@ -109,7 +113,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmSuppliers";
             this.Text = "Proveedores";
             this.Load += new System.EventHandler(this.frmSuppliers_Load);

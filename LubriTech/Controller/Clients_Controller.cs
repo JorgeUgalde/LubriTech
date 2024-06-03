@@ -31,5 +31,11 @@ namespace LubriTech.Controller
         {
             return new Client_Model().getClient(Id);
         }
+
+        public List<Vehicle> getVehicle(String Id) 
+        {
+            return new Client_Model().getVehicle(Id);
+
+        }
     }
 }

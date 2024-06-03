@@ -44,14 +44,6 @@ namespace LubriTech.Model.Product_Information
                 }
 
                 cmd.ExecuteNonQuery();
-
-                if (conn.State != System.Data.ConnectionState.Closed)
-                {
-                    conn.Close();
-
-                }
-
-
                 return products;
 
             }
