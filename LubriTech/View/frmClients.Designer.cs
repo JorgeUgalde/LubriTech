@@ -51,7 +51,7 @@
             this.dgvClients.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dgvClients.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.dgvClients.Location = new System.Drawing.Point(43, 266);
-            this.dgvClients.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvClients.Margin = new System.Windows.Forms.Padding(4);
             this.dgvClients.Name = "dgvClients";
             this.dgvClients.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -95,11 +95,12 @@
             // 
             this.btnAddClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(146)))), ((int)(((byte)(69)))));
+            this.btnAddClient.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddClient.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddClient.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAddClient.Location = new System.Drawing.Point(740, 216);
-            this.btnAddClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddClient.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddClient.Name = "btnAddClient";
             this.btnAddClient.Size = new System.Drawing.Size(284, 40);
             this.btnAddClient.TabIndex = 3;
@@ -117,7 +118,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvClients);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmClients";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
