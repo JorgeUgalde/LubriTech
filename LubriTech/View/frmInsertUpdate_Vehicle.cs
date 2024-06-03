@@ -53,7 +53,6 @@ namespace LubriTech.View
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             if (tbClientName.Text.Trim() == ""
-                || tbClientId.Text.Trim() == ""
                 || tbBrand.Text.Trim() == ""
                 || tbModel.Text.Trim() == ""
                 || tbLicensePlate.Text.Trim() == ""
@@ -63,6 +62,10 @@ namespace LubriTech.View
                 || cbTransmission.Text.Trim() == "")
             {
                 MessageBox.Show("Por favor llene todos los campos");
+            }
+            else if(tbClientId.Text.Trim() == "")
+            {
+                MessageBox.Show("Debe seleccionar un cliente");
             }
             else
             {
@@ -161,6 +164,7 @@ namespace LubriTech.View
                     {
                         tbClientName.Text = client.FullName;
                         tbClientId.Text = client.Id;
+                        MessageBox.Show(client.FullName + " seleccionado correctamente");
                         break;
                     }
                 }
