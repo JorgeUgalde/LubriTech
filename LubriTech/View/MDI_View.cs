@@ -24,64 +24,7 @@ namespace LubriTech.View
             OnFormResize(this, EventArgs.Empty); // Ajustar el tamaño inicial
         }
 
-        private void InitializeMenu()
-        {
-            // Crear el TableLayoutPanel
-            tableLayoutPanel = new TableLayoutPanel();
-            tableLayoutPanel.BackColor = Color.FromArgb(156, 29, 29);
-            tableLayoutPanel.Dock = DockStyle.Left;
-            tableLayoutPanel.ColumnCount = 1;
-            tableLayoutPanel.RowCount = 3;
-            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-
-            // Crear el panel para los botones del menú
-            this.panel1.Dock = DockStyle.Top;
-            tableLayoutPanel.Controls.Add(panel1, 0, 0);
-            panel1.Controls.Add(btnMenu);
-
-            this.panelBtns.Dock = DockStyle.Fill;
-            tableLayoutPanel.Controls.Add(panelBtns, 0, 1);
-
-            // Crear y agregar botones al panel del menú
-            btnClients.Size = new Size(200, 50);
-            btnClients.Dock = DockStyle.Top;
-            panelBtns.Controls.Add(btnClients);
-            btnWorkOrders.Size = new Size(200, 50);
-            btnWorkOrders.Dock = DockStyle.Top;
-            panelBtns.Controls.Add(btnWorkOrders);
-            btnAppointments.Size = new Size(200, 50);
-            btnAppointments.Dock = DockStyle.Top;
-            panelBtns.Controls.Add(btnAppointments);
-            btnInventory.Size = new Size(200, 50);
-            btnInventory.Dock = DockStyle.Top;
-            panelBtns.Controls.Add(btnInventory);
-            btnProducts.Size = new Size(200, 50);
-            btnProducts.Dock = DockStyle.Top;
-            panelBtns.Controls.Add(btnProducts);
-            btnServices.Size = new Size(200, 50);
-            btnServices.Dock = DockStyle.Top;
-            panelBtns.Controls.Add(btnServices);
-            btnSuppliers.Size = new Size(200, 50);
-            btnSuppliers.Dock = DockStyle.Top;
-            panelBtns.Controls.Add(btnSuppliers);
-            btnVehicles.Size = new Size(200, 50);
-            btnVehicles.Dock = DockStyle.Top;
-            panelBtns.Controls.Add(btnVehicles);
-
-            // Crear el botón de cerrar sesión
-            btnLogout.Size = new Size(200, 50);
-            btnLogout.Dock = DockStyle.Bottom;
-            tableLayoutPanel.Controls.Add(btnLogout, 0, 2);
-
-            // Agregar el TableLayoutPanel al formulario
-            this.Controls.Add(tableLayoutPanel);
-            panel1.Size = new Size(200, 50);
-            panelBtns.Size = new Size(200, 500);
-            tableLayoutPanel.MinimumSize = new Size(42, 500);
-            tableLayoutPanel.MaximumSize = new Size(200, this.ClientSize.Height);
-        }
+       
 
         private void InitializeMenu()
         {

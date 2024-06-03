@@ -104,6 +104,7 @@
             // btConfirm
             // 
             this.btConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(146)))), ((int)(((byte)(69)))));
+            this.btConfirm.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btConfirm.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btConfirm.ForeColor = System.Drawing.Color.White;
             this.btConfirm.Location = new System.Drawing.Point(470, 430);

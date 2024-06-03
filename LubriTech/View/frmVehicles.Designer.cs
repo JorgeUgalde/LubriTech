@@ -42,10 +42,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvVehicles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvVehicles.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvVehicles.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.dgvVehicles.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvVehicles.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvVehicles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVehicles.Location = new System.Drawing.Point(101, 186);
-            this.dgvVehicles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvVehicles.Margin = new System.Windows.Forms.Padding(4);
             this.dgvVehicles.Name = "dgvVehicles";
             this.dgvVehicles.RowHeadersWidth = 51;
             this.dgvVehicles.Size = new System.Drawing.Size(872, 331);
@@ -86,13 +88,14 @@
             // 
             this.btnNewVehicle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNewVehicle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(146)))), ((int)(((byte)(69)))));
+            this.btnNewVehicle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNewVehicle.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnNewVehicle.FlatAppearance.BorderSize = 0;
             this.btnNewVehicle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnNewVehicle.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewVehicle.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnNewVehicle.Location = new System.Drawing.Point(768, 142);
-            this.btnNewVehicle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNewVehicle.Margin = new System.Windows.Forms.Padding(4);
             this.btnNewVehicle.Name = "btnNewVehicle";
             this.btnNewVehicle.Size = new System.Drawing.Size(205, 37);
             this.btnNewVehicle.TabIndex = 3;
@@ -110,7 +113,7 @@
             this.Controls.Add(this.lblVehicleList);
             this.Controls.Add(this.lblVehicle);
             this.Controls.Add(this.dgvVehicles);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmVehicles";
             this.Text = "Vehicles";
             this.Load += new System.EventHandler(this.frmVehicles_Load);

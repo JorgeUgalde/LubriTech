@@ -119,7 +119,7 @@
             // 
             this.txtID.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.Location = new System.Drawing.Point(144, 155);
-            this.txtID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtID.Margin = new System.Windows.Forms.Padding(4);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(272, 35);
             this.txtID.TabIndex = 6;
@@ -128,7 +128,7 @@
             // 
             this.txtMainPhone.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMainPhone.Location = new System.Drawing.Point(144, 233);
-            this.txtMainPhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMainPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtMainPhone.Name = "txtMainPhone";
             this.txtMainPhone.Size = new System.Drawing.Size(272, 35);
             this.txtMainPhone.TabIndex = 7;
@@ -137,7 +137,7 @@
             // 
             this.txtAddresse.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddresse.Location = new System.Drawing.Point(144, 322);
-            this.txtAddresse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAddresse.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddresse.Name = "txtAddresse";
             this.txtAddresse.Size = new System.Drawing.Size(272, 35);
             this.txtAddresse.TabIndex = 9;
@@ -146,7 +146,7 @@
             // 
             this.txtFullName.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFullName.Location = new System.Drawing.Point(760, 155);
-            this.txtFullName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFullName.Margin = new System.Windows.Forms.Padding(4);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(272, 35);
             this.txtFullName.TabIndex = 10;
@@ -155,7 +155,7 @@
             // 
             this.txtAdditionalPhone.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAdditionalPhone.Location = new System.Drawing.Point(760, 233);
-            this.txtAdditionalPhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAdditionalPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtAdditionalPhone.Name = "txtAdditionalPhone";
             this.txtAdditionalPhone.Size = new System.Drawing.Size(272, 35);
             this.txtAdditionalPhone.TabIndex = 11;
@@ -164,7 +164,7 @@
             // 
             this.txtEmail.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(760, 322);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(272, 35);
             this.txtEmail.TabIndex = 12;
@@ -189,9 +189,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvVehiclesClients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvVehiclesClients.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvVehiclesClients.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.dgvVehiclesClients.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvVehiclesClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVehiclesClients.Location = new System.Drawing.Point(63, 434);
-            this.dgvVehiclesClients.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvVehiclesClients.Margin = new System.Windows.Forms.Padding(4);
             this.dgvVehiclesClients.Name = "dgvVehiclesClients";
             this.dgvVehiclesClients.ReadOnly = true;
             this.dgvVehiclesClients.RowHeadersWidth = 51;
@@ -202,11 +204,12 @@
             // btnAddVehicle
             // 
             this.btnAddVehicle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(152)))), ((int)(((byte)(92)))));
+            this.btnAddVehicle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddVehicle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddVehicle.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddVehicle.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAddVehicle.Location = new System.Drawing.Point(1124, 386);
-            this.btnAddVehicle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddVehicle.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddVehicle.Name = "btnAddVehicle";
             this.btnAddVehicle.Size = new System.Drawing.Size(171, 41);
             this.btnAddVehicle.TabIndex = 16;
@@ -217,11 +220,12 @@
             // btnAddClient
             // 
             this.btnAddClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(152)))), ((int)(((byte)(92)))));
+            this.btnAddClient.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddClient.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddClient.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAddClient.Location = new System.Drawing.Point(1124, 119);
-            this.btnAddClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddClient.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddClient.Name = "btnAddClient";
             this.btnAddClient.Size = new System.Drawing.Size(180, 41);
             this.btnAddClient.TabIndex = 17;
@@ -278,7 +282,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmUpsert_Client";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestionar Cliente";
