@@ -16,6 +16,7 @@ namespace LubriTech
 {
     public partial class frmLogin : Form
     {
+        private bool isLogged = false;
         public frmLogin()
         {
             InitializeComponent();
@@ -23,9 +24,14 @@ namespace LubriTech
 
         private void btLogin_Click(object sender, EventArgs e)
         {
-            ValidateAndLogin();
+            isLogged = ValidateAndLogin();
         }
-        private void ValidateAndLogin()
+
+        public bool IsLogged()
+        {
+            return isLogged;
+        }
+        private bool ValidateAndLogin()
         {
             bool isValid = true;
 
@@ -49,14 +55,15 @@ namespace LubriTech
                 if (uc.GetUser(u) == null)
                 {
                     MessageBox.Show("Usuario o contraseña incorrectos.");
-                    return;
+                    return false;
                 }
-
                 this.Close();
+                return true;                
             }
             else
             {
                 MessageBox.Show("Usuario o contraseña incorrectos.");
+                return false;
             }
         }
 
@@ -68,5 +75,11 @@ namespace LubriTech
             return Regex.IsMatch(email, emailPattern);
         }
 
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }

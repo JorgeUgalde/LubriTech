@@ -87,7 +87,6 @@ namespace LubriTech.View
       {
             try
             {
-                
                 if (filteredSuppliers != null)
                 {
                     dgvSuppliers.DataSource = filteredSuppliers;
@@ -194,12 +193,10 @@ namespace LubriTech.View
             load_Selected_Suppliers();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnConfirm_Click(object sender, EventArgs e)
         {
             if (txtCode.Text.Trim() == "" || txtName.Text.Trim() == "" || txtPrice.Text.Trim() == ""
 
-                || cbMeasureUnit.Text.Trim() == "Seleccione la unidad de medida"
-                || cbState.Text.Trim() == "Seleccione el estado del producto"
                 || cbMeasureUnit.Text.Trim() == ""
                 || cbState.Text.Trim() == ""
 

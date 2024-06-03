@@ -55,7 +55,7 @@ namespace LubriTech.View
             DataChanged?.Invoke(this, e);
         }
 
-        private void btUpsert_Click(object sender, EventArgs e)
+        private void btnConfirm_Click(object sender, EventArgs e)
         {
             //Supplier supplier = new Supplier();
             //supplier.id = txtId.Text;
@@ -147,5 +147,7 @@ namespace LubriTech.View
         {
 
         }
+
+
     }
 }

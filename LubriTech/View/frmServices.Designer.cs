@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAddProduct = new System.Windows.Forms.Button();
@@ -39,20 +39,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Verdana", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(42, 56);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 33);
+            this.label1.Size = new System.Drawing.Size(202, 48);
             this.label1.TabIndex = 0;
             this.label1.Text = "Servicios";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(42, 114);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(192, 26);
+            this.label2.Size = new System.Drawing.Size(267, 34);
             this.label2.TabIndex = 1;
             this.label2.Text = "Lista de Servicios";
             // 
@@ -62,11 +62,11 @@
             this.btnAddProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(146)))), ((int)(((byte)(69)))));
             this.btnAddProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnAddProduct.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddProduct.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddProduct.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddProduct.ForeColor = System.Drawing.Color.White;
-            this.btnAddProduct.Location = new System.Drawing.Point(824, 102);
+            this.btnAddProduct.Location = new System.Drawing.Point(824, 111);
             this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(228, 38);
+            this.btnAddProduct.Size = new System.Drawing.Size(228, 42);
             this.btnAddProduct.TabIndex = 4;
             this.btnAddProduct.Text = "Agregar nuevo servicio";
             this.btnAddProduct.UseVisualStyleBackColor = false;
@@ -74,8 +74,8 @@
             // 
             // dgvServices
             // 
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(3, 3, 5, 5);
-            this.dgvServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(3, 3, 5, 5);
+            this.dgvServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvServices.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -97,13 +97,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.ClientSize = new System.Drawing.Size(1100, 513);
+            this.ControlBox = false;
             this.Controls.Add(this.dgvServices);
             this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmServices";
-            this.Text = "frmServices";
+            this.Text = "Servicios";
             ((System.ComponentModel.ISupportInitialize)(this.dgvServices)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

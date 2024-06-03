@@ -9,12 +9,26 @@ namespace LubriTech
 {
     internal static class Program
     {
+
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            frmLogin login = new frmLogin();
+
+            // Mostrar el formulario de login
+            Application.Run(login);
+
+            // Si el formulario de login está cerrado y no se ha autenticado, salir de la aplicación
+            if (!login.IsLogged())
+            {
+                return;
+            }
+
+            // Continuar con la ejecución de la aplicación si el login fue exitoso
             Application.Run(new MDI_View());
         }
+
     }
 }

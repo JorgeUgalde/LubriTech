@@ -44,7 +44,7 @@ namespace LubriTech.View
             cbTransmission.Text = vehicle.Transmission;
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnConfirm_Click(object sender, EventArgs e)
         {
             if (tbClientId.Text.Trim() == ""
                 || tbBrand.Text.Trim() == ""
