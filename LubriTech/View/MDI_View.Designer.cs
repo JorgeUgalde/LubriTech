@@ -70,9 +70,10 @@ namespace LubriTech.View
             // 
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnMenu);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(197, 47);
+            this.panel1.Size = new System.Drawing.Size(263, 58);
             this.panel1.TabIndex = 3;
             // 
             // label2
@@ -81,7 +82,7 @@ namespace LubriTech.View
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.label2.Location = new System.Drawing.Point(42, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 13);
+            this.label2.Size = new System.Drawing.Size(40, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "Menu";
             // 
@@ -92,7 +93,7 @@ namespace LubriTech.View
             this.btnMenu.Image = global::LubriTech.Properties.Resources.menu;
             this.btnMenu.Location = new System.Drawing.Point(0, 8);
             this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Padding = new System.Windows.Forms.Padding(5, 7, 0, 0);
+            this.btnMenu.Padding = new System.Windows.Forms.Padding(7, 9, 0, 0);
             this.btnMenu.Size = new System.Drawing.Size(32, 30);
             this.btnMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.btnMenu.TabIndex = 4;
@@ -265,8 +266,9 @@ namespace LubriTech.View
             // 
             // MDI_View
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.BackgroundImage = global::LubriTech.Properties.Resources.logoCrop;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(836, 578);
@@ -274,8 +276,9 @@ namespace LubriTech.View
             this.Controls.Add(this.panelBtns);
             this.DoubleBuffered = true;
             this.IsMdiContainer = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MDI_View";
-            this.Text = "MDI_View";
+            this.Text = "Pantalla Inicial";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MDI_View_Load);
             this.sideBarContainer.ResumeLayout(false);

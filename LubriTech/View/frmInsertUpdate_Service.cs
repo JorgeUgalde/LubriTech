@@ -50,7 +50,7 @@ namespace LubriTech.View
 
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnConfirm_Click(object sender, EventArgs e)
         {
             if (newService == null)
             {
