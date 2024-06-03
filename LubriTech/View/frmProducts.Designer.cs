@@ -28,7 +28,7 @@ namespace LubriTech.View
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblSubtitle = new System.Windows.Forms.Label();
@@ -40,8 +40,8 @@ namespace LubriTech.View
             // 
             // dgvProducts
             // 
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(3, 3, 5, 5);
-            this.dgvProducts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(3, 3, 5, 5);
+            this.dgvProducts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -116,6 +116,7 @@ namespace LubriTech.View
             this.label1.Size = new System.Drawing.Size(80, 28);
             this.label1.TabIndex = 5;
             this.label1.Text = "Filtrar";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // frmProducts
             // 

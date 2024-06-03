@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.dgvServices = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtFilter = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServices)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,8 +76,8 @@
             // 
             // dgvServices
             // 
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(3, 3, 5, 5);
-            this.dgvServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(3, 3, 5, 5);
+            this.dgvServices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvServices.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -93,6 +95,27 @@
             this.dgvServices.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvServices_CellFormatting);
             this.dgvServices.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvServices_RowPrePaint);
             // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(505, 118);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(80, 28);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Filtrar";
+            // 
+            // txtFilter
+            // 
+            this.txtFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFilter.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFilter.Location = new System.Drawing.Point(591, 115);
+            this.txtFilter.Name = "txtFilter";
+            this.txtFilter.Size = new System.Drawing.Size(227, 35);
+            this.txtFilter.TabIndex = 6;
+            this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
+            // 
             // frmServices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -100,12 +123,15 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.ClientSize = new System.Drawing.Size(1100, 513);
             this.ControlBox = false;
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.dgvServices);
             this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmServices";
             this.Text = "Servicios";
+            this.Load += new System.EventHandler(this.frmServices_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvServices)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -118,5 +144,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAddProduct;
         private System.Windows.Forms.DataGridView dgvServices;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtFilter;
     }
 }
