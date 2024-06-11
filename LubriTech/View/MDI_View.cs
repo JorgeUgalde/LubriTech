@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LubriTech.View.Appointment_View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -234,6 +235,12 @@ namespace LubriTech.View
         private void OnFormResize(object sender, EventArgs e)
         {
             tableLayoutPanel.MaximumSize = new Size(200, this.ClientSize.Height);
+        }
+
+        private void btnAppointments_Click(object sender, EventArgs e)
+        {
+            frmAppointment frmAppointment = new frmAppointment();
+            OpenChildForm(frmAppointment);
         }
     }
 }

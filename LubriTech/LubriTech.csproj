@@ -105,6 +105,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="View\Appointment_View\frmAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Appointment_View\frmAppointment.Designer.cs">
+      <DependentUpon>frmAppointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Appointment_View\frmDayAppointments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Appointment_View\frmDayAppointments.Designer.cs">
+      <DependentUpon>frmDayAppointments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Appointment_View\UserControlBlank.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Appointment_View\UserControlBlank.Designer.cs">
+      <DependentUpon>UserControlBlank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Appointment_View\UserControlDays.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Appointment_View\UserControlDays.Designer.cs">
+      <DependentUpon>UserControlDays.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmClients.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +213,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\Appointment_View\frmAppointment.resx">
+      <DependentUpon>frmAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Appointment_View\frmDayAppointments.resx">
+      <DependentUpon>frmDayAppointments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Appointment_View\UserControlBlank.resx">
+      <DependentUpon>UserControlBlank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Appointment_View\UserControlDays.resx">
+      <DependentUpon>UserControlDays.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmClients.resx">
       <DependentUpon>frmClients.cs</DependentUpon>
     </EmbeddedResource>
@@ -276,6 +312,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
+    <Folder Include="Model\Appointment_Information\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

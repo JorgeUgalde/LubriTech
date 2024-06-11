@@ -176,13 +176,13 @@ namespace LubriTech.View
 
             // Estilo de las celdas
             // Headers de columnas
-            this.dgvVehicles.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 16, FontStyle.Bold);
+            this.dgvVehicles.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold);
             this.dgvVehicles.ColumnHeadersDefaultCellStyle.Padding = new Padding(10, 10, 10, 10);
             this.dgvVehicles.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.dgvVehicles.RowHeadersVisible = false;
 
             // Celdas
-            this.dgvVehicles.Rows[e.RowIndex].DefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Regular);
+            this.dgvVehicles.Rows[e.RowIndex].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
             this.dgvVehicles.Rows[e.RowIndex].DefaultCellStyle.Padding = new Padding(5, 5, 5, 5);
         }
 

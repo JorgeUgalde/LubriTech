@@ -153,6 +153,14 @@ namespace LubriTech.View
             {
                 dgvClients.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
             }
+            this.dgvClients.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 16, FontStyle.Bold);
+            this.dgvClients.ColumnHeadersDefaultCellStyle.Padding = new Padding(10, 10, 10, 10);
+            this.dgvClients.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.dgvClients.RowHeadersVisible = false;
+
+            // Celdas
+            this.dgvClients.Rows[e.RowIndex].DefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Regular);
+            this.dgvClients.Rows[e.RowIndex].DefaultCellStyle.Padding = new Padding(5, 5, 5, 5);
         }
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
