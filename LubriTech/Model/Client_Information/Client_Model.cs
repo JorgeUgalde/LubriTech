@@ -51,40 +51,42 @@ namespace LubriTech.Model.Client_Information
             }
         }//End of loadAllClients
 
-        private List<Vehicle> getVehicle(string ClientId)
+        public List<Vehicle> getVehicle(string ClientId)
         {
             List<Vehicle> vehicles = new List<Vehicle>();
-            String selectQueryClients = "SELECT * FROM Vehiculo WHERE Vehiculo.IdentificacionCliente = @identificacion;";
-            SqlCommand select = new SqlCommand(selectQueryClients, conn);
-            select.Parameters.AddWithValue("@identificacion", ClientId);
 
-            DataTable tblVehicles = new DataTable();
-            SqlDataAdapter adp = new SqlDataAdapter();
-
-            adp.SelectCommand = select;
-
-            adp.Fill(tblVehicles);
-
-            foreach (DataRow dr in tblVehicles.Rows)
+            try
             {
-                vehicles.Add( new Vehicle(dr["Placa"].ToString(), dr["TipoMotor"].ToString(), Convert.ToInt32(dr["Kilometraje"]), dr["Marca"].ToString(), dr["Modelo"].ToString(), Convert.ToInt32(dr["Anio"]), dr["Transmision"].ToString(), (getClient((string)dr["IdentificacionCliente"]))));
-            }
 
-            if (conn.State != System.Data.ConnectionState.Open)
+                String selectQuery = "SELECT * FROM Vehiculo WHERE Vehiculo.IdentificacionCliente = @identificacion;";
+                SqlCommand cmd = new SqlCommand(selectQuery, conn);
+                cmd.Parameters.AddWithValue("@identificacion", ClientId);
+
+                DataTable tblVehicles = new DataTable();
+                SqlDataAdapter adp = new SqlDataAdapter();
+
+                adp.SelectCommand = cmd;
+
+                adp.Fill(tblVehicles);
+
+                foreach (DataRow dr in tblVehicles.Rows)
+                {
+                    vehicles.Add(new Vehicle(dr["Placa"].ToString(), dr["TipoMotor"].ToString(), Convert.ToInt32(dr["Kilometraje"]), dr["Marca"].ToString(), dr["Modelo"].ToString(), Convert.ToInt32(dr["Anio"]), dr["Transmision"].ToString(), (getClient((string)dr["IdentificacionCliente"]))));
+                }
+                return vehicles;
+
+
+
+            }
+            catch (Exception ex)
             {
-                conn.Open();
-
+                MessageBox.Show("Error: " + ex.Message);
+                return null;
             }
-
-            select.ExecuteNonQuery();
-
-            if (conn.State != System.Data.ConnectionState.Closed)
+            finally
             {
                 conn.Close();
-
             }
-
-            return vehicles;
         }//End of GetVehicle
 
         public Client getClient(string Id)
@@ -134,10 +136,13 @@ namespace LubriTech.Model.Client_Information
             {
                 if (getClient(client.Id) != null)
                 {
+                    MessageBox.Show("El Cliente se ha modificado correctamente");
                     return updateClient(client);
+
                 }
                 else
                 {
+                    MessageBox.Show("El Cliente se ha agregado correctamente");
                     return addClient(client);
                 }
             }

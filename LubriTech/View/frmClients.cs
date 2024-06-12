@@ -15,22 +15,22 @@ namespace LubriTech.View
 {
     public partial class frmClients : Form
     {
+        private List<Client> clients;
+
         public frmClients()
         {
             InitializeComponent();
-            load_Clients();
             SetupDataGridView();
-            
-            
+            load_Clients(null);
+
+
         }
 
         
 
         private void ChildFormDataChangedHandler(object sender, EventArgs e)
         {
-            // Refresh DataGridView here
-            // For example:
-            load_Clients();
+            load_Clients(null);
         }
 
         private void SetupDataGridView()
@@ -51,14 +51,49 @@ namespace LubriTech.View
             dgvClients.Columns.Add(deleteButtonColumn);
         }
 
-        private void load_Clients()
+        private void load_Clients(List<Client> filteredList)
         {
-            dgvClients.DataSource = new Clients_Controller().getAll();
+            if (filteredList != null)
+            {
+                if (filteredList.Count == 0)
+                {
+                    dgvClients.DataSource = clients;
+
+                }
+                else
+                {
+                    dgvClients.DataSource = filteredList;
+                }
+            }
+            else
+            {
+                clients = new Clients_Controller().getAll();
+                dgvClients.DataSource = clients;
+
+            }
+            dgvClients.Columns["Id"].HeaderText = "Identificación";
+            dgvClients.Columns["FullName"].HeaderText = "Nombre Completo";
+            dgvClients.Columns["MainPhoneNum"].HeaderText = "Teléfono Principal";
+            dgvClients.Columns["AdditionalPhoneNum"].HeaderText = "Teléfono Adicional";
+            dgvClients.Columns["Email"].HeaderText = "Correo Electrónico";
+            dgvClients.Columns["Address"].HeaderText = "Direccion";
+            SetColumnOrder();
+        }
+        private void SetColumnOrder()
+        {
+            dgvClients.Columns["Id"].DisplayIndex = 0;
+            dgvClients.Columns["FullName"].DisplayIndex = 1;
+            dgvClients.Columns["MainPhoneNum"].DisplayIndex = 2;
+            dgvClients.Columns["AdditionalPhoneNum"].DisplayIndex = 3;
+            dgvClients.Columns["Email"].DisplayIndex = 4;
+            dgvClients.Columns["Address"].DisplayIndex = 5;
+            dgvClients.Columns["ModifyButtonColumn"].DisplayIndex = 6;
+            dgvClients.Columns["DeleteButtonColumn"].DisplayIndex = 7;
         }
 
         private void frmClients_Load(object sender, EventArgs e)
         {
-            load_Clients();
+            txtFilter.TextChanged += new EventHandler(txtFilter_TextChanged);
         }
 
         private void dgvClients_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -82,7 +117,7 @@ namespace LubriTech.View
                 frmInsertClient.Owner = this;
                 frmInsertClient.DataChanged += ChildFormDataChangedHandler;
                 frmInsertClient.Show();
-                load_Clients();
+                load_Clients(null);
                 return;
             }
 
@@ -94,7 +129,7 @@ namespace LubriTech.View
                     string idToDelete = dgvClients.Rows[e.RowIndex].Cells["Id"].Value.ToString();
                     Clients_Controller cc = new Clients_Controller();
                     cc.remove(idToDelete);
-                    load_Clients();
+                    load_Clients(null);
                     return;
                 }
             }
@@ -118,6 +153,38 @@ namespace LubriTech.View
             {
                 dgvClients.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
             }
+            this.dgvClients.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 16, FontStyle.Bold);
+            this.dgvClients.ColumnHeadersDefaultCellStyle.Padding = new Padding(10, 10, 10, 10);
+            this.dgvClients.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.dgvClients.RowHeadersVisible = false;
+
+            // Celdas
+            this.dgvClients.Rows[e.RowIndex].DefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Regular);
+            this.dgvClients.Rows[e.RowIndex].DefaultCellStyle.Padding = new Padding(5, 5, 5, 5);
+        }
+
+        private void txtFilter_TextChanged(object sender, EventArgs e)
+        {
+            ApplyFilter();
+        }
+
+        private void ApplyFilter()
+        {
+            string filterValue = txtFilter.Text.ToLower();
+
+            // Filtrar la lista de productos
+            var filteredList = clients.Where(c =>
+                c.Id.ToLower().Contains(filterValue) ||
+                c.FullName.ToLower().Contains(filterValue) ||
+                c.MainPhoneNum.ToString().ToLower().Contains(filterValue) ||
+                c.AdditionalPhoneNum.ToString().Contains(filterValue) ||
+                c.Email.ToLower().Contains(filterValue) ||
+                c.Address.ToLower().Contains(filterValue)
+            ).ToList();
+
+            // Refrescar el DataGridView
+            dgvClients.DataSource = null;
+            load_Clients(filteredList);
         }
     }
 }

@@ -44,7 +44,7 @@
             this.dgvVehiclesClients = new System.Windows.Forms.DataGridView();
             this.btnAddVehicle = new System.Windows.Forms.Button();
             this.btnAddClient = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVehiclesClients)).BeginInit();
             this.SuspendLayout();
@@ -123,7 +123,6 @@
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(272, 35);
             this.txtID.TabIndex = 6;
-            this.txtID.Text = "Ingrese la identificacion";
             // 
             // txtMainPhone
             // 
@@ -216,7 +215,7 @@
             this.btnAddVehicle.TabIndex = 16;
             this.btnAddVehicle.Text = "Agregar Vehículo";
             this.btnAddVehicle.UseVisualStyleBackColor = false;
-            this.btnAddVehicle.Click += new System.EventHandler(this.button1_Click);
+            this.btnAddVehicle.Click += new System.EventHandler(this.btnAddVehicle_Click);
             // 
             // btnAddClient
             // 
@@ -232,21 +231,21 @@
             this.btnAddClient.TabIndex = 17;
             this.btnAddClient.Text = "Agregar Cliente";
             this.btnAddClient.UseVisualStyleBackColor = false;
-            this.btnAddClient.Click += new System.EventHandler(this.btnSaveClient_Click);
+            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
             // 
-            // button2
+            // btnBack
             // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Image = global::LubriTech.Properties.Resources.Back;
-            this.button2.Location = new System.Drawing.Point(63, 36);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(77, 48);
-            this.button2.TabIndex = 18;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnBack.FlatAppearance.BorderSize = 0;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnBack.Image = global::LubriTech.Properties.Resources.Back;
+            this.btnBack.Location = new System.Drawing.Point(63, 36);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBack.Name = "button2";
+            this.btnBack.Size = new System.Drawing.Size(77, 48);
+            this.btnBack.TabIndex = 18;
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // label7
             // 
@@ -266,7 +265,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.ClientSize = new System.Drawing.Size(1364, 734);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAddClient);
             this.Controls.Add(this.btnAddVehicle);
             this.Controls.Add(this.dgvVehiclesClients);
@@ -312,7 +311,7 @@
         private System.Windows.Forms.DataGridView dgvVehiclesClients;
         private System.Windows.Forms.Button btnAddVehicle;
         private System.Windows.Forms.Button btnAddClient;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label label7;
     }
 }

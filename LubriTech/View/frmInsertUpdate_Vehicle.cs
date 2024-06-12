@@ -10,30 +10,32 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Runtime.CompilerServices.RuntimeHelpers;
 using System.Xml.Linq;
-using LubriTech.Model.Product_Information;
-using LubriTech.Model.Supplier_Information;
 using LubriTech.Model.Vehicle_Information;
+using LubriTech.Model.Client_Information;
+using LubriTech.Model.Supplier_Information;
 
 namespace LubriTech.View
 {
     public partial class frmInsertUpdate_Vehicle : Form
     {
+
+        List<Client> clients;
+
         public frmInsertUpdate_Vehicle()
         {
+            clients = new List<Client>();
             InitializeComponent();
-        }
-
-        public event EventHandler DataChanged;
-
-        protected virtual void OnDataChanged(EventArgs e)
-        {
-            DataChanged?.Invoke(this, e);
+            load_Clients(null);
+            SetupClientsDGV();
         }
 
         public frmInsertUpdate_Vehicle(Vehicle vehicle)
         {
+            clients = new List<Client>();
             InitializeComponent();
-
+            load_Clients(null);
+            SetupClientsDGV();
+            tbClientName.Text = vehicle.Client.FullName;
             tbClientId.Text = vehicle.Client.Id;
             tbBrand.Text = vehicle.Brand;
             tbModel.Text = vehicle.Model;
@@ -44,9 +46,16 @@ namespace LubriTech.View
             cbTransmission.Text = vehicle.Transmission;
         }
 
+        public event EventHandler DataChanged;
+
+        protected virtual void OnDataChanged(EventArgs e)
+        {
+            DataChanged?.Invoke(this, e);
+        }
+
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (tbClientId.Text.Trim() == ""
+            if (tbClientName.Text.Trim() == ""
                 || tbBrand.Text.Trim() == ""
                 || tbModel.Text.Trim() == ""
                 || tbLicensePlate.Text.Trim() == ""
@@ -56,6 +65,10 @@ namespace LubriTech.View
                 || cbTransmission.Text.Trim() == "")
             {
                 MessageBox.Show("Por favor llene todos los campos");
+            }
+            else if(tbClientId.Text.Trim() == "")
+            {
+                MessageBox.Show("Debe seleccionar un cliente");
             }
             else
             {
@@ -79,8 +92,95 @@ namespace LubriTech.View
                 {
                     MessageBox.Show("Product not inserted");
                 }
+            }
+        }
 
-                MessageBox.Show("Se realizó la acción satisfactoriamente");
+        private void txtClientInfo_TextChanged(object sender, EventArgs e)
+        {
+            List<Client> clients = new Client_Model().loadAllClients();
+            string clientName = tbClientName.Text.Trim();
+            if (clientName != "")
+            {
+                var filteredClients = clients.Where(c => c.FullName.IndexOf(clientName, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+                load_Clients(filteredClients);
+            }
+            else
+            {
+                load_Clients(null);
+            }
+        }
+
+        private void load_Clients(List<Client> filteredClients)
+        {
+            try
+            {
+                if (filteredClients != null)
+                {
+                    dgvClients.DataSource = filteredClients;
+                    dgvClients.Columns["Id"].HeaderText = "Identificación";
+                    dgvClients.Columns["FullName"].HeaderText = "Nombre";
+                    dgvClients.Columns["MainPhoneNum"].Visible = false;
+                    dgvClients.Columns["AdditionalPhoneNum"].Visible = false;
+                    dgvClients.Columns["Email"].Visible = false;
+                    dgvClients.Columns["Address"].Visible = false;
+                }
+
+                else
+                {
+                    clients = new Client_Model().loadAllClients();
+                    dgvClients.DataSource = clients;
+                    dgvClients.Columns["Id"].HeaderText = "Identificación";
+                    dgvClients.Columns["FullName"].HeaderText = "Nombre";
+                    dgvClients.Columns["MainPhoneNum"].Visible = false;
+                    dgvClients.Columns["AdditionalPhoneNum"].Visible = false;
+                    dgvClients.Columns["Email"].Visible = false;
+                    dgvClients.Columns["Address"].Visible = false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        private void SetupClientsDGV()
+        {
+            DataGridViewButtonColumn selectButtonColumn = new DataGridViewButtonColumn();
+            selectButtonColumn.Name = "selectButtonColumn";
+            selectButtonColumn.HeaderText = "";
+            selectButtonColumn.Text = "Seleccionar";
+            selectButtonColumn.UseColumnTextForButtonValue = true;
+            dgvClients.Columns.Add(selectButtonColumn);
+
+
+        }
+
+        private void dgvClients_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvClients.Columns["selectButtonColumn"].Index && e.RowIndex >= 0)
+            {
+                string idToSelect = dgvClients.Rows[e.RowIndex].Cells["Id"].Value.ToString();
+                foreach (Client client in clients)
+                {
+                    if (client.Id == idToSelect)
+                    {
+                        tbClientName.Text = client.FullName;
+                        tbClientId.Text = client.Id;
+                        MessageBox.Show(client.FullName + " seleccionado correctamente");
+                        break;
+                    }
+                }
+            }
+
+        }
+
+        private void dgvClients_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
+            {
+                this.dgvClients.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
             }
         }
 

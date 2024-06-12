@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LubriTech.View.Appointment_View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,6 +25,8 @@ namespace LubriTech.View
             OnFormResize(this, EventArgs.Empty); // Ajustar el tamaño inicial
         }
 
+       
+
         private void InitializeMenu()
         {
             // Crear el TableLayoutPanel
@@ -45,40 +48,21 @@ namespace LubriTech.View
             tableLayoutPanel.Controls.Add(panelBtns, 0, 1);
 
             // Crear y agregar botones al panel del menú
-            btnClients.Size = new Size(200, 50);
-            btnClients.Dock = DockStyle.Top;
             panelBtns.Controls.Add(btnClients);
-            btnWorkOrders.Size = new Size(200, 50);
-            btnWorkOrders.Dock = DockStyle.Top;
             panelBtns.Controls.Add(btnWorkOrders);
-            btnAppointments.Size = new Size(200, 50);
-            btnAppointments.Dock = DockStyle.Top;
             panelBtns.Controls.Add(btnAppointments);
-            btnInventory.Size = new Size(200, 50);
-            btnInventory.Dock = DockStyle.Top;
             panelBtns.Controls.Add(btnInventory);
-            btnProducts.Size = new Size(200, 50);
-            btnProducts.Dock = DockStyle.Top;
             panelBtns.Controls.Add(btnProducts);
-            btnServices.Size = new Size(200, 50);
-            btnServices.Dock = DockStyle.Top;
             panelBtns.Controls.Add(btnServices);
-            btnSuppliers.Size = new Size(200, 50);
-            btnSuppliers.Dock = DockStyle.Top;
             panelBtns.Controls.Add(btnSuppliers);
-            btnVehicles.Size = new Size(200, 50);
-            btnVehicles.Dock = DockStyle.Top;
             panelBtns.Controls.Add(btnVehicles);
 
             // Crear el botón de cerrar sesión
-            btnLogout.Size = new Size(200, 50);
             btnLogout.Dock = DockStyle.Bottom;
             tableLayoutPanel.Controls.Add(btnLogout, 0, 2);
 
             // Agregar el TableLayoutPanel al formulario
             this.Controls.Add(tableLayoutPanel);
-            panel1.Size = new Size(200, 50);
-            panelBtns.Size = new Size(200, 500);
             tableLayoutPanel.MinimumSize = new Size(42, 500);
             tableLayoutPanel.MaximumSize = new Size(200, this.ClientSize.Height);
         }
@@ -251,6 +235,12 @@ namespace LubriTech.View
         private void OnFormResize(object sender, EventArgs e)
         {
             tableLayoutPanel.MaximumSize = new Size(200, this.ClientSize.Height);
+        }
+
+        private void btnAppointments_Click(object sender, EventArgs e)
+        {
+            frmAppointment frmAppointment = new frmAppointment();
+            OpenChildForm(frmAppointment);
         }
     }
 }

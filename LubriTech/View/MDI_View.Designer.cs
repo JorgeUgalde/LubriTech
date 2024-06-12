@@ -72,7 +72,7 @@ namespace LubriTech.View
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnMenu);
             this.panel1.Location = new System.Drawing.Point(4, 4);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(263, 58);
             this.panel1.TabIndex = 3;
@@ -217,7 +217,7 @@ namespace LubriTech.View
             this.btnAppointments.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.btnAppointments.Image = global::LubriTech.Properties.Resources.appointment;
             this.btnAppointments.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAppointments.Location = new System.Drawing.Point(0, 87);
+            this.btnAppointments.Location = new System.Drawing.Point(0, 86);
             this.btnAppointments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAppointments.Name = "btnAppointments";
             this.btnAppointments.Size = new System.Drawing.Size(197, 39);
@@ -225,6 +225,7 @@ namespace LubriTech.View
             this.btnAppointments.Text = "             Citas";
             this.btnAppointments.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAppointments.UseVisualStyleBackColor = true;
+            this.btnAppointments.Click += new System.EventHandler(this.btnAppointments_Click);
             // 
             // btnServices
             // 
@@ -297,7 +298,7 @@ namespace LubriTech.View
             this.Controls.Add(this.panelBtns);
             this.DoubleBuffered = true;
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MDI_View";
             this.Text = "Pantalla Inicial";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

@@ -48,11 +48,11 @@
             this.btLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.btLogin.Location = new System.Drawing.Point(98, 557);
-            this.btLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btLogin.MinimumSize = new System.Drawing.Size(464, 51);
+            this.btLogin.Location = new System.Drawing.Point(74, 453);
+            this.btLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btLogin.MinimumSize = new System.Drawing.Size(348, 41);
             this.btLogin.Name = "btLogin";
-            this.btLogin.Size = new System.Drawing.Size(917, 51);
+            this.btLogin.Size = new System.Drawing.Size(688, 41);
             this.btLogin.TabIndex = 0;
             this.btLogin.Text = "Iniciar sesión";
             this.btLogin.UseVisualStyleBackColor = false;
@@ -62,8 +62,7 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Image = global::LubriTech.Properties.Resources.logo1;
-            this.pictureBox1.Location = new System.Drawing.Point(402, 13);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(302, 11);
             this.pictureBox1.MinimumSize = new System.Drawing.Size(241, 339);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(241, 339);
@@ -78,11 +77,10 @@
             this.txtEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(98, 407);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
-            this.txtEmail.MinimumSize = new System.Drawing.Size(463, 34);
+            this.txtEmail.Location = new System.Drawing.Point(74, 331);
+            this.txtEmail.MinimumSize = new System.Drawing.Size(348, 34);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(916, 34);
+            this.txtEmail.Size = new System.Drawing.Size(688, 28);
             this.txtEmail.TabIndex = 2;
             // 
             // txtPassword
@@ -92,11 +90,11 @@
             this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(98, 497);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPassword.MinimumSize = new System.Drawing.Size(463, 34);
+            this.txtPassword.Location = new System.Drawing.Point(74, 404);
+            this.txtPassword.MinimumSize = new System.Drawing.Size(348, 34);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(916, 34);
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(688, 28);
             this.txtPassword.TabIndex = 3;
             // 
             // label1
@@ -105,10 +103,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(92, 369);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(69, 300);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(277, 34);
+            this.label1.Size = new System.Drawing.Size(210, 26);
             this.label1.TabIndex = 4;
             this.label1.Text = "Correo electrónico";
             // 
@@ -118,10 +115,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(92, 459);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(69, 373);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(177, 34);
+            this.label2.Size = new System.Drawing.Size(136, 26);
             this.label2.TabIndex = 5;
             this.label2.Text = "Contraseña";
             // 
@@ -136,18 +132,19 @@
             this.panel1.Controls.Add(this.txtEmail);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1107, 742);
+            this.panel1.Size = new System.Drawing.Size(830, 603);
             this.panel1.TabIndex = 6;
             // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.ClientSize = new System.Drawing.Size(1107, 742);
+            this.ClientSize = new System.Drawing.Size(830, 603);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmLogin";
             this.Text = "Inicio de Sesión";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
