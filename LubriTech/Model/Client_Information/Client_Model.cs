@@ -16,6 +16,7 @@ namespace LubriTech.Model.Client_Information
     {
 
         SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
+
         public List<Client> loadAllClients()
         {
             
@@ -36,7 +37,10 @@ namespace LubriTech.Model.Client_Information
 
                 foreach (DataRow dr in tblClients.Rows)
                 {
-                    clients.Add(new Client(dr["Identificacion"].ToString(), dr["NombreCompleto"].ToString(), Convert.ToInt32(dr["NumeroTelefonoPrincipal"]), Convert.ToInt32(dr["NumeroTelefonoAdicional"]), dr["CorreoElectronico"].ToString(), dr["CorreoElectronico"].ToString(), (getVehicle((string)dr["Identificacion"]))));
+                    clients.Add(new Client(dr["Identificacion"].ToString(), dr["NombreCompleto"].ToString(), 
+                        Convert.ToInt32(dr["NumeroTelefonoPrincipal"]), Convert.ToInt32(dr["NumeroTelefonoAdicional"]), 
+                        dr["CorreoElectronico"].ToString(), dr["CorreoElectronico"].ToString(), (getVehicle((string)dr["Identificacion"])),
+                        dr["Estado"].ToString() ));
                 }
                 return clients;
             }
@@ -106,7 +110,7 @@ namespace LubriTech.Model.Client_Information
 
                 Client client = new Client(dr["Identificacion"].ToString(), dr["NombreCompleto"].ToString(),
                                            Convert.ToInt32(dr["NumeroTelefonoPrincipal"]), Convert.ToInt32(dr["NumeroTelefonoAdicional"]),
-                                           dr["CorreoElectronico"].ToString(), dr["Direccion"].ToString());
+                                           dr["CorreoElectronico"].ToString(), dr["Direccion"].ToString(), dr["Estado"].ToString());
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -156,7 +160,7 @@ namespace LubriTech.Model.Client_Information
         {
             try
             {
-                String insertQuery = "insert into Cliente(Identificacion, NombreCompleto, NumeroTelefonoPrincipal, NumeroTelefonoAdicional, CorreoElectronico, Direccion) values (@id, @fullname, @mainphone, @additionalphone, @email, @addresse)";
+                String insertQuery = "insert into Cliente(Identificacion, NombreCompleto, NumeroTelefonoPrincipal, NumeroTelefonoAdicional, CorreoElectronico, Direccion, Estado) values (@id, @fullname, @mainphone, @additionalphone, @email, @addresse, @state)";
 
                 SqlCommand insert = new SqlCommand(insertQuery, conn);
 
@@ -166,6 +170,8 @@ namespace LubriTech.Model.Client_Information
                 insert.Parameters.AddWithValue("@additionalphone", client.AdditionalPhoneNum.HasValue ? (object)client.AdditionalPhoneNum.Value : DBNull.Value);
                 insert.Parameters.AddWithValue("@email", client.Email);
                 insert.Parameters.AddWithValue("@addresse", client.Address);
+                insert.Parameters.AddWithValue("@state", client.State);
+
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {

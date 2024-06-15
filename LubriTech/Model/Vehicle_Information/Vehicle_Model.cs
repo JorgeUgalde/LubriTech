@@ -79,7 +79,8 @@ namespace LubriTech.Model.Vehicle_Information
                                         Convert.ToInt32(dr["NumeroTelefonoPrincipal"]),
                                         Convert.ToInt32(dr["NumeroTelefonoAdicional"]),
                                         dr["CorreoElectronico"].ToString(),
-                                        dr["Direccion"].ToString());
+                                        dr["Direccion"].ToString(),
+                                        dr["Estado"].ToString());
                 }
 
                 if (conn.State != System.Data.ConnectionState.Open)

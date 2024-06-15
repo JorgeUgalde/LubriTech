@@ -20,10 +20,11 @@ namespace LubriTech.View
 
         public frmClients()
         {
-            InitializeComponent();
             clients = new List<Client>();
+            InitializeComponent();
             SetupDataGridView();
             load_Clients(null);
+
         }
 
         private void frmClients_Load(object sender, EventArgs e)
@@ -31,6 +32,7 @@ namespace LubriTech.View
             txtFilter.TextChanged += new EventHandler(txtFilter_TextChanged);
         }
 
+        
         private void load_Clients(List<Client> filteredList)
         {
             if (filteredList != null)
@@ -48,6 +50,11 @@ namespace LubriTech.View
             else
             {
                 clients = new Clients_Controller().getAll();
+                if (clients.Count == 0)
+                {
+                    MessageBox.Show("No hay clientes registrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
                 dgvClients.DataSource = clients;
 
             }

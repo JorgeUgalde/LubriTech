@@ -93,8 +93,9 @@ namespace LubriTech.View
                     int? additionalPhone = !string.IsNullOrEmpty(this.txtAdditionalPhone.Text.Trim()) ? Convert.ToInt32(this.txtAdditionalPhone.Text.Trim()) : (int?)null;
                     string email = !string.IsNullOrEmpty(this.txtEmail.Text.Trim()) ? this.txtEmail.Text.Trim() : null;
                     string addresse = !string.IsNullOrEmpty(this.txtAddresse.Text.Trim()) ? this.txtAddresse.Text.Trim() : null;
+                    string state = "Activo";
 
-                    Client client = new Client(id, fullname, mainPhone, additionalPhone, email, addresse);
+                    Client client = new Client(id, fullname, mainPhone, additionalPhone, email, addresse, state);
 
                     if (clientsController.upsert(client))
                     {
