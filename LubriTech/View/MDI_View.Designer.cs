@@ -293,7 +293,7 @@ namespace LubriTech.View
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.BackgroundImage = global::LubriTech.Properties.Resources.logoCrop;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(694, 470);
+            this.ClientSize = new System.Drawing.Size(690, 470);
             this.Controls.Add(this.sideBarContainer);
             this.Controls.Add(this.panelBtns);
             this.DoubleBuffered = true;

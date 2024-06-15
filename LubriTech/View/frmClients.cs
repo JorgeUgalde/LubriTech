@@ -151,11 +151,11 @@ namespace LubriTech.View
         {
             // Modify button column
             DataGridViewButtonColumn modifyButtonColumn = new DataGridViewButtonColumn();
-            modifyButtonColumn.Name = "ModifyButtonColumn";
-            modifyButtonColumn.HeaderText = "Ver Detalles";
-            modifyButtonColumn.Text = "Detalles - Modificar";
-            modifyButtonColumn.UseColumnTextForButtonValue = true;
-            dgvClients.Columns.Add(modifyButtonColumn);
+            DataGridViewImageColumn modifyImageColumn = new DataGridViewImageColumn();
+            modifyImageColumn.Name = "ModifyImageColumn";
+            modifyImageColumn.HeaderText = "Ver Detalles";
+            //modifyImageColumn.Image = Properties.Resources.EditIco; 
+            dgvClients.Columns.Add(modifyImageColumn);
 
             DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
             deleteButtonColumn.Name = "DeleteButtonColumn";
