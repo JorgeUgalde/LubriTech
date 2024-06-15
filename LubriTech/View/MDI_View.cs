@@ -11,14 +11,17 @@ using System.Windows.Forms;
 
 namespace LubriTech.View
 {
+    
+
     public partial class MDI_View : Form
     {
         private int childFormNumber = 0;
-        private bool sideBarExpanded = true;
+        private bool sideBarExpanded = false;
         TableLayoutPanel tableLayoutPanel = new TableLayoutPanel();
 
         public MDI_View()
         {
+            DoubleBuffered = true;
             InitializeComponent();
             InitializeMenu();
             this.Resize += new EventHandler(OnFormResize);
@@ -136,17 +139,18 @@ namespace LubriTech.View
 
         private void MDI_View_Load(object sender, EventArgs e)
         {
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
             //this.Visible = false;
             //frmLogin frmLogin = new frmLogin();
             //frmLogin.ShowDialog();
             //this.Visible = true;
         }
 
-        private void btnClients_Click(object sender, EventArgs e)
+        private  void btnClients_Click(object sender, EventArgs e)
         {
             frmClients frmClients = new frmClients();
             OpenChildForm(frmClients);
-
         }
 
 
@@ -242,5 +246,7 @@ namespace LubriTech.View
             frmAppointment frmAppointment = new frmAppointment();
             OpenChildForm(frmAppointment);
         }
+
+        
     }
 }

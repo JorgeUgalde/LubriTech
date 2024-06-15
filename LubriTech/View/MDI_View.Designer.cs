@@ -58,12 +58,12 @@ namespace LubriTech.View
             this.sideBarContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(29)))), ((int)(((byte)(29)))));
             this.sideBarContainer.Controls.Add(this.panel1);
             this.sideBarContainer.Controls.Add(this.btnLogout);
-            this.sideBarContainer.Location = new System.Drawing.Point(500, 108);
-            this.sideBarContainer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sideBarContainer.MaximumSize = new System.Drawing.Size(200, 812);
-            this.sideBarContainer.MinimumSize = new System.Drawing.Size(43, 500);
+            this.sideBarContainer.Location = new System.Drawing.Point(375, 88);
+            this.sideBarContainer.Margin = new System.Windows.Forms.Padding(2);
+            this.sideBarContainer.MaximumSize = new System.Drawing.Size(150, 660);
+            this.sideBarContainer.MinimumSize = new System.Drawing.Size(32, 406);
             this.sideBarContainer.Name = "sideBarContainer";
-            this.sideBarContainer.Size = new System.Drawing.Size(200, 578);
+            this.sideBarContainer.Size = new System.Drawing.Size(150, 470);
             this.sideBarContainer.TabIndex = 3;
             this.sideBarContainer.Visible = false;
             // 
@@ -71,19 +71,19 @@ namespace LubriTech.View
             // 
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnMenu);
-            this.panel1.Location = new System.Drawing.Point(4, 4);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(263, 58);
+            this.panel1.Size = new System.Drawing.Size(197, 47);
             this.panel1.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.label2.Location = new System.Drawing.Point(55, 23);
+            this.label2.Location = new System.Drawing.Point(41, 19);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 16);
+            this.label2.Size = new System.Drawing.Size(34, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Menu";
             // 
@@ -92,11 +92,11 @@ namespace LubriTech.View
             this.btnMenu.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMenu.Image = global::LubriTech.Properties.Resources.menu;
-            this.btnMenu.Location = new System.Drawing.Point(0, 7);
-            this.btnMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMenu.Location = new System.Drawing.Point(0, 6);
+            this.btnMenu.Margin = new System.Windows.Forms.Padding(2);
             this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Padding = new System.Windows.Forms.Padding(7, 9, 0, 0);
-            this.btnMenu.Size = new System.Drawing.Size(32, 30);
+            this.btnMenu.Padding = new System.Windows.Forms.Padding(5, 7, 0, 0);
+            this.btnMenu.Size = new System.Drawing.Size(30, 28);
             this.btnMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.btnMenu.TabIndex = 4;
             this.btnMenu.TabStop = false;
@@ -112,10 +112,10 @@ namespace LubriTech.View
             this.btnLogout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.btnLogout.Image = global::LubriTech.Properties.Resources.Logout1;
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(3, 68);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLogout.Location = new System.Drawing.Point(2, 55);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(197, 39);
+            this.btnLogout.Size = new System.Drawing.Size(148, 32);
             this.btnLogout.TabIndex = 3;
             this.btnLogout.Text = "             Cerrar Sesión";
             this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -132,10 +132,10 @@ namespace LubriTech.View
             this.panelBtns.Controls.Add(this.btnServices);
             this.panelBtns.Controls.Add(this.btnInventory);
             this.panelBtns.Controls.Add(this.btnProducts);
-            this.panelBtns.Location = new System.Drawing.Point(239, 119);
-            this.panelBtns.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelBtns.Location = new System.Drawing.Point(179, 97);
+            this.panelBtns.Margin = new System.Windows.Forms.Padding(2);
             this.panelBtns.Name = "panelBtns";
-            this.panelBtns.Size = new System.Drawing.Size(197, 342);
+            this.panelBtns.Size = new System.Drawing.Size(148, 278);
             this.panelBtns.TabIndex = 0;
             // 
             // btnClients
@@ -147,9 +147,9 @@ namespace LubriTech.View
             this.btnClients.Image = ((System.Drawing.Image)(resources.GetObject("btnClients.Image")));
             this.btnClients.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClients.Location = new System.Drawing.Point(0, 2);
-            this.btnClients.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClients.Margin = new System.Windows.Forms.Padding(2);
             this.btnClients.Name = "btnClients";
-            this.btnClients.Size = new System.Drawing.Size(197, 39);
+            this.btnClients.Size = new System.Drawing.Size(148, 32);
             this.btnClients.TabIndex = 2;
             this.btnClients.Text = "             Clientes";
             this.btnClients.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -164,10 +164,10 @@ namespace LubriTech.View
             this.btnVehicles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.btnVehicles.Image = global::LubriTech.Properties.Resources.vehicle;
             this.btnVehicles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVehicles.Location = new System.Drawing.Point(0, 297);
-            this.btnVehicles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnVehicles.Location = new System.Drawing.Point(0, 241);
+            this.btnVehicles.Margin = new System.Windows.Forms.Padding(2);
             this.btnVehicles.Name = "btnVehicles";
-            this.btnVehicles.Size = new System.Drawing.Size(197, 39);
+            this.btnVehicles.Size = new System.Drawing.Size(148, 32);
             this.btnVehicles.TabIndex = 2;
             this.btnVehicles.Text = "             Vehículos";
             this.btnVehicles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -182,10 +182,10 @@ namespace LubriTech.View
             this.btnWorkOrders.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.btnWorkOrders.Image = global::LubriTech.Properties.Resources.work_order;
             this.btnWorkOrders.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnWorkOrders.Location = new System.Drawing.Point(0, 46);
-            this.btnWorkOrders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnWorkOrders.Location = new System.Drawing.Point(0, 37);
+            this.btnWorkOrders.Margin = new System.Windows.Forms.Padding(2);
             this.btnWorkOrders.Name = "btnWorkOrders";
-            this.btnWorkOrders.Size = new System.Drawing.Size(197, 39);
+            this.btnWorkOrders.Size = new System.Drawing.Size(148, 32);
             this.btnWorkOrders.TabIndex = 2;
             this.btnWorkOrders.Text = "             Órdenes de trabajo";
             this.btnWorkOrders.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -199,10 +199,10 @@ namespace LubriTech.View
             this.btnSuppliers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.btnSuppliers.Image = global::LubriTech.Properties.Resources.suppliers;
             this.btnSuppliers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSuppliers.Location = new System.Drawing.Point(0, 255);
-            this.btnSuppliers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSuppliers.Location = new System.Drawing.Point(0, 207);
+            this.btnSuppliers.Margin = new System.Windows.Forms.Padding(2);
             this.btnSuppliers.Name = "btnSuppliers";
-            this.btnSuppliers.Size = new System.Drawing.Size(197, 39);
+            this.btnSuppliers.Size = new System.Drawing.Size(148, 32);
             this.btnSuppliers.TabIndex = 2;
             this.btnSuppliers.Text = "             Proveedores";
             this.btnSuppliers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -217,10 +217,10 @@ namespace LubriTech.View
             this.btnAppointments.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.btnAppointments.Image = global::LubriTech.Properties.Resources.appointment;
             this.btnAppointments.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAppointments.Location = new System.Drawing.Point(0, 86);
-            this.btnAppointments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAppointments.Location = new System.Drawing.Point(0, 70);
+            this.btnAppointments.Margin = new System.Windows.Forms.Padding(2);
             this.btnAppointments.Name = "btnAppointments";
-            this.btnAppointments.Size = new System.Drawing.Size(197, 39);
+            this.btnAppointments.Size = new System.Drawing.Size(148, 32);
             this.btnAppointments.TabIndex = 2;
             this.btnAppointments.Text = "             Citas";
             this.btnAppointments.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -235,10 +235,10 @@ namespace LubriTech.View
             this.btnServices.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.btnServices.Image = global::LubriTech.Properties.Resources.services;
             this.btnServices.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnServices.Location = new System.Drawing.Point(0, 213);
-            this.btnServices.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnServices.Location = new System.Drawing.Point(0, 173);
+            this.btnServices.Margin = new System.Windows.Forms.Padding(2);
             this.btnServices.Name = "btnServices";
-            this.btnServices.Size = new System.Drawing.Size(197, 39);
+            this.btnServices.Size = new System.Drawing.Size(148, 32);
             this.btnServices.TabIndex = 2;
             this.btnServices.Text = "             Servicios";
             this.btnServices.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -253,10 +253,10 @@ namespace LubriTech.View
             this.btnInventory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.btnInventory.Image = global::LubriTech.Properties.Resources.inventory;
             this.btnInventory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInventory.Location = new System.Drawing.Point(0, 129);
-            this.btnInventory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnInventory.Location = new System.Drawing.Point(0, 105);
+            this.btnInventory.Margin = new System.Windows.Forms.Padding(2);
             this.btnInventory.Name = "btnInventory";
-            this.btnInventory.Size = new System.Drawing.Size(197, 39);
+            this.btnInventory.Size = new System.Drawing.Size(148, 32);
             this.btnInventory.TabIndex = 2;
             this.btnInventory.Text = "             Inventario";
             this.btnInventory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -270,10 +270,10 @@ namespace LubriTech.View
             this.btnProducts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.btnProducts.Image = global::LubriTech.Properties.Resources.products;
             this.btnProducts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProducts.Location = new System.Drawing.Point(0, 171);
-            this.btnProducts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnProducts.Location = new System.Drawing.Point(0, 139);
+            this.btnProducts.Margin = new System.Windows.Forms.Padding(2);
             this.btnProducts.Name = "btnProducts";
-            this.btnProducts.Size = new System.Drawing.Size(197, 39);
+            this.btnProducts.Size = new System.Drawing.Size(148, 32);
             this.btnProducts.TabIndex = 2;
             this.btnProducts.Text = "             Productos";
             this.btnProducts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -288,17 +288,16 @@ namespace LubriTech.View
             // 
             // MDI_View
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.BackgroundImage = global::LubriTech.Properties.Resources.logoCrop;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(925, 578);
+            this.ClientSize = new System.Drawing.Size(694, 470);
             this.Controls.Add(this.sideBarContainer);
             this.Controls.Add(this.panelBtns);
             this.DoubleBuffered = true;
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MDI_View";
             this.Text = "Pantalla Inicial";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
