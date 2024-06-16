@@ -139,9 +139,9 @@ namespace LubriTech.View
 
         private void btnClientMasterData_Click(object sender, EventArgs e)
         {
-            frmUpsert_Client frmUpsert_Client = new frmUpsert_Client();
-            OpenChildForm(frmUpsert_Client);
-            frmUpsert_Client.BringToFront();
+            frmClients frmClients = new frmClients();
+            OpenChildForm(frmClients);
+            frmClients.BringToFront();
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -153,9 +153,9 @@ namespace LubriTech.View
 
         private void btnVehicleMasterData_Click(object sender, EventArgs e)
         {
-            frmInsertUpdate_Vehicle frmInsertUpdate_Vehicle = new frmInsertUpdate_Vehicle();
-            OpenChildForm(frmInsertUpdate_Vehicle);
-            frmInsertUpdate_Vehicle.BringToFront();
+            frmVehicles frmVehicles = new frmVehicles();
+            OpenChildForm(frmVehicles);
+            frmVehicles.BringToFront();
         }
 
         private void btnAppointments_Click(object sender, EventArgs e)
@@ -172,9 +172,9 @@ namespace LubriTech.View
 
         private void btnSuppliers_Click(object sender, EventArgs e)
         {
-            frmInsertUpdateSupplier frmInsertUpdateSupplier = new frmInsertUpdateSupplier();
-            OpenChildForm(frmInsertUpdateSupplier);
-            frmInsertUpdateSupplier.BringToFront();
+            frmSuppliers frmSuppliers = new frmSuppliers();
+            OpenChildForm(frmSuppliers);
+            frmSuppliers.BringToFront();
         }
 
         private void button1_Click(object sender, EventArgs e)
