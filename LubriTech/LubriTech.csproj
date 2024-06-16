@@ -299,6 +299,8 @@
     <Content Include="Resources\DeleteIco.png" />
     <None Include="Resources\DeleteIco1.png" />
     <None Include="Resources\DetailIco.png" />
+    <None Include="Resources\detail.png" />
+    <None Include="Resources\edit.png" />
     <Content Include="Resources\EditIco.png" />
     <None Include="Resources\EditIco1.png" />
     <Content Include="Resources\inventory.png" />

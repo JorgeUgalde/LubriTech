@@ -19,10 +19,9 @@ namespace LubriTech.View
             
         }
 
-        public frmUpsert_Client(Client client)
+        public frmUpsert_Client(Client client, string action)
         {
             InitializeComponent();
-            btnAddClient.Text = "Modificar";
 
             txtID.Text = client.Id;
             this.txtFullName.Text = client.FullName;
@@ -30,7 +29,18 @@ namespace LubriTech.View
             txtAdditionalPhone.Text = client.AdditionalPhoneNum.ToString();
             txtEmail.Text = client.Email;
             txtAddresse.Text = client.Address;
-            newClient = client;
+
+            if (action == "Modify")
+            {
+                btnAddClient.Text = "Modificar";
+            }
+            else
+            {
+                btnAddClient.Hide();
+                btnAddVehicle.Hide();
+
+                newClient = client;
+            }
         }
 
         public event EventHandler DataChanged;

@@ -39,7 +39,7 @@ namespace LubriTech.Model.Client_Information
                 {
                     clients.Add(new Client(dr["Identificacion"].ToString(), dr["NombreCompleto"].ToString(), 
                         Convert.ToInt32(dr["NumeroTelefonoPrincipal"]), Convert.ToInt32(dr["NumeroTelefonoAdicional"]), 
-                        dr["CorreoElectronico"].ToString(), dr["CorreoElectronico"].ToString(), (getVehicle((string)dr["Identificacion"])),
+                        dr["CorreoElectronico"].ToString(), dr["Direccion"].ToString(), (getVehicle((string)dr["Identificacion"])),
                         dr["Estado"].ToString() ));
                 }
                 return clients;
@@ -201,7 +201,7 @@ namespace LubriTech.Model.Client_Information
         {
             try
             {
-                String updateQuery = "update Cliente set NombreCompleto = @fullname, NumeroTelefonoPrincipal = @mainphone, NumeroTelefonoAdicional = @additionalphone, CorreoElectronico = @email, Direccion = @addresse where [Cliente].Identificacion = @id";
+                String updateQuery = "update Cliente set NombreCompleto = @fullname, NumeroTelefonoPrincipal = @mainphone, NumeroTelefonoAdicional = @additionalphone, CorreoElectronico = @email, Direccion = @address where [Cliente].Identificacion = @id";
 
                 SqlCommand update = new SqlCommand(updateQuery, conn);
 
@@ -210,7 +210,7 @@ namespace LubriTech.Model.Client_Information
                 update.Parameters.AddWithValue("@mainphone", client.MainPhoneNum);
                 update.Parameters.AddWithValue("@additionalphone", client.AdditionalPhoneNum);
                 update.Parameters.AddWithValue("@email", client.Email);
-                update.Parameters.AddWithValue("@addresse", client.Address);
+                update.Parameters.AddWithValue("@address", client.Address);
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -239,16 +239,29 @@ namespace LubriTech.Model.Client_Information
         {
             try
             {
-                string deleteQuery = "delete from Cliente where [Cliente].Identificacion = @id";
-                SqlCommand delete = new SqlCommand(deleteQuery, conn);
+                
+                string selectQuery = "select Estado from Cliente where Identificacion = @id";
+                SqlCommand select = new SqlCommand(selectQuery, conn);
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
                     conn.Open();
                 }
 
-                delete.Parameters.AddWithValue("@id", clientId);
-                delete.ExecuteNonQuery();
+                select.Parameters.AddWithValue("@id", clientId);
+                string currentState = select.ExecuteScalar()?.ToString();
+
+                
+                string newStatus = (currentState == "Activo") ? "Inactivo" : "Activo";
+
+                
+                string updateQuery = "update Cliente set Estado = @newStatus where Identificacion = @id";
+                SqlCommand update = new SqlCommand(updateQuery, conn);
+
+                update.Parameters.AddWithValue("@id", clientId);
+                update.Parameters.AddWithValue("@newStatus", newStatus);
+                update.ExecuteNonQuery(); 
+
                 return true;
             }
             catch (Exception ex)
@@ -262,6 +275,6 @@ namespace LubriTech.Model.Client_Information
                     conn.Close();
                 }
             }
-        }//End of DeleteClient
+        }
     }
 }
