@@ -17,123 +17,44 @@ namespace LubriTech.View
     {
         private int childFormNumber = 0;
         private bool sideBarExpanded = false;
-        TableLayoutPanel tableLayoutPanel = new TableLayoutPanel();
 
         public MDI_View()
         {
             DoubleBuffered = true;
             InitializeComponent();
-            InitializeMenu();
-            this.Resize += new EventHandler(OnFormResize);
-            OnFormResize(this, EventArgs.Empty); // Ajustar el tamaño inicial
+            customizesubMenuDesign();
         }
 
-       
-
-        private void InitializeMenu()
+        private void customizesubMenuDesign()
         {
-            // Crear el TableLayoutPanel
-            tableLayoutPanel = new TableLayoutPanel();
-            tableLayoutPanel.BackColor = Color.FromArgb(156, 29, 29);
-            tableLayoutPanel.Dock = DockStyle.Left;
-            tableLayoutPanel.ColumnCount = 1;
-            tableLayoutPanel.RowCount = 3;
-            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            panelMenu.MaximumSize = new Size(250, 0);
+            panelMenu.MinimumSize = new Size(0, 0);
+            panelClientsSubmenu.Visible = false;
+            panelInventorySubmenu.Visible = false;
+            panelParametersSubmenu.Visible = false;
 
-            // Crear el panel para los botones del menú
-            this.panel1.Dock = DockStyle.Top;
-            tableLayoutPanel.Controls.Add(panel1, 0, 0);
-            panel1.Controls.Add(btnMenu);
-
-            this.panelBtns.Dock = DockStyle.Fill;
-            tableLayoutPanel.Controls.Add(panelBtns, 0, 1);
-
-            // Crear y agregar botones al panel del menú
-            panelBtns.Controls.Add(btnClients);
-            panelBtns.Controls.Add(btnWorkOrders);
-            panelBtns.Controls.Add(btnAppointments);
-            panelBtns.Controls.Add(btnInventory);
-            panelBtns.Controls.Add(btnProducts);
-            panelBtns.Controls.Add(btnServices);
-            panelBtns.Controls.Add(btnSuppliers);
-            panelBtns.Controls.Add(btnVehicles);
-
-            // Crear el botón de cerrar sesión
-            btnLogout.Dock = DockStyle.Bottom;
-            tableLayoutPanel.Controls.Add(btnLogout, 0, 2);
-
-            // Agregar el TableLayoutPanel al formulario
-            this.Controls.Add(tableLayoutPanel);
-            tableLayoutPanel.MinimumSize = new Size(42, 500);
-            tableLayoutPanel.MaximumSize = new Size(200, this.ClientSize.Height);
         }
 
-        private void OpenFile(object sender, EventArgs e)
+        private void hideSubMenu()
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
+            if (panelClientsSubmenu.Visible == true)
+                panelClientsSubmenu.Visible = false;
+            if (panelInventorySubmenu.Visible == true)
+                panelInventorySubmenu.Visible = false;
+            if (panelParametersSubmenu.Visible == true)
+                panelParametersSubmenu.Visible = false;
+        }
+
+        private void showSubMenu(Panel subMenu)
+        {
+            if (subMenu.Visible == false)
             {
-                string FileName = openFileDialog.FileName;
+                hideSubMenu();
+                subMenu.Visible = true;
             }
-        }
-
-        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            else
             {
-                string FileName = saveFileDialog.FileName;
-            }
-        }
-
-        private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.Cascade);
-        }
-
-        private void TileVerticalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileVertical);
-        }
-
-        private void TileHorizontalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileHorizontal);
-        }
-
-        private void ArrangeIconsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.ArrangeIcons);
-        }
-
-        private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (Form childForm in MdiChildren)
-            {
-                childForm.Close();
+                subMenu.Visible = false;
             }
         }
 
@@ -147,104 +68,118 @@ namespace LubriTech.View
             //this.Visible = true;
         }
 
-        private  void btnClients_Click(object sender, EventArgs e)
-        {
-            frmClients frmClients = new frmClients();
-            OpenChildForm(frmClients);
-        }
+
 
 
 
         private void sideBarTimer_Tick(object sender, EventArgs e)
         {
-            if(sideBarExpanded)
+        //    if (sideBarExpanded)
+        //    {
+        //        panelMenu.Width -= 15;
+        //        if (panelMenu.Width == panelMenu.MinimumSize.Width)
+        //        {
+        //            sideBarExpanded = false;
+        //            sideBarTimer.Stop();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        panelMenu.Width += 15;
+        //        if (panelMenu.Width == panelMenu.MaximumSize.Width)
+        //        {
+        //            sideBarExpanded = true;
+        //            sideBarTimer.Stop();
+        //        }
+        //    }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            //sideBarTimer.Start();
+            if (panelMenu.Visible)
             {
-                tableLayoutPanel.Width -= 10;
-                if (tableLayoutPanel.Width == tableLayoutPanel.MinimumSize.Width)
-                {
-                    sideBarExpanded = false;
-                    sideBarTimer.Stop();
-                }
+                panelMenu.Visible = false;
+                //relocate the picture box to the right
+                pictureBox1.Location = new Point(5, 10);
             }
             else
             {
-                tableLayoutPanel.Width += 10;
-                if (tableLayoutPanel.Width == tableLayoutPanel.MaximumSize.Width)
-                {
-                    sideBarExpanded = true;
-                    sideBarTimer.Stop();
-                }
+                panelMenu.Visible = true;
+                //relocate the picture box to the left
+                pictureBox1.Location = new Point(260, 10);
             }
-        }
 
-
-           
-        private void btnServices_Click(object sender, EventArgs e)
-        {
-            frmMakes  makes = new frmMakes();
-            OpenChildForm(makes);
         }
 
         private void OpenChildForm(Form childForm)
         {
-            // Recorrer todos los formularios hijos abiertos
-            foreach (Form form in this.MdiChildren)
-            {
-                // Cerrar el formulario hijo si está abierto
-                form.Close();
-            }
 
             // Configurar y mostrar el nuevo formulario hijo
             childForm.MdiParent = this;
-            childForm.WindowState = FormWindowState.Maximized;
-            childForm.Dock = DockStyle.Fill; // Esto asegura que el formulario ocupe todo el espacio disponible
+            childForm.WindowState = FormWindowState.Normal;
+            childForm.StartPosition = FormStartPosition.CenterParent;
             childForm.Show();
         }
 
-        private void btnProducts_Click(object sender, EventArgs e)
+        private void btnClients_Click(object sender, EventArgs e)
         {
-            frmProducts frmProducts = new frmProducts();
-            OpenChildForm(frmProducts);
+            showSubMenu(panelClientsSubmenu);
         }
 
-        private void btnSuppliers_Click(object sender, EventArgs e)
+        private void btnInventory_Click(object sender, EventArgs e)
         {
-            frmSuppliers frmSuppliers = new frmSuppliers();
-            OpenChildForm(frmSuppliers);
+            showSubMenu(panelInventorySubmenu);
         }
 
-        private void btnVehicles_Click(object sender, EventArgs e)
+        private void btnParamConfig_Click(object sender, EventArgs e)
+        {
+            showSubMenu(panelParametersSubmenu);
+        }
+
+        private void btnClientMasterData_Click(object sender, EventArgs e)
+        {
+            frmClients frmClients = new frmClients();
+            OpenChildForm(frmClients);
+            frmClients.BringToFront();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            frmManage_Branch frmManage_Branch = new frmManage_Branch();
+            OpenChildForm(frmManage_Branch);
+            frmManage_Branch.BringToFront();
+        }
+
+        private void btnVehicleMasterData_Click(object sender, EventArgs e)
         {
             frmVehicles frmVehicles = new frmVehicles();
             OpenChildForm(frmVehicles);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Application.Restart();
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnMenu_Click(object sender, EventArgs e)
-        {
-            // Iniciar el temporizador
-            sideBarTimer.Start();
-
-        }
-
-        private void OnFormResize(object sender, EventArgs e)
-        {
-            tableLayoutPanel.MaximumSize = new Size(200, this.ClientSize.Height);
+            frmVehicles.BringToFront();
         }
 
         private void btnAppointments_Click(object sender, EventArgs e)
         {
             frmAppointment frmAppointment = new frmAppointment();
             OpenChildForm(frmAppointment);
+            frmAppointment.BringToFront();
+        }
+
+        private void btnWorkOrders_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSuppliers_Click(object sender, EventArgs e)
+        {
+            frmSuppliers frmSuppliers = new frmSuppliers();
+            OpenChildForm(frmSuppliers);
+            frmSuppliers.BringToFront();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
 
         

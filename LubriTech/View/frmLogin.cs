@@ -80,6 +80,35 @@ namespace LubriTech
 
         }
 
-        
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtEmail_MouseEnter(object sender, EventArgs e)
+        {
+            //change background color to focus the textbox
+            txtEmail.BackColor = Color.FromArgb(225, 225, 225);
+        }
+
+        private void txtEmail_MouseLeave(object sender, EventArgs e)
+        {
+            txtEmail.BackColor = Color.FromArgb(237, 237, 237);
+        }
+
+        private void txtPassword_MouseEnter(object sender, EventArgs e)
+        {
+            txtPassword.BackColor = Color.FromArgb(225, 225, 225);
+        }
+
+        private void txtPassword_MouseLeave(object sender, EventArgs e)
+        {
+            txtPassword.BackColor = Color.FromArgb(237, 237, 237);
+        }
     }
 }
