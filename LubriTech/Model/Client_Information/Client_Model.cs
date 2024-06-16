@@ -75,7 +75,14 @@ namespace LubriTech.Model.Client_Information
 
                 foreach (DataRow dr in tblVehicles.Rows)
                 {
-                    vehicles.Add(new Vehicle(dr["Placa"].ToString(), dr["TipoMotor"].ToString(), Convert.ToInt32(dr["Kilometraje"]), dr["Marca"].ToString(), dr["Modelo"].ToString(), Convert.ToInt32(dr["Anio"]), dr["Transmision"].ToString(), (getClient((string)dr["IdentificacionCliente"]))));
+                    vehicles.Add(new Vehicle(dr["Placa"].ToString(),
+                                                dr["TipoMotor"].ToString(),
+                                                Convert.ToInt32(dr["Kilometraje"]),
+                                                (getModel(Convert.ToInt32(dr["IdentificacionModelo"]))),
+                                                Convert.ToInt32(dr["Anio"]),
+                                                dr["Transmision"].ToString(),
+                                                (getClient((string)dr["IdentificacionCliente"])),
+                                                dr["Estado"].ToString()));
                 }
                 return vehicles;
 
@@ -92,6 +99,101 @@ namespace LubriTech.Model.Client_Information
                 conn.Close();
             }
         }//End of GetVehicle
+
+        public CarModel getModel(int ModelId)
+        {
+            try
+            {
+                String selectQueryModels = "SELECT * FROM CatalogoModelo WHERE CatalogoModelo.Identificacion = @identificacion;";
+                SqlCommand select = new SqlCommand(selectQueryModels, conn);
+                select.Parameters.AddWithValue("@identificacion", ModelId);
+
+                DataTable tblModelCatalog = new DataTable();
+                SqlDataAdapter adp = new SqlDataAdapter();
+
+                adp.SelectCommand = select;
+
+                adp.Fill(tblModelCatalog);
+                CarModel model = null;
+
+                foreach (DataRow dr in tblModelCatalog.Rows)
+                {
+                    model = new CarModel(Convert.ToInt32(dr["Identificacion"]),
+                                        dr["Nombre"].ToString(),
+                                        (getMake(Convert.ToInt32(dr["IdentificacionMarca"]))),
+                                        dr["Estado"].ToString());
+                }
+
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+
+                }
+
+                select.ExecuteNonQuery();
+
+                return model;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        public Make getMake(int MakeId)
+        {
+            try
+            {
+                String selectQueryMakes = "SELECT * FROM CatalogoMarca WHERE CatalogoMarca.Identificacion = @identificacion;";
+                SqlCommand select = new SqlCommand(selectQueryMakes, conn);
+                select.Parameters.AddWithValue("@identificacion", MakeId);
+
+                DataTable tblMakeCatalog = new DataTable();
+                SqlDataAdapter adp = new SqlDataAdapter();
+
+                adp.SelectCommand = select;
+
+                adp.Fill(tblMakeCatalog);
+                Make make = null;
+
+                foreach (DataRow dr in tblMakeCatalog.Rows)
+                {
+                    make = new Make(Convert.ToInt32(dr["Identificacion"]),
+                                        dr["Nombre"].ToString(),
+                                        dr["Estado"].ToString());
+                }
+
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+
+                }
+
+                select.ExecuteNonQuery();
+
+                return make;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+        }
 
         public Client getClient(string Id)
         {
@@ -142,13 +244,17 @@ namespace LubriTech.Model.Client_Information
                 if (existingClient != null)
                 {
                     MessageBox.Show("El Cliente se ha modificado correctamente");
+
                     return updateClient(client);
+
 
                 }
                 else
                 {
-                    MessageBox.Show("El Cliente se ha agregado correctamente");
+                    MessageBox.Show("El Cliente se ha modificado correctamente");
+
                     return addClient(client);
+
                 }
             }
             catch (Exception ex)
@@ -167,10 +273,10 @@ namespace LubriTech.Model.Client_Information
 
                 insert.Parameters.AddWithValue("@id", client.Id);
                 insert.Parameters.AddWithValue("@fullname", client.FullName);
-                insert.Parameters.AddWithValue("@mainphone", client.FullName);
-                insert.Parameters.AddWithValue("@additionalphone", client.FullName);
-                insert.Parameters.AddWithValue("@email", client.FullName);
-                insert.Parameters.AddWithValue("@addresse", client.FullName);
+                insert.Parameters.AddWithValue("@mainphone", client.MainPhoneNum);
+                insert.Parameters.AddWithValue("@additionalphone", client.AdditionalPhoneNum);
+                insert.Parameters.AddWithValue("@email", client.Email);
+                insert.Parameters.AddWithValue("@addresse", client.Address);
                 insert.Parameters.AddWithValue("@state", client.State);
 
 

@@ -52,7 +52,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(47, 20);
+            this.label1.Location = new System.Drawing.Point(47, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(140, 23);
             this.label1.TabIndex = 0;
@@ -62,7 +62,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(47, 86);
+            this.label2.Location = new System.Drawing.Point(47, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(180, 23);
             this.label2.TabIndex = 1;
@@ -72,7 +72,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(47, 157);
+            this.label3.Location = new System.Drawing.Point(47, 160);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 23);
             this.label3.TabIndex = 2;
@@ -82,7 +82,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(509, 20);
+            this.label4.Location = new System.Drawing.Point(509, 23);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(183, 23);
             this.label4.TabIndex = 3;
@@ -92,7 +92,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(509, 86);
+            this.label5.Location = new System.Drawing.Point(509, 89);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(186, 23);
             this.label5.TabIndex = 4;
@@ -102,7 +102,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(509, 157);
+            this.label6.Location = new System.Drawing.Point(509, 160);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(187, 23);
             this.label6.TabIndex = 5;
@@ -111,7 +111,7 @@
             // txtID
             // 
             this.txtID.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtID.Location = new System.Drawing.Point(50, 49);
+            this.txtID.Location = new System.Drawing.Point(50, 52);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(205, 30);
             this.txtID.TabIndex = 6;
@@ -119,7 +119,7 @@
             // txtMainPhone
             // 
             this.txtMainPhone.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMainPhone.Location = new System.Drawing.Point(50, 112);
+            this.txtMainPhone.Location = new System.Drawing.Point(50, 115);
             this.txtMainPhone.Name = "txtMainPhone";
             this.txtMainPhone.Size = new System.Drawing.Size(205, 30);
             this.txtMainPhone.TabIndex = 7;
@@ -127,23 +127,25 @@
             // txtAddresse
             // 
             this.txtAddresse.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddresse.Location = new System.Drawing.Point(50, 185);
+            this.txtAddresse.Location = new System.Drawing.Point(50, 188);
             this.txtAddresse.Name = "txtAddresse";
             this.txtAddresse.Size = new System.Drawing.Size(205, 30);
             this.txtAddresse.TabIndex = 9;
             // 
             // txtFullName
             // 
+            this.txtFullName.BackColor = System.Drawing.Color.White;
             this.txtFullName.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFullName.Location = new System.Drawing.Point(512, 49);
+            this.txtFullName.Location = new System.Drawing.Point(512, 52);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(205, 30);
             this.txtFullName.TabIndex = 10;
             // 
             // txtAdditionalPhone
             // 
+            this.txtAdditionalPhone.BackColor = System.Drawing.Color.White;
             this.txtAdditionalPhone.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAdditionalPhone.Location = new System.Drawing.Point(512, 112);
+            this.txtAdditionalPhone.Location = new System.Drawing.Point(512, 115);
             this.txtAdditionalPhone.Name = "txtAdditionalPhone";
             this.txtAdditionalPhone.Size = new System.Drawing.Size(205, 30);
             this.txtAdditionalPhone.TabIndex = 11;
@@ -151,7 +153,7 @@
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(512, 185);
+            this.txtEmail.Location = new System.Drawing.Point(512, 188);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(205, 30);
             this.txtEmail.TabIndex = 12;
@@ -182,18 +184,18 @@
             this.dgvVehiclesClients.Name = "dgvVehiclesClients";
             this.dgvVehiclesClients.ReadOnly = true;
             this.dgvVehiclesClients.RowHeadersWidth = 51;
-            this.dgvVehiclesClients.Size = new System.Drawing.Size(756, 213);
+            this.dgvVehiclesClients.Size = new System.Drawing.Size(756, 214);
             this.dgvVehiclesClients.TabIndex = 15;
             this.dgvVehiclesClients.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvVehiclesClients_CellFormatting);
             // 
             // btnAddVehicle
             // 
-            this.btnAddVehicle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(152)))), ((int)(((byte)(92)))));
+            this.btnAddVehicle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
             this.btnAddVehicle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddVehicle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddVehicle.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddVehicle.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAddVehicle.Location = new System.Drawing.Point(602, 534);
+            this.btnAddVehicle.Location = new System.Drawing.Point(602, 525);
             this.btnAddVehicle.Name = "btnAddVehicle";
             this.btnAddVehicle.Size = new System.Drawing.Size(201, 41);
             this.btnAddVehicle.TabIndex = 16;
@@ -203,16 +205,16 @@
             // 
             // btnAddClient
             // 
-            this.btnAddClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(152)))), ((int)(((byte)(92)))));
+            this.btnAddClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
             this.btnAddClient.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddClient.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddClient.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAddClient.Location = new System.Drawing.Point(281, 533);
+            this.btnAddClient.Location = new System.Drawing.Point(47, 526);
             this.btnAddClient.Name = "btnAddClient";
             this.btnAddClient.Size = new System.Drawing.Size(201, 41);
             this.btnAddClient.TabIndex = 17;
-            this.btnAddClient.Text = "Agregar Cliente";
+            this.btnAddClient.Text = "Confirmar";
             this.btnAddClient.UseVisualStyleBackColor = false;
             this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
             // 
@@ -224,19 +226,20 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnClose.Location = new System.Drawing.Point(47, 533);
+            this.btnClose.Location = new System.Drawing.Point(291, 526);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(201, 41);
             this.btnClose.TabIndex = 18;
             this.btnClose.Text = "Cerrar";
             this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmUpsert_Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(990, 596);
+            this.ClientSize = new System.Drawing.Size(859, 597);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnAddClient);
             this.Controls.Add(this.btnAddVehicle);

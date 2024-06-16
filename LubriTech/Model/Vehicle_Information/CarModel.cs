@@ -14,7 +14,7 @@ namespace LubriTech.Model.Vehicle_Information
         public Make Make { get; set; }
 
 
-        public CarModel(string name, Make make, int id, string state)
+        public CarModel(int id, string name, Make make, string state)
         {
             this.Name = name;
             this.Make = make;

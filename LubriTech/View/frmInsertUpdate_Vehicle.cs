@@ -13,13 +13,14 @@ using System.Xml.Linq;
 using LubriTech.Model.Vehicle_Information;
 using LubriTech.Model.Client_Information;
 using LubriTech.Model.Supplier_Information;
+using System.Net;
 
 namespace LubriTech.View
 {
     public partial class frmInsertUpdate_Vehicle : Form
     {
 
-        List<Client> clients;
+        private List<Client> clients;
 
         public frmInsertUpdate_Vehicle()
         {
@@ -29,21 +30,30 @@ namespace LubriTech.View
             SetupClientsDGV();
         }
 
-        public frmInsertUpdate_Vehicle(Vehicle vehicle)
+        public frmInsertUpdate_Vehicle(Vehicle vehicle, string action)
         {
-            clients = new List<Client>();
             InitializeComponent();
-            load_Clients(null);
-            SetupClientsDGV();
+
             tbClientName.Text = vehicle.Client.FullName;
             tbClientId.Text = vehicle.Client.Id;
-            tbBrand.Text = vehicle.Brand;
-            tbModel.Text = vehicle.Model;
+            cbMake.Text = vehicle.Model.Make.Name;
+            cbModel.Text = vehicle.Model.Name;
+            cbMake.ValueMember = vehicle.Model.Make.Id.ToString();
+            cbModel.ValueMember = vehicle.Model.Id.ToString();
             tbLicensePlate.Text = vehicle.LicensePlate;
             tbYear.Text = vehicle.Year.ToString();
             tbMileage.Text = vehicle.Mileage.ToString();
             tbEngine.Text = vehicle.Engine;
             cbTransmission.Text = vehicle.Transmission;
+
+            if (action == "Modify")
+            {
+                btnConfirm.Text = "Modificar";
+            }
+            else
+            {
+                btnConfirm.Hide();
+            }
         }
 
         public event EventHandler DataChanged;
@@ -56,8 +66,8 @@ namespace LubriTech.View
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             if (tbClientName.Text.Trim() == ""
-                || tbBrand.Text.Trim() == ""
-                || tbModel.Text.Trim() == ""
+                || cbMake.Text.Trim() == ""
+                || cbModel.Text.Trim() == ""
                 || tbLicensePlate.Text.Trim() == ""
                 || tbYear.Text.Trim() == ""
                 || tbMileage.Text.Trim() == ""
@@ -75,8 +85,8 @@ namespace LubriTech.View
                 Vehicle_Controller vehicleController = new Vehicle_Controller();
                 Vehicle vehicle = new Vehicle();
                 vehicle.Client = vehicleController.getClient(tbClientId.Text.Trim());
-                vehicle.Brand = tbBrand.Text.Trim();
-                vehicle.Model = tbModel.Text.Trim();
+                vehicle.Model.Make = vehicleController.getMake(Convert.ToInt32(cbMake.SelectedValue.ToString()));
+                vehicle.Model = vehicleController.getModel(Convert.ToInt32(cbModel.SelectedValue.ToString()));
                 vehicle.LicensePlate = tbLicensePlate.Text.Trim();
                 vehicle.Year = Convert.ToInt32(tbYear.Text.Trim());
                 vehicle.Mileage = Convert.ToInt32(tbMileage.Text.Trim());
