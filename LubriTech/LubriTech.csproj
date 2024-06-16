@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\Branch_Controller.cs" />
     <Compile Include="Controller\Clients_Controller.cs" />
     <Compile Include="Controller\Make_Controller.cs" />
     <Compile Include="Controller\Product_Controller.cs" />
@@ -88,6 +89,8 @@
     <Compile Include="Controller\User_Controller.cs" />
     <Compile Include="Controller\Vehicle_Controller.cs" />
     <Compile Include="Controller\Work_Order_Controller.cs" />
+    <Compile Include="Model\Branch_Information\Branch.cs" />
+    <Compile Include="Model\Branch_Information\Branch_Model.cs" />
     <Compile Include="Model\Client_Information\Client.cs" />
     <Compile Include="Model\Client_Information\Client_Model.cs" />
     <Compile Include="Model\Product_Information\Product.cs" />
@@ -103,6 +106,10 @@
     <Compile Include="Model\Vehicle_Information\Make_Model.cs" />
     <Compile Include="Model\Vehicle_Information\Vehicle.cs" />
     <Compile Include="Model\Vehicle_Information\Vehicle_Model.cs" />
+    <Compile Include="Model\WorkOrder_Information\Observation.cs" />
+    <Compile Include="Model\WorkOrder_Information\Observation_Model.cs" />
+    <Compile Include="Model\WorkOrder_Information\WorkOrder.cs" />
+    <Compile Include="Model\WorkOrder_Information\WorkOrder_Model.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -219,6 +226,12 @@
     <Compile Include="View\frmManage_Branch.Designer.cs">
       <DependentUpon>frmManage_Branch.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmWorkOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmWorkOrder.Designer.cs">
+      <DependentUpon>frmWorkOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MDI_View.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -288,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmManage_Branch.resx">
       <DependentUpon>frmManage_Branch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmWorkOrder.resx">
+      <DependentUpon>frmWorkOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MDI_View.resx">
       <DependentUpon>MDI_View.cs</DependentUpon>

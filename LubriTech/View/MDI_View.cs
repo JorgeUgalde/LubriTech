@@ -167,7 +167,10 @@ namespace LubriTech.View
 
         private void btnWorkOrders_Click(object sender, EventArgs e)
         {
-
+            frmWorkOrder frmWorkOrder = new frmWorkOrder();
+            OpenChildForm(frmWorkOrder);
+            frmWorkOrder.BringToFront();
+            frmWorkOrder.Focus();
         }
 
         private void btnSuppliers_Click(object sender, EventArgs e)
