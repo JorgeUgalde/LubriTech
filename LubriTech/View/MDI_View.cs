@@ -156,6 +156,7 @@ namespace LubriTech.View
             frmVehicles frmVehicles = new frmVehicles();
             OpenChildForm(frmVehicles);
             frmVehicles.BringToFront();
+            frmVehicles.Focus();
         }
 
         private void btnAppointments_Click(object sender, EventArgs e)
@@ -163,6 +164,8 @@ namespace LubriTech.View
             frmAppointment frmAppointment = new frmAppointment();
             OpenChildForm(frmAppointment);
             frmAppointment.BringToFront();
+
+           
         }
 
         private void btnWorkOrders_Click(object sender, EventArgs e)
@@ -178,6 +181,7 @@ namespace LubriTech.View
             frmSuppliers frmSuppliers = new frmSuppliers();
             OpenChildForm(frmSuppliers);
             frmSuppliers.BringToFront();
+            frmSuppliers.Focus();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -185,6 +189,12 @@ namespace LubriTech.View
             Application.Restart();
         }
 
-        
+        private void btnArticles_Click(object sender, EventArgs e)
+        {
+            frmItems frmItems = new frmItems();
+            OpenChildForm(frmItems);
+            frmItems.BringToFront();
+            frmItems.Focus();
+        }
     }
 }
