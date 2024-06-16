@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label3 = new System.Windows.Forms.Label();
             this.txtFilter = new System.Windows.Forms.TextBox();
             this.dgvMakes = new System.Windows.Forms.DataGridView();
@@ -42,9 +42,10 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(548, 87);
+            this.label3.Location = new System.Drawing.Point(405, 71);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 28);
+            this.label3.Size = new System.Drawing.Size(67, 23);
             this.label3.TabIndex = 12;
             this.label3.Text = "Filtrar";
             // 
@@ -52,16 +53,17 @@
             // 
             this.txtFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFilter.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFilter.Location = new System.Drawing.Point(634, 84);
+            this.txtFilter.Location = new System.Drawing.Point(476, 68);
+            this.txtFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(227, 35);
+            this.txtFilter.Size = new System.Drawing.Size(171, 30);
             this.txtFilter.TabIndex = 11;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
             // dgvMakes
             // 
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(3, 3, 5, 5);
-            this.dgvMakes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(3, 3, 5, 5);
+            this.dgvMakes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvMakes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -71,12 +73,12 @@
             this.dgvMakes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvMakes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMakes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dgvMakes.Location = new System.Drawing.Point(91, 125);
-            this.dgvMakes.Margin = new System.Windows.Forms.Padding(3, 3, 5, 5);
+            this.dgvMakes.Location = new System.Drawing.Point(68, 102);
+            this.dgvMakes.Margin = new System.Windows.Forms.Padding(2, 2, 4, 4);
             this.dgvMakes.Name = "dgvMakes";
             this.dgvMakes.RowHeadersWidth = 51;
             this.dgvMakes.RowTemplate.Height = 24;
-            this.dgvMakes.Size = new System.Drawing.Size(1004, 325);
+            this.dgvMakes.Size = new System.Drawing.Size(753, 264);
             this.dgvMakes.TabIndex = 9;
             this.dgvMakes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMakes_CellContentClick);
             // 
@@ -88,9 +90,10 @@
             this.btnAddMake.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddMake.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddMake.ForeColor = System.Drawing.Color.White;
-            this.btnAddMake.Location = new System.Drawing.Point(867, 80);
+            this.btnAddMake.Location = new System.Drawing.Point(650, 65);
+            this.btnAddMake.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAddMake.Name = "btnAddMake";
-            this.btnAddMake.Size = new System.Drawing.Size(228, 42);
+            this.btnAddMake.Size = new System.Drawing.Size(171, 34);
             this.btnAddMake.TabIndex = 10;
             this.btnAddMake.Text = "Agregar nuevo";
             this.btnAddMake.UseVisualStyleBackColor = false;
@@ -100,24 +103,26 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(85, 83);
+            this.label2.Location = new System.Drawing.Point(64, 67);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(267, 34);
+            this.label2.Size = new System.Drawing.Size(182, 26);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Lista de Servicios";
+            this.label2.Text = "Lista de Marcas";
             // 
             // frmMakes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1180, 530);
+            this.ClientSize = new System.Drawing.Size(885, 431);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.dgvMakes);
             this.Controls.Add(this.btnAddMake);
             this.Controls.Add(this.label2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmMakes";
-            this.Text = "frmMakes";
+            this.Text = "Marcas";
             this.Load += new System.EventHandler(this.frmMakes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMakes)).EndInit();
             this.ResumeLayout(false);
