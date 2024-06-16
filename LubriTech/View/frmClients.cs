@@ -64,6 +64,7 @@ namespace LubriTech.View
             dgvClients.Columns["AdditionalPhoneNum"].HeaderText = "Teléfono Adicional";
             dgvClients.Columns["Email"].HeaderText = "Correo Electrónico";
             dgvClients.Columns["Address"].HeaderText = "Direccion";
+            dgvClients.Columns["State"].HeaderText = "Estado";
             SetColumnOrder();
 
             typeof(DataGridView).InvokeMember(
@@ -86,7 +87,7 @@ namespace LubriTech.View
 
         private void dgvClients_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dgvClients.Columns["ModifyButtonColumn"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dgvClients.Columns["ModifyImageColumn"].Index && e.RowIndex >= 0)
             {
                 string idToModify = dgvClients.Rows[e.RowIndex].Cells["Id"].Value.ToString();
                 List<Client> clients = new Clients_Controller().getAll();
@@ -109,7 +110,7 @@ namespace LubriTech.View
                 return;
             }
 
-            if (e.ColumnIndex == dgvClients.Columns["DeleteButtonColumn"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dgvClients.Columns["DeleteImageColumn"].Index && e.RowIndex >= 0)
             {
                 DialogResult result = MessageBox.Show("Estás seguro de eliminar al cliente?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
@@ -149,20 +150,23 @@ namespace LubriTech.View
 
         private void SetupDataGridView()
         {
-            // Modify button column
-            DataGridViewButtonColumn modifyButtonColumn = new DataGridViewButtonColumn();
             DataGridViewImageColumn modifyImageColumn = new DataGridViewImageColumn();
             modifyImageColumn.Name = "ModifyImageColumn";
-            modifyImageColumn.HeaderText = "Ver Detalles";
-            //modifyImageColumn.Image = Properties.Resources.EditIco; 
+            modifyImageColumn.HeaderText = "Modificar";
+            modifyImageColumn.Image = Properties.Resources.EditIco1; 
             dgvClients.Columns.Add(modifyImageColumn);
 
-            DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
-            deleteButtonColumn.Name = "DeleteButtonColumn";
-            deleteButtonColumn.HeaderText = "Eliminar ";
-            deleteButtonColumn.Text = "Eliminar";
-            deleteButtonColumn.UseColumnTextForButtonValue = true;
-            dgvClients.Columns.Add(deleteButtonColumn);
+            DataGridViewImageColumn deleteImageColumn = new DataGridViewImageColumn();
+            deleteImageColumn.Name = "DeleteImageColumn";
+            deleteImageColumn.HeaderText = "Eliminar";
+            deleteImageColumn.Image = Properties.Resources.DeleteIco1;
+            dgvClients.Columns.Add(deleteImageColumn);
+
+            DataGridViewImageColumn detailImageColumn = new DataGridViewImageColumn();
+            detailImageColumn.Name = "DetailImageColumn";
+            detailImageColumn.HeaderText = "Detalles";
+            detailImageColumn.Image = Properties.Resources.DetailIco;
+            dgvClients.Columns.Add(detailImageColumn);
         }
 
         private void SetColumnOrder()
@@ -173,8 +177,10 @@ namespace LubriTech.View
             dgvClients.Columns["AdditionalPhoneNum"].DisplayIndex = 3;
             dgvClients.Columns["Email"].DisplayIndex = 4;
             dgvClients.Columns["Address"].DisplayIndex = 5;
-            dgvClients.Columns["ModifyButtonColumn"].DisplayIndex = 6;
-            dgvClients.Columns["DeleteButtonColumn"].DisplayIndex = 7;
+            dgvClients.Columns["State"].DisplayIndex = 6;
+            dgvClients.Columns["DetailImageColumn"].DisplayIndex = 7;
+            dgvClients.Columns["ModifyImageColumn"].DisplayIndex = 8;
+            dgvClients.Columns["DeleteImageColumn"].DisplayIndex = 9;
         }
 
         private void dgvClients_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)

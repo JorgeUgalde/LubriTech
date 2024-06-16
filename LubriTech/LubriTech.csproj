@@ -296,6 +296,11 @@
     <Content Include="Images\work order.jpg" />
     <Content Include="Resources\appointment.png" />
     <Content Include="Resources\Back.png" />
+    <Content Include="Resources\DeleteIco.png" />
+    <None Include="Resources\DeleteIco1.png" />
+    <None Include="Resources\DetailIco.png" />
+    <Content Include="Resources\EditIco.png" />
+    <None Include="Resources\EditIco1.png" />
     <Content Include="Resources\inventory.png" />
     <Content Include="Resources\logo1.jpg" />
     <Content Include="Resources\logoCrop.jpg" />

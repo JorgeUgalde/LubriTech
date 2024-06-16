@@ -138,7 +138,8 @@ namespace LubriTech.Model.Client_Information
         {
             try
             {
-                if (getClient(client.Id) != null)
+                var existingClient = getClient(client.Id);
+                if (existingClient != null)
                 {
                     MessageBox.Show("El Cliente se ha modificado correctamente");
                     return updateClient(client);
@@ -166,10 +167,10 @@ namespace LubriTech.Model.Client_Information
 
                 insert.Parameters.AddWithValue("@id", client.Id);
                 insert.Parameters.AddWithValue("@fullname", client.FullName);
-                insert.Parameters.AddWithValue("@mainphone", client.MainPhoneNum.HasValue ? (object)client.MainPhoneNum.Value : DBNull.Value);
-                insert.Parameters.AddWithValue("@additionalphone", client.AdditionalPhoneNum.HasValue ? (object)client.AdditionalPhoneNum.Value : DBNull.Value);
-                insert.Parameters.AddWithValue("@email", client.Email);
-                insert.Parameters.AddWithValue("@addresse", client.Address);
+                insert.Parameters.AddWithValue("@mainphone", client.FullName);
+                insert.Parameters.AddWithValue("@additionalphone", client.FullName);
+                insert.Parameters.AddWithValue("@email", client.FullName);
+                insert.Parameters.AddWithValue("@addresse", client.FullName);
                 insert.Parameters.AddWithValue("@state", client.State);
 
 

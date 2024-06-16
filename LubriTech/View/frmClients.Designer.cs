@@ -31,11 +31,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvClients = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnAddClient = new System.Windows.Forms.Button();
             this.txtFilter = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnAddClient = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -83,29 +83,13 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Lista de Clientes";
             // 
-            // btnAddClient
-            // 
-            this.btnAddClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(146)))), ((int)(((byte)(69)))));
-            this.btnAddClient.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAddClient.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddClient.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAddClient.Location = new System.Drawing.Point(532, 168);
-            this.btnAddClient.Name = "btnAddClient";
-            this.btnAddClient.Size = new System.Drawing.Size(213, 32);
-            this.btnAddClient.TabIndex = 3;
-            this.btnAddClient.Text = "Agregar Nuevo Cliente";
-            this.btnAddClient.UseVisualStyleBackColor = false;
-            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
-            // 
             // txtFilter
             // 
             this.txtFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFilter.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFilter.Location = new System.Drawing.Point(372, 168);
+            this.txtFilter.Location = new System.Drawing.Point(346, 170);
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(154, 31);
+            this.txtFilter.Size = new System.Drawing.Size(159, 31);
             this.txtFilter.TabIndex = 4;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
@@ -114,7 +98,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(291, 171);
+            this.label3.Location = new System.Drawing.Point(265, 173);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(75, 25);
             this.label3.TabIndex = 5;
@@ -145,6 +129,22 @@
             this.label7.Size = new System.Drawing.Size(279, 38);
             this.label7.TabIndex = 20;
             this.label7.Text = "Registrar cliente";
+            // 
+            // btnAddClient
+            // 
+            this.btnAddClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(146)))), ((int)(((byte)(69)))));
+            this.btnAddClient.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAddClient.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddClient.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAddClient.Location = new System.Drawing.Point(506, 170);
+            this.btnAddClient.Name = "btnAddClient";
+            this.btnAddClient.Size = new System.Drawing.Size(239, 32);
+            this.btnAddClient.TabIndex = 3;
+            this.btnAddClient.Text = "Agregar Nuevo Cliente";
+            this.btnAddClient.UseVisualStyleBackColor = false;
+            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
             // 
             // frmClients
             // 
