@@ -56,7 +56,7 @@ namespace LubriTech.View
             dgvServices.Columns["ModifyButtonColumn"].DisplayIndex = 2;
             dgvServices.Columns["DeleteButtonColumn"].DisplayIndex = 3;
         }
-
+            
         private void SetupDataGridView()
         {
             // Modify button column

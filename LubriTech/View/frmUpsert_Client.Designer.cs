@@ -183,7 +183,7 @@
             this.dgvVehiclesClients.Name = "dgvVehiclesClients";
             this.dgvVehiclesClients.ReadOnly = true;
             this.dgvVehiclesClients.RowHeadersWidth = 51;
-            this.dgvVehiclesClients.Size = new System.Drawing.Size(926, 186);
+            this.dgvVehiclesClients.Size = new System.Drawing.Size(924, 213);
             this.dgvVehiclesClients.TabIndex = 15;
             this.dgvVehiclesClients.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvVehiclesClients_CellFormatting);
             // 
@@ -209,7 +209,7 @@
             this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddClient.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddClient.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAddClient.Location = new System.Drawing.Point(843, 97);
+            this.btnAddClient.Location = new System.Drawing.Point(843, 87);
             this.btnAddClient.Name = "btnAddClient";
             this.btnAddClient.Size = new System.Drawing.Size(135, 33);
             this.btnAddClient.TabIndex = 17;
@@ -244,8 +244,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.ClientSize = new System.Drawing.Size(1025, 569);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1023, 596);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAddClient);

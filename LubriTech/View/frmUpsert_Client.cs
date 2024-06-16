@@ -16,11 +16,14 @@ namespace LubriTech.View
         public frmUpsert_Client()
         {
             InitializeComponent();
+            
         }
 
         public frmUpsert_Client(Client client)
         {
             InitializeComponent();
+            btnAddClient.Text = "Modificar";
+
             txtID.Text = client.Id;
             this.txtFullName.Text = client.FullName;
             txtMainPhone.Text = client.MainPhoneNum.ToString();
@@ -43,7 +46,8 @@ namespace LubriTech.View
         {
             if (newClient == null)
             {
-                Clients_Controller clients_Controller = new Clients_Controller();
+                Vehicle_Controller vehicle_Controller = new Vehicle_Controller();
+                dgvVehiclesClients.DataSource = vehicle_Controller.getAll();
             }
             else
             {
@@ -76,21 +80,22 @@ namespace LubriTech.View
             {
 
                 if (!string.IsNullOrEmpty(this.txtFullName.Text) ||
-                    !string.IsNullOrEmpty(this.txtMainPhone.Text) ||
-                    !string.IsNullOrEmpty(this.txtAdditionalPhone.Text) ||
-                    !string.IsNullOrEmpty(this.txtEmail.Text) ||
-                    !string.IsNullOrEmpty(this.txtAddresse.Text))
+                    !string.IsNullOrEmpty(this.txtID.Text))
+                    
                 {
 
                     Clients_Controller clientsController = new Clients_Controller();
 
+                  
                     string id = this.txtID.Text.Trim();
                     string fullname = this.txtFullName.Text.Trim();
-                    int mainPhone = Convert.ToInt32(this.txtMainPhone.Text.Trim());
-                    int additionalPhone = Convert.ToInt32(this.txtAdditionalPhone.Text.Trim());
-                    string email = this.txtEmail.Text.Trim();
-                    string addresse = this.txtAddresse.Text.Trim();
-                    Client client = new Client(id, fullname, mainPhone, additionalPhone, email, addresse);
+                    int? mainPhone = !string.IsNullOrEmpty(this.txtMainPhone.Text.Trim()) ? Convert.ToInt32(this.txtMainPhone.Text.Trim()) : (int?)null;
+                    int? additionalPhone = !string.IsNullOrEmpty(this.txtAdditionalPhone.Text.Trim()) ? Convert.ToInt32(this.txtAdditionalPhone.Text.Trim()) : (int?)null;
+                    string email = !string.IsNullOrEmpty(this.txtEmail.Text.Trim()) ? this.txtEmail.Text.Trim() : null;
+                    string addresse = !string.IsNullOrEmpty(this.txtAddresse.Text.Trim()) ? this.txtAddresse.Text.Trim() : null;
+                    string state = "Activo";
+
+                    Client client = new Client(id, fullname, mainPhone, additionalPhone, email, addresse, state);
 
                     if (clientsController.upsert(client))
                     {
@@ -118,21 +123,9 @@ namespace LubriTech.View
 
         private void btnAddVehicle_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
-
-        //private void frmUpsert_Client_Load(object sender, EventArgs e)
-        //{
-        //    Vehicle_Controller vehicleController = new Vehicle_Controller();
-        //    dgvVehiclesClients.DataSource = vehicleController.getAll();
-        //}
-
-        private void button1_Click(object sender, EventArgs e)
-        {
             frmInsertUpdate_Vehicle frmNewVehicle = new frmInsertUpdate_Vehicle();
             frmNewVehicle.ShowDialog();
         }
 
-        
     }
 }

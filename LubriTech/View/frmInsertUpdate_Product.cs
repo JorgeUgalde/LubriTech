@@ -60,7 +60,6 @@ namespace LubriTech.View
 
         private void frmInsert_Product_Load(object sender, EventArgs e)
         {
-            load_Suppliers(null);
         }
 
         private void load_Selected_Suppliers()

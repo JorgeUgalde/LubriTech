@@ -11,6 +11,8 @@ using System.Windows.Forms;
 
 namespace LubriTech.View
 {
+    
+
     public partial class MDI_View : Form
     {
         private int childFormNumber = 0;
@@ -18,6 +20,7 @@ namespace LubriTech.View
 
         public MDI_View()
         {
+            DoubleBuffered = true;
             InitializeComponent();
             customizesubMenuDesign();
         }
@@ -57,6 +60,8 @@ namespace LubriTech.View
 
         private void MDI_View_Load(object sender, EventArgs e)
         {
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+
             //this.Visible = false;
             //frmLogin frmLogin = new frmLogin();
             //frmLogin.ShowDialog();
@@ -176,5 +181,7 @@ namespace LubriTech.View
         {
             Application.Restart();
         }
+
+        
     }
 }
