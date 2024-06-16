@@ -24,7 +24,7 @@ namespace LubriTech.View
             InitializeComponent();
 
             txtID.Text = client.Id;
-            this.txtFullName.Text = client.FullName;
+            txtFullName.Text = client.FullName;
             txtMainPhone.Text = client.MainPhoneNum.ToString();
             txtAdditionalPhone.Text = client.AdditionalPhoneNum.ToString();
             txtEmail.Text = client.Email;
@@ -99,13 +99,13 @@ namespace LubriTech.View
                   
                     string id = this.txtID.Text.Trim();
                     string fullname = this.txtFullName.Text.Trim();
-                    int? mainPhone = !string.IsNullOrEmpty(this.txtMainPhone.Text.Trim()) ? Convert.ToInt32(this.txtMainPhone.Text.Trim()) : (int?)null;
-                    int? additionalPhone = !string.IsNullOrEmpty(this.txtAdditionalPhone.Text.Trim()) ? Convert.ToInt32(this.txtAdditionalPhone.Text.Trim()) : (int?)null;
-                    string email = !string.IsNullOrEmpty(this.txtEmail.Text.Trim()) ? this.txtEmail.Text.Trim() : null;
-                    string addresse = !string.IsNullOrEmpty(this.txtAddresse.Text.Trim()) ? this.txtAddresse.Text.Trim() : null;
+                    int? mainPhone = Convert.ToInt32(this.txtMainPhone.Text.Trim());
+                    int? additionalPhone = Convert.ToInt32(this.txtAdditionalPhone.Text.Trim());
+                    string email = this.txtEmail.Text.Trim();
+                    string address = this.txtAddresse.Text.Trim();
                     string state = "Activo";
 
-                    Client client = new Client(id, fullname, mainPhone, additionalPhone, email, addresse, state);
+                    Client client = new Client(id, fullname, mainPhone, additionalPhone, email, address, state);
 
                     if (clientsController.upsert(client))
                     {
@@ -137,5 +137,9 @@ namespace LubriTech.View
             frmNewVehicle.ShowDialog();
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }
