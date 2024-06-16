@@ -8,19 +8,23 @@ namespace LubriTech.Model.Vehicle_Information
 {
     public class CarModel
     {
+        public int Id { get; set; }
         public string Name { get; set; }
-        public Make make { get; set; }
+        public string State { get; set; }
+        public Make Make { get; set; }
 
 
-        public CarModel(string name, Make make)
+        public CarModel(string name, Make make, int id, string state)
         {
             this.Name = name;
-            this.make = make;
+            this.Make = make;
+            this.Id = id;
+            this.State = state;
         }
 
         public override string ToString()
         {
-            return Name + "  " +  make;
+            return Id + "  " +  Name + "  " + State + "  " + Make.ToString();
         }
     }
 }
