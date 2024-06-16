@@ -26,7 +26,8 @@ namespace LubriTech.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Server=.;Initial Catalog=LubriTech;TrustServerCertificate=True;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DELLJOSEPH\\MSSQLSERVER01;Initial Catalog=LubriTech;Integrated Securit" +
+            "y=True;TrustServerCertificate=true")]
         public string connString {
             get {
                 return ((string)(this["connString"]));
