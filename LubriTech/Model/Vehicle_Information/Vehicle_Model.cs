@@ -37,11 +37,11 @@ namespace LubriTech.Model.Vehicle_Information
                     vehicles.Add(new Vehicle(dr["Placa"].ToString(),
                                                 dr["TipoMotor"].ToString(),
                                                 Convert.ToInt32(dr["Kilometraje"]),
-                                                dr["Marca"].ToString(),
-                                                dr["Modelo"].ToString(),
+                                                (getModel(Convert.ToInt32(dr["IdentificacionModelo"]))),
                                                 Convert.ToInt32(dr["Anio"]),
                                                 dr["Transmision"].ToString(),
-                                                (getClient((string)dr["IdentificacionCliente"]))));
+                                                (getClient((string)dr["IdentificacionCliente"])),
+                                                dr["Estado"].ToString()));
                 }
                 return vehicles;
             }
@@ -107,6 +107,101 @@ namespace LubriTech.Model.Vehicle_Information
             }
         }
 
+        public CarModel getModel(int ModelId)
+        {
+            try
+            {
+                String selectQueryModels = "SELECT * FROM CatalogoModelo WHERE CatalogoModelo.Identificacion = @identificacion;";
+                SqlCommand select = new SqlCommand(selectQueryModels, conn);
+                select.Parameters.AddWithValue("@identificacion", ModelId);
+
+                DataTable tblModelCatalog = new DataTable();
+                SqlDataAdapter adp = new SqlDataAdapter();
+
+                adp.SelectCommand = select;
+
+                adp.Fill(tblModelCatalog);
+                CarModel model = null;
+
+                foreach (DataRow dr in tblModelCatalog.Rows)
+                {
+                    model = new CarModel(Convert.ToInt32(dr["Identificacion"]),
+                                        dr["Nombre"].ToString(),
+                                        (getMake(Convert.ToInt32(dr["IdentificacionMarca"]))),
+                                        dr["Estado"].ToString());
+                }
+
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+
+                }
+
+                select.ExecuteNonQuery();
+
+                return model;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        public Make getMake(int MakeId)
+        {
+            try
+            {
+                String selectQueryMakes = "SELECT * FROM CatalogoMarca WHERE CatalogoMarca.Identificacion = @identificacion;";
+                SqlCommand select = new SqlCommand(selectQueryMakes, conn);
+                select.Parameters.AddWithValue("@identificacion", MakeId);
+
+                DataTable tblMakeCatalog = new DataTable();
+                SqlDataAdapter adp = new SqlDataAdapter();
+
+                adp.SelectCommand = select;
+
+                adp.Fill(tblMakeCatalog);
+                Make make = null;
+
+                foreach (DataRow dr in tblMakeCatalog.Rows)
+                {
+                    make = new Make(Convert.ToInt32(dr["Identificacion"]),
+                                        dr["Nombre"].ToString(),
+                                        dr["Estado"].ToString());
+                }
+
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+
+                }
+
+                select.ExecuteNonQuery();
+
+                return make;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
         public Boolean upsertVehicle(Vehicle vehicle)
         {
             try
@@ -143,12 +238,12 @@ namespace LubriTech.Model.Vehicle_Information
 
                 Vehicle vehicle = new Vehicle(dr["Placa"].ToString(),
                                                 dr["TipoMotor"].ToString(),
-                                                Convert.ToInt32(dr["Kilometraje"].ToString()),
-                                                dr["Marca"].ToString(),
-                                                dr["Modelo"].ToString(),
-                                                Convert.ToInt32(dr["Anio"].ToString()),
+                                                Convert.ToInt32(dr["Kilometraje"]),
+                                                (getModel(Convert.ToInt32(dr["IdentificacionModelo"]))),
+                                                Convert.ToInt32(dr["Anio"]),
                                                 dr["Transmision"].ToString(),
-                                                (getClient((string)dr["IdentificacionCliente"])));
+                                                (getClient((string)dr["IdentificacionCliente"])),
+                                                dr["Estado"].ToString());
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -176,13 +271,12 @@ namespace LubriTech.Model.Vehicle_Information
         {
             try
             {
-                string updateQuery = "UPDATE Vehiculo SET Placa = @licensePlate, TipoMotor = @engine, Kilometraje = @mileage, Marca = @brand, Modelo = @model, Anio = @year, Transmision = @transmission, IdentificacionCliente = @clientId WHERE Placa = @licensePlate";
+                string updateQuery = "UPDATE Vehiculo SET Placa = @licensePlate, TipoMotor = @engine, Kilometraje = @mileage, IdentificacionModelo = @modelId, Anio = @year, Transmision = @transmission, IdentificacionCliente = @clientId WHERE Placa = @licensePlate";
                 SqlCommand cmd = new SqlCommand(updateQuery, conn);
                 cmd.Parameters.AddWithValue("@licensePlate", vehicle.LicensePlate);
                 cmd.Parameters.AddWithValue("@engine", vehicle.Engine);
                 cmd.Parameters.AddWithValue("@mileage", vehicle.Mileage);
-                cmd.Parameters.AddWithValue("@brand", vehicle.Brand);
-                cmd.Parameters.AddWithValue("@model", vehicle.Model);
+                cmd.Parameters.AddWithValue("@modelId", vehicle.getModelId());
                 cmd.Parameters.AddWithValue("@year", vehicle.Year);
                 cmd.Parameters.AddWithValue("@transmission", vehicle.Transmission);
                 cmd.Parameters.AddWithValue("@clientId", vehicle.getClientId());
@@ -213,14 +307,13 @@ namespace LubriTech.Model.Vehicle_Information
         {
             try
             {
-                string query = "INSERT INTO Vehiculo VALUES (@licensePlate, @engine, @mileage, @brand, @model, @year, @transmission, @clientId)";
+                string query = "INSERT INTO Vehiculo VALUES (@licensePlate, @engine, @mileage, @model, @year, @transmission, @clientId)";
                 SqlCommand cmd = new SqlCommand(query, conn);
 
                 cmd.Parameters.AddWithValue("@licensePlate", vehicle.LicensePlate);
                 cmd.Parameters.AddWithValue("@engine", vehicle.Engine);
                 cmd.Parameters.AddWithValue("@mileage", vehicle.Mileage);
-                cmd.Parameters.AddWithValue("@brand", vehicle.Brand);
-                cmd.Parameters.AddWithValue("@model", vehicle.Model);
+                cmd.Parameters.AddWithValue("@modelId", vehicle.getModelId());
                 cmd.Parameters.AddWithValue("@year", vehicle.Year);
                 cmd.Parameters.AddWithValue("@transmission", vehicle.Transmission);
                 cmd.Parameters.AddWithValue("@clientId", vehicle.getClientId());

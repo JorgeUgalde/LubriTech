@@ -40,15 +40,15 @@ namespace LubriTech.View
             this.tbClientName = new System.Windows.Forms.TextBox();
             this.tbMileage = new System.Windows.Forms.TextBox();
             this.tbLicensePlate = new System.Windows.Forms.TextBox();
-            this.tbBrand = new System.Windows.Forms.TextBox();
             this.tbEngine = new System.Windows.Forms.TextBox();
             this.tbYear = new System.Windows.Forms.TextBox();
-            this.tbModel = new System.Windows.Forms.TextBox();
             this.cbTransmission = new System.Windows.Forms.ComboBox();
             this.btnBack = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnConfirm = new System.Windows.Forms.Button();
             this.dgvClients = new System.Windows.Forms.DataGridView();
             this.tbClientId = new System.Windows.Forms.TextBox();
+            this.cbMake = new System.Windows.Forms.ComboBox();
+            this.cbModel = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
             this.SuspendLayout();
             // 
@@ -167,14 +167,6 @@ namespace LubriTech.View
             this.tbLicensePlate.Size = new System.Drawing.Size(268, 30);
             this.tbLicensePlate.TabIndex = 10;
             // 
-            // tbBrand
-            // 
-            this.tbBrand.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbBrand.Location = new System.Drawing.Point(67, 248);
-            this.tbBrand.Name = "tbBrand";
-            this.tbBrand.Size = new System.Drawing.Size(268, 30);
-            this.tbBrand.TabIndex = 11;
-            // 
             // tbEngine
             // 
             this.tbEngine.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -190,14 +182,6 @@ namespace LubriTech.View
             this.tbYear.Name = "tbYear";
             this.tbYear.Size = new System.Drawing.Size(268, 30);
             this.tbYear.TabIndex = 13;
-            // 
-            // tbModel
-            // 
-            this.tbModel.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbModel.Location = new System.Drawing.Point(68, 330);
-            this.tbModel.Name = "tbModel";
-            this.tbModel.Size = new System.Drawing.Size(268, 30);
-            this.tbModel.TabIndex = 14;
             // 
             // cbTransmission
             // 
@@ -224,22 +208,22 @@ namespace LubriTech.View
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // button1
+            // btnConfirm
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(146)))), ((int)(((byte)(69)))));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(368, 560);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 40);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Confirmar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.btnConfirm_Click);
+            this.btnConfirm.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(146)))), ((int)(((byte)(69)))));
+            this.btnConfirm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnConfirm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConfirm.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirm.ForeColor = System.Drawing.Color.White;
+            this.btnConfirm.Location = new System.Drawing.Point(368, 560);
+            this.btnConfirm.Margin = new System.Windows.Forms.Padding(2);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(132, 40);
+            this.btnConfirm.TabIndex = 18;
+            this.btnConfirm.Text = "Confirmar";
+            this.btnConfirm.UseVisualStyleBackColor = false;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // dgvClients
             // 
@@ -271,21 +255,43 @@ namespace LubriTech.View
             this.tbClientId.TabIndex = 20;
             this.tbClientId.Visible = false;
             // 
+            // cbMake
+            // 
+            this.cbMake.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMake.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMake.FormattingEnabled = true;
+            this.cbMake.Location = new System.Drawing.Point(67, 246);
+            this.cbMake.Name = "cbMake";
+            this.cbMake.Size = new System.Drawing.Size(268, 30);
+            this.cbMake.TabIndex = 21;
+            this.cbMake.Tag = "";
+            // 
+            // cbModel
+            // 
+            this.cbModel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbModel.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbModel.FormattingEnabled = true;
+            this.cbModel.Location = new System.Drawing.Point(67, 328);
+            this.cbModel.Name = "cbModel";
+            this.cbModel.Size = new System.Drawing.Size(268, 30);
+            this.cbModel.TabIndex = 22;
+            this.cbModel.Tag = "";
+            // 
             // frmInsertUpdate_Vehicle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.ClientSize = new System.Drawing.Size(858, 640);
+            this.Controls.Add(this.cbModel);
+            this.Controls.Add(this.cbMake);
             this.Controls.Add(this.tbClientId);
             this.Controls.Add(this.dgvClients);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.cbTransmission);
-            this.Controls.Add(this.tbModel);
             this.Controls.Add(this.tbYear);
             this.Controls.Add(this.tbEngine);
-            this.Controls.Add(this.tbBrand);
             this.Controls.Add(this.tbLicensePlate);
             this.Controls.Add(this.tbMileage);
             this.Controls.Add(this.tbClientName);
@@ -321,14 +327,14 @@ namespace LubriTech.View
         private System.Windows.Forms.TextBox tbClientName;
         private System.Windows.Forms.TextBox tbMileage;
         private System.Windows.Forms.TextBox tbLicensePlate;
-        private System.Windows.Forms.TextBox tbBrand;
         private System.Windows.Forms.TextBox tbEngine;
         private System.Windows.Forms.TextBox tbYear;
-        private System.Windows.Forms.TextBox tbModel;
         private System.Windows.Forms.ComboBox cbTransmission;
         private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.DataGridView dgvClients;
         private System.Windows.Forms.TextBox tbClientId;
+        private System.Windows.Forms.ComboBox cbMake;
+        private System.Windows.Forms.ComboBox cbModel;
     }
 }
