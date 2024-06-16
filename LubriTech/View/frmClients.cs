@@ -24,7 +24,6 @@ namespace LubriTech.View
             InitializeComponent();
             SetupDataGridView();
             load_Clients(null);
-
         }
 
         private void frmClients_Load(object sender, EventArgs e)
@@ -60,11 +59,15 @@ namespace LubriTech.View
             }
             dgvClients.Columns["Id"].HeaderText = "Identificación";
             dgvClients.Columns["FullName"].HeaderText = "Nombre Completo";
-            dgvClients.Columns["MainPhoneNum"].HeaderText = "Teléfono Principal";
-            dgvClients.Columns["AdditionalPhoneNum"].HeaderText = "Teléfono Adicional";
-            dgvClients.Columns["Email"].HeaderText = "Correo Electrónico";
-            dgvClients.Columns["Address"].HeaderText = "Direccion";
             dgvClients.Columns["State"].HeaderText = "Estado";
+            foreach (DataGridViewColumn column in dgvClients.Columns)
+            {
+                if (column.Name != "Id" && column.Name != "FullName" && column.Name != "State" &&
+                    column.Name != "ModifyImageColumn" && column.Name != "DetailImageColumn")
+                {
+                    column.Visible = false;
+                }
+            }
             SetColumnOrder();
 
             typeof(DataGridView).InvokeMember(
@@ -101,8 +104,8 @@ namespace LubriTech.View
                         break;
                     }
                 }
-
-                frmUpsert_Client frmInsertClient = new frmUpsert_Client(clientSelected);
+                string action = "Modify";
+                frmUpsert_Client frmInsertClient = new frmUpsert_Client(clientSelected, action);
                 frmInsertClient.Owner = this;
                 frmInsertClient.DataChanged += ChildFormDataChangedHandler;
                 frmInsertClient.Show();
@@ -110,18 +113,29 @@ namespace LubriTech.View
                 return;
             }
 
-            if (e.ColumnIndex == dgvClients.Columns["DeleteImageColumn"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dgvClients.Columns["DetailImageColumn"].Index && e.RowIndex >= 0)
             {
-                DialogResult result = MessageBox.Show("Estás seguro de eliminar al cliente?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+                string idToConsult = dgvClients.Rows[e.RowIndex].Cells["Id"].Value.ToString();
+                List<Client> clients = new Clients_Controller().getAll();
+                Client clientSelected = null;
+
+                foreach (Client client in clients)
                 {
-                    string idToDelete = dgvClients.Rows[e.RowIndex].Cells["Id"].Value.ToString();
-                    Clients_Controller cc = new Clients_Controller();
-                    cc.remove(idToDelete);
-                    load_Clients(null);
-                    return;
+                    if (client.Id == idToConsult)
+                    {
+                        clientSelected = client;
+                        break;
+                    }
                 }
+                string action = "Details";
+                frmUpsert_Client frmInsertClient = new frmUpsert_Client(clientSelected, action);
+                frmInsertClient.Owner = this;
+                frmInsertClient.DataChanged += ChildFormDataChangedHandler;
+                frmInsertClient.Show();
+                load_Clients(null);
+                return;
             }
+
         }
 
         private void btnAddClient_Click(object sender, EventArgs e)
@@ -153,54 +167,30 @@ namespace LubriTech.View
             DataGridViewImageColumn modifyImageColumn = new DataGridViewImageColumn();
             modifyImageColumn.Name = "ModifyImageColumn";
             modifyImageColumn.HeaderText = "Modificar";
-            modifyImageColumn.Image = Properties.Resources.EditIco1; 
+            modifyImageColumn.Image = Properties.Resources.edit;
             dgvClients.Columns.Add(modifyImageColumn);
-
-            DataGridViewImageColumn deleteImageColumn = new DataGridViewImageColumn();
-            deleteImageColumn.Name = "DeleteImageColumn";
-            deleteImageColumn.HeaderText = "Eliminar";
-            deleteImageColumn.Image = Properties.Resources.DeleteIco1;
-            dgvClients.Columns.Add(deleteImageColumn);
 
             DataGridViewImageColumn detailImageColumn = new DataGridViewImageColumn();
             detailImageColumn.Name = "DetailImageColumn";
             detailImageColumn.HeaderText = "Detalles";
-            detailImageColumn.Image = Properties.Resources.DetailIco;
+            detailImageColumn.Image = Properties.Resources.detail;
             dgvClients.Columns.Add(detailImageColumn);
+
         }
 
         private void SetColumnOrder()
         {
             dgvClients.Columns["Id"].DisplayIndex = 0;
             dgvClients.Columns["FullName"].DisplayIndex = 1;
-            dgvClients.Columns["MainPhoneNum"].DisplayIndex = 2;
-            dgvClients.Columns["AdditionalPhoneNum"].DisplayIndex = 3;
-            dgvClients.Columns["Email"].DisplayIndex = 4;
-            dgvClients.Columns["Address"].DisplayIndex = 5;
-            dgvClients.Columns["State"].DisplayIndex = 6;
-            dgvClients.Columns["DetailImageColumn"].DisplayIndex = 7;
-            dgvClients.Columns["ModifyImageColumn"].DisplayIndex = 8;
-            dgvClients.Columns["DeleteImageColumn"].DisplayIndex = 9;
+            dgvClients.Columns["State"].DisplayIndex = 2;
+            dgvClients.Columns["DetailImageColumn"].DisplayIndex = 3;
+            dgvClients.Columns["ModifyImageColumn"].DisplayIndex = 4;
         }
 
-        private void dgvClients_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
-            if (e.RowIndex % 2 == 0)
-            {
-                dgvClients.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGray;
-            }
-            else
-            {
-                dgvClients.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
-            }
-            this.dgvClients.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 16, FontStyle.Bold);
-            this.dgvClients.ColumnHeadersDefaultCellStyle.Padding = new Padding(10, 10, 10, 10);
-            this.dgvClients.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            this.dgvClients.RowHeadersVisible = false;
-
-            // Celdas
-            this.dgvClients.Rows[e.RowIndex].DefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Regular);
-            this.dgvClients.Rows[e.RowIndex].DefaultCellStyle.Padding = new Padding(5, 5, 5, 5);
+            this.Dispose();
         }
+
     }
 }
