@@ -142,13 +142,17 @@ namespace LubriTech.Model.Client_Information
                 if (existingClient != null)
                 {
                     MessageBox.Show("El Cliente se ha modificado correctamente");
+
                     return updateClient(client);
+
 
                 }
                 else
                 {
-                    MessageBox.Show("El Cliente se ha agregado correctamente");
+                    MessageBox.Show("El Cliente se ha modificado correctamente");
+
                     return addClient(client);
+
                 }
             }
             catch (Exception ex)
@@ -167,10 +171,10 @@ namespace LubriTech.Model.Client_Information
 
                 insert.Parameters.AddWithValue("@id", client.Id);
                 insert.Parameters.AddWithValue("@fullname", client.FullName);
-                insert.Parameters.AddWithValue("@mainphone", client.FullName);
-                insert.Parameters.AddWithValue("@additionalphone", client.FullName);
-                insert.Parameters.AddWithValue("@email", client.FullName);
-                insert.Parameters.AddWithValue("@addresse", client.FullName);
+                insert.Parameters.AddWithValue("@mainphone", client.MainPhoneNum);
+                insert.Parameters.AddWithValue("@additionalphone", client.AdditionalPhoneNum);
+                insert.Parameters.AddWithValue("@email", client.Email);
+                insert.Parameters.AddWithValue("@addresse", client.Address);
                 insert.Parameters.AddWithValue("@state", client.State);
 
 
