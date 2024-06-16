@@ -181,8 +181,8 @@ namespace LubriTech.View
            
         private void btnServices_Click(object sender, EventArgs e)
         {
-            frmServices frmServices = new frmServices();
-            OpenChildForm(frmServices);
+            frmMakes  makes = new frmMakes();
+            OpenChildForm(makes);
         }
 
         private void OpenChildForm(Form childForm)
