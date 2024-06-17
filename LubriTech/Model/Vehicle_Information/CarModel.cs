@@ -31,6 +31,8 @@ namespace LubriTech.Model.Vehicle_Information
         /// </summary>
         public Make Make { get; set; }
 
+        public CarModel() { }
+
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="CarModel"/> con los valores especificados.
         /// </summary>

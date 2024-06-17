@@ -52,10 +52,12 @@ namespace LubriTech.View
             this.btnClients = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panelParametersSubmenu.SuspendLayout();
             this.panelInventorySubmenu.SuspendLayout();
             this.panelClientsSubmenu.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -350,7 +352,7 @@ namespace LubriTech.View
             this.btnVehicleMasterData.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnVehicleMasterData.Size = new System.Drawing.Size(233, 40);
             this.btnVehicleMasterData.TabIndex = 7;
-            this.btnVehicleMasterData.Text = "Dato maestro vehículo";
+            this.btnVehicleMasterData.Text = "Vehículos";
             this.btnVehicleMasterData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVehicleMasterData.UseVisualStyleBackColor = true;
             this.btnVehicleMasterData.Click += new System.EventHandler(this.btnVehicleMasterData_Click);
@@ -367,7 +369,7 @@ namespace LubriTech.View
             this.btnClientMasterData.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnClientMasterData.Size = new System.Drawing.Size(233, 40);
             this.btnClientMasterData.TabIndex = 6;
-            this.btnClientMasterData.Text = "Dato maestro cliente";
+            this.btnClientMasterData.Text = "Clientes";
             this.btnClientMasterData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClientMasterData.UseVisualStyleBackColor = true;
             this.btnClientMasterData.Click += new System.EventHandler(this.btnClientMasterData_Click);
@@ -391,6 +393,7 @@ namespace LubriTech.View
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -399,6 +402,8 @@ namespace LubriTech.View
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = global::LubriTech.Properties.Resources.menu1;
             this.pictureBox1.Location = new System.Drawing.Point(260, 10);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(40, 40);
@@ -406,6 +411,22 @@ namespace LubriTech.View
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.MaximumSize = new System.Drawing.Size(233, 45);
+            this.label1.Name = "label1";
+            this.label1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label1.Size = new System.Drawing.Size(233, 45);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Lubricentro Santa Teresita";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MDI_View
             // 
@@ -427,6 +448,7 @@ namespace LubriTech.View
             this.panelParametersSubmenu.ResumeLayout(false);
             this.panelInventorySubmenu.ResumeLayout(false);
             this.panelClientsSubmenu.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -455,6 +477,7 @@ namespace LubriTech.View
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
     }
 }
 
