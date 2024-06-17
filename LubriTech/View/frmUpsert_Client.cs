@@ -17,6 +17,8 @@ namespace LubriTech.View
         {
             InitializeComponent();
             
+
+
         }
 
         public frmUpsert_Client(Client client, string action)
@@ -69,34 +71,50 @@ namespace LubriTech.View
 
         private void frmUpsert_Client_Load(object sender, EventArgs e)
         {
+            List<Vehicle> vehicles;
+            
             if (existingClient == null)
             {
                 Vehicle_Controller vehicle_Controller = new Vehicle_Controller();
-                dgvVehiclesClients.DataSource = vehicle_Controller.getAll();
+                vehicles = vehicle_Controller.getAll();
             }
             else
             {
                 Clients_Controller clients_Controller = new Clients_Controller();
-                List<Vehicle> vehicles = clients_Controller.getVehicle(existingClient.Id);
-                dgvVehiclesClients.DataSource = vehicles;
+                vehicles = clients_Controller.getVehicle(existingClient.Id);
+
+                if (vehicles == null || vehicles.Count == 0)
+                {
+                    Vehicle_Controller vehicle_Controller = new Vehicle_Controller();
+                    vehicles = vehicle_Controller.getAll();
+                }
             }
 
-        }
+            dgvVehicles.DataSource = vehicles;
+            dgvVehicles.Columns["LicensePlate"].HeaderText = "Placa";
+            dgvVehicles.Columns["Model"].HeaderText = "Modelo";
+            dgvVehicles.Columns["Client"].HeaderText = "Cliente";
+            dgvVehicles.Columns["State"].HeaderText = "Estado";
 
-       
-
-        private void dgvVehiclesClients_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
+            foreach (DataGridViewColumn column in dgvVehicles.Columns)
             {
-                this.dgvVehiclesClients.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
+                if (column.Name != "LicensePlate" && column.Name != "Model" && column.Name != "Client" && column.Name != "State")
+                {
+                    column.Visible = false;
+                }
             }
+
+            dgvVehicles.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            SetColumnOrder();
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
+        private void SetColumnOrder()
         {
-            this.Dispose();
+            dgvVehicles.Columns["LicensePlate"].DisplayIndex = 0;
+            dgvVehicles.Columns["Model"].DisplayIndex = 1;
+            dgvVehicles.Columns["Client"].DisplayIndex = 2;
+            dgvVehicles.Columns["State"].DisplayIndex = 3;
+            
         }
 
         private void btnAddClient_Click(object sender, EventArgs e)
@@ -147,7 +165,8 @@ namespace LubriTech.View
         private void btnAddVehicle_Click(object sender, EventArgs e)
         {
             frmInsertUpdate_Vehicle frmNewVehicle = new frmInsertUpdate_Vehicle();
-            frmNewVehicle.ShowDialog();
+            frmNewVehicle.MdiParent = this.MdiParent;
+            frmNewVehicle.Show();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

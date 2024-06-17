@@ -148,6 +148,22 @@ namespace LubriTech.View
 
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
 
+        
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
+
+        }
+
+        private void btnConfirm_Click_1(object sender, EventArgs e)
+        {
+            ValidateAndSubmit();
+        }
     }
 }

@@ -221,7 +221,6 @@ namespace LubriTech.Model.Client_Information
                 dr["NumeroTelefonoAdicional"] != DBNull.Value ? Convert.ToInt32(dr["NumeroTelefonoAdicional"]) : (int?)null,
                 dr["CorreoElectronico"].ToString(),
                 dr["Direccion"].ToString(),
-                getVehicle(dr["Identificacion"].ToString()),
                 dr["Estado"].ToString());
 
                 if (conn.State != System.Data.ConnectionState.Open)
