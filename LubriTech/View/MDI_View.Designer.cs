@@ -28,35 +28,6 @@ namespace LubriTech.View
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.sideBarTimer = new System.Windows.Forms.Timer(this.components);
-            this.panelMenu = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panelParametersSubmenu = new System.Windows.Forms.Panel();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.btnParamConfig = new System.Windows.Forms.Button();
-            this.btnArticles = new System.Windows.Forms.Button();
-            this.panelInventorySubmenu = new System.Windows.Forms.Panel();
-            this.btnSuppliers = new System.Windows.Forms.Button();
-            this.btnGoodsIssue = new System.Windows.Forms.Button();
-            this.btnGoodsReceipt = new System.Windows.Forms.Button();
-            this.btnPurchaseOrder = new System.Windows.Forms.Button();
-            this.btnInventory = new System.Windows.Forms.Button();
-            this.btnWorkOrders = new System.Windows.Forms.Button();
-            this.btnAppointments = new System.Windows.Forms.Button();
-            this.panelClientsSubmenu = new System.Windows.Forms.Panel();
-            this.btnVehicleMasterData = new System.Windows.Forms.Button();
-            this.btnClientMasterData = new System.Windows.Forms.Button();
-            this.btnClients = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panelMenu.SuspendLayout();
-            this.panelParametersSubmenu.SuspendLayout();
-            this.panelInventorySubmenu.SuspendLayout();
-            this.panelClientsSubmenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // sideBarTimer
@@ -100,7 +71,7 @@ namespace LubriTech.View
             this.button1.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.button1.Size = new System.Drawing.Size(333, 55);
             this.button1.TabIndex = 14;
-            this.button1.Text = "Cerrar sesi√≥n";
+            this.button1.Text = "Cerrar sesiÛn";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -149,7 +120,7 @@ namespace LubriTech.View
             this.button12.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
             this.button12.Size = new System.Drawing.Size(333, 49);
             this.button12.TabIndex = 7;
-            this.button12.Text = "Cat√°logo de veh√≠culos";
+            this.button12.Text = "Cat·logo de vehÌculos";
             this.button12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button12.UseVisualStyleBackColor = true;
             // 
@@ -166,7 +137,7 @@ namespace LubriTech.View
             this.button13.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
             this.button13.Size = new System.Drawing.Size(333, 49);
             this.button13.TabIndex = 6;
-            this.button13.Text = "Lista de precios de art√≠culos";
+            this.button13.Text = "Lista de precios de artÌculos";
             this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button13.UseVisualStyleBackColor = true;
             // 
@@ -183,7 +154,7 @@ namespace LubriTech.View
             this.btnParamConfig.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.btnParamConfig.Size = new System.Drawing.Size(333, 55);
             this.btnParamConfig.TabIndex = 12;
-            this.btnParamConfig.Text = "Configurar par√°metros";
+            this.btnParamConfig.Text = "Configurar par·metros";
             this.btnParamConfig.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnParamConfig.UseVisualStyleBackColor = true;
             this.btnParamConfig.Click += new System.EventHandler(this.btnParamConfig_Click);
@@ -201,7 +172,7 @@ namespace LubriTech.View
             this.btnArticles.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.btnArticles.Size = new System.Drawing.Size(333, 55);
             this.btnArticles.TabIndex = 11;
-            this.btnArticles.Text = "Art√≠culos";
+            this.btnArticles.Text = "ArtÌculos";
             this.btnArticles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnArticles.UseVisualStyleBackColor = true;
             this.btnArticles.Click += new System.EventHandler(this.btnArticles_Click);
@@ -251,7 +222,7 @@ namespace LubriTech.View
             this.btnGoodsIssue.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
             this.btnGoodsIssue.Size = new System.Drawing.Size(333, 49);
             this.btnGoodsIssue.TabIndex = 8;
-            this.btnGoodsIssue.Text = "Salida de mercanc√≠a";
+            this.btnGoodsIssue.Text = "Salida de mercancÌa";
             this.btnGoodsIssue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGoodsIssue.UseVisualStyleBackColor = true;
             // 
@@ -268,7 +239,7 @@ namespace LubriTech.View
             this.btnGoodsReceipt.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
             this.btnGoodsReceipt.Size = new System.Drawing.Size(333, 49);
             this.btnGoodsReceipt.TabIndex = 7;
-            this.btnGoodsReceipt.Text = "Entrada de mercanc√≠a";
+            this.btnGoodsReceipt.Text = "Entrada de mercancÌa";
             this.btnGoodsReceipt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGoodsReceipt.UseVisualStyleBackColor = true;
             // 
@@ -320,7 +291,7 @@ namespace LubriTech.View
             this.btnWorkOrders.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.btnWorkOrders.Size = new System.Drawing.Size(333, 55);
             this.btnWorkOrders.TabIndex = 8;
-            this.btnWorkOrders.Text = "√ìrdenes de trabajo";
+            this.btnWorkOrders.Text = "”rdenes de trabajo";
             this.btnWorkOrders.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnWorkOrders.UseVisualStyleBackColor = true;
             this.btnWorkOrders.Click += new System.EventHandler(this.btnWorkOrders_Click);
@@ -368,7 +339,7 @@ namespace LubriTech.View
             this.btnVehicleMasterData.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
             this.btnVehicleMasterData.Size = new System.Drawing.Size(333, 49);
             this.btnVehicleMasterData.TabIndex = 7;
-            this.btnVehicleMasterData.Text = "Dato maestro veh√≠culo";
+            this.btnVehicleMasterData.Text = "Dato maestro vehÌculo";
             this.btnVehicleMasterData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVehicleMasterData.UseVisualStyleBackColor = true;
             this.btnVehicleMasterData.Click += new System.EventHandler(this.btnVehicleMasterData_Click);
@@ -442,15 +413,6 @@ namespace LubriTech.View
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MDI_View";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LubriTech";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.MDI_View_Load);
-            this.panelMenu.ResumeLayout(false);
-            this.panelParametersSubmenu.ResumeLayout(false);
-            this.panelInventorySubmenu.ResumeLayout(false);
-            this.panelClientsSubmenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
