@@ -12,7 +12,6 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -25,6 +24,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -50,16 +50,6 @@
   <PropertyGroup>
     <StartupObject>LubriTech.Program</StartupObject>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>logoICO.ico</ApplicationIcon>
-  </PropertyGroup>
-  <PropertyGroup />
-  <PropertyGroup>
-    <Win32Resource>
-    </Win32Resource>
-  </PropertyGroup>
-  <PropertyGroup />
-  <PropertyGroup />
   <ItemGroup>
     <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
       <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net472\BCrypt.Net-Next.dll</HintPath>
@@ -323,7 +313,6 @@
     <Content Include="Images\inventory.png" />
     <Content Include="Images\logo1.jpg" />
     <Content Include="Images\logoCrop.jpg" />
-    <None Include="Images\logoICO.ico" />
     <Content Include="Images\logoLubritech.jpg" />
     <Content Include="Images\Logout.jpg" />
     <Content Include="Images\Logout1.jpg" />
@@ -338,7 +327,6 @@
     <Content Include="Images\suppliers.png" />
     <Content Include="Images\vehicle.png" />
     <Content Include="Images\work order.jpg" />
-    <Content Include="logoICO.ico" />
     <Content Include="Resources\appointment.png" />
     <Content Include="Resources\Back.png" />
     <Content Include="Resources\DeleteIco.png" />
