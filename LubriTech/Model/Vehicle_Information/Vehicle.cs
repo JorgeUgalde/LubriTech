@@ -15,24 +15,24 @@ namespace LubriTech.Model.Vehicle_Information
         public string LicensePlate { get; set; }
         public string Engine { get; set; }
         public int Mileage { get; set; }
-        public string Brand { get; set; }
-        public string Model { get; set; }
+        public CarModel Model { get; set; }
         public int Year { get; set; }
         public string Transmission { get; set; }
         public Client Client { get; set; }
+        public string State { get; set; }
 
         public Vehicle() { }
 
-        public Vehicle(string licensePlate, string engine, int mileage, string brand, string model, int year, string transmission, Client client)
+        public Vehicle(string licensePlate, string engine, int mileage, CarModel model, int year, string transmission, Client client, string state)
         {
             this.LicensePlate = licensePlate;
             this.Engine = engine;
             this.Mileage = mileage;
-            this.Brand = brand;
             this.Model = model;
             this.Year = year;
             this.Transmission = transmission;
             this.Client = client;
+            this.State = state;
         }
 
         public string getClientId()
@@ -40,10 +40,15 @@ namespace LubriTech.Model.Vehicle_Information
             return this.Client.Id;
         }
 
+        public int getModelId()
+        {
+            return this.Model.Id;
+        }
+
         override
         public string ToString()
         {
-            return "Placa: " + LicensePlate + "\nMotor: " + Engine + "\nKilometraje: " + Mileage + "\nMarca: " + Brand + "\nModelo: " + Model + "\nAño: " + Year + "\nTransimisión: " + Transmission + "\nIdentificación cliente: " + Client.Id;
+            return "Placa: " + LicensePlate + "\nMotor: " + Engine + "\nKilometraje: " + Mileage + "\nMarca: " + Model.Make.Name + "\nModelo: " + Model.Name + "\nAño: " + Year + "\nTransimisión: " + Transmission + "\nIdentificación cliente: " + Client.Id + "\nEstado: " + State;
         }
 
     }
