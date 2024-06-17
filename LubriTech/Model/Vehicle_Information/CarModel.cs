@@ -24,7 +24,7 @@ namespace LubriTech.Model.Vehicle_Information
 
         public override string ToString()
         {
-            return Id + "  " +  Name + "  " + State + "  " + Make.ToString();
+            return Make.Name + " " +Name;
         }
     }
 }

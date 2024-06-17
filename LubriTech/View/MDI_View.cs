@@ -112,12 +112,13 @@ namespace LubriTech.View
 
         }
 
-        public void OpenChildForm(Form childForm)
+        private void OpenChildForm(Form childForm)
         {
+
             // Configurar y mostrar el nuevo formulario hijo
             childForm.MdiParent = this;
             childForm.WindowState = FormWindowState.Normal;
-            childForm.StartPosition = FormStartPosition.CenterScreen;
+            childForm.StartPosition = FormStartPosition.CenterParent;
             childForm.Show();
         }
 
