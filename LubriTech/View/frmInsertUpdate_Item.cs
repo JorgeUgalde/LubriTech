@@ -102,5 +102,10 @@ namespace LubriTech.View
         {
 
         }
+
+        private void tbPurchasePrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 }

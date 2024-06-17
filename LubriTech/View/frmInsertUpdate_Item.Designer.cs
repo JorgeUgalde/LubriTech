@@ -183,6 +183,7 @@
             this.tbPurchasePrice.Name = "tbPurchasePrice";
             this.tbPurchasePrice.Size = new System.Drawing.Size(345, 35);
             this.tbPurchasePrice.TabIndex = 27;
+            this.tbPurchasePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPurchasePrice_KeyPress);
             // 
             // label6
             // 

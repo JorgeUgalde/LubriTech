@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LubriTech.Controller;
 using LubriTech.Model.Client_Information;
-using LubriTech.Model.Product_Information;
 using LubriTech.Model.Vehicle_Information;
 
 namespace LubriTech.View
