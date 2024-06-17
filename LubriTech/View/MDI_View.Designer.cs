@@ -100,7 +100,7 @@ namespace LubriTech.View
             this.button1.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.button1.Size = new System.Drawing.Size(333, 55);
             this.button1.TabIndex = 14;
-            this.button1.Text = "Cerrar sesión";
+            this.button1.Text = "Cerrar sesi�n";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -149,7 +149,7 @@ namespace LubriTech.View
             this.button12.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
             this.button12.Size = new System.Drawing.Size(333, 49);
             this.button12.TabIndex = 7;
-            this.button12.Text = "Catálogo de vehículos";
+            this.button12.Text = "Cat�logo de veh�culos";
             this.button12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button12.UseVisualStyleBackColor = true;
             // 
@@ -166,7 +166,7 @@ namespace LubriTech.View
             this.button13.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
             this.button13.Size = new System.Drawing.Size(333, 49);
             this.button13.TabIndex = 6;
-            this.button13.Text = "Lista de precios de artículos";
+            this.button13.Text = "Lista de precios de art�culos";
             this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button13.UseVisualStyleBackColor = true;
             // 
@@ -183,7 +183,7 @@ namespace LubriTech.View
             this.btnParamConfig.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.btnParamConfig.Size = new System.Drawing.Size(333, 55);
             this.btnParamConfig.TabIndex = 12;
-            this.btnParamConfig.Text = "Configurar parámetros";
+            this.btnParamConfig.Text = "Configurar par�metros";
             this.btnParamConfig.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnParamConfig.UseVisualStyleBackColor = true;
             this.btnParamConfig.Click += new System.EventHandler(this.btnParamConfig_Click);
@@ -201,7 +201,7 @@ namespace LubriTech.View
             this.btnArticles.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.btnArticles.Size = new System.Drawing.Size(333, 55);
             this.btnArticles.TabIndex = 11;
-            this.btnArticles.Text = "Artículos";
+            this.btnArticles.Text = "Art�culos";
             this.btnArticles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnArticles.UseVisualStyleBackColor = true;
             this.btnArticles.Click += new System.EventHandler(this.btnArticles_Click);
@@ -251,7 +251,7 @@ namespace LubriTech.View
             this.btnGoodsIssue.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
             this.btnGoodsIssue.Size = new System.Drawing.Size(333, 49);
             this.btnGoodsIssue.TabIndex = 8;
-            this.btnGoodsIssue.Text = "Salida de mercancía";
+            this.btnGoodsIssue.Text = "Salida de mercanc�a";
             this.btnGoodsIssue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGoodsIssue.UseVisualStyleBackColor = true;
             // 
@@ -268,7 +268,7 @@ namespace LubriTech.View
             this.btnGoodsReceipt.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
             this.btnGoodsReceipt.Size = new System.Drawing.Size(333, 49);
             this.btnGoodsReceipt.TabIndex = 7;
-            this.btnGoodsReceipt.Text = "Entrada de mercancía";
+            this.btnGoodsReceipt.Text = "Entrada de mercanc�a";
             this.btnGoodsReceipt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGoodsReceipt.UseVisualStyleBackColor = true;
             // 
@@ -320,7 +320,7 @@ namespace LubriTech.View
             this.btnWorkOrders.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.btnWorkOrders.Size = new System.Drawing.Size(333, 55);
             this.btnWorkOrders.TabIndex = 8;
-            this.btnWorkOrders.Text = "Órdenes de trabajo";
+            this.btnWorkOrders.Text = "�rdenes de trabajo";
             this.btnWorkOrders.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnWorkOrders.UseVisualStyleBackColor = true;
             this.btnWorkOrders.Click += new System.EventHandler(this.btnWorkOrders_Click);
@@ -368,7 +368,7 @@ namespace LubriTech.View
             this.btnVehicleMasterData.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
             this.btnVehicleMasterData.Size = new System.Drawing.Size(333, 49);
             this.btnVehicleMasterData.TabIndex = 7;
-            this.btnVehicleMasterData.Text = "Dato maestro vehículo";
+            this.btnVehicleMasterData.Text = "Dato maestro veh�culo";
             this.btnVehicleMasterData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVehicleMasterData.UseVisualStyleBackColor = true;
             this.btnVehicleMasterData.Click += new System.EventHandler(this.btnVehicleMasterData_Click);

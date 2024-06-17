@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LubriTech.Controller;
 using LubriTech.Model.Client_Information;
-using LubriTech.Model.Product_Information;
 using LubriTech.Model.Vehicle_Information;
 
 namespace LubriTech.View
@@ -149,50 +148,6 @@ namespace LubriTech.View
                 frmInsertVehicle.Show();
                 return;
             }
-
-            //if (e.ColumnIndex == dgvVehicles.Columns["DeleteButtonColumn"].Index && e.RowIndex >= 0)
-            //{
-            //    DialogResult result = MessageBox.Show("Estás seguro de eliminar este vehículo?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            //    if (result == DialogResult.Yes)
-            //    {
-            //        string selectedLicensePlate = dgvVehicles.Rows[e.RowIndex].Cells["LicensePlate"].Value.ToString();
-            //        Vehicle_Controller vehicleController = new Vehicle_Controller();
-            //        vehicleController.delete(selectedLicensePlate);
-            //        load_Vehicles(null);
-            //        return;
-            //    }
-            //}
-        }
-
-        private void dgvVehicles_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
-            {
-                this.dgvVehicles.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
-
-            // Estilo de las celdas
-            // Headers de columnas
-            this.dgvVehicles.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold);
-            this.dgvVehicles.ColumnHeadersDefaultCellStyle.Padding = new Padding(10, 10, 10, 10);
-            this.dgvVehicles.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            this.dgvVehicles.RowHeadersVisible = false;
-
-            // Celdas
-            this.dgvVehicles.Rows[e.RowIndex].DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
-            this.dgvVehicles.Rows[e.RowIndex].DefaultCellStyle.Padding = new Padding(5, 5, 5, 5);
-        }
-
-        private void dgvVehicles_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
-        {
-            if (e.RowIndex % 2 == 0)
-            {
-                dgvVehicles.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGray;
-            }
-            else
-            {
-                dgvVehicles.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
-            }
         }
 
         private void SetupDataGridView()
@@ -208,13 +163,6 @@ namespace LubriTech.View
             detailImageColumn.HeaderText = "Detalles";
             detailImageColumn.Image = Properties.Resources.detail;
             dgvVehicles.Columns.Add(detailImageColumn);
-
-            //DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
-            //deleteButtonColumn.Name = "DeleteButtonColumn";
-            //deleteButtonColumn.HeaderText = "Eliminar ";
-            //deleteButtonColumn.Text = "Eliminar";
-            //deleteButtonColumn.UseColumnTextForButtonValue = true;
-            //dgvVehicles.Columns.Add(deleteButtonColumn);
         }
 
         private void SetColumnOrder()
@@ -229,7 +177,6 @@ namespace LubriTech.View
             dgvVehicles.Columns["State"].DisplayIndex = 7;
             dgvVehicles.Columns["ModifyImageColumn"].DisplayIndex = 8;
             dgvVehicles.Columns["DetailImageColumn"].DisplayIndex = 9;
-            //dgvVehicles.Columns["DeleteButtonColumn"].DisplayIndex = 10;
         }
     }
 }

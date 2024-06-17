@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LubriTech.Model.Client_Information;
-using LubriTech.Model.Product_Information;
 using LubriTech.Model.Supplier_Information;
 
 namespace LubriTech.Model.Vehicle_Information
@@ -331,36 +330,6 @@ namespace LubriTech.Model.Vehicle_Information
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
-                return false;
-            }
-            finally
-            {
-                if (conn.State != System.Data.ConnectionState.Closed)
-                {
-                    conn.Close();
-                }
-            }
-        }
-
-        public Boolean deleteVehicle(string licensePlate)
-        {
-            try
-            {
-                string deleteQuery = "DELETE FROM Vehiculo WHERE Placa = @licensePlate";
-                SqlCommand cmd = new SqlCommand(deleteQuery, conn);
-                cmd.Parameters.AddWithValue("@licensePlate", licensePlate);
-
-                if (conn.State != System.Data.ConnectionState.Open)
-                {
-                    conn.Open();
-                }
-
-                cmd.ExecuteNonQuery();
-
-                return true;
-            }
-            catch (Exception ex)
-            {
                 return false;
             }
             finally

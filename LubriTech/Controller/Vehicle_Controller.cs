@@ -22,11 +22,6 @@ namespace LubriTech.Controller
             return vehicleModel.upsertVehicle(vehicle);
         }
 
-        public Boolean delete(string licensePlate)
-        {
-            return vehicleModel.deleteVehicle(licensePlate);
-        }
-
         public Client getClient(string clientId)
         {
             return vehicleModel.getClient(clientId);
