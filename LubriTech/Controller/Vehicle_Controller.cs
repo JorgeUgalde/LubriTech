@@ -31,5 +31,15 @@ namespace LubriTech.Controller
         {
             return vehicleModel.getClient(clientId);
         }
+
+        public CarModel getModel(int modelId)
+        {
+            return vehicleModel.getModel(modelId);
+        }
+
+        public Make getMake(int makeId)
+        {
+            return vehicleModel.getMake(makeId);
+        }
     }
 }

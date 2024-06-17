@@ -4,10 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LubriTech.Controller;
+using LubriTech.Model.Client_Information;
 using LubriTech.Model.Product_Information;
 using LubriTech.Model.Vehicle_Information;
 
@@ -19,8 +21,8 @@ namespace LubriTech.View
 
         public frmVehicles()
         {
-            InitializeComponent();
             vehicles = new List<Vehicle>();
+            InitializeComponent();
             SetupDataGridView();
             load_Vehicles(null);
         }
@@ -47,31 +49,21 @@ namespace LubriTech.View
             else
             {
                 vehicles = new Vehicle_Controller().getAll();
+                if (vehicles == null)
+                {
+                    MessageBox.Show("No hay vehículos registrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
                 dgvVehicles.DataSource = vehicles;
             }
             dgvVehicles.Columns["LicensePlate"].HeaderText = "Placa";
             dgvVehicles.Columns["Engine"].HeaderText = "Tipo Motor";
             dgvVehicles.Columns["Mileage"].HeaderText = "Kilometraje";
-            dgvVehicles.Columns["Brand"].HeaderText = "Marca";
             dgvVehicles.Columns["Model"].HeaderText = "Modelo";
             dgvVehicles.Columns["Year"].HeaderText = "Año";
             dgvVehicles.Columns["Transmission"].HeaderText = "Transmisión";
             dgvVehicles.Columns["Client"].HeaderText = "Nombre cliente";
             SetColumnOrder();
-        }
-
-        private void SetColumnOrder()
-        {
-            dgvVehicles.Columns["LicensePlate"].DisplayIndex = 0;
-            dgvVehicles.Columns["Engine"].DisplayIndex = 1;
-            dgvVehicles.Columns["Mileage"].DisplayIndex = 2;
-            dgvVehicles.Columns["Brand"].DisplayIndex = 3;
-            dgvVehicles.Columns["Model"].DisplayIndex = 4;
-            dgvVehicles.Columns["Year"].DisplayIndex = 5;
-            dgvVehicles.Columns["Transmission"].DisplayIndex = 6;
-            dgvVehicles.Columns["Client"].DisplayIndex = 7;
-            dgvVehicles.Columns["ModifyButtonColumn"].DisplayIndex = 8;
-            dgvVehicles.Columns["DeleteButtonColumn"].DisplayIndex = 9;
         }
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
@@ -88,8 +80,8 @@ namespace LubriTech.View
                 p.LicensePlate.ToLower().Contains(filterValue) ||
                 p.Engine.ToLower().Contains(filterValue) ||
                 p.Mileage.ToString().ToLower().Contains(filterValue) ||
-                p.Brand.ToLower().Contains(filterValue) ||
-                p.Model.ToLower().Contains(filterValue) ||
+                p.Model.Make.Name.ToLower().Contains(filterValue) ||
+                p.Model.Name.ToLower().Contains(filterValue) ||
                 p.Year.ToString().ToLower().Contains(filterValue) ||
                 p.Transmission.ToLower().Contains(filterValue) ||
                 p.Client.FullName.ToLower().Contains(filterValue)
@@ -100,29 +92,12 @@ namespace LubriTech.View
             load_Vehicles(filteredList);
         }
 
-        private void SetupDataGridView()
-        {
-            DataGridViewButtonColumn modifyButtonColumn = new DataGridViewButtonColumn();
-            modifyButtonColumn.Name = "ModifyButtonColumn";
-            modifyButtonColumn.HeaderText = "Ver Detalles";
-            modifyButtonColumn.Text = "Detalles-Modificar";
-            modifyButtonColumn.UseColumnTextForButtonValue = true;
-            dgvVehicles.Columns.Add(modifyButtonColumn);
-
-            DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
-            deleteButtonColumn.Name = "DeleteButtonColumn";
-            deleteButtonColumn.HeaderText = "Eliminar ";
-            deleteButtonColumn.Text = "Eliminar";
-            deleteButtonColumn.UseColumnTextForButtonValue = true;
-            dgvVehicles.Columns.Add(deleteButtonColumn);
-        }
-
         private void btnNewVehicle_Click(object sender, EventArgs e)
         {
             frmInsertUpdate_Vehicle frmUpsertVehicle = new frmInsertUpdate_Vehicle();
             frmUpsertVehicle.Owner = this;
             frmUpsertVehicle.DataChanged += ChildFormDataChangedHandler;
-            frmUpsertVehicle.ShowDialog();
+            frmUpsertVehicle.Show();
         }
 
         private void ChildFormDataChangedHandler(object sender, EventArgs e)
@@ -132,7 +107,7 @@ namespace LubriTech.View
 
         private void dgvVehicles_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dgvVehicles.Columns["ModifyButtonColumn"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dgvVehicles.Columns["ModifyImageColumn"].Index && e.RowIndex >= 0)
             {
                 string selectedLicensePlate = dgvVehicles.Rows[e.RowIndex].Cells["LicensePlate"].Value.ToString();
                 List<Vehicle> vehicles = new Vehicle_Controller().getAll();
@@ -146,25 +121,47 @@ namespace LubriTech.View
                     }
                 }
 
-                frmInsertUpdate_Vehicle frmInsertVehicle = new frmInsertUpdate_Vehicle(selectedVehicle);
+                string action = "Modify";
+                frmInsertUpdate_Vehicle frmInsertVehicle = new frmInsertUpdate_Vehicle(selectedVehicle, action);
                 frmInsertVehicle.Owner = this;
                 frmInsertVehicle.DataChanged += ChildFormDataChangedHandler;
                 frmInsertVehicle.Show();
                 return;
             }
 
-            if (e.ColumnIndex == dgvVehicles.Columns["DeleteButtonColumn"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dgvVehicles.Columns["DetailImageColumn"].Index && e.RowIndex >= 0)
             {
-                DialogResult result = MessageBox.Show("Estás seguro de eliminar este vehículo?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+                string selectedLicensePlate = dgvVehicles.Rows[e.RowIndex].Cells["LicensePlate"].Value.ToString();
+                List<Vehicle> vehicles = new Vehicle_Controller().getAll();
+                Vehicle selectedVehicle = null;
+                foreach (Vehicle vehicle in vehicles)
                 {
-                    string selectedLicensePlate = dgvVehicles.Rows[e.RowIndex].Cells["LicensePlate"].Value.ToString();
-                    Vehicle_Controller vehicleController = new Vehicle_Controller();
-                    vehicleController.delete(selectedLicensePlate);
-                    load_Vehicles(null);
-                    return;
+                    if (vehicle.LicensePlate == selectedLicensePlate)
+                    {
+                        selectedVehicle = vehicle;
+                        break;
+                    }
                 }
+                string action = "Details";
+                frmInsertUpdate_Vehicle frmInsertVehicle = new frmInsertUpdate_Vehicle(selectedVehicle, action);
+                frmInsertVehicle.Owner = this;
+                frmInsertVehicle.DataChanged += ChildFormDataChangedHandler;
+                frmInsertVehicle.Show();
+                return;
             }
+
+            //if (e.ColumnIndex == dgvVehicles.Columns["DeleteButtonColumn"].Index && e.RowIndex >= 0)
+            //{
+            //    DialogResult result = MessageBox.Show("Estás seguro de eliminar este vehículo?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //    if (result == DialogResult.Yes)
+            //    {
+            //        string selectedLicensePlate = dgvVehicles.Rows[e.RowIndex].Cells["LicensePlate"].Value.ToString();
+            //        Vehicle_Controller vehicleController = new Vehicle_Controller();
+            //        vehicleController.delete(selectedLicensePlate);
+            //        load_Vehicles(null);
+            //        return;
+            //    }
+            //}
         }
 
         private void dgvVehicles_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -196,6 +193,43 @@ namespace LubriTech.View
             {
                 dgvVehicles.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
             }
+        }
+
+        private void SetupDataGridView()
+        {
+            DataGridViewImageColumn modifyImageColumn = new DataGridViewImageColumn();
+            modifyImageColumn.Name = "ModifyImageColumn";
+            modifyImageColumn.HeaderText = "Modificar";
+            modifyImageColumn.Image = Properties.Resources.edit;
+            dgvVehicles.Columns.Add(modifyImageColumn);
+
+            DataGridViewImageColumn detailImageColumn = new DataGridViewImageColumn();
+            detailImageColumn.Name = "DetailImageColumn";
+            detailImageColumn.HeaderText = "Detalles";
+            detailImageColumn.Image = Properties.Resources.detail;
+            dgvVehicles.Columns.Add(detailImageColumn);
+
+            //DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
+            //deleteButtonColumn.Name = "DeleteButtonColumn";
+            //deleteButtonColumn.HeaderText = "Eliminar ";
+            //deleteButtonColumn.Text = "Eliminar";
+            //deleteButtonColumn.UseColumnTextForButtonValue = true;
+            //dgvVehicles.Columns.Add(deleteButtonColumn);
+        }
+
+        private void SetColumnOrder()
+        {
+            dgvVehicles.Columns["LicensePlate"].DisplayIndex = 0;
+            dgvVehicles.Columns["Engine"].DisplayIndex = 1;
+            dgvVehicles.Columns["Mileage"].DisplayIndex = 2;
+            dgvVehicles.Columns["Model"].DisplayIndex = 3;
+            dgvVehicles.Columns["Year"].DisplayIndex = 4;
+            dgvVehicles.Columns["Transmission"].DisplayIndex = 5;
+            dgvVehicles.Columns["Client"].DisplayIndex = 6;
+            dgvVehicles.Columns["State"].DisplayIndex = 7;
+            dgvVehicles.Columns["ModifyImageColumn"].DisplayIndex = 8;
+            dgvVehicles.Columns["DetailImageColumn"].DisplayIndex = 9;
+            //dgvVehicles.Columns["DeleteButtonColumn"].DisplayIndex = 10;
         }
     }
 }
