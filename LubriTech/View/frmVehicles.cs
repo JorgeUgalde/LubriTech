@@ -183,8 +183,8 @@ namespace LubriTech.View
             dgvVehicles.Columns["Transmission"].DisplayIndex = 5;
             dgvVehicles.Columns["Client"].DisplayIndex = 6;
             dgvVehicles.Columns["State"].DisplayIndex = 7;
-            dgvVehicles.Columns["ModifyImageColumn"].DisplayIndex = 8;
-            dgvVehicles.Columns["DetailImageColumn"].DisplayIndex = 9;
+            dgvVehicles.Columns["DetailImageColumn"].DisplayIndex = 8;
+            dgvVehicles.Columns["ModifyImageColumn"].DisplayIndex = 9;
         }
 
         private void txtFilter_TextChanged_1(object sender, EventArgs e)
