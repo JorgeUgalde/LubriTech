@@ -230,7 +230,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmInsertUpdateSupplier";
             this.Text = "Gestionar Proveedor";
-            this.Load += new System.EventHandler(this.frmInsertUpdateSupplier_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

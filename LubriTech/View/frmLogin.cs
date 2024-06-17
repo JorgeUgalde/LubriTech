@@ -110,5 +110,10 @@ namespace LubriTech
         {
             txtPassword.BackColor = Color.FromArgb(237, 237, 237);
         }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

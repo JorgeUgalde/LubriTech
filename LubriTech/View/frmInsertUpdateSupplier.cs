@@ -16,11 +16,24 @@ namespace LubriTech.View
     public partial class frmInsertUpdateSupplier : Form
     {
         Supplier_Controller sc = new Supplier_Controller();
-        String supplierId;
-        public frmInsertUpdateSupplier(string supplierId)
+        Supplier supplier;
+        public frmInsertUpdateSupplier(Supplier supplier, int type)
         {
             InitializeComponent();
-            this.supplierId = supplierId;
+            if (type == 0)
+            {
+               btConfirm.Visible = false;
+            }
+
+            txtId.Enabled = false;
+
+            this.supplier = supplier;
+            txtEmail.Text = supplier.email;
+            txtId.Text = supplier.id;
+            txtName.Text = supplier.name;
+            txtPhone.Text = supplier.phone.ToString();
+
+
         }
 
         public frmInsertUpdateSupplier()
@@ -29,22 +42,7 @@ namespace LubriTech.View
         }
 
         //method to load the supplier data into the form
-        private void LoadSupplier()
-        {
-            Supplier supplier = sc.GetSupplier(supplierId);
-            txtId.Text = supplier.id;
-            txtName.Text = supplier.name;
-            txtEmail.Text = supplier.email;
-            txtPhone.Text = supplier.phone.ToString();
-        }
-
-        private void frmInsertUpdateSupplier_Load(object sender, EventArgs e)
-        {
-            if (supplierId != null)
-            {
-                LoadSupplier();
-            }
-        }
+        
 
         // Define a custom event
         public event EventHandler DataChanged;
@@ -57,14 +55,7 @@ namespace LubriTech.View
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            //Supplier supplier = new Supplier();
-            //supplier.id = txtId.Text;
-            //supplier.name = txtName.Text;
-            //supplier.email = txtEmail.Text;
-            //supplier.phone = Convert.ToInt32(txtPhone.Text);
-            //sc.Upsert(supplier);
-            //OnDataChanged(EventArgs.Empty);
-            //this.Close();
+
             ValidateAndSubmit();
         }
 

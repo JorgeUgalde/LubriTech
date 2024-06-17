@@ -143,6 +143,7 @@ namespace LubriTech.View
             frmInsert_Client.Owner = this;
             frmInsert_Client.DataChanged += ChildFormDataChangedHandler;
             frmInsert_Client.Show();
+
         }
 
         private void ApplyFilter()
