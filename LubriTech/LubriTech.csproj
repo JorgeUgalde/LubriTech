@@ -86,6 +86,7 @@
     <Compile Include="Controller\Make_Controller.cs" />
     <Compile Include="Controller\Supplier_Controller.cs" />
     <Compile Include="Controller\User_Controller.cs" />
+    <Compile Include="Controller\CarModel_Controller.cs" />
     <Compile Include="Controller\Vehicle_Controller.cs" />
     <Compile Include="Controller\Work_Order_Controller.cs" />
     <Compile Include="Model\Branch_Information\Branch.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Model\User_Information\User_Model.cs" />
     <Compile Include="Model\Vehicle_Information\CarModel.cs" />
     <Compile Include="Model\Vehicle_Information\Make.cs" />
+    <Compile Include="Model\Vehicle_Information\CarModel_Model.cs" />
     <Compile Include="Model\Vehicle_Information\Make_Model.cs" />
     <Compile Include="Model\Vehicle_Information\Vehicle.cs" />
     <Compile Include="Model\Vehicle_Information\Vehicle_Model.cs" />

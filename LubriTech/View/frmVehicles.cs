@@ -56,12 +56,20 @@ namespace LubriTech.View
                 dgvVehicles.DataSource = vehicles;
             }
             dgvVehicles.Columns["LicensePlate"].HeaderText = "Placa";
-            dgvVehicles.Columns["Engine"].HeaderText = "Tipo Motor";
-            dgvVehicles.Columns["Mileage"].HeaderText = "Kilometraje";
             dgvVehicles.Columns["Model"].HeaderText = "Modelo";
             dgvVehicles.Columns["Year"].HeaderText = "Año";
             dgvVehicles.Columns["Transmission"].HeaderText = "Transmisión";
-            dgvVehicles.Columns["Client"].HeaderText = "Nombre cliente";
+            dgvVehicles.Columns["State"].HeaderText = "Estado";
+            dgvVehicles.Columns["Client"].HeaderText = "Cliente";
+            
+            foreach (DataGridViewColumn column in dgvVehicles.Columns)
+            {
+                if (column.Name != "LicensePlate" && column.Name != "Year" && column.Name != "State" &&
+                    column.Name != "Client" && column.Name != "Model" && column.Name != "ModifyImageColumn" && column.Name != "DetailImageColumn")
+                {
+                    column.Visible = false;
+                }
+            }
             SetColumnOrder();
         }
 
@@ -94,7 +102,7 @@ namespace LubriTech.View
         private void btnNewVehicle_Click(object sender, EventArgs e)
         {
             frmInsertUpdate_Vehicle frmUpsertVehicle = new frmInsertUpdate_Vehicle();
-            frmUpsertVehicle.Owner = this;
+            frmUpsertVehicle.MdiParent = this.MdiParent;
             frmUpsertVehicle.DataChanged += ChildFormDataChangedHandler;
             frmUpsertVehicle.Show();
         }
@@ -122,7 +130,7 @@ namespace LubriTech.View
 
                 string action = "Modify";
                 frmInsertUpdate_Vehicle frmInsertVehicle = new frmInsertUpdate_Vehicle(selectedVehicle, action);
-                frmInsertVehicle.Owner = this;
+                frmInsertVehicle.MdiParent = this.MdiParent;
                 frmInsertVehicle.DataChanged += ChildFormDataChangedHandler;
                 frmInsertVehicle.Show();
                 return;
@@ -143,7 +151,7 @@ namespace LubriTech.View
                 }
                 string action = "Details";
                 frmInsertUpdate_Vehicle frmInsertVehicle = new frmInsertUpdate_Vehicle(selectedVehicle, action);
-                frmInsertVehicle.Owner = this;
+                frmInsertVehicle.MdiParent = this.MdiParent;
                 frmInsertVehicle.DataChanged += ChildFormDataChangedHandler;
                 frmInsertVehicle.Show();
                 return;
@@ -175,8 +183,18 @@ namespace LubriTech.View
             dgvVehicles.Columns["Transmission"].DisplayIndex = 5;
             dgvVehicles.Columns["Client"].DisplayIndex = 6;
             dgvVehicles.Columns["State"].DisplayIndex = 7;
-            dgvVehicles.Columns["ModifyImageColumn"].DisplayIndex = 8;
-            dgvVehicles.Columns["DetailImageColumn"].DisplayIndex = 9;
+            dgvVehicles.Columns["DetailImageColumn"].DisplayIndex = 8;
+            dgvVehicles.Columns["ModifyImageColumn"].DisplayIndex = 9;
+        }
+
+        private void txtFilter_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

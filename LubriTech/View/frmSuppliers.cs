@@ -14,51 +14,56 @@ namespace LubriTech.View
 {
     public partial class frmSuppliers : Form
     {
-        Supplier_Controller sc = new Supplier_Controller();
+        private List<Supplier> suppliers;
         public frmSuppliers()
         {
             InitializeComponent();
-            LoadSuppliers();
             SetupDataGridView();
+            suppliers = new List<Supplier>();
+            LoadSuppliers(null);
         }
 
         private void frmSuppliers_Load(object sender, EventArgs e)
         {
-            LoadSuppliers();
+            txtFilter.TextChanged += new EventHandler(txtFilter_TextChanged);
         }
 
         //click event for each row in the DataGridView to open the frmInsertUpdateSupplier form
-        private void dgvSuppliers_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex != dgvSuppliers.Columns["DeleteButtonColumn"].Index)
-            {
-                DataGridViewRow row = this.dgvSuppliers.Rows[e.RowIndex];
-                string supplierId = row.Cells["id"].Value.ToString();
-                frmInsertUpdateSupplier frm = new frmInsertUpdateSupplier(supplierId);
-                frm.DataChanged += ChildFormDataChangedHandler;
-                frm.Owner = this;
-                frm.Show();
-            }
-        }
 
-        private void LoadSuppliers()
+        private void LoadSuppliers(List<Supplier> filteredList)
         {
-            dgvSuppliers.DataSource = new Supplier_Controller().getAll();
+            if (filteredList != null)
+            {
+                if (filteredList.Count == 0)
+                {
+                    dgvSuppliers.DataSource = suppliers;
+
+                }
+                else
+                {
+                    dgvSuppliers.DataSource = filteredList;
+                }
+            }
+            else
+            {
+                suppliers = new Supplier_Controller().getAll();
+                dgvSuppliers.DataSource = suppliers;
+
+            }
             dgvSuppliers.Columns["id"].HeaderText = "Codigo";
-            dgvSuppliers.Columns["name"].HeaderText = "Name";
+            dgvSuppliers.Columns["name"].HeaderText = "Nombre";
             dgvSuppliers.Columns["email"].HeaderText = "Correo electrónico";
             dgvSuppliers.Columns["phone"].HeaderText = "Teléfono";
-
+            SetColumnOrder();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void SetColumnOrder()
         {
-            //frmInsertUpdateSupplier is the child form that will be opened
-            frmInsertUpdateSupplier frm = new frmInsertUpdateSupplier();
-            frm.DataChanged += ChildFormDataChangedHandler;
-            frm.Owner = this;
-            frm.Show();
-            
+            dgvSuppliers.Columns["id"].DisplayIndex = 0;
+            dgvSuppliers.Columns["name"].DisplayIndex = 1;
+            dgvSuppliers.Columns["email"].DisplayIndex = 2;
+            dgvSuppliers.Columns["phone"].DisplayIndex = 3;
+            dgvSuppliers.Columns["ModifyImageColumn"].DisplayIndex = 4;
+            dgvSuppliers.Columns["DetailImageColumn"].DisplayIndex = 5;
         }
 
         // Event handler to refresh DataGridView when the event is raised
@@ -66,64 +71,94 @@ namespace LubriTech.View
         {
             // Refresh DataGridView here
             // For example:
-            LoadSuppliers();
+            LoadSuppliers(null);
         }
 
         private void SetupDataGridView()
         {
-            DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
-            deleteButtonColumn.Name = "DeleteButtonColumn";
-            deleteButtonColumn.HeaderText = "Acción";
-            deleteButtonColumn.Text = "Eliminar";
-            deleteButtonColumn.UseColumnTextForButtonValue = true;
-            dgvSuppliers.Columns.Add(deleteButtonColumn);
+            // Modify button column
+            DataGridViewImageColumn modifyImageColumn = new DataGridViewImageColumn();
+            modifyImageColumn.Name = "ModifyImageColumn";
+            modifyImageColumn.HeaderText = "Modificar";
+            modifyImageColumn.Image = Properties.Resources.edit;
+            dgvSuppliers.Columns.Add(modifyImageColumn);
+
+            DataGridViewImageColumn detailImageColumn = new DataGridViewImageColumn();
+            detailImageColumn.Name = "DetailImageColumn";
+            detailImageColumn.HeaderText = "Detalles";
+            detailImageColumn.Image = Properties.Resources.detail;
+            dgvSuppliers.Columns.Add(detailImageColumn);
 
             // Handle CellContentClick event
-            dgvSuppliers.CellContentClick += DataGridView_CellContentClick;
+            //dgvSuppliers.CellContentClick += DataGridView_CellContentClick;
         }
 
-        private void DataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+       
+        private void btnAddSupplier_Click(object sender, EventArgs e)
         {
-            // Check if the click is on the delete button column
-            if (e.ColumnIndex == dgvSuppliers.Columns["DeleteButtonColumn"].Index && e.RowIndex >= 0)
+            //frmInsertUpdateSupplier is the child form that will be opened
+            frmInsertUpdateSupplier frm = new frmInsertUpdateSupplier();
+            frm.DataChanged += ChildFormDataChangedHandler;
+            frm.MdiParent = this.MdiParent;
+            this.WindowState = FormWindowState.Normal;
+            frm.Show();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dgvSuppliers_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvSuppliers.Columns["ModifyImageColumn"].Index && e.RowIndex >= 0)
             {
-                // Prompt confirmation dialog
-                DialogResult result = MessageBox.Show("Estás seguro de eliminar al proveedor?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                string idToModify = dgvSuppliers.Rows[e.RowIndex].Cells["id"].Value.ToString();
+                Supplier itemSelected = new Supplier_Controller().GetSupplier(idToModify);
 
-                if (result == DialogResult.Yes)
-                {
-                    // Get the value of the id column in the current row
-                    string idToDelete = dgvSuppliers.Rows[e.RowIndex].Cells["id"].Value.ToString();
-                    //string idToDelete = dgvSuppliers.Rows[e.RowIndex].Cells["id"].ToString();
+                frmInsertUpdateSupplier frmUpsert = new frmInsertUpdateSupplier(itemSelected, 1);
+                frmUpsert.MdiParent = this.MdiParent;
+                this.WindowState = FormWindowState.Normal;
+                frmUpsert.DataChanged += ChildFormDataChangedHandler;
+                frmUpsert.Show();
+                return;
+            }
 
-                    // Call your delete function
-                    // Assuming your delete function is named DeleteFromDatabase
-                    sc.Delete(idToDelete);
+            if (e.ColumnIndex == dgvSuppliers.Columns["DetailImageColumn"].Index && e.RowIndex >= 0)
+            {
+                string idOfDetails = dgvSuppliers.Rows[e.RowIndex].Cells["id"].Value.ToString();
+                Supplier itemSelected = new Supplier_Controller().GetSupplier(idOfDetails);
 
-                    // Refresh DataGridView
-                    LoadSuppliers();
-                }
+                frmInsertUpdateSupplier frmUpsert = new frmInsertUpdateSupplier(itemSelected, 0);
+                frmUpsert.MdiParent = this.MdiParent;
+                this.WindowState = FormWindowState.Normal;
+                frmUpsert.DataChanged += ChildFormDataChangedHandler;
+                frmUpsert.Show();
+
+                return;
+
             }
         }
 
-        private void dgvSuppliers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void txtFilter_TextChanged(object sender, EventArgs e)
         {
-            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
-            {
-                this.dgvSuppliers.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
-        }
+            ApplyFilter();
 
-        private void dgvSuppliers_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        }
+        private void ApplyFilter()
         {
-            if (e.RowIndex % 2 == 0)
-            {
-                dgvSuppliers.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGray;
-            }
-            else
-            {
-                dgvSuppliers.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
-            }
+            string filterValue = txtFilter.Text.ToLower();
+
+            // Filtrar la lista de productos
+            var filteredList = suppliers.Where(p =>
+                p.id.ToLower().Contains(filterValue) ||
+                p.name.ToLower().Contains(filterValue) ||
+                p.email.ToLower().Contains(filterValue)
+            ).ToList();
+
+            // Refrescar el DataGridView
+            dgvSuppliers.DataSource = null;
+            LoadSuppliers(filteredList);
         }
     }
 }

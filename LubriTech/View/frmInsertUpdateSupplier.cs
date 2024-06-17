@@ -16,11 +16,24 @@ namespace LubriTech.View
     public partial class frmInsertUpdateSupplier : Form
     {
         Supplier_Controller sc = new Supplier_Controller();
-        String supplierId;
-        public frmInsertUpdateSupplier(string supplierId)
+        Supplier supplier;
+        public frmInsertUpdateSupplier(Supplier supplier, int type)
         {
             InitializeComponent();
-            this.supplierId = supplierId;
+            if (type == 0)
+            {
+               btnConfirm.Visible = false;
+            }
+
+            txtId.Enabled = false;
+
+            this.supplier = supplier;
+            txtEmail.Text = supplier.email;
+            txtId.Text = supplier.id;
+            txtName.Text = supplier.name;
+            txtPhone.Text = supplier.phone.ToString();
+
+
         }
 
         public frmInsertUpdateSupplier()
@@ -29,22 +42,7 @@ namespace LubriTech.View
         }
 
         //method to load the supplier data into the form
-        private void LoadSupplier()
-        {
-            Supplier supplier = sc.GetSupplier(supplierId);
-            txtId.Text = supplier.id;
-            txtName.Text = supplier.name;
-            txtEmail.Text = supplier.email;
-            txtPhone.Text = supplier.phone.ToString();
-        }
-
-        private void frmInsertUpdateSupplier_Load(object sender, EventArgs e)
-        {
-            if (supplierId != null)
-            {
-                LoadSupplier();
-            }
-        }
+        
 
         // Define a custom event
         public event EventHandler DataChanged;
@@ -57,14 +55,7 @@ namespace LubriTech.View
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            //Supplier supplier = new Supplier();
-            //supplier.id = txtId.Text;
-            //supplier.name = txtName.Text;
-            //supplier.email = txtEmail.Text;
-            //supplier.phone = Convert.ToInt32(txtPhone.Text);
-            //sc.Upsert(supplier);
-            //OnDataChanged(EventArgs.Empty);
-            //this.Close();
+
             ValidateAndSubmit();
         }
 
@@ -97,7 +88,7 @@ namespace LubriTech.View
             }
 
             // Validate Phone (only numbers and minimum length)
-            if (!int.TryParse(txtPhone.Text, out int phone) || txtPhone.Text.Length < 8)
+            if (!long.TryParse(txtPhone.Text, out long phone) || txtPhone.Text.Length < 8)
             {
                 SetErrorBorder(panelPhone);
                 isValid = false;
@@ -148,6 +139,22 @@ namespace LubriTech.View
 
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
 
+        
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
+
+        }
+
+        private void btnConfirm_Click_1(object sender, EventArgs e)
+        {
+            ValidateAndSubmit();
+        }
     }
 }

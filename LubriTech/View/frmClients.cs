@@ -59,6 +59,7 @@ namespace LubriTech.View
             dgvClients.Columns["Id"].HeaderText = "Identificación";
             dgvClients.Columns["FullName"].HeaderText = "  Nombre Completo";
             dgvClients.Columns["State"].HeaderText = "  Estado";
+            
             foreach (DataGridViewColumn column in dgvClients.Columns)
             {
                 if (column.Name != "Id" && column.Name != "FullName" && column.Name != "State" &&
@@ -107,7 +108,7 @@ namespace LubriTech.View
                 }
                 string action = "Modify";
                 frmUpsert_Client frmInsertClient = new frmUpsert_Client(clientSelected, action);
-                frmInsertClient.Owner = this;
+                frmInsertClient.MdiParent = this.MdiParent;
                 frmInsertClient.DataChanged += ChildFormDataChangedHandler;
                 frmInsertClient.Show();
                 load_Clients(null);
@@ -130,7 +131,7 @@ namespace LubriTech.View
                 }
                 string action = "Details";
                 frmUpsert_Client frmInsertClient = new frmUpsert_Client(clientSelected, action);
-                frmInsertClient.Owner = this;
+                frmInsertClient.MdiParent = this.MdiParent;
                 frmInsertClient.DataChanged += ChildFormDataChangedHandler;
                 frmInsertClient.Show();
                 load_Clients(null);
@@ -139,12 +140,13 @@ namespace LubriTech.View
 
         }
 
-        private void btnAddClient_Click(object sender, EventArgs e)
+        private async void btnAddClient_Click(object sender, EventArgs e)
         {
             frmUpsert_Client frmInsert_Client = new frmUpsert_Client();
             frmInsert_Client.MdiParent = this.MdiParent;  // Establecer el formulario principal como el contenedor MDI
             frmInsert_Client.DataChanged += ChildFormDataChangedHandler;
             frmInsert_Client.Show();
+
         }
 
         private void ApplyFilter()

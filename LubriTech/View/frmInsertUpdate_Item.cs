@@ -21,9 +21,15 @@ namespace LubriTech.View
             globalItem = new Item();
         }
 
-        public frmInsertUpdate_Item(Item item)
+        public frmInsertUpdate_Item(Item item , int type)
         {
+            
             InitializeComponent();
+
+            if (type == 0)
+            {
+                btnConfirm.Visible = false;
+            }
 
             this.globalItem = item;
             txtCode.Enabled = false;
@@ -112,9 +118,9 @@ namespace LubriTech.View
             e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
         }
 
-        //private void tbPurchasePrice_KeyPress(object sender, KeyPressEventArgs e)
-        //{
+        private void frmInsertUpdate_Item_Load(object sender, EventArgs e)
+        {
 
-        //}
+        }
     }
 }

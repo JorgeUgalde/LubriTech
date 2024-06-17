@@ -26,7 +26,7 @@ namespace LubriTech.View
         }
 
         // **************************************** Filtrado inicio  ***************************************************//
-         
+
         // ************************* crear lista de lo que hacen, en mi caso la linea 18 tiene la lista de productos global
         private void frmItems_Load(object sender, EventArgs e)
         {
@@ -39,11 +39,28 @@ namespace LubriTech.View
             {
                 if (filteredList.Count == 0)
                 {
-                    dgvItems.DataSource = items;
-                    
-                }else
+                    dgvItems.DataSource = items.Select(p => new
+                    {
+                        code = p.code,
+                        name = p.name,
+                        sellPrice = p.sellPrice,
+                        measureUnit = p.measureUnit,
+                        state = p.state,
+                        type = p.type
+                    }).ToList();
+
+                }
+                else
                 {
-                    dgvItems.DataSource = filteredList;
+                    dgvItems.DataSource = filteredList.Select(p => new
+                    {
+                        code = p.code,
+                        name = p.name,
+                        sellPrice = p.sellPrice,
+                        measureUnit = p.measureUnit,
+                        state = p.state,
+                        type = p.type
+                    }).ToList();
                 }
             }
             else
@@ -65,8 +82,8 @@ namespace LubriTech.View
             }
             dgvItems.Columns["code"].HeaderText = "Código";
             dgvItems.Columns["name"].HeaderText = "Nombre";
-            dgvItems.Columns["sellPrice"].HeaderText = "Precio de Venta";
-            dgvItems.Columns["measureUnit"].HeaderText = "Unidad de Medida";
+            dgvItems.Columns["sellPrice"].HeaderText = "Precio Venta";
+            dgvItems.Columns["measureUnit"].HeaderText = "Unidad Medida";
             dgvItems.Columns["state"].HeaderText = "Estado";
             dgvItems.Columns["type"].HeaderText = "Tipo";
             SetColumnOrder();
@@ -80,8 +97,8 @@ namespace LubriTech.View
             dgvItems.Columns["measureUnit"].DisplayIndex = 3;
             dgvItems.Columns["state"].DisplayIndex = 4;
             dgvItems.Columns["type"].DisplayIndex = 5;
-            dgvItems.Columns["ModifyButtonColumn"].DisplayIndex = 6;
-            dgvItems.Columns["DeleteButtonColumn"].DisplayIndex = 7;
+            dgvItems.Columns["ModifyImageColumn"].DisplayIndex = 6;
+            dgvItems.Columns["DetailImageColumn"].DisplayIndex = 7;
         }
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
@@ -97,9 +114,7 @@ namespace LubriTech.View
             var filteredList = items.Where(p =>
                 p.code.ToLower().Contains(filterValue) ||
                 p.name.ToLower().Contains(filterValue) ||
-                p.sellPrice.ToString().ToLower().Contains(filterValue) ||
-                p.measureUnit.ToLower().Contains(filterValue) ||
-                p.state.ToLower().Contains(filterValue)
+                p.measureUnit.ToLower().Contains(filterValue) 
             ).ToList();
 
             // Refrescar el DataGridView
@@ -111,20 +126,17 @@ namespace LubriTech.View
         private void SetupDataGridView()
         {
             // Modify button column
-            DataGridViewButtonColumn modifyButtonColumn = new DataGridViewButtonColumn();
-            modifyButtonColumn.Name = "ModifyButtonColumn";
-            modifyButtonColumn.HeaderText = "Ver Detalles";
-            modifyButtonColumn.Text = "Detalles - Modificar";
-            modifyButtonColumn.UseColumnTextForButtonValue = true;
-            dgvItems.Columns.Add(modifyButtonColumn);
+            DataGridViewImageColumn modifyImageColumn = new DataGridViewImageColumn();
+            modifyImageColumn.Name = "ModifyImageColumn";
+            modifyImageColumn.HeaderText = "Modificar";
+            modifyImageColumn.Image = Properties.Resources.edit;
+            dgvItems.Columns.Add(modifyImageColumn);
 
-
-            DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
-            deleteButtonColumn.Name = "DeleteButtonColumn";
-            deleteButtonColumn.HeaderText = "Eliminar ";
-            deleteButtonColumn.Text = "Eliminar";
-            deleteButtonColumn.UseColumnTextForButtonValue = true;
-            dgvItems.Columns.Add(deleteButtonColumn);
+            DataGridViewImageColumn detailImageColumn = new DataGridViewImageColumn();
+            detailImageColumn.Name = "DetailImageColumn";
+            detailImageColumn.HeaderText = "Detalles";
+            detailImageColumn.Image = Properties.Resources.detail;
+            dgvItems.Columns.Add(detailImageColumn);
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
@@ -132,6 +144,7 @@ namespace LubriTech.View
             frmInsertUpdate_Item frmInsertProduct = new frmInsertUpdate_Item();
             frmInsertProduct.MdiParent = this.MdiParent;
             frmInsertProduct.DataChanged += ChildFormDataChangedHandler;
+            this.WindowState = FormWindowState.Normal;
             frmInsertProduct.Show();
         }
 
@@ -142,38 +155,39 @@ namespace LubriTech.View
 
         private void dgvItems_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dgvItems.Columns["ModifyButtonColumn"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dgvItems.Columns["ModifyImageColumn"].Index && e.RowIndex >= 0)
             {
                 string idToModify = dgvItems.Rows[e.RowIndex].Cells["code"].Value.ToString();
-                List<Item> items = new Item_Controller().getAll();
-                Item itemselected = null;
-                foreach (Item product in items)
-                {
-                    if (product.code == idToModify)
-                    {
-                        itemselected = product;
-                        break;
-                    }
-                }
+                Item itemSelected = new Item_Controller().get(idToModify);                            
 
-                frmInsertUpdate_Item frmInsertProduct = new frmInsertUpdate_Item(itemselected);
-                frmInsertProduct.Owner = this;
-                frmInsertProduct.DataChanged += ChildFormDataChangedHandler;
-                frmInsertProduct.Show();
+                frmInsertUpdate_Item frmUpsert = new frmInsertUpdate_Item(itemSelected, 1);
+                frmUpsert.MdiParent = this.MdiParent;
+                this.WindowState = FormWindowState.Normal;
+                frmUpsert.DataChanged += ChildFormDataChangedHandler;
+                frmUpsert.Show();
                 return;
             }
 
-            if (e.ColumnIndex == dgvItems.Columns["DeleteButtonColumn"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dgvItems.Columns["DetailImageColumn"].Index && e.RowIndex >= 0)
             {
-                DialogResult result = MessageBox.Show("Estás seguro de eliminar este producto?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    string idToDelete = dgvItems.Rows[e.RowIndex].Cells["code"].Value.ToString();
-                    Item_Controller pc = new Item_Controller();
-                    load_Items(null);
-                    return;
-                }
+                string idOfDetails = dgvItems.Rows[e.RowIndex].Cells["code"].Value.ToString();
+                Item itemSelected = new Item_Controller().get(idOfDetails);
+
+                frmInsertUpdate_Item frmUpsert = new frmInsertUpdate_Item(itemSelected, 0);
+                frmUpsert.MdiParent = this.MdiParent;
+                this.WindowState = FormWindowState.Normal;
+                frmUpsert.DataChanged += ChildFormDataChangedHandler;
+                frmUpsert.Show();
+
+                return;
+
             }
+
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

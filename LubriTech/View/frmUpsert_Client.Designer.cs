@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,14 +44,14 @@
             this.txtAdditionalPhone = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.dgvVehiclesClients = new System.Windows.Forms.DataGridView();
             this.btnAddVehicle = new System.Windows.Forms.Button();
             this.btnAddClient = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.cbState = new System.Windows.Forms.ComboBox();
             this.lblState = new System.Windows.Forms.Label();
             this.txtAddresse = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVehiclesClients)).BeginInit();
+            this.dgvVehicles = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVehicles)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -171,26 +175,6 @@
             this.label8.TabIndex = 14;
             this.label8.Text = "Vehículos";
             // 
-            // dgvVehiclesClients
-            // 
-            this.dgvVehiclesClients.AllowUserToAddRows = false;
-            this.dgvVehiclesClients.AllowUserToDeleteRows = false;
-            this.dgvVehiclesClients.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvVehiclesClients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvVehiclesClients.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvVehiclesClients.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.dgvVehiclesClients.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvVehiclesClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVehiclesClients.Location = new System.Drawing.Point(47, 287);
-            this.dgvVehiclesClients.Name = "dgvVehiclesClients";
-            this.dgvVehiclesClients.ReadOnly = true;
-            this.dgvVehiclesClients.RowHeadersWidth = 51;
-            this.dgvVehiclesClients.Size = new System.Drawing.Size(756, 214);
-            this.dgvVehiclesClients.TabIndex = 15;
-            this.dgvVehiclesClients.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvVehiclesClients_CellFormatting);
-            // 
             // btnAddVehicle
             // 
             this.btnAddVehicle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
@@ -269,19 +253,67 @@
             this.txtAddresse.Size = new System.Drawing.Size(205, 30);
             this.txtAddresse.TabIndex = 22;
             // 
+            // dgvVehicles
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
+            this.dgvVehicles.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvVehicles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvVehicles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvVehicles.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvVehicles.BackgroundColor = System.Drawing.Color.White;
+            this.dgvVehicles.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvVehicles.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
+            this.dgvVehicles.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVehicles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvVehicles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVehicles.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvVehicles.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvVehicles.GridColor = System.Drawing.Color.White;
+            this.dgvVehicles.Location = new System.Drawing.Point(47, 289);
+            this.dgvVehicles.Name = "dgvVehicles";
+            this.dgvVehicles.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVehicles.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvVehicles.RowHeadersVisible = false;
+            this.dgvVehicles.Size = new System.Drawing.Size(756, 198);
+            this.dgvVehicles.TabIndex = 23;
+            // 
             // frmUpsert_Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(849, 597);
+            this.Controls.Add(this.dgvVehicles);
             this.Controls.Add(this.txtAddresse);
             this.Controls.Add(this.lblState);
             this.Controls.Add(this.cbState);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnAddClient);
             this.Controls.Add(this.btnAddVehicle);
-            this.Controls.Add(this.dgvVehiclesClients);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtAdditionalPhone);
@@ -294,11 +326,12 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.DoubleBuffered = true;
             this.Name = "frmUpsert_Client";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dato maestro cliente";
             this.Load += new System.EventHandler(this.frmUpsert_Client_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVehiclesClients)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVehicles)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -318,12 +351,12 @@
         private System.Windows.Forms.TextBox txtAdditionalPhone;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridView dgvVehiclesClients;
         private System.Windows.Forms.Button btnAddVehicle;
         private System.Windows.Forms.Button btnAddClient;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.ComboBox cbState;
         private System.Windows.Forms.Label lblState;
         private System.Windows.Forms.TextBox txtAddresse;
+        private System.Windows.Forms.DataGridView dgvVehicles;
     }
 }

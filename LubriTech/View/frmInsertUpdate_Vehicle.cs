@@ -21,37 +21,61 @@ namespace LubriTech.View
     {
 
         private List<Client> clients;
+        private List<CarModel> models;
+        private List<Make> makes;
 
         public frmInsertUpdate_Vehicle()
         {
             clients = new List<Client>();
+            makes = new Make_Controller().getAll();
+            models = new CarModel_Controller().getAll();
             InitializeComponent();
+            setComboBoxMake();
             load_Clients(null);
             SetupClientsDGV();
         }
 
         public frmInsertUpdate_Vehicle(Vehicle vehicle, string action)
         {
+            clients = new List<Client>();
+            makes = new Make_Controller().getAll();
+            models = new CarModel_Controller().getAll();
             InitializeComponent();
+            setComboBoxMake();
 
             tbClientName.Text = vehicle.Client.FullName;
             tbClientId.Text = vehicle.Client.Id;
             cbMake.Text = vehicle.Model.Make.Name;
             cbModel.Text = vehicle.Model.Name;
-            cbMake.ValueMember = vehicle.Model.Make.Id.ToString();
-            cbModel.ValueMember = vehicle.Model.Id.ToString();
             tbLicensePlate.Text = vehicle.LicensePlate;
             tbYear.Text = vehicle.Year.ToString();
             tbMileage.Text = vehicle.Mileage.ToString();
             tbEngine.Text = vehicle.Engine;
             cbTransmission.Text = vehicle.Transmission;
 
-            if (action == "Modify")
+            SetupClientsDGV();
+
+            if (action == "Details")
             {
-                btnConfirm.Text = "Modificar";
-            }
-            else
-            {
+                tbLicensePlate.Enabled = false;
+                tbEngine.Enabled = false;
+                tbClientName.Enabled = false;
+                tbMileage.Enabled = false;
+                tbYear.Enabled = false;
+                cbMake.Enabled = false;
+                cbModel.Enabled = false;
+                cbTransmission.Enabled = false;
+                dgvClients.Enabled = false;
+
+                tbLicensePlate.BackColor = Color.FromArgb(249, 252, 255);
+                tbEngine.BackColor = Color.FromArgb(249, 252, 255);
+                tbClientName.BackColor = Color.FromArgb(249, 252, 255);
+                tbMileage.BackColor = Color.FromArgb(249, 252, 255);
+                tbYear.BackColor = Color.FromArgb(249, 252, 255);
+                cbMake.BackColor = Color.FromArgb(249, 252, 255);
+                cbModel.BackColor = Color.FromArgb(249, 252, 255);
+                cbTransmission.BackColor = Color.FromArgb(249, 252, 255);
+
                 btnConfirm.Hide();
             }
         }
@@ -83,15 +107,17 @@ namespace LubriTech.View
             else
             {
                 Vehicle_Controller vehicleController = new Vehicle_Controller();
+                
                 Vehicle vehicle = new Vehicle();
                 vehicle.Client = vehicleController.getClient(tbClientId.Text.Trim());
-                vehicle.Model.Make = vehicleController.getMake(Convert.ToInt32(cbMake.SelectedValue.ToString()));
                 vehicle.Model = vehicleController.getModel(Convert.ToInt32(cbModel.SelectedValue.ToString()));
+                vehicle.Model.Make = vehicleController.getMake(Convert.ToInt32(cbMake.SelectedValue.ToString()));
                 vehicle.LicensePlate = tbLicensePlate.Text.Trim();
                 vehicle.Year = Convert.ToInt32(tbYear.Text.Trim());
                 vehicle.Mileage = Convert.ToInt32(tbMileage.Text.Trim());
                 vehicle.Engine = tbEngine.Text.Trim();
                 vehicle.Transmission = cbTransmission.Text.Trim();
+                vehicle.State = "Activo";
 
                 if (vehicleController.upsert(vehicle))
                 {
@@ -100,7 +126,7 @@ namespace LubriTech.View
                 }
                 else
                 {
-                    MessageBox.Show("Product not inserted");
+                    MessageBox.Show("Vehículo no insertado");
                 }
             }
         }
@@ -129,6 +155,7 @@ namespace LubriTech.View
                     dgvClients.DataSource = filteredClients;
                     dgvClients.Columns["Id"].HeaderText = "Identificación";
                     dgvClients.Columns["FullName"].HeaderText = "Nombre";
+                    dgvClients.Columns["State"].HeaderText = "Estado";
                     dgvClients.Columns["MainPhoneNum"].Visible = false;
                     dgvClients.Columns["AdditionalPhoneNum"].Visible = false;
                     dgvClients.Columns["Email"].Visible = false;
@@ -141,6 +168,7 @@ namespace LubriTech.View
                     dgvClients.DataSource = clients;
                     dgvClients.Columns["Id"].HeaderText = "Identificación";
                     dgvClients.Columns["FullName"].HeaderText = "Nombre";
+                    dgvClients.Columns["State"].HeaderText = "Estado";
                     dgvClients.Columns["MainPhoneNum"].Visible = false;
                     dgvClients.Columns["AdditionalPhoneNum"].Visible = false;
                     dgvClients.Columns["Email"].Visible = false;
@@ -162,46 +190,94 @@ namespace LubriTech.View
             selectButtonColumn.Text = "Seleccionar";
             selectButtonColumn.UseColumnTextForButtonValue = true;
             dgvClients.Columns.Add(selectButtonColumn);
-
-
-        }
-
-        private void dgvClients_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dgvClients.Columns["selectButtonColumn"].Index && e.RowIndex >= 0)
-            {
-                string idToSelect = dgvClients.Rows[e.RowIndex].Cells["Id"].Value.ToString();
-                foreach (Client client in clients)
-                {
-                    if (client.Id == idToSelect)
-                    {
-                        tbClientName.Text = client.FullName;
-                        tbClientId.Text = client.Id;
-                        MessageBox.Show(client.FullName + " seleccionado correctamente");
-                        break;
-                    }
-                }
-            }
-
-        }
-
-        private void dgvClients_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
-            {
-                this.dgvClients.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            }
-        }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
         }
 
         private void tbNumeric_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void dgvClients_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvClients.Columns["selectButtonColumn"].Index && e.RowIndex >= 0)
+            {
+                string selectedId = dgvClients.Rows[e.RowIndex].Cells["Id"].Value.ToString();
+                List<Client> clients = new Clients_Controller().getAll();
+                Client selectedClient = null;
+                foreach (Client client in clients)
+                {
+                    if (client.Id == selectedId)
+                    {
+                        selectedClient = client;
+                        break;
+                    }
+                }
+                tbClientId.Text = selectedClient.Id;
+                tbClientName.Text = selectedClient.FullName;
+                MessageBox.Show("Cliente seleccionado correctamente");
+            }
+        }
+
+        private List<CarModel> getMakeIdByName(string name)
+        {
+            List<CarModel> makeModels = new List<CarModel>();
+            foreach (var model in models)
+            {
+                if (model.Make.Name == name)
+                {
+                    makeModels.Add(model);
+                }
+            }
+            return makeModels;
+        }
+
+        // Método para configurar los ComboBoxes inicialmente
+        private void setComboBoxMake()
+        {
+            cbMake.DataSource = makes;
+            cbMake.ValueMember = "Id";
+            cbMake.DisplayMember = "Name";
+            cbMake.SelectedIndex = -1;
+
+            cbModel.DataSource = null;  // Inicialmente sin datos
+            cbModel.ValueMember = "Id";
+            cbModel.DisplayMember = "Name";
+            cbModel.SelectedIndex = -1;
+            cbModel.Enabled = false;  // Inicialmente deshabilitado
+
+            // Conectar el evento
+            cbMake.SelectedValueChanged += cbMake_SelectedValueChanged;
+        }
+
+        // Método que se llama cuando cambia el valor seleccionado en cbMake
+        private void cbMake_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cbMake.SelectedIndex == -1)
+            {
+                cbModel.Enabled = false;
+                cbModel.DataSource = null;  // Limpiar el DataSource
+            }
+            else
+            {
+                cbModel.Enabled = true;
+
+                // Obtener el nombre de la marca seleccionada
+                string selectedMakeName = cbMake.Text;
+
+                // Obtener modelos basados en la marca seleccionada
+                cbModel.DataSource = getMakeIdByName(selectedMakeName);
+
+                cbModel.ValueMember = "Id";
+                cbModel.DisplayMember = "Name";
+                cbModel.SelectedIndex = -1; // No seleccionar ningún elemento por defecto
+
+                cbModel.Refresh(); // Refrescar el ComboBox para asegurarse de que se actualice visualmente
+            }
         }
     }
 }

@@ -52,7 +52,7 @@ namespace LubriTech.Model.Vehicle_Information
         /// <returns>Una cadena que representa el modelo de coche.</returns>
         public override string ToString()
         {
-            return Id + "  " +  Name + "  " + State + "  " + Make.ToString();
+            return Make.Name + " " +Name;
         }
     }
 }

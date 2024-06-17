@@ -1,4 +1,4 @@
-﻿namespace LubriTech.View
+namespace LubriTech.View
 {
     partial class frmClients
     {
@@ -75,7 +75,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvClients.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvClients.GridColor = System.Drawing.Color.White;
-            this.dgvClients.Location = new System.Drawing.Point(25, 61);
+            this.dgvClients.Location = new System.Drawing.Point(33, 75);
             this.dgvClients.Margin = new System.Windows.Forms.Padding(0);
             this.dgvClients.Name = "dgvClients";
             this.dgvClients.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -93,7 +93,7 @@
             this.dgvClients.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvClients.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvClients.RowTemplate.Height = 35;
-            this.dgvClients.Size = new System.Drawing.Size(720, 234);
+            this.dgvClients.Size = new System.Drawing.Size(960, 288);
             this.dgvClients.TabIndex = 0;
             this.dgvClients.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClients_CellContentClick);
             // 
@@ -102,19 +102,19 @@
             this.label2.AutoSize = true;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(20, 15);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(27, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(166, 30);
+            this.label2.Size = new System.Drawing.Size(214, 37);
             this.label2.TabIndex = 2;
             this.label2.Text = "Lista de Clientes";
             // 
             // txtFilter
             // 
             this.txtFilter.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFilter.Location = new System.Drawing.Point(487, 15);
+            this.txtFilter.Location = new System.Drawing.Point(649, 18);
+            this.txtFilter.Margin = new System.Windows.Forms.Padding(4);
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(258, 31);
+            this.txtFilter.Size = new System.Drawing.Size(343, 36);
             this.txtFilter.TabIndex = 4;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
@@ -122,9 +122,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(364, 15);
+            this.label3.Location = new System.Drawing.Point(485, 18);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 30);
+            this.label3.Size = new System.Drawing.Size(138, 37);
             this.label3.TabIndex = 5;
             this.label3.Text = "Filtrar por";
             // 
@@ -140,9 +141,10 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.dgvClients);
             this.panel1.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            this.panel1.Location = new System.Drawing.Point(42, 19);
+            this.panel1.Location = new System.Drawing.Point(56, 23);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(769, 380);
+            this.panel1.Size = new System.Drawing.Size(1025, 468);
             this.panel1.TabIndex = 6;
             // 
             // btnClose
@@ -152,9 +154,10 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnClose.Location = new System.Drawing.Point(300, 316);
+            this.btnClose.Location = new System.Drawing.Point(674, 389);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(239, 41);
+            this.btnClose.Size = new System.Drawing.Size(319, 50);
             this.btnClose.TabIndex = 6;
             this.btnClose.Text = "Cerrar";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -167,9 +170,10 @@
             this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddClient.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddClient.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAddClient.Location = new System.Drawing.Point(36, 316);
+            this.btnAddClient.Location = new System.Drawing.Point(48, 389);
+            this.btnAddClient.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddClient.Name = "btnAddClient";
-            this.btnAddClient.Size = new System.Drawing.Size(239, 41);
+            this.btnAddClient.Size = new System.Drawing.Size(319, 50);
             this.btnAddClient.TabIndex = 3;
             this.btnAddClient.Text = "Crear";
             this.btnAddClient.UseVisualStyleBackColor = false;
@@ -177,11 +181,12 @@
             // 
             // frmClients
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.ClientSize = new System.Drawing.Size(869, 411);
+            this.ClientSize = new System.Drawing.Size(1159, 506);
             this.Controls.Add(this.panel1);
+            this.DoubleBuffered = true;
             this.Name = "frmClients";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";

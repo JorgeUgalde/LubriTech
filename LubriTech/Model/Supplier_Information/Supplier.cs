@@ -25,20 +25,9 @@ namespace LubriTech.Model.Supplier_Information
         /// Correo electrónico del proveedor.
         /// </summary>
         public string email { get; set; }
+        public long phone { get; set; }
 
-        /// <summary>
-        /// Número de teléfono del proveedor.
-        /// </summary>
-        public int phone { get; set; }
-
-        /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="Supplier"/> con los valores especificados.
-        /// </summary>
-        /// <param name="id">El identificador del proveedor.</param>
-        /// <param name="name">El nombre del proveedor.</param>
-        /// <param name="email">El correo electrónico del proveedor.</param>
-        /// <param name="phone">El número de teléfono del proveedor.</param>
-        public Supplier(string id, string name, string email, int phone)
+        public Supplier(string id, string name, string email, long phone)
         {
             this.id = id;
             this.name = name;

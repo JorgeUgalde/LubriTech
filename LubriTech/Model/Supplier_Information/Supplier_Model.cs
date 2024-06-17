@@ -43,15 +43,15 @@ namespace LubriTech.Model.Supplier_Information
 
 
                 while (reader.Read())
-                {
-                    suppliers.Add(new Supplier(reader["Identificacion"].ToString(), reader["Nombre"].ToString(), reader["CorreoElectronico"].ToString(), Convert.ToInt32(reader["NumeroTelefono"])));
+                    {
+                        suppliers.Add(new Supplier(reader["Identificacion"].ToString(), reader["Nombre"].ToString(), reader["CorreoElectronico"].ToString(), Convert.ToInt64(reader["NumeroTelefono"])));
+                    }
+                    return suppliers;
                 }
-                return suppliers;
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
+                catch (Exception ex)
+                {
+                    throw (ex);
+                }
             finally
             {
                 if (conn.State != System.Data.ConnectionState.Closed)
@@ -83,7 +83,7 @@ namespace LubriTech.Model.Supplier_Information
 
                 while (reader.Read())
                 {
-                    supplier = new Supplier(reader["Identificacion"].ToString(), reader["Nombre"].ToString(), reader["CorreoElectronico"].ToString(), Convert.ToInt32(reader["NumeroTelefono"]));
+                    supplier = new Supplier(reader["Identificacion"].ToString(), reader["Nombre"].ToString(), reader["CorreoElectronico"].ToString(), Convert.ToInt64(reader["NumeroTelefono"]));
                 }
                 return supplier;
             }
