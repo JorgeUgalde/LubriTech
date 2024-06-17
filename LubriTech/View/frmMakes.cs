@@ -69,17 +69,6 @@ namespace LubriTech.View
             dgvMakes.Columns["State"].DisplayIndex = 1;
             dgvMakes.Columns["ModifyImageColumn"].DisplayIndex = 2;
             dgvMakes.Columns["DetailImageColumn"].DisplayIndex = 3;
-
-
-            this.dgvMakes.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 16, FontStyle.Bold);
-            this.dgvMakes.ColumnHeadersDefaultCellStyle.Padding = new Padding(10, 10, 10, 10);
-            this.dgvMakes.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            this.dgvMakes.RowHeadersVisible = false;
-            this.dgvMakes.DefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Regular);
-            this.dgvMakes.DefaultCellStyle.Padding = new Padding(5, 5, 5, 5);
-            // add an alternative color to the rows
-            this.dgvMakes.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
-
         }
 
 
@@ -102,16 +91,6 @@ namespace LubriTech.View
             detailImageColumn.Image = image1;
 
             dgvMakes.Columns.Add(detailImageColumn);
-        }
-
-
-        private void btnAddMake_Click(object sender, EventArgs e)
-        {
-            frmInsertUpdate_Make frmUpsertMake = new frmInsertUpdate_Make();
-            frmUpsertMake.Owner = this;
-            frmUpsertMake.DataChanged += ChildFormDataChangedHandler;
-            frmUpsertMake.Show();
-
         }
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
