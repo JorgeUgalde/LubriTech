@@ -37,26 +37,42 @@ namespace LubriTech.View
 
         public frmInsertUpdate_Vehicle(Vehicle vehicle, string action)
         {
+            clients = new List<Client>();
+            makes = new Make_Controller().getAll();
+            models = new CarModel_Controller().getAll();
             InitializeComponent();
+            setComboBoxMake();
 
             tbClientName.Text = vehicle.Client.FullName;
             tbClientId.Text = vehicle.Client.Id;
             cbMake.Text = vehicle.Model.Make.Name;
             cbModel.Text = vehicle.Model.Name;
-            cbMake.ValueMember = vehicle.Model.Make.Id.ToString();
-            cbModel.ValueMember = vehicle.Model.Id.ToString();
             tbLicensePlate.Text = vehicle.LicensePlate;
             tbYear.Text = vehicle.Year.ToString();
             tbMileage.Text = vehicle.Mileage.ToString();
             tbEngine.Text = vehicle.Engine;
             cbTransmission.Text = vehicle.Transmission;
 
-            if (action == "Modify")
+            if (action == "Details")
             {
-                btnConfirm.Text = "Modificar";
-            }
-            else
-            {
+                tbLicensePlate.Enabled = false;
+                tbEngine.Enabled = false;
+                tbClientName.Enabled = false;
+                tbMileage.Enabled = false;
+                tbYear.Enabled = false;
+                cbMake.Enabled = false;
+                cbModel.Enabled = false;
+                cbTransmission.Enabled = false;
+
+                tbLicensePlate.BackColor = Color.FromArgb(249, 252, 255);
+                tbEngine.BackColor = Color.FromArgb(249, 252, 255);
+                tbClientName.BackColor = Color.FromArgb(249, 252, 255);
+                tbMileage.BackColor = Color.FromArgb(249, 252, 255);
+                tbYear.BackColor = Color.FromArgb(249, 252, 255);
+                cbMake.BackColor = Color.FromArgb(249, 252, 255);
+                cbModel.BackColor = Color.FromArgb(249, 252, 255);
+                cbTransmission.BackColor = Color.FromArgb(249, 252, 255);
+
                 btnConfirm.Hide();
             }
         }
@@ -88,13 +104,11 @@ namespace LubriTech.View
             else
             {
                 Vehicle_Controller vehicleController = new Vehicle_Controller();
-                Make make = null;
-                make = vehicleController.getMake(Convert.ToInt32(cbMake.SelectedValue.ToString()));
                 
                 Vehicle vehicle = new Vehicle();
                 vehicle.Client = vehicleController.getClient(tbClientId.Text.Trim());
                 vehicle.Model = vehicleController.getModel(Convert.ToInt32(cbModel.SelectedValue.ToString()));
-                vehicle.Model.Make = make;
+                vehicle.Model.Make = vehicleController.getMake(Convert.ToInt32(cbMake.SelectedValue.ToString()));
                 vehicle.LicensePlate = tbLicensePlate.Text.Trim();
                 vehicle.Year = Convert.ToInt32(tbYear.Text.Trim());
                 vehicle.Mileage = Convert.ToInt32(tbMileage.Text.Trim());
