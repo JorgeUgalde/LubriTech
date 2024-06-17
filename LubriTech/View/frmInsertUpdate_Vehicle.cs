@@ -88,15 +88,19 @@ namespace LubriTech.View
             else
             {
                 Vehicle_Controller vehicleController = new Vehicle_Controller();
+                Make make = null;
+                make = vehicleController.getMake(Convert.ToInt32(cbMake.SelectedValue.ToString()));
+                
                 Vehicle vehicle = new Vehicle();
                 vehicle.Client = vehicleController.getClient(tbClientId.Text.Trim());
-                vehicle.Model.Make = vehicleController.getMake(Convert.ToInt32(cbMake.SelectedValue.ToString()));
                 vehicle.Model = vehicleController.getModel(Convert.ToInt32(cbModel.SelectedValue.ToString()));
+                vehicle.Model.Make = make;
                 vehicle.LicensePlate = tbLicensePlate.Text.Trim();
                 vehicle.Year = Convert.ToInt32(tbYear.Text.Trim());
                 vehicle.Mileage = Convert.ToInt32(tbMileage.Text.Trim());
                 vehicle.Engine = tbEngine.Text.Trim();
                 vehicle.Transmission = cbTransmission.Text.Trim();
+                vehicle.State = "Activo";
 
                 if (vehicleController.upsert(vehicle))
                 {

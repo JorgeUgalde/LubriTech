@@ -306,7 +306,7 @@ namespace LubriTech.Model.Vehicle_Information
         {
             try
             {
-                string query = "INSERT INTO Vehiculo VALUES (@licensePlate, @engine, @mileage, @model, @year, @transmission, @clientId)";
+                string query = "INSERT INTO Vehiculo (Placa, TipoMotor, Kilometraje, IdentificacionModelo, Anio, Transmision, IdentificacionCliente, Estado) VALUES (@licensePlate, @engine, @mileage, @modelId, @year, @transmission, @clientId, @state)";
                 SqlCommand cmd = new SqlCommand(query, conn);
 
                 cmd.Parameters.AddWithValue("@licensePlate", vehicle.LicensePlate);
@@ -316,6 +316,7 @@ namespace LubriTech.Model.Vehicle_Information
                 cmd.Parameters.AddWithValue("@year", vehicle.Year);
                 cmd.Parameters.AddWithValue("@transmission", vehicle.Transmission);
                 cmd.Parameters.AddWithValue("@clientId", vehicle.getClientId());
+                cmd.Parameters.AddWithValue("@state", vehicle.State);
 
 
                 if (conn.State != System.Data.ConnectionState.Open)
