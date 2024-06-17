@@ -6,12 +6,13 @@ using static System.Runtime.CompilerServices.RuntimeHelpers;
 using System.Xml.Linq;
 using LubriTech.Model.Vehicle_Information;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace LubriTech.View
 {
     public partial class frmUpsert_Client : Form
     {
-        private Client newClient;
+        private Client existingClient;
         public frmUpsert_Client()
         {
             InitializeComponent();
@@ -30,19 +31,34 @@ namespace LubriTech.View
             txtAdditionalPhone.Text = client.AdditionalPhoneNum.ToString();
             txtEmail.Text = client.Email;
             txtAddresse.Text = client.Address;
+            cbState.Text = client.State;
 
-            if (action == "Modify")
+            if (action == "Details")
             {
-                btnAddClient.Text = "Modificar";
-            }
-            else
-            {
+                txtID.Enabled = false;
+                txtFullName.Enabled = false;
+                txtMainPhone.Enabled = false;
+                txtAdditionalPhone.Enabled = false;
+                txtEmail.Enabled = false;
+                txtAddresse.Enabled = false;
+                cbState.Enabled = false;
+
+                txtID.BackColor = Color.FromArgb(249, 252, 255);
+                txtFullName.BackColor = Color.FromArgb(249, 252, 255);
+                txtMainPhone.BackColor = Color.FromArgb(249, 252, 255);
+                txtAdditionalPhone.BackColor = Color.FromArgb(249, 252, 255);
+                txtEmail.BackColor = Color.FromArgb(249, 252, 255);
+                txtAddresse.BackColor = Color.FromArgb(249, 252, 255);
+                cbState.BackColor = Color.FromArgb(249, 252, 255);
+
+
+                btnClose.Location = new Point(47, 525);
                 btnAddClient.Hide();
                 btnAddVehicle.Hide();
-
-                newClient = client;
             }
+            existingClient = client;
         }
+            
 
         public event EventHandler DataChanged;
 
@@ -110,31 +126,29 @@ namespace LubriTech.View
                     !string.IsNullOrEmpty(this.txtID.Text))
                     
                 {
+                        Clients_Controller clientsController = new Clients_Controller();
 
-                    Clients_Controller clientsController = new Clients_Controller();
 
-                  
-                    string id = this.txtID.Text.Trim();
-                    string fullname = this.txtFullName.Text.Trim();
-                    int? mainPhone = Convert.ToInt32(this.txtMainPhone.Text.Trim());
-                    int? additionalPhone = Convert.ToInt32(this.txtAdditionalPhone.Text.Trim());
-                    string email = this.txtEmail.Text.Trim();
-                    string address = this.txtAddresse.Text.Trim();
-                    string state = "Activo";
+                        string id = this.txtID.Text.Trim();
+                        string fullname = this.txtFullName.Text.Trim();
+                        int? mainPhone = Int32.TryParse(this.txtMainPhone.Text.Trim(), out int mainPhoneValue) ? mainPhoneValue : (int?)null;
+                        int? additionalPhone = Int32.TryParse(this.txtAdditionalPhone.Text.Trim(), out int additionalPhoneValue) ? additionalPhoneValue : (int?)null;
+                        string email = this.txtEmail.Text.Trim();
+                        string address = this.txtAddresse.Text.Trim();
+                        string state = this.cbState.Text.Trim();
 
-                    Client client = new Client(id, fullname, mainPhone, additionalPhone, email, address, state);
+                        Client client = new Client(id, fullname, mainPhone, additionalPhone, email, address, state);
 
-                    if (clientsController.upsert(client))
-                    {
-                        OnDataChanged(EventArgs.Empty);
-                        this.Dispose();
+                        if (clientsController.upsert(client))
+                        {
+                            OnDataChanged(EventArgs.Empty);
+                            this.Dispose();
+                        }
+                        else
+                        {
+                            MessageBox.Show("El Cliente no se ha agregado correctamente");
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("El Cliente no se ha agregado correctamente");
-                    }
-
-                }
                 else
                 {
                     MessageBox.Show("Ingrese todos los datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -158,6 +172,16 @@ namespace LubriTech.View
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void txtMainPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
+        }
+
+        private void txtAdditionalPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
         }
     }
 }
