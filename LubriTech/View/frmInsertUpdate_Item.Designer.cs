@@ -45,7 +45,7 @@
             this.cbType = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnConfirm = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cbMeasureUnit
@@ -83,6 +83,7 @@
             this.txtName.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(468, 63);
             this.txtName.Margin = new System.Windows.Forms.Padding(3, 2, 8, 7);
+            this.txtName.MaxLength = 50;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(345, 35);
             this.txtName.TabIndex = 21;
@@ -92,15 +93,18 @@
             this.txtSellPrice.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSellPrice.Location = new System.Drawing.Point(41, 164);
             this.txtSellPrice.Margin = new System.Windows.Forms.Padding(3, 2, 8, 7);
+            this.txtSellPrice.MaxLength = 10;
             this.txtSellPrice.Name = "txtSellPrice";
             this.txtSellPrice.Size = new System.Drawing.Size(345, 35);
             this.txtSellPrice.TabIndex = 20;
+            this.txtSellPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSellPrice_KeyPress);
             // 
             // txtCode
             // 
             this.txtCode.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCode.Location = new System.Drawing.Point(40, 63);
             this.txtCode.Margin = new System.Windows.Forms.Padding(3, 2, 8, 7);
+            this.txtCode.MaxLength = 20;
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(344, 35);
             this.txtCode.TabIndex = 19;
@@ -161,9 +165,11 @@
             this.tbStock.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbStock.Location = new System.Drawing.Point(466, 274);
             this.tbStock.Margin = new System.Windows.Forms.Padding(3, 2, 8, 7);
+            this.tbStock.MaxLength = 10;
             this.tbStock.Name = "tbStock";
             this.tbStock.Size = new System.Drawing.Size(345, 35);
             this.tbStock.TabIndex = 25;
+            this.tbStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStock_KeyPress);
             // 
             // label1
             // 
@@ -180,9 +186,11 @@
             this.tbPurchasePrice.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPurchasePrice.Location = new System.Drawing.Point(41, 385);
             this.tbPurchasePrice.Margin = new System.Windows.Forms.Padding(3, 2, 8, 7);
+            this.tbPurchasePrice.MaxLength = 10;
             this.tbPurchasePrice.Name = "tbPurchasePrice";
             this.tbPurchasePrice.Size = new System.Drawing.Size(345, 35);
             this.tbPurchasePrice.TabIndex = 27;
+            this.tbPurchasePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPurchasePrice_KeyPress);
             // 
             // label6
             // 
@@ -202,10 +210,10 @@
             this.cbType.Items.AddRange(new object[] {
             "Producto",
             "Servicio"});
-            this.cbType.Location = new System.Drawing.Point(468, 384);
+            this.cbType.Location = new System.Drawing.Point(465, 384);
             this.cbType.Margin = new System.Windows.Forms.Padding(5);
             this.cbType.Name = "cbType";
-            this.cbType.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.cbType.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cbType.Size = new System.Drawing.Size(343, 36);
             this.cbType.Sorted = true;
             this.cbType.TabIndex = 29;
@@ -222,30 +230,44 @@
             // 
             // btnConfirm
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(434, 462);
+            this.btnConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
+            this.btnConfirm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnConfirm.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirm.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnConfirm.Location = new System.Drawing.Point(163, 450);
+            this.btnConfirm.Margin = new System.Windows.Forms.Padding(4);
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(179, 32);
-            this.btnConfirm.TabIndex = 30;
+            this.btnConfirm.Size = new System.Drawing.Size(319, 50);
+            this.btnConfirm.TabIndex = 32;
             this.btnConfirm.Text = "Confirmar";
-            this.btnConfirm.UseVisualStyleBackColor = true;
-            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            this.btnConfirm.UseVisualStyleBackColor = false;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click_1);
             // 
-            // btnCancel
+            // btnClose
             // 
-            this.btnCancel.Location = new System.Drawing.Point(634, 462);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(179, 32);
-            this.btnCancel.TabIndex = 31;
-            this.btnCancel.Text = "Cancelar";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnClose.Location = new System.Drawing.Point(490, 450);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(319, 50);
+            this.btnClose.TabIndex = 33;
+            this.btnClose.Text = "Cerrar";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmInsertUpdate_Item
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(859, 513);
-            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.cbType);
             this.Controls.Add(this.label8);
@@ -264,8 +286,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Name = "frmInsertUpdate_Item";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion de Artículos";
-            this.Load += new System.EventHandler(this.frmInsertUpdate_Item_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,6 +312,6 @@
         private System.Windows.Forms.ComboBox cbType;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnConfirm;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnClose;
     }
 }

@@ -130,7 +130,7 @@ namespace LubriTech.View
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             frmInsertUpdate_Item frmInsertProduct = new frmInsertUpdate_Item();
-            frmInsertProduct.Owner = this;
+            frmInsertProduct.MdiParent = this.MdiParent;
             frmInsertProduct.DataChanged += ChildFormDataChangedHandler;
             frmInsertProduct.Show();
         }

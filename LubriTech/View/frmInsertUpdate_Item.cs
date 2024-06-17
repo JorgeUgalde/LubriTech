@@ -46,24 +46,16 @@ namespace LubriTech.View
         }
 
 
-
-        private void frmInsertUpdate_Item_Load(object sender, EventArgs e)
+        private void btnConfirm_Click_1(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnConfirm_Click(object sender, EventArgs e)
-        {
-            // validate fields, if empty show a general error mesage and return, else save the item
-
-            if (txtCode.Text.Trim() == "" || 
-                txtName.Text.Trim() == "" || 
-                txtSellPrice.Text.Trim() == "" || 
-                cbMeasureUnit.Text.Trim() == "" ||
-                cbState.Text.Trim() == "" ||
-                tbStock.Text.Trim() == "" || 
-                tbPurchasePrice.Text.Trim() == "" ||
-                cbType.Text.Trim() == "")
+            if (txtCode.Text.Trim() == "" ||
+               txtName.Text.Trim() == "" ||
+               txtSellPrice.Text.Trim() == "" ||
+               cbMeasureUnit.Text.Trim() == "" ||
+               cbState.Text.Trim() == "" ||
+               tbStock.Text.Trim() == "" ||
+               tbPurchasePrice.Text.Trim() == "" ||
+               cbType.Text.Trim() == "")
             {
                 MessageBox.Show("Debe llenar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -94,13 +86,32 @@ namespace LubriTech.View
             {
                 MessageBox.Show("Error al registrar el producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
+
+
+
+
+
+        private void txtSellPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;            
+        }
+
+        private void tbStock_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
+        }
+
+        private void tbPurchasePrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
+        }
+
+       
     }
 }
