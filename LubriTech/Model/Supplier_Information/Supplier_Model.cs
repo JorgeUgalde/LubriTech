@@ -10,16 +10,25 @@ using System.Runtime.CompilerServices;
 
 namespace LubriTech.Model.Supplier_Information
 {
+
+    /// <summary>
+    /// Clase que maneja las operaciones de la base de datos relacionadas con la entidad <see cref="Supplier"/>.
+    /// </summary>
     public class Supplier_Model
     {
-            SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
+        // Conexión a la base de datos utilizando la cadena de conexión predeterminada.
+        SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
 
-            public List<Supplier> loadAllSuppliers()
+        /// <summary>
+        /// Carga todos los proveedores desde la base de datos.
+        /// </summary>
+        /// <returns>Una lista de objetos <see cref="Supplier"/> que representan todos los proveedores.</returns>
+        public List<Supplier> loadAllSuppliers()
+        {
+            List<Supplier> suppliers = new List<Supplier>();
+
+            try
             {
-                List<Supplier> suppliers = new List<Supplier>();
-
-                try
-                {
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -31,18 +40,18 @@ namespace LubriTech.Model.Supplier_Information
                 SqlCommand cmd = new SqlCommand(selectQuery, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
 
-               
+
 
                 while (reader.Read())
-                    {
-                        suppliers.Add(new Supplier(reader["Identificacion"].ToString(), reader["Nombre"].ToString(), reader["CorreoElectronico"].ToString(), Convert.ToInt32(reader["NumeroTelefono"])));
-                    }
-                    return suppliers;
-                }
-                catch (Exception ex)
                 {
-                    throw (ex);
+                    suppliers.Add(new Supplier(reader["Identificacion"].ToString(), reader["Nombre"].ToString(), reader["CorreoElectronico"].ToString(), Convert.ToInt32(reader["NumeroTelefono"])));
                 }
+                return suppliers;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
             finally
             {
                 if (conn.State != System.Data.ConnectionState.Closed)
@@ -52,8 +61,13 @@ namespace LubriTech.Model.Supplier_Information
             }
         }
 
-            public Supplier getSupplier(string id)
-            {
+        /// <summary>
+        /// Obtiene un proveedor específico de la base de datos según su identificación.
+        /// </summary>
+        /// <param name="id">La identificación del proveedor.</param>
+        /// <returns>Un objeto <see cref="Supplier"/> que representa el proveedor.</returns>
+        public Supplier getSupplier(string id)
+        {
 
             Supplier supplier = null;
             try
@@ -86,46 +100,56 @@ namespace LubriTech.Model.Supplier_Information
             }
         }
 
-            public Boolean SaveSupplier(Supplier supplier)
+        /// <summary>
+        /// Guarda un nuevo proveedor en la base de datos.
+        /// </summary>
+        /// <param name="supplier">El objeto <see cref="Supplier"/> que representa el proveedor a guardar.</param>
+        /// <returns>Verdadero si la operación fue exitosa, de lo contrario falso.</returns>
+        public Boolean SaveSupplier(Supplier supplier)
+        {
+            try
             {
-                try
+                String insertQuery = "insert into Proveedor(Identificacion, Nombre, CorreoElectronico, NumeroTelefono) values (@id,@name,@email,@phone)";
+
+                SqlCommand insert = new SqlCommand(insertQuery, conn);
+
+                insert.Parameters.AddWithValue("@id", supplier.id);
+                insert.Parameters.AddWithValue("@name", supplier.name);
+                insert.Parameters.AddWithValue("@email", supplier.email);
+                insert.Parameters.AddWithValue("@phone", supplier.phone);
+
+                if (conn.State != System.Data.ConnectionState.Open)
                 {
-                    String insertQuery = "insert into Proveedor(Identificacion, Nombre, CorreoElectronico, NumeroTelefono) values (@id,@name,@email,@phone)";
-
-                    SqlCommand insert = new SqlCommand(insertQuery, conn);
-
-                    insert.Parameters.AddWithValue("@id", supplier.id);
-                    insert.Parameters.AddWithValue("@name", supplier.name);
-                    insert.Parameters.AddWithValue("@email", supplier.email);
-                    insert.Parameters.AddWithValue("@phone", supplier.phone);
-
-                    if (conn.State != System.Data.ConnectionState.Open)
-                    {
-                        conn.Open();
-                    }
-
-                    insert.ExecuteNonQuery();
-
-                    return true;
-
-                }
-                catch (SqlException ex)
-                {
-                return false;
-                    throw ex;
-
-                }
-                finally
-                {
-                    if (conn.State != System.Data.ConnectionState.Closed)
-                    {
-                        conn.Close();
-                    }
+                    conn.Open();
                 }
 
+                insert.ExecuteNonQuery();
+
+                return true;
 
             }
+            catch (SqlException ex)
+            {
+                return false;
+                throw ex;
 
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+
+
+        }
+
+        /// <summary>
+        /// Inserta o actualiza un proveedor en la base de datos.
+        /// </summary>
+        /// <param name="supplier">El objeto <see cref="Supplier"/> que representa el proveedor a insertar o actualizar.</param>
+        /// <returns>Verdadero si la operación fue exitosa, de lo contrario falso.</returns>
         public Boolean upsertSupplier(Supplier supplier)
         {
             try
@@ -143,72 +167,81 @@ namespace LubriTech.Model.Supplier_Information
             {
                 throw ex;
             }
-        }   
+        }
 
+        /// <summary>
+        /// Actualiza un proveedor existente en la base de datos.
+        /// </summary>
+        /// <param name="supplier">El objeto <see cref="Supplier"/> que representa el proveedor a actualizar.</param>
+        /// <returns>Verdadero si la operación fue exitosa, de lo contrario falso.</returns>
         public Boolean updateSupplier(Supplier supplier)
+        {
+            try
             {
-                try
+                string updateQuery = "update Proveedor set Nombre= @name, CorreoElectronico = @email, NumeroTelefono = @phone where [Proveedor].Identificacion = @id";
+                SqlCommand update = new SqlCommand(updateQuery, conn);
+
+                update.Parameters.AddWithValue("@name", supplier.name);
+                update.Parameters.AddWithValue("@email", supplier.email);
+                update.Parameters.AddWithValue("@phone", supplier.phone);
+                update.Parameters.AddWithValue("@id", supplier.id);
+
+
+                if (conn.State != System.Data.ConnectionState.Open)
                 {
-                    string updateQuery = "update Proveedor set Nombre= @name, CorreoElectronico = @email, NumeroTelefono = @phone where [Proveedor].Identificacion = @id";
-                    SqlCommand update = new SqlCommand(updateQuery, conn);
-
-                    update.Parameters.AddWithValue("@name", supplier.name);
-                    update.Parameters.AddWithValue("@email", supplier.email);
-                    update.Parameters.AddWithValue("@phone", supplier.phone);
-                    update.Parameters.AddWithValue("@id", supplier.id);
-
-
-                    if (conn.State != System.Data.ConnectionState.Open)
-                    {
-                        conn.Open();
-                    }
-
-                    update.ExecuteNonQuery();
-
-                    return true;
-
+                    conn.Open();
                 }
-                catch (SqlException ex)
-                {
+
+                update.ExecuteNonQuery();
+
+                return true;
+
+            }
+            catch (SqlException ex)
+            {
                 return false;
-                    throw ex;
-                }
-                finally
-                {
-                    if (conn.State != System.Data.ConnectionState.Closed)
-                    {
-                        conn.Close();
-                    }
-                }
+                throw ex;
             }
-
-            public void deleteSupplier(string supplierId)
+            finally
             {
-                try
+                if (conn.State != System.Data.ConnectionState.Closed)
                 {
-                    string deleteQuery = "delete from Proveedor where [Proveedor].Identificacion = @id";
-                    SqlCommand delete = new SqlCommand(deleteQuery, conn);
-
-                    if (conn.State != System.Data.ConnectionState.Open)
-                    {
-                        conn.Open();
-                    }
-
-                    delete.Parameters.AddWithValue("@id", supplierId);
-                    delete.ExecuteNonQuery();
-
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-                finally
-                {
-                    if (conn.State != System.Data.ConnectionState.Closed)
-                    {
-                        conn.Close();
-                    }
+                    conn.Close();
                 }
             }
+        }
+
+        /// <summary>
+        /// Elimina un proveedor de la base de datos.
+        /// </summary>
+        /// <param name="supplierId">La identificación del proveedor a eliminar.</param>
+        public void deleteSupplier(string supplierId)
+        {
+            try
+            {
+                string deleteQuery = "delete from Proveedor where [Proveedor].Identificacion = @id";
+                SqlCommand delete = new SqlCommand(deleteQuery, conn);
+
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                delete.Parameters.AddWithValue("@id", supplierId);
+                delete.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+        }
     }
 }

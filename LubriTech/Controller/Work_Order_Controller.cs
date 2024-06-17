@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LubriTech.Controller
 {
-    internal class Work_Order_Controller
+    public class Work_Order_Controller
     {
     }
 }

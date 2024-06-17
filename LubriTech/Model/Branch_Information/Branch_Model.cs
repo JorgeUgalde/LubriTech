@@ -7,10 +7,18 @@ using System.Threading.Tasks;
 
 namespace LubriTech.Model.Branch_Information
 {
+
+    /// <summary>
+    /// Clase que gestiona la interacción con la base de datos para la entidad <see cref="Branch"/>.
+    /// </summary>
     public class Branch_Model
     {
         SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
 
+        /// <summary>
+        /// Carga todas las sucursales almacenadas en la base de datos.
+        /// </summary>
+        /// <returns>Lista de objetos Branch que representan todas las sucursales.</returns>
         public List<Branch> loadAllBranches()
         {
             try
@@ -39,6 +47,11 @@ namespace LubriTech.Model.Branch_Information
             }
         }
 
+        /// <summary>
+        /// Obtiene una sucursal específica basada en su Identificación.
+        /// </summary>
+        /// <param name="id">Identificador único de la sucursal a obtener.</param>
+        /// <returns>Objeto Branch que representa la sucursal encontrada, o null si no se encuentra.</returns>
         public Branch GetBranch(int id)
         {
             try
@@ -66,6 +79,11 @@ namespace LubriTech.Model.Branch_Information
             }
         }
 
+        /// <summary>
+        /// Inserta o actualiza una sucursal en la base de datos.
+        /// </summary>
+        /// <param name="branch">Objeto Branch que representa la sucursal a insertar o actualizar.</param>
+        /// <returns>true si la operación fue exitosa, false si ocurrió un error.</returns>
         public bool UpsertBranch(Branch branch)
         {
             try

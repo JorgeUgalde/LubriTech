@@ -10,10 +10,18 @@ using System.Windows.Forms;
 
 namespace LubriTech.Model.items_Information
 {
+    /// <summary>
+    /// Clase que maneja las operaciones de la base de datos relacionadas con la entidad <see cref="Item"/>.
+    /// </summary>
     public class Item_Model
     {
+        // Conexión a la base de datos utilizando la cadena de conexión predeterminada.
         SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
 
+        /// <summary>
+        /// Carga todos los artículos desde la base de datos.
+        /// </summary>
+        /// <returns>Una lista de objetos <see cref="Item"/> que representan todos los artículos.</returns>
         public List<Item> loadAllitems()
         {
             List<Item> items = new List<Item>();
@@ -69,6 +77,11 @@ namespace LubriTech.Model.items_Information
             }
         }
 
+        /// <summary>
+        /// Obtiene un artículo específico de la base de datos según su código.
+        /// </summary>
+        /// <param name="code">El código del artículo.</param>
+        /// <returns>Un objeto <see cref="Item"/> que representa el artículo.</returns>
         public Item getItem(string code)
         {
             try
@@ -117,6 +130,11 @@ namespace LubriTech.Model.items_Information
             }
         }
 
+        /// <summary>
+        /// Inserta o actualiza un artículo en la base de datos.
+        /// </summary>
+        /// <param name="items">El objeto <see cref="Item"/> que representa el artículo a insertar o actualizar.</param>
+        /// <returns>Verdadero si la operación fue exitosa, de lo contrario falso.</returns>
         public Boolean UpSertItem(Item items)
         {
             try
@@ -135,6 +153,12 @@ namespace LubriTech.Model.items_Information
                 return false;
             }
         }
+
+        /// <summary>
+        /// Actualiza un artículo existente en la base de datos.
+        /// </summary>
+        /// <param name="items">El objeto <see cref="Item"/> que representa el artículo a actualizar.</param>
+        /// <returns>Verdadero si la operación fue exitosa, de lo contrario falso.</returns>
         public Boolean updateitems(Item items)
         {
             try
@@ -180,6 +204,12 @@ namespace LubriTech.Model.items_Information
                 }
             }
         }
+
+        /// <summary>
+        /// Agrega un nuevo artículo a la base de datos.
+        /// </summary>
+        /// <param name="items">El objeto <see cref="Item"/> que representa el artículo a agregar.</param>
+        /// <returns>Verdadero si la operación fue exitosa, de lo contrario falso.</returns>
         public Boolean addItem(Item items)
         {
             try

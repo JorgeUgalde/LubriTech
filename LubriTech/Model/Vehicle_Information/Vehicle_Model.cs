@@ -11,10 +11,17 @@ using LubriTech.Model.Supplier_Information;
 
 namespace LubriTech.Model.Vehicle_Information
 {
+    /// <summary>
+    /// Clase que maneja las operaciones de la base de datos relacionadas con la entidad <see cref="Vehicle"/>.
+    /// </summary>
     public class Vehicle_Model
     {
         SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
 
+        /// <summary>
+        /// Carga todos los vehículos desde la base de datos.
+        /// </summary>
+        /// <returns>Una lista de vehículos.</returns>
         public List<Vehicle> loadAllVehicles()
         {
             List<Vehicle> vehicles = new List<Vehicle>();
@@ -55,6 +62,11 @@ namespace LubriTech.Model.Vehicle_Information
             }
         }
 
+        /// <summary>
+        /// Obtiene un cliente de la base de datos.
+        /// </summary>
+        /// <param name="ClientId">Identificación del cliente.</param>
+        /// <returns>El cliente correspondiente.</returns>
         public Client getClient(string ClientId)
         {
             try
@@ -106,6 +118,11 @@ namespace LubriTech.Model.Vehicle_Information
             }
         }
 
+        /// <summary>
+        /// Obtiene un modelo de vehículo de la base de datos.
+        /// </summary>
+        /// <param name="ModelId">Identificación del modelo.</param>
+        /// <returns>El modelo de vehículo correspondiente.</returns>
         public CarModel getModel(int ModelId)
         {
             try
@@ -154,6 +171,11 @@ namespace LubriTech.Model.Vehicle_Information
             }
         }
 
+        /// <summary>
+        /// Obtiene una marca de vehículo de la base de datos.
+        /// </summary>
+        /// <param name="MakeId">Identificación de la marca.</param>
+        /// <returns>La marca de vehículo correspondiente.</returns>
         public Make getMake(int MakeId)
         {
             try
@@ -201,6 +223,11 @@ namespace LubriTech.Model.Vehicle_Information
             }
         }
 
+        /// <summary>
+        /// Actualiza o inserta un vehículo en la base de datos.
+        /// </summary>
+        /// <param name="vehicle">El vehículo a actualizar o insertar.</param>
+        /// <returns>true si la operación fue exitosa; false en caso contrario.</returns>
         public Boolean upsertVehicle(Vehicle vehicle)
         {
             try
@@ -220,6 +247,11 @@ namespace LubriTech.Model.Vehicle_Information
             }
         }
 
+        /// <summary>
+        /// Obtiene un vehículo de la base de datos por su placa.
+        /// </summary>
+        /// <param name="licensePlate">La placa del vehículo.</param>
+        /// <returns>El vehículo correspondiente.</returns>
         public Vehicle getVehicle(string licensePlate)
         {
             try
@@ -266,6 +298,11 @@ namespace LubriTech.Model.Vehicle_Information
             }
         }
 
+        /// <summary>
+        /// Actualiza un vehículo en la base de datos.
+        /// </summary>
+        /// <param name="vehicle">El vehículo a actualizar.</param>
+        /// <returns>true si la operación fue exitosa; false en caso contrario.</returns>
         public Boolean updateVehicle(Vehicle vehicle)
         {
             try
@@ -302,6 +339,11 @@ namespace LubriTech.Model.Vehicle_Information
             }
         }
 
+        /// <summary>
+        /// Agrega un vehículo a la base de datos.
+        /// </summary>
+        /// <param name="vehicle">Objeto Vehicle a agregar.</param>
+        /// <returns>true si la operación fue exitosa, false si hubo un error.</returns>
         public Boolean addVehicle(Vehicle vehicle)
         {
             try

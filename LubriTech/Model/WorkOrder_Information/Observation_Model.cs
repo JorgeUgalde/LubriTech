@@ -7,10 +7,18 @@ using System.Threading.Tasks;
 
 namespace LubriTech.Model.WorkOrder_Information
 {
+    /// <summary>
+    /// Clase que gestiona las operaciones CRUD para las observaciones relacionadas con órdenes de trabajo en la base de datos.
+    /// </summary>
     public class Observation_Model
     {
         SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
 
+        /// <summary>
+        /// Carga todas las observaciones asociadas a una orden de trabajo específica desde la base de datos.
+        /// </summary>
+        /// <param name="workOrderId">Identificador de la orden de trabajo.</param>
+        /// <returns>Lista de objetos Observation.</returns>
         public List<Observation> loadObservationsFromWorkOrder(int workOrderId)
         {
             try
@@ -39,6 +47,11 @@ namespace LubriTech.Model.WorkOrder_Information
             }
         }
 
+        /// <summary>
+        /// Carga una observación específica desde la base de datos.
+        /// </summary>
+        /// <param name="observationId">Identificador de la observación.</param>
+        /// <returns>Objeto Observation si se encuentra, de lo contrario null.</returns>
         public Observation loadObservation(int observationId)
         {
             try
@@ -65,6 +78,11 @@ namespace LubriTech.Model.WorkOrder_Information
             }
         }
 
+        /// <summary>
+        /// Inserta o actualiza una observación en la base de datos.
+        /// </summary>
+        /// <param name="observation">Objeto Observation a insertar o actualizar.</param>
+        /// <returns>true si la operación fue exitosa, false si hubo algún error.</returns>
         public bool upsertObservation(Observation observation)
         {
             try
@@ -109,6 +127,11 @@ namespace LubriTech.Model.WorkOrder_Information
             }
         }
 
+        /// <summary>
+        /// Elimina una observación de la base de datos.
+        /// </summary>
+        /// <param name="observationId">Identificador de la observación a eliminar.</param>
+        /// <returns>true si la eliminación fue exitosa, false si hubo algún error.</returns>
         public bool deleteObservation(int observationId)
         {
             try

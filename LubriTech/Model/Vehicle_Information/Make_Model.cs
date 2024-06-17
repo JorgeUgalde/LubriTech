@@ -8,9 +8,18 @@ using System.Threading.Tasks;
 
 namespace LubriTech.Model.Vehicle_Information
 {
+    /// <summary>
+    /// Clase que maneja las operaciones de la base de datos relacionadas con la entidad <see cref="Make"/>.
+    /// </summary>
     public class Make_Model
     {
         SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
+
+        /// <summary>
+        /// Carga todas las marcas de vehículos de la base de datos.
+        /// </summary>
+        /// <returns>Una lista de todas las marcas de vehículos.</returns>
+        /// <exception cref="Exception">Se produce cuando ocurre un error al cargar las marcas.</exception>
         public List<Make> loadAllMakes()
         {
             List<Make> makes = new List<Make>();
@@ -47,6 +56,12 @@ namespace LubriTech.Model.Vehicle_Information
 
         }
 
+        /// <summary>
+        /// Obtiene una marca de vehículo de la base de datos por su Identificador.
+        /// </summary>
+        /// <param name="id">El Identificador de la marca.</param>
+        /// <returns>La marca correspondiente al Identificador proporcionado.</returns>
+        /// <exception cref="Exception">Se produce cuando ocurre un error al obtener la marca.</exception>
         public Make getMake(int id)
         {
             Make make = null;
@@ -84,7 +99,12 @@ namespace LubriTech.Model.Vehicle_Information
             }
         }
 
-        // update or Insert a make
+        /// <summary>
+        /// Inserta o actualiza una marca de vehículo en la base de datos.
+        /// </summary>
+        /// <param name="make">La marca de vehículo a insertar o actualizar.</param>
+        /// <returns>true si la operación tuvo éxito; de lo contrario, false.</returns>
+        /// <exception cref="Exception">Se produce cuando ocurre un error al insertar o actualizar la marca.</exception>
         public Boolean Upsert(Make make)
         {
             try
@@ -124,9 +144,5 @@ namespace LubriTech.Model.Vehicle_Information
                 }
             }
         }
-
-
-
-
     }
 }

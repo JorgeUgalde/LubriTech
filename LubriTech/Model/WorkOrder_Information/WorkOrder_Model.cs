@@ -10,10 +10,17 @@ using System.Threading.Tasks;
 
 namespace LubriTech.Model.WorkOrder_Information
 {
+    /// <summary>
+    /// Clase que maneja la lógica de acceso a datos para las órdenes de trabajo.
+    /// </summary>
     public class WorkOrder_Model
     {
         SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
 
+        /// <summary>
+        /// Carga todas las órdenes de trabajo desde la base de datos.
+        /// </summary>
+        /// <returns>Lista de todas las órdenes de trabajo cargadas.</returns>
         public List<WorkOrder> loadAllWorkOrders()
         {
             List<WorkOrder> workOrders = new List<WorkOrder>();

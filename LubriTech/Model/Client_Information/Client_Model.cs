@@ -11,11 +11,18 @@ using System.IO;
 
 namespace LubriTech.Model.Client_Information
 {
+    /// <summary>
+    /// Clase que maneja las operaciones relacionadas con la entidad <see cref="Client"/> en la base de datos.
+    /// </summary>
     public class Client_Model
     {
 
         SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
 
+        /// <summary>
+        /// Carga todos los clientes desde la base de datos.
+        /// </summary>
+        /// <returns>Lista de objetos Cliente cargados desde la base de datos.</returns>
         public List<Client> loadAllClients()
         {
             
@@ -57,8 +64,13 @@ namespace LubriTech.Model.Client_Information
             {
                 conn.Close();
             }
-        }//End of loadAllClients
+        }
 
+        /// <summary>
+        /// Obtiene todos los vehículos asociados a un cliente específico.
+        /// </summary>
+        /// <param name="ClientId">Identificador único del cliente.</param>
+        /// <returns>Lista de vehículos asociados al cliente.</returns>
         public List<Vehicle> getVehicle(string ClientId)
         {
             List<Vehicle> vehicles = new List<Vehicle>();
@@ -89,9 +101,6 @@ namespace LubriTech.Model.Client_Information
                                                 dr["Estado"].ToString()));
                 }
                 return vehicles;
-
-
-
             }
             catch (Exception ex)
             {
@@ -102,8 +111,13 @@ namespace LubriTech.Model.Client_Information
             {
                 conn.Close();
             }
-        }//End of GetVehicle
+        }
 
+        /// <summary>
+        /// Obtiene un modelo de vehículo específico por su identificador.
+        /// </summary>
+        /// <param name="ModelId">Identificador del modelo de vehículo.</param>
+        /// <returns>Objeto CarModel que representa el modelo de vehículo.</returns>
         public CarModel getModel(int ModelId)
         {
             try
@@ -152,6 +166,11 @@ namespace LubriTech.Model.Client_Information
             }
         }
 
+        /// <summary>
+        /// Obtiene una marca de vehículo específica por su identificador.
+        /// </summary>
+        /// <param name="MakeId">Identificador de la marca de vehículo.</param>
+        /// <returns>Objeto Make que representa la marca de vehículo.</returns>
         public Make getMake(int MakeId)
         {
             try
@@ -199,6 +218,11 @@ namespace LubriTech.Model.Client_Information
             }
         }
 
+        /// <summary>
+        /// Obtiene un cliente específico por su identificador.
+        /// </summary>
+        /// <param name="Id">Identificador único del cliente.</param>
+        /// <returns>Objeto Cliente correspondiente al identificador proporcionado.</returns>
         public Client getClient(string Id)
         {
             try
@@ -246,6 +270,11 @@ namespace LubriTech.Model.Client_Information
             }
         }
 
+        /// <summary>
+        /// Inserta o actualiza un cliente en la base de datos dependiendo de si ya existe o no.
+        /// </summary>
+        /// <param name="client">Objeto Cliente que se va a insertar o actualizar.</param>
+        /// <returns>True si la operación de inserción o actualización fue exitosa, False si falló.</returns>
         public Boolean UpSertClient(Client client)
         {
             try
@@ -293,6 +322,11 @@ namespace LubriTech.Model.Client_Information
             }
         }
 
+        /// <summary>
+        /// Inserta un nuevo cliente en la base de datos.
+        /// </summary>
+        /// <param name="client">Objeto Cliente que se va a insertar.</param>
+        /// <returns>True si la operación de inserción fue exitosa, False si falló.</returns>
         public Boolean addClient(Client client)
         {
             try
@@ -331,8 +365,13 @@ namespace LubriTech.Model.Client_Information
                     conn.Close();
                 } 
             }
-        }//End of SaveClient
+        }
 
+        /// <summary>
+        /// Actualiza la información de un cliente existente en la base de datos.
+        /// </summary>
+        /// <param name="client">Objeto Cliente con la información actualizada.</param>
+        /// <returns>True si la operación de actualización fue exitosa, False si falló.</returns>
         public Boolean updateClient(Client client)
         {
             try
@@ -370,8 +409,13 @@ namespace LubriTech.Model.Client_Information
                     conn.Close();
                 }
             }
-        }//End of UpdateClient
+        }
 
+        /// <summary>
+        /// Cambia el estado de activo a inactivo o viceversa de un cliente en la base de datos.
+        /// </summary>
+        /// <param name="clientId">Identificador único del cliente.</param>
+        /// <returns>True si se cambió el estado correctamente, False si falló.</returns>
         public Boolean removeClient(string clientId)
         {
             try
