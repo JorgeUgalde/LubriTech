@@ -102,7 +102,7 @@ namespace LubriTech.View
         private void btnNewVehicle_Click(object sender, EventArgs e)
         {
             frmInsertUpdate_Vehicle frmUpsertVehicle = new frmInsertUpdate_Vehicle();
-            frmUpsertVehicle.Owner = this;
+            frmUpsertVehicle.MdiParent = this.MdiParent;
             frmUpsertVehicle.DataChanged += ChildFormDataChangedHandler;
             frmUpsertVehicle.Show();
         }
