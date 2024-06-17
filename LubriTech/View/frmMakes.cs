@@ -114,29 +114,6 @@ namespace LubriTech.View
 
         }
 
-        private void dgvMakes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                if (e.ColumnIndex == dgvMakes.Columns["ModifyImageColumn"].Index)
-                {
-                    Make make = makes[e.RowIndex];
-                    frmInsertUpdate_Make frmUpsertMake = new frmInsertUpdate_Make(make);
-                    frmUpsertMake.Owner = this;
-                    frmUpsertMake.DataChanged += ChildFormDataChangedHandler;
-                    frmUpsertMake.Show();
-                }
-                if (e.ColumnIndex == dgvMakes.Columns["DetailImageColumn"].Index)
-                {
-                    Make make = makes[e.RowIndex];
-                    frmInsertUpdate_Make frmUpsertMake = new frmInsertUpdate_Make(make);
-                    frmUpsertMake.Owner = this;
-                    frmUpsertMake.Show();
-                }
-            }
-
-        }
-
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {
             ApplyFilter();
@@ -155,6 +132,41 @@ namespace LubriTech.View
 
             dgvMakes.DataSource = null;
             load_Makes(filteredList);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void btnAddMake_Click_1(object sender, EventArgs e)
+        {
+            frmInsertUpdate_Make frmUpsertMake = new frmInsertUpdate_Make();
+            frmUpsertMake.MdiParent = this.MdiParent;
+            frmUpsertMake.DataChanged += ChildFormDataChangedHandler;
+            frmUpsertMake.Show();
+        }
+
+        private void dgvMakes_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (e.ColumnIndex == dgvMakes.Columns["ModifyImageColumn"].Index)
+                {
+                    Make make = makes[e.RowIndex];
+                    frmInsertUpdate_Make frmUpsertMake = new frmInsertUpdate_Make(make);
+                    frmUpsertMake.MdiParent = this.MdiParent;
+                    frmUpsertMake.DataChanged += ChildFormDataChangedHandler;
+                    frmUpsertMake.Show();
+                }
+                if (e.ColumnIndex == dgvMakes.Columns["DetailImageColumn"].Index)
+                {
+                    Make make = makes[e.RowIndex];
+                    frmInsertUpdate_Make frmUpsertMake = new frmInsertUpdate_Make(make);
+                    frmUpsertMake.MdiParent = this.MdiParent;
+                    frmUpsertMake.Show();
+                }
+            }
         }
     }
 }

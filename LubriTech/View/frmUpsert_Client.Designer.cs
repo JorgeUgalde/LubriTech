@@ -259,7 +259,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmUpsert_Client";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Dato maestro cliente";
+            this.Text = "Dato Maestro Cliente";
             this.Load += new System.EventHandler(this.frmUpsert_Client_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVehiclesClients)).EndInit();
             this.ResumeLayout(false);
