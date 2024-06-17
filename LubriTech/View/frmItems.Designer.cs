@@ -46,9 +46,9 @@ namespace LubriTech.View
             // 
             this.lblSubtitle.AutoSize = true;
             this.lblSubtitle.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
-            this.lblSubtitle.Location = new System.Drawing.Point(33, 47);
+            this.lblSubtitle.Location = new System.Drawing.Point(37, 59);
             this.lblSubtitle.Name = "lblSubtitle";
-            this.lblSubtitle.Size = new System.Drawing.Size(227, 37);
+            this.lblSubtitle.Size = new System.Drawing.Size(177, 30);
             this.lblSubtitle.TabIndex = 2;
             this.lblSubtitle.Text = "Lista de Articulos";
             // 
@@ -61,10 +61,10 @@ namespace LubriTech.View
             this.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddItem.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
             this.btnAddItem.ForeColor = System.Drawing.Color.White;
-            this.btnAddItem.Location = new System.Drawing.Point(40, 424);
-            this.btnAddItem.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddItem.Location = new System.Drawing.Point(45, 530);
+            this.btnAddItem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAddItem.Name = "btnAddItem";
-            this.btnAddItem.Size = new System.Drawing.Size(319, 50);
+            this.btnAddItem.Size = new System.Drawing.Size(359, 62);
             this.btnAddItem.TabIndex = 3;
             this.btnAddItem.Text = "Crear";
             this.btnAddItem.UseVisualStyleBackColor = false;
@@ -74,10 +74,10 @@ namespace LubriTech.View
             // 
             this.txtFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFilter.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
-            this.txtFilter.Location = new System.Drawing.Point(767, 47);
+            this.txtFilter.Location = new System.Drawing.Point(863, 59);
             this.txtFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(343, 42);
+            this.txtFilter.Size = new System.Drawing.Size(385, 35);
             this.txtFilter.TabIndex = 4;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
@@ -86,9 +86,9 @@ namespace LubriTech.View
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(602, 47);
+            this.label1.Location = new System.Drawing.Point(677, 59);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 37);
+            this.label1.Size = new System.Drawing.Size(109, 30);
             this.label1.TabIndex = 5;
             this.label1.Text = "Filtrar por";
             // 
@@ -125,7 +125,7 @@ namespace LubriTech.View
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvItems.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvItems.GridColor = System.Drawing.Color.White;
-            this.dgvItems.Location = new System.Drawing.Point(40, 109);
+            this.dgvItems.Location = new System.Drawing.Point(45, 136);
             this.dgvItems.Margin = new System.Windows.Forms.Padding(0);
             this.dgvItems.Name = "dgvItems";
             this.dgvItems.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -143,7 +143,7 @@ namespace LubriTech.View
             this.dgvItems.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvItems.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvItems.RowTemplate.Height = 35;
-            this.dgvItems.Size = new System.Drawing.Size(1070, 288);
+            this.dgvItems.Size = new System.Drawing.Size(1204, 360);
             this.dgvItems.TabIndex = 6;
             this.dgvItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItems_CellContentClick_1);
             // 
@@ -155,10 +155,10 @@ namespace LubriTech.View
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnClose.Location = new System.Drawing.Point(791, 424);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClose.Location = new System.Drawing.Point(890, 530);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(319, 50);
+            this.btnClose.Size = new System.Drawing.Size(359, 62);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Cerrar";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -166,10 +166,10 @@ namespace LubriTech.View
             // 
             // frmItems
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.ClientSize = new System.Drawing.Size(1159, 506);
+            this.ClientSize = new System.Drawing.Size(1304, 632);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dgvItems);
             this.Controls.Add(this.label1);

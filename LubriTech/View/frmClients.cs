@@ -30,7 +30,10 @@ namespace LubriTech.View
             txtFilter.TextChanged += new EventHandler(txtFilter_TextChanged);
         }
 
-        
+        /// <summary>
+        /// Carga la lista de clientes en el DataGridView.
+        /// </summary>
+        /// <param name="filteredList">Lista de clientes filtrada (opcional).</param>
         private void load_Clients(List<Client> filteredList)
         {
             if (filteredList != null)
@@ -80,16 +83,31 @@ namespace LubriTech.View
                 new object[] { true });
         }
 
+        /// <summary>
+        /// Maneja el evento de cambio de datos en un formulario hijo.
+        /// </summary>
+        /// <param name="sender">Objeto que envió el evento.</param>
+        /// <param name="e">Argumentos del evento.</param>
         private void ChildFormDataChangedHandler(object sender, EventArgs e)
         {
             load_Clients(null);
         }
 
+        /// <summary>
+        /// Maneja el evento de cambio de texto en el cuadro de filtro.
+        /// </summary>
+        /// <param name="sender">Objeto que envió el evento.</param>
+        /// <param name="e">Argumentos del evento.</param>
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {
             ApplyFilter();
         }
 
+        /// <summary>
+        /// Maneja el evento de clic en las celdas del DataGridView.
+        /// </summary>
+        /// <param name="sender">Objeto que envió el evento.</param>
+        /// <param name="e">Argumentos del evento.</param>
         private void dgvClients_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgvClients.Columns["ModifyImageColumn"].Index && e.RowIndex >= 0)
@@ -137,55 +155,57 @@ namespace LubriTech.View
                 load_Clients(null);
                 return;
             }
-
         }
 
+        /// <summary>
+        /// Maneja el evento de clic en el botón de agregar cliente.
+        /// </summary>
+        /// <param name="sender">Objeto que envió el evento.</param>
+        /// <param name="e">Argumentos del evento.</param>
         private async void btnAddClient_Click(object sender, EventArgs e)
         {
             frmUpsert_Client frmInsert_Client = new frmUpsert_Client();
-            frmInsert_Client.MdiParent = this.MdiParent;  // Establecer el formulario principal como el contenedor MDI
+            frmInsert_Client.MdiParent = this.MdiParent;
             frmInsert_Client.DataChanged += ChildFormDataChangedHandler;
             frmInsert_Client.Show();
-
         }
 
+        /// <summary>
+        /// Aplica el filtro a la lista de clientes.
+        /// </summary>
         private void ApplyFilter()
         {
-            //dgvClients.SuspendLayout();
             string filterValue = txtFilter.Text.ToLower();
 
-            // Filtrar la lista de productos
             var filteredList = clients.Where(c =>
                 c.Id.ToLower().Contains(filterValue) ||
                 c.FullName.ToLower().Contains(filterValue) 
             ).ToList();
 
-            // Refrescar el DataGridView
-            //dgvClients.DataSource = null;
             load_Clients(filteredList);
         }
 
+        /// <summary>
+        /// Configura el DataGridView con las columnas de modificar y detalles.
+        /// </summary>
         private void SetupDataGridView()
         {
-
-            // Crear y configurar la columna para modificar
             DataGridViewImageColumn modifyImageColumn = new DataGridViewImageColumn();
             modifyImageColumn.Name = "ModifyImageColumn";
-            modifyImageColumn.HeaderText = "Acciones";
+            modifyImageColumn.HeaderText = "Modificar";
             modifyImageColumn.Image = Properties.Resources.edit;
             dgvClients.Columns.Add(modifyImageColumn);
 
-            // Crear y configurar la columna para detalles
             DataGridViewImageColumn detailImageColumn = new DataGridViewImageColumn();
             detailImageColumn.Name = "DetailImageColumn";
             detailImageColumn.HeaderText = "Detalles";
             detailImageColumn.Image = Properties.Resources.detail;
             dgvClients.Columns.Add(detailImageColumn);
-
-           
-
         }
 
+        /// <summary>
+        /// Establece el orden de las columnas en el DataGridView.
+        /// </summary>
         private void SetColumnOrder()
         {
             dgvClients.Columns["Id"].DisplayIndex = 0;
@@ -195,6 +215,11 @@ namespace LubriTech.View
             dgvClients.Columns["ModifyImageColumn"].DisplayIndex = 4;
         }
 
+        /// <summary>
+        /// Maneja el evento de clic en el botón de cerrar.
+        /// </summary>
+        /// <param name="sender">Objeto que envió el evento.</param>
+        /// <param name="e">Argumentos del evento.</param>
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Dispose();
