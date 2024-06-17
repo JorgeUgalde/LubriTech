@@ -198,5 +198,10 @@ namespace LubriTech.View
         {
             this.Dispose();
         }
+
+        private void tbNumeric_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
+        }
     }
 }
