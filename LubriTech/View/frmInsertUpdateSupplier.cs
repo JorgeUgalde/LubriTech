@@ -22,7 +22,7 @@ namespace LubriTech.View
             InitializeComponent();
             if (type == 0)
             {
-               btConfirm.Visible = false;
+               btnConfirm.Visible = false;
             }
 
             txtId.Enabled = false;
@@ -88,7 +88,7 @@ namespace LubriTech.View
             }
 
             // Validate Phone (only numbers and minimum length)
-            if (!int.TryParse(txtPhone.Text, out int phone) || txtPhone.Text.Length < 8)
+            if (!long.TryParse(txtPhone.Text, out long phone) || txtPhone.Text.Length < 8)
             {
                 SetErrorBorder(panelPhone);
                 isValid = false;
