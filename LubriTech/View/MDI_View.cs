@@ -112,9 +112,8 @@ namespace LubriTech.View
 
         }
 
-        private void OpenChildForm(Form childForm)
+        public void OpenChildForm(Form childForm)
         {
-
             // Configurar y mostrar el nuevo formulario hijo
             childForm.MdiParent = this;
             childForm.WindowState = FormWindowState.Normal;

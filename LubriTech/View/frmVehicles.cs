@@ -130,7 +130,7 @@ namespace LubriTech.View
 
                 string action = "Modify";
                 frmInsertUpdate_Vehicle frmInsertVehicle = new frmInsertUpdate_Vehicle(selectedVehicle, action);
-                frmInsertVehicle.Owner = this;
+                frmInsertVehicle.MdiParent = this.MdiParent;
                 frmInsertVehicle.DataChanged += ChildFormDataChangedHandler;
                 frmInsertVehicle.Show();
                 return;
@@ -151,7 +151,7 @@ namespace LubriTech.View
                 }
                 string action = "Details";
                 frmInsertUpdate_Vehicle frmInsertVehicle = new frmInsertUpdate_Vehicle(selectedVehicle, action);
-                frmInsertVehicle.Owner = this;
+                frmInsertVehicle.MdiParent = this.MdiParent;
                 frmInsertVehicle.DataChanged += ChildFormDataChangedHandler;
                 frmInsertVehicle.Show();
                 return;
@@ -190,6 +190,11 @@ namespace LubriTech.View
         private void txtFilter_TextChanged_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }
