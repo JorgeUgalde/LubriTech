@@ -53,6 +53,8 @@ namespace LubriTech.View
             tbEngine.Text = vehicle.Engine;
             cbTransmission.Text = vehicle.Transmission;
 
+            SetupClientsDGV();
+
             if (action == "Details")
             {
                 tbLicensePlate.Enabled = false;
@@ -63,6 +65,7 @@ namespace LubriTech.View
                 cbMake.Enabled = false;
                 cbModel.Enabled = false;
                 cbTransmission.Enabled = false;
+                dgvClients.Enabled = false;
 
                 tbLicensePlate.BackColor = Color.FromArgb(249, 252, 255);
                 tbEngine.BackColor = Color.FromArgb(249, 252, 255);
