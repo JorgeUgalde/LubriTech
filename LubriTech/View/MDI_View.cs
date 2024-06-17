@@ -141,6 +141,8 @@ namespace LubriTech.View
             frmClients frmClients = new frmClients();
             OpenChildForm(frmClients);
             frmClients.BringToFront();
+            frmClients.Focus();
+
         }
 
         private void button10_Click(object sender, EventArgs e)

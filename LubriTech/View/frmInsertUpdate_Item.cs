@@ -54,6 +54,25 @@ namespace LubriTech.View
 
         private void btnConfirm_Click_1(object sender, EventArgs e)
         {
+
+            // chek any input is empty, if is empty set a background color to red
+            if (txtCode.Text.Trim() == "")
+            {
+                lblCode2.Text = "Campo obligatorio";
+                lblCode2.Visible = true;
+
+            }
+            else
+            {
+                lblCode2.Visible = false;
+                txtCode.BackColor = Color.White;
+                lblCode.FlatStyle = FlatStyle.Standard;
+                lblCode.ForeColor = Color.Black;
+            }
+
+
+
+
             if (txtCode.Text.Trim() == "" ||
                txtName.Text.Trim() == "" ||
                txtSellPrice.Text.Trim() == "" ||
@@ -121,6 +140,11 @@ namespace LubriTech.View
         private void frmInsertUpdate_Item_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtCode_TextChanged(object sender, EventArgs e)
+        {
+            lblCode2.Visible = false;
         }
     }
 }

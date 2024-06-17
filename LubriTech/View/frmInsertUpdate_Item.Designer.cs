@@ -37,7 +37,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblCode = new System.Windows.Forms.Label();
             this.tbStock = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tbPurchasePrice = new System.Windows.Forms.TextBox();
@@ -46,6 +46,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.lblCode2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cbMeasureUnit
@@ -109,6 +110,7 @@
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(344, 35);
             this.txtCode.TabIndex = 19;
+            this.txtCode.TextChanged += new System.EventHandler(this.txtCode_TextChanged);
             // 
             // label5
             // 
@@ -150,15 +152,15 @@
             this.label3.TabIndex = 15;
             this.label3.Text = "Unidad de Medida";
             // 
-            // label2
+            // lblCode
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(33, 29);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 34);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Código";
+            this.lblCode.AutoSize = true;
+            this.lblCode.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCode.Location = new System.Drawing.Point(33, 29);
+            this.lblCode.Name = "lblCode";
+            this.lblCode.Size = new System.Drawing.Size(112, 34);
+            this.lblCode.TabIndex = 14;
+            this.lblCode.Text = "Código";
             // 
             // tbStock
             // 
@@ -263,6 +265,18 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // lblCode2
+            // 
+            this.lblCode2.AutoSize = true;
+            this.lblCode2.Font = new System.Drawing.Font("Verdana", 8.2F);
+            this.lblCode2.ForeColor = System.Drawing.Color.Red;
+            this.lblCode2.Location = new System.Drawing.Point(38, 105);
+            this.lblCode2.Name = "lblCode2";
+            this.lblCode2.Size = new System.Drawing.Size(172, 17);
+            this.lblCode2.TabIndex = 34;
+            this.lblCode2.Text = "Debe llenar este campo";
+            this.lblCode2.Visible = false;
+            // 
             // frmInsertUpdate_Item
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -271,6 +285,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(859, 513);
+            this.Controls.Add(this.lblCode2);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.cbType);
@@ -288,7 +303,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblCode);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(877, 560);
             this.MinimumSize = new System.Drawing.Size(877, 560);
@@ -312,7 +327,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblCode;
         private System.Windows.Forms.TextBox tbStock;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbPurchasePrice;
@@ -321,5 +336,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label lblCode2;
     }
 }
