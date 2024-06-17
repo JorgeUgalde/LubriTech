@@ -37,10 +37,15 @@ namespace LubriTech.Model.Client_Information
 
                 foreach (DataRow dr in tblClients.Rows)
                 {
-                    clients.Add(new Client(dr["Identificacion"].ToString(), dr["NombreCompleto"].ToString(), 
-                        Convert.ToInt32(dr["NumeroTelefonoPrincipal"]), Convert.ToInt32(dr["NumeroTelefonoAdicional"]), 
-                        dr["CorreoElectronico"].ToString(), dr["Direccion"].ToString(), (getVehicle((string)dr["Identificacion"])),
-                        dr["Estado"].ToString() ));
+                    clients.Add(new Client(
+                dr["Identificacion"].ToString(),
+                dr["NombreCompleto"].ToString(),
+                dr["NumeroTelefonoPrincipal"] != DBNull.Value ? Convert.ToInt32(dr["NumeroTelefonoPrincipal"]) : (int?)null,
+                dr["NumeroTelefonoAdicional"] != DBNull.Value ? Convert.ToInt32(dr["NumeroTelefonoAdicional"]) : (int?)null,
+                dr["CorreoElectronico"].ToString(),
+                dr["Direccion"].ToString(),
+                getVehicle(dr["Identificacion"].ToString()),
+                dr["Estado"].ToString()));
                 }
                 return clients;
             }
@@ -108,9 +113,15 @@ namespace LubriTech.Model.Client_Information
                 adp.Fill(tblClients);
                 DataRow dr = tblClients.Rows[0];
 
-                Client client = new Client(dr["Identificacion"].ToString(), dr["NombreCompleto"].ToString(),
-                                           Convert.ToInt32(dr["NumeroTelefonoPrincipal"]), Convert.ToInt32(dr["NumeroTelefonoAdicional"]),
-                                           dr["CorreoElectronico"].ToString(), dr["Direccion"].ToString(), dr["Estado"].ToString());
+                Client client = new Client(
+                dr["Identificacion"].ToString(),
+                dr["NombreCompleto"].ToString(),
+                dr["NumeroTelefonoPrincipal"] != DBNull.Value ? Convert.ToInt32(dr["NumeroTelefonoPrincipal"]) : (int?)null,
+                dr["NumeroTelefonoAdicional"] != DBNull.Value ? Convert.ToInt32(dr["NumeroTelefonoAdicional"]) : (int?)null,
+                dr["CorreoElectronico"].ToString(),
+                dr["Direccion"].ToString(),
+                getVehicle(dr["Identificacion"].ToString()),
+                dr["Estado"].ToString());
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -138,25 +149,45 @@ namespace LubriTech.Model.Client_Information
         {
             try
             {
-                var existingClient = getClient(client.Id);
+                Client existingClient = new Client();
+                 existingClient = getClient(client.Id);
+
                 if (existingClient != null)
                 {
-                    MessageBox.Show("El Cliente se ha modificado correctamente");
+                    bool updateResult = updateClient(client);
 
-                    return updateClient(client);
+                    if (updateResult)
+                    {
+                        MessageBox.Show("El Cliente se ha modificado correctamente");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo modificar el Cliente.");
+                    }
 
-
+                    return updateResult;
                 }
                 else
                 {
-                    MessageBox.Show("El Cliente se ha modificado correctamente");
+                    bool addResult = addClient(client);
 
-                    return addClient(client);
+                    if (addResult)
+                    {
+                        MessageBox.Show("El Cliente se ha creado correctamente");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo crear el Cliente.");
+                    }
 
+                    return addResult;
                 }
             }
             catch (Exception ex)
             {
+                // Aquí puedes registrar el error para propósitos de depuración, por ejemplo:
+                Console.WriteLine($"Error en UpSertClient: {ex.Message}");
+                MessageBox.Show("Ocurrió un error durante la operación.");
                 return false;
             }
         }
@@ -171,8 +202,8 @@ namespace LubriTech.Model.Client_Information
 
                 insert.Parameters.AddWithValue("@id", client.Id);
                 insert.Parameters.AddWithValue("@fullname", client.FullName);
-                insert.Parameters.AddWithValue("@mainphone", client.MainPhoneNum);
-                insert.Parameters.AddWithValue("@additionalphone", client.AdditionalPhoneNum);
+                insert.Parameters.AddWithValue("@mainphone", (object)client.MainPhoneNum ?? DBNull.Value);
+                insert.Parameters.AddWithValue("@additionalphone", (object)client.AdditionalPhoneNum ?? DBNull.Value);
                 insert.Parameters.AddWithValue("@email", client.Email);
                 insert.Parameters.AddWithValue("@addresse", client.Address);
                 insert.Parameters.AddWithValue("@state", client.State);
@@ -205,16 +236,17 @@ namespace LubriTech.Model.Client_Information
         {
             try
             {
-                String updateQuery = "update Cliente set NombreCompleto = @fullname, NumeroTelefonoPrincipal = @mainphone, NumeroTelefonoAdicional = @additionalphone, CorreoElectronico = @email, Direccion = @address where [Cliente].Identificacion = @id";
+                String updateQuery = "update Cliente set NombreCompleto = @fullname, NumeroTelefonoPrincipal = @mainphone, NumeroTelefonoAdicional = @additionalphone, CorreoElectronico = @email, Direccion = @address, Estado = @state where [Cliente].Identificacion = @id";
 
                 SqlCommand update = new SqlCommand(updateQuery, conn);
 
                 update.Parameters.AddWithValue("@id", client.Id);
                 update.Parameters.AddWithValue("@fullname", client.FullName);
-                update.Parameters.AddWithValue("@mainphone", client.MainPhoneNum);
-                update.Parameters.AddWithValue("@additionalphone", client.AdditionalPhoneNum);
+                update.Parameters.AddWithValue("@mainphone", (object)client.MainPhoneNum ?? DBNull.Value);
+                update.Parameters.AddWithValue("@additionalphone", (object)client.AdditionalPhoneNum ?? DBNull.Value);
                 update.Parameters.AddWithValue("@email", client.Email);
                 update.Parameters.AddWithValue("@address", client.Address);
+                update.Parameters.AddWithValue("@state", client.State);
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {

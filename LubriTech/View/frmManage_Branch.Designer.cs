@@ -66,7 +66,7 @@
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.Image = global::LubriTech.Properties.Resources.minimize1;
+            //this.pictureBox2.Image = global::LubriTech.Properties.Resources.minimize1;
             this.pictureBox2.Location = new System.Drawing.Point(515, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(30, 30);

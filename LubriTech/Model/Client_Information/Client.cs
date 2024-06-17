@@ -25,7 +25,7 @@ namespace LubriTech.Model.Client_Information
 
         public List<Vehicle> Vehicle { get; set; }
 
-        public Client(string id, string fullName, int mainPhoneNum, int additionalPhoneNum, string email, string address, List<Vehicle> vehicle, string state)
+        public Client(string id, string fullName, int? mainPhoneNum, int? additionalPhoneNum, string email, string address, List<Vehicle> vehicle, string state)
         {
             Id = id;
             FullName = fullName;
@@ -46,6 +46,10 @@ namespace LubriTech.Model.Client_Information
             Email = email;
             Address = address;
             State = state;
+        }
+
+        public Client()
+        {
         }
 
         override

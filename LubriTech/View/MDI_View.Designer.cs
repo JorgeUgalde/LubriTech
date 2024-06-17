@@ -398,7 +398,7 @@ namespace LubriTech.View
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::LubriTech.Properties.Resources.menu1;
+            //this.pictureBox1.Image = global::LubriTech.Properties.Resources.menu1;
             this.pictureBox1.Location = new System.Drawing.Point(260, 10);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(40, 40);

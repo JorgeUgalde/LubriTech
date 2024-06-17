@@ -279,6 +279,8 @@ namespace LubriTech.View
             frmSuppliers.ShowDialog();
             load_Suppliers(null);
         }
+
+       
     }
     
 }

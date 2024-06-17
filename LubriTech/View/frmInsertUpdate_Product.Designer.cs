@@ -167,7 +167,7 @@ namespace LubriTech.View
             "Activo",
             "Inactivo"});
             this.cbState.Location = new System.Drawing.Point(63, 419);
-            this.cbState.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbState.Margin = new System.Windows.Forms.Padding(4);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(258, 30);
             this.cbState.Sorted = true;
@@ -182,7 +182,7 @@ namespace LubriTech.View
             "Unidad",
             "Litro"});
             this.cbMeasureUnit.Location = new System.Drawing.Point(63, 257);
-            this.cbMeasureUnit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbMeasureUnit.Margin = new System.Windows.Forms.Padding(4);
             this.cbMeasureUnit.Name = "cbMeasureUnit";
             this.cbMeasureUnit.Size = new System.Drawing.Size(258, 30);
             this.cbMeasureUnit.TabIndex = 13;
@@ -196,7 +196,7 @@ namespace LubriTech.View
             this.btnConfirm.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirm.ForeColor = System.Drawing.Color.White;
             this.btnConfirm.Location = new System.Drawing.Point(368, 543);
-            this.btnConfirm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnConfirm.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(132, 40);
             this.btnConfirm.TabIndex = 14;
@@ -210,7 +210,7 @@ namespace LubriTech.View
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBack.Image = global::LubriTech.Properties.Resources.Back;
             this.btnBack.Location = new System.Drawing.Point(46, 28);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(44, 39);
             this.btnBack.TabIndex = 15;
@@ -228,7 +228,7 @@ namespace LubriTech.View
             this.dgvSuppliers.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dgvSuppliers.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dgvSuppliers.Location = new System.Drawing.Point(531, 198);
-            this.dgvSuppliers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvSuppliers.Margin = new System.Windows.Forms.Padding(2);
             this.dgvSuppliers.Name = "dgvSuppliers";
             this.dgvSuppliers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvSuppliers.RowHeadersVisible = false;
@@ -262,7 +262,7 @@ namespace LubriTech.View
             this.dgvSelectedSuppliers.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dgvSelectedSuppliers.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dgvSelectedSuppliers.Location = new System.Drawing.Point(531, 366);
-            this.dgvSelectedSuppliers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvSelectedSuppliers.Margin = new System.Windows.Forms.Padding(2);
             this.dgvSelectedSuppliers.Name = "dgvSelectedSuppliers";
             this.dgvSelectedSuppliers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvSelectedSuppliers.RowHeadersVisible = false;
@@ -295,7 +295,7 @@ namespace LubriTech.View
             this.btnAddSupplier.Font = new System.Drawing.Font("Verdana", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddSupplier.ForeColor = System.Drawing.Color.White;
             this.btnAddSupplier.Location = new System.Drawing.Point(592, 497);
-            this.btnAddSupplier.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddSupplier.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddSupplier.Name = "btnAddSupplier";
             this.btnAddSupplier.Size = new System.Drawing.Size(193, 33);
             this.btnAddSupplier.TabIndex = 20;
@@ -328,7 +328,7 @@ namespace LubriTech.View
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmInsertUpdate_Product";
             this.Text = "Gestionar Producto";
             this.Load += new System.EventHandler(this.frmInsert_Product_Load);
