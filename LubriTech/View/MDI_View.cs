@@ -197,5 +197,19 @@ namespace LubriTech.View
             frmItems.BringToFront();
             frmItems.Focus();
         }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            frmMakes frmMakes = new frmMakes();
+            OpenChildForm(frmMakes);
+            frmMakes.BringToFront();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmCarModels frmCarModels = new frmCarModels();
+            OpenChildForm(frmCarModels);
+            frmCarModels.BringToFront();
+        }
     }
 }

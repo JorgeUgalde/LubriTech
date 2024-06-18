@@ -10,54 +10,54 @@ using System.Threading.Tasks;
 namespace LubriTech.Controller
 {
     /// <summary>
-    /// Controlador que maneja la lógica de negocio relacionada con los clientes. Utiliza el modelo <see cref="Client_Model"/> para obtener la información.
+    /// Controller class that manages business logic regarding clients. It uses the class model <see cref="Client_Model"/> to obtain useful methods.
     /// </summary>
     public class Clients_Controller
     {
         /// <summary>
-        /// Obtiene todos los clientes.
+        /// Retrieves all clients.
         /// </summary>
-        /// <returns>Lista de todos los clientes.</returns>
+        /// <returns>List of clients.</returns>
         public List<Client> getAll()
         {
             return new Client_Model().loadAllClients();
         }
 
         /// <summary>
-        /// Actualiza o inserta un cliente en la base de datos.
+        /// Updates or inserts a client.
         /// </summary>
-        /// <param name="client">Objeto Client que representa al cliente a actualizar o insertar.</param>
-        /// <returns>true si la operación se realizó con éxito, false si falló.</returns>
+        /// <param name="client">Client object</param>
+        /// <returns>True if the operation was successful; otherwise, false.</returns>
         public bool upsert(Client client)
         {
             return new Client_Model().UpSertClient(client);
         }
 
         /// <summary>
-        /// Elimina un cliente.
+        /// Deletes a client.
         /// </summary>
-        /// <param name="Id">Identificación del cliente a eliminar.</param>
-        /// <returns>true si la operación se realizó con éxito, false si falló.</returns>
+        /// <param name="Id">Client identification.</param>
+        /// <returns>True if the operation was successful; otherwise, false.</returns>
         public bool remove(String Id)
         {
             return new Client_Model().removeClient(Id);
         }
 
         /// <summary>
-        /// Obtiene un cliente por su identificación.
+        /// Retrieves a client by their identification.
         /// </summary>
-        /// <param name="Id">Identificación del cliente a obtener.</param>
-        /// <returns>Cliente encontrado, o null si no se encuentra.</returns>
+        /// <param name="Id">Client identification.</param>
+        /// <returns>Client object, or null in case it failed.</returns>
         public Client get(string Id)
         {
             return new Client_Model().getClient(Id);
         }
 
         /// <summary>
-        /// Obtiene todos los vehículos asociados a un cliente por su identificación.
+        /// Retrieves all vehicles belonging to a client.
         /// </summary>
-        /// <param name="Id">Identificación del cliente.</param>
-        /// <returns>Lista de vehículos asociados al cliente.</returns>
+        /// <param name="Id">Client identification</param>
+        /// <returns>List of vehicles.</returns>
         public List<Vehicle> getVehicle(String Id) 
         {
             return new Client_Model().getVehicle(Id);

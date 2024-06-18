@@ -51,8 +51,9 @@ namespace LubriTech.View
             this.btnClientMasterData = new System.Windows.Forms.Button();
             this.btnClients = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelParametersSubmenu.SuspendLayout();
             this.panelInventorySubmenu.SuspendLayout();
@@ -95,7 +96,7 @@ namespace LubriTech.View
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(0, 698);
+            this.button1.Location = new System.Drawing.Point(0, 740);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.button1.Size = new System.Drawing.Size(233, 45);
@@ -108,13 +109,14 @@ namespace LubriTech.View
             // panelParametersSubmenu
             // 
             this.panelParametersSubmenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(45)))), ((int)(((byte)(92)))));
+            this.panelParametersSubmenu.Controls.Add(this.button2);
             this.panelParametersSubmenu.Controls.Add(this.button10);
             this.panelParametersSubmenu.Controls.Add(this.button12);
             this.panelParametersSubmenu.Controls.Add(this.button13);
             this.panelParametersSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelParametersSubmenu.Location = new System.Drawing.Point(0, 569);
             this.panelParametersSubmenu.Name = "panelParametersSubmenu";
-            this.panelParametersSubmenu.Size = new System.Drawing.Size(233, 129);
+            this.panelParametersSubmenu.Size = new System.Drawing.Size(233, 171);
             this.panelParametersSubmenu.TabIndex = 13;
             // 
             // button10
@@ -146,9 +148,10 @@ namespace LubriTech.View
             this.button12.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.button12.Size = new System.Drawing.Size(233, 40);
             this.button12.TabIndex = 7;
-            this.button12.Text = "Catálogo de vehículos";
+            this.button12.Text = "Catálogo de marcas";
             this.button12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // button13
             // 
@@ -400,18 +403,6 @@ namespace LubriTech.View
             this.panel2.Size = new System.Drawing.Size(233, 45);
             this.panel2.TabIndex = 6;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::LubriTech.Properties.Resources.menu1;
-            this.pictureBox1.Location = new System.Drawing.Point(260, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
@@ -427,6 +418,35 @@ namespace LubriTech.View
             this.label1.TabIndex = 9;
             this.label1.Text = "Lubricentro Santa Teresita";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = global::LubriTech.Properties.Resources.menu1;
+            this.pictureBox1.Location = new System.Drawing.Point(260, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button2.Location = new System.Drawing.Point(0, 120);
+            this.button2.Name = "button2";
+            this.button2.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button2.Size = new System.Drawing.Size(233, 40);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "Catálogo de modelos";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // MDI_View
             // 
@@ -478,6 +498,7 @@ namespace LubriTech.View
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button2;
     }
 }
 

@@ -8,34 +8,34 @@ using System.Threading.Tasks;
 namespace LubriTech.Controller
 {
     /// <summary>
-    /// Controlador que maneja la lógica de negocio relacionada con las sucursales. Utiliza el modelo <see cref="Branch_Model"/> para obtener la información.
+    /// Controller class that manages business logic regarding branches. It uses the class model <see cref="Branch_Model"/> to obtain useful methods.
     /// </summary>
     public class Branch_Controller
     {
         /// <summary>
-        /// Obtiene todas las sucursales.
+        /// Gets all the branches in a List object.
         /// </summary>
-        /// <returns>Lista de todas las sucursales.</returns>
+        /// <returns>List of all branch objects.</returns>
         public List<Branch> getAll()
         {
             return new Branch_Model().loadAllBranches();
         }
 
         /// <summary>
-        /// Obtiene una sucursal por su ID.
+        /// Gets a branch by their identification.
         /// </summary>
-        /// <param name="Id">Identificacion de la sucursal a obtener.</param>
-        /// <returns>Sucursal encontrada, o null si no se encuentra.</returns>
+        /// <param name="Id">branch identification.</param>
+        /// <returns>Branch object, or null in case that the branch was not found.</returns>
         public Branch get(int Id)
         {
             return new Branch_Model().GetBranch(Id);
         }
 
         /// <summary>
-        /// Actualiza o inserta una sucursal en la base de datos.
+        /// Updates or inserts a branch.
         /// </summary>
-        /// <param name="branch">Objeto Branch que representa la sucursal a actualizar o insertar.</param>
-        /// <returns>true si la operación se realizó con éxito, false si falló.</returns>
+        /// <param name="branch">Branch object.</param>
+        /// <returns>True if the operation completed successfully of false in case of an error.</returns>
         public bool Upsert(Branch branch)
         {
             return new Branch_Model().UpsertBranch(branch);
