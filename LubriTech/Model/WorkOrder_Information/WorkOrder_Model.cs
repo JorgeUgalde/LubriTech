@@ -76,5 +76,35 @@ namespace LubriTech.Model.WorkOrder_Information
 
             return workOrders;
         }
+
+        public WorkOrder GetWorOrder(int id)
+        {
+            WorkOrder workOrder = null;
+            
+            try
+            {
+                conn.Open();
+                String query = "SELECT * FROM OrdenTrabajo WHERE Identificacion = @id";
+                SqlCommand cmd = new SqlCommand(query,conn);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+            finally
+            {
+                if (conn.State == System.Data.ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+            return workOrder;
+        }
     }
 }
