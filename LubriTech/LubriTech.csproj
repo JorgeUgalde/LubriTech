@@ -213,6 +213,12 @@
     <Compile Include="View\frmUpsert_Client.Designer.cs">
       <DependentUpon>frmUpsert_Client.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmUpdateInsert_Make_Model.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmUpdateInsert_Make_Model.Designer.cs">
+      <DependentUpon>frmUpdateInsert_Make_Model.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmVehicles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -294,6 +300,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmUpsert_Client.resx">
       <DependentUpon>frmUpsert_Client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmUpdateInsert_Make_Model.resx">
+      <DependentUpon>frmUpdateInsert_Make_Model.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmVehicles.resx">
       <DependentUpon>frmVehicles.cs</DependentUpon>

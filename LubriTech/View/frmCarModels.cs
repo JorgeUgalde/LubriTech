@@ -24,10 +24,6 @@ namespace LubriTech.View
             load_CarModels(null);
         }
 
-        private void frmCarModels_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void ChildFormDataChangedHandler(object sender, EventArgs e)
         {
@@ -41,12 +37,12 @@ namespace LubriTech.View
                 if (filteredList.Count == 0)
                 {
                     dgvCarModels.DataSource = models;
-
                 }
                 else
                 {
                     dgvCarModels.DataSource = filteredList;
                 }
+                SetColumnOrder();
             }
             else
             {
@@ -58,12 +54,14 @@ namespace LubriTech.View
                 }
                 dgvCarModels.DataSource = models;
 
+
             }
             dgvCarModels.Columns["Id"].Visible = false;
             dgvCarModels.Columns["Make"].HeaderText = "Marca";
             dgvCarModels.Columns["Name"].HeaderText = "Nombre";
             dgvCarModels.Columns["State"].HeaderText = "Estado";
             SetColumnOrder();
+
         }
 
         private void SetupDataGridView()
@@ -101,27 +99,40 @@ namespace LubriTech.View
                 if (e.ColumnIndex == dgvCarModels.Columns["ModifyImageColumn"].Index)
                 {
                     CarModel model = models[e.RowIndex];
-                    frmInsertUpdate_CarModel frmUpsertCarModel = new frmInsertUpdate_CarModel(model);
+                    //frmInsertUpdate_CarModel frmUpsertCarModel = new frmInsertUpdate_CarModel(model);
+                    //frmUpsertCarModel.MdiParent = this.MdiParent;
+                    //frmUpsertCarModel.DataChanged += ChildFormDataChangedHandler;
+                    //frmUpsertCarModel.Show();
+
+                    frmUpsert_Make_Model frmUpsertCarModel = new frmUpsert_Make_Model(model, "Modify");
                     frmUpsertCarModel.MdiParent = this.MdiParent;
                     frmUpsertCarModel.DataChanged += ChildFormDataChangedHandler;
                     frmUpsertCarModel.Show();
+
                 }
                 if (e.ColumnIndex == dgvCarModels.Columns["DetailImageColumn"].Index)
                 {
                     CarModel model = models[e.RowIndex];
-                    frmInsertUpdate_CarModel frmUpsertMake = new frmInsertUpdate_CarModel(model);
-                    frmUpsertMake.MdiParent = this.MdiParent;
-                    frmUpsertMake.Show();
+                    frmUpsert_Make_Model frmUpsertCarModel = new frmUpsert_Make_Model(model, "Details");
+                    frmUpsertCarModel.MdiParent = this.MdiParent;
+                    frmUpsertCarModel.DataChanged += ChildFormDataChangedHandler;
+                    frmUpsertCarModel.Show();
                 }
             }
         }
 
         private void btnAddCarModel_Click(object sender, EventArgs e)
         {
-            frmInsertUpdate_CarModel frmUpsertCarModel = new frmInsertUpdate_CarModel();
+            //frmInsertUpdate_CarModel frmUpsertCarModel = new frmInsertUpdate_CarModel();
+            //frmUpsertCarModel.MdiParent = this.MdiParent;
+            //frmUpsertCarModel.DataChanged += ChildFormDataChangedHandler;
+            //frmUpsertCarModel.Show();
+
+            frmUpsert_Make_Model frmUpsertCarModel = new frmUpsert_Make_Model("Insert", "Model");
             frmUpsertCarModel.MdiParent = this.MdiParent;
             frmUpsertCarModel.DataChanged += ChildFormDataChangedHandler;
             frmUpsertCarModel.Show();
+
         }
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
@@ -146,6 +157,11 @@ namespace LubriTech.View
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void frmCarModels_Load(object sender, EventArgs e)
+        {
+            SetColumnOrder();
         }
     }
 }
