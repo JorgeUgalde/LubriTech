@@ -47,7 +47,7 @@ namespace LubriTech.Model.Vehicle_Information
                                                 Convert.ToInt32(dr["Anio"]),
                                                 dr["Transmision"].ToString(),
                                                 (getClient((string)dr["IdentificacionCliente"])),
-                                                dr["Estado"].ToString()));
+                                                (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo"));
                 }
                 return vehicles;
             }
@@ -91,7 +91,7 @@ namespace LubriTech.Model.Vehicle_Information
                                         Convert.ToInt32(dr["NumeroTelefonoAdicional"]),
                                         dr["CorreoElectronico"].ToString(),
                                         dr["Direccion"].ToString(),
-                                        dr["Estado"].ToString());
+                                        (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo");
                 }
 
                 if (conn.State != System.Data.ConnectionState.Open)
@@ -144,7 +144,7 @@ namespace LubriTech.Model.Vehicle_Information
                     model = new CarModel(Convert.ToInt32(dr["Identificacion"]),
                                         dr["Nombre"].ToString(),
                                         (getMake(Convert.ToInt32(dr["IdentificacionMarca"]))),
-                                        dr["Estado"].ToString());
+                                        (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo");
                 }
 
                 if (conn.State != System.Data.ConnectionState.Open)
@@ -196,7 +196,7 @@ namespace LubriTech.Model.Vehicle_Information
                 {
                     make = new Make(Convert.ToInt32(dr["Identificacion"]),
                                         dr["Nombre"].ToString(),
-                                        dr["Estado"].ToString());
+                                        (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo");
                 }
 
                 if (conn.State != System.Data.ConnectionState.Open)
@@ -274,7 +274,7 @@ namespace LubriTech.Model.Vehicle_Information
                                                 Convert.ToInt32(dr["Anio"]),
                                                 dr["Transmision"].ToString(),
                                                 (getClient((string)dr["IdentificacionCliente"])),
-                                                dr["Estado"].ToString());
+                                                (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo");
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {

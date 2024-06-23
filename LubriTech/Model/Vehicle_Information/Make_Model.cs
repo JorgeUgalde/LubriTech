@@ -33,7 +33,7 @@ namespace LubriTech.Model.Vehicle_Information
                 adp.Fill(tblMake);
                 foreach (DataRow row in tblMake.Rows)
                 {
-                    makes.Add(new Make(Convert.ToInt32(row["Identificacion"]), row["Nombre"].ToString(), row["Estado"].ToString()));
+                    makes.Add(new Make(Convert.ToInt32(row["Identificacion"]), row["Nombre"].ToString(), (Convert.ToInt32(row["Estado"]) == 1) ? "Activo" : "Inactivo"));
                 }
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -77,7 +77,7 @@ namespace LubriTech.Model.Vehicle_Information
 
                 foreach (DataRow row in tblMake.Rows)
                 {
-                    make = new Make(Convert.ToInt32(row["Identificacion"]), row["Nombre"].ToString(), row["Estado"].ToString());
+                    make = new Make(Convert.ToInt32(row["Identificacion"]), row["Nombre"].ToString(), (Convert.ToInt32(row["Estado"]) == 1) ? "Activo" : "Inactivo");
                 }
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
