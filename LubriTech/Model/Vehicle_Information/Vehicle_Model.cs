@@ -307,7 +307,7 @@ namespace LubriTech.Model.Vehicle_Information
         {
             try
             {
-                string updateQuery = "UPDATE Vehiculo SET Placa = @licensePlate, TipoMotor = @engine, Kilometraje = @mileage, IdentificacionModelo = @modelId, Anio = @year, Transmision = @transmission, IdentificacionCliente = @clientId WHERE Placa = @licensePlate";
+                string updateQuery = "UPDATE Vehiculo SET Placa = @licensePlate, TipoMotor = @engine, Kilometraje = @mileage, IdentificacionModelo = @modelId, Anio = @year, Transmision = @transmission, IdentificacionCliente = @clientId, Estado = @state WHERE Placa = @licensePlate";
                 SqlCommand cmd = new SqlCommand(updateQuery, conn);
                 cmd.Parameters.AddWithValue("@licensePlate", vehicle.LicensePlate);
                 cmd.Parameters.AddWithValue("@engine", vehicle.Engine);
@@ -316,6 +316,7 @@ namespace LubriTech.Model.Vehicle_Information
                 cmd.Parameters.AddWithValue("@year", vehicle.Year);
                 cmd.Parameters.AddWithValue("@transmission", vehicle.Transmission);
                 cmd.Parameters.AddWithValue("@clientId", vehicle.getClientId());
+                cmd.Parameters.AddWithValue("@state", (vehicle.State.Equals("Activo")) ? 1 : 0);
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -358,7 +359,7 @@ namespace LubriTech.Model.Vehicle_Information
                 cmd.Parameters.AddWithValue("@year", vehicle.Year);
                 cmd.Parameters.AddWithValue("@transmission", vehicle.Transmission);
                 cmd.Parameters.AddWithValue("@clientId", vehicle.getClientId());
-                cmd.Parameters.AddWithValue("@state", vehicle.State);
+                cmd.Parameters.AddWithValue("@state", (vehicle.State.Equals("Activo")) ? 1 : 0);
 
 
                 if (conn.State != System.Data.ConnectionState.Open)

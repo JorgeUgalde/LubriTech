@@ -122,7 +122,7 @@ namespace LubriTech.Model.Vehicle_Information
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@name", make.Name);
                 cmd.Parameters.AddWithValue("@Id", make.Id);
-                cmd.Parameters.AddWithValue("@state", make.State);
+                cmd.Parameters.AddWithValue("@state", (make.State.Equals("Activo")) ? 1 : 0);
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {

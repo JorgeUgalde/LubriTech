@@ -189,7 +189,7 @@ namespace LubriTech.Model.Vehicle_Information
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@name", carModel.Name);
                 cmd.Parameters.AddWithValue("@Id", carModel.Id);
-                cmd.Parameters.AddWithValue("@state", carModel.State);
+                cmd.Parameters.AddWithValue("@state", (carModel.State.Equals("Activo")) ? 1 : 0);
                 cmd.Parameters.AddWithValue("@makeId", carModel.Make.Id);
 
 
