@@ -125,6 +125,7 @@ namespace LubriTech.View
 
             frmUpsert_Make_Model frmUpsertMake = new frmUpsert_Make_Model("Insert", "Make");
             frmUpsertMake.MdiParent = this.MdiParent;
+            this.WindowState = FormWindowState.Normal;
             frmUpsertMake.DataChanged += ChildFormDataChangedHandler;
             frmUpsertMake.Show();
 
@@ -144,6 +145,7 @@ namespace LubriTech.View
 
                     frmUpsert_Make_Model frmUpsertMake = new frmUpsert_Make_Model(make, "Modify");
                     frmUpsertMake.MdiParent = this.MdiParent;
+                    this.WindowState = FormWindowState.Normal;
                     frmUpsertMake.DataChanged += ChildFormDataChangedHandler;
                     frmUpsertMake.Show();
 
@@ -157,6 +159,7 @@ namespace LubriTech.View
                     //frmUpsertMake.Show();
                     frmUpsert_Make_Model frmUpsertMake = new frmUpsert_Make_Model(make, "Details");
                     frmUpsertMake.MdiParent = this.MdiParent;
+                    this.WindowState = FormWindowState.Normal;
                     frmUpsertMake.DataChanged += ChildFormDataChangedHandler;
                     frmUpsertMake.Show();
                 }
