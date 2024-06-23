@@ -25,7 +25,7 @@ namespace LubriTech.Model.Vehicle_Information
                 adp.Fill(tblCarModel);
                 foreach (DataRow row in tblCarModel.Rows)
                 {
-                    carModels.Add(new CarModel(Convert.ToInt32(row["Identificacion"]), row["Nombre"].ToString(), getMake((Convert.ToInt32(row["IdentificacionMarca"]))), row["Estado"].ToString()));
+                    carModels.Add(new CarModel(Convert.ToInt32(row["Identificacion"]), row["Nombre"].ToString(), getMake((Convert.ToInt32(row["IdentificacionMarca"]))), (Convert.ToInt32(row["Estado"]) == 1) ? "Activo" : "Inactivo"));
                 }
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -63,7 +63,7 @@ namespace LubriTech.Model.Vehicle_Information
 
                 foreach (DataRow row in tblCarModel.Rows)
                 {
-                    carModels.Add(new CarModel(Convert.ToInt32(row["Identificacion"]), row["Nombre"].ToString(), getMake((Convert.ToInt32(row["IdentificacionMarca"]))), row["Estado"].ToString()));
+                    carModels.Add(new CarModel(Convert.ToInt32(row["Identificacion"]), row["Nombre"].ToString(), getMake((Convert.ToInt32(row["IdentificacionMarca"]))), (Convert.ToInt32(row["Estado"]) == 1) ? "Activo" : "Inactivo"));
                 }
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -101,7 +101,7 @@ namespace LubriTech.Model.Vehicle_Information
 
                 foreach (DataRow row in tblMake.Rows)
                 {
-                    make = new Make(Convert.ToInt32(row["Identificacion"]), row["Nombre"].ToString(), row["Estado"].ToString());
+                    make = new Make(Convert.ToInt32(row["Identificacion"]), row["Nombre"].ToString(), (Convert.ToInt32(row["Estado"]) == 1) ? "Activo" : "Inactivo");
                 }
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -144,7 +144,7 @@ namespace LubriTech.Model.Vehicle_Information
                     model = new CarModel(Convert.ToInt32(dr["Identificacion"]),
                                         dr["Nombre"].ToString(),
                                         (getMake(Convert.ToInt32(dr["IdentificacionMarca"]))),
-                                        dr["Estado"].ToString());
+                                        (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo");
                 }
 
                 if (conn.State != System.Data.ConnectionState.Open)
@@ -189,7 +189,7 @@ namespace LubriTech.Model.Vehicle_Information
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@name", carModel.Name);
                 cmd.Parameters.AddWithValue("@Id", carModel.Id);
-                cmd.Parameters.AddWithValue("@state", carModel.State);
+                cmd.Parameters.AddWithValue("@state", (carModel.State.Equals("Activo")) ? 1 : 0);
                 cmd.Parameters.AddWithValue("@makeId", carModel.Make.Id);
 
 
