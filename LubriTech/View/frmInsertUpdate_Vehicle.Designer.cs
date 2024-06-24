@@ -303,6 +303,7 @@ namespace LubriTech.View
             this.Controls.Add(this.lblModel);
             this.Controls.Add(this.lblClientId);
             this.Name = "frmInsertUpdate_Vehicle";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dato Maestro Vehículo";
             this.ResumeLayout(false);
             this.PerformLayout();

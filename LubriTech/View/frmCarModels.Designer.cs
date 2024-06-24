@@ -62,7 +62,7 @@
             this.btnClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnClose.Location = new System.Drawing.Point(551, 333);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(239, 41);
+            this.btnClose.Size = new System.Drawing.Size(358, 63);
             this.btnClose.TabIndex = 17;
             this.btnClose.Text = "Cerrar";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -78,7 +78,7 @@
             this.btnAddCarModel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAddCarModel.Location = new System.Drawing.Point(70, 333);
             this.btnAddCarModel.Name = "btnAddCarModel";
-            this.btnAddCarModel.Size = new System.Drawing.Size(239, 41);
+            this.btnAddCarModel.Size = new System.Drawing.Size(358, 63);
             this.btnAddCarModel.TabIndex = 16;
             this.btnAddCarModel.Text = "Crear";
             this.btnAddCarModel.UseVisualStyleBackColor = false;
@@ -103,7 +103,7 @@
             this.txtFilter.Location = new System.Drawing.Point(533, 36);
             this.txtFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(258, 35);
+            this.txtFilter.Size = new System.Drawing.Size(385, 35);
             this.txtFilter.TabIndex = 18;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
@@ -159,7 +159,7 @@
             // 
             // frmCarModels
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(869, 411);
             this.Controls.Add(this.dgvCarModels);
@@ -168,6 +168,8 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnAddCarModel);
             this.Controls.Add(this.label2);
+            this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmCarModels";
             this.Text = "Modelos";
             this.Load += new System.EventHandler(this.frmCarModels_Load);

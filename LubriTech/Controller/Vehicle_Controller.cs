@@ -65,5 +65,25 @@ namespace LubriTech.Controller
         {
             return vehicleModel.getMake(makeId);
         }
+
+        /// <summary>
+        /// Obtiene un tipo de motor de vehículo basado en su identificación.
+        /// </summary>
+        /// <param name="engineId">Identificación del tipo de motor del vehículo.</param>
+        /// <returns>Tipo de motor de vehículo encontrado, o null si no se encuentra.</returns>
+        public Engine getEngine(int engineId)
+        {
+            return vehicleModel.getEngine(engineId);
+        }
+
+        /// <summary>
+        /// Obtiene un tipo de transmisión de vehículo basado en su identificación.
+        /// </summary>
+        /// <param name="transmissionId">Identificación del tipo de transmisión del vehículo.</param>
+        /// <returns>Tipo de transmisión de vehículo encontrado, o null si no se encuentra.</returns>
+        public Transmission getTransmission(int transmissionId)
+        {
+            return vehicleModel.getTransmission(transmissionId);
+        }
     }
 }

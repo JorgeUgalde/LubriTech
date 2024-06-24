@@ -58,7 +58,7 @@ namespace LubriTech.View
             dgvVehicles.Columns["LicensePlate"].HeaderText = "Placa";
             dgvVehicles.Columns["Model"].HeaderText = "Modelo";
             dgvVehicles.Columns["Year"].HeaderText = "Año";
-            dgvVehicles.Columns["Transmission"].HeaderText = "Transmisión";
+            dgvVehicles.Columns["TransmissionType"].HeaderText = "Transmisión";
             dgvVehicles.Columns["State"].HeaderText = "Estado";
             dgvVehicles.Columns["Client"].HeaderText = "Cliente";
             
@@ -85,12 +85,12 @@ namespace LubriTech.View
             // Filtrar la lista de vehiculos
             var filteredList = vehicles.Where(p =>
                 p.LicensePlate.ToLower().Contains(filterValue) ||
-                p.Engine.ToLower().Contains(filterValue) ||
+                p.EngineType.EngineType.ToLower().Contains(filterValue) ||
                 p.Mileage.ToString().ToLower().Contains(filterValue) ||
                 p.Model.Make.Name.ToLower().Contains(filterValue) ||
                 p.Model.Name.ToLower().Contains(filterValue) ||
                 p.Year.ToString().ToLower().Contains(filterValue) ||
-                p.Transmission.ToLower().Contains(filterValue) ||
+                p.TransmissionType.TransmissionType.ToLower().Contains(filterValue) ||
                 p.Client.FullName.ToLower().Contains(filterValue)
             ).ToList();
 
@@ -129,7 +129,7 @@ namespace LubriTech.View
                 }
 
                 string action = "Modify";
-                frmInsertUpdate_Vehicle frmInsertVehicle = new frmInsertUpdate_Vehicle(selectedVehicle, action);
+                frmInsertUpdate_Vehicle frmInsertVehicle = new frmInsertUpdate_Vehicle(selectedVehicle);
                 frmInsertVehicle.MdiParent = this.MdiParent;
                 frmInsertVehicle.DataChanged += ChildFormDataChangedHandler;
                 frmInsertVehicle.Show();
@@ -150,7 +150,7 @@ namespace LubriTech.View
                     }
                 }
                 string action = "Details";
-                frmInsertUpdate_Vehicle frmInsertVehicle = new frmInsertUpdate_Vehicle(selectedVehicle, action);
+                frmInsertUpdate_Vehicle frmInsertVehicle = new frmInsertUpdate_Vehicle(selectedVehicle);
                 frmInsertVehicle.MdiParent = this.MdiParent;
                 frmInsertVehicle.DataChanged += ChildFormDataChangedHandler;
                 frmInsertVehicle.Show();
@@ -176,11 +176,11 @@ namespace LubriTech.View
         private void SetColumnOrder()
         {
             dgvVehicles.Columns["LicensePlate"].DisplayIndex = 0;
-            dgvVehicles.Columns["Engine"].DisplayIndex = 1;
+            dgvVehicles.Columns["EngineType"].DisplayIndex = 1;
             dgvVehicles.Columns["Mileage"].DisplayIndex = 2;
             dgvVehicles.Columns["Model"].DisplayIndex = 3;
             dgvVehicles.Columns["Year"].DisplayIndex = 4;
-            dgvVehicles.Columns["Transmission"].DisplayIndex = 5;
+            dgvVehicles.Columns["TransmissionType"].DisplayIndex = 5;
             dgvVehicles.Columns["Client"].DisplayIndex = 6;
             dgvVehicles.Columns["State"].DisplayIndex = 7;
             dgvVehicles.Columns["DetailImageColumn"].DisplayIndex = 8;
