@@ -25,6 +25,7 @@ namespace LubriTech.View
         private List<Make> makes;
         private List<Engine> engines;
         private List<Transmission> transmissions;
+        private Client selectedClient = null;
 
         public frmInsertUpdate_Vehicle()
         {
@@ -218,9 +219,15 @@ namespace LubriTech.View
 
         private void btnSelectClient_Click(object sender, EventArgs e)
         {
-            frmClients frmClients = new frmClients();
-            frmClients.MdiParent = this.MdiParent;
-            frmClients.Show();
+            //frmClients frmClients = new frmClients("select");
+            //frmClients.MdiParent = this.MdiParent;
+            //frmClients.Show();
+        }
+
+        private void OnClienteSeleccionado(object sender, EventArgs e)
+        {
+            //tbClientId.Text = e.Cliente.Id.ToString();
+            //tbClientName.Text = e.Cliente.Nombre;
         }
     }
 }
