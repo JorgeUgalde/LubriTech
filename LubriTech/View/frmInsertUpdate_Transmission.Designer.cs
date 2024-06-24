@@ -98,7 +98,7 @@
             this.txtTransmissionType.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
             this.txtTransmissionType.Location = new System.Drawing.Point(77, 66);
             this.txtTransmissionType.Margin = new System.Windows.Forms.Padding(2, 2, 6, 6);
-            this.txtTransmissionType.MaxLength = 100;
+            this.txtTransmissionType.MaxLength = 50;
             this.txtTransmissionType.Name = "txtTransmissionType";
             this.txtTransmissionType.Size = new System.Drawing.Size(250, 35);
             this.txtTransmissionType.TabIndex = 43;

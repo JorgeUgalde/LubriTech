@@ -33,6 +33,7 @@ namespace LubriTech.View
             this.panelMenu = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panelParametersSubmenu = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
@@ -53,7 +54,6 @@ namespace LubriTech.View
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelParametersSubmenu.SuspendLayout();
             this.panelInventorySubmenu.SuspendLayout();
@@ -94,7 +94,7 @@ namespace LubriTech.View
             this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button1.Location = new System.Drawing.Point(0, 740);
             this.button1.Name = "button1";
@@ -119,12 +119,29 @@ namespace LubriTech.View
             this.panelParametersSubmenu.Size = new System.Drawing.Size(233, 171);
             this.panelParametersSubmenu.TabIndex = 13;
             // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button2.Location = new System.Drawing.Point(0, 120);
+            this.button2.Name = "button2";
+            this.button2.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button2.Size = new System.Drawing.Size(233, 40);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "Catálogo de modelos";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // button10
             // 
             this.button10.Dock = System.Windows.Forms.DockStyle.Top;
             this.button10.FlatAppearance.BorderSize = 0;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button10.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
             this.button10.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button10.Location = new System.Drawing.Point(0, 80);
             this.button10.Name = "button10";
@@ -141,7 +158,7 @@ namespace LubriTech.View
             this.button12.Dock = System.Windows.Forms.DockStyle.Top;
             this.button12.FlatAppearance.BorderSize = 0;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button12.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
             this.button12.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button12.Location = new System.Drawing.Point(0, 40);
             this.button12.Name = "button12";
@@ -158,7 +175,7 @@ namespace LubriTech.View
             this.button13.Dock = System.Windows.Forms.DockStyle.Top;
             this.button13.FlatAppearance.BorderSize = 0;
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button13.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
             this.button13.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button13.Location = new System.Drawing.Point(0, 0);
             this.button13.Name = "button13";
@@ -174,7 +191,7 @@ namespace LubriTech.View
             this.btnParamConfig.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnParamConfig.FlatAppearance.BorderSize = 0;
             this.btnParamConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnParamConfig.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnParamConfig.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnParamConfig.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnParamConfig.Location = new System.Drawing.Point(0, 524);
             this.btnParamConfig.Name = "btnParamConfig";
@@ -191,7 +208,7 @@ namespace LubriTech.View
             this.btnArticles.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnArticles.FlatAppearance.BorderSize = 0;
             this.btnArticles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArticles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnArticles.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnArticles.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnArticles.Location = new System.Drawing.Point(0, 479);
             this.btnArticles.Name = "btnArticles";
@@ -221,7 +238,7 @@ namespace LubriTech.View
             this.btnSuppliers.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSuppliers.FlatAppearance.BorderSize = 0;
             this.btnSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSuppliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnSuppliers.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnSuppliers.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnSuppliers.Location = new System.Drawing.Point(0, 120);
             this.btnSuppliers.Name = "btnSuppliers";
@@ -238,7 +255,7 @@ namespace LubriTech.View
             this.btnGoodsIssue.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnGoodsIssue.FlatAppearance.BorderSize = 0;
             this.btnGoodsIssue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGoodsIssue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnGoodsIssue.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnGoodsIssue.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnGoodsIssue.Location = new System.Drawing.Point(0, 80);
             this.btnGoodsIssue.Name = "btnGoodsIssue";
@@ -254,7 +271,7 @@ namespace LubriTech.View
             this.btnGoodsReceipt.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnGoodsReceipt.FlatAppearance.BorderSize = 0;
             this.btnGoodsReceipt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGoodsReceipt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnGoodsReceipt.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnGoodsReceipt.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnGoodsReceipt.Location = new System.Drawing.Point(0, 40);
             this.btnGoodsReceipt.Name = "btnGoodsReceipt";
@@ -270,7 +287,7 @@ namespace LubriTech.View
             this.btnPurchaseOrder.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnPurchaseOrder.FlatAppearance.BorderSize = 0;
             this.btnPurchaseOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPurchaseOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnPurchaseOrder.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnPurchaseOrder.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnPurchaseOrder.Location = new System.Drawing.Point(0, 0);
             this.btnPurchaseOrder.Name = "btnPurchaseOrder";
@@ -286,7 +303,7 @@ namespace LubriTech.View
             this.btnInventory.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnInventory.FlatAppearance.BorderSize = 0;
             this.btnInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnInventory.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnInventory.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnInventory.Location = new System.Drawing.Point(0, 263);
             this.btnInventory.Name = "btnInventory";
@@ -303,7 +320,7 @@ namespace LubriTech.View
             this.btnWorkOrders.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnWorkOrders.FlatAppearance.BorderSize = 0;
             this.btnWorkOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnWorkOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnWorkOrders.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnWorkOrders.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnWorkOrders.Location = new System.Drawing.Point(0, 218);
             this.btnWorkOrders.Name = "btnWorkOrders";
@@ -320,7 +337,7 @@ namespace LubriTech.View
             this.btnAppointments.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAppointments.FlatAppearance.BorderSize = 0;
             this.btnAppointments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnAppointments.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnAppointments.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnAppointments.Location = new System.Drawing.Point(0, 173);
             this.btnAppointments.Name = "btnAppointments";
@@ -348,7 +365,7 @@ namespace LubriTech.View
             this.btnVehicleMasterData.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnVehicleMasterData.FlatAppearance.BorderSize = 0;
             this.btnVehicleMasterData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVehicleMasterData.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnVehicleMasterData.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnVehicleMasterData.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnVehicleMasterData.Location = new System.Drawing.Point(0, 40);
             this.btnVehicleMasterData.Name = "btnVehicleMasterData";
@@ -365,7 +382,7 @@ namespace LubriTech.View
             this.btnClientMasterData.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnClientMasterData.FlatAppearance.BorderSize = 0;
             this.btnClientMasterData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClientMasterData.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnClientMasterData.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnClientMasterData.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnClientMasterData.Location = new System.Drawing.Point(0, 0);
             this.btnClientMasterData.Name = "btnClientMasterData";
@@ -382,7 +399,7 @@ namespace LubriTech.View
             this.btnClients.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnClients.FlatAppearance.BorderSize = 0;
             this.btnClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnClients.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnClients.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnClients.Location = new System.Drawing.Point(0, 45);
             this.btnClients.Name = "btnClients";
@@ -430,23 +447,6 @@ namespace LubriTech.View
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.Location = new System.Drawing.Point(0, 120);
-            this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button2.Size = new System.Drawing.Size(233, 40);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Catálogo de modelos";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // MDI_View
             // 

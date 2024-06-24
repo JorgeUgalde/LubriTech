@@ -98,7 +98,7 @@
             this.txtEngineType.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
             this.txtEngineType.Location = new System.Drawing.Point(78, 66);
             this.txtEngineType.Margin = new System.Windows.Forms.Padding(2, 2, 6, 6);
-            this.txtEngineType.MaxLength = 100;
+            this.txtEngineType.MaxLength = 50;
             this.txtEngineType.Name = "txtEngineType";
             this.txtEngineType.Size = new System.Drawing.Size(250, 35);
             this.txtEngineType.TabIndex = 37;
