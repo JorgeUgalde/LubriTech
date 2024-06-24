@@ -21,8 +21,8 @@ namespace LubriTech.View
         {
             clients = new List<Client>();
             InitializeComponent();
-            SetupDataGridView();
             load_Clients(null);
+            
         }
 
         private void frmClients_Load(object sender, EventArgs e)
@@ -108,54 +108,7 @@ namespace LubriTech.View
         /// </summary>
         /// <param name="sender">Objeto que envió el evento.</param>
         /// <param name="e">Argumentos del evento.</param>
-        private void dgvClients_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dgvClients.Columns["ModifyImageColumn"].Index && e.RowIndex >= 0)
-            {
-                string idToModify = dgvClients.Rows[e.RowIndex].Cells["Id"].Value.ToString();
-                List<Client> clients = new Clients_Controller().getAll();
-                Client clientSelected = null;
-
-                foreach (Client client in clients)
-                {
-                    if (client.Id == idToModify)
-                    {
-                        clientSelected = client;
-                        break;
-                    }
-                }
-                string action = "Modify";
-                frmUpsert_Client frmInsertClient = new frmUpsert_Client(clientSelected, action);
-                frmInsertClient.MdiParent = this.MdiParent;
-                frmInsertClient.DataChanged += ChildFormDataChangedHandler;
-                frmInsertClient.Show();
-                load_Clients(null);
-                return;
-            }
-
-            if (e.ColumnIndex == dgvClients.Columns["DetailImageColumn"].Index && e.RowIndex >= 0)
-            {
-                string idToConsult = dgvClients.Rows[e.RowIndex].Cells["Id"].Value.ToString();
-                List<Client> clients = new Clients_Controller().getAll();
-                Client clientSelected = null;
-
-                foreach (Client client in clients)
-                {
-                    if (client.Id == idToConsult)
-                    {
-                        clientSelected = client;
-                        break;
-                    }
-                }
-                string action = "Details";
-                frmUpsert_Client frmInsertClient = new frmUpsert_Client(clientSelected, action);
-                frmInsertClient.MdiParent = this.MdiParent;
-                frmInsertClient.DataChanged += ChildFormDataChangedHandler;
-                frmInsertClient.Show();
-                load_Clients(null);
-                return;
-            }
-        }
+        
 
         /// <summary>
         /// Maneja el evento de clic en el botón de agregar cliente.
@@ -188,20 +141,7 @@ namespace LubriTech.View
         /// <summary>
         /// Configura el DataGridView con las columnas de modificar y detalles.
         /// </summary>
-        private void SetupDataGridView()
-        {
-            DataGridViewImageColumn modifyImageColumn = new DataGridViewImageColumn();
-            modifyImageColumn.Name = "ModifyImageColumn";
-            modifyImageColumn.HeaderText = "Modificar";
-            modifyImageColumn.Image = Properties.Resources.edit;
-            dgvClients.Columns.Add(modifyImageColumn);
-
-            DataGridViewImageColumn detailImageColumn = new DataGridViewImageColumn();
-            detailImageColumn.Name = "DetailImageColumn";
-            detailImageColumn.HeaderText = "Detalles";
-            detailImageColumn.Image = Properties.Resources.detail;
-            dgvClients.Columns.Add(detailImageColumn);
-        }
+       
 
         /// <summary>
         /// Establece el orden de las columnas en el DataGridView.
@@ -211,8 +151,6 @@ namespace LubriTech.View
             dgvClients.Columns["Id"].DisplayIndex = 0;
             dgvClients.Columns["FullName"].DisplayIndex = 1;
             dgvClients.Columns["State"].DisplayIndex = 2;
-            dgvClients.Columns["DetailImageColumn"].DisplayIndex = 3;
-            dgvClients.Columns["ModifyImageColumn"].DisplayIndex = 4;
         }
 
         /// <summary>
@@ -225,6 +163,50 @@ namespace LubriTech.View
             this.Dispose();
         }
 
-        
+       
+
+        private void dgvClients_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                string idToModify = dgvClients.Rows[e.RowIndex].Cells["Id"].Value.ToString();
+                List<Client> clients = new Clients_Controller().getAll();
+                Client clientSelected = clients.FirstOrDefault(client => client.Id == idToModify);
+
+                if (clientSelected != null)
+                {
+                    frmUpsert_Client frmInsertClient = new frmUpsert_Client(clientSelected);
+                    frmInsertClient.MdiParent = this.MdiParent;
+                    frmInsertClient.DataChanged += ChildFormDataChangedHandler;
+                    frmInsertClient.Show();
+
+                    load_Clients(null);
+                }
+            }
+        }
+
+        private void pbClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void pbMaximize_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+
+        }
+
+        private void pbMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+
+        }
     }
 }

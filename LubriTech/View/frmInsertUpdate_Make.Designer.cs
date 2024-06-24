@@ -40,8 +40,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(65, 132);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(98, 203);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 30);
             this.label3.TabIndex = 24;
@@ -50,19 +49,18 @@
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
-            this.txtName.Location = new System.Drawing.Point(70, 69);
-            this.txtName.Margin = new System.Windows.Forms.Padding(2, 2, 6, 6);
+            this.txtName.Location = new System.Drawing.Point(105, 106);
+            this.txtName.Margin = new System.Windows.Forms.Padding(3, 3, 9, 9);
             this.txtName.MaxLength = 100;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(250, 35);
+            this.txtName.Size = new System.Drawing.Size(373, 35);
             this.txtName.TabIndex = 23;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(65, 37);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(98, 57);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 30);
             this.label2.TabIndex = 22;
@@ -76,10 +74,10 @@
             this.cbState.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cbState.Location = new System.Drawing.Point(70, 166);
-            this.cbState.Margin = new System.Windows.Forms.Padding(4);
+            this.cbState.Location = new System.Drawing.Point(105, 255);
+            this.cbState.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cbState.Name = "cbState";
-            this.cbState.Size = new System.Drawing.Size(250, 38);
+            this.cbState.Size = new System.Drawing.Size(373, 38);
             this.cbState.TabIndex = 27;
             // 
             // btnConfirm
@@ -90,9 +88,10 @@
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfirm.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
             this.btnConfirm.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnConfirm.Location = new System.Drawing.Point(70, 245);
+            this.btnConfirm.Location = new System.Drawing.Point(103, 340);
+            this.btnConfirm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(250, 41);
+            this.btnConfirm.Size = new System.Drawing.Size(375, 63);
             this.btnConfirm.TabIndex = 28;
             this.btnConfirm.Text = "Confirmar";
             this.btnConfirm.UseVisualStyleBackColor = false;
@@ -106,9 +105,10 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(70, 314);
+            this.button1.Location = new System.Drawing.Point(103, 450);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(250, 41);
+            this.button1.Size = new System.Drawing.Size(375, 63);
             this.button1.TabIndex = 29;
             this.button1.Text = "Cerrar";
             this.button1.UseVisualStyleBackColor = false;
@@ -116,17 +116,16 @@
             // 
             // frmInsertUpdate_Make
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(402, 388);
+            this.ClientSize = new System.Drawing.Size(603, 591);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.cbState);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmInsertUpdate_Make";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dato Maestro Marca";

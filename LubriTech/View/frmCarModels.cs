@@ -22,6 +22,7 @@ namespace LubriTech.View
             InitializeComponent();
             SetupDataGridView();
             load_CarModels(null);
+            
         }
 
         private void frmCarModels_Load(object sender, EventArgs e)
@@ -36,6 +37,7 @@ namespace LubriTech.View
 
         private void load_CarModels(List<CarModel> filteredList)
         {
+            
             if (filteredList != null)
             {
                 if (filteredList.Count == 0)
@@ -63,6 +65,7 @@ namespace LubriTech.View
             dgvCarModels.Columns["Make"].HeaderText = "Marca";
             dgvCarModels.Columns["Name"].HeaderText = "Nombre";
             dgvCarModels.Columns["State"].HeaderText = "Estado";
+
             SetColumnOrder();
         }
 

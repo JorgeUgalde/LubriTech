@@ -171,6 +171,7 @@
             this.Controls.Add(this.lblVehicleList);
             this.Controls.Add(this.dgvVehicles);
             this.Name = "frmVehicles";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vehículos";
             this.Load += new System.EventHandler(this.frmVehicles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVehicles)).EndInit();
