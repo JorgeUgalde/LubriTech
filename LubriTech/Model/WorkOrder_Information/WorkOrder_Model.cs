@@ -17,94 +17,78 @@ namespace LubriTech.Model.WorkOrder_Information
     {
         SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
 
-        /// <summary>
-        /// Carga todas las órdenes de trabajo desde la base de datos.
-        /// </summary>
-        /// <returns>Lista de todas las órdenes de trabajo cargadas.</returns>
-        public List<WorkOrder> loadAllWorkOrders()
+        //load all work orders 
+        public List<WorkOrder> loadWorkOrders()
         {
             List<WorkOrder> workOrders = new List<WorkOrder>();
-
             try
             {
                 conn.Open();
-                String selectQuery = "SELECT * FROM OrdenTrabajo AS ot INNER JOIN Observacion AS o ON ot.Identificacion = o.IdentificacionOrdenTrabajo";
+                String selectQuery = "SELECT * FROM OrdenTrabajo";
                 SqlCommand cmd = new SqlCommand(selectQuery, conn);
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    while (reader.Read())
-                    {
-                        int workOrderId = (int)reader["Identificacion"];
-
-                        //Cargar todas las observaciones de una orden de trabajo
-                        List<Observation> observations = new List<Observation>
-                {
-                    new Observation_Model().loadObservation((int)reader["IdObservacion"])
-                };
-
-                        WorkOrder workOrder = new WorkOrder(
-                            workOrderId,
-                            (DateTime)reader["Fecha"],
-                            new Branch_Model().GetBranch((int)reader["IdentificacionSucursal"]),
-                            new Client_Model().getClient(reader["IdentificacionCliente"].ToString()),
-                            new Vehicle_Model().getVehicle(reader["PlacaVehiculo"].ToString()),
-                            (int)reader["KilometrajeActual"],
-                            (int)reader["RecorridoRecomendado"],
-                            (int)reader["ProximoCambio"],
-                            observations,
-                            (decimal)reader["Monto"],
-                            reader["Estado"].ToString()
-                        );
-
-                        workOrders.Add(workOrder);
-                    }
+                    WorkOrder workOrder = new WorkOrder();
+                    workOrder.Id = reader.GetInt32(0);
+                    workOrder.Date = reader.GetDateTime(1);
+                    workOrder.Branch = new Branch_Model().GetBranch(reader.GetInt32(2));
+                    workOrder.Client = new Client_Model().getClient(reader.GetString(3));
+                    workOrder.Vehicle = new Vehicle_Model().getVehicle(reader.GetString(4));
+                    workOrder.CurrentMileage = reader.GetInt32(5);
+                    workOrder.Amount = reader.GetDecimal(6);
+                    workOrder.State = reader.GetInt16(7);
+                    workOrders.Add(workOrder);
                 }
             }
             catch (Exception ex)
             {
-                // Log the exception (this is a simple console log, consider using a proper logging framework)
-                Console.WriteLine(ex.Message);
-                throw; // Optionally rethrow the exception or handle it accordingly
+                return null;
             }
             finally
             {
-                if (conn.State == System.Data.ConnectionState.Open)
-                {
-                    conn.Close();
-                }
+                conn.Close();
             }
-
             return workOrders;
         }
 
-        public WorkOrder GetWorOrder(int id)
+
+        //load all work orders from a client
+        public List<WorkOrder> loadWorkOrdersFromClient(string clientId)
         {
-            WorkOrder workOrder = null;
-            
+            List<WorkOrder> workOrders = new List<WorkOrder>();
             try
             {
                 conn.Open();
-                String query = "SELECT * FROM OrdenTrabajo WHERE Identificacion = @id";
-                SqlCommand cmd = new SqlCommand(query,conn);
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
+                String selectQuery = "SELECT * FROM OrdenTrabajo WHERE IdentificacionCliente = @clientId";
+                SqlCommand cmd = new SqlCommand(selectQuery, conn);
+                cmd.Parameters.AddWithValue("@clientId", clientId);
+                SqlDataReader reader = cmd.ExecuteReader();
 
+                while (reader.Read())
+                {
+                    WorkOrder workOrder = new WorkOrder();
+                    workOrder.Id = reader.GetInt32(0);
+                    workOrder.Date = reader.GetDateTime(1);
+                    workOrder.Branch = new Branch_Model().GetBranch(reader.GetInt32(2));
+                    workOrder.Client = new Client_Model().getClient(reader.GetString(3));
+                    workOrder.Vehicle = new Vehicle_Model().getVehicle(reader.GetString(4));
+                    workOrder.CurrentMileage = reader.GetInt32(5);
+                    workOrder.Amount = reader.GetDecimal(6);
+                    workOrder.State = reader.GetInt16(7);
+                    workOrders.Add(workOrder);
                 }
-                
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                throw;
+                return null;
             }
             finally
             {
-                if (conn.State == System.Data.ConnectionState.Open)
-                {
-                    conn.Close();
-                }
+                conn.Close();
             }
-            return workOrder;
+            return workOrders;
         }
     }
 }

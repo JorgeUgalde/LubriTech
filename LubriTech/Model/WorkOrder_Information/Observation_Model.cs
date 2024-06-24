@@ -14,28 +14,27 @@ namespace LubriTech.Model.WorkOrder_Information
     {
         SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
 
-        /// <summary>
-        /// Carga todas las observaciones asociadas a una orden de trabajo específica desde la base de datos.
-        /// </summary>
-        /// <param name="workOrderId">Identificador de la orden de trabajo.</param>
-        /// <returns>Lista de objetos Observation.</returns>
-        public List<Observation> loadObservationsFromWorkOrder(int workOrderId)
+        //load all observations from a work order
+        public List<Observation> loadObservations(int workOrderId)
         {
+            List<Observation> observations = new List<Observation>();
             try
             {
-                List<Observation> observations = new List<Observation>();
-
                 conn.Open();
-                String selectQuery = "SELECT * FROM Observacion where IdentificacionOrdenTrabajo = @id";
+                String selectQuery = "SELECT * FROM Observacion WHERE IdentificacionOrdenTrabajo = @workOrderId";
                 SqlCommand cmd = new SqlCommand(selectQuery, conn);
-                cmd.Parameters.AddWithValue("@id", workOrderId);
+                cmd.Parameters.AddWithValue("@workOrderId", workOrderId);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    observations.Add(new Observation((int)reader["Id"], reader["Descripcion"].ToString(), reader["Fotografia"].ToString()));
+                    Observation observation = new Observation();
+                    observation.Codigo = reader.GetInt32(0);
+                    observation.WorkOrderId = reader.GetInt32(1);
+                    observation.Description = reader.GetString(2);
+                    observation.Photos = reader.GetString(3).Split(',').ToList();
+                    observations.Add(observation);
                 }
-                return observations;
             }
             catch (Exception ex)
             {
@@ -45,37 +44,7 @@ namespace LubriTech.Model.WorkOrder_Information
             {
                 conn.Close();
             }
-        }
-
-        /// <summary>
-        /// Carga una observación específica desde la base de datos.
-        /// </summary>
-        /// <param name="observationId">Identificador de la observación.</param>
-        /// <returns>Objeto Observation si se encuentra, de lo contrario null.</returns>
-        public Observation loadObservation(int observationId)
-        {
-            try
-            {
-                conn.Open();
-                String selectQuery = "SELECT * FROM Observacion where CodigoObservacion = @id";
-                SqlCommand cmd = new SqlCommand(selectQuery, conn);
-                cmd.Parameters.AddWithValue("@id", observationId);
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    return new Observation((int)reader["Id"], reader["Descripcion"].ToString(), reader["Fotografia"].ToString());
-                }
-                return null;
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-            finally
-            {
-                conn.Close();
-            }
+            return observations;
         }
 
         /// <summary>
