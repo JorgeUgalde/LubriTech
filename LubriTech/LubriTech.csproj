@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\Branch_Controller.cs" />
+    <Compile Include="Controller\Engine_Controller.cs" />
     <Compile Include="Controller\Clients_Controller.cs" />
     <Compile Include="Controller\Item_Controller.cs" />
     <Compile Include="Controller\Make_Controller.cs" />
@@ -99,7 +100,9 @@
     <Compile Include="Model\Supplier_Information\Supplier_Model.cs" />
     <Compile Include="Model\User_Information\User.cs" />
     <Compile Include="Model\User_Information\User_Model.cs" />
+    <Compile Include="Model\Vehicle_Information\Engine.cs" />
     <Compile Include="Model\Vehicle_Information\CarModel.cs" />
+    <Compile Include="Model\Vehicle_Information\Engine_Model.cs" />
     <Compile Include="Model\Vehicle_Information\Make.cs" />
     <Compile Include="Model\Vehicle_Information\CarModel_Model.cs" />
     <Compile Include="Model\Vehicle_Information\Make_Model.cs" />
@@ -135,6 +138,12 @@
     <Compile Include="View\frmCarModels.Designer.cs">
       <DependentUpon>frmCarModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmEngine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmEngine.Designer.cs">
+      <DependentUpon>frmEngine.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmInsertUpdate_CarModel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +173,12 @@
     </Compile>
     <Compile Include="View\frmInsertUpdateSupplier.Designer.cs">
       <DependentUpon>frmInsertUpdateSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmInsertUpdate_Engine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmInsertUpdate_Engine.Designer.cs">
+      <DependentUpon>frmInsertUpdate_Engine.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmInsertUpdate_Item.cs">
       <SubType>Form</SubType>
@@ -264,6 +279,9 @@
     <EmbeddedResource Include="View\frmCarModels.resx">
       <DependentUpon>frmCarModels.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\frmEngine.resx">
+      <DependentUpon>frmEngine.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmInsertUpdate_CarModel.resx">
       <DependentUpon>frmInsertUpdate_CarModel.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmClients.resx">
       <DependentUpon>frmClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmInsertUpdate_Engine.resx">
+      <DependentUpon>frmInsertUpdate_Engine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmInsertUpdate_Item.resx">
       <DependentUpon>frmInsertUpdate_Item.cs</DependentUpon>
