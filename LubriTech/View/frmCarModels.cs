@@ -106,6 +106,7 @@ namespace LubriTech.View
 
                     frmUpsert_Make_Model frmUpsertCarModel = new frmUpsert_Make_Model(model, "Modify");
                     frmUpsertCarModel.MdiParent = this.MdiParent;
+                    this.WindowState = FormWindowState.Normal;
                     frmUpsertCarModel.DataChanged += ChildFormDataChangedHandler;
                     frmUpsertCarModel.Show();
 
@@ -115,6 +116,7 @@ namespace LubriTech.View
                     CarModel model = models[e.RowIndex];
                     frmUpsert_Make_Model frmUpsertCarModel = new frmUpsert_Make_Model(model, "Details");
                     frmUpsertCarModel.MdiParent = this.MdiParent;
+                    this.WindowState = FormWindowState.Normal;
                     frmUpsertCarModel.DataChanged += ChildFormDataChangedHandler;
                     frmUpsertCarModel.Show();
                 }
@@ -130,6 +132,7 @@ namespace LubriTech.View
 
             frmUpsert_Make_Model frmUpsertCarModel = new frmUpsert_Make_Model("Insert", "Model");
             frmUpsertCarModel.MdiParent = this.MdiParent;
+            this.WindowState = FormWindowState.Normal;
             frmUpsertCarModel.DataChanged += ChildFormDataChangedHandler;
             frmUpsertCarModel.Show();
 
