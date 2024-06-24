@@ -53,6 +53,11 @@ namespace LubriTech.Model.Item_Information
         public string type { set; get; }
 
         /// <summary>
+        /// Recorrido recomendado para el artículo.
+        /// </summary>
+        public double recommendedServiceInterval { set; get; }
+
+        /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Item"/>.
         /// </summary>
         public Item()
@@ -70,7 +75,8 @@ namespace LubriTech.Model.Item_Information
         /// <param name="stock">El stock del artículo.</param>
         /// <param name="purchasePrice">El precio de compra del artículo.</param>
         /// <param name="type">El tipo del artículo (producto o servicio).</param>
-        public Item(string code, string name, double sellPrice, string measureUnit, string state, double stock, double purchasePrice, string type)
+        /// param name="recommendedServiceInterval">El recorrido recomendado para el artículo.</param>
+        public Item(string code, string name, double sellPrice, string measureUnit, string state, double stock, double purchasePrice, string type, double recommendedServiceInterval)
         {
             this.code = code;
             this.name = name;
@@ -80,6 +86,7 @@ namespace LubriTech.Model.Item_Information
             this.stock = stock;
             this.purchasePrice = purchasePrice;
             this.type = type;
+            this.recommendedServiceInterval = recommendedServiceInterval;
         }
 
         /// <summary>

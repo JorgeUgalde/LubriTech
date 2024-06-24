@@ -18,6 +18,10 @@ namespace LubriTech.View
         public frmInsertUpdate_Item()
         {
             InitializeComponent();
+            cbMeasureUnit.SelectedIndex = 0;
+            cbState.SelectedIndex = 0;
+            cbType.SelectedIndex = 0;
+
             globalItem = new Item();
         }
 
@@ -42,6 +46,7 @@ namespace LubriTech.View
             tbStock.Text = item.stock.ToString();
             tbPurchasePrice.Text = item.purchasePrice.ToString();
             cbType.Text = item.type;
+            txtRecommended.Text = item.recommendedServiceInterval.ToString();
 
         }
         public event EventHandler DataChanged;
@@ -80,7 +85,8 @@ namespace LubriTech.View
                cbState.Text.Trim() == "" ||
                tbStock.Text.Trim() == "" ||
                tbPurchasePrice.Text.Trim() == "" ||
-               cbType.Text.Trim() == "")
+               cbType.Text.Trim() == "" )
+
             {
                 MessageBox.Show("Debe llenar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -89,6 +95,15 @@ namespace LubriTech.View
             if (globalItem == null)
             {
                 globalItem = new Item();
+            }
+
+            if (txtRecommended.Text == "")
+            {
+                globalItem.recommendedServiceInterval = 0;
+            }
+            else
+            {
+                globalItem.recommendedServiceInterval = Convert.ToDouble(txtRecommended.Text);
             }
 
             globalItem.code = txtCode.Text;
@@ -137,14 +152,19 @@ namespace LubriTech.View
             e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
         }
 
-        private void frmInsertUpdate_Item_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtCode_TextChanged(object sender, EventArgs e)
         {
             lblCode2.Visible = false;
+        }
+
+        private void txtRecommended_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 ;
+        }
+
+        private void txtRecommended_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
