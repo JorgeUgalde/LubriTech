@@ -32,8 +32,8 @@ namespace LubriTech.Model.Branch_Information
 
                 while (reader.Read())
                 {
-                    branches.Add(new Branch((int)reader["Id"], reader["Nombre"].ToString(), reader["Direccion"].ToString(),
-                                               reader["Telefono"].ToString(), reader["Correo"].ToString()));
+                    branches.Add(new Branch((int)reader["Identificacion"], reader["NombreSucursal"].ToString(), reader["Direccion"].ToString(),
+                                               reader["Correo"].ToString(), reader["Telefono"].ToString(), (short)reader["Estado"]));
                 }
                 return branches;
             }
@@ -64,8 +64,8 @@ namespace LubriTech.Model.Branch_Information
 
                 if (reader.Read())
                 {
-                    return new Branch((int)reader["Id"], reader["Nombre"].ToString(), reader["Direccion"].ToString(),
-                                                             reader["Telefono"].ToString(), reader["Correo"].ToString());
+                    return new Branch((int)reader["Identificacion"], reader["NombreSucursal"].ToString(), reader["Direccion"].ToString(),
+                                                             reader["Correo"].ToString(), reader["NumeroTelefono"].ToString(), (short)reader["Estado"]);
                 }
                 return null;
             }
