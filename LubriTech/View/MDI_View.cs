@@ -174,7 +174,6 @@ namespace LubriTech.View
             frmWorkOrder frmWorkOrder = new frmWorkOrder();
             OpenChildForm(frmWorkOrder);
             frmWorkOrder.BringToFront();
-            frmWorkOrder.Focus();
         }
 
         private void btnSuppliers_Click(object sender, EventArgs e)
@@ -196,6 +195,20 @@ namespace LubriTech.View
             OpenChildForm(frmItems);
             frmItems.BringToFront();
             frmItems.Focus();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            frmMakes frmMakes = new frmMakes();
+            OpenChildForm(frmMakes);
+            frmMakes.BringToFront();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmCarModels frmCarModels = new frmCarModels();
+            OpenChildForm(frmCarModels);
+            frmCarModels.BringToFront();
         }
     }
 }

@@ -46,10 +46,11 @@ namespace LubriTech.Model.items_Information
                         dr["Nombre"].ToString(),
                         Convert.ToDouble(dr["PrecioVenta"]), 
                         dr["UnidadMedida"].ToString(),
-                        dr["Estado"].ToString(),
-                        Convert.ToDouble(dr["CantidadAlmacen"]),
+                        dr["Estado"].Equals(1) ? "Activo": "Inactivo" ,
+                        dr["Tipo"].ToString().Equals("Producto") ? getItemStock(dr["Codigo"].ToString(), 1) : 0 ,
                         Convert.ToDouble(dr["PrecioCompra"]),
-                        dr["Tipo"].ToString()
+                        dr["Tipo"].ToString(),
+                        Convert.ToDouble(dr["RecorridoRecomendado"])
                         ));
                 }
 
@@ -74,6 +75,30 @@ namespace LubriTech.Model.items_Information
                 {
                     conn.Close();
                 }
+            }
+        }
+
+        private double getItemStock(string itemCode,  int branch)
+        {
+            try
+            {
+                string selectQuery = "select CantidadAlmacen from SeAlmacena where CodigoArticulo = @item and IdentificacionSucursal = @branch";
+                SqlCommand cmd = new SqlCommand(selectQuery, conn);
+                cmd.Parameters.AddWithValue("@item", itemCode);
+                cmd.Parameters.AddWithValue("@branch", 1);
+
+                DataTable tblitems = new DataTable();
+                SqlDataAdapter adp = new SqlDataAdapter();
+                adp.SelectCommand = cmd;
+
+                adp.Fill(tblitems);
+                DataRow dr = tblitems.Rows[0];
+
+                return Convert.ToDouble(dr["CantidadAlmacen"]);
+            }
+            catch (Exception ex)
+            {
+                return 0;
             }
         }
 
@@ -102,10 +127,11 @@ namespace LubriTech.Model.items_Information
                         dr["Nombre"].ToString(),
                         Convert.ToDouble(dr["PrecioVenta"]),
                         dr["UnidadMedida"].ToString(),
-                        dr["Estado"].ToString(),
-                        Convert.ToDouble(dr["CantidadAlmacen"]),
+                        dr["Estado"].Equals(1) ? "Activo" : "Inactivo",
+                        dr["Tipo"].ToString().Equals("Producto") ? getItemStock(dr["Codigo"].ToString(), 1) : 0,
                         Convert.ToDouble(dr["PrecioCompra"]),
-                        dr["Tipo"].ToString()
+                        dr["Tipo"].ToString(),
+                        Convert.ToDouble(dr["RecorridoRecomendado"])
                         );
 
                 if (conn.State != System.Data.ConnectionState.Open)
@@ -168,19 +194,30 @@ namespace LubriTech.Model.items_Information
                     "PrecioVenta = @sellPrice, " +
                     "UnidadMedida = @measureUnit," +
                     "Estado = @state, " +
-                    "CantidadAlmacen = @stock," +
                     "PrecioCompra = @purchasePrice, " +
-                    "Tipo = @type " +
+                    "Tipo = @type, " +
+                    "RecorridoRecomendado = @recommended " +
                     "where Codigo = @code";
                 SqlCommand cmd = new SqlCommand(updateQuery, conn);
+
                 cmd.Parameters.AddWithValue("@code", items.code);
                 cmd.Parameters.AddWithValue("@name", items.name);
                 cmd.Parameters.AddWithValue("@sellPrice", items.sellPrice);
                 cmd.Parameters.AddWithValue("@measureUnit", items.measureUnit);
-                cmd.Parameters.AddWithValue("@state", items.state);
-                cmd.Parameters.AddWithValue("@stock", items.stock);
+                cmd.Parameters.AddWithValue("@state", (items.state.Equals("Activo")) ? 1 : 0  );
                 cmd.Parameters.AddWithValue("@purchasePrice", items.purchasePrice);
                 cmd.Parameters.AddWithValue("@type", items.type);
+                cmd.Parameters.AddWithValue("@recommended", items.recommendedServiceInterval);
+
+                string updateStockQuery = "update SeAlmacena set CantidadAlmacen = @stock " +
+                                          "where CodigoArticulo = @code and IdentificacionSucursal = @branch";
+
+                SqlCommand cmdStock = new SqlCommand(updateStockQuery, conn);
+                cmdStock.Parameters.AddWithValue("@stock", items.stock);
+                cmdStock.Parameters.AddWithValue("@code", items.code);
+                cmdStock.Parameters.AddWithValue("@branch", 1);
+
+
 
 
                 if (conn.State != System.Data.ConnectionState.Open)
@@ -189,6 +226,7 @@ namespace LubriTech.Model.items_Information
                 }
 
                 cmd.ExecuteNonQuery();
+                cmdStock.ExecuteNonQuery();
 
                 return true;
             }
@@ -215,27 +253,40 @@ namespace LubriTech.Model.items_Information
             try
             {
                 string insertQuery = "Insert into Articulo " +
-                    "(Codigo, Nombre, PrecioVenta, UnidadMedida, Estado, CantidadAlmacen, PrecioCompra, Tipo)" +
+                    "(Codigo, Nombre, PrecioVenta, UnidadMedida, Estado, PrecioCompra, Tipo, RecorridoRecomendado)" +
                     " values " +
                     "(@code," +
                     "@name, " +
                     "@sellPrice, " +
                     "@measureUnit," +
                     "@state, " +
-                    "@stock, " +
                     "@purchasePrice, " +
-                    "@type )";
-                SqlCommand cmd = new SqlCommand(insertQuery, conn);
+                    "@type, " +
+                    "@recommended )";
+
+SqlCommand cmd = new SqlCommand(insertQuery, conn);
 
 
                 cmd.Parameters.AddWithValue("@code", items.code);
                 cmd.Parameters.AddWithValue("@name", items.name);
                 cmd.Parameters.AddWithValue("@sellPrice", items.sellPrice);
                 cmd.Parameters.AddWithValue("@measureUnit", items.measureUnit);
-                cmd.Parameters.AddWithValue("@state", items.state);
-                cmd.Parameters.AddWithValue("@stock", items.stock);
+                cmd.Parameters.AddWithValue("@state", (items.state.Equals("Activo")) ? 1 : 0);
                 cmd.Parameters.AddWithValue("@purchasePrice", items.purchasePrice);
                 cmd.Parameters.AddWithValue("@type", items.type);
+                cmd.Parameters.AddWithValue("@recommended", items.recommendedServiceInterval);
+
+                string insertStockQuery = "Insert into SeAlmacena " +
+                                          "(CodigoArticulo, IdentificacionSucursal, CantidadAlmacen)" +
+                                          " values " +
+                                          "(@code, @branch, @stock)";
+
+                SqlCommand cmdStock = new SqlCommand(insertStockQuery, conn);
+                cmdStock.Parameters.AddWithValue("@stock", items.stock);
+                cmdStock.Parameters.AddWithValue("@code", items.code);
+                cmdStock.Parameters.AddWithValue("@branch", 1);
+
+
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -243,6 +294,7 @@ namespace LubriTech.Model.items_Information
                 }
 
                 cmd.ExecuteNonQuery();
+                cmdStock.ExecuteNonQuery();
 
                 return true;
             }

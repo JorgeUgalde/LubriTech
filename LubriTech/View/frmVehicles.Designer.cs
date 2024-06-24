@@ -99,9 +99,9 @@
             this.lblVehicleList.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
             this.lblVehicleList.Location = new System.Drawing.Point(70, 32);
             this.lblVehicleList.Name = "lblVehicleList";
-            this.lblVehicleList.Size = new System.Drawing.Size(180, 30);
+            this.lblVehicleList.Size = new System.Drawing.Size(181, 30);
             this.lblVehicleList.TabIndex = 2;
-            this.lblVehicleList.Text = "Lista de vehículos";
+            this.lblVehicleList.Text = "Lista de Vehículos";
             // 
             // label1
             // 

@@ -37,7 +37,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.MaximumSize = new System.Drawing.Size(128, 93);
             this.Name = "UserControlBlank";
-            this.Size = new System.Drawing.Size(128, 93);
+            this.Size = new System.Drawing.Size(39, 34);
             this.ResumeLayout(false);
 
         }

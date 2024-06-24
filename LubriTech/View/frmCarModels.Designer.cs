@@ -45,22 +45,22 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(104, 58);
+            this.label2.Location = new System.Drawing.Point(65, 36);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(160, 30);
+            this.label2.Size = new System.Drawing.Size(175, 30);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Lista de Marcas";
+            this.label2.Text = "Lista de Modelos";
             // 
             // btnClose
             // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
             this.btnClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnClose.Location = new System.Drawing.Point(1270, 683);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnClose.Location = new System.Drawing.Point(551, 333);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(358, 63);
             this.btnClose.TabIndex = 17;
@@ -76,8 +76,7 @@
             this.btnAddCarModel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddCarModel.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
             this.btnAddCarModel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAddCarModel.Location = new System.Drawing.Point(111, 683);
-            this.btnAddCarModel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAddCarModel.Location = new System.Drawing.Point(70, 333);
             this.btnAddCarModel.Name = "btnAddCarModel";
             this.btnAddCarModel.Size = new System.Drawing.Size(358, 63);
             this.btnAddCarModel.TabIndex = 16;
@@ -90,7 +89,8 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(1072, 58);
+            this.label3.Location = new System.Drawing.Point(411, 38);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(109, 30);
             this.label3.TabIndex = 19;
@@ -100,7 +100,8 @@
             // 
             this.txtFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFilter.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
-            this.txtFilter.Location = new System.Drawing.Point(1242, 58);
+            this.txtFilter.Location = new System.Drawing.Point(533, 36);
+            this.txtFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFilter.Name = "txtFilter";
             this.txtFilter.Size = new System.Drawing.Size(385, 35);
             this.txtFilter.TabIndex = 18;
@@ -139,8 +140,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvCarModels.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCarModels.GridColor = System.Drawing.Color.White;
-            this.dgvCarModels.Location = new System.Drawing.Point(111, 137);
-            this.dgvCarModels.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvCarModels.Location = new System.Drawing.Point(70, 81);
             this.dgvCarModels.Name = "dgvCarModels";
             this.dgvCarModels.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -152,7 +152,8 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvCarModels.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCarModels.RowHeadersVisible = false;
-            this.dgvCarModels.Size = new System.Drawing.Size(1518, 518);
+            this.dgvCarModels.RowHeadersWidth = 51;
+            this.dgvCarModels.Size = new System.Drawing.Size(720, 234);
             this.dgvCarModels.TabIndex = 20;
             this.dgvCarModels.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCarModels_CellContentClick);
             // 
@@ -160,7 +161,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1742, 791);
+            this.ClientSize = new System.Drawing.Size(869, 411);
             this.Controls.Add(this.dgvCarModels);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtFilter);
@@ -170,7 +171,8 @@
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmCarModels";
-            this.Text = "frmCarModels";
+            this.Text = "Modelos";
+            this.Load += new System.EventHandler(this.frmCarModels_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarModels)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

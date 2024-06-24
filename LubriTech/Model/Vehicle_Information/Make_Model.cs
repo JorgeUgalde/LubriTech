@@ -33,7 +33,7 @@ namespace LubriTech.Model.Vehicle_Information
                 adp.Fill(tblMake);
                 foreach (DataRow row in tblMake.Rows)
                 {
-                    makes.Add(new Make(Convert.ToInt32(row["Identificacion"]), row["Nombre"].ToString(), row["Estado"].ToString()));
+                    makes.Add(new Make(Convert.ToInt32(row["Identificacion"]), row["Nombre"].ToString(), (Convert.ToInt32(row["Estado"]) == 1) ? "Activo" : "Inactivo"));
                 }
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -77,7 +77,7 @@ namespace LubriTech.Model.Vehicle_Information
 
                 foreach (DataRow row in tblMake.Rows)
                 {
-                    make = new Make(Convert.ToInt32(row["Identificacion"]), row["Nombre"].ToString(), row["Estado"].ToString());
+                    make = new Make(Convert.ToInt32(row["Identificacion"]), row["Nombre"].ToString(), (Convert.ToInt32(row["Estado"]) == 1) ? "Activo" : "Inactivo");
                 }
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -122,7 +122,7 @@ namespace LubriTech.Model.Vehicle_Information
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@name", make.Name);
                 cmd.Parameters.AddWithValue("@Id", make.Id);
-                cmd.Parameters.AddWithValue("@state", make.State);
+                cmd.Parameters.AddWithValue("@state", (make.State.Equals("Activo")) ? 1 : 0);
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {

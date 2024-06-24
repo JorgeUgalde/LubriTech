@@ -41,13 +41,13 @@ namespace LubriTech.Model.Vehicle_Information
                 foreach (DataRow dr in tblVehicles.Rows)
                 {
                     vehicles.Add(new Vehicle(dr["Placa"].ToString(),
-                                                dr["TipoMotor"].ToString(),
+                                                (getEngine(Convert.ToInt32(dr["IdentificacionMotor"].ToString()))),
                                                 Convert.ToInt32(dr["Kilometraje"]),
                                                 (getModel(Convert.ToInt32(dr["IdentificacionModelo"]))),
                                                 Convert.ToInt32(dr["Anio"]),
-                                                dr["Transmision"].ToString(),
+                                                (getTransmission(Convert.ToInt32(dr["IdentificacionTransmision"].ToString()))),
                                                 (getClient((string)dr["IdentificacionCliente"])),
-                                                dr["Estado"].ToString()));
+                                                (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo"));
                 }
                 return vehicles;
             }
@@ -87,11 +87,11 @@ namespace LubriTech.Model.Vehicle_Information
                 {
                     client = new Client(dr["Identificacion"].ToString(),
                                         dr["NombreCompleto"].ToString(),
-                                        Convert.ToInt32(dr["NumeroTelefonoPrincipal"]),
-                                        Convert.ToInt32(dr["NumeroTelefonoAdicional"]),
+                                        dr["NumeroTelefonoPrincipal"] != DBNull.Value ? Convert.ToInt32(dr["NumeroTelefonoPrincipal"]) : (int?)null,
+                                        dr["NumeroTelefonoAdicional"] != DBNull.Value ? Convert.ToInt32(dr["NumeroTelefonoAdicional"]) : (int?)null,
                                         dr["CorreoElectronico"].ToString(),
                                         dr["Direccion"].ToString(),
-                                        dr["Estado"].ToString());
+                                        (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo");
                 }
 
                 if (conn.State != System.Data.ConnectionState.Open)
@@ -103,6 +103,110 @@ namespace LubriTech.Model.Vehicle_Information
                 select.ExecuteNonQuery();
 
                 return client;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Obtiene un tipo de motor de la base de datos.
+        /// </summary>
+        /// <param name="engineId">Identificación del tipo de motor.</param>
+        /// <returns>El tipo de motor correspondiente.</returns>
+        public Engine getEngine(int engineId)
+        {
+            try
+            {
+                String selectQueryModels = "SELECT * FROM CatalogoMotor WHERE CatalogoMotor.Identificacion = @identificacion;";
+                SqlCommand select = new SqlCommand(selectQueryModels, conn);
+                select.Parameters.AddWithValue("@identificacion", engineId);
+
+                DataTable tblEngineCatalog = new DataTable();
+                SqlDataAdapter adp = new SqlDataAdapter();
+
+                adp.SelectCommand = select;
+
+                adp.Fill(tblEngineCatalog);
+                Engine engine = null;
+
+                foreach (DataRow dr in tblEngineCatalog.Rows)
+                {
+                    engine = new Engine(Convert.ToInt32(dr["Identificacion"]),
+                                        dr["TipoMotor"].ToString(),
+                                        (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo");
+                }
+
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+
+                }
+
+                select.ExecuteNonQuery();
+
+                return engine;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Obtiene un tipo de transmisión de la base de datos.
+        /// </summary>
+        /// <param name="transmissionId">Identificación del tipo de transmisión.</param>
+        /// <returns>El tipo de transmisión correspondiente.</returns>
+        public Transmission getTransmission(int transmissionId)
+        {
+            try
+            {
+                String selectQueryModels = "SELECT * FROM CatalogoTransmision WHERE CatalogoTransmision.Identificacion = @identificacion;";
+                SqlCommand select = new SqlCommand(selectQueryModels, conn);
+                select.Parameters.AddWithValue("@identificacion", transmissionId);
+
+                DataTable tblTransmissionCatalog = new DataTable();
+                SqlDataAdapter adp = new SqlDataAdapter();
+
+                adp.SelectCommand = select;
+
+                adp.Fill(tblTransmissionCatalog);
+                Transmission transmission = null;
+
+                foreach (DataRow dr in tblTransmissionCatalog.Rows)
+                {
+                    transmission = new Transmission(Convert.ToInt32(dr["Identificacion"]),
+                                        dr["TipoTransmision"].ToString(),
+                                        (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo");
+                }
+
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+
+                }
+
+                select.ExecuteNonQuery();
+
+                return transmission;
             }
             catch (Exception ex)
             {
@@ -144,7 +248,7 @@ namespace LubriTech.Model.Vehicle_Information
                     model = new CarModel(Convert.ToInt32(dr["Identificacion"]),
                                         dr["Nombre"].ToString(),
                                         (getMake(Convert.ToInt32(dr["IdentificacionMarca"]))),
-                                        dr["Estado"].ToString());
+                                        (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo");
                 }
 
                 if (conn.State != System.Data.ConnectionState.Open)
@@ -196,7 +300,7 @@ namespace LubriTech.Model.Vehicle_Information
                 {
                     make = new Make(Convert.ToInt32(dr["Identificacion"]),
                                         dr["Nombre"].ToString(),
-                                        dr["Estado"].ToString());
+                                        (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo");
                 }
 
                 if (conn.State != System.Data.ConnectionState.Open)
@@ -268,13 +372,13 @@ namespace LubriTech.Model.Vehicle_Information
                 DataRow dr = tblVehicles.Rows[0];
 
                 Vehicle vehicle = new Vehicle(dr["Placa"].ToString(),
-                                                dr["TipoMotor"].ToString(),
+                                                (getEngine(Convert.ToInt32(dr["IdentificacionMotor"].ToString()))),
                                                 Convert.ToInt32(dr["Kilometraje"]),
                                                 (getModel(Convert.ToInt32(dr["IdentificacionModelo"]))),
                                                 Convert.ToInt32(dr["Anio"]),
-                                                dr["Transmision"].ToString(),
+                                                (getTransmission(Convert.ToInt32(dr["IdentificacionTransmision"].ToString()))),
                                                 (getClient((string)dr["IdentificacionCliente"])),
-                                                dr["Estado"].ToString());
+                                                (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo");
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -307,15 +411,16 @@ namespace LubriTech.Model.Vehicle_Information
         {
             try
             {
-                string updateQuery = "UPDATE Vehiculo SET Placa = @licensePlate, TipoMotor = @engine, Kilometraje = @mileage, IdentificacionModelo = @modelId, Anio = @year, Transmision = @transmission, IdentificacionCliente = @clientId WHERE Placa = @licensePlate";
+                string updateQuery = "UPDATE Vehiculo SET Placa = @licensePlate, TipoMotor = @engine, Kilometraje = @mileage, IdentificacionModelo = @modelId, Anio = @year, Transmision = @transmission, IdentificacionCliente = @clientId, Estado = @state WHERE Placa = @licensePlate";
                 SqlCommand cmd = new SqlCommand(updateQuery, conn);
                 cmd.Parameters.AddWithValue("@licensePlate", vehicle.LicensePlate);
-                cmd.Parameters.AddWithValue("@engine", vehicle.Engine);
+                cmd.Parameters.AddWithValue("@engine", vehicle.EngineType);
                 cmd.Parameters.AddWithValue("@mileage", vehicle.Mileage);
                 cmd.Parameters.AddWithValue("@modelId", vehicle.getModelId());
                 cmd.Parameters.AddWithValue("@year", vehicle.Year);
-                cmd.Parameters.AddWithValue("@transmission", vehicle.Transmission);
+                cmd.Parameters.AddWithValue("@transmission", vehicle.TransmissionType);
                 cmd.Parameters.AddWithValue("@clientId", vehicle.getClientId());
+                cmd.Parameters.AddWithValue("@state", (vehicle.State.Equals("Activo")) ? 1 : 0);
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -348,17 +453,17 @@ namespace LubriTech.Model.Vehicle_Information
         {
             try
             {
-                string query = "INSERT INTO Vehiculo (Placa, TipoMotor, Kilometraje, IdentificacionModelo, Anio, Transmision, IdentificacionCliente, Estado) VALUES (@licensePlate, @engine, @mileage, @modelId, @year, @transmission, @clientId, @state)";
+                string query = "INSERT INTO Vehiculo (Placa, TipoMotor, Kilometraje, IdentificacionModelo, Anio, Transmision, IdentificacionCliente, Estado) VALUES (@licensePlate, @engineId, @mileage, @modelId, @year, @transmissionId, @clientId, @state)";
                 SqlCommand cmd = new SqlCommand(query, conn);
 
                 cmd.Parameters.AddWithValue("@licensePlate", vehicle.LicensePlate);
-                cmd.Parameters.AddWithValue("@engine", vehicle.Engine);
+                cmd.Parameters.AddWithValue("@engineId", vehicle.getEnginelId());
                 cmd.Parameters.AddWithValue("@mileage", vehicle.Mileage);
                 cmd.Parameters.AddWithValue("@modelId", vehicle.getModelId());
                 cmd.Parameters.AddWithValue("@year", vehicle.Year);
-                cmd.Parameters.AddWithValue("@transmission", vehicle.Transmission);
+                cmd.Parameters.AddWithValue("@transmissionId", vehicle.getTransmissionId());
                 cmd.Parameters.AddWithValue("@clientId", vehicle.getClientId());
-                cmd.Parameters.AddWithValue("@state", vehicle.State);
+                cmd.Parameters.AddWithValue("@state", (vehicle.State.Equals("Activo")) ? 1 : 0);
 
 
                 if (conn.State != System.Data.ConnectionState.Open)

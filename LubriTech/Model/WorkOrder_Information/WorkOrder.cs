@@ -44,15 +44,6 @@ namespace LubriTech.Model.WorkOrder_Information
         /// </summary>
         public int CurrentMileage { get; set; }
 
-        /// <summary>
-        /// Kilometraje recomendado para el próximo cambio de aceite.
-        /// </summary>
-        public int RecommendedMileage { get; set; }
-
-        /// <summary>
-        /// Kilometraje estimado para el próximo cambio.
-        /// </summary>
-        public int NextChange { get; set; }
 
         /// <summary>
         /// Lista de observaciones realizadas durante la orden de trabajo.
@@ -67,7 +58,9 @@ namespace LubriTech.Model.WorkOrder_Information
         /// <summary>
         /// Estado actual de la orden de trabajo (En progreso, Completada, Cancelada).
         /// </summary>
-        public string State { get; set; }
+        public short State { get; set; }
+
+        public List<WorkOrderLine> workOrderLines { get; set; }
 
         /// <summary>
         /// Constructor de la clase WorkOrder.
@@ -78,12 +71,10 @@ namespace LubriTech.Model.WorkOrder_Information
         /// <param name="client">Cliente para quien se realiza la orden de trabajo.</param>
         /// <param name="vehicle">Vehículo asociado a la orden de trabajo.</param>
         /// <param name="currentMileage">Kilometraje actual del vehículo al momento de la orden de trabajo.</param>
-        /// <param name="recommendedMileage">Kilometraje recomendado para el próximo cambio de aceite.</param>
-        /// <param name="nextChange">Kilometraje estimado para el próximo cambio.</param>
         /// <param name="observation">Lista de observaciones realizadas durante la orden de trabajo.</param>
         /// <param name="amount">Monto total a pagar por la orden de trabajo.</param>
         /// <param name="state">Estado actual de la orden de trabajo.</param>
-        public WorkOrder(int id, DateTime date, Branch branch, Client client, Vehicle vehicle, int currentMileage, int recommendedMileage, int nextChange, List<Observation> observation, decimal amount, string state)
+        public WorkOrder(int id, DateTime date, Branch branch, Client client, Vehicle vehicle, int currentMileage, List<Observation> observation, decimal amount, short state, List<WorkOrderLine> workOrderLines)
         {
             Id = id;
             Date = date;
@@ -91,39 +82,14 @@ namespace LubriTech.Model.WorkOrder_Information
             Client = client;
             Vehicle = vehicle;
             CurrentMileage = currentMileage;
-            RecommendedMileage = recommendedMileage;
-            NextChange = nextChange;
             Observations = observation;
             Amount = amount;
             State = state;
+            this.workOrderLines = workOrderLines;
         }
 
-
-        /// <summary>
-        /// Constructor alternativo para el caso donde solo se pasa una observación (observación singular).
-        /// </summary>
-        /// <param name="date">Fecha en que se creó la orden de trabajo.</param>
-        /// <param name="branch">Sucursal asociada a la orden de trabajo.</param>
-        /// <param name="client">Cliente para quien se realiza la orden de trabajo.</param>
-        /// <param name="vehicle">Vehículo asociado a la orden de trabajo.</param>
-        /// <param name="currentMileage">Kilometraje actual del vehículo al momento de la orden de trabajo.</param>
-        /// <param name="recommendedMileage">Kilometraje recomendado para el próximo cambio de aceite.</param>
-        /// <param name="nextChange">Kilometraje estimado para el próximo cambio.</param>
-        /// <param name="observation">Observación realizada durante la orden de trabajo.</param>
-        /// <param name="amount">Monto total a pagar por la orden de trabajo.</param>
-        /// <param name="state">Estado actual de la orden de trabajo.</param>
-        public WorkOrder(DateTime date, Branch branch, Client client, Vehicle vehicle, int currentMileage, int recommendedMileage, int nextChange, Observation observation, decimal amount, string state)
+        public WorkOrder()
         {
-            Date = date;
-            Branch = branch;
-            Client = client;
-            Vehicle = vehicle;
-            CurrentMileage = currentMileage;
-            RecommendedMileage = recommendedMileage;
-            NextChange = nextChange;
-            Observations = new List<Observation>() { observation };
-            Amount = amount;
-            State = state;
         }
 
         /// <summary>
@@ -132,7 +98,7 @@ namespace LubriTech.Model.WorkOrder_Information
         /// <returns>Representación en cadena de la orden de trabajo.</returns>
         public override string ToString()
         {
-            return Id + " " + Date + " " + Branch + " " + Client + " " + Vehicle + " " + CurrentMileage + " " + RecommendedMileage + " " + NextChange + " " + Observations + " " + Amount + " " + State;
+            return Id + " " + Date + " " + Branch.Name + " " + Client.FullName + " " + Vehicle.Model + " " + CurrentMileage + " " + Observations + " " + Amount + " " + State + " " + workOrderLines;
         }
     }
 }

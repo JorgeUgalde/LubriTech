@@ -23,16 +23,19 @@ namespace LubriTech.View
         private List<Client> clients;
         private List<CarModel> models;
         private List<Make> makes;
+        private List<Engine> engines;
+        private List<Transmission> transmissions;
 
         public frmInsertUpdate_Vehicle()
         {
             clients = new List<Client>();
             makes = new Make_Controller().getAll();
             models = new CarModel_Controller().getAll();
+            engines = new Engine_Controller().getAll();
+            transmissions = new Transmission_Controller().getAll();
             InitializeComponent();
             setComboBoxMake();
-            load_Clients(null);
-            SetupClientsDGV();
+            setComboBoxes();
         }
 
         public frmInsertUpdate_Vehicle(Vehicle vehicle)
@@ -40,8 +43,11 @@ namespace LubriTech.View
             clients = new List<Client>();
             makes = new Make_Controller().getAll();
             models = new CarModel_Controller().getAll();
+            engines = new Engine_Controller().getAll();
+            transmissions = new Transmission_Controller().getAll();
             InitializeComponent();
             setComboBoxMake();
+            setComboBoxes();
 
             tbClientName.Text = vehicle.Client.FullName;
             tbClientId.Text = vehicle.Client.Id;
@@ -50,33 +56,33 @@ namespace LubriTech.View
             tbLicensePlate.Text = vehicle.LicensePlate;
             tbYear.Text = vehicle.Year.ToString();
             tbMileage.Text = vehicle.Mileage.ToString();
-            tbEngine.Text = vehicle.Engine;
-            cbTransmission.Text = vehicle.Transmission;
+            cbEngine.Text = vehicle.EngineType.EngineType;
+            cbTransmission.Text = vehicle.TransmissionType.TransmissionType;
 
-            SetupClientsDGV();
+            if (action == "Details")
+            {
+                tbLicensePlate.Enabled = false;
+                cbEngine.Enabled = false;
+                tbClientName.Enabled = false;
+                tbMileage.Enabled = false;
+                tbYear.Enabled = false;
+                cbMake.Enabled = false;
+                cbModel.Enabled = false;
+                cbTransmission.Enabled = false;
+                btnSelectClient.Enabled = false;
+;
+                tbLicensePlate.BackColor = Color.FromArgb(249, 252, 255);
+                cbEngine.BackColor = Color.FromArgb(249, 252, 255);
+                tbClientName.BackColor = Color.FromArgb(249, 252, 255);
+                tbMileage.BackColor = Color.FromArgb(249, 252, 255);
+                tbYear.BackColor = Color.FromArgb(249, 252, 255);
+                cbMake.BackColor = Color.FromArgb(249, 252, 255);
+                cbModel.BackColor = Color.FromArgb(249, 252, 255);
+                cbTransmission.BackColor = Color.FromArgb(249, 252, 255);
+                btnSelectClient.Visible = false;
 
-            
-                //tbLicensePlate.Enabled = false;
-                //tbEngine.Enabled = false;
-                //tbClientName.Enabled = false;
-                //tbMileage.Enabled = false;
-                //tbYear.Enabled = false;
-                //cbMake.Enabled = false;
-                //cbModel.Enabled = false;
-                //cbTransmission.Enabled = false;
-                //dgvClients.Enabled = false;
-
-                //tbLicensePlate.BackColor = Color.FromArgb(249, 252, 255);
-                //tbEngine.BackColor = Color.FromArgb(249, 252, 255);
-                //tbClientName.BackColor = Color.FromArgb(249, 252, 255);
-                //tbMileage.BackColor = Color.FromArgb(249, 252, 255);
-                //tbYear.BackColor = Color.FromArgb(249, 252, 255);
-                //cbMake.BackColor = Color.FromArgb(249, 252, 255);
-                //cbModel.BackColor = Color.FromArgb(249, 252, 255);
-                //cbTransmission.BackColor = Color.FromArgb(249, 252, 255);
-
-                //btnConfirm.Hide();
-            
+                btnConfirm.Hide();
+            }
         }
 
         public event EventHandler DataChanged;
@@ -94,7 +100,7 @@ namespace LubriTech.View
                 || tbLicensePlate.Text.Trim() == ""
                 || tbYear.Text.Trim() == ""
                 || tbMileage.Text.Trim() == ""
-                || tbEngine.Text.Trim() == ""
+                || cbEngine.Text.Trim() == ""
                 || cbTransmission.Text.Trim() == "")
             {
                 MessageBox.Show("Por favor llene todos los campos");
@@ -114,8 +120,8 @@ namespace LubriTech.View
                 vehicle.LicensePlate = tbLicensePlate.Text.Trim();
                 vehicle.Year = Convert.ToInt32(tbYear.Text.Trim());
                 vehicle.Mileage = Convert.ToInt32(tbMileage.Text.Trim());
-                vehicle.Engine = tbEngine.Text.Trim();
-                vehicle.Transmission = cbTransmission.Text.Trim();
+                vehicle.EngineType = vehicleController.getEngine(Convert.ToInt32(cbEngine.SelectedValue.ToString()));
+                vehicle.TransmissionType = vehicleController.getTransmission(Convert.ToInt32(cbTransmission.SelectedValue.ToString()));
                 vehicle.State = "Activo";
 
                 if (vehicleController.upsert(vehicle))
@@ -130,67 +136,6 @@ namespace LubriTech.View
             }
         }
 
-        private void txtClientInfo_TextChanged(object sender, EventArgs e)
-        {
-            List<Client> clients = new Client_Model().loadAllClients();
-            string clientName = tbClientName.Text.Trim();
-            if (clientName != "")
-            {
-                var filteredClients = clients.Where(c => c.FullName.IndexOf(clientName, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
-                load_Clients(filteredClients);
-            }
-            else
-            {
-                load_Clients(null);
-            }
-        }
-
-        private void load_Clients(List<Client> filteredClients)
-        {
-            try
-            {
-                if (filteredClients != null)
-                {
-                    dgvClients.DataSource = filteredClients;
-                    dgvClients.Columns["Id"].HeaderText = "Identificación";
-                    dgvClients.Columns["FullName"].HeaderText = "Nombre";
-                    dgvClients.Columns["State"].HeaderText = "Estado";
-                    dgvClients.Columns["MainPhoneNum"].Visible = false;
-                    dgvClients.Columns["AdditionalPhoneNum"].Visible = false;
-                    dgvClients.Columns["Email"].Visible = false;
-                    dgvClients.Columns["Address"].Visible = false;
-                }
-
-                else
-                {
-                    clients = new Client_Model().loadAllClients();
-                    dgvClients.DataSource = clients;
-                    dgvClients.Columns["Id"].HeaderText = "Identificación";
-                    dgvClients.Columns["FullName"].HeaderText = "Nombre";
-                    dgvClients.Columns["State"].HeaderText = "Estado";
-                    dgvClients.Columns["MainPhoneNum"].Visible = false;
-                    dgvClients.Columns["AdditionalPhoneNum"].Visible = false;
-                    dgvClients.Columns["Email"].Visible = false;
-                    dgvClients.Columns["Address"].Visible = false;
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-
-        }
-
-        private void SetupClientsDGV()
-        {
-            DataGridViewButtonColumn selectButtonColumn = new DataGridViewButtonColumn();
-            selectButtonColumn.Name = "selectButtonColumn";
-            selectButtonColumn.HeaderText = "";
-            selectButtonColumn.Text = "Seleccionar";
-            selectButtonColumn.UseColumnTextForButtonValue = true;
-            dgvClients.Columns.Add(selectButtonColumn);
-        }
-
         private void tbNumeric_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
@@ -199,27 +144,6 @@ namespace LubriTech.View
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Dispose();
-        }
-
-        private void dgvClients_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dgvClients.Columns["selectButtonColumn"].Index && e.RowIndex >= 0)
-            {
-                string selectedId = dgvClients.Rows[e.RowIndex].Cells["Id"].Value.ToString();
-                List<Client> clients = new Clients_Controller().getAll();
-                Client selectedClient = null;
-                foreach (Client client in clients)
-                {
-                    if (client.Id == selectedId)
-                    {
-                        selectedClient = client;
-                        break;
-                    }
-                }
-                tbClientId.Text = selectedClient.Id;
-                tbClientName.Text = selectedClient.FullName;
-                MessageBox.Show("Cliente seleccionado correctamente");
-            }
         }
 
         private List<CarModel> getMakeIdByName(string name)
@@ -253,6 +177,19 @@ namespace LubriTech.View
             cbMake.SelectedValueChanged += cbMake_SelectedValueChanged;
         }
 
+        private void setComboBoxes()
+        {
+            cbEngine.DataSource = engines;
+            cbEngine.ValueMember = "Id";
+            cbEngine.DisplayMember = "EngineType";
+            cbEngine.SelectedIndex = -1;
+
+            cbTransmission.DataSource = transmissions;
+            cbTransmission.ValueMember = "Id";
+            cbTransmission.DisplayMember = "TransmissionType";
+            cbTransmission.SelectedIndex = -1;
+        }
+
         // Método que se llama cuando cambia el valor seleccionado en cbMake
         private void cbMake_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -277,6 +214,13 @@ namespace LubriTech.View
 
                 cbModel.Refresh(); // Refrescar el ComboBox para asegurarse de que se actualice visualmente
             }
+        }
+
+        private void btnSelectClient_Click(object sender, EventArgs e)
+        {
+            frmClients frmClients = new frmClients();
+            frmClients.MdiParent = this.MdiParent;
+            frmClients.Show();
         }
     }
 }

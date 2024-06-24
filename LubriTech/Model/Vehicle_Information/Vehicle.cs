@@ -23,7 +23,7 @@ namespace LubriTech.Model.Vehicle_Information
         /// <summary>
         /// Tipo de motor del vehículo.
         /// </summary>
-        public string Engine { get; set; }
+        public Engine EngineType { get; set; }
 
         /// <summary>
         /// Kilometraje del vehículo.
@@ -43,7 +43,7 @@ namespace LubriTech.Model.Vehicle_Information
         /// <summary>
         /// Tipo de transmisión del vehículo.
         /// </summary>
-        public string Transmission { get; set; }
+        public Transmission TransmissionType { get; set; }
 
         /// <summary>
         /// Cliente asociado al vehículo.
@@ -71,14 +71,14 @@ namespace LubriTech.Model.Vehicle_Information
         /// <param name="transmission">El tipo de transmisión del vehículo.</param>
         /// <param name="client">El cliente asociado al vehículo.</param>
         /// <param name="state">El estado del vehículo.</param>
-        public Vehicle(string licensePlate, string engine, int mileage, CarModel model, int year, string transmission, Client client, string state)
+        public Vehicle(string licensePlate, Engine engine, int mileage, CarModel model, int year, Transmission transmission, Client client, string state)
         {
             this.LicensePlate = licensePlate;
-            this.Engine = engine;
+            this.EngineType = engine;
             this.Mileage = mileage;
             this.Model = model;
             this.Year = year;
-            this.Transmission = transmission;
+            this.TransmissionType = transmission;
             this.Client = client;
             this.State = state;
         }
@@ -102,12 +102,30 @@ namespace LubriTech.Model.Vehicle_Information
         }
 
         /// <summary>
+        /// Obtiene el Identificador del tipo de transmisión de vehículo.
+        /// </summary>
+        /// <returns>El Identificador del tipo de transmisión.</returns>
+        public int getTransmissionId()
+        {
+            return this.TransmissionType.Id;
+        }
+
+        /// <summary>
+        /// Obtiene el Identificador del tipo de motor de vehículo.
+        /// </summary>
+        /// <returns>El Identificador del tipo de motor.</returns>
+        public int getEnginelId()
+        {
+            return this.EngineType.Id;
+        }
+
+        /// <summary>
         /// Devuelve una cadena que representa el objeto actual.
         /// </summary>
         /// <returns>Una cadena que representa los detalles del vehículo.</returns>
         public override string ToString()
         {
-            return "Placa: " + LicensePlate + "\nMotor: " + Engine + "\nKilometraje: " + Mileage + "\nMarca: " + Model.Make.Name + "\nModelo: " + Model.Name + "\nAño: " + Year + "\nTransimisión: " + Transmission + "\nIdentificación cliente: " + Client.Id + "\nEstado: " + State;
+            return "Placa: " + LicensePlate + "\nMotor: " + EngineType.EngineType + "\nKilometraje: " + Mileage + "\nMarca: " + Model.Make.Name + "\nModelo: " + Model.Name + "\nAño: " + Year + "\nTransimisión: " + TransmissionType.TransmissionType + "\nIdentificación cliente: " + Client.Id + "\nEstado: " + State;
         }
 
     }
