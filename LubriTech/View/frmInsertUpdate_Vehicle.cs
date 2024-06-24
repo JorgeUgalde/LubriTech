@@ -23,14 +23,19 @@ namespace LubriTech.View
         private List<Client> clients;
         private List<CarModel> models;
         private List<Make> makes;
+        private List<Engine> engines;
+        private List<Transmission> transmissions;
 
         public frmInsertUpdate_Vehicle()
         {
             clients = new List<Client>();
             makes = new Make_Controller().getAll();
             models = new CarModel_Controller().getAll();
+            engines = new Engine_Controller().getAll();
+            transmissions = new Transmission_Controller().getAll();
             InitializeComponent();
             setComboBoxMake();
+            setComboBoxes();
         }
 
         public frmInsertUpdate_Vehicle(Vehicle vehicle, string action)
@@ -38,8 +43,11 @@ namespace LubriTech.View
             clients = new List<Client>();
             makes = new Make_Controller().getAll();
             models = new CarModel_Controller().getAll();
+            engines = new Engine_Controller().getAll();
+            transmissions = new Transmission_Controller().getAll();
             InitializeComponent();
             setComboBoxMake();
+            setComboBoxes();
 
             tbClientName.Text = vehicle.Client.FullName;
             tbClientId.Text = vehicle.Client.Id;
@@ -48,8 +56,8 @@ namespace LubriTech.View
             tbLicensePlate.Text = vehicle.LicensePlate;
             tbYear.Text = vehicle.Year.ToString();
             tbMileage.Text = vehicle.Mileage.ToString();
-            cbEngine.Text = vehicle.Engine;
-            cbTransmission.Text = vehicle.Transmission;
+            cbEngine.Text = vehicle.EngineType.EngineType;
+            cbTransmission.Text = vehicle.TransmissionType.TransmissionType;
 
             if (action == "Details")
             {
@@ -61,7 +69,8 @@ namespace LubriTech.View
                 cbMake.Enabled = false;
                 cbModel.Enabled = false;
                 cbTransmission.Enabled = false;
-
+                btnSelectClient.Enabled = false;
+;
                 tbLicensePlate.BackColor = Color.FromArgb(249, 252, 255);
                 cbEngine.BackColor = Color.FromArgb(249, 252, 255);
                 tbClientName.BackColor = Color.FromArgb(249, 252, 255);
@@ -70,6 +79,7 @@ namespace LubriTech.View
                 cbMake.BackColor = Color.FromArgb(249, 252, 255);
                 cbModel.BackColor = Color.FromArgb(249, 252, 255);
                 cbTransmission.BackColor = Color.FromArgb(249, 252, 255);
+                btnSelectClient.Visible = false;
 
                 btnConfirm.Hide();
             }
@@ -110,8 +120,8 @@ namespace LubriTech.View
                 vehicle.LicensePlate = tbLicensePlate.Text.Trim();
                 vehicle.Year = Convert.ToInt32(tbYear.Text.Trim());
                 vehicle.Mileage = Convert.ToInt32(tbMileage.Text.Trim());
-                vehicle.Engine = cbEngine.Text.Trim();
-                vehicle.Transmission = cbTransmission.Text.Trim();
+                vehicle.EngineType = vehicleController.getEngine(Convert.ToInt32(cbEngine.SelectedValue.ToString()));
+                vehicle.TransmissionType = vehicleController.getTransmission(Convert.ToInt32(cbTransmission.SelectedValue.ToString()));
                 vehicle.State = "Activo";
 
                 if (vehicleController.upsert(vehicle))
@@ -165,6 +175,19 @@ namespace LubriTech.View
 
             // Conectar el evento
             cbMake.SelectedValueChanged += cbMake_SelectedValueChanged;
+        }
+
+        private void setComboBoxes()
+        {
+            cbEngine.DataSource = engines;
+            cbEngine.ValueMember = "Id";
+            cbEngine.DisplayMember = "EngineType";
+            cbEngine.SelectedIndex = -1;
+
+            cbTransmission.DataSource = transmissions;
+            cbTransmission.ValueMember = "Id";
+            cbTransmission.DisplayMember = "TransmissionType";
+            cbTransmission.SelectedIndex = -1;
         }
 
         // Método que se llama cuando cambia el valor seleccionado en cbMake

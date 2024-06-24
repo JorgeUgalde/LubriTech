@@ -92,11 +92,11 @@ namespace LubriTech.Model.Client_Information
                 foreach (DataRow dr in tblVehicles.Rows)
                 {
                     vehicles.Add(new Vehicle(dr["Placa"].ToString(),
-                                                dr["TipoMotor"].ToString(),
+                                                (getEngine(Convert.ToInt32(dr["IdentificacionMotor"].ToString()))),
                                                 Convert.ToInt32(dr["Kilometraje"]),
                                                 (getModel(Convert.ToInt32(dr["IdentificacionModelo"]))),
                                                 Convert.ToInt32(dr["Anio"]),
-                                                dr["Transmision"].ToString(),
+                                                (getTransmission(Convert.ToInt32(dr["IdentificacionTransmision"].ToString()))),
                                                 (getClient((string)dr["IdentificacionCliente"])),
                                                 dr["Estado"].ToString()));
                 }
@@ -258,6 +258,110 @@ namespace LubriTech.Model.Client_Information
             }
             catch (Exception ex)
             {
+                return null;
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Obtiene un tipo de motor de la base de datos.
+        /// </summary>
+        /// <param name="engineId">Identificación del tipo de motor.</param>
+        /// <returns>El tipo de motor correspondiente.</returns>
+        public Engine getEngine(int engineId)
+        {
+            try
+            {
+                String selectQueryModels = "SELECT * FROM CatalogoMotor WHERE CatalogoMotor.Identificacion = @identificacion;";
+                SqlCommand select = new SqlCommand(selectQueryModels, conn);
+                select.Parameters.AddWithValue("@identificacion", engineId);
+
+                DataTable tblEngineCatalog = new DataTable();
+                SqlDataAdapter adp = new SqlDataAdapter();
+
+                adp.SelectCommand = select;
+
+                adp.Fill(tblEngineCatalog);
+                Engine engine = null;
+
+                foreach (DataRow dr in tblEngineCatalog.Rows)
+                {
+                    engine = new Engine(Convert.ToInt32(dr["Identificacion"]),
+                                        dr["TipoMotor"].ToString(),
+                                        (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo");
+                }
+
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+
+                }
+
+                select.ExecuteNonQuery();
+
+                return engine;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Obtiene un tipo de transmisión de la base de datos.
+        /// </summary>
+        /// <param name="transmissionId">Identificación del tipo de transmisión.</param>
+        /// <returns>El tipo de transmisión correspondiente.</returns>
+        public Transmission getTransmission(int transmissionId)
+        {
+            try
+            {
+                String selectQueryModels = "SELECT * FROM CatalogoTransmision WHERE CatalogoTransmision.Identificacion = @identificacion;";
+                SqlCommand select = new SqlCommand(selectQueryModels, conn);
+                select.Parameters.AddWithValue("@identificacion", transmissionId);
+
+                DataTable tblTransmissionCatalog = new DataTable();
+                SqlDataAdapter adp = new SqlDataAdapter();
+
+                adp.SelectCommand = select;
+
+                adp.Fill(tblTransmissionCatalog);
+                Transmission transmission = null;
+
+                foreach (DataRow dr in tblTransmissionCatalog.Rows)
+                {
+                    transmission = new Transmission(Convert.ToInt32(dr["Identificacion"]),
+                                        dr["TipoTransmision"].ToString(),
+                                        (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo");
+                }
+
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+
+                }
+
+                select.ExecuteNonQuery();
+
+                return transmission;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
                 return null;
             }
             finally
