@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LubriTech.Model.Client_Information;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -183,6 +184,30 @@ namespace LubriTech.View.Appointment_View
             selectedButton.BackColor = Color.Red;
             DateTime appointmentTime = (DateTime)selectedButton.Tag;
             MessageBox.Show("Cita programada a las " + appointmentTime.ToString("hh:mm tt"));
+        }
+
+        private void HandleClientSelected(Client selectedClient)
+        {
+            SelectClientAppointment(selectedClient);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmClients frmClients = new frmClients(this);
+            frmClients.ClientSelected += HandleClientSelected;
+            frmClients.MdiParent = this.MdiParent;
+            frmClients.Show();
+        }
+
+        public void SelectClientAppointment(Client client)
+        {
+            if (client != null)
+            {
+                txtName.Text = client.FullName;
+                txtId.Text = client.Id;
+            }
+
+
         }
     }
 }

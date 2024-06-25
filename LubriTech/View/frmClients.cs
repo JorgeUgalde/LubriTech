@@ -1,5 +1,6 @@
 ﻿using LubriTech.Controller;
 using LubriTech.Model.Client_Information;
+using LubriTech.View.Appointment_View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -155,6 +156,11 @@ namespace LubriTech.View
                     if (parentForm is frmInsertUpdate_Vehicle)
                     {
                         ((frmInsertUpdate_Vehicle)parentForm).ShowClientInUpsertVehicle(selectedClient);
+                        this.Close();
+                    }
+                    if (parentForm is frmAppointment)
+                    {
+                        ((frmAppointment)parentForm).SelectClientAppointment(selectedClient);
                         this.Close();
                     }
                     else

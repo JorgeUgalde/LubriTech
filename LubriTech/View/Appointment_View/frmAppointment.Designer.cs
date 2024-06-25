@@ -30,9 +30,9 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.pnlCalendar = new System.Windows.Forms.Panel();
@@ -59,14 +59,14 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(45)))), ((int)(((byte)(92)))));
             this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.txtId);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtName);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.pnlCalendar);
             this.panel1.Location = new System.Drawing.Point(2, 6);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(280, 531);
             this.panel1.TabIndex = 1;
@@ -84,15 +84,15 @@
             this.label9.Text = "Identificación";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox2
+            // txtId
             // 
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBox2.Location = new System.Drawing.Point(18, 466);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(236, 27);
-            this.textBox2.TabIndex = 50;
+            this.txtId.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtId.Location = new System.Drawing.Point(18, 466);
+            this.txtId.Margin = new System.Windows.Forms.Padding(2);
+            this.txtId.Multiline = true;
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(236, 27);
+            this.txtId.TabIndex = 50;
             // 
             // label8
             // 
@@ -107,15 +107,15 @@
             this.label8.Text = "Nombre";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox1
+            // txtName
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBox1.Location = new System.Drawing.Point(18, 400);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(238, 27);
-            this.textBox1.TabIndex = 0;
+            this.txtName.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtName.Location = new System.Drawing.Point(18, 400);
+            this.txtName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtName.Multiline = true;
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(238, 27);
+            this.txtName.TabIndex = 0;
             // 
             // button1
             // 
@@ -125,12 +125,13 @@
             this.button1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(194, 335);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(64, 22);
             this.button1.TabIndex = 48;
             this.button1.Text = "Buscar";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label7
             // 
@@ -160,7 +161,7 @@
             this.pnlCalendar.Controls.Add(this.btnPrevious);
             this.pnlCalendar.Controls.Add(this.btnNext);
             this.pnlCalendar.Location = new System.Drawing.Point(18, 22);
-            this.pnlCalendar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlCalendar.Margin = new System.Windows.Forms.Padding(2);
             this.pnlCalendar.Name = "pnlCalendar";
             this.pnlCalendar.Size = new System.Drawing.Size(244, 291);
             this.pnlCalendar.TabIndex = 1;
@@ -270,7 +271,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dayContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.dayContainer.Location = new System.Drawing.Point(3, 56);
-            this.dayContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dayContainer.Margin = new System.Windows.Forms.Padding(2);
             this.dayContainer.Name = "dayContainer";
             this.dayContainer.Size = new System.Drawing.Size(238, 205);
             this.dayContainer.TabIndex = 39;
@@ -283,7 +284,7 @@
             this.btnPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnPrevious.ForeColor = System.Drawing.Color.White;
             this.btnPrevious.Location = new System.Drawing.Point(4, 266);
-            this.btnPrevious.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(58, 22);
             this.btnPrevious.TabIndex = 38;
@@ -299,7 +300,7 @@
             this.btnNext.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnNext.ForeColor = System.Drawing.Color.White;
             this.btnNext.Location = new System.Drawing.Point(178, 266);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(2);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(64, 22);
             this.btnNext.TabIndex = 37;
@@ -315,7 +316,7 @@
             this.pnlAppointments.AutoScroll = true;
             this.pnlAppointments.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pnlAppointments.Location = new System.Drawing.Point(286, 49);
-            this.pnlAppointments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlAppointments.Margin = new System.Windows.Forms.Padding(2);
             this.pnlAppointments.MinimumSize = new System.Drawing.Size(442, 488);
             this.pnlAppointments.Name = "pnlAppointments";
             this.pnlAppointments.Size = new System.Drawing.Size(442, 488);
@@ -346,7 +347,7 @@
             this.Controls.Add(this.lblDaySelected);
             this.Controls.Add(this.pnlAppointments);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(746, 583);
             this.Name = "frmAppointment";
             this.Text = "frmAppointment";
@@ -363,9 +364,9 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel pnlCalendar;

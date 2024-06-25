@@ -15,8 +15,8 @@ namespace LubriTech
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
             //frmLogin login = new frmLogin();
 
             //// Mostrar el formulario de login
