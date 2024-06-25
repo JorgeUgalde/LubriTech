@@ -233,9 +233,9 @@ namespace LubriTech.View
 
         private void btnSelectClient_Click(object sender, EventArgs e)
         {
-            //frmClients frmClients = new frmClients("select");
-            //frmClients.MdiParent = this.MdiParent;
-            //frmClients.Show();
+            frmClients frmClients = new frmClients();
+            frmClients.MdiParent = this.MdiParent;
+            frmClients.Show();
         }
 
         private void OnClienteSeleccionado(object sender, EventArgs e)

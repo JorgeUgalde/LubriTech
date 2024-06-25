@@ -22,7 +22,6 @@ namespace LubriTech.View
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
         private Client existingClient;
-        private Vehicle existingVehicle;
         public frmUpsert_Client()
         {
             InitializeComponent();
@@ -225,7 +224,6 @@ namespace LubriTech.View
                     if (vehicle.LicensePlate == selectedLicensePlate)
                     {
                         selectedVehicle = vehicle;
-                        existingVehicle = vehicle;
                         break;
                     }
                 }
