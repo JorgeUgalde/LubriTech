@@ -31,6 +31,5 @@ namespace LubriTech
             // Continuar con la ejecución de la aplicación si el login fue exitoso
             Application.Run(new MDI_View());
         }
-
     }
 }

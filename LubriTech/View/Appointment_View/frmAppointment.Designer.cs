@@ -1,4 +1,4 @@
-﻿namespace LubriTech.View.Appointment_View
+namespace LubriTech.View.Appointment_View
 {
     partial class frmAppointment
     {
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCancelAppointments = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -58,6 +59,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(45)))), ((int)(((byte)(92)))));
+            this.panel1.Controls.Add(this.btnCancelAppointments);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.txtId);
             this.panel1.Controls.Add(this.label8);
@@ -70,6 +72,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(280, 531);
             this.panel1.TabIndex = 1;
+            // 
+            // btnCancelAppointments
+            // 
+            this.btnCancelAppointments.AutoSize = true;
+            this.btnCancelAppointments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))));
+            this.btnCancelAppointments.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelAppointments.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancelAppointments.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCancelAppointments.ForeColor = System.Drawing.Color.White;
+            this.btnCancelAppointments.Location = new System.Drawing.Point(180, 612);
+            this.btnCancelAppointments.Name = "btnCancelAppointments";
+            this.btnCancelAppointments.Size = new System.Drawing.Size(158, 30);
+            this.btnCancelAppointments.TabIndex = 52;
+            this.btnCancelAppointments.Text = "Ver Citas Canceladas";
+            this.btnCancelAppointments.UseVisualStyleBackColor = false;
             // 
             // label9
             // 
@@ -383,5 +400,6 @@
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Panel pnlAppointments;
         private System.Windows.Forms.Label lblDaySelected;
+        private System.Windows.Forms.Button btnCancelAppointments;
     }
 }

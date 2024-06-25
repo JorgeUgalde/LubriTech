@@ -30,8 +30,9 @@ namespace LubriTech.Model.Appointment_Information
             try
             {
                 conn.Open();
+                string query = "SELECT * FROM Cita WHERE CAST(FechaHora AS DATE) = @date and Estado = 1";
 
-                string query = "SELECT * FROM Cita WHERE FechaHora = @date";
+                //string query = "SELECT * FROM Cita WHERE FechaHora = @date";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@date", date);
                 DataTable tblAppointments = new DataTable();
@@ -138,6 +139,25 @@ namespace LubriTech.Model.Appointment_Information
             catch (Exception ex)
             {
                 MessageBox.Show("Error al guardar la cita");
+                throw ex;
+            }
+            finally { conn.Close(); }
+        }
+
+        public bool CancelAppointment(int appointmentID)
+        {
+            try
+            {
+                conn.Open();
+                string query = "UPDATE Cita SET Estado = 0 WHERE Identificacion = @id";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@id", appointmentID);
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cancelar la cita");
                 throw ex;
             }
             finally { conn.Close(); }
