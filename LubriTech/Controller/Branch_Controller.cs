@@ -32,7 +32,7 @@ namespace LubriTech.Controller
         }
 
         /// <summary>
-        /// Updates or inserts a branch.
+        /// Updates or inserts a branch in the database.
         /// </summary>
         /// <param name="branch">Branch object.</param>
         /// <returns>True if the operation completed successfully of false in case of an error.</returns>

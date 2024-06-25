@@ -8,34 +8,35 @@ using System.Threading.Tasks;
 namespace LubriTech.Controller
 {
     /// <summary>
-    /// Controlador que maneja la lógica de negocio relacionada con las marcas de vehículos. Utiliza el modelo <see cref="Make_Model"/> para obtener la información
+    /// Controller class that manages business logic regarding makes.
+    /// It uses the class model <see cref="Make_Model"/> to obtain useful methods.
     /// </summary>
     public class Make_Controller
     {
         /// <summary>
-        /// Obtiene todas las marcas de vehículos.
+        /// Retrieves all vehicle makes.
         /// </summary>
-        /// <returns>Lista de todas las marcas de vehículos.</returns>
+        /// <returns>A list of all makes.</returns>
         public List<Make> getAll()
         {
          return new Make_Model().loadAllMakes();
         }
 
         /// <summary>
-        /// Obtiene una marca de vehículo por su identificador.
+        /// Retrives a make by its identification.
         /// </summary>
-        /// <param name="id">Identificador de la marca de vehículo a obtener.</param>
-        /// <returns>Marca de vehículo encontrada, o null si no se encuentra.</returns>
+        /// <param name="id">Make identification.</param>
+        /// <returns>Make object, or null if the make was not found.</returns>
         public Make getMake(int id)
         {
             return new Make_Model().getMake(id);
         }
 
         /// <summary>
-        /// Actualiza o inserta una marca de vehículo.
+        /// Inserts or updates a make in the database.
         /// </summary>
-        /// <param name="make">Objeto Make que representa la marca de vehículo a actualizar o insertar.</param>
-        /// <returns>true si la operación se realizó con éxito, false si falló.</returns>
+        /// <param name="make">Make object to insert or update.</param>
+        /// <returns>True if the operation was succesful, otherwise false.</returns>
         public bool upsertMake(Make make)
         {
             return new Make_Model().Upsert(make);

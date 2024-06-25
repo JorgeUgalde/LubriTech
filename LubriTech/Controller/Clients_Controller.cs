@@ -24,7 +24,7 @@ namespace LubriTech.Controller
         }
 
         /// <summary>
-        /// Updates or inserts a client.
+        /// Updates or inserts a client in the database.
         /// </summary>
         /// <param name="client">Client object</param>
         /// <returns>True if the operation was successful; otherwise, false.</returns>
@@ -34,7 +34,7 @@ namespace LubriTech.Controller
         }
 
         /// <summary>
-        /// Retrieves a client by their identification.
+        /// Retrieves a client by his identification.
         /// </summary>
         /// <param name="Id">Client identification.</param>
         /// <returns>Client object, or null in case it failed.</returns>

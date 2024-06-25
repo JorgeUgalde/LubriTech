@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 namespace LubriTech.Controller
 {
     /// <summary>
-    /// Controlador que maneja la lógica de negocio relacionada con los vehículos. Utiliza el modelo <see cref="Vehicle_Model"/> para obtener la información
+    /// Controller class that manages business logic regarding vehicles.
+    /// It uses the class model <see cref="Vehicle_Model"/> to obtain useful methods.
     /// </summary>
     public class Vehicle_Controller
     {
@@ -18,69 +19,69 @@ namespace LubriTech.Controller
         Vehicle_Model vehicleModel = new Vehicle_Model();
 
         /// <summary>
-        /// Obtiene todos los vehículos almacenados.
+        /// Retrieves all vehicles.
         /// </summary>
-        /// <returns>Lista de todos los vehículos.</returns>
+        /// <returns>A list of all the vehicles.</returns>
         public List<Vehicle> getAll()
         {
             return vehicleModel.loadAllVehicles();
         }
 
         /// <summary>
-        /// Inserta o actualiza un vehículo.
+        /// Inserts or updates a vehicle in the database.
         /// </summary>
-        /// <param name="vehicle">El vehículo a insertar o actualizar.</param>
-        /// <returns>True si la operación fue exitosa, False si falló.</returns>
+        /// <param name="vehicle">Vehicle object to insert or update.</param>
+        /// <returns>True if the operation was succesful, otherwise, false.</returns>
         public Boolean upsert(Vehicle vehicle)
         {
             return vehicleModel.upsertVehicle(vehicle);
         }
 
         /// <summary>
-        /// Obtiene un cliente basado en su identificación.
+        /// Retrieves a client by its identification.
         /// </summary>
-        /// <param name="clientId">Identificación del cliente.</param>
-        /// <returns>Cliente encontrado, o null si no se encuentra.</returns>
+        /// <param name="clientId">Client identification.</param>
+        /// <returns>Client object, or null if the client was not found.</returns>
         public Client getClient(string clientId)
         {
             return vehicleModel.getClient(clientId);
         }
 
         /// <summary>
-        /// Obtiene un modelo de vehículo basado en su identificación.
+        /// Retrieves a car model by its identification.
         /// </summary>
-        /// <param name="modelId">Identificación del modelo de vehículo.</param>
-        /// <returns>Modelo de vehículo encontrado, o null si no se encuentra.</returns>
+        /// <param name="modelId">Car model identification.</param>
+        /// <returns>CarModel object, or null if the car model was not found.</returns>
         public CarModel getModel(int modelId)
         {
             return vehicleModel.getModel(modelId);
         }
 
         /// <summary>
-        /// Obtiene una marca de vehículo basada en su identificación.
+        /// Retrieves a make by its identification.
         /// </summary>
-        /// <param name="makeId">Identificación de la marca de vehículo.</param>
-        /// <returns>Marca de vehículo encontrada, o null si no se encuentra.</returns>
+        /// <param name="makeId">Make identification.</param>
+        /// <returns>Make object, or null if the make was not found.</returns>
         public Make getMake(int makeId)
         {
             return vehicleModel.getMake(makeId);
         }
 
         /// <summary>
-        /// Obtiene un tipo de motor de vehículo basado en su identificación.
+        /// Retrieves a engine type by its identification.
         /// </summary>
-        /// <param name="engineId">Identificación del tipo de motor del vehículo.</param>
-        /// <returns>Tipo de motor de vehículo encontrado, o null si no se encuentra.</returns>
+        /// <param name="engineId">Engine type identification.</param>
+        /// <returns>Engine object, or null if the engine type was not found.</returns>
         public Engine getEngine(int engineId)
         {
             return vehicleModel.getEngine(engineId);
         }
 
         /// <summary>
-        /// Obtiene un tipo de transmisión de vehículo basado en su identificación.
+        /// Retrieves a transmission type by its identification.
         /// </summary>
-        /// <param name="transmissionId">Identificación del tipo de transmisión del vehículo.</param>
-        /// <returns>Tipo de transmisión de vehículo encontrado, o null si no se encuentra.</returns>
+        /// <param name="transmissionId">Transmission type identification.</param>
+        /// <returns>Transmission object, or null if the transmission type was not found.</returns>
         public Transmission getTransmission(int transmissionId)
         {
             return vehicleModel.getTransmission(transmissionId);
