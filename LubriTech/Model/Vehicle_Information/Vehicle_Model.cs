@@ -411,14 +411,14 @@ namespace LubriTech.Model.Vehicle_Information
         {
             try
             {
-                string updateQuery = "UPDATE Vehiculo SET Placa = @licensePlate, TipoMotor = @engine, Kilometraje = @mileage, IdentificacionModelo = @modelId, Anio = @year, Transmision = @transmission, IdentificacionCliente = @clientId, Estado = @state WHERE Placa = @licensePlate";
+                string updateQuery = "UPDATE Vehiculo SET Placa = @licensePlate, IdentificacionMotor = @engineId, Kilometraje = @mileage, IdentificacionModelo = @modelId, Anio = @year, IdentificacionTransmision = @transmissionId, IdentificacionCliente = @clientId, Estado = @state WHERE Placa = @licensePlate";
                 SqlCommand cmd = new SqlCommand(updateQuery, conn);
                 cmd.Parameters.AddWithValue("@licensePlate", vehicle.LicensePlate);
-                cmd.Parameters.AddWithValue("@engine", vehicle.EngineType);
+                cmd.Parameters.AddWithValue("@engineId", vehicle.getEnginelId());
                 cmd.Parameters.AddWithValue("@mileage", vehicle.Mileage);
                 cmd.Parameters.AddWithValue("@modelId", vehicle.getModelId());
                 cmd.Parameters.AddWithValue("@year", vehicle.Year);
-                cmd.Parameters.AddWithValue("@transmission", vehicle.TransmissionType);
+                cmd.Parameters.AddWithValue("@transmissionId", vehicle.getTransmissionId());
                 cmd.Parameters.AddWithValue("@clientId", vehicle.getClientId());
                 cmd.Parameters.AddWithValue("@state", (vehicle.State.Equals("Activo")) ? 1 : 0);
 
@@ -453,7 +453,7 @@ namespace LubriTech.Model.Vehicle_Information
         {
             try
             {
-                string query = "INSERT INTO Vehiculo (Placa, TipoMotor, Kilometraje, IdentificacionModelo, Anio, Transmision, IdentificacionCliente, Estado) VALUES (@licensePlate, @engineId, @mileage, @modelId, @year, @transmissionId, @clientId, @state)";
+                string query = "INSERT INTO Vehiculo (Placa, IdentificacionMotor, Kilometraje, IdentificacionModelo, Anio, IdentificacionTransmision, IdentificacionCliente, Estado) VALUES (@licensePlate, @engineId, @mileage, @modelId, @year, @transmissionId, @clientId, @state)";
                 SqlCommand cmd = new SqlCommand(query, conn);
 
                 cmd.Parameters.AddWithValue("@licensePlate", vehicle.LicensePlate);
