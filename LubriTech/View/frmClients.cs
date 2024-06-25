@@ -16,10 +16,22 @@ namespace LubriTech.View
     public partial class frmClients : Form
     {
         private List<Client> clients;
+        private Form parentForm;
+        public event Action<Client> ClientSelected;
 
         public frmClients()
         {
             clients = new List<Client>();
+            InitializeComponent();
+            load_Clients(null);
+
+        }
+
+        //Para manejar el cliente seleccionado
+        public frmClients(Form parentForm)
+        {
+            clients = new List<Client>();
+            this.parentForm = parentForm;
             InitializeComponent();
             load_Clients(null);
             
@@ -30,10 +42,7 @@ namespace LubriTech.View
             txtFilter.TextChanged += new EventHandler(txtFilter_TextChanged);
         }
 
-        /// <summary>
-        /// Carga la lista de clientes en el DataGridView.
-        /// </summary>
-        /// <param name="filteredList">Lista de clientes filtrada (opcional).</param>
+        
         private void load_Clients(List<Client> filteredList)
         {
             if (filteredList != null)
@@ -83,39 +92,20 @@ namespace LubriTech.View
                 new object[] { true });
         }
 
-        /// <summary>
-        /// Maneja el evento de cambio de datos en un formulario hijo.
-        /// </summary>
-        /// <param name="sender">Objeto que envió el evento.</param>
-        /// <param name="e">Argumentos del evento.</param>
+       
         private void ChildFormDataChangedHandler(object sender, EventArgs e)
         {
             load_Clients(null);
         }
 
-        /// <summary>
-        /// Maneja el evento de cambio de texto en el cuadro de filtro.
-        /// </summary>
-        /// <param name="sender">Objeto que envió el evento.</param>
-        /// <param name="e">Argumentos del evento.</param>
+        
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {
             ApplyFilter();
         }
 
-        /// <summary>
-        /// Maneja el evento de clic en las celdas del DataGridView.
-        /// </summary>
-        /// <param name="sender">Objeto que envió el evento.</param>
-        /// <param name="e">Argumentos del evento.</param>
-        
-
-        /// <summary>
-        /// Maneja el evento de clic en el botón de agregar cliente.
-        /// </summary>
-        /// <param name="sender">Objeto que envió el evento.</param>
-        /// <param name="e">Argumentos del evento.</param>
-        private async void btnAddClient_Click(object sender, EventArgs e)
+      
+        private void btnAddClient_Click(object sender, EventArgs e)
         {
             frmUpsert_Client frmInsert_Client = new frmUpsert_Client();
             frmInsert_Client.MdiParent = this.MdiParent;
@@ -123,9 +113,7 @@ namespace LubriTech.View
             frmInsert_Client.Show();
         }
 
-        /// <summary>
-        /// Aplica el filtro a la lista de clientes.
-        /// </summary>
+      
         private void ApplyFilter()
         {
             string filterValue = txtFilter.Text.ToLower();
@@ -138,14 +126,7 @@ namespace LubriTech.View
             load_Clients(filteredList);
         }
 
-        /// <summary>
-        /// Configura el DataGridView con las columnas de modificar y detalles.
-        /// </summary>
-       
-
-        /// <summary>
-        /// Establece el orden de las columnas en el DataGridView.
-        /// </summary>
+        
         private void SetColumnOrder()
         {
             dgvClients.Columns["Id"].DisplayIndex = 0;
@@ -153,36 +134,56 @@ namespace LubriTech.View
             dgvClients.Columns["State"].DisplayIndex = 2;
         }
 
-        /// <summary>
-        /// Maneja el evento de clic en el botón de cerrar.
-        /// </summary>
-        /// <param name="sender">Objeto que envió el evento.</param>
-        /// <param name="e">Argumentos del evento.</param>
+     
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
-
        
 
         private void dgvClients_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+
+            if (e.RowIndex >= 0)
             {
-                string idToModify = dgvClients.Rows[e.RowIndex].Cells["Id"].Value.ToString();
+                string clientId = dgvClients.Rows[e.RowIndex].Cells["Id"].Value.ToString();
                 List<Client> clients = new Clients_Controller().getAll();
-                Client clientSelected = clients.FirstOrDefault(client => client.Id == idToModify);
+                Client selectedClient = clients.FirstOrDefault(client => client.Id == clientId);
 
-                if (clientSelected != null)
+                if (selectedClient != null)
                 {
-                    frmUpsert_Client frmInsertClient = new frmUpsert_Client(clientSelected);
-                    frmInsertClient.MdiParent = this.MdiParent;
-                    frmInsertClient.DataChanged += ChildFormDataChangedHandler;
-                    frmInsertClient.Show();
-
-                    load_Clients(null);
+                    if (parentForm is frmInsertUpdate_Vehicle)
+                    {
+                        ((frmInsertUpdate_Vehicle)parentForm).ShowClientInUpsertVehicle(selectedClient);
+                        this.Close();
+                    }
+                    else
+                    {
+                        frmUpsert_Client frmInsertClient = new frmUpsert_Client(selectedClient);
+                        frmInsertClient.MdiParent = this.MdiParent;
+                        frmInsertClient.DataChanged += ChildFormDataChangedHandler;
+                        frmInsertClient.Show();
+                        load_Clients(null);
+                    }
                 }
+                
             }
+            //if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            //{
+            //    string idToModify = dgvClients.Rows[e.RowIndex].Cells["Id"].Value.ToString();
+            //    List<Client> clients = new Clients_Controller().getAll();
+            //    Client clientSelected = clients.FirstOrDefault(client => client.Id == idToModify);
+
+            //    if (clientSelected != null)
+            //    {
+            //        frmUpsert_Client frmInsertClient = new frmUpsert_Client(clientSelected);
+            //        frmInsertClient.MdiParent = this.MdiParent;
+            //        frmInsertClient.DataChanged += ChildFormDataChangedHandler;
+            //        frmInsertClient.Show();
+
+            //        load_Clients(null);
+            //    }
+            //}
         }
 
         private void pbClose_Click(object sender, EventArgs e)

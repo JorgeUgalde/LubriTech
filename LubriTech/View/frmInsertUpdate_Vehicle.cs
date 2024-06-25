@@ -81,6 +81,14 @@ namespace LubriTech.View
         {
             DataChanged?.Invoke(this, e);
         }
+        private void ChildFormDataChangedHandler(object sender, EventArgs e)
+        {
+            makes = new Make_Controller().getAll();
+            models = new CarModel_Controller().getAll();
+            setComboBoxMake();
+            setComboBoxes();
+            
+        }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
@@ -133,7 +141,7 @@ namespace LubriTech.View
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Close();
         }
 
         private List<CarModel> getMakeIdByName(string name)
@@ -208,15 +216,28 @@ namespace LubriTech.View
 
         private void btnSelectClient_Click(object sender, EventArgs e)
         {
-            frmClients frmClients = new frmClients();
+            frmClients frmClients = new frmClients(this);
+            frmClients.ClientSelected += HandleClientSelected;
             frmClients.MdiParent = this.MdiParent;
             frmClients.Show();
         }
 
-        private void OnClienteSeleccionado(object sender, EventArgs e)
+        private void HandleClientSelected(Client selectedClient)
         {
-            //tbClientId.Text = e.Cliente.Id.ToString();
-            //tbClientName.Text = e.Cliente.Nombre;
+            ShowClientInUpsertVehicle(selectedClient);
         }
+
+        public void ShowClientInUpsertVehicle(Client client)
+        {
+            if (client != null)
+            {
+                tbClientName.Text = client.FullName;
+                tbClientId.Text = client.Id;
+            }
+
+
+        }
+
+
     }
 }
