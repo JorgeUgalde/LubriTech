@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\Appointment_Controller.cs" />
     <Compile Include="Controller\Branch_Controller.cs" />
     <Compile Include="Controller\Transmission_Controller.cs" />
     <Compile Include="Controller\Engine_Controller.cs" />
@@ -91,6 +92,8 @@
     <Compile Include="Controller\CarModel_Controller.cs" />
     <Compile Include="Controller\Vehicle_Controller.cs" />
     <Compile Include="Controller\Work_Order_Controller.cs" />
+    <Compile Include="Model\Appointment_Information\Appointment.cs" />
+    <Compile Include="Model\Appointment_Information\Appointment_Model.cs" />
     <Compile Include="Model\Branch_Information\Branch.cs" />
     <Compile Include="Model\Branch_Information\Branch_Model.cs" />
     <Compile Include="Model\Client_Information\Client.cs" />
@@ -428,7 +431,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
-    <Folder Include="Model\Appointment_Information\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

@@ -25,6 +25,7 @@ namespace LubriTech.View
         private List<Make> makes;
         private List<Engine> engines;
         private List<Transmission> transmissions;
+        private Client selectedClient = null;
 
         public frmInsertUpdate_Vehicle()
         {
@@ -73,29 +74,29 @@ namespace LubriTech.View
             cbEngine.Text = vehicle.EngineType.EngineType;
             cbTransmission.Text = vehicle.TransmissionType.TransmissionType;
 
-            //if (action == "Details")
-            //{
-                tbLicensePlate.Enabled = false;
-                cbEngine.Enabled = false;
-                tbClientName.Enabled = false;
-                tbMileage.Enabled = false;
-                tbYear.Enabled = false;
-                cbMake.Enabled = false;
-                cbModel.Enabled = false;
-                cbTransmission.Enabled = false;
-                btnSelectClient.Enabled = false;
-;
-                tbLicensePlate.BackColor = Color.FromArgb(249, 252, 255);
-                cbEngine.BackColor = Color.FromArgb(249, 252, 255);
-                tbClientName.BackColor = Color.FromArgb(249, 252, 255);
-                tbMileage.BackColor = Color.FromArgb(249, 252, 255);
-                tbYear.BackColor = Color.FromArgb(249, 252, 255);
-                cbMake.BackColor = Color.FromArgb(249, 252, 255);
-                cbModel.BackColor = Color.FromArgb(249, 252, 255);
-                cbTransmission.BackColor = Color.FromArgb(249, 252, 255);
-                btnSelectClient.Visible = false;
+//            if (action == "Details")
+//            {
+//                tbLicensePlate.Enabled = false;
+//                cbEngine.Enabled = false;
+//                tbClientName.Enabled = false;
+//                tbMileage.Enabled = false;
+//                tbYear.Enabled = false;
+//                cbMake.Enabled = false;
+//                cbModel.Enabled = false;
+//                cbTransmission.Enabled = false;
+//                btnSelectClient.Enabled = false;
+//;
+//                tbLicensePlate.BackColor = Color.FromArgb(249, 252, 255);
+//                cbEngine.BackColor = Color.FromArgb(249, 252, 255);
+//                tbClientName.BackColor = Color.FromArgb(249, 252, 255);
+//                tbMileage.BackColor = Color.FromArgb(249, 252, 255);
+//                tbYear.BackColor = Color.FromArgb(249, 252, 255);
+//                cbMake.BackColor = Color.FromArgb(249, 252, 255);
+//                cbModel.BackColor = Color.FromArgb(249, 252, 255);
+//                cbTransmission.BackColor = Color.FromArgb(249, 252, 255);
+//                btnSelectClient.Visible = false;
 
-                btnConfirm.Hide();
+//                btnConfirm.Hide();
             //}
         }
 
@@ -232,9 +233,15 @@ namespace LubriTech.View
 
         private void btnSelectClient_Click(object sender, EventArgs e)
         {
-            frmClients frmClients = new frmClients();
-            frmClients.MdiParent = this.MdiParent;
-            frmClients.Show();
+            //frmClients frmClients = new frmClients("select");
+            //frmClients.MdiParent = this.MdiParent;
+            //frmClients.Show();
+        }
+
+        private void OnClienteSeleccionado(object sender, EventArgs e)
+        {
+            //tbClientId.Text = e.Cliente.Id.ToString();
+            //tbClientName.Text = e.Cliente.Nombre;
         }
     }
 }
