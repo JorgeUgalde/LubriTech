@@ -22,6 +22,7 @@ namespace LubriTech.View
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
         private Client existingClient;
+        private Vehicle existingVehicle;
         public frmUpsert_Client()
         {
             InitializeComponent();
@@ -37,6 +38,7 @@ namespace LubriTech.View
             /// <summary>
             /// Establece los valores de los campos de texto con los datos del cliente.
             /// </summary>
+            existingClient = client;
             txtID.Text = client.Id;
             txtFullName.Text = client.FullName;
             txtMainPhone.Text = client.MainPhoneNum.ToString();
@@ -49,26 +51,6 @@ namespace LubriTech.View
             /// Desactiva los campos de texto si la acción es "Details".
             /// </summary>
             
-                //txtID.Enabled = false;
-                //txtFullName.Enabled = false;
-                //txtMainPhone.Enabled = false;
-                //txtAdditionalPhone.Enabled = false;
-                //txtEmail.Enabled = false;
-                //txtAddresse.Enabled = false;
-                //cbState.Enabled = false;
-
-                //txtID.BackColor = Color.FromArgb(249, 252, 255);
-                //txtFullName.BackColor = Color.FromArgb(249, 252, 255);
-                //txtMainPhone.BackColor = Color.FromArgb(249, 252, 255);
-                //txtAdditionalPhone.BackColor = Color.FromArgb(249, 252, 255);
-                //txtEmail.BackColor = Color.FromArgb(249, 252, 255);
-                //txtAddresse.BackColor = Color.FromArgb(249, 252, 255);
-                //cbState.BackColor = Color.FromArgb(249, 252, 255);
-
-
-                //btnClose.Location = new Point(47, 525);
-                //btnAddClient.Hide();
-                //btnAddVehicle.Hide();
             }
             
         
@@ -93,23 +75,12 @@ namespace LubriTech.View
         private void frmUpsert_Client_Load(object sender, EventArgs e)
         {
 
-            List<Vehicle> vehicles;
-            
-            if (existingClient == null)
-            {
-                Vehicle_Controller vehicle_Controller = new Vehicle_Controller();
-                vehicles = vehicle_Controller.getAll();
-            }
-            else
+            List<Vehicle> vehicles = new List<Vehicle>();
+
+            if (existingClient != null)
             {
                 Clients_Controller clients_Controller = new Clients_Controller();
                 vehicles = clients_Controller.getVehicle(existingClient.Id);
-
-                if (vehicles == null || vehicles.Count == 0)
-                {
-                    Vehicle_Controller vehicle_Controller = new Vehicle_Controller();
-                    vehicles = vehicle_Controller.getAll();
-                }
             }
 
             dgvVehicles.DataSource = vehicles;
@@ -204,9 +175,18 @@ namespace LubriTech.View
         /// <param name="e">Argumentos del evento.</param>
         private void btnAddVehicle_Click(object sender, EventArgs e)
         {
-            frmInsertUpdate_Vehicle frmNewVehicle = new frmInsertUpdate_Vehicle();
-            frmNewVehicle.MdiParent = this.MdiParent;
-            frmNewVehicle.Show();
+            if (existingClient != null)
+            {
+                frmInsertUpdate_Vehicle frmInsertVehicle = new frmInsertUpdate_Vehicle(existingClient);
+                frmInsertVehicle.MdiParent = this.MdiParent;
+                frmInsertVehicle.Show();
+            }
+            else
+            {
+                frmInsertUpdate_Vehicle frmNewVehicle = new frmInsertUpdate_Vehicle();
+                frmNewVehicle.MdiParent = this.MdiParent;
+                frmNewVehicle.Show();
+            }
         }
 
         /// <summary>
@@ -245,6 +225,7 @@ namespace LubriTech.View
                     if (vehicle.LicensePlate == selectedLicensePlate)
                     {
                         selectedVehicle = vehicle;
+                        existingVehicle = vehicle;
                         break;
                     }
                 }

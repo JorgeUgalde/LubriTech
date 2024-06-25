@@ -34,16 +34,6 @@ namespace LubriTech.Controller
         }
 
         /// <summary>
-        /// Deletes a client.
-        /// </summary>
-        /// <param name="Id">Client identification.</param>
-        /// <returns>True if the operation was successful; otherwise, false.</returns>
-        public bool remove(String Id)
-        {
-            return new Client_Model().removeClient(Id);
-        }
-
-        /// <summary>
         /// Retrieves a client by their identification.
         /// </summary>
         /// <param name="Id">Client identification.</param>

@@ -38,6 +38,20 @@ namespace LubriTech.View
             setComboBoxes();
         }
 
+        public frmInsertUpdate_Vehicle(Client client)
+        {
+            makes = new Make_Controller().getAll();
+            models = new CarModel_Controller().getAll();
+            engines = new Engine_Controller().getAll();
+            transmissions = new Transmission_Controller().getAll();
+            InitializeComponent();
+            setComboBoxMake();
+            setComboBoxes();
+            tbClientName.Text = client.FullName;
+            tbClientId.Text = client.Id;
+
+        }
+
         public frmInsertUpdate_Vehicle(Vehicle vehicle)
         {
             clients = new List<Client>();
@@ -59,8 +73,8 @@ namespace LubriTech.View
             cbEngine.Text = vehicle.EngineType.EngineType;
             cbTransmission.Text = vehicle.TransmissionType.TransmissionType;
 
-            if (action == "Details")
-            {
+            //if (action == "Details")
+            //{
                 tbLicensePlate.Enabled = false;
                 cbEngine.Enabled = false;
                 tbClientName.Enabled = false;
@@ -82,7 +96,7 @@ namespace LubriTech.View
                 btnSelectClient.Visible = false;
 
                 btnConfirm.Hide();
-            }
+            //}
         }
 
         public event EventHandler DataChanged;

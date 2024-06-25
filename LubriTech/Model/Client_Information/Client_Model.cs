@@ -51,7 +51,7 @@ namespace LubriTech.Model.Client_Information
                 dr["CorreoElectronico"].ToString(),
                 dr["Direccion"].ToString(),
                 getVehicle(dr["Identificacion"].ToString()),
-                dr["Estado"].ToString()));
+                (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo"));
                 }
                 return clients;
             }
@@ -245,7 +245,7 @@ namespace LubriTech.Model.Client_Information
                 dr["NumeroTelefonoAdicional"] != DBNull.Value ? Convert.ToInt32(dr["NumeroTelefonoAdicional"]) : (int?)null,
                 dr["CorreoElectronico"].ToString(),
                 dr["Direccion"].ToString(),
-                dr["Estado"].ToString());
+               (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo");
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -444,7 +444,7 @@ namespace LubriTech.Model.Client_Information
                 insert.Parameters.AddWithValue("@additionalphone", (object)client.AdditionalPhoneNum ?? DBNull.Value);
                 insert.Parameters.AddWithValue("@email", client.Email);
                 insert.Parameters.AddWithValue("@addresse", client.Address);
-                insert.Parameters.AddWithValue("@state", client.State);
+                insert.Parameters.AddWithValue("@state", (client.State.Equals("Activo")) ? 1 : 0);
 
 
                 if (conn.State != System.Data.ConnectionState.Open)
@@ -489,7 +489,7 @@ namespace LubriTech.Model.Client_Information
                 update.Parameters.AddWithValue("@additionalphone", (object)client.AdditionalPhoneNum ?? DBNull.Value);
                 update.Parameters.AddWithValue("@email", client.Email);
                 update.Parameters.AddWithValue("@address", client.Address);
-                update.Parameters.AddWithValue("@state", client.State);
+                update.Parameters.AddWithValue("@state", (client.State.Equals("Activo")) ? 1 : 0);
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -503,53 +503,6 @@ namespace LubriTech.Model.Client_Information
             catch (SqlException ex)
             {
 
-                throw ex;
-            }
-            finally
-            {
-                if (conn.State != System.Data.ConnectionState.Closed)
-                {
-                    conn.Close();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Cambia el estado de activo a inactivo o viceversa de un cliente en la base de datos.
-        /// </summary>
-        /// <param name="clientId">Identificador único del cliente.</param>
-        /// <returns>True si se cambió el estado correctamente, False si falló.</returns>
-        public Boolean removeClient(string clientId)
-        {
-            try
-            {
-                
-                string selectQuery = "select Estado from Cliente where Identificacion = @id";
-                SqlCommand select = new SqlCommand(selectQuery, conn);
-
-                if (conn.State != System.Data.ConnectionState.Open)
-                {
-                    conn.Open();
-                }
-
-                select.Parameters.AddWithValue("@id", clientId);
-                string currentState = select.ExecuteScalar()?.ToString();
-
-                
-                string newStatus = (currentState == "Activo") ? "Inactivo" : "Activo";
-
-                
-                string updateQuery = "update Cliente set Estado = @newStatus where Identificacion = @id";
-                SqlCommand update = new SqlCommand(updateQuery, conn);
-
-                update.Parameters.AddWithValue("@id", clientId);
-                update.Parameters.AddWithValue("@newStatus", newStatus);
-                update.ExecuteNonQuery(); 
-
-                return true;
-            }
-            catch (Exception ex)
-            {
                 throw ex;
             }
             finally
