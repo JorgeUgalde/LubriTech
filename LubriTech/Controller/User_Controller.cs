@@ -8,15 +8,16 @@ using System.Threading.Tasks;
 namespace LubriTech.Controller
 {
     /// <summary>
-    /// Controlador que maneja la lógica de negocio relacionada con los usuarios. Utiliza el modelo <see cref="User_Model"/> para obtener la información
+    /// Controller class that manages business logic regarding users.
+    /// It uses the class model <see cref="User_Model"/> to obtain useful methods.
     /// </summary>
     public class User_Controller
     {
         /// <summary>
-        /// Obtiene un usuario basado en el objeto User proporcionado.
+        /// Retrives an user by the user object from parameters.
         /// </summary>
-        /// <param name="user">Objeto User que contiene los detalles del usuario a obtener.</param>
-        /// <returns>Usuario encontrado, o null si no se encuentra.</returns>
+        /// <param name="user">User object to retrieve.</param>
+        /// <returns>User object, or null if the user was not found.</returns>
         public User GetUser(User user)
         {
             return new User_Model().GetUser(user);
