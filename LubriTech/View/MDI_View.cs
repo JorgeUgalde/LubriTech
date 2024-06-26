@@ -119,6 +119,8 @@ namespace LubriTech.View
             childForm.WindowState = FormWindowState.Normal;
             childForm.StartPosition = FormStartPosition.CenterScreen;
             childForm.Show();
+
+
         }
 
         private void btnClients_Click(object sender, EventArgs e)

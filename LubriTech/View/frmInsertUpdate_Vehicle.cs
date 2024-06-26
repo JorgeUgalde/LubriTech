@@ -14,6 +14,7 @@ using LubriTech.Model.Vehicle_Information;
 using LubriTech.Model.Client_Information;
 using LubriTech.Model.Supplier_Information;
 using System.Net;
+using System.Runtime.InteropServices;
 
 namespace LubriTech.View
 {
@@ -25,6 +26,7 @@ namespace LubriTech.View
         private List<Make> makes;
         private List<Engine> engines;
         private List<Transmission> transmissions;
+        private Client selectedClient = null;
 
         public frmInsertUpdate_Vehicle()
         {
@@ -38,7 +40,21 @@ namespace LubriTech.View
             setComboBoxes();
         }
 
-        public frmInsertUpdate_Vehicle(Vehicle vehicle, string action)
+        public frmInsertUpdate_Vehicle(Client client)
+        {
+            makes = new Make_Controller().getAll();
+            models = new CarModel_Controller().getAll();
+            engines = new Engine_Controller().getAll();
+            transmissions = new Transmission_Controller().getAll();
+            InitializeComponent();
+            setComboBoxMake();
+            setComboBoxes();
+            tbClientName.Text = client.FullName;
+            tbClientId.Text = client.Id;
+
+        }
+
+        public frmInsertUpdate_Vehicle(Vehicle vehicle)
         {
             clients = new List<Client>();
             makes = new Make_Controller().getAll();
@@ -58,31 +74,6 @@ namespace LubriTech.View
             tbMileage.Text = vehicle.Mileage.ToString();
             cbEngine.Text = vehicle.EngineType.EngineType;
             cbTransmission.Text = vehicle.TransmissionType.TransmissionType;
-
-            if (action == "Details")
-            {
-                tbLicensePlate.Enabled = false;
-                cbEngine.Enabled = false;
-                tbClientName.Enabled = false;
-                tbMileage.Enabled = false;
-                tbYear.Enabled = false;
-                cbMake.Enabled = false;
-                cbModel.Enabled = false;
-                cbTransmission.Enabled = false;
-                btnSelectClient.Enabled = false;
-;
-                tbLicensePlate.BackColor = Color.FromArgb(249, 252, 255);
-                cbEngine.BackColor = Color.FromArgb(249, 252, 255);
-                tbClientName.BackColor = Color.FromArgb(249, 252, 255);
-                tbMileage.BackColor = Color.FromArgb(249, 252, 255);
-                tbYear.BackColor = Color.FromArgb(249, 252, 255);
-                cbMake.BackColor = Color.FromArgb(249, 252, 255);
-                cbModel.BackColor = Color.FromArgb(249, 252, 255);
-                cbTransmission.BackColor = Color.FromArgb(249, 252, 255);
-                btnSelectClient.Visible = false;
-
-                btnConfirm.Hide();
-            }
         }
 
         public event EventHandler DataChanged;
@@ -90,6 +81,14 @@ namespace LubriTech.View
         protected virtual void OnDataChanged(EventArgs e)
         {
             DataChanged?.Invoke(this, e);
+        }
+        private void ChildFormDataChangedHandler(object sender, EventArgs e)
+        {
+            makes = new Make_Controller().getAll();
+            models = new CarModel_Controller().getAll();
+            setComboBoxMake();
+            setComboBoxes();
+            
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -105,7 +104,7 @@ namespace LubriTech.View
             {
                 MessageBox.Show("Por favor llene todos los campos");
             }
-            else if(tbClientId.Text.Trim() == "")
+            else if (tbClientId.Text.Trim() == "")
             {
                 MessageBox.Show("Debe seleccionar un cliente");
             }
@@ -143,7 +142,7 @@ namespace LubriTech.View
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Close();
         }
 
         private List<CarModel> getMakeIdByName(string name)
@@ -218,9 +217,56 @@ namespace LubriTech.View
 
         private void btnSelectClient_Click(object sender, EventArgs e)
         {
-            frmClients frmClients = new frmClients();
+            frmClients frmClients = new frmClients(this);
+            frmClients.ClientSelected += HandleClientSelected;
             frmClients.MdiParent = this.MdiParent;
             frmClients.Show();
+        }
+
+        private void HandleClientSelected(Client selectedClient)
+        {
+            ShowClientInUpsertVehicle(selectedClient);
+        }
+
+        public void ShowClientInUpsertVehicle(Client client)
+        {
+            if (client != null)
+            {
+                tbClientName.Text = client.FullName;
+                tbClientId.Text = client.Id;
+            }
+
+
+        }
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        private void panelControlBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void pbClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void pbMaximize_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
         }
     }
 }

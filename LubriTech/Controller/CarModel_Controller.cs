@@ -37,7 +37,7 @@ namespace LubriTech.Controller
         }
 
         /// <summary>
-        /// Inserts or updates a car model.
+        /// Inserts or updates a car model in the database.
         /// </summary>
         /// <param name="carModel">Car model object to upsert.</param>
         /// <returns>True if the operation was successful; otherwise, false.</returns>

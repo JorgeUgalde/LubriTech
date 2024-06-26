@@ -24,7 +24,7 @@ namespace LubriTech.Controller
         }
 
         /// <summary>
-        /// Updates or inserts a client.
+        /// Updates or inserts a client in the database.
         /// </summary>
         /// <param name="client">Client object</param>
         /// <returns>True if the operation was successful; otherwise, false.</returns>
@@ -34,22 +34,13 @@ namespace LubriTech.Controller
         }
 
         /// <summary>
-        /// Deletes a client.
-        /// </summary>
-        /// <param name="Id">Client identification.</param>
-        /// <returns>True if the operation was successful; otherwise, false.</returns>
-        public bool remove(String Id)
-        {
-            return new Client_Model().removeClient(Id);
-        }
-
-        /// <summary>
-        /// Retrieves a client by their identification.
+        /// Retrieves a client by his identification.
         /// </summary>
         /// <param name="Id">Client identification.</param>
         /// <returns>Client object, or null in case it failed.</returns>
-        public Client get(string Id)
+        public async Task<Client> get(string Id)
         {
+            await Task.Delay(100);
             return new Client_Model().getClient(Id);
         }
 

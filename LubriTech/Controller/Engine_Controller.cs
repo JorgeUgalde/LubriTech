@@ -27,7 +27,7 @@ namespace LubriTech.Controller
         }
 
         /// <summary>
-        /// Inserts or updates a engine type.
+        /// Inserts or updates a engine type in the database.
         /// </summary>
         /// <param name="engine">engine object to upsert.</param>
         /// <returns>True if the operation was successful; otherwise, false.</returns>
@@ -40,7 +40,7 @@ namespace LubriTech.Controller
         /// Retrieves a engine type by its identification.
         /// </summary>
         /// <param name="engineId">Identification of the engine type.</param>
-        /// <returns>The engine object.</returns>
+        /// <returns>The engine object, or null if the engine was not found.</returns>
         public Engine getEngine(int engineId)
         {
             return engineModel.getEngine(engineId);

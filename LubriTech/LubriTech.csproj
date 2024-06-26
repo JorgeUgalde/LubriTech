@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\Appointment_Controller.cs" />
     <Compile Include="Controller\Branch_Controller.cs" />
     <Compile Include="Controller\Transmission_Controller.cs" />
     <Compile Include="Controller\Engine_Controller.cs" />
@@ -91,6 +92,8 @@
     <Compile Include="Controller\CarModel_Controller.cs" />
     <Compile Include="Controller\Vehicle_Controller.cs" />
     <Compile Include="Controller\Work_Order_Controller.cs" />
+    <Compile Include="Model\Appointment_Information\Appointment.cs" />
+    <Compile Include="Model\Appointment_Information\Appointment_Model.cs" />
     <Compile Include="Model\Branch_Information\Branch.cs" />
     <Compile Include="Model\Branch_Information\Branch_Model.cs" />
     <Compile Include="Model\Client_Information\Client.cs" />
@@ -130,12 +133,6 @@
     </Compile>
     <Compile Include="View\Appointment_View\frmAppointment.Designer.cs">
       <DependentUpon>frmAppointment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Appointment_View\frmDayAppointments.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Appointment_View\frmDayAppointments.Designer.cs">
-      <DependentUpon>frmDayAppointments.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmCarModels.cs">
       <SubType>Form</SubType>
@@ -296,9 +293,6 @@
     <EmbeddedResource Include="View\Appointment_View\frmAppointment.resx">
       <DependentUpon>frmAppointment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Appointment_View\frmDayAppointments.resx">
-      <DependentUpon>frmDayAppointments.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\frmCarModels.resx">
       <DependentUpon>frmCarModels.cs</DependentUpon>
     </EmbeddedResource>
@@ -394,19 +388,23 @@
     <None Include="Images\close.png" />
     <None Include="Images\close1.png" />
     <None Include="Images\imagenLogin1.jpg" />
+    <None Include="Images\closeIco2.png" />
     <Content Include="Images\inventory.png" />
     <Content Include="Images\logo1.jpg" />
     <Content Include="Images\logoCrop.jpg" />
     <Content Include="Images\logoLubritech.jpg" />
     <Content Include="Images\Logout.jpg" />
     <Content Include="Images\Logout1.jpg" />
+    <None Include="Images\maximize.png" />
     <Content Include="Images\menu.jpg" />
     <None Include="Images\minimize.png" />
     <None Include="Images\minimize1.png" />
     <None Include="Images\minimize2.png" />
     <None Include="Images\menu1.png" />
+    <None Include="Images\minimizeIco.png" />
     <Content Include="Images\people.png" />
     <Content Include="Images\products.png" />
+    <None Include="Images\searchClient.png" />
     <Content Include="Images\services.png" />
     <Content Include="Images\suppliers.png" />
     <Content Include="Images\vehicle.png" />
@@ -436,7 +434,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
-    <Folder Include="Model\Appointment_Information\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

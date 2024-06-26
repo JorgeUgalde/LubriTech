@@ -7,11 +7,20 @@ using System.Xml.Linq;
 using LubriTech.Model.Vehicle_Information;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Runtime.InteropServices;
 
 namespace LubriTech.View
 {
+
     public partial class frmUpsert_Client : Form
     {
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
         private Client existingClient;
         public frmUpsert_Client()
         {
@@ -21,13 +30,14 @@ namespace LubriTech.View
 
         }
 
-        public frmUpsert_Client(Client client, string action)
+        public frmUpsert_Client(Client client)
         {
             InitializeComponent();
 
             /// <summary>
             /// Establece los valores de los campos de texto con los datos del cliente.
             /// </summary>
+            existingClient = client;
             txtID.Text = client.Id;
             txtFullName.Text = client.FullName;
             txtMainPhone.Text = client.MainPhoneNum.ToString();
@@ -39,31 +49,10 @@ namespace LubriTech.View
             /// <summary>
             /// Desactiva los campos de texto si la acción es "Details".
             /// </summary>
-            if (action == "Details")
-            {
-                txtID.Enabled = false;
-                txtFullName.Enabled = false;
-                txtMainPhone.Enabled = false;
-                txtAdditionalPhone.Enabled = false;
-                txtEmail.Enabled = false;
-                txtAddresse.Enabled = false;
-                cbState.Enabled = false;
-
-                txtID.BackColor = Color.FromArgb(249, 252, 255);
-                txtFullName.BackColor = Color.FromArgb(249, 252, 255);
-                txtMainPhone.BackColor = Color.FromArgb(249, 252, 255);
-                txtAdditionalPhone.BackColor = Color.FromArgb(249, 252, 255);
-                txtEmail.BackColor = Color.FromArgb(249, 252, 255);
-                txtAddresse.BackColor = Color.FromArgb(249, 252, 255);
-                cbState.BackColor = Color.FromArgb(249, 252, 255);
-
-
-                btnClose.Location = new Point(47, 525);
-                btnAddClient.Hide();
-                btnAddVehicle.Hide();
+            
             }
-            existingClient = client;
-        }
+            
+        
         
         public event EventHandler DataChanged;
 
@@ -84,23 +73,13 @@ namespace LubriTech.View
         /// <param name="e">Argumentos del evento.</param>
         private void frmUpsert_Client_Load(object sender, EventArgs e)
         {
-            List<Vehicle> vehicles;
-            
-            if (existingClient == null)
-            {
-                Vehicle_Controller vehicle_Controller = new Vehicle_Controller();
-                vehicles = vehicle_Controller.getAll();
-            }
-            else
+
+            List<Vehicle> vehicles = new List<Vehicle>();
+
+            if (existingClient != null)
             {
                 Clients_Controller clients_Controller = new Clients_Controller();
                 vehicles = clients_Controller.getVehicle(existingClient.Id);
-
-                if (vehicles == null || vehicles.Count == 0)
-                {
-                    Vehicle_Controller vehicle_Controller = new Vehicle_Controller();
-                    vehicles = vehicle_Controller.getAll();
-                }
             }
 
             dgvVehicles.DataSource = vehicles;
@@ -195,9 +174,18 @@ namespace LubriTech.View
         /// <param name="e">Argumentos del evento.</param>
         private void btnAddVehicle_Click(object sender, EventArgs e)
         {
-            frmInsertUpdate_Vehicle frmNewVehicle = new frmInsertUpdate_Vehicle();
-            frmNewVehicle.MdiParent = this.MdiParent;
-            frmNewVehicle.Show();
+            if (existingClient != null)
+            {
+                frmInsertUpdate_Vehicle frmInsertVehicle = new frmInsertUpdate_Vehicle(existingClient);
+                frmInsertVehicle.MdiParent = this.MdiParent;
+                frmInsertVehicle.Show();
+            }
+            else
+            {
+                frmInsertUpdate_Vehicle frmNewVehicle = new frmInsertUpdate_Vehicle();
+                frmNewVehicle.MdiParent = this.MdiParent;
+                frmNewVehicle.Show();
+            }
         }
 
         /// <summary>
@@ -222,6 +210,58 @@ namespace LubriTech.View
         private void txtAdditionalPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
+        }
+
+        private void dgvVehicles_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                string selectedLicensePlate = dgvVehicles.Rows[e.RowIndex].Cells["LicensePlate"].Value.ToString();
+                List<Vehicle> vehicles = new Vehicle_Controller().getAll();
+                Vehicle selectedVehicle = null;
+                foreach (Vehicle vehicle in vehicles)
+                {
+                    if (vehicle.LicensePlate == selectedLicensePlate)
+                    {
+                        selectedVehicle = vehicle;
+                        break;
+                    }
+                }
+
+                frmInsertUpdate_Vehicle frmInsertVehicle = new frmInsertUpdate_Vehicle(selectedVehicle);
+                frmInsertVehicle.MdiParent = this.MdiParent;
+                frmInsertVehicle.Show();
+                return;
+            }
+        }
+
+        private void pbMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+
+        }
+
+        private void pbMaximize_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void pbClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void panel2_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }

@@ -27,9 +27,9 @@ namespace LubriTech.Controller
         }
 
         /// <summary>
-        /// Inserts or updates a transmission type.
+        /// Inserts or updates a transmission type in the database.
         /// </summary>
-        /// <param name="transmission">transmission object to upsert.</param>
+        /// <param name="transmission">Transmission object to insert or update.</param>
         /// <returns>True if the operation was successful; otherwise, false.</returns>
         public Boolean upsert(Transmission transmission)
         {
