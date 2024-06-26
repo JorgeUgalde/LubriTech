@@ -32,27 +32,34 @@ namespace LubriTech.View
             cursor = new Point(e.X, e.Y);// Get cursor's position according to form's area
         }
 
-        private void panelHeader_MouseMove(object sender, MouseEventArgs e)
-        {
-                // Get the current mouse position relative to the screen
-                if (dragging)
-                {
-                Point currentScreenPos = panelHeader.PointToScreen(e.Location);
 
-                // Convert the screen coordinates to MDI parent client coordinates
-                Point mdiClientPoint = this.MdiParent.PointToClient(currentScreenPos);
-
-                // Calculate the new location of the form
-                Point newLocation = new Point(mdiClientPoint.X - cursor.X, mdiClientPoint.Y - cursor.Y);
-
-                // Move the form to the new location
-                this.Location = newLocation;
-            }
-        }
 
         private void panelHeader_MouseUp(object sender, MouseEventArgs e)
         {
             dragging = false; // Disable dragging
+        }
+
+        private void pbMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void pbMaximize_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+
+        }
+
+        private void pbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
