@@ -10,45 +10,43 @@ namespace LubriTech.Model.Appointment_Information
 {
 
     /// <summary>
-    /// Clase que representa las citas del sistema
+    /// Class that represents an appointment in the system.
     /// </summary>
-    public  class Appointment
+    public class Appointment
     {
         /// <summary>
-        /// Identificador único de la cita.
+        /// Identifies the appointment.
         /// </summary>
         public int AppointmentID { get; set; }
 
         /// <summary>
-        ///  Objeto cliente al que pertenece la cita.
+        ///  Client of the appointment.
         /// </summary>
         public Client client { get; set; }
 
         /// <summary>
-        /// Fecha y hora de la cita
+        /// Date and time of the appointment.
         /// </summary>
         public DateTime AppointmentDate { get; set; }
 
         /// <summary>
-        /// Estado de la cita
+        /// Appointment state.
         /// </summary>
         public short State { get; set; }
 
         /// <summary>
-        /// Sucursal de la cita
+        /// Branch of the appointment.
         /// </summary>
         public Branch branch { get; set; }
 
         /// <summary>
-        /// Constructor completo de la clase Appointment.
+        /// Constructor of the class Appointment
         /// <summary>
-        /// <param name="appointmentDate"/>Fecha de la cita.</param>
-        /// <param name="appointmentID">Identificador único de la cita.</param>
-        /// <param name="client"/>   Cliente de la cita.</param>
-        /// <param name="state">Estado de la cita.</param>
-        /// <param name="branch">Sucursal de la cita.</param>
-
-
+        /// <param name="appointmentDate"/>Date and time of the appointment.</param>
+        /// <param name="appointmentID">Identifier.</param>
+        /// <param name="client"/>   Client .</param>
+        /// <param name="state">State.</param>
+        /// <param name="branch">Branch of the appointment.</param>
         public Appointment (int appointmentID, Client client, DateTime appointmentDate, short state, Branch branch)
         {
            this.AppointmentID = appointmentID;
@@ -60,7 +58,7 @@ namespace LubriTech.Model.Appointment_Information
 
 
         /// <summary>
-        /// Constructor vacio de la clase Appointment.
+        /// Empty constructor of the class Appointment
         /// </summary>
         public Appointment()
         {
@@ -68,9 +66,9 @@ namespace LubriTech.Model.Appointment_Information
 
 
         /// <summary>
-        /// Sobrescribe el método ToString para mostrar al cliente de la cita.
+        /// ToString method of the class Appointment
         /// </summary>
-        /// <returns>Nombre completo del cliente.</returns>
+        /// <returns>Full client name.</returns>
         public override string ToString()
         {
             return client.ToString();

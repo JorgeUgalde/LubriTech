@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace LubriTech.Model.Appointment_Information
 {
     /// <summary>
-    /// Clase que maneja las operaciones relacionadas con la entidad <see cref="Appointment"/> en la base de datos.
+    /// This class control the appointments data access.
     /// </summary>
     public class Appointment_Model
     {
@@ -20,10 +20,10 @@ namespace LubriTech.Model.Appointment_Information
 
 
         /// <summary>
-        /// Carga todas las citas de un día específico.
+        /// Load all the appointments from the database.
         /// </summary>
         /// <param name="date"></param>
-        /// <returns>Lista de objetos Cita cargados desde la base de datos</returns>
+        /// <returns>List of Appointment objects of the date specified</returns>
         public List<Appointment> loadDayAppointments(DateTime date)
         {
             List<Appointment> appointments = new List<Appointment>();
@@ -32,7 +32,6 @@ namespace LubriTech.Model.Appointment_Information
                 conn.Open();
                 string query = "SELECT * FROM Cita WHERE CAST(FechaHora AS DATE) = @date and Estado = 1";
 
-                //string query = "SELECT * FROM Cita WHERE FechaHora = @date";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@date", date);
                 DataTable tblAppointments = new DataTable();
@@ -48,12 +47,9 @@ namespace LubriTech.Model.Appointment_Information
                         new Client_Model().getClient(row["IdentificacionCliente"].ToString()),
                         Convert.ToDateTime(row["FechaHora"]),
                         Convert.ToInt16(row["Estado"]),
-                        new Branch_Model().GetBranch(Convert.ToInt32(row["IdentificacionSucursal"].ToString())) )
-                    );
-
-             
+                        new Branch_Model().GetBranch(Convert.ToInt32(row["IdentificacionSucursal"].ToString())))
+                    );            
                 }
-
             }
             catch (Exception ex)
             {
@@ -66,10 +62,10 @@ namespace LubriTech.Model.Appointment_Information
         }
 
         /// <summary>
-        /// Busca una cita en especifico
+        /// Search for an specific appointment in the database.
         /// </summary>
         /// <param name="id"></param>
-        /// <returns> Retorna una cita  </returns>
+        /// <returns> return an appointment  </returns>
         public Appointment GetAppointment(int id)
         {
             Appointment appointment = null;
@@ -109,11 +105,11 @@ namespace LubriTech.Model.Appointment_Information
 
 
         /// <summary>
-        ///  Inserta o actualiza una cita en la base de datos
+        ///  insert or update an appointment in the database.
         /// </summary>
         /// <param name="appointment"></param>
-        /// <returns> Retorna un verdadero si la accion se completo con exito, o falso si no se completo con exito</returns>
-        public bool UpSert(Appointment appointment)
+        /// <returns> returns true if the action executed succesfully, or false if the action was unsuccessfull </returns>
+        public bool UpSertAppointment(Appointment appointment)
         {
             try
             {
@@ -144,6 +140,12 @@ namespace LubriTech.Model.Appointment_Information
             finally { conn.Close(); }
         }
 
+
+        /// <summary>
+        /// Cancel an appointment in the database.
+        /// </summary>
+        /// <param name="appointmentID"></param>
+        /// <returns></returns>
         public bool CancelAppointment(int appointmentID)
         {
             try
@@ -162,10 +164,6 @@ namespace LubriTech.Model.Appointment_Information
             }
             finally { conn.Close(); }
         }
-
-
-
-
-
     }
+
 }

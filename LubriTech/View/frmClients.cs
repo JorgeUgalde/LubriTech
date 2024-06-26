@@ -81,7 +81,6 @@ namespace LubriTech.View
                     column.Visible = false;
                 }
             }
-            dgvClients.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
 
             SetColumnOrder();
 
