@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,7 +23,6 @@ namespace LubriTech.View
         {
             vehicles = new List<Vehicle>();
             InitializeComponent();
-            SetupDataGridView();
             load_Vehicles(null);
         }
 
@@ -112,9 +112,31 @@ namespace LubriTech.View
             load_Vehicles(null);
         }
 
-        private void dgvVehicles_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void SetColumnOrder()
         {
-            if (e.ColumnIndex == dgvVehicles.Columns["ModifyImageColumn"].Index && e.RowIndex >= 0)
+            dgvVehicles.Columns["LicensePlate"].DisplayIndex = 0;
+            dgvVehicles.Columns["EngineType"].DisplayIndex = 1;
+            dgvVehicles.Columns["Mileage"].DisplayIndex = 2;
+            dgvVehicles.Columns["Model"].DisplayIndex = 3;
+            dgvVehicles.Columns["Year"].DisplayIndex = 4;
+            dgvVehicles.Columns["TransmissionType"].DisplayIndex = 5;
+            dgvVehicles.Columns["Client"].DisplayIndex = 6;
+            dgvVehicles.Columns["State"].DisplayIndex = 7;
+        }
+
+        private void txtFilter_TextChanged_1(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void dgvVehicles_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
             {
                 string selectedLicensePlate = dgvVehicles.Rows[e.RowIndex].Cells["LicensePlate"].Value.ToString();
                 List<Vehicle> vehicles = new Vehicle_Controller().getAll();
@@ -135,66 +157,36 @@ namespace LubriTech.View
                 frmInsertVehicle.Show();
                 return;
             }
+        }
 
-            if (e.ColumnIndex == dgvVehicles.Columns["DetailImageColumn"].Index && e.RowIndex >= 0)
+        private void pbMaximize_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
             {
-                string selectedLicensePlate = dgvVehicles.Rows[e.RowIndex].Cells["LicensePlate"].Value.ToString();
-                List<Vehicle> vehicles = new Vehicle_Controller().getAll();
-                Vehicle selectedVehicle = null;
-                foreach (Vehicle vehicle in vehicles)
-                {
-                    if (vehicle.LicensePlate == selectedLicensePlate)
-                    {
-                        selectedVehicle = vehicle;
-                        break;
-                    }
-                }
-                string action = "Details";
-                frmInsertUpdate_Vehicle frmInsertVehicle = new frmInsertUpdate_Vehicle(selectedVehicle);
-                frmInsertVehicle.MdiParent = this.MdiParent;
-                frmInsertVehicle.DataChanged += ChildFormDataChangedHandler;
-                frmInsertVehicle.Show();
-                return;
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
             }
         }
 
-        private void SetupDataGridView()
-        {
-            DataGridViewImageColumn modifyImageColumn = new DataGridViewImageColumn();
-            modifyImageColumn.Name = "ModifyImageColumn";
-            modifyImageColumn.HeaderText = "Modificar";
-            modifyImageColumn.Image = Properties.Resources.edit;
-            dgvVehicles.Columns.Add(modifyImageColumn);
-
-            DataGridViewImageColumn detailImageColumn = new DataGridViewImageColumn();
-            detailImageColumn.Name = "DetailImageColumn";
-            detailImageColumn.HeaderText = "Detalles";
-            detailImageColumn.Image = Properties.Resources.detail;
-            dgvVehicles.Columns.Add(detailImageColumn);
-        }
-
-        private void SetColumnOrder()
-        {
-            dgvVehicles.Columns["LicensePlate"].DisplayIndex = 0;
-            dgvVehicles.Columns["EngineType"].DisplayIndex = 1;
-            dgvVehicles.Columns["Mileage"].DisplayIndex = 2;
-            dgvVehicles.Columns["Model"].DisplayIndex = 3;
-            dgvVehicles.Columns["Year"].DisplayIndex = 4;
-            dgvVehicles.Columns["TransmissionType"].DisplayIndex = 5;
-            dgvVehicles.Columns["Client"].DisplayIndex = 6;
-            dgvVehicles.Columns["State"].DisplayIndex = 7;
-            dgvVehicles.Columns["DetailImageColumn"].DisplayIndex = 8;
-            dgvVehicles.Columns["ModifyImageColumn"].DisplayIndex = 9;
-        }
-
-        private void txtFilter_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void pbClose_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        private void panel2_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }

@@ -14,6 +14,7 @@ using LubriTech.Model.Vehicle_Information;
 using LubriTech.Model.Client_Information;
 using LubriTech.Model.Supplier_Information;
 using System.Net;
+using System.Runtime.InteropServices;
 
 namespace LubriTech.View
 {
@@ -238,6 +239,34 @@ namespace LubriTech.View
 
         }
 
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
 
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        private void panelControlBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void pbClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void pbMaximize_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
     }
 }

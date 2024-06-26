@@ -402,6 +402,7 @@
     <None Include="Images\minimizeIco.png" />
     <Content Include="Images\people.png" />
     <Content Include="Images\products.png" />
+    <None Include="Images\searchClient.png" />
     <Content Include="Images\services.png" />
     <Content Include="Images\suppliers.png" />
     <Content Include="Images\vehicle.png" />

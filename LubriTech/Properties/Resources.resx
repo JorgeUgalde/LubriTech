@@ -172,6 +172,9 @@
   <data name="logoCrop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\logoCrop.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="minimizeIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\minimizeIco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="closeIco2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\closeIco2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -214,7 +217,7 @@
   <data name="people" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\people.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="minimizeIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\minimizeIco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="searchClient" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\searchClient.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -212,7 +212,7 @@ namespace LubriTech.View
             e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
         }
 
-        private void dgvVehicles_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void dgvVehicles_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {

@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +17,13 @@ namespace LubriTech.View
 {
     public partial class frmClients : Form
     {
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
         private List<Client> clients;
         private Form parentForm;
         public event Action<Client> ClientSelected;
@@ -81,7 +89,7 @@ namespace LubriTech.View
                     column.Visible = false;
                 }
             }
-            dgvClients.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
 
             SetColumnOrder();
 
@@ -140,11 +148,9 @@ namespace LubriTech.View
         {
             this.Dispose();
         }
-       
 
-        private void dgvClients_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void dgvClients_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-
             if (e.RowIndex >= 0)
             {
                 string clientId = dgvClients.Rows[e.RowIndex].Cells["Id"].Value.ToString();
@@ -158,7 +164,7 @@ namespace LubriTech.View
                         ((frmInsertUpdate_Vehicle)parentForm).ShowClientInUpsertVehicle(selectedClient);
                         this.Close();
                     }
-                    if (parentForm is frmAppointment)
+                    else if (parentForm is frmAppointment)
                     {
                         ((frmAppointment)parentForm).SelectClientAppointment(selectedClient);
                         this.Close();
@@ -172,24 +178,7 @@ namespace LubriTech.View
                         load_Clients(null);
                     }
                 }
-                
             }
-            //if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-            //{
-            //    string idToModify = dgvClients.Rows[e.RowIndex].Cells["Id"].Value.ToString();
-            //    List<Client> clients = new Clients_Controller().getAll();
-            //    Client clientSelected = clients.FirstOrDefault(client => client.Id == idToModify);
-
-            //    if (clientSelected != null)
-            //    {
-            //        frmUpsert_Client frmInsertClient = new frmUpsert_Client(clientSelected);
-            //        frmInsertClient.MdiParent = this.MdiParent;
-            //        frmInsertClient.DataChanged += ChildFormDataChangedHandler;
-            //        frmInsertClient.Show();
-
-            //        load_Clients(null);
-            //    }
-            //}
         }
 
         private void pbClose_Click(object sender, EventArgs e)
@@ -212,8 +201,16 @@ namespace LubriTech.View
 
         private void pbMinimize_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            this.WindowState = FormWindowState.Normal;
 
         }
+
+        private void panel2_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        
     }
 }
