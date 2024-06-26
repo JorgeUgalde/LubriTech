@@ -1,6 +1,7 @@
 ﻿using LubriTech.Model.WorkOrder_Information;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,19 +20,24 @@ namespace LubriTech.Controller
             return new WorkOrder_Model().loadWorkOrdersFromClient(clientId);
         }
 
-        public List<WorkOrderLine> loadWorkOrderLines(int workOrderId)
+        public List<WorkOrderLine> loadWorkOrderLines(int? workOrderId)
         {
-            return new WorkOrderLine_Model().loadWorkOrderLines(workOrderId);
+            return new WorkOrderLine_Model().LoadWorkOrderLines(workOrderId);
         }
 
         public List<Observation> loadObservationsFromWorkOrder(int workOrderId)
         {
-            return new Observation_Model().loadObservations(workOrderId);
+            return new Observation_Model().LoadObservations(workOrderId);
         }
 
-        public bool upsertWorkOrderLine(WorkOrderLine workOrderLine)
+        public bool upsertWorkOrderLine(DataRow row)
         {
-            return new WorkOrderLine_Model().upsertWorkOrderLine(workOrderLine);
+            return new WorkOrderLine_Model().UpsertWorkOrderLine(row);
+        }
+
+        public WorkOrder LoadWorkOrder(int workOrderId)
+        {
+            return new WorkOrder_Model().loadWorkOrder(workOrderId);
         }
     }
 }

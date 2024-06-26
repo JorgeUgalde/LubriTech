@@ -14,7 +14,7 @@ namespace LubriTech.Model.WorkOrder_Information
         /// <summary>
         /// Identificador único de la observación.
         /// </summary>
-        public int Codigo { get; set; }
+        public int Code { get; set; }
 
         /// <summary>
         /// Identificador de la orden de trabajo asociada con la observación.
@@ -29,7 +29,7 @@ namespace LubriTech.Model.WorkOrder_Information
         /// <summary>
         /// Fotos asociada con la observación.
         /// </summary>
-        public List<string> Photos { get; set; }
+        public List<ObservationPhotos> Photos { get; set; }
 
         /// <summary>
         /// Constructor por defecto de la clase Observation.
@@ -43,9 +43,9 @@ namespace LubriTech.Model.WorkOrder_Information
         /// <param name="workOrderId">El identificador de la orden de trabajo asociada con la observación.</param>
         /// <param name="description">La descripción de la observación.</param>
         /// <param name="photos">Las fotos asociadas con la observación.</param>
-        public Observation(int codigo, int workOrderId, string description, List<string> photos)
+        public Observation(int codigo, int workOrderId, string description, List<ObservationPhotos> photos)
         {
-            this.Codigo = codigo;
+            this.Code = codigo;
             this.WorkOrderId = workOrderId;
             this.Description = description;
             this.Photos = photos;
@@ -57,9 +57,9 @@ namespace LubriTech.Model.WorkOrder_Information
         /// <param name="codigo">El identificador único de la observación.</param>
         /// <param name="description">La descripción de la observación.</param>
         /// <param name="photos">Las fotos asociadas con la observación.</param>
-        public Observation(int codigo, string description, List<string> photos)
+        public Observation(int codigo, string description, List<ObservationPhotos> photos)
         {
-            this.Codigo = codigo;
+            this.Code = codigo;
             this.Description = description;
             this.Photos = photos;
         }
@@ -70,7 +70,7 @@ namespace LubriTech.Model.WorkOrder_Information
         /// <returns>Una cadena que representa el objeto actual.</returns>
         public override string ToString()
         {
-        return $"Código: {Codigo}\nId de la orden de trabajo: {WorkOrderId}\nDescripción: {Description}\nFotos: {Photos}";
+        return $"Código: {Code}\nId de la orden de trabajo: {WorkOrderId}\nDescripción: {Description}\nFotos: {Photos}";
         }
     }
 }

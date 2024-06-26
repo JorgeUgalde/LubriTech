@@ -112,6 +112,8 @@
     <Compile Include="Model\Vehicle_Information\Vehicle.cs" />
     <Compile Include="Model\Vehicle_Information\Vehicle_Model.cs" />
     <Compile Include="Model\WorkOrder_Information\Observation.cs" />
+    <Compile Include="Model\WorkOrder_Information\ObservationPhotos.cs" />
+    <Compile Include="Model\WorkOrder_Information\ObservationPhotos_Model.cs" />
     <Compile Include="Model\WorkOrder_Information\Observation_Model.cs" />
     <Compile Include="Model\WorkOrder_Information\WorkOrder.cs" />
     <Compile Include="Model\WorkOrder_Information\WorkOrderLine.cs" />
@@ -269,6 +271,12 @@
     <Compile Include="View\frmWorkOrder.Designer.cs">
       <DependentUpon>frmWorkOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmWorOrdersList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmWorOrdersList.Designer.cs">
+      <DependentUpon>frmWorOrdersList.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MDI_View.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -356,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmWorkOrder.resx">
       <DependentUpon>frmWorkOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmWorOrdersList.resx">
+      <DependentUpon>frmWorOrdersList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MDI_View.resx">
       <DependentUpon>MDI_View.cs</DependentUpon>

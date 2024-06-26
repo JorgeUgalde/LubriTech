@@ -125,7 +125,7 @@ namespace LubriTech.Model.Vehicle_Information
         /// <returns>Una cadena que representa los detalles del vehículo.</returns>
         public override string ToString()
         {
-            return "Placa: " + LicensePlate + "\nMotor: " + EngineType.EngineType + "\nKilometraje: " + Mileage + "\nMarca: " + Model.Make.Name + "\nModelo: " + Model.Name + "\nAño: " + Year + "\nTransimisión: " + TransmissionType.TransmissionType + "\nIdentificación cliente: " + Client.Id + "\nEstado: " + State;
+            return Model.Make.Name + " " + Model.Name;
         }
 
     }

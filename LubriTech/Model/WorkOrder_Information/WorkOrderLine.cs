@@ -7,12 +7,12 @@ namespace LubriTech.Model.WorkOrder_Information
         public int Id { get; set; }
         public int WorkOrderId { get; set; }
         public Item item { get; set; }
-        public int Quantity { get; set; }
+        public decimal Quantity { get; set; }
         public decimal Amount { get; set; }
 
         public WorkOrderLine() { }
 
-        public WorkOrderLine(int id, int workOrderId, Item item, int quantity, decimal amount, int recommendedMileage)
+        public WorkOrderLine(int id, int workOrderId, Item item, decimal quantity, decimal amount, int recommendedMileage)
         {
             this.Id = id;
             this.WorkOrderId = workOrderId;
