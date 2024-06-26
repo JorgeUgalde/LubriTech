@@ -1,4 +1,4 @@
-﻿namespace LubriTech.View.Appointment_View
+namespace LubriTech.View.Appointment_View
 {
     partial class frmAppointment
     {
@@ -65,10 +65,10 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.pnlCalendar);
-            this.panel1.Location = new System.Drawing.Point(2, 6);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(3, 7);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(280, 531);
+            this.panel1.Size = new System.Drawing.Size(372, 654);
             this.panel1.TabIndex = 1;
             // 
             // label9
@@ -76,10 +76,9 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(14, 441);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Location = new System.Drawing.Point(19, 537);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(102, 21);
+            this.label9.Size = new System.Drawing.Size(129, 28);
             this.label9.TabIndex = 51;
             this.label9.Text = "Identificación";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -87,34 +86,35 @@
             // txtId
             // 
             this.txtId.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtId.Location = new System.Drawing.Point(18, 466);
-            this.txtId.Margin = new System.Windows.Forms.Padding(2);
+            this.txtId.Location = new System.Drawing.Point(24, 574);
+            this.txtId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtId.Multiline = true;
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(236, 27);
+            this.txtId.Size = new System.Drawing.Size(313, 32);
             this.txtId.TabIndex = 50;
+            this.txtId.TextChanged += new System.EventHandler(this.txtId_TextChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(14, 375);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Location = new System.Drawing.Point(19, 455);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(68, 21);
+            this.label8.Size = new System.Drawing.Size(85, 28);
             this.label8.TabIndex = 49;
             this.label8.Text = "Nombre";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtName
             // 
+            this.txtName.Enabled = false;
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtName.Location = new System.Drawing.Point(18, 400);
-            this.txtName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtName.Location = new System.Drawing.Point(24, 492);
+            this.txtName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(238, 27);
+            this.txtName.Size = new System.Drawing.Size(316, 32);
             this.txtName.TabIndex = 0;
             // 
             // button1
@@ -124,10 +124,10 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(194, 335);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(259, 412);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(64, 22);
+            this.button1.Size = new System.Drawing.Size(85, 27);
             this.button1.TabIndex = 48;
             this.button1.Text = "Buscar";
             this.button1.UseVisualStyleBackColor = false;
@@ -138,10 +138,9 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(14, 335);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Location = new System.Drawing.Point(19, 412);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(157, 21);
+            this.label7.Size = new System.Drawing.Size(196, 28);
             this.label7.TabIndex = 48;
             this.label7.Text = "Seleccione un Cliente";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -160,10 +159,10 @@
             this.pnlCalendar.Controls.Add(this.dayContainer);
             this.pnlCalendar.Controls.Add(this.btnPrevious);
             this.pnlCalendar.Controls.Add(this.btnNext);
-            this.pnlCalendar.Location = new System.Drawing.Point(18, 22);
-            this.pnlCalendar.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlCalendar.Location = new System.Drawing.Point(24, 27);
+            this.pnlCalendar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlCalendar.Name = "pnlCalendar";
-            this.pnlCalendar.Size = new System.Drawing.Size(244, 291);
+            this.pnlCalendar.Size = new System.Drawing.Size(325, 358);
             this.pnlCalendar.TabIndex = 1;
             // 
             // label6
@@ -171,10 +170,9 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(215, 30);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(287, 37);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(13, 15);
+            this.label6.Size = new System.Drawing.Size(17, 20);
             this.label6.TabIndex = 47;
             this.label6.Text = "S";
             // 
@@ -183,10 +181,9 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(182, 30);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(243, 37);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(14, 15);
+            this.label5.Size = new System.Drawing.Size(18, 20);
             this.label5.TabIndex = 46;
             this.label5.Text = "V";
             // 
@@ -195,10 +192,9 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(151, 30);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(201, 37);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(11, 15);
+            this.label4.Size = new System.Drawing.Size(14, 20);
             this.label4.TabIndex = 45;
             this.label4.Text = "J";
             // 
@@ -207,10 +203,9 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(116, 30);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(155, 37);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(14, 15);
+            this.label3.Size = new System.Drawing.Size(18, 20);
             this.label3.TabIndex = 44;
             this.label3.Text = "X";
             // 
@@ -219,10 +214,9 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(80, 30);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(107, 37);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(18, 15);
+            this.label2.Size = new System.Drawing.Size(22, 20);
             this.label2.TabIndex = 43;
             this.label2.Text = "M";
             // 
@@ -231,10 +225,9 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(51, 30);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(68, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(13, 15);
+            this.label1.Size = new System.Drawing.Size(16, 20);
             this.label1.TabIndex = 42;
             this.label1.Text = "L";
             // 
@@ -244,10 +237,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDate.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.lblDate.ForeColor = System.Drawing.Color.White;
-            this.lblDate.Location = new System.Drawing.Point(35, 0);
-            this.lblDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDate.Location = new System.Drawing.Point(47, 0);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(175, 23);
+            this.lblDate.Size = new System.Drawing.Size(233, 28);
             this.lblDate.TabIndex = 41;
             this.lblDate.Text = "Mes , Año";
             this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -257,10 +249,9 @@
             this.lblSunday.AutoSize = true;
             this.lblSunday.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblSunday.ForeColor = System.Drawing.Color.White;
-            this.lblSunday.Location = new System.Drawing.Point(15, 30);
-            this.lblSunday.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSunday.Location = new System.Drawing.Point(20, 37);
             this.lblSunday.Name = "lblSunday";
-            this.lblSunday.Size = new System.Drawing.Size(15, 15);
+            this.lblSunday.Size = new System.Drawing.Size(20, 20);
             this.lblSunday.TabIndex = 40;
             this.lblSunday.Text = "D";
             // 
@@ -270,10 +261,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dayContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dayContainer.Location = new System.Drawing.Point(3, 56);
-            this.dayContainer.Margin = new System.Windows.Forms.Padding(2);
+            this.dayContainer.Location = new System.Drawing.Point(4, 69);
+            this.dayContainer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dayContainer.Name = "dayContainer";
-            this.dayContainer.Size = new System.Drawing.Size(238, 205);
+            this.dayContainer.Size = new System.Drawing.Size(317, 252);
             this.dayContainer.TabIndex = 39;
             // 
             // btnPrevious
@@ -283,10 +274,10 @@
             this.btnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnPrevious.ForeColor = System.Drawing.Color.White;
-            this.btnPrevious.Location = new System.Drawing.Point(4, 266);
-            this.btnPrevious.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPrevious.Location = new System.Drawing.Point(5, 327);
+            this.btnPrevious.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(58, 22);
+            this.btnPrevious.Size = new System.Drawing.Size(77, 27);
             this.btnPrevious.TabIndex = 38;
             this.btnPrevious.Text = "Anterior";
             this.btnPrevious.UseVisualStyleBackColor = false;
@@ -299,10 +290,10 @@
             this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnNext.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnNext.ForeColor = System.Drawing.Color.White;
-            this.btnNext.Location = new System.Drawing.Point(178, 266);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNext.Location = new System.Drawing.Point(237, 327);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(64, 22);
+            this.btnNext.Size = new System.Drawing.Size(85, 27);
             this.btnNext.TabIndex = 37;
             this.btnNext.Text = "Siguiente";
             this.btnNext.UseVisualStyleBackColor = false;
@@ -315,11 +306,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlAppointments.AutoScroll = true;
             this.pnlAppointments.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.pnlAppointments.Location = new System.Drawing.Point(286, 49);
-            this.pnlAppointments.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlAppointments.MinimumSize = new System.Drawing.Size(442, 488);
+            this.pnlAppointments.Location = new System.Drawing.Point(381, 60);
+            this.pnlAppointments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlAppointments.MinimumSize = new System.Drawing.Size(589, 601);
             this.pnlAppointments.Name = "pnlAppointments";
-            this.pnlAppointments.Size = new System.Drawing.Size(442, 488);
+            this.pnlAppointments.Size = new System.Drawing.Size(589, 601);
             this.pnlAppointments.TabIndex = 2;
             // 
             // lblDaySelected
@@ -330,27 +321,26 @@
             this.lblDaySelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblDaySelected.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.lblDaySelected.ForeColor = System.Drawing.Color.White;
-            this.lblDaySelected.Location = new System.Drawing.Point(280, 6);
-            this.lblDaySelected.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDaySelected.Location = new System.Drawing.Point(373, 7);
             this.lblDaySelected.Name = "lblDaySelected";
-            this.lblDaySelected.Size = new System.Drawing.Size(448, 36);
+            this.lblDaySelected.Size = new System.Drawing.Size(595, 44);
             this.lblDaySelected.TabIndex = 48;
             this.lblDaySelected.Text = "Dia, Mes , Año";
             this.lblDaySelected.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmAppointment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(730, 544);
+            this.ClientSize = new System.Drawing.Size(971, 660);
             this.Controls.Add(this.lblDaySelected);
             this.Controls.Add(this.pnlAppointments);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(746, 583);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumSize = new System.Drawing.Size(989, 707);
             this.Name = "frmAppointment";
-            this.Text = "frmAppointment";
+            this.Text = "Citas";
             this.Load += new System.EventHandler(this.frmAppointment_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

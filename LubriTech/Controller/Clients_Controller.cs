@@ -38,8 +38,9 @@ namespace LubriTech.Controller
         /// </summary>
         /// <param name="Id">Client identification.</param>
         /// <returns>Client object, or null in case it failed.</returns>
-        public Client get(string Id)
+        public async Task<Client> get(string Id)
         {
+            await Task.Delay(100);
             return new Client_Model().getClient(Id);
         }
 

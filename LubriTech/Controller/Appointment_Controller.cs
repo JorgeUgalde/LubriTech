@@ -21,5 +21,15 @@ namespace LubriTech.Controller
         {
             return new Appointment_Model().loadDayAppointments(date);
         }
+
+        public bool CancelAppointment(int appointmentID)
+        {
+            return new Appointment_Model().CancelAppointment(appointmentID);
+        }
+
+        public bool UpsertAppointment(Appointment appointment)
+        {
+            return new Appointment_Model().UpSertAppointment(appointment);
+        }
     }
 }
