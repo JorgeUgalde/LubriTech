@@ -41,13 +41,5 @@ namespace LubriTech.Controller
             return new Supplier_Model().upsertSupplier(supplier);
         }
 
-        /// <summary>
-        /// Elimina un proveedor.
-        /// </summary>
-        /// <param name="supplierId">Identificador del proveedor a eliminar.</param>
-        public void Delete(string supplierId)
-        {
-            new Supplier_Model().deleteSupplier(supplierId);
-        }
     }
 }

@@ -64,9 +64,10 @@ namespace LubriTech.View
             // 
             this.lblClientId.AutoSize = true;
             this.lblClientId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClientId.Location = new System.Drawing.Point(22, 200);
+            this.lblClientId.Location = new System.Drawing.Point(29, 246);
+            this.lblClientId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblClientId.Name = "lblClientId";
-            this.lblClientId.Size = new System.Drawing.Size(58, 21);
+            this.lblClientId.Size = new System.Drawing.Size(72, 28);
             this.lblClientId.TabIndex = 1;
             this.lblClientId.Text = "Cliente";
             // 
@@ -74,9 +75,10 @@ namespace LubriTech.View
             // 
             this.lblModel.AutoSize = true;
             this.lblModel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblModel.Location = new System.Drawing.Point(431, 113);
+            this.lblModel.Location = new System.Drawing.Point(575, 139);
+            this.lblModel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblModel.Name = "lblModel";
-            this.lblModel.Size = new System.Drawing.Size(63, 21);
+            this.lblModel.Size = new System.Drawing.Size(81, 28);
             this.lblModel.TabIndex = 2;
             this.lblModel.Text = "Modelo";
             // 
@@ -84,9 +86,10 @@ namespace LubriTech.View
             // 
             this.lblBrand.AutoSize = true;
             this.lblBrand.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBrand.Location = new System.Drawing.Point(431, 68);
+            this.lblBrand.Location = new System.Drawing.Point(575, 84);
+            this.lblBrand.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBrand.Name = "lblBrand";
-            this.lblBrand.Size = new System.Drawing.Size(53, 21);
+            this.lblBrand.Size = new System.Drawing.Size(66, 28);
             this.lblBrand.TabIndex = 3;
             this.lblBrand.Text = "Marca";
             // 
@@ -94,9 +97,10 @@ namespace LubriTech.View
             // 
             this.lblYear.AutoSize = true;
             this.lblYear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYear.Location = new System.Drawing.Point(22, 158);
+            this.lblYear.Location = new System.Drawing.Point(29, 194);
+            this.lblYear.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblYear.Name = "lblYear";
-            this.lblYear.Size = new System.Drawing.Size(38, 21);
+            this.lblYear.Size = new System.Drawing.Size(48, 28);
             this.lblYear.TabIndex = 3;
             this.lblYear.Text = "Año";
             // 
@@ -104,9 +108,10 @@ namespace LubriTech.View
             // 
             this.lblTransmission.AutoSize = true;
             this.lblTransmission.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTransmission.Location = new System.Drawing.Point(431, 158);
+            this.lblTransmission.Location = new System.Drawing.Point(575, 194);
+            this.lblTransmission.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTransmission.Name = "lblTransmission";
-            this.lblTransmission.Size = new System.Drawing.Size(94, 21);
+            this.lblTransmission.Size = new System.Drawing.Size(114, 28);
             this.lblTransmission.TabIndex = 4;
             this.lblTransmission.Text = "Transmisión";
             // 
@@ -114,9 +119,10 @@ namespace LubriTech.View
             // 
             this.lblMileage.AutoSize = true;
             this.lblMileage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMileage.Location = new System.Drawing.Point(22, 113);
+            this.lblMileage.Location = new System.Drawing.Point(29, 139);
+            this.lblMileage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMileage.Name = "lblMileage";
-            this.lblMileage.Size = new System.Drawing.Size(89, 21);
+            this.lblMileage.Size = new System.Drawing.Size(112, 28);
             this.lblMileage.TabIndex = 5;
             this.lblMileage.Text = "Kilometraje";
             // 
@@ -127,9 +133,10 @@ namespace LubriTech.View
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLicensePlate.AutoSize = true;
             this.lblLicensePlate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLicensePlate.Location = new System.Drawing.Point(22, 68);
+            this.lblLicensePlate.Location = new System.Drawing.Point(29, 84);
+            this.lblLicensePlate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLicensePlate.Name = "lblLicensePlate";
-            this.lblLicensePlate.Size = new System.Drawing.Size(46, 21);
+            this.lblLicensePlate.Size = new System.Drawing.Size(57, 28);
             this.lblLicensePlate.TabIndex = 6;
             this.lblLicensePlate.Text = "Placa";
             // 
@@ -137,49 +144,54 @@ namespace LubriTech.View
             // 
             this.lblEngine.AutoSize = true;
             this.lblEngine.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEngine.Location = new System.Drawing.Point(431, 200);
+            this.lblEngine.Location = new System.Drawing.Point(575, 246);
+            this.lblEngine.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEngine.Name = "lblEngine";
-            this.lblEngine.Size = new System.Drawing.Size(108, 21);
+            this.lblEngine.Size = new System.Drawing.Size(138, 28);
             this.lblEngine.TabIndex = 7;
             this.lblEngine.Text = "Tipo de motor";
             // 
             // tbClientName
             // 
             this.tbClientName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbClientName.Location = new System.Drawing.Point(154, 197);
+            this.tbClientName.Location = new System.Drawing.Point(205, 242);
+            this.tbClientName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbClientName.MaxLength = 150;
             this.tbClientName.Name = "tbClientName";
-            this.tbClientName.Size = new System.Drawing.Size(205, 29);
-            this.tbClientName.TabIndex = 8;
+            this.tbClientName.Size = new System.Drawing.Size(272, 34);
+            this.tbClientName.TabIndex = 4;
             // 
             // tbMileage
             // 
             this.tbMileage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbMileage.Location = new System.Drawing.Point(154, 110);
+            this.tbMileage.Location = new System.Drawing.Point(205, 135);
+            this.tbMileage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbMileage.MaxLength = 6;
             this.tbMileage.Name = "tbMileage";
-            this.tbMileage.Size = new System.Drawing.Size(205, 29);
-            this.tbMileage.TabIndex = 9;
+            this.tbMileage.Size = new System.Drawing.Size(272, 34);
+            this.tbMileage.TabIndex = 2;
             this.tbMileage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNumeric_KeyPress);
             // 
             // tbLicensePlate
             // 
             this.tbLicensePlate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbLicensePlate.Location = new System.Drawing.Point(154, 65);
+            this.tbLicensePlate.Location = new System.Drawing.Point(205, 80);
+            this.tbLicensePlate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbLicensePlate.MaxLength = 6;
             this.tbLicensePlate.Name = "tbLicensePlate";
-            this.tbLicensePlate.Size = new System.Drawing.Size(205, 29);
-            this.tbLicensePlate.TabIndex = 10;
+            this.tbLicensePlate.Size = new System.Drawing.Size(272, 34);
+            this.tbLicensePlate.TabIndex = 1;
             this.tbLicensePlate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNumeric_KeyPress);
             // 
             // tbYear
             // 
             this.tbYear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbYear.Location = new System.Drawing.Point(154, 155);
+            this.tbYear.Location = new System.Drawing.Point(205, 191);
+            this.tbYear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbYear.MaxLength = 4;
             this.tbYear.Name = "tbYear";
-            this.tbYear.Size = new System.Drawing.Size(205, 29);
-            this.tbYear.TabIndex = 13;
+            this.tbYear.Size = new System.Drawing.Size(272, 34);
+            this.tbYear.TabIndex = 3;
             this.tbYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNumeric_KeyPress);
             // 
             // cbTransmission
@@ -190,10 +202,11 @@ namespace LubriTech.View
             this.cbTransmission.Items.AddRange(new object[] {
             "Automático",
             "Manual"});
-            this.cbTransmission.Location = new System.Drawing.Point(559, 155);
+            this.cbTransmission.Location = new System.Drawing.Point(745, 191);
+            this.cbTransmission.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbTransmission.Name = "cbTransmission";
-            this.cbTransmission.Size = new System.Drawing.Size(205, 29);
-            this.cbTransmission.TabIndex = 15;
+            this.cbTransmission.Size = new System.Drawing.Size(272, 36);
+            this.cbTransmission.TabIndex = 8;
             this.cbTransmission.Tag = "";
             // 
             // btnConfirm
@@ -204,10 +217,11 @@ namespace LubriTech.View
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfirm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirm.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnConfirm.Location = new System.Drawing.Point(26, 326);
+            this.btnConfirm.Location = new System.Drawing.Point(35, 401);
+            this.btnConfirm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(141, 34);
-            this.btnConfirm.TabIndex = 3;
+            this.btnConfirm.Size = new System.Drawing.Size(188, 42);
+            this.btnConfirm.TabIndex = 10;
             this.btnConfirm.Text = "Aceptar";
             this.btnConfirm.UseVisualStyleBackColor = false;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
@@ -215,9 +229,10 @@ namespace LubriTech.View
             // tbClientId
             // 
             this.tbClientId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbClientId.Location = new System.Drawing.Point(154, 197);
+            this.tbClientId.Location = new System.Drawing.Point(205, 242);
+            this.tbClientId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbClientId.Name = "tbClientId";
-            this.tbClientId.Size = new System.Drawing.Size(205, 29);
+            this.tbClientId.Size = new System.Drawing.Size(272, 34);
             this.tbClientId.TabIndex = 20;
             this.tbClientId.Visible = false;
             // 
@@ -226,10 +241,11 @@ namespace LubriTech.View
             this.cbMake.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMake.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMake.FormattingEnabled = true;
-            this.cbMake.Location = new System.Drawing.Point(559, 65);
+            this.cbMake.Location = new System.Drawing.Point(745, 80);
+            this.cbMake.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbMake.Name = "cbMake";
-            this.cbMake.Size = new System.Drawing.Size(205, 29);
-            this.cbMake.TabIndex = 21;
+            this.cbMake.Size = new System.Drawing.Size(272, 36);
+            this.cbMake.TabIndex = 6;
             this.cbMake.Tag = "";
             this.cbMake.SelectedValueChanged += new System.EventHandler(this.cbMake_SelectedValueChanged);
             // 
@@ -238,10 +254,11 @@ namespace LubriTech.View
             this.cbModel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbModel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbModel.FormattingEnabled = true;
-            this.cbModel.Location = new System.Drawing.Point(559, 110);
+            this.cbModel.Location = new System.Drawing.Point(745, 135);
+            this.cbModel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbModel.Name = "cbModel";
-            this.cbModel.Size = new System.Drawing.Size(205, 29);
-            this.cbModel.TabIndex = 22;
+            this.cbModel.Size = new System.Drawing.Size(272, 36);
+            this.cbModel.TabIndex = 7;
             this.cbModel.Tag = "";
             // 
             // btnClose
@@ -252,10 +269,11 @@ namespace LubriTech.View
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnClose.Location = new System.Drawing.Point(623, 326);
+            this.btnClose.Location = new System.Drawing.Point(831, 401);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(141, 34);
-            this.btnClose.TabIndex = 23;
+            this.btnClose.Size = new System.Drawing.Size(188, 42);
+            this.btnClose.TabIndex = 11;
             this.btnClose.Text = "Cancelar";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -268,10 +286,11 @@ namespace LubriTech.View
             this.cbEngine.Items.AddRange(new object[] {
             "Automático",
             "Manual"});
-            this.cbEngine.Location = new System.Drawing.Point(559, 197);
+            this.cbEngine.Location = new System.Drawing.Point(745, 242);
+            this.cbEngine.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbEngine.Name = "cbEngine";
-            this.cbEngine.Size = new System.Drawing.Size(205, 29);
-            this.cbEngine.TabIndex = 25;
+            this.cbEngine.Size = new System.Drawing.Size(272, 36);
+            this.cbEngine.TabIndex = 9;
             this.cbEngine.Tag = "";
             // 
             // btnSelectClient
@@ -283,10 +302,11 @@ namespace LubriTech.View
             this.btnSelectClient.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
             this.btnSelectClient.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSelectClient.Image = global::LubriTech.Properties.Resources.searchClient;
-            this.btnSelectClient.Location = new System.Drawing.Point(365, 197);
+            this.btnSelectClient.Location = new System.Drawing.Point(487, 242);
+            this.btnSelectClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSelectClient.Name = "btnSelectClient";
-            this.btnSelectClient.Size = new System.Drawing.Size(32, 29);
-            this.btnSelectClient.TabIndex = 24;
+            this.btnSelectClient.Size = new System.Drawing.Size(43, 36);
+            this.btnSelectClient.TabIndex = 5;
             this.btnSelectClient.UseVisualStyleBackColor = false;
             this.btnSelectClient.Click += new System.EventHandler(this.btnSelectClient_Click);
             // 
@@ -300,8 +320,9 @@ namespace LubriTech.View
             this.panelControlBox.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panelControlBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControlBox.Location = new System.Drawing.Point(0, 0);
+            this.panelControlBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelControlBox.Name = "panelControlBox";
-            this.panelControlBox.Size = new System.Drawing.Size(789, 36);
+            this.panelControlBox.Size = new System.Drawing.Size(1052, 44);
             this.panelControlBox.TabIndex = 26;
             this.panelControlBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelControlBox_MouseDown);
             // 
@@ -310,9 +331,10 @@ namespace LubriTech.View
             this.lblForm.AutoSize = true;
             this.lblForm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblForm.ForeColor = System.Drawing.Color.White;
-            this.lblForm.Location = new System.Drawing.Point(12, 6);
+            this.lblForm.Location = new System.Drawing.Point(16, 7);
+            this.lblForm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblForm.Name = "lblForm";
-            this.lblForm.Size = new System.Drawing.Size(183, 21);
+            this.lblForm.Size = new System.Drawing.Size(228, 28);
             this.lblForm.TabIndex = 10;
             this.lblForm.Text = "Dato Maestro Vehículos";
             // 
@@ -321,9 +343,10 @@ namespace LubriTech.View
             this.pbMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMinimize.Image = global::LubriTech.Properties.Resources.minimizeIco;
-            this.pbMinimize.Location = new System.Drawing.Point(691, 6);
+            this.pbMinimize.Location = new System.Drawing.Point(921, 7);
+            this.pbMinimize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbMinimize.Name = "pbMinimize";
-            this.pbMinimize.Size = new System.Drawing.Size(23, 30);
+            this.pbMinimize.Size = new System.Drawing.Size(31, 37);
             this.pbMinimize.TabIndex = 9;
             this.pbMinimize.TabStop = false;
             // 
@@ -332,9 +355,10 @@ namespace LubriTech.View
             this.pbMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMaximize.Image = global::LubriTech.Properties.Resources.maximize;
-            this.pbMaximize.Location = new System.Drawing.Point(720, 6);
+            this.pbMaximize.Location = new System.Drawing.Point(960, 7);
+            this.pbMaximize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbMaximize.Name = "pbMaximize";
-            this.pbMaximize.Size = new System.Drawing.Size(30, 30);
+            this.pbMaximize.Size = new System.Drawing.Size(40, 37);
             this.pbMaximize.TabIndex = 8;
             this.pbMaximize.TabStop = false;
             this.pbMaximize.Click += new System.EventHandler(this.pbMaximize_Click);
@@ -344,9 +368,10 @@ namespace LubriTech.View
             this.pbClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::LubriTech.Properties.Resources.closeIco2;
-            this.pbClose.Location = new System.Drawing.Point(756, 6);
+            this.pbClose.Location = new System.Drawing.Point(1008, 7);
+            this.pbClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(30, 30);
+            this.pbClose.Size = new System.Drawing.Size(40, 37);
             this.pbClose.TabIndex = 7;
             this.pbClose.TabStop = false;
             this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
@@ -356,16 +381,17 @@ namespace LubriTech.View
             this.panelBorder.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelBorder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBorder.Location = new System.Drawing.Point(0, 0);
+            this.panelBorder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelBorder.Name = "panelBorder";
-            this.panelBorder.Size = new System.Drawing.Size(789, 386);
+            this.panelBorder.Size = new System.Drawing.Size(1052, 475);
             this.panelBorder.TabIndex = 27;
             // 
             // frmInsertUpdate_Vehicle
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(789, 386);
+            this.ClientSize = new System.Drawing.Size(1052, 475);
             this.ControlBox = false;
             this.Controls.Add(this.panelControlBox);
             this.Controls.Add(this.cbEngine);
@@ -390,6 +416,7 @@ namespace LubriTech.View
             this.Controls.Add(this.tbClientId);
             this.Controls.Add(this.panelBorder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmInsertUpdate_Vehicle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dato Maestro Vehículo";

@@ -345,7 +345,7 @@
             this.MinimumSize = new System.Drawing.Size(877, 560);
             this.Name = "frmInsertUpdate_Item";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gestion de Artículos";
+            this.Text = "Dato Maestro Artículo";
             this.ResumeLayout(false);
             this.PerformLayout();
 

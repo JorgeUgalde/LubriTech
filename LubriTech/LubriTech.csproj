@@ -146,6 +146,12 @@
     <Compile Include="View\frmEngine.Designer.cs">
       <DependentUpon>frmEngine.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmInsertUpdate_Branch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmInsertUpdate_Branch.Designer.cs">
+      <DependentUpon>frmInsertUpdate_Branch.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmInsertUpdate_CarModel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -298,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmEngine.resx">
       <DependentUpon>frmEngine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmInsertUpdate_Branch.resx">
+      <DependentUpon>frmInsertUpdate_Branch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmInsertUpdate_CarModel.resx">
       <DependentUpon>frmInsertUpdate_CarModel.cs</DependentUpon>

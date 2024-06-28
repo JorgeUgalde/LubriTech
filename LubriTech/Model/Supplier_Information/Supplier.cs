@@ -25,14 +25,18 @@ namespace LubriTech.Model.Supplier_Information
         /// Correo electrónico del proveedor.
         /// </summary>
         public string email { get; set; }
-        public long phone { get; set; }
 
-        public Supplier(string id, string name, string email, long phone)
+        public Int64 phone { get; set; }
+
+        public string state { get; set; }
+
+        public Supplier(string id, string name, string email, Int64 phone, string state)
         {
             this.id = id;
             this.name = name;
             this.email = email;
             this.phone = phone;
+            this.state = state;
         }
 
         /// <summary>

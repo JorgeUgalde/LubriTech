@@ -44,9 +44,10 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(278, 343);
+            this.button1.Location = new System.Drawing.Point(36, 360);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(250, 41);
+            this.button1.Size = new System.Drawing.Size(333, 50);
             this.button1.TabIndex = 35;
             this.button1.Text = "Cerrar";
             this.button1.UseVisualStyleBackColor = false;
@@ -59,9 +60,10 @@
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfirm.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
             this.btnConfirm.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnConfirm.Location = new System.Drawing.Point(278, 274);
+            this.btnConfirm.Location = new System.Drawing.Point(36, 275);
+            this.btnConfirm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(250, 41);
+            this.btnConfirm.Size = new System.Drawing.Size(333, 50);
             this.btnConfirm.TabIndex = 34;
             this.btnConfirm.Text = "Confirmar";
             this.btnConfirm.UseVisualStyleBackColor = false;
@@ -74,57 +76,56 @@
             this.cbState.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cbState.Location = new System.Drawing.Point(278, 195);
-            this.cbState.Margin = new System.Windows.Forms.Padding(4);
+            this.cbState.Location = new System.Drawing.Point(37, 179);
+            this.cbState.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.cbState.Name = "cbState";
-            this.cbState.Size = new System.Drawing.Size(250, 38);
+            this.cbState.Size = new System.Drawing.Size(332, 44);
             this.cbState.TabIndex = 33;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(273, 161);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(30, 137);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 30);
+            this.label3.Size = new System.Drawing.Size(99, 37);
             this.label3.TabIndex = 32;
             this.label3.Text = "Estado";
             // 
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
-            this.txtName.Location = new System.Drawing.Point(278, 98);
-            this.txtName.Margin = new System.Windows.Forms.Padding(2, 2, 6, 6);
+            this.txtName.Location = new System.Drawing.Point(37, 60);
+            this.txtName.Margin = new System.Windows.Forms.Padding(3, 2, 8, 7);
             this.txtName.MaxLength = 100;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(250, 35);
+            this.txtName.Size = new System.Drawing.Size(332, 42);
             this.txtName.TabIndex = 31;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(273, 66);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(30, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 30);
+            this.label2.Size = new System.Drawing.Size(118, 37);
             this.label2.TabIndex = 30;
             this.label2.Text = "Nombre";
             // 
             // frmInsertUpdate_CarModel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(403, 463);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.cbState);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmInsertUpdate_CarModel";
-            this.Text = "frmInsertUpdate_CarModel";
+            this.Text = "Dato Maestro Modelo";
             this.ResumeLayout(false);
             this.PerformLayout();
 
