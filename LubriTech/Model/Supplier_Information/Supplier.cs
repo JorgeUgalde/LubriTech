@@ -50,7 +50,7 @@ namespace LubriTech.Model.Supplier_Information
         /// <returns>Una cadena que representa la información del proveedor.</returns>
         public override string ToString()
         {
-            return "Id: " + id + "\nName: " + name + "\nEmail: " + email + "\nPhone number: " + phone;
+            return name;
         }
     }
 }
