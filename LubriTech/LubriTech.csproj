@@ -90,6 +90,7 @@
     <Compile Include="Controller\Supplier_Controller.cs" />
     <Compile Include="Controller\User_Controller.cs" />
     <Compile Include="Controller\CarModel_Controller.cs" />
+    <Compile Include="Controller\InventoryManagment_Controller.cs" />
     <Compile Include="Controller\Vehicle_Controller.cs" />
     <Compile Include="Controller\Work_Order_Controller.cs" />
     <Compile Include="Model\Appointment_Information\Appointment.cs" />
@@ -98,6 +99,8 @@
     <Compile Include="Model\Branch_Information\Branch_Model.cs" />
     <Compile Include="Model\Client_Information\Client.cs" />
     <Compile Include="Model\Client_Information\Client_Model.cs" />
+    <Compile Include="Model\InventoryManagment_Information\InventoryManagment.cs" />
+    <Compile Include="Model\InventoryManagment_Information\InventoryManagment_Model.cs" />
     <Compile Include="Model\Item_Information\Item.cs" />
     <Compile Include="Model\Item_Information\Item_Model.cs" />
     <Compile Include="Model\Supplier_Information\Supplier.cs" />
