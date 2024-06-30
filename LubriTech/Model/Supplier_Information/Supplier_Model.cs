@@ -44,8 +44,13 @@ namespace LubriTech.Model.Supplier_Information
 
                 while (reader.Read())
                     {
-                        suppliers.Add(new Supplier(reader["Identificacion"].ToString(), reader["Nombre"].ToString(), reader["CorreoElectronico"].ToString(), Convert.ToInt64(reader["NumeroTelefono"])));
-                    }
+                        suppliers.Add(new Supplier(
+                            reader["Identificacion"].ToString(), 
+                            reader["Nombre"].ToString(), 
+                            reader["CorreoElectronico"].ToString(), 
+                            Convert.ToInt64(reader["NumeroTelefono"]),
+                            (Convert.ToInt32(reader["Estado"]) == 1) ? "Activo" : "Inactivo"));
+                }
                     return suppliers;
                 }
                 catch (Exception ex)
@@ -83,7 +88,12 @@ namespace LubriTech.Model.Supplier_Information
 
                 while (reader.Read())
                 {
-                    supplier = new Supplier(reader["Identificacion"].ToString(), reader["Nombre"].ToString(), reader["CorreoElectronico"].ToString(), Convert.ToInt64(reader["NumeroTelefono"]));
+                    supplier = new Supplier(
+                            reader["Identificacion"].ToString(),
+                            reader["Nombre"].ToString(),
+                            reader["CorreoElectronico"].ToString(),
+                            Convert.ToInt64(reader["NumeroTelefono"]),
+                            Convert.ToInt32(reader["Estado"]) == 1 ? "Activo" : "Inactivo");
                 }
                 return supplier;
             }
@@ -109,7 +119,7 @@ namespace LubriTech.Model.Supplier_Information
         {
             try
             {
-                String insertQuery = "insert into Proveedor(Identificacion, Nombre, CorreoElectronico, NumeroTelefono) values (@id,@name,@email,@phone)";
+                String insertQuery = "insert into Proveedor(Identificacion, Nombre, CorreoElectronico, NumeroTelefono, Estado) values (@id,@name,@email,@phone, @state)";
 
                 SqlCommand insert = new SqlCommand(insertQuery, conn);
 
@@ -117,6 +127,7 @@ namespace LubriTech.Model.Supplier_Information
                 insert.Parameters.AddWithValue("@name", supplier.name);
                 insert.Parameters.AddWithValue("@email", supplier.email);
                 insert.Parameters.AddWithValue("@phone", supplier.phone);
+                insert.Parameters.AddWithValue("@state", (supplier.state.Equals("Activo")) ? 1 : 0);
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -185,6 +196,8 @@ namespace LubriTech.Model.Supplier_Information
                 update.Parameters.AddWithValue("@email", supplier.email);
                 update.Parameters.AddWithValue("@phone", supplier.phone);
                 update.Parameters.AddWithValue("@id", supplier.id);
+                update.Parameters.AddWithValue("@state", (supplier.state.Equals("Activo")) ? 1 : 0);
+
 
 
                 if (conn.State != System.Data.ConnectionState.Open)
@@ -210,38 +223,6 @@ namespace LubriTech.Model.Supplier_Information
                 }
             }
         }
-
-        /// <summary>
-        /// Elimina un proveedor de la base de datos.
-        /// </summary>
-        /// <param name="supplierId">La identificación del proveedor a eliminar.</param>
-        public void deleteSupplier(string supplierId)
-        {
-            try
-            {
-                string deleteQuery = "delete from Proveedor where [Proveedor].Identificacion = @id";
-                SqlCommand delete = new SqlCommand(deleteQuery, conn);
-
-                if (conn.State != System.Data.ConnectionState.Open)
-                {
-                    conn.Open();
-                }
-
-                delete.Parameters.AddWithValue("@id", supplierId);
-                delete.ExecuteNonQuery();
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                if (conn.State != System.Data.ConnectionState.Closed)
-                {
-                    conn.Close();
-                }
-            }
-        }
+        
     }
 }

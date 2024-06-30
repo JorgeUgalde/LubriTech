@@ -21,36 +21,103 @@ namespace LubriTech.Model.WorkOrder_Information
         public List<WorkOrder> loadWorkOrders()
         {
             List<WorkOrder> workOrders = new List<WorkOrder>();
+            string selectQuery = @"
+        SELECT ot.Identificacion, ot.Fecha, ot.IdentificacionSucursal, ot.IdentificacionCliente, 
+               ot.PlacaVehiculo, ot.KilometrajeActual, ot.Monto, ot.Estado
+        FROM OrdenTrabajo ot";
+
+            SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
+
             try
             {
                 conn.Open();
-                String selectQuery = "SELECT * FROM OrdenTrabajo";
-                SqlCommand cmd = new SqlCommand(selectQuery, conn);
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
+                using (SqlCommand cmd = new SqlCommand(selectQuery, conn))
                 {
-                    WorkOrder workOrder = new WorkOrder();
-                    workOrder.Id = reader.GetInt32(0);
-                    workOrder.Date = reader.GetDateTime(1);
-                    workOrder.Branch = new Branch_Model().GetBranch(reader.GetInt32(2));
-                    workOrder.Client = new Client_Model().getClient(reader.GetString(3));
-                    workOrder.Vehicle = new Vehicle_Model().getVehicle(reader.GetString(4));
-                    workOrder.CurrentMileage = reader.GetInt32(5);
-                    workOrder.Amount = reader.GetDecimal(6);
-                    workOrder.State = reader.GetInt16(7);
-                    workOrders.Add(workOrder);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            WorkOrder workOrder = new WorkOrder
+                            {
+                                Id = reader.GetInt32(reader.GetOrdinal("Identificacion")),
+                                Date = reader.GetDateTime(reader.GetOrdinal("Fecha")),
+                                Branch = new Branch_Model().GetBranch(reader.GetInt32(reader.GetOrdinal("IdentificacionSucursal"))),
+                                Client = new Client_Model().getClient(reader.GetString(reader.GetOrdinal("IdentificacionCliente"))),
+                                Vehicle = new Vehicle_Model().getVehicle(reader.GetString(reader.GetOrdinal("PlacaVehiculo"))),
+                                CurrentMileage = reader.GetInt32(reader.GetOrdinal("KilometrajeActual")),
+                                Amount = reader.GetDecimal(reader.GetOrdinal("Monto")),
+                                State = reader.GetInt16(reader.GetOrdinal("Estado")),
+                                workOrderLines = new WorkOrderLine_Model().LoadWorkOrderLines(reader.GetInt32(reader.GetOrdinal("Identificacion"))),
+                                Observations = new Observation_Model().LoadObservations(reader.GetInt32(reader.GetOrdinal("Identificacion")))
+                            };
+
+                            workOrders.Add(workOrder);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
+                // Log the exception
+                Console.WriteLine($"Error loading work orders: {ex.Message}");
+                // Optionally rethrow or handle it as needed
+                // throw;
                 return null;
             }
             finally
             {
                 conn.Close();
             }
+
             return workOrders;
+        }
+
+        public WorkOrder loadWorkOrder(int workOrderId)
+        {
+            string query = "SELECT * FROM OrdenTrabajo WHERE Identificacion = @workOrderId";
+
+            try
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@workOrderId", workOrderId);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            WorkOrder workOrder = new WorkOrder
+                            {
+                                Id = reader.GetInt32(reader.GetOrdinal("Identificacion")),
+                                Date = reader.GetDateTime(reader.GetOrdinal("Fecha")),
+                                Branch = new Branch_Model().GetBranch(reader.GetInt32(reader.GetOrdinal("IdentificacionSucursal"))),
+                                Client = new Client_Model().getClient(reader.GetString(reader.GetOrdinal("IdentificacionCliente"))),
+                                Vehicle = new Vehicle_Model().getVehicle(reader.GetString(reader.GetOrdinal("PlacaVehiculo"))),
+                                CurrentMileage = reader.GetInt32(reader.GetOrdinal("KilometrajeActual")),
+                                Amount = reader.GetDecimal(reader.GetOrdinal("Monto")),
+                                State = reader.GetInt16(reader.GetOrdinal("Estado")),
+                                workOrderLines = new WorkOrderLine_Model().LoadWorkOrderLines(reader.GetInt32(reader.GetOrdinal("Identificacion"))),
+                                Observations = new Observation_Model().LoadObservations(reader.GetInt32(reader.GetOrdinal("Identificacion")))
+                            };
+                            return workOrder;
+                        }
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Console.WriteLine($"Error loading work order: {ex.Message}");
+                // Optionally rethrow or handle it as needed
+                // throw;
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
 
@@ -58,36 +125,57 @@ namespace LubriTech.Model.WorkOrder_Information
         public List<WorkOrder> loadWorkOrdersFromClient(string clientId)
         {
             List<WorkOrder> workOrders = new List<WorkOrder>();
+            string selectQuery = @"
+        SELECT ot.Identificacion, ot.Fecha, ot.IdentificacionSucursal, ot.IdentificacionCliente, 
+               ot.PlacaVehiculo, ot.KilometrajeActual, ot.Monto, ot.Estado
+        FROM OrdenTrabajo ot
+        WHERE ot.IdentificacionCliente = @clientId";
+
+            SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
+
             try
             {
                 conn.Open();
-                String selectQuery = "SELECT * FROM OrdenTrabajo WHERE IdentificacionCliente = @clientId";
-                SqlCommand cmd = new SqlCommand(selectQuery, conn);
-                cmd.Parameters.AddWithValue("@clientId", clientId);
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
+                using (SqlCommand cmd = new SqlCommand(selectQuery, conn))
                 {
-                    WorkOrder workOrder = new WorkOrder();
-                    workOrder.Id = reader.GetInt32(0);
-                    workOrder.Date = reader.GetDateTime(1);
-                    workOrder.Branch = new Branch_Model().GetBranch(reader.GetInt32(2));
-                    workOrder.Client = new Client_Model().getClient(reader.GetString(3));
-                    workOrder.Vehicle = new Vehicle_Model().getVehicle(reader.GetString(4));
-                    workOrder.CurrentMileage = reader.GetInt32(5);
-                    workOrder.Amount = reader.GetDecimal(6);
-                    workOrder.State = reader.GetInt16(7);
-                    workOrders.Add(workOrder);
+                    cmd.Parameters.AddWithValue("@clientId", clientId);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            WorkOrder workOrder = new WorkOrder
+                            {
+                                Id = reader.GetInt32(reader.GetOrdinal("Identificacion")),
+                                Date = reader.GetDateTime(reader.GetOrdinal("Fecha")),
+                                Branch = new Branch_Model().GetBranch(reader.GetInt32(reader.GetOrdinal("IdentificacionSucursal"))),
+                                Client = new Client_Model().getClient(reader.GetString(reader.GetOrdinal("IdentificacionCliente"))),
+                                Vehicle = new Vehicle_Model().getVehicle(reader.GetString(reader.GetOrdinal("PlacaVehiculo"))),
+                                CurrentMileage = reader.GetInt32(reader.GetOrdinal("KilometrajeActual")),
+                                Amount = reader.GetDecimal(reader.GetOrdinal("Monto")),
+                                State = reader.GetInt16(reader.GetOrdinal("Estado")),
+                                workOrderLines = new WorkOrderLine_Model().LoadWorkOrderLines(reader.GetInt32(reader.GetOrdinal("Identificacion"))),
+                                Observations = new Observation_Model().LoadObservations(reader.GetInt32(reader.GetOrdinal("Identificacion")))
+                            };
+
+                            workOrders.Add(workOrder);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
+                // Log the exception
+                Console.WriteLine($"Error loading work orders: {ex.Message}");
+                // Optionally rethrow or handle it as needed
+                // throw;
                 return null;
             }
             finally
             {
                 conn.Close();
             }
+
             return workOrders;
         }
     }

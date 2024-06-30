@@ -17,13 +17,9 @@ namespace LubriTech.View
     {
         Supplier_Controller sc = new Supplier_Controller();
         Supplier supplier;
-        public frmInsertUpdateSupplier(Supplier supplier, int type)
+        public frmInsertUpdateSupplier(Supplier supplier)
         {
             InitializeComponent();
-            if (type == 0)
-            {
-               btnConfirm.Visible = false;
-            }
 
             txtId.Enabled = false;
 
@@ -101,7 +97,8 @@ namespace LubriTech.View
                     id = txtId.Text,
                     name = txtName.Text,
                     email = txtEmail.Text,
-                    phone = phone
+                    phone = phone,
+                    state = "Activo"
                 };
 
                 // Assuming sc is an instance of a class that handles database operations

@@ -15,37 +15,53 @@ namespace LubriTech.Model.WorkOrder_Information
         SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
 
         //load all observations from a work order
-        public List<Observation> loadObservations(int workOrderId)
+        public List<Observation> LoadObservations(int workOrderId)
         {
             List<Observation> observations = new List<Observation>();
+            string selectQuery = "SELECT CodigoObservacion, IdentificacionOrdenTrabajo, Descripcion FROM Observacion WHERE IdentificacionOrdenTrabajo = @workOrderId";
+
+            SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
+
             try
             {
                 conn.Open();
-                String selectQuery = "SELECT * FROM Observacion WHERE IdentificacionOrdenTrabajo = @workOrderId";
-                SqlCommand cmd = new SqlCommand(selectQuery, conn);
-                cmd.Parameters.AddWithValue("@workOrderId", workOrderId);
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
+                using (SqlCommand cmd = new SqlCommand(selectQuery, conn))
                 {
-                    Observation observation = new Observation();
-                    observation.Codigo = reader.GetInt32(0);
-                    observation.WorkOrderId = reader.GetInt32(1);
-                    observation.Description = reader.GetString(2);
-                    observation.Photos = reader.GetString(3).Split(',').ToList();
-                    observations.Add(observation);
+                    cmd.Parameters.AddWithValue("@workOrderId", workOrderId);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Observation observation = new Observation
+                            {
+                                Code = reader.GetInt32(reader.GetOrdinal("CodigoObservacion")),
+                                WorkOrderId = reader.GetInt32(reader.GetOrdinal("IdentificacionOrdenTrabajo")),
+                                Description = reader.IsDBNull(reader.GetOrdinal("Descripcion")) ? null : reader.GetString(reader.GetOrdinal("Descripcion")),
+                                Photos = new ObservationPhotos_Model().LoadObservationPhotos(reader.GetInt32(reader.GetOrdinal("CodigoObservacion")))
+                            };
+
+                            observations.Add(observation);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
+                // Log the exception
+                Console.WriteLine($"Error loading observations: {ex.Message}");
+                // Optionally rethrow or handle it as needed
+                // throw;
                 return null;
             }
             finally
             {
                 conn.Close();
             }
+
             return observations;
         }
+
 
         /// <summary>
         /// Inserta o actualiza una observación en la base de datos.
@@ -59,7 +75,7 @@ namespace LubriTech.Model.WorkOrder_Information
                 conn.Open();
                 String selectQuery = "SELECT * FROM Observacion where CodigoObservacion = @id";
                 SqlCommand cmd = new SqlCommand(selectQuery, conn);
-                cmd.Parameters.AddWithValue("@id", observation.Codigo);
+                cmd.Parameters.AddWithValue("@id", observation.Code);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.Read())
@@ -70,7 +86,7 @@ namespace LubriTech.Model.WorkOrder_Information
                     SqlCommand cmd2 = new SqlCommand(updateQuery, conn);
                     cmd2.Parameters.AddWithValue("@description", observation.Description);
                     cmd2.Parameters.AddWithValue("@photos", observation.Photos);
-                    cmd2.Parameters.AddWithValue("@id", observation.Codigo);
+                    cmd2.Parameters.AddWithValue("@id", observation.Code);
                     cmd2.ExecuteNonQuery();
                 }
                 else

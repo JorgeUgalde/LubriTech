@@ -28,10 +28,7 @@ namespace LubriTech.View
         // **************************************** Filtrado inicio  ***************************************************//
 
         // ************************* crear lista de lo que hacen, en mi caso la linea 18 tiene la lista de productos global
-        private void frmItems_Load(object sender, EventArgs e)
-        {
-            txtFilter.TextChanged += new EventHandler(txtFilter_TextChanged);
-        }
+
 
         private void load_Items(List<Item> filteredList)
         {

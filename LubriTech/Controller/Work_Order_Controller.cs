@@ -1,6 +1,7 @@
 ﻿using LubriTech.Model.WorkOrder_Information;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,14 +33,9 @@ namespace LubriTech.Controller
             return new WorkOrder_Model().loadWorkOrdersFromClient(clientId);
         }
 
-        /// <summary>
-        /// Retrieves all the lines related to an specific work order.
-        /// </summary>
-        /// <param name="workOrderId">Work order identification.</param>
-        /// <returns>A list of all lines related to the specified work order.</returns>
-        public List<WorkOrderLine> loadWorkOrderLines(int workOrderId)
+        public List<WorkOrderLine> loadWorkOrderLines(int? workOrderId)
         {
-            return new WorkOrderLine_Model().loadWorkOrderLines(workOrderId);
+            return new WorkOrderLine_Model().LoadWorkOrderLines(workOrderId);
         }
 
         /// <summary>
@@ -49,17 +45,17 @@ namespace LubriTech.Controller
         /// <returns>A list of all observations related to the specified work order.</returns>
         public List<Observation> loadObservationsFromWorkOrder(int workOrderId)
         {
-            return new Observation_Model().loadObservations(workOrderId);
+            return new Observation_Model().LoadObservations(workOrderId);
         }
 
-        /// <summary>
-        /// Inserts or updates a work order line in the database.
-        /// </summary>
-        /// <param name="workOrderLine">Work order line identification.</param>
-        /// <returns>True if the operation was succesful, otherwise, false.</returns>
-        public bool upsertWorkOrderLine(WorkOrderLine workOrderLine)
+        public bool upsertWorkOrderLine(DataRow row)
         {
-            return new WorkOrderLine_Model().upsertWorkOrderLine(workOrderLine);
+            return new WorkOrderLine_Model().UpsertWorkOrderLine(row);
+        }
+
+        public WorkOrder LoadWorkOrder(int workOrderId)
+        {
+            return new WorkOrder_Model().loadWorkOrder(workOrderId);
         }
     }
 }

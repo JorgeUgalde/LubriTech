@@ -273,7 +273,6 @@ namespace LubriTech.View
             this.Name = "frmClients";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
-            this.Load += new System.EventHandler(this.frmClients_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).EndInit();
             this.panelControlBox.ResumeLayout(false);
             this.panelControlBox.PerformLayout();
