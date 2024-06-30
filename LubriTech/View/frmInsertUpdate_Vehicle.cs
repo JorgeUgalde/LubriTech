@@ -113,14 +113,14 @@ namespace LubriTech.View
                 Vehicle_Controller vehicleController = new Vehicle_Controller();
                 
                 Vehicle vehicle = new Vehicle();
-                vehicle.Client = vehicleController.getClient(tbClientId.Text.Trim());
-                vehicle.Model = vehicleController.getModel(Convert.ToInt32(cbModel.SelectedValue.ToString()));
-                vehicle.Model.Make = vehicleController.getMake(Convert.ToInt32(cbMake.SelectedValue.ToString()));
+                vehicle.Client = new Clients_Controller().getClient(tbClientId.Text.Trim());
+                vehicle.Model = new CarModel_Controller().getModel(Convert.ToInt32(cbModel.SelectedValue.ToString()));
+                vehicle.Model.Make = new Make_Controller().getMake(Convert.ToInt32(cbMake.SelectedValue.ToString()));
                 vehicle.LicensePlate = tbLicensePlate.Text.Trim();
                 vehicle.Year = Convert.ToInt32(tbYear.Text.Trim());
                 vehicle.Mileage = Convert.ToInt32(tbMileage.Text.Trim());
-                vehicle.EngineType = vehicleController.getEngine(Convert.ToInt32(cbEngine.SelectedValue.ToString()));
-                vehicle.TransmissionType = vehicleController.getTransmission(Convert.ToInt32(cbTransmission.SelectedValue.ToString()));
+                vehicle.EngineType = new Engine_Controller().getEngine(Convert.ToInt32(cbEngine.SelectedValue.ToString()));
+                vehicle.TransmissionType = new Transmission_Controller().getTransmission(Convert.ToInt32(cbTransmission.SelectedValue.ToString()));
                 vehicle.State = "Activo";
 
                 if (vehicleController.upsert(vehicle))

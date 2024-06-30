@@ -50,14 +50,13 @@ namespace LubriTech.View
             this.btnSelectClient = new System.Windows.Forms.Button();
             this.panelControlBox = new System.Windows.Forms.Panel();
             this.lblForm = new System.Windows.Forms.Label();
-            this.pbMinimize = new System.Windows.Forms.PictureBox();
-            this.pbMaximize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.panelBorder = new System.Windows.Forms.Panel();
+            this.cbState = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panelControlBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
+            this.panelBorder.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblClientId
@@ -150,7 +149,7 @@ namespace LubriTech.View
             this.tbClientName.MaxLength = 150;
             this.tbClientName.Name = "tbClientName";
             this.tbClientName.Size = new System.Drawing.Size(205, 29);
-            this.tbClientName.TabIndex = 8;
+            this.tbClientName.TabIndex = 4;
             // 
             // tbMileage
             // 
@@ -159,7 +158,7 @@ namespace LubriTech.View
             this.tbMileage.MaxLength = 6;
             this.tbMileage.Name = "tbMileage";
             this.tbMileage.Size = new System.Drawing.Size(205, 29);
-            this.tbMileage.TabIndex = 9;
+            this.tbMileage.TabIndex = 2;
             this.tbMileage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNumeric_KeyPress);
             // 
             // tbLicensePlate
@@ -169,7 +168,7 @@ namespace LubriTech.View
             this.tbLicensePlate.MaxLength = 6;
             this.tbLicensePlate.Name = "tbLicensePlate";
             this.tbLicensePlate.Size = new System.Drawing.Size(205, 29);
-            this.tbLicensePlate.TabIndex = 10;
+            this.tbLicensePlate.TabIndex = 1;
             this.tbLicensePlate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNumeric_KeyPress);
             // 
             // tbYear
@@ -179,7 +178,7 @@ namespace LubriTech.View
             this.tbYear.MaxLength = 4;
             this.tbYear.Name = "tbYear";
             this.tbYear.Size = new System.Drawing.Size(205, 29);
-            this.tbYear.TabIndex = 13;
+            this.tbYear.TabIndex = 3;
             this.tbYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNumeric_KeyPress);
             // 
             // cbTransmission
@@ -193,7 +192,7 @@ namespace LubriTech.View
             this.cbTransmission.Location = new System.Drawing.Point(559, 155);
             this.cbTransmission.Name = "cbTransmission";
             this.cbTransmission.Size = new System.Drawing.Size(205, 29);
-            this.cbTransmission.TabIndex = 15;
+            this.cbTransmission.TabIndex = 8;
             this.cbTransmission.Tag = "";
             // 
             // btnConfirm
@@ -207,7 +206,7 @@ namespace LubriTech.View
             this.btnConfirm.Location = new System.Drawing.Point(26, 326);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(141, 34);
-            this.btnConfirm.TabIndex = 3;
+            this.btnConfirm.TabIndex = 10;
             this.btnConfirm.Text = "Aceptar";
             this.btnConfirm.UseVisualStyleBackColor = false;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
@@ -229,7 +228,7 @@ namespace LubriTech.View
             this.cbMake.Location = new System.Drawing.Point(559, 65);
             this.cbMake.Name = "cbMake";
             this.cbMake.Size = new System.Drawing.Size(205, 29);
-            this.cbMake.TabIndex = 21;
+            this.cbMake.TabIndex = 6;
             this.cbMake.Tag = "";
             this.cbMake.SelectedValueChanged += new System.EventHandler(this.cbMake_SelectedValueChanged);
             // 
@@ -241,7 +240,7 @@ namespace LubriTech.View
             this.cbModel.Location = new System.Drawing.Point(559, 110);
             this.cbModel.Name = "cbModel";
             this.cbModel.Size = new System.Drawing.Size(205, 29);
-            this.cbModel.TabIndex = 22;
+            this.cbModel.TabIndex = 7;
             this.cbModel.Tag = "";
             // 
             // btnClose
@@ -255,7 +254,7 @@ namespace LubriTech.View
             this.btnClose.Location = new System.Drawing.Point(623, 326);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(141, 34);
-            this.btnClose.TabIndex = 23;
+            this.btnClose.TabIndex = 11;
             this.btnClose.Text = "Cancelar";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -271,7 +270,7 @@ namespace LubriTech.View
             this.cbEngine.Location = new System.Drawing.Point(559, 197);
             this.cbEngine.Name = "cbEngine";
             this.cbEngine.Size = new System.Drawing.Size(205, 29);
-            this.cbEngine.TabIndex = 25;
+            this.cbEngine.TabIndex = 9;
             this.cbEngine.Tag = "";
             // 
             // btnSelectClient
@@ -286,7 +285,7 @@ namespace LubriTech.View
             this.btnSelectClient.Location = new System.Drawing.Point(365, 197);
             this.btnSelectClient.Name = "btnSelectClient";
             this.btnSelectClient.Size = new System.Drawing.Size(32, 29);
-            this.btnSelectClient.TabIndex = 24;
+            this.btnSelectClient.TabIndex = 5;
             this.btnSelectClient.UseVisualStyleBackColor = false;
             this.btnSelectClient.Click += new System.EventHandler(this.btnSelectClient_Click);
             // 
@@ -294,8 +293,6 @@ namespace LubriTech.View
             // 
             this.panelControlBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
             this.panelControlBox.Controls.Add(this.lblForm);
-            this.panelControlBox.Controls.Add(this.pbMinimize);
-            this.panelControlBox.Controls.Add(this.pbMaximize);
             this.panelControlBox.Controls.Add(this.pbClose);
             this.panelControlBox.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panelControlBox.Dock = System.Windows.Forms.DockStyle.Top;
@@ -316,29 +313,6 @@ namespace LubriTech.View
             this.lblForm.TabIndex = 10;
             this.lblForm.Text = "Dato Maestro Vehículos";
             // 
-            // pbMinimize
-            // 
-            this.pbMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMinimize.Image = global::LubriTech.Properties.Resources.minimizeIco;
-            this.pbMinimize.Location = new System.Drawing.Point(691, 6);
-            this.pbMinimize.Name = "pbMinimize";
-            this.pbMinimize.Size = new System.Drawing.Size(23, 30);
-            this.pbMinimize.TabIndex = 9;
-            this.pbMinimize.TabStop = false;
-            // 
-            // pbMaximize
-            // 
-            this.pbMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMaximize.Image = global::LubriTech.Properties.Resources.maximize;
-            this.pbMaximize.Location = new System.Drawing.Point(720, 6);
-            this.pbMaximize.Name = "pbMaximize";
-            this.pbMaximize.Size = new System.Drawing.Size(30, 30);
-            this.pbMaximize.TabIndex = 8;
-            this.pbMaximize.TabStop = false;
-            this.pbMaximize.Click += new System.EventHandler(this.pbMaximize_Click);
-            // 
             // pbClose
             // 
             this.pbClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -354,11 +328,38 @@ namespace LubriTech.View
             // panelBorder
             // 
             this.panelBorder.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelBorder.Controls.Add(this.cbState);
+            this.panelBorder.Controls.Add(this.label3);
             this.panelBorder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBorder.Location = new System.Drawing.Point(0, 0);
             this.panelBorder.Name = "panelBorder";
             this.panelBorder.Size = new System.Drawing.Size(789, 386);
             this.panelBorder.TabIndex = 27;
+            // 
+            // cbState
+            // 
+            this.cbState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbState.FormattingEnabled = true;
+            this.cbState.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.cbState.Location = new System.Drawing.Point(557, 240);
+            this.cbState.Margin = new System.Windows.Forms.Padding(4);
+            this.cbState.Name = "cbState";
+            this.cbState.Size = new System.Drawing.Size(205, 29);
+            this.cbState.TabIndex = 47;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(429, 243);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 21);
+            this.label3.TabIndex = 46;
+            this.label3.Text = "Estado";
             // 
             // frmInsertUpdate_Vehicle
             // 
@@ -395,9 +396,9 @@ namespace LubriTech.View
             this.Text = "Dato Maestro Vehículo";
             this.panelControlBox.ResumeLayout(false);
             this.panelControlBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
+            this.panelBorder.ResumeLayout(false);
+            this.panelBorder.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -426,9 +427,9 @@ namespace LubriTech.View
         private System.Windows.Forms.ComboBox cbEngine;
         private System.Windows.Forms.Panel panelControlBox;
         private System.Windows.Forms.Label lblForm;
-        private System.Windows.Forms.PictureBox pbMinimize;
-        private System.Windows.Forms.PictureBox pbMaximize;
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.Panel panelBorder;
+        private System.Windows.Forms.ComboBox cbState;
+        private System.Windows.Forms.Label label3;
     }
 }

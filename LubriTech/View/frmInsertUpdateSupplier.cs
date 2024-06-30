@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -17,13 +18,9 @@ namespace LubriTech.View
     {
         Supplier_Controller sc = new Supplier_Controller();
         Supplier supplier;
-        public frmInsertUpdateSupplier(Supplier supplier, int type)
+        public frmInsertUpdateSupplier(Supplier supplier)
         {
             InitializeComponent();
-            if (type == 0)
-            {
-               btnConfirm.Visible = false;
-            }
 
             txtId.Enabled = false;
 
@@ -101,7 +98,8 @@ namespace LubriTech.View
                     id = txtId.Text,
                     name = txtName.Text,
                     email = txtEmail.Text,
-                    phone = phone
+                    phone = phone,
+                    state = "Activo"
                 };
 
                 // Assuming sc is an instance of a class that handles database operations
@@ -155,6 +153,23 @@ namespace LubriTech.View
         private void btnConfirm_Click_1(object sender, EventArgs e)
         {
             ValidateAndSubmit();
+        }
+
+        private void pbClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        private void panelBorder_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }

@@ -29,14 +29,17 @@ namespace LubriTech.Model.Branch_Information
         /// <summary>
         /// Número de teléfono de la sucursal.
         /// </summary>
-        public string Phone { get; set; }
+        public Int64 Phone { get; set; }
 
         /// <summary>
         /// Correo electrónico de contacto de la sucursal.
         /// </summary>
         public string Email { get; set; }
 
-        public short State { get; set; }
+        /// <summary>
+        /// Estado de la sucursal.
+        /// </summary>
+        public string State { get; set; }
 
         /// <summary>
         /// Constructor por defecto de la clase Branch.
@@ -51,7 +54,7 @@ namespace LubriTech.Model.Branch_Information
         /// <param name="address">Dirección física de la sucursal.</param>
         /// <param name="phone">Número de teléfono de la sucursal.</param>
         /// <param name="email">Correo electrónico de contacto de la sucursal.</param>
-        public Branch(int id, string name, string address, string phone, string email, short state)
+        public Branch(int id, string name, string address, Int64 phone, string email, string state)
         {
             this.Id = id;
             this.Name = name;

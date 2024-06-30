@@ -46,11 +46,6 @@ namespace LubriTech.View
             
         }
 
-        private void frmClients_Load(object sender, EventArgs e)
-        {
-            txtFilter.TextChanged += new EventHandler(txtFilter_TextChanged);
-        }
-
         
         private void load_Clients(List<Client> filteredList)
         {

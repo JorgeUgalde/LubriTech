@@ -90,6 +90,7 @@
     <Compile Include="Controller\Supplier_Controller.cs" />
     <Compile Include="Controller\User_Controller.cs" />
     <Compile Include="Controller\CarModel_Controller.cs" />
+    <Compile Include="Controller\InventoryManagment_Controller.cs" />
     <Compile Include="Controller\Vehicle_Controller.cs" />
     <Compile Include="Controller\Work_Order_Controller.cs" />
     <Compile Include="Model\Appointment_Information\Appointment.cs" />
@@ -98,6 +99,8 @@
     <Compile Include="Model\Branch_Information\Branch_Model.cs" />
     <Compile Include="Model\Client_Information\Client.cs" />
     <Compile Include="Model\Client_Information\Client_Model.cs" />
+    <Compile Include="Model\InventoryManagment_Information\InventoryManagment.cs" />
+    <Compile Include="Model\InventoryManagment_Information\InventoryManagment_Model.cs" />
     <Compile Include="Model\Item_Information\Item.cs" />
     <Compile Include="Model\Item_Information\Item_Model.cs" />
     <Compile Include="Model\Supplier_Information\Supplier.cs" />
@@ -146,6 +149,12 @@
     <Compile Include="View\frmEngine.Designer.cs">
       <DependentUpon>frmEngine.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmInsertUpdate_Branch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmInsertUpdate_Branch.Designer.cs">
+      <DependentUpon>frmInsertUpdate_Branch.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmInsertUpdate_CarModel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +191,12 @@
     <Compile Include="View\frmInsertUpdate_Engine.Designer.cs">
       <DependentUpon>frmInsertUpdate_Engine.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmInsertUpdate_InventoryManagment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmInsertUpdate_InventoryManagment.Designer.cs">
+      <DependentUpon>frmInsertUpdate_InventoryManagment.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmInsertUpdate_Item.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +208,12 @@
     </Compile>
     <Compile Include="View\frmInsertUpdate_Transmission.Designer.cs">
       <DependentUpon>frmInsertUpdate_Transmission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmInventoryManagment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmInventoryManagment.Designer.cs">
+      <DependentUpon>frmInventoryManagment.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmItems.cs">
       <SubType>Form</SubType>
@@ -305,6 +326,9 @@
     <EmbeddedResource Include="View\frmEngine.resx">
       <DependentUpon>frmEngine.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\frmInsertUpdate_Branch.resx">
+      <DependentUpon>frmInsertUpdate_Branch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmInsertUpdate_CarModel.resx">
       <DependentUpon>frmInsertUpdate_CarModel.cs</DependentUpon>
     </EmbeddedResource>
@@ -320,6 +344,9 @@
     <EmbeddedResource Include="View\frmInsertUpdate_Engine.resx">
       <DependentUpon>frmInsertUpdate_Engine.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\frmInsertUpdate_InventoryManagment.resx">
+      <DependentUpon>frmInsertUpdate_InventoryManagment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmInsertUpdate_Item.resx">
       <DependentUpon>frmInsertUpdate_Item.cs</DependentUpon>
     </EmbeddedResource>
@@ -334,6 +361,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmInsertUpdate_Vehicle.resx">
       <DependentUpon>frmInsertUpdate_Vehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmInventoryManagment.resx">
+      <DependentUpon>frmInventoryManagment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmItems.resx">
       <DependentUpon>frmItems.cs</DependentUpon>

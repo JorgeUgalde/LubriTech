@@ -44,6 +44,11 @@ namespace LubriTech.Controller
             return new Client_Model().getClient(Id);
         }
 
+        public Client getClient (string Id)
+        {
+            return new Client_Model().getClient(Id);
+        }
+
         /// <summary>
         /// Retrieves all vehicles belonging to a client.
         /// </summary>

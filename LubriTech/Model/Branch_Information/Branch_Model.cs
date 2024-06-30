@@ -25,15 +25,25 @@ namespace LubriTech.Model.Branch_Information
             {
                 List<Branch> branches = new List<Branch>();
 
-                conn.Open();
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+                }
                 String selectQuery = "SELECT * FROM Sucursal";
                 SqlCommand cmd = new SqlCommand(selectQuery, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
-                {
-                    branches.Add(new Branch((int)reader["Identificacion"], reader["NombreSucursal"].ToString(), reader["Direccion"].ToString(),
-                                               reader["Correo"].ToString(), reader["Telefono"].ToString(), (short)reader["Estado"]));
+                    //public Branch(int id, string name, string address, int phone, string email, string state)
+
+                    {
+                    branches.Add(new Branch(
+                        Convert.ToInt32(reader["Identificacion"]),
+                        reader["NombreSucursal"].ToString(),
+                        reader["Direccion"].ToString(),
+                        Convert.ToInt64(reader["NumeroTelefono"]),
+                        reader["Correo"].ToString(),
+                        Convert.ToInt32(reader ["Estado"]) == 1 ? "Activo" : "Inactivo"));
                 }
                 return branches;
             }
@@ -56,16 +66,26 @@ namespace LubriTech.Model.Branch_Information
         {
             try
             {
-                conn.Open();
                 String selectQuery = "SELECT * FROM Sucursal WHERE Identificacion = @id";
                 SqlCommand cmd = new SqlCommand(selectQuery, conn);
                 cmd.Parameters.AddWithValue("@id", id);
-                SqlDataReader reader = cmd.ExecuteReader();
+
+
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                SqlDataReader reader = cmd.ExecuteReader();              
 
                 if (reader.Read())
                 {
-                    return new Branch((int)reader["Identificacion"], reader["NombreSucursal"].ToString(), reader["Direccion"].ToString(),
-                                                             reader["Correo"].ToString(), reader["NumeroTelefono"].ToString(), (short)reader["Estado"]);
+                    return new Branch(
+                        Convert.ToInt32(reader["Identificacion"]),
+                        reader["NombreSucursal"].ToString(),
+                        reader["Direccion"].ToString(),
+                        Convert.ToInt64(reader["NumeroTelefono"]),
+                        reader["Correo"].ToString(),
+                        Convert.ToInt32(reader ["Estado"]) == 1 ? "Activo" : "Inactivo");
                 }
                 return null;
             }
@@ -88,20 +108,25 @@ namespace LubriTech.Model.Branch_Information
         {
             try
             {
-                conn.Open();
-                String query = "INSERT INTO Sucursal (Nombre, Direccion, Telefono, Correo) VALUES (@name, @address, @phone, @email)";
-                if (branch.Id != 0)
+               
+                String query = "INSERT INTO Sucursal (NombreSucursal, Direccion, NumeroTelefono, Correo, Estado) VALUES (@name, @address, @phone, @email, @state)";
+                
+                if (GetBranch(branch.Id) != null)
                 {
-                    query = "UPDATE Sucursal SET Nombre = @name, Direccion = @address, Telefono = @phone, Correo = @email WHERE Identificacion = @id";
+                    query = "UPDATE Sucursal SET NombreSucursal = @name, Direccion = @address, NumeroTelefono = @phone, Correo = @email , Estado = @state WHERE Identificacion = @id";
                 }
+
                 SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@id", branch.Id);
                 cmd.Parameters.AddWithValue("@name", branch.Name);
                 cmd.Parameters.AddWithValue("@address", branch.Address);
                 cmd.Parameters.AddWithValue("@phone", branch.Phone);
                 cmd.Parameters.AddWithValue("@email", branch.Email);
-                if (branch.Id != 0)
+                cmd.Parameters.AddWithValue("@state", branch.State.Equals("Activo") ? 1: 0 );
+
+                if (conn.State != System.Data.ConnectionState.Open)
                 {
-                    cmd.Parameters.AddWithValue("@id", branch.Id);
+                    conn.Open();
                 }
                 cmd.ExecuteNonQuery();
                 return true;

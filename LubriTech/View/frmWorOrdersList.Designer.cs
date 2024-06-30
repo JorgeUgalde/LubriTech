@@ -117,7 +117,6 @@
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.Name = "frmWorOrdersList";
-            this.Text = "Órdenes de trabajo";
             this.Load += new System.EventHandler(this.frmWorOrdersList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

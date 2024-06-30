@@ -25,12 +25,12 @@ namespace LubriTech.Model.Client_Information
         /// <summary>
         /// Número de teléfono principal del cliente.
         /// </summary>
-        public int? MainPhoneNum { get; set; }
+        public Int64? MainPhoneNum { get; set; }
 
         /// <summary>
         /// Número de teléfono adicional del cliente.
         /// </summary>
-        public int? AdditionalPhoneNum { get; set; }
+        public Int64? AdditionalPhoneNum { get; set; }
 
         /// <summary>
         /// Correo electrónico del cliente.
@@ -63,7 +63,7 @@ namespace LubriTech.Model.Client_Information
         /// <param name="address">Dirección del cliente.</param>
         /// <param name="vehicle">Lista de vehículos asociados al cliente.</param>
         /// <param name="state">Estado del cliente (activo o inactivo).</param>
-        public Client(string id, string fullName, int? mainPhoneNum, int? additionalPhoneNum, string email, string address, List<Vehicle> vehicle, string state)
+        public Client(string id, string fullName, Int64? mainPhoneNum, Int64? additionalPhoneNum, string email, string address, List<Vehicle> vehicle, string state)
         {
             Id = id;
             FullName = fullName;
@@ -85,7 +85,7 @@ namespace LubriTech.Model.Client_Information
         /// <param name="email">Correo electrónico del cliente.</param>
         /// <param name="address">Dirección del cliente.</param>
         /// <param name="state">Estado del cliente (activo o inactivo).</param>
-        public Client(string id, string fullName, int? mainPhoneNum, int? additionalPhoneNum, string email, string address, string state)
+        public Client(string id, string fullName, Int64? mainPhoneNum, Int64? additionalPhoneNum, string email, string address, string state)
         {
             Id = id;
             FullName = fullName;

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LubriTech.Model.Supplier_Information;
 using LubriTech.Model.Item_Information;
-using LubriTech.Model.Client_Information;
+using System.Runtime.InteropServices;
 
 namespace LubriTech.View
 {
@@ -41,10 +41,7 @@ namespace LubriTech.View
         // **************************************** Filtrado inicio  ***************************************************//
 
         // ************************* crear lista de lo que hacen, en mi caso la linea 18 tiene la lista de productos global
-        private void frmItems_Load(object sender, EventArgs e)
-        {
-            txtFilter.TextChanged += new EventHandler(txtFilter_TextChanged);
-        }
+
 
         private void load_Items(List<Item> filteredList)
         {
@@ -200,31 +197,33 @@ namespace LubriTech.View
             this.Close();
         }
 
-        private void dgvItems_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void pbMaximize_Click(object sender, EventArgs e)
         {
-            if(e.RowIndex >= 0)
+            if (this.WindowState == FormWindowState.Normal)
             {
-                string itemCode = dgvItems.Rows[e.RowIndex].Cells["code"].Value.ToString();
-                Item selectedItem = new Item_Controller().get(itemCode);
-
-                if(selectedItem != null)
-                {
-                    if (parentForm is frmWorkOrder)
-                    {
-                        ((frmWorkOrder)parentForm).ShowItemInWorkOrder(selectedItem);
-                        this.Close();
-                    }
-                    else
-                    {
-                        frmInsertUpdate_Item frmUpsert = new frmInsertUpdate_Item(selectedItem, 0);
-                        frmUpsert.MdiParent = this.MdiParent;
-                        frmUpsert.DataChanged += ChildFormDataChangedHandler;
-                        frmUpsert.Show();
-                        load_Items(null);
-                    }
-                }
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
             }
         }
 
+        private void pbClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        private void panelBorder_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
     }
 }
