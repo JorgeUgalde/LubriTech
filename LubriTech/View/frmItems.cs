@@ -10,17 +10,30 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LubriTech.Model.Supplier_Information;
 using LubriTech.Model.Item_Information;
+using LubriTech.Model.Client_Information;
 
 namespace LubriTech.View
 {
     public partial class frmItems : Form
     {
         private List<Item> items;
+        private Form parentForm;
+
+        public event Action<Item> ItemSelected;
 
         public frmItems()
         {
             InitializeComponent();
             items = new List<Item>();
+            SetupDataGridView();
+            load_Items(null);
+        }
+
+        public frmItems(Form parentForm)
+        {
+            items = new List<Item>();
+            this.parentForm = parentForm;
+            InitializeComponent();
             SetupDataGridView();
             load_Items(null);
         }
@@ -43,7 +56,6 @@ namespace LubriTech.View
                     {
                         code = p.code,
                         name = p.name,
-                        sellPrice = p.sellPrice,
                         measureUnit = p.measureUnit,
                         state = p.state,
                         type = p.type
@@ -56,7 +68,6 @@ namespace LubriTech.View
                     {
                         code = p.code,
                         name = p.name,
-                        sellPrice = p.sellPrice,
                         measureUnit = p.measureUnit,
                         state = p.state,
                         type = p.type
@@ -72,7 +83,6 @@ namespace LubriTech.View
                 {
                     code = p.code,
                     name = p.name,
-                    sellPrice = p.sellPrice,
                     measureUnit = p.measureUnit,
                     state = p.state,
                     type = p.type
@@ -82,7 +92,7 @@ namespace LubriTech.View
             }
             dgvItems.Columns["code"].HeaderText = "Código";
             dgvItems.Columns["name"].HeaderText = "Nombre";
-            dgvItems.Columns["sellPrice"].HeaderText = "Precio Venta";
+            //dgvItems.Columns["sellPrice"].HeaderText = "Precio Venta";
             dgvItems.Columns["measureUnit"].HeaderText = "Unidad Medida";
             dgvItems.Columns["state"].HeaderText = "Estado";
             dgvItems.Columns["type"].HeaderText = "Tipo";
@@ -93,12 +103,12 @@ namespace LubriTech.View
         {
             dgvItems.Columns["code"].DisplayIndex = 0;
             dgvItems.Columns["name"].DisplayIndex = 1;
-            dgvItems.Columns["sellPrice"].DisplayIndex = 2;
-            dgvItems.Columns["measureUnit"].DisplayIndex = 3;
-            dgvItems.Columns["state"].DisplayIndex = 4;
-            dgvItems.Columns["type"].DisplayIndex = 5;
-            dgvItems.Columns["ModifyImageColumn"].DisplayIndex = 6;
-            dgvItems.Columns["DetailImageColumn"].DisplayIndex = 7;
+            //dgvItems.Columns["sellPrice"].DisplayIndex = 2;
+            dgvItems.Columns["measureUnit"].DisplayIndex = 2;
+            dgvItems.Columns["state"].DisplayIndex = 3;
+            dgvItems.Columns["type"].DisplayIndex = 4;
+            dgvItems.Columns["ModifyImageColumn"].DisplayIndex = 5;
+            dgvItems.Columns["DetailImageColumn"].DisplayIndex = 6;
         }
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
@@ -189,5 +199,32 @@ namespace LubriTech.View
         {
             this.Close();
         }
+
+        private void dgvItems_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if(e.RowIndex >= 0)
+            {
+                string itemCode = dgvItems.Rows[e.RowIndex].Cells["code"].Value.ToString();
+                Item selectedItem = new Item_Controller().get(itemCode);
+
+                if(selectedItem != null)
+                {
+                    if (parentForm is frmWorkOrder)
+                    {
+                        ((frmWorkOrder)parentForm).ShowItemInWorkOrder(selectedItem);
+                        this.Close();
+                    }
+                    else
+                    {
+                        frmInsertUpdate_Item frmUpsert = new frmInsertUpdate_Item(selectedItem, 0);
+                        frmUpsert.MdiParent = this.MdiParent;
+                        frmUpsert.DataChanged += ChildFormDataChangedHandler;
+                        frmUpsert.Show();
+                        load_Items(null);
+                    }
+                }
+            }
+        }
+
     }
 }

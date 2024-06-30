@@ -70,6 +70,8 @@ namespace LubriTech.Model.WorkOrder_Information
                     {
                         // Llenar el DataTable con los datos del SqlDataReader
                         workOrderLinesTable.Load(reader);
+                        //workOrderLinesTable.Columns.Add("IsNewRow", typeof(bool));
+                        //workOrderLinesTable.Columns["IsNewRow"].DefaultValue = true;
                     }
                 }
             }
@@ -78,7 +80,7 @@ namespace LubriTech.Model.WorkOrder_Information
                 // Log the exception (use a logging framework or your own logging mechanism)
                 Console.WriteLine($"Error loading work order lines: {ex.Message}");
                 // Optionally, you might want to throw the exception again or handle it as needed
-                // throw;
+                throw;
             }
 
             return workOrderLinesTable;

@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -273,6 +273,12 @@
     </Compile>
     <Compile Include="View\frmWorOrdersList.Designer.cs">
       <DependentUpon>frmWorOrdersList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ItemCellEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ItemCellEditor.Designer.cs">
+      <DependentUpon>ItemCellEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="View\MDI_View.cs">
       <SubType>Form</SubType>

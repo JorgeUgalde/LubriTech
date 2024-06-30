@@ -23,11 +23,6 @@ namespace LubriTech.Model.Item_Information
         public string name { set; get; }
 
         /// <summary>
-        /// Precio de venta del artículo, es decir, el monto por el cuál se vende a clientes.
-        /// </summary>
-        public double sellPrice { set; get; }
-
-        /// <summary>
         /// Obtiene o establece la unidad de medida del artículo.
         /// </summary>
         public string measureUnit { set; get; }
@@ -76,11 +71,10 @@ namespace LubriTech.Model.Item_Information
         /// <param name="purchasePrice">El precio de compra del artículo.</param>
         /// <param name="type">El tipo del artículo (producto o servicio).</param>
         /// param name="recommendedServiceInterval">El recorrido recomendado para el artículo.</param>
-        public Item(string code, string name, double sellPrice, string measureUnit, string state, double stock, double purchasePrice, string type, double recommendedServiceInterval)
+        public Item(string code, string name, string measureUnit, string state, double stock, double purchasePrice, string type, double recommendedServiceInterval)
         {
             this.code = code;
             this.name = name;
-            this.sellPrice = sellPrice;
             this.measureUnit = measureUnit;
             this.state = state;
             this.stock = stock;

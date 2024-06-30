@@ -30,11 +30,48 @@ namespace LubriTech.View
             // Load all work orders
             List<WorkOrder> workOrders = new Work_Order_Controller().loadWorkOrders();
             dataGridView1.DataSource = workOrders;
+            dataGridView1.Columns["Branch"].Visible = false;
+            dataGridView1.Columns["CurrentMileage"].Visible = false;
+            dataGridView1.Columns["Amount"].Visible = false;
+            //change the value of the column State to show Active, Inactive, or Finished
+            dataGridView1.Columns["State"].DisplayIndex = 7;
+            dataGridView1.Columns["Id"].HeaderText = "Identificación";
+            dataGridView1.Columns["Date"].HeaderText = "Fecha";
+            dataGridView1.Columns["Client"].HeaderText = "Cliente";
+            dataGridView1.Columns["Vehicle"].HeaderText = " Placa Vehículo";
+            dataGridView1.Columns["Vehicle"].DefaultCellStyle.NullValue = "No asignado";
+            dataGridView1.Columns["State"].HeaderText = "Estado";
+            dataGridView1.Columns["State"].DefaultCellStyle.NullValue = "Activa";
+            dataGridView1.Columns["State"].DefaultCellStyle.Format = "Activa";
         }
 
         private void frmWorOrdersList_Load(object sender, EventArgs e)
         {
+            LoadWorkOrders();
+        }
 
+        private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                WorkOrder workOrder = (WorkOrder)row.DataBoundItem;
+                frmWorkOrder frmWorkOrderDetails = new frmWorkOrder(workOrder.Id);
+                frmWorkOrderDetails.MdiParent = this.MdiParent;
+                frmWorkOrderDetails.Show();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmWorkOrder frmWorkOrder = new frmWorkOrder(null);
+            frmWorkOrder.MdiParent = this.MdiParent;
+            frmWorkOrder.Show();
         }
     }
 }
