@@ -191,6 +191,12 @@
     <Compile Include="View\frmInsertUpdate_Engine.Designer.cs">
       <DependentUpon>frmInsertUpdate_Engine.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmInsertUpdate_InventoryManagment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmInsertUpdate_InventoryManagment.Designer.cs">
+      <DependentUpon>frmInsertUpdate_InventoryManagment.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmInsertUpdate_Item.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -331,6 +337,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmInsertUpdate_Engine.resx">
       <DependentUpon>frmInsertUpdate_Engine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmInsertUpdate_InventoryManagment.resx">
+      <DependentUpon>frmInsertUpdate_InventoryManagment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmInsertUpdate_Item.resx">
       <DependentUpon>frmInsertUpdate_Item.cs</DependentUpon>

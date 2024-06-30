@@ -119,7 +119,7 @@ namespace LubriTech.Model.Supplier_Information
         {
             try
             {
-                String insertQuery = "insert into Proveedor(Identificacion, Nombre, CorreoElectronico, NumeroTelefono) values (@id,@name,@email,@phone)";
+                String insertQuery = "insert into Proveedor(Identificacion, Nombre, CorreoElectronico, NumeroTelefono, Estado) values (@id,@name,@email,@phone, @state)";
 
                 SqlCommand insert = new SqlCommand(insertQuery, conn);
 

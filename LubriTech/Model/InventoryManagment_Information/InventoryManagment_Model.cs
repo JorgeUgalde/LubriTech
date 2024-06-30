@@ -186,7 +186,7 @@ namespace LubriTech.Model.InventoryManagment_Information
         {
             try
             {
-                string query = "INSERT INTO GestionInventario (FechaDocuento, IdentificacionProveedor, Estado, MontoTotal, IdentificacionSucursal, TipoDocumento) VALUES (@documentDate, @supplierId, @state, @totalAmount, @branchId, @documentType)";
+                string query = "INSERT INTO GestionInventario (FechaDocumento, IdentificacionProveedor, Estado, MontoTotal, IdentificacionSucursal, TipoDocumento) VALUES (@documentDate, @supplierId, @state, @totalAmount, @branchId, @documentType)";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@documentDate", inventoryManagment.DocumentDate);
                 cmd.Parameters.AddWithValue("@supplierId", inventoryManagment.getSupplierId());

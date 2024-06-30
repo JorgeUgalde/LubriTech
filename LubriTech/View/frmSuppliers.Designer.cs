@@ -96,7 +96,7 @@
             this.dgvSuppliers.RowTemplate.Height = 35;
             this.dgvSuppliers.Size = new System.Drawing.Size(1052, 240);
             this.dgvSuppliers.TabIndex = 3;
-            this.dgvSuppliers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSuppliers_CellContentClick_1);
+            this.dgvSuppliers.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvSuppliers_CellMouseDoubleClick);
             // 
             // btnClose
             // 
