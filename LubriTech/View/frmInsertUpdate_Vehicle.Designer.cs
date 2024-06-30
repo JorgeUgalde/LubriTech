@@ -54,10 +54,13 @@ namespace LubriTech.View
             this.pbMaximize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.panelBorder = new System.Windows.Forms.Panel();
+            this.cbState = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panelControlBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
+            this.panelBorder.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblClientId
@@ -354,11 +357,38 @@ namespace LubriTech.View
             // panelBorder
             // 
             this.panelBorder.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelBorder.Controls.Add(this.cbState);
+            this.panelBorder.Controls.Add(this.label3);
             this.panelBorder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBorder.Location = new System.Drawing.Point(0, 0);
             this.panelBorder.Name = "panelBorder";
             this.panelBorder.Size = new System.Drawing.Size(789, 386);
             this.panelBorder.TabIndex = 27;
+            // 
+            // cbState
+            // 
+            this.cbState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbState.FormattingEnabled = true;
+            this.cbState.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.cbState.Location = new System.Drawing.Point(557, 240);
+            this.cbState.Margin = new System.Windows.Forms.Padding(4);
+            this.cbState.Name = "cbState";
+            this.cbState.Size = new System.Drawing.Size(205, 29);
+            this.cbState.TabIndex = 47;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(429, 243);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 21);
+            this.label3.TabIndex = 46;
+            this.label3.Text = "Estado";
             // 
             // frmInsertUpdate_Vehicle
             // 
@@ -398,6 +428,8 @@ namespace LubriTech.View
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
+            this.panelBorder.ResumeLayout(false);
+            this.panelBorder.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -430,5 +462,7 @@ namespace LubriTech.View
         private System.Windows.Forms.PictureBox pbMaximize;
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.Panel panelBorder;
+        private System.Windows.Forms.ComboBox cbState;
+        private System.Windows.Forms.Label label3;
     }
 }

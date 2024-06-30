@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblID = new System.Windows.Forms.Label();
             this.lblNumPrincipal = new System.Windows.Forms.Label();
             this.lblAddresse = new System.Windows.Forms.Label();
@@ -62,6 +62,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
+            this.panelCB.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblID
@@ -80,7 +81,7 @@
             this.lblNumPrincipal.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblNumPrincipal.AutoSize = true;
             this.lblNumPrincipal.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumPrincipal.Location = new System.Drawing.Point(440, 63);
+            this.lblNumPrincipal.Location = new System.Drawing.Point(463, 61);
             this.lblNumPrincipal.Name = "lblNumPrincipal";
             this.lblNumPrincipal.Size = new System.Drawing.Size(128, 20);
             this.lblNumPrincipal.TabIndex = 1;
@@ -91,7 +92,7 @@
             this.lblAddresse.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblAddresse.AutoSize = true;
             this.lblAddresse.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddresse.Location = new System.Drawing.Point(440, 142);
+            this.lblAddresse.Location = new System.Drawing.Point(463, 137);
             this.lblAddresse.Name = "lblAddresse";
             this.lblAddresse.Size = new System.Drawing.Size(72, 20);
             this.lblAddresse.TabIndex = 2;
@@ -113,7 +114,7 @@
             this.lblAdditionalNum.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblAdditionalNum.AutoSize = true;
             this.lblAdditionalNum.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdditionalNum.Location = new System.Drawing.Point(440, 99);
+            this.lblAdditionalNum.Location = new System.Drawing.Point(463, 97);
             this.lblAdditionalNum.Name = "lblAdditionalNum";
             this.lblAdditionalNum.Size = new System.Drawing.Size(134, 20);
             this.lblAdditionalNum.TabIndex = 4;
@@ -124,7 +125,7 @@
             this.lblEmail.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(13, 176);
+            this.lblEmail.Location = new System.Drawing.Point(11, 140);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(132, 20);
             this.lblEmail.TabIndex = 5;
@@ -159,7 +160,7 @@
             this.txtFullName.Location = new System.Drawing.Point(183, 96);
             this.txtFullName.MaxLength = 150;
             this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(205, 27);
+            this.txtFullName.Size = new System.Drawing.Size(261, 27);
             this.txtFullName.TabIndex = 10;
             // 
             // txtAdditionalPhone
@@ -180,10 +181,10 @@
             this.txtEmail.BackColor = System.Drawing.SystemColors.Window;
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(183, 169);
+            this.txtEmail.Location = new System.Drawing.Point(181, 135);
             this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(233, 27);
+            this.txtEmail.Size = new System.Drawing.Size(261, 27);
             this.txtEmail.TabIndex = 12;
             // 
             // lblVehicleList
@@ -253,7 +254,7 @@
             this.cbState.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cbState.Location = new System.Drawing.Point(183, 132);
+            this.cbState.Location = new System.Drawing.Point(181, 174);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(205, 28);
             this.cbState.TabIndex = 19;
@@ -263,7 +264,7 @@
             this.lblState.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblState.AutoSize = true;
             this.lblState.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblState.Location = new System.Drawing.Point(13, 135);
+            this.lblState.Location = new System.Drawing.Point(11, 177);
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(54, 20);
             this.lblState.TabIndex = 20;
@@ -271,9 +272,9 @@
             // 
             // dgvVehicles
             // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            this.dgvVehicles.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvVehicles.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvVehicles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -283,37 +284,37 @@
             this.dgvVehicles.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvVehicles.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvVehicles.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVehicles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVehicles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvVehicles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVehicles.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvVehicles.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvVehicles.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvVehicles.GridColor = System.Drawing.Color.White;
             this.dgvVehicles.Location = new System.Drawing.Point(20, 270);
             this.dgvVehicles.Name = "dgvVehicles";
             this.dgvVehicles.ReadOnly = true;
             this.dgvVehicles.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVehicles.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVehicles.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvVehicles.RowHeadersVisible = false;
             this.dgvVehicles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvVehicles.Size = new System.Drawing.Size(798, 333);
@@ -324,10 +325,10 @@
             // 
             this.txtAddresse.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtAddresse.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddresse.Location = new System.Drawing.Point(604, 139);
+            this.txtAddresse.Location = new System.Drawing.Point(610, 139);
             this.txtAddresse.MaxLength = 150;
             this.txtAddresse.Name = "txtAddresse";
-            this.txtAddresse.Size = new System.Drawing.Size(213, 93);
+            this.txtAddresse.Size = new System.Drawing.Size(207, 93);
             this.txtAddresse.TabIndex = 24;
             this.txtAddresse.Text = "";
             // 
@@ -396,6 +397,13 @@
             // panelCB
             // 
             this.panelCB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelCB.Controls.Add(this.lblAddresse);
+            this.panelCB.Controls.Add(this.lblAdditionalNum);
+            this.panelCB.Controls.Add(this.lblNumPrincipal);
+            this.panelCB.Controls.Add(this.lblState);
+            this.panelCB.Controls.Add(this.cbState);
+            this.panelCB.Controls.Add(this.lblEmail);
+            this.panelCB.Controls.Add(this.txtEmail);
             this.panelCB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCB.Location = new System.Drawing.Point(0, 0);
             this.panelCB.Name = "panelCB";
@@ -411,22 +419,15 @@
             this.Controls.Add(this.panel);
             this.Controls.Add(this.txtAddresse);
             this.Controls.Add(this.dgvVehicles);
-            this.Controls.Add(this.lblState);
-            this.Controls.Add(this.cbState);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnAddClient);
             this.Controls.Add(this.btnAddVehicle);
             this.Controls.Add(this.lblVehicleList);
-            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtAdditionalPhone);
             this.Controls.Add(this.txtFullName);
             this.Controls.Add(this.txtMainPhone);
             this.Controls.Add(this.txtID);
-            this.Controls.Add(this.lblEmail);
-            this.Controls.Add(this.lblAdditionalNum);
             this.Controls.Add(this.lblFullName);
-            this.Controls.Add(this.lblAddresse);
-            this.Controls.Add(this.lblNumPrincipal);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.panelCB);
             this.DoubleBuffered = true;
@@ -441,6 +442,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
+            this.panelCB.ResumeLayout(false);
+            this.panelCB.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

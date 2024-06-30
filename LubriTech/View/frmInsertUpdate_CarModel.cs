@@ -69,14 +69,16 @@ namespace LubriTech.View
             }
         }
 
-        private void frmInsertUpdate_Make_Load(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void frmInsertUpdate_CarModel_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
