@@ -66,9 +66,6 @@ namespace LubriTech.Model.Branch_Information
         {
             try
             {
-                
-                
-
                 String selectQuery = "SELECT * FROM Sucursal WHERE Identificacion = @id";
                 SqlCommand cmd = new SqlCommand(selectQuery, conn);
                 cmd.Parameters.AddWithValue("@id", id);
