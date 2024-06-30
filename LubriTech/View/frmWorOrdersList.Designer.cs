@@ -113,7 +113,6 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Name = "frmWorOrdersList";
-            this.Text = "Órdenes de trabajo";
             this.Load += new System.EventHandler(this.frmWorOrdersList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
