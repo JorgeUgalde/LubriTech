@@ -1,17 +1,11 @@
 ﻿using LubriTech.Controller;
 using LubriTech.Model.Branch_Information;
-using LubriTech.Model.Client_Information;
-using LubriTech.View.Appointment_View;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LubriTech.View
@@ -148,6 +142,11 @@ namespace LubriTech.View
             frmUpsert_Branch.DataChanged += ChildFormDataChangedHandler;
             this.WindowState = FormWindowState.Normal;
             frmUpsert_Branch.Show();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
