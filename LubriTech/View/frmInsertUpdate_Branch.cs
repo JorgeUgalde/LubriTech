@@ -73,7 +73,7 @@ namespace LubriTech.View
 
         private void pbClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Dispose();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

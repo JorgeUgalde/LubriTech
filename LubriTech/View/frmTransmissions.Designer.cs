@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnAddTransmission = new System.Windows.Forms.Button();
             this.dgvTransmissions = new System.Windows.Forms.DataGridView();
@@ -40,12 +40,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panelBorder = new System.Windows.Forms.Panel();
             this.lblForm = new System.Windows.Forms.Label();
-            this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.pbMaximize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransmissions)).BeginInit();
             this.panelBorder.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.SuspendLayout();
@@ -84,9 +82,9 @@
             // 
             // dgvTransmissions
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
-            this.dgvTransmissions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
+            this.dgvTransmissions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
             this.dgvTransmissions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -96,36 +94,36 @@
             this.dgvTransmissions.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvTransmissions.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvTransmissions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTransmissions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTransmissions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dgvTransmissions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTransmissions.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTransmissions.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTransmissions.DefaultCellStyle = dataGridViewCellStyle19;
             this.dgvTransmissions.GridColor = System.Drawing.Color.White;
             this.dgvTransmissions.Location = new System.Drawing.Point(22, 100);
             this.dgvTransmissions.Name = "dgvTransmissions";
             this.dgvTransmissions.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTransmissions.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTransmissions.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.dgvTransmissions.RowHeadersVisible = false;
             this.dgvTransmissions.RowHeadersWidth = 51;
             this.dgvTransmissions.Size = new System.Drawing.Size(756, 345);
@@ -170,7 +168,6 @@
             // 
             this.panelBorder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
             this.panelBorder.Controls.Add(this.lblForm);
-            this.panelBorder.Controls.Add(this.pbMinimize);
             this.panelBorder.Controls.Add(this.pbMaximize);
             this.panelBorder.Controls.Add(this.pbClose);
             this.panelBorder.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -179,6 +176,7 @@
             this.panelBorder.Name = "panelBorder";
             this.panelBorder.Size = new System.Drawing.Size(805, 36);
             this.panelBorder.TabIndex = 28;
+            this.panelBorder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBorder_MouseDown);
             // 
             // lblForm
             // 
@@ -191,17 +189,6 @@
             this.lblForm.TabIndex = 10;
             this.lblForm.Text = "Tipos de Transmisión";
             // 
-            // pbMinimize
-            // 
-            this.pbMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMinimize.Image = global::LubriTech.Properties.Resources.minimizeIco;
-            this.pbMinimize.Location = new System.Drawing.Point(707, 6);
-            this.pbMinimize.Name = "pbMinimize";
-            this.pbMinimize.Size = new System.Drawing.Size(23, 30);
-            this.pbMinimize.TabIndex = 9;
-            this.pbMinimize.TabStop = false;
-            // 
             // pbMaximize
             // 
             this.pbMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -212,6 +199,7 @@
             this.pbMaximize.Size = new System.Drawing.Size(30, 30);
             this.pbMaximize.TabIndex = 8;
             this.pbMaximize.TabStop = false;
+            this.pbMaximize.Click += new System.EventHandler(this.pbMaximize_Click);
             // 
             // pbClose
             // 
@@ -223,6 +211,7 @@
             this.pbClose.Size = new System.Drawing.Size(30, 30);
             this.pbClose.TabIndex = 7;
             this.pbClose.TabStop = false;
+            this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
             // 
             // frmTransmissions
             // 
@@ -243,7 +232,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransmissions)).EndInit();
             this.panelBorder.ResumeLayout(false);
             this.panelBorder.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             this.ResumeLayout(false);
@@ -261,7 +249,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panelBorder;
         private System.Windows.Forms.Label lblForm;
-        private System.Windows.Forms.PictureBox pbMinimize;
         private System.Windows.Forms.PictureBox pbMaximize;
         private System.Windows.Forms.PictureBox pbClose;
     }

@@ -28,11 +28,11 @@ namespace LubriTech.View
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblSubtitle = new System.Windows.Forms.Label();
             this.btnAddItem = new System.Windows.Forms.Button();
             this.txtFilter = new System.Windows.Forms.TextBox();
@@ -41,12 +41,10 @@ namespace LubriTech.View
             this.btnClose = new System.Windows.Forms.Button();
             this.panelBorder = new System.Windows.Forms.Panel();
             this.lblForm = new System.Windows.Forms.Label();
-            this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.pbMaximize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
             this.panelBorder.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.SuspendLayout();
@@ -104,9 +102,9 @@ namespace LubriTech.View
             // 
             // dgvItems
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
-            this.dgvItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
+            this.dgvItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle31;
             this.dgvItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -116,41 +114,41 @@ namespace LubriTech.View
             this.dgvItems.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
             this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItems.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvItems.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle33.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvItems.DefaultCellStyle = dataGridViewCellStyle33;
             this.dgvItems.GridColor = System.Drawing.Color.White;
             this.dgvItems.Location = new System.Drawing.Point(22, 100);
             this.dgvItems.Margin = new System.Windows.Forms.Padding(0);
             this.dgvItems.Name = "dgvItems";
             this.dgvItems.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle34.BackColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle34;
             this.dgvItems.RowHeadersVisible = false;
             this.dgvItems.RowHeadersWidth = 51;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvItems.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvItems.RowsDefaultCellStyle = dataGridViewCellStyle35;
             this.dgvItems.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvItems.RowTemplate.Height = 35;
             this.dgvItems.Size = new System.Drawing.Size(754, 345);
@@ -177,7 +175,6 @@ namespace LubriTech.View
             // 
             this.panelBorder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
             this.panelBorder.Controls.Add(this.lblForm);
-            this.panelBorder.Controls.Add(this.pbMinimize);
             this.panelBorder.Controls.Add(this.pbMaximize);
             this.panelBorder.Controls.Add(this.pbClose);
             this.panelBorder.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -186,6 +183,7 @@ namespace LubriTech.View
             this.panelBorder.Name = "panelBorder";
             this.panelBorder.Size = new System.Drawing.Size(805, 36);
             this.panelBorder.TabIndex = 8;
+            this.panelBorder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBorder_MouseDown);
             // 
             // lblForm
             // 
@@ -198,17 +196,6 @@ namespace LubriTech.View
             this.lblForm.TabIndex = 10;
             this.lblForm.Text = "Articulos";
             // 
-            // pbMinimize
-            // 
-            this.pbMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMinimize.Image = global::LubriTech.Properties.Resources.minimizeIco;
-            this.pbMinimize.Location = new System.Drawing.Point(707, 6);
-            this.pbMinimize.Name = "pbMinimize";
-            this.pbMinimize.Size = new System.Drawing.Size(23, 30);
-            this.pbMinimize.TabIndex = 9;
-            this.pbMinimize.TabStop = false;
-            // 
             // pbMaximize
             // 
             this.pbMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -219,6 +206,7 @@ namespace LubriTech.View
             this.pbMaximize.Size = new System.Drawing.Size(30, 30);
             this.pbMaximize.TabIndex = 8;
             this.pbMaximize.TabStop = false;
+            this.pbMaximize.Click += new System.EventHandler(this.pbMaximize_Click);
             // 
             // pbClose
             // 
@@ -230,6 +218,7 @@ namespace LubriTech.View
             this.pbClose.Size = new System.Drawing.Size(30, 30);
             this.pbClose.TabIndex = 7;
             this.pbClose.TabStop = false;
+            this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
             // 
             // frmItems
             // 
@@ -251,7 +240,6 @@ namespace LubriTech.View
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).EndInit();
             this.panelBorder.ResumeLayout(false);
             this.panelBorder.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             this.ResumeLayout(false);
@@ -268,7 +256,6 @@ namespace LubriTech.View
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel panelBorder;
         private System.Windows.Forms.Label lblForm;
-        private System.Windows.Forms.PictureBox pbMinimize;
         private System.Windows.Forms.PictureBox pbMaximize;
         private System.Windows.Forms.PictureBox pbClose;
     }

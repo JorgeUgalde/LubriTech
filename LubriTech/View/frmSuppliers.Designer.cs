@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvSuppliers = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnAddSupplier = new System.Windows.Forms.Button();
@@ -41,21 +41,19 @@
             this.lblSubtitle = new System.Windows.Forms.Label();
             this.panelBorder = new System.Windows.Forms.Panel();
             this.lblForm = new System.Windows.Forms.Label();
-            this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.pbMaximize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuppliers)).BeginInit();
             this.panelBorder.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvSuppliers
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
-            this.dgvSuppliers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
+            this.dgvSuppliers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle26;
             this.dgvSuppliers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -65,42 +63,42 @@
             this.dgvSuppliers.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvSuppliers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvSuppliers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(15);
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSuppliers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle27.Padding = new System.Windows.Forms.Padding(15);
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSuppliers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle27;
             this.dgvSuppliers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSuppliers.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSuppliers.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle28.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSuppliers.DefaultCellStyle = dataGridViewCellStyle28;
             this.dgvSuppliers.GridColor = System.Drawing.Color.White;
             this.dgvSuppliers.Location = new System.Drawing.Point(22, 100);
             this.dgvSuppliers.Margin = new System.Windows.Forms.Padding(0);
             this.dgvSuppliers.Name = "dgvSuppliers";
             this.dgvSuppliers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSuppliers.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSuppliers.RowHeadersDefaultCellStyle = dataGridViewCellStyle29;
             this.dgvSuppliers.RowHeadersVisible = false;
             this.dgvSuppliers.RowHeadersWidth = 51;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dgvSuppliers.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dgvSuppliers.RowsDefaultCellStyle = dataGridViewCellStyle30;
             this.dgvSuppliers.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvSuppliers.RowTemplate.Height = 35;
             this.dgvSuppliers.Size = new System.Drawing.Size(756, 345);
@@ -177,7 +175,6 @@
             // 
             this.panelBorder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
             this.panelBorder.Controls.Add(this.lblForm);
-            this.panelBorder.Controls.Add(this.pbMinimize);
             this.panelBorder.Controls.Add(this.pbMaximize);
             this.panelBorder.Controls.Add(this.pbClose);
             this.panelBorder.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -186,6 +183,7 @@
             this.panelBorder.Name = "panelBorder";
             this.panelBorder.Size = new System.Drawing.Size(805, 36);
             this.panelBorder.TabIndex = 12;
+            this.panelBorder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBorder_MouseDown);
             // 
             // lblForm
             // 
@@ -198,17 +196,6 @@
             this.lblForm.TabIndex = 10;
             this.lblForm.Text = "Proveedores";
             // 
-            // pbMinimize
-            // 
-            this.pbMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMinimize.Image = global::LubriTech.Properties.Resources.minimizeIco;
-            this.pbMinimize.Location = new System.Drawing.Point(707, 6);
-            this.pbMinimize.Name = "pbMinimize";
-            this.pbMinimize.Size = new System.Drawing.Size(23, 30);
-            this.pbMinimize.TabIndex = 9;
-            this.pbMinimize.TabStop = false;
-            // 
             // pbMaximize
             // 
             this.pbMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -219,6 +206,7 @@
             this.pbMaximize.Size = new System.Drawing.Size(30, 30);
             this.pbMaximize.TabIndex = 8;
             this.pbMaximize.TabStop = false;
+            this.pbMaximize.Click += new System.EventHandler(this.pbMaximize_Click_1);
             // 
             // pbClose
             // 
@@ -230,6 +218,7 @@
             this.pbClose.Size = new System.Drawing.Size(30, 30);
             this.pbClose.TabIndex = 7;
             this.pbClose.TabStop = false;
+            this.pbClose.Click += new System.EventHandler(this.pbClose_Click_1);
             // 
             // frmSuppliers
             // 
@@ -251,7 +240,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuppliers)).EndInit();
             this.panelBorder.ResumeLayout(false);
             this.panelBorder.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             this.ResumeLayout(false);
@@ -268,7 +256,6 @@
         private System.Windows.Forms.Label lblSubtitle;
         private System.Windows.Forms.Panel panelBorder;
         private System.Windows.Forms.Label lblForm;
-        private System.Windows.Forms.PictureBox pbMinimize;
         private System.Windows.Forms.PictureBox pbMaximize;
         private System.Windows.Forms.PictureBox pbClose;
     }

@@ -149,5 +149,10 @@ namespace LubriTech.View
             this.WindowState = FormWindowState.Normal;
             frmUpsert_Branch.Show();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }

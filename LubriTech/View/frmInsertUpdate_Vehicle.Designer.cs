@@ -50,15 +50,11 @@ namespace LubriTech.View
             this.btnSelectClient = new System.Windows.Forms.Button();
             this.panelControlBox = new System.Windows.Forms.Panel();
             this.lblForm = new System.Windows.Forms.Label();
-            this.pbMinimize = new System.Windows.Forms.PictureBox();
-            this.pbMaximize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.panelBorder = new System.Windows.Forms.Panel();
             this.cbState = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panelControlBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.panelBorder.SuspendLayout();
             this.SuspendLayout();
@@ -297,8 +293,6 @@ namespace LubriTech.View
             // 
             this.panelControlBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
             this.panelControlBox.Controls.Add(this.lblForm);
-            this.panelControlBox.Controls.Add(this.pbMinimize);
-            this.panelControlBox.Controls.Add(this.pbMaximize);
             this.panelControlBox.Controls.Add(this.pbClose);
             this.panelControlBox.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panelControlBox.Dock = System.Windows.Forms.DockStyle.Top;
@@ -318,29 +312,6 @@ namespace LubriTech.View
             this.lblForm.Size = new System.Drawing.Size(183, 21);
             this.lblForm.TabIndex = 10;
             this.lblForm.Text = "Dato Maestro Vehículos";
-            // 
-            // pbMinimize
-            // 
-            this.pbMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMinimize.Image = global::LubriTech.Properties.Resources.minimizeIco;
-            this.pbMinimize.Location = new System.Drawing.Point(691, 6);
-            this.pbMinimize.Name = "pbMinimize";
-            this.pbMinimize.Size = new System.Drawing.Size(23, 30);
-            this.pbMinimize.TabIndex = 9;
-            this.pbMinimize.TabStop = false;
-            // 
-            // pbMaximize
-            // 
-            this.pbMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMaximize.Image = global::LubriTech.Properties.Resources.maximize;
-            this.pbMaximize.Location = new System.Drawing.Point(720, 6);
-            this.pbMaximize.Name = "pbMaximize";
-            this.pbMaximize.Size = new System.Drawing.Size(30, 30);
-            this.pbMaximize.TabIndex = 8;
-            this.pbMaximize.TabStop = false;
-            this.pbMaximize.Click += new System.EventHandler(this.pbMaximize_Click);
             // 
             // pbClose
             // 
@@ -425,8 +396,6 @@ namespace LubriTech.View
             this.Text = "Dato Maestro Vehículo";
             this.panelControlBox.ResumeLayout(false);
             this.panelControlBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             this.panelBorder.ResumeLayout(false);
             this.panelBorder.PerformLayout();
@@ -458,8 +427,6 @@ namespace LubriTech.View
         private System.Windows.Forms.ComboBox cbEngine;
         private System.Windows.Forms.Panel panelControlBox;
         private System.Windows.Forms.Label lblForm;
-        private System.Windows.Forms.PictureBox pbMinimize;
-        private System.Windows.Forms.PictureBox pbMaximize;
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.Panel panelBorder;
         private System.Windows.Forms.ComboBox cbState;
