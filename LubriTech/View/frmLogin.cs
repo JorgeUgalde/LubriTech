@@ -17,6 +17,7 @@ namespace LubriTech
     public partial class frmLogin : Form
     {
         private bool isLogged = false;
+        public static int branch = -1;
         public frmLogin()
         {
             InitializeComponent();
@@ -52,11 +53,13 @@ namespace LubriTech
                 User_Controller uc = new User_Controller();
                 User u = new User(txtEmail.Text, txtPassword.Text);
 
-                if (uc.GetUser(u) == null)
+                u = uc.GetUser(u);
+                if (u == null)
                 {
                     MessageBox.Show("Usuario o contraseña incorrectos.");
                     return false;
                 }
+                branch = u.branchID;
                 this.Close();
                 return true;                
             }

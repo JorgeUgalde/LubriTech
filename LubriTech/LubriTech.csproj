@@ -97,6 +97,8 @@
     <Compile Include="Model\Appointment_Information\Appointment_Model.cs" />
     <Compile Include="Model\Branch_Information\Branch.cs" />
     <Compile Include="Model\Branch_Information\Branch_Model.cs" />
+    <Compile Include="Model\Branch_Information\Schedule.cs" />
+    <Compile Include="Model\Branch_Information\Schedule_Model.cs" />
     <Compile Include="Model\Client_Information\Client.cs" />
     <Compile Include="Model\Client_Information\Client_Model.cs" />
     <Compile Include="Model\InventoryManagment_Information\InventoryManagment.cs" />
@@ -203,6 +205,12 @@
     <Compile Include="View\frmInsertUpdate_Item.Designer.cs">
       <DependentUpon>frmInsertUpdate_Item.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmInsertUpdate_Schedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmInsertUpdate_Schedule.Designer.cs">
+      <DependentUpon>frmInsertUpdate_Schedule.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmInsertUpdate_Transmission.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -240,6 +248,12 @@
     </Compile>
     <Compile Include="View\frmMakes.Designer.cs">
       <DependentUpon>frmMakes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmSchedule.Designer.cs">
+      <DependentUpon>frmSchedule.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmSuppliers.cs">
       <SubType>Form</SubType>
@@ -356,6 +370,9 @@
     <EmbeddedResource Include="View\frmInsertUpdateSupplier.resx">
       <DependentUpon>frmInsertUpdateSupplier.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\frmInsertUpdate_Schedule.resx">
+      <DependentUpon>frmInsertUpdate_Schedule.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmInsertUpdate_Transmission.resx">
       <DependentUpon>frmInsertUpdate_Transmission.cs</DependentUpon>
     </EmbeddedResource>
@@ -373,6 +390,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmMakes.resx">
       <DependentUpon>frmMakes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmSchedule.resx">
+      <DependentUpon>frmSchedule.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmSuppliers.resx">
       <DependentUpon>frmSuppliers.cs</DependentUpon>

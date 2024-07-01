@@ -51,9 +51,10 @@
             this.cbBranch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbBranch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbBranch.FormattingEnabled = true;
-            this.cbBranch.Location = new System.Drawing.Point(169, 227);
+            this.cbBranch.Location = new System.Drawing.Point(225, 279);
+            this.cbBranch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbBranch.Name = "cbBranch";
-            this.cbBranch.Size = new System.Drawing.Size(240, 29);
+            this.cbBranch.Size = new System.Drawing.Size(319, 36);
             this.cbBranch.TabIndex = 41;
             this.cbBranch.Tag = "";
             // 
@@ -64,28 +65,31 @@
             this.cbDocumentType.FormattingEnabled = true;
             this.cbDocumentType.Items.AddRange(new object[] {
             "Compra"});
-            this.cbDocumentType.Location = new System.Drawing.Point(169, 133);
+            this.cbDocumentType.Location = new System.Drawing.Point(225, 164);
+            this.cbDocumentType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbDocumentType.Name = "cbDocumentType";
-            this.cbDocumentType.Size = new System.Drawing.Size(205, 29);
+            this.cbDocumentType.Size = new System.Drawing.Size(272, 36);
             this.cbDocumentType.TabIndex = 39;
             this.cbDocumentType.Tag = "";
             // 
             // tbDate
             // 
             this.tbDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDate.Location = new System.Drawing.Point(169, 40);
+            this.tbDate.Location = new System.Drawing.Point(225, 49);
+            this.tbDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbDate.MaxLength = 10;
             this.tbDate.Name = "tbDate";
-            this.tbDate.Size = new System.Drawing.Size(205, 29);
+            this.tbDate.Size = new System.Drawing.Size(272, 34);
             this.tbDate.TabIndex = 28;
             // 
             // tbTotalAmount
             // 
             this.tbTotalAmount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTotalAmount.Location = new System.Drawing.Point(169, 87);
+            this.tbTotalAmount.Location = new System.Drawing.Point(225, 107);
+            this.tbTotalAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbTotalAmount.MaxLength = 9;
             this.tbTotalAmount.Name = "tbTotalAmount";
-            this.tbTotalAmount.Size = new System.Drawing.Size(205, 29);
+            this.tbTotalAmount.Size = new System.Drawing.Size(272, 34);
             this.tbTotalAmount.TabIndex = 30;
             this.tbTotalAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNumeric_KeyPress);
             // 
@@ -96,9 +100,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(40, 43);
+            this.lblDate.Location = new System.Drawing.Point(53, 53);
+            this.lblDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(50, 21);
+            this.lblDate.Size = new System.Drawing.Size(62, 28);
             this.lblDate.TabIndex = 40;
             this.lblDate.Text = "Fecha";
             // 
@@ -106,9 +111,10 @@
             // 
             this.lblTotalAmount.AutoSize = true;
             this.lblTotalAmount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalAmount.Location = new System.Drawing.Point(40, 90);
+            this.lblTotalAmount.Location = new System.Drawing.Point(53, 111);
+            this.lblTotalAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(92, 21);
+            this.lblTotalAmount.Size = new System.Drawing.Size(119, 28);
             this.lblTotalAmount.TabIndex = 38;
             this.lblTotalAmount.Text = "Monto Total";
             // 
@@ -116,9 +122,10 @@
             // 
             this.lblDocumentType.AutoSize = true;
             this.lblDocumentType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDocumentType.Location = new System.Drawing.Point(40, 136);
+            this.lblDocumentType.Location = new System.Drawing.Point(53, 167);
+            this.lblDocumentType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDocumentType.Name = "lblDocumentType";
-            this.lblDocumentType.Size = new System.Drawing.Size(123, 21);
+            this.lblDocumentType.Size = new System.Drawing.Size(157, 28);
             this.lblDocumentType.TabIndex = 32;
             this.lblDocumentType.Text = "Tipo documento";
             // 
@@ -126,9 +133,10 @@
             // 
             this.lblBranch.AutoSize = true;
             this.lblBranch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBranch.Location = new System.Drawing.Point(40, 230);
+            this.lblBranch.Location = new System.Drawing.Point(53, 283);
+            this.lblBranch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBranch.Name = "lblBranch";
-            this.lblBranch.Size = new System.Drawing.Size(69, 21);
+            this.lblBranch.Size = new System.Drawing.Size(84, 28);
             this.lblBranch.TabIndex = 31;
             this.lblBranch.Text = "Sucursal";
             // 
@@ -140,9 +148,10 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnClose.Location = new System.Drawing.Point(306, 351);
+            this.btnClose.Location = new System.Drawing.Point(408, 432);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(141, 34);
+            this.btnClose.Size = new System.Drawing.Size(188, 42);
             this.btnClose.TabIndex = 46;
             this.btnClose.Text = "Cancelar";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -156,9 +165,10 @@
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfirm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirm.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnConfirm.Location = new System.Drawing.Point(44, 351);
+            this.btnConfirm.Location = new System.Drawing.Point(59, 432);
+            this.btnConfirm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(141, 34);
+            this.btnConfirm.Size = new System.Drawing.Size(188, 42);
             this.btnConfirm.TabIndex = 45;
             this.btnConfirm.Text = "Aceptar";
             this.btnConfirm.UseVisualStyleBackColor = false;
@@ -168,19 +178,21 @@
             // 
             this.lblSupplierId.AutoSize = true;
             this.lblSupplierId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSupplierId.Location = new System.Drawing.Point(40, 276);
+            this.lblSupplierId.Location = new System.Drawing.Point(53, 340);
+            this.lblSupplierId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSupplierId.Name = "lblSupplierId";
-            this.lblSupplierId.Size = new System.Drawing.Size(82, 21);
+            this.lblSupplierId.Size = new System.Drawing.Size(103, 28);
             this.lblSupplierId.TabIndex = 29;
             this.lblSupplierId.Text = "Proveedor";
             // 
             // tbSupplierName
             // 
             this.tbSupplierName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSupplierName.Location = new System.Drawing.Point(169, 273);
+            this.tbSupplierName.Location = new System.Drawing.Point(225, 336);
+            this.tbSupplierName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbSupplierName.MaxLength = 150;
             this.tbSupplierName.Name = "tbSupplierName";
-            this.tbSupplierName.Size = new System.Drawing.Size(240, 29);
+            this.tbSupplierName.Size = new System.Drawing.Size(319, 34);
             this.tbSupplierName.TabIndex = 35;
             // 
             // btnSelectSupplier
@@ -192,9 +204,10 @@
             this.btnSelectSupplier.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
             this.btnSelectSupplier.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSelectSupplier.Image = global::LubriTech.Properties.Resources.searchClient;
-            this.btnSelectSupplier.Location = new System.Drawing.Point(415, 273);
+            this.btnSelectSupplier.Location = new System.Drawing.Point(553, 336);
+            this.btnSelectSupplier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSelectSupplier.Name = "btnSelectSupplier";
-            this.btnSelectSupplier.Size = new System.Drawing.Size(32, 29);
+            this.btnSelectSupplier.Size = new System.Drawing.Size(43, 36);
             this.btnSelectSupplier.TabIndex = 37;
             this.btnSelectSupplier.UseVisualStyleBackColor = false;
             this.btnSelectSupplier.Click += new System.EventHandler(this.btnSelectSupplier_Click);
@@ -202,10 +215,11 @@
             // tbSupplierId
             // 
             this.tbSupplierId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSupplierId.Location = new System.Drawing.Point(169, 273);
+            this.tbSupplierId.Location = new System.Drawing.Point(225, 336);
+            this.tbSupplierId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbSupplierId.MaxLength = 150;
             this.tbSupplierId.Name = "tbSupplierId";
-            this.tbSupplierId.Size = new System.Drawing.Size(240, 29);
+            this.tbSupplierId.Size = new System.Drawing.Size(319, 34);
             this.tbSupplierId.TabIndex = 47;
             // 
             // cbState
@@ -216,9 +230,10 @@
             this.cbState.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cbState.Location = new System.Drawing.Point(169, 179);
+            this.cbState.Location = new System.Drawing.Point(225, 220);
+            this.cbState.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbState.Name = "cbState";
-            this.cbState.Size = new System.Drawing.Size(205, 29);
+            this.cbState.Size = new System.Drawing.Size(272, 36);
             this.cbState.TabIndex = 49;
             this.cbState.Tag = "";
             // 
@@ -226,17 +241,19 @@
             // 
             this.lblState.AutoSize = true;
             this.lblState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblState.Location = new System.Drawing.Point(40, 182);
+            this.lblState.Location = new System.Drawing.Point(53, 224);
+            this.lblState.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(56, 21);
+            this.lblState.Size = new System.Drawing.Size(71, 28);
             this.lblState.TabIndex = 48;
             this.lblState.Text = "Estado";
             // 
             // frmInsertUpdate_InventoryManagment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(495, 418);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(660, 514);
             this.Controls.Add(this.cbState);
             this.Controls.Add(this.lblState);
             this.Controls.Add(this.tbSupplierId);
@@ -253,6 +270,7 @@
             this.Controls.Add(this.lblDocumentType);
             this.Controls.Add(this.lblBranch);
             this.Controls.Add(this.lblSupplierId);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmInsertUpdate_InventoryManagment";
             this.Text = "frmInsertUpdate_InventoryManagment";
             this.ResumeLayout(false);
