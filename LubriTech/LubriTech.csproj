@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Controller\Appointment_Controller.cs" />
     <Compile Include="Controller\Branch_Controller.cs" />
+    <Compile Include="Controller\DetailLine_Controller.cs" />
     <Compile Include="Controller\Transmission_Controller.cs" />
     <Compile Include="Controller\Engine_Controller.cs" />
     <Compile Include="Controller\Clients_Controller.cs" />
@@ -101,7 +102,9 @@
     <Compile Include="Model\Branch_Information\Schedule_Model.cs" />
     <Compile Include="Model\Client_Information\Client.cs" />
     <Compile Include="Model\Client_Information\Client_Model.cs" />
+    <Compile Include="Model\InventoryManagment_Information\DetailLine.cs" />
     <Compile Include="Model\InventoryManagment_Information\InventoryManagment.cs" />
+    <Compile Include="Model\InventoryManagment_Information\DetailLine_Model.cs" />
     <Compile Include="Model\InventoryManagment_Information\InventoryManagment_Model.cs" />
     <Compile Include="Model\Item_Information\Item.cs" />
     <Compile Include="Model\Item_Information\Item_Model.cs" />
