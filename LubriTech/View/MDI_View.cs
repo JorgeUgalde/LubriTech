@@ -213,6 +213,13 @@ namespace LubriTech.View
             frmCarModels.BringToFront();
         }
 
+        private void button13_Click(object sender, EventArgs e)
+        {
+            frmPricesList frmPricesList = new frmPricesList();
+            OpenChildForm(frmPricesList);
+            frmPricesList.BringToFront();
+        }
+
         private void btnSchedules_Click(object sender, EventArgs e)
         {
             frmSchedule frmSchedule = new frmSchedule();

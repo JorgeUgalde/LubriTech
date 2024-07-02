@@ -179,5 +179,57 @@ namespace LubriTech.Model.WorkOrder_Information
 
             return workOrders;
         }
+
+        public int UpsertWorkOrder(WorkOrder workOrder)
+        {
+            string query;
+
+            if (workOrder.Id > 0)
+            {
+                // Query para actualizar una orden existente
+                query = @"
+            UPDATE OrdenTrabajo
+            SET Fecha = @Fecha,
+                IdentificacionSucursal = @IdentificacionSucursal,
+                IdentificacionCliente = @IdentificacionCliente,
+                PlacaVehiculo = @PlacaVehiculo,
+                KilometrajeActual = @KilometrajeActual,
+                Monto = @Monto,
+                Estado = @Estado
+            WHERE Identificacion = @Identificacion;
+
+            SELECT @Identificacion;"; // Devuelve el ID de la orden actualizada
+            }
+            else
+            {
+                // Query para insertar una nueva orden
+                query = @"
+            INSERT INTO OrdenTrabajo (Fecha, IdentificacionSucursal, IdentificacionCliente, PlacaVehiculo, KilometrajeActual, Monto, Estado)
+            VALUES (@Fecha, @IdentificacionSucursal, @IdentificacionCliente, @PlacaVehiculo, @KilometrajeActual, @Monto, @Estado);
+
+            SELECT SCOPE_IDENTITY();"; // Devuelve el ID de la nueva orden
+            }
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                if (workOrder.Id > 0)
+                {
+                    cmd.Parameters.AddWithValue("@Identificacion", workOrder.Id);
+                }
+
+                cmd.Parameters.AddWithValue("@Fecha", workOrder.Date);
+                cmd.Parameters.AddWithValue("@IdentificacionSucursal", workOrder.Branch.Id);
+                cmd.Parameters.AddWithValue("@IdentificacionCliente", workOrder.Client.Id);
+                cmd.Parameters.AddWithValue("@PlacaVehiculo", workOrder.Vehicle.LicensePlate);
+                cmd.Parameters.AddWithValue("@KilometrajeActual", workOrder.Vehicle.Mileage);
+                cmd.Parameters.AddWithValue("@Monto", workOrder.Amount);
+                cmd.Parameters.AddWithValue("@Estado", workOrder.State);
+
+                conn.Open();
+
+                // Ejecutar el comando y obtener el ID de la orden
+                int newId = Convert.ToInt32(cmd.ExecuteScalar());
+                return newId;
+            }
+        }
     }
 }

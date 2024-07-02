@@ -1,4 +1,5 @@
-﻿using LubriTech.Model.Vehicle_Information;
+﻿using LubriTech.Model.PricesList_Information;
+using LubriTech.Model.Vehicle_Information;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,6 +52,7 @@ namespace LubriTech.Model.Client_Information
         /// Lista de vehículos asociados al cliente.
         /// </summary>
         public List<Vehicle> Vehicle { get; set; }
+        public PriceList PriceList { get; set; }
 
         /// <summary>
         /// Constructor completo de la clase Client.
@@ -63,7 +65,7 @@ namespace LubriTech.Model.Client_Information
         /// <param name="address">Dirección del cliente.</param>
         /// <param name="vehicle">Lista de vehículos asociados al cliente.</param>
         /// <param name="state">Estado del cliente (activo o inactivo).</param>
-        public Client(string id, string fullName, Int64? mainPhoneNum, Int64? additionalPhoneNum, string email, string address, List<Vehicle> vehicle, string state)
+        public Client(string id, string fullName, Int64? mainPhoneNum, Int64? additionalPhoneNum, string email, string address, List<Vehicle> vehicle, string state, PriceList priceList)
         {
             Id = id;
             FullName = fullName;
@@ -73,6 +75,7 @@ namespace LubriTech.Model.Client_Information
             Address = address;
             this.Vehicle = vehicle;
             State = state;
+            PriceList = priceList;
         }
 
         /// <summary>
@@ -85,7 +88,7 @@ namespace LubriTech.Model.Client_Information
         /// <param name="email">Correo electrónico del cliente.</param>
         /// <param name="address">Dirección del cliente.</param>
         /// <param name="state">Estado del cliente (activo o inactivo).</param>
-        public Client(string id, string fullName, Int64? mainPhoneNum, Int64? additionalPhoneNum, string email, string address, string state)
+        public Client(string id, string fullName, Int64? mainPhoneNum, Int64? additionalPhoneNum, string email, string address, string state, PriceList priceList)
         {
             Id = id;
             FullName = fullName;
@@ -94,6 +97,7 @@ namespace LubriTech.Model.Client_Information
             Email = email;
             Address = address;
             State = state;
+            PriceList = priceList;
         }
 
         /// <summary>

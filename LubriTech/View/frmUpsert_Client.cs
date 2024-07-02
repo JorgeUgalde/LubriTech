@@ -8,6 +8,9 @@ using LubriTech.Model.Vehicle_Information;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using LubriTech.Model.PricesList_Information;
+using System.Net.Mail;
+using System.Net;
 
 namespace LubriTech.View
 {
@@ -25,7 +28,11 @@ namespace LubriTech.View
         public frmUpsert_Client()
         {
             InitializeComponent();
-            
+            cbPriceList.DataSource = new PriceList_Controller().getPriceLists();
+            cbPriceList.DisplayMember = "Description";
+            cbPriceList.ValueMember = "Id";
+            cbPriceList.SelectedValue = 1;
+            cbState.SelectedIndex = 0;
 
 
         }
@@ -45,12 +52,16 @@ namespace LubriTech.View
             txtEmail.Text = client.Email;
             txtAddresse.Text = client.Address;
             cbState.Text = client.State;
+            cbPriceList.DataSource = new PriceList_Controller().getPriceLists();
+            cbPriceList.DisplayMember = "Description";
+            cbPriceList.ValueMember = "Id";
+            cbPriceList.SelectedValue = client.PriceList.id;
 
             /// <summary>
             /// Desactiva los campos de texto si la acción es "Details".
             /// </summary>
-            
-            }
+
+        }
             
         
         
@@ -138,8 +149,9 @@ namespace LubriTech.View
                     string email = this.txtEmail.Text.Trim();
                     string address = this.txtAddresse.Text.Trim();
                     string state = this.cbState.Text.Trim();
+                    PriceList priceList = new PriceList_Controller().getPriceList((int)cbPriceList.SelectedValue);
 
-                    Client client = new Client(id, fullname, mainPhone, additionalPhone, email, address, state);
+                    Client client = new Client(id, fullname, mainPhone, additionalPhone, email, address, state, priceList);
 
                     /// <summary>
                     /// Intenta agregar el cliente a la base de datos.
@@ -233,6 +245,11 @@ namespace LubriTech.View
                 frmInsertVehicle.Show();
                 return;
             }
+        }
+
+        public void PriceListSelected(PriceList priceList)
+        {
+            throw new NotImplementedException();
         }
 
         private void pbMinimize_Click(object sender, EventArgs e)

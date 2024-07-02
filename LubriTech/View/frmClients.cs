@@ -160,6 +160,11 @@ namespace LubriTech.View
                         ((frmAppointment)parentForm).SelectClientAppointment(selectedClient);
                         this.Close();
                     }
+                    else if(parentForm is frmWorkOrder)
+                    {
+                        ((frmWorkOrder)parentForm).SelectClientWorkOrder(selectedClient);
+                        this.Close();
+                    }
                     else
                     {
                         frmUpsert_Client frmInsertClient = new frmUpsert_Client(selectedClient);

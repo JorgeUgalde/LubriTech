@@ -121,7 +121,7 @@ namespace LubriTech.View
                 vehicle.Mileage = Convert.ToInt32(tbMileage.Text.Trim());
                 vehicle.EngineType = new Engine_Controller().getEngine(Convert.ToInt32(cbEngine.SelectedValue.ToString()));
                 vehicle.TransmissionType = new Transmission_Controller().getTransmission(Convert.ToInt32(cbTransmission.SelectedValue.ToString()));
-                vehicle.State = "Activo";
+                vehicle.State = this.cbState.Text.Trim();
 
                 if (vehicleController.upsert(vehicle))
                 {
@@ -137,7 +137,7 @@ namespace LubriTech.View
 
         private void tbNumeric_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
+            //e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
