@@ -3,14 +3,10 @@ using LubriTech.Model.Client_Information;
 using LubriTech.View.Appointment_View;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LubriTech.View
@@ -33,6 +29,7 @@ namespace LubriTech.View
             clients = new List<Client>();
             InitializeComponent();
             load_Clients(null);
+            MessageBox.Show(frmLogin.branch + "");
 
         }
 
@@ -45,7 +42,6 @@ namespace LubriTech.View
             load_Clients(null);
             
         }
-
         
         private void load_Clients(List<Client> filteredList)
         {

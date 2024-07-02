@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using LubriTech.Model.PricesList_Information;
+using System.Net.Mail;
+using System.Net;
 
 namespace LubriTech.View
 {

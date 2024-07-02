@@ -3,9 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LubriTech.Model.items_Information
@@ -45,14 +42,13 @@ namespace LubriTech.Model.items_Information
                         dr["Codigo"].ToString(),
                         dr["Nombre"].ToString(),
                         dr["UnidadMedida"].ToString(),
-                        Convert.ToInt32(dr["Estado"]) == 1 ? "Activo": "Inactivo" ,
+                        Convert.ToInt32(dr["Estado"]) == 1 ? "Activo": "Inactivo",
                         dr["Tipo"].ToString().Equals("Producto") ? getItemStock(dr["Codigo"].ToString(), 1) : 0 ,
                         Convert.ToDouble(dr["PrecioCompra"]),
                         dr["Tipo"].ToString(),
                         Convert.ToDouble(dr["RecorridoRecomendado"])
                         ));
                 }
-
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
