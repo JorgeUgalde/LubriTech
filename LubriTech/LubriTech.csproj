@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Controller\Appointment_Controller.cs" />
     <Compile Include="Controller\Branch_Controller.cs" />
+    <Compile Include="Controller\DetailLine_Controller.cs" />
     <Compile Include="Controller\Transmission_Controller.cs" />
     <Compile Include="Controller\Engine_Controller.cs" />
     <Compile Include="Controller\Clients_Controller.cs" />
@@ -97,9 +98,13 @@
     <Compile Include="Model\Appointment_Information\Appointment_Model.cs" />
     <Compile Include="Model\Branch_Information\Branch.cs" />
     <Compile Include="Model\Branch_Information\Branch_Model.cs" />
+    <Compile Include="Model\Branch_Information\Schedule.cs" />
+    <Compile Include="Model\Branch_Information\Schedule_Model.cs" />
     <Compile Include="Model\Client_Information\Client.cs" />
     <Compile Include="Model\Client_Information\Client_Model.cs" />
+    <Compile Include="Model\InventoryManagment_Information\DetailLine.cs" />
     <Compile Include="Model\InventoryManagment_Information\InventoryManagment.cs" />
+    <Compile Include="Model\InventoryManagment_Information\DetailLine_Model.cs" />
     <Compile Include="Model\InventoryManagment_Information\InventoryManagment_Model.cs" />
     <Compile Include="Model\Item_Information\Item.cs" />
     <Compile Include="Model\Item_Information\Item_Model.cs" />
@@ -203,6 +208,12 @@
     <Compile Include="View\frmInsertUpdate_Item.Designer.cs">
       <DependentUpon>frmInsertUpdate_Item.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmInsertUpdate_Schedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmInsertUpdate_Schedule.Designer.cs">
+      <DependentUpon>frmInsertUpdate_Schedule.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmInsertUpdate_Transmission.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -240,6 +251,12 @@
     </Compile>
     <Compile Include="View\frmMakes.Designer.cs">
       <DependentUpon>frmMakes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmSchedule.Designer.cs">
+      <DependentUpon>frmSchedule.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmSuppliers.cs">
       <SubType>Form</SubType>
@@ -294,6 +311,12 @@
     </Compile>
     <Compile Include="View\frmWorOrdersList.Designer.cs">
       <DependentUpon>frmWorOrdersList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ItemCellEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ItemCellEditor.Designer.cs">
+      <DependentUpon>ItemCellEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="View\MDI_View.cs">
       <SubType>Form</SubType>
@@ -350,6 +373,9 @@
     <EmbeddedResource Include="View\frmInsertUpdateSupplier.resx">
       <DependentUpon>frmInsertUpdateSupplier.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\frmInsertUpdate_Schedule.resx">
+      <DependentUpon>frmInsertUpdate_Schedule.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmInsertUpdate_Transmission.resx">
       <DependentUpon>frmInsertUpdate_Transmission.cs</DependentUpon>
     </EmbeddedResource>
@@ -367,6 +393,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmMakes.resx">
       <DependentUpon>frmMakes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmSchedule.resx">
+      <DependentUpon>frmSchedule.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmSuppliers.resx">
       <DependentUpon>frmSuppliers.cs</DependentUpon>

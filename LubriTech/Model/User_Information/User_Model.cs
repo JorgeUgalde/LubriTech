@@ -40,7 +40,10 @@ namespace LubriTech.Model.User_Information
                 User u = null;
                 if (reader.Read())
                 {
-                    u = new User(reader["CorreoElectronico"].ToString(), reader["Contrasena"].ToString());
+                    u = new User(
+                        reader["CorreoElectronico"].ToString(), 
+                        reader["Contrasena"].ToString(), Convert.ToInt32(
+                        reader["IdentificacionSucursal"]));
                 }
                 return u;
             }

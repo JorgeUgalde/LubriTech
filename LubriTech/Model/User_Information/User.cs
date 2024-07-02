@@ -22,10 +22,22 @@ namespace LubriTech.Model.User_Information
         public string password { get; set; }
 
         /// <summary>
+        ///  Identificador de la sucursal a la que pertenece el usuario.
+        /// </summary>
+        public int branchID { get; set; }
+
+        /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="User"/> con los valores especificados.
         /// </summary>
         /// <param name="email">El correo electrónico del usuario.</param>
         /// <param name="password">La contraseña del usuario.</param>
+        /// <param name="branchID">Identificacion de la sucrusal.</param>
+        public User(string email, string password, int branchID)
+        {
+            this.email = email;
+            this.password = password;
+            this.branchID = branchID;
+        }
         public User(string email, string password)
         {
             this.email = email;

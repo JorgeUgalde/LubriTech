@@ -41,7 +41,6 @@ namespace LubriTech.View
 
             txtCode.Text = item.code;
             txtName.Text = item.name;
-            txtSellPrice.Text = item.sellPrice.ToString();
             cbMeasureUnit.Text = item.measureUnit;
             cbState.Text = item.state;
             tbStock.Text = item.stock.ToString();
@@ -109,7 +108,6 @@ namespace LubriTech.View
 
             globalItem.code = txtCode.Text;
             globalItem.name = txtName.Text;
-            globalItem.sellPrice = Convert.ToDouble(txtSellPrice.Text);
             globalItem.measureUnit = cbMeasureUnit.Text;
             globalItem.state = cbState.Text;
             globalItem.stock = Convert.ToDouble(tbStock.Text);

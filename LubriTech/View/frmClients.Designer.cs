@@ -160,6 +160,7 @@ namespace LubriTech.View
             this.panelControlBox.Name = "panelControlBox";
             this.panelControlBox.Size = new System.Drawing.Size(805, 491);
             this.panelControlBox.TabIndex = 6;
+            this.panelControlBox.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControlBox_Paint);
             // 
             // btnClose
             // 

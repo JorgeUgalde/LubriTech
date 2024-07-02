@@ -3,9 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LubriTech.Model.items_Information
@@ -44,16 +41,14 @@ namespace LubriTech.Model.items_Information
                     items.Add(new Item(
                         dr["Codigo"].ToString(),
                         dr["Nombre"].ToString(),
-                        Convert.ToDouble(dr["PrecioVenta"]), 
                         dr["UnidadMedida"].ToString(),
-                        Convert.ToInt32(dr["Estado"]) == 1 ? "Activo": "Inactivo" ,
+                        Convert.ToInt32(dr["Estado"]) == 1 ? "Activo": "Inactivo",
                         dr["Tipo"].ToString().Equals("Producto") ? getItemStock(dr["Codigo"].ToString(), 1) : 0 ,
                         Convert.ToDouble(dr["PrecioCompra"]),
                         dr["Tipo"].ToString(),
                         Convert.ToDouble(dr["RecorridoRecomendado"])
                         ));
                 }
-
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -125,7 +120,6 @@ namespace LubriTech.Model.items_Information
                 Item items = new Item(
                         dr["Codigo"].ToString(),
                         dr["Nombre"].ToString(),
-                        Convert.ToDouble(dr["PrecioVenta"]),
                         dr["UnidadMedida"].ToString(),
                         Convert.ToInt32(dr["Estado"]) == 1 ? "Activo" : "Inactivo",
                         dr["Tipo"].ToString().Equals("Producto") ? getItemStock(dr["Codigo"].ToString(), 1) : 0,
@@ -191,7 +185,6 @@ namespace LubriTech.Model.items_Information
             {
                 string updateQuery = "update Articulo set " +
                     "Nombre = @name, " +
-                    "PrecioVenta = @sellPrice, " +
                     "UnidadMedida = @measureUnit," +
                     "Estado = @state, " +
                     "PrecioCompra = @purchasePrice, " +
@@ -202,7 +195,6 @@ namespace LubriTech.Model.items_Information
 
                 cmd.Parameters.AddWithValue("@code", items.code);
                 cmd.Parameters.AddWithValue("@name", items.name);
-                cmd.Parameters.AddWithValue("@sellPrice", items.sellPrice);
                 cmd.Parameters.AddWithValue("@measureUnit", items.measureUnit);
                 cmd.Parameters.AddWithValue("@state", (items.state.Equals("Activo")) ? 1 : 0  );
                 cmd.Parameters.AddWithValue("@purchasePrice", items.purchasePrice);
@@ -253,11 +245,10 @@ namespace LubriTech.Model.items_Information
             try
             {
                 string insertQuery = "Insert into Articulo " +
-                    "(Codigo, Nombre, PrecioVenta, UnidadMedida, Estado, PrecioCompra, Tipo, RecorridoRecomendado)" +
+                    "(Codigo, Nombre, UnidadMedida, Estado, PrecioCompra, Tipo, RecorridoRecomendado)" +
                     " values " +
                     "(@code," +
                     "@name, " +
-                    "@sellPrice, " +
                     "@measureUnit," +
                     "@state, " +
                     "@purchasePrice, " +
@@ -269,7 +260,6 @@ SqlCommand cmd = new SqlCommand(insertQuery, conn);
 
                 cmd.Parameters.AddWithValue("@code", items.code);
                 cmd.Parameters.AddWithValue("@name", items.name);
-                cmd.Parameters.AddWithValue("@sellPrice", items.sellPrice);
                 cmd.Parameters.AddWithValue("@measureUnit", items.measureUnit);
                 cmd.Parameters.AddWithValue("@state", (items.state.Equals("Activo")) ? 1 : 0);
                 cmd.Parameters.AddWithValue("@purchasePrice", items.purchasePrice);

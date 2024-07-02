@@ -22,9 +22,9 @@ namespace LubriTech.Model.WorkOrder_Information
         {
             List<WorkOrder> workOrders = new List<WorkOrder>();
             string selectQuery = @"
-        SELECT ot.Identificacion, ot.Fecha, ot.IdentificacionSucursal, ot.IdentificacionCliente, 
-               ot.PlacaVehiculo, ot.KilometrajeActual, ot.Monto, ot.Estado
-        FROM OrdenTrabajo ot";
+            SELECT ot.Identificacion, ot.Fecha, ot.IdentificacionSucursal, ot.IdentificacionCliente, 
+                   ot.PlacaVehiculo, ot.KilometrajeActual, ot.Monto, ot.Estado
+            FROM OrdenTrabajo ot";
 
             SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
 
@@ -72,6 +72,7 @@ namespace LubriTech.Model.WorkOrder_Information
             return workOrders;
         }
 
+        //Carga una orden de trabajo
         public WorkOrder loadWorkOrder(int workOrderId)
         {
             string query = "SELECT * FROM OrdenTrabajo WHERE Identificacion = @workOrderId";
