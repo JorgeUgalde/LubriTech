@@ -51,7 +51,9 @@ namespace LubriTech.View
             tbSupplierName.Text = inventoryManagment.Supplier.name;
             tbSupplierId.Text = inventoryManagment.Supplier.id;
             cbBranch.Text = inventoryManagment.Branch.Name;
-            tbDate.Text = inventoryManagment.DocumentDate.ToString();
+            cbDay.Text = inventoryManagment.DocumentDate.Day.ToString();
+            cbMonth.Text = inventoryManagment.DocumentDate.Month.ToString();
+            cbYear.Text = inventoryManagment.DocumentDate.Year.ToString();
             cbDocumentType.Text = inventoryManagment.DocumentType;
             tbTotalAmount.Text = inventoryManagment.TotalAmount.ToString();
         }
@@ -71,10 +73,15 @@ namespace LubriTech.View
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (tbSupplierName.Text.Trim() == ""
+            if (cbDay.Text.Trim() == ""
+                || cbMonth.Text.Trim() == ""
+                || cbYear.Text.Trim() == ""
                 || cbBranch.Text.Trim() == ""
-                || tbDate.Text.Trim() == ""
                 || cbDocumentType.Text.Trim() == ""
+                || cbState.Text.Trim() == ""
+                || tbSupplierName.Text.Trim() == ""
+                || tbItem.Text.Trim() == ""
+                || tbQuantity.Text.Trim() == ""
                 || tbTotalAmount.Text.Trim() == "")
             {
                 MessageBox.Show("Por favor llene todos los campos");
@@ -83,6 +90,10 @@ namespace LubriTech.View
             {
                 MessageBox.Show("Debe seleccionar un proveedor");
             }
+            else if (tbItemId.Text.Trim() == "")
+            {
+                MessageBox.Show("Debe seleccionar un artículo");
+            }
             else
             {
                 InventoryManagment_Controller inventoryManagmentController = new InventoryManagment_Controller();
@@ -90,12 +101,21 @@ namespace LubriTech.View
                 InventoryManagment inventoryManagment = new InventoryManagment();
                 inventoryManagment.Supplier = new Supplier_Controller().GetSupplier(tbSupplierId.Text.Trim());
                 inventoryManagment.Branch = new Branch_Controller().get(Convert.ToInt32(cbBranch.SelectedValue.ToString()));
-                inventoryManagment.DocumentDate = Convert.ToDateTime(tbDate.Text.Trim());
+                string date = cbYear.Text.Trim() + "/" + cbMonth.Text.Trim() + "/" + cbDay.Text.Trim();
+                inventoryManagment.DocumentDate = Convert.ToDateTime(date);
                 inventoryManagment.DocumentType = cbDocumentType.Text;
                 inventoryManagment.TotalAmount = Convert.ToDouble(tbTotalAmount.Text.Trim());
                 inventoryManagment.State = cbDocumentType.Text;
 
-                if (inventoryManagmentController.upsert(inventoryManagment))
+                DetailLine_Controller detailLineController = new DetailLine_Controller();
+
+                DetailLine detailLine = new DetailLine();
+                detailLine.Item = new Item_Controller().get(tbItemId.Text.Trim());
+                //detailLine.InventoryManagment = new InventoryManagment_Controller().getInventoryManagment(Convert.ToInt32(cbBranch.SelectedValue.ToString()));
+                detailLine.Quantity = Convert.ToInt32(tbQuantity.Text.Trim());
+                detailLine.TotalAmount = Convert.ToDouble(tbTotalAmount.Text.Trim());
+
+                if (inventoryManagmentController.upsert(inventoryManagment) && detailLineController.upsert(detailLine))
                 {
                     OnDataChanged(EventArgs.Empty);
                     this.Dispose();
