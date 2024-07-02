@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Controller\Appointment_Controller.cs" />
     <Compile Include="Controller\Branch_Controller.cs" />
+    <Compile Include="Controller\Schedule_Controller.cs" />
     <Compile Include="Controller\Transmission_Controller.cs" />
     <Compile Include="Controller\Engine_Controller.cs" />
     <Compile Include="Controller\Clients_Controller.cs" />

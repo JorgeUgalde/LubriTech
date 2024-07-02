@@ -1,4 +1,5 @@
-﻿using LubriTech.Model.Branch_Information;
+﻿using LubriTech.Controller;
+using LubriTech.Model.Branch_Information;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,7 +45,7 @@ namespace LubriTech.View
             }
             else
             {
-                schedules = new Schedule_Model().loadAllSchedules();
+                schedules = new Schedule_Controller().loadAll();
                 if (schedules == null)
                 {
                     MessageBox.Show("No hay horarios registrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -104,11 +105,14 @@ namespace LubriTech.View
         {
             if (e.RowIndex >= 0)
             {
-                //int scheduleID = Convert.ToInt32(dgvSchedules.Rows[e.RowIndex].Cells["ScheduleID"].Value);
-                //frmInsertUpdate_Schedule frmUpsert_Schedule = new frmInsertUpdate_Schedule(scheduleID);
-                //frmUpsert_Schedule.MdiParent = this.MdiParent;
-                //frmUpsert_Schedule.DataChanged += ChildFormDataChangedHandler;
-                //frmUpsert_Schedule.Show();
+                int scheduleID = Convert.ToInt32(dgvSchedules.Rows[e.RowIndex].Cells["ScheduleID"].Value);
+
+                Schedule schedule = schedules.Where(p => p.ScheduleID == scheduleID).FirstOrDefault();
+                frmInsertUpdate_Schedule frmUpsert_Schedule = new frmInsertUpdate_Schedule(schedule);
+
+                frmUpsert_Schedule.MdiParent = this.MdiParent;
+                frmUpsert_Schedule.DataChanged += ChildFormDataChangedHandler;
+                frmUpsert_Schedule.Show();
             }
 
         }
@@ -138,10 +142,10 @@ namespace LubriTech.View
 
         private void btnAddSchedule_Click(object sender, EventArgs e)
         {
-            //frmInsertUpdate_Schedule frmUpsert_Schedule = new frmInsertUpdate_Schedule();
-            //frmUpsert_Schedule.MdiParent = this.MdiParent;
-            //frmUpsert_Schedule.DataChanged += ChildFormDataChangedHandler;
-            //frmUpsert_Schedule.Show();
+            frmInsertUpdate_Schedule frmUpsert_Schedule = new frmInsertUpdate_Schedule();
+            frmUpsert_Schedule.MdiParent = this.MdiParent;
+            frmUpsert_Schedule.DataChanged += ChildFormDataChangedHandler;
+            frmUpsert_Schedule.Show();
         }
 
         private void panelBorder_MouseDown(object sender, MouseEventArgs e)

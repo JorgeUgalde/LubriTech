@@ -31,7 +31,7 @@
             this.lblForm = new System.Windows.Forms.Label();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.panelBorder = new System.Windows.Forms.Panel();
-            this.cbSchedulle = new System.Windows.Forms.ComboBox();
+            this.cbBranch = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.lblFullName = new System.Windows.Forms.Label();
@@ -45,11 +45,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbDurationMinuts = new System.Windows.Forms.ComboBox();
+            this.cbDurationHours = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAddSchedule = new System.Windows.Forms.Button();
             this.btnConfirm = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.panelBorder.SuspendLayout();
@@ -94,20 +94,20 @@
             this.panelBorder.TabIndex = 36;
             this.panelBorder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBorder_MouseDown);
             // 
-            // cbSchedulle
+            // cbBranch
             // 
-            this.cbSchedulle.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cbSchedulle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSchedulle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSchedulle.FormattingEnabled = true;
-            this.cbSchedulle.Items.AddRange(new object[] {
+            this.cbBranch.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbBranch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbBranch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbBranch.FormattingEnabled = true;
+            this.cbBranch.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cbSchedulle.Location = new System.Drawing.Point(143, 146);
-            this.cbSchedulle.Margin = new System.Windows.Forms.Padding(4);
-            this.cbSchedulle.Name = "cbSchedulle";
-            this.cbSchedulle.Size = new System.Drawing.Size(283, 36);
-            this.cbSchedulle.TabIndex = 44;
+            this.cbBranch.Location = new System.Drawing.Point(143, 146);
+            this.cbBranch.Margin = new System.Windows.Forms.Padding(4);
+            this.cbBranch.Name = "cbBranch";
+            this.cbBranch.Size = new System.Drawing.Size(283, 36);
+            this.cbBranch.TabIndex = 44;
             // 
             // label1
             // 
@@ -152,15 +152,16 @@
             this.cbStartHour.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbStartHour.FormattingEnabled = true;
             this.cbStartHour.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
+            "00",
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
             "10",
             "11",
             "12",
@@ -235,15 +236,16 @@
             this.cbEndHour.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEndHour.FormattingEnabled = true;
             this.cbEndHour.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
+            "00",
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
             "10",
             "11",
             "12",
@@ -325,30 +327,31 @@
             this.label6.TabIndex = 56;
             this.label6.Text = ":";
             // 
-            // comboBox1
+            // cbDurationMinuts
             // 
-            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbDurationMinuts.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbDurationMinuts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDurationMinuts.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDurationMinuts.FormattingEnabled = true;
+            this.cbDurationMinuts.Items.AddRange(new object[] {
             "00",
             "15",
             "30",
             "45"});
-            this.comboBox1.Location = new System.Drawing.Point(333, 374);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(92, 36);
-            this.comboBox1.TabIndex = 55;
+            this.cbDurationMinuts.Location = new System.Drawing.Point(333, 374);
+            this.cbDurationMinuts.Margin = new System.Windows.Forms.Padding(4);
+            this.cbDurationMinuts.Name = "cbDurationMinuts";
+            this.cbDurationMinuts.Size = new System.Drawing.Size(92, 36);
+            this.cbDurationMinuts.TabIndex = 55;
             // 
-            // comboBox2
+            // cbDurationHours
             // 
-            this.comboBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.cbDurationHours.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbDurationHours.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDurationHours.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDurationHours.FormattingEnabled = true;
+            this.cbDurationHours.Items.AddRange(new object[] {
+            "00",
             "1",
             "2",
             "3",
@@ -373,11 +376,11 @@
             "22",
             "23",
             "24"});
-            this.comboBox2.Location = new System.Drawing.Point(206, 374);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(92, 36);
-            this.comboBox2.TabIndex = 54;
+            this.cbDurationHours.Location = new System.Drawing.Point(206, 374);
+            this.cbDurationHours.Margin = new System.Windows.Forms.Padding(4);
+            this.cbDurationHours.Name = "cbDurationHours";
+            this.cbDurationHours.Size = new System.Drawing.Size(92, 36);
+            this.cbDurationHours.TabIndex = 54;
             // 
             // label8
             // 
@@ -403,21 +406,22 @@
             this.label9.TabIndex = 58;
             this.label9.Text = "Minutos";
             // 
-            // button1
+            // btnAddSchedule
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(285, 450);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(141, 34);
-            this.button1.TabIndex = 60;
-            this.button1.Text = "Cerrar";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnAddSchedule.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAddSchedule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
+            this.btnAddSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAddSchedule.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddSchedule.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAddSchedule.Location = new System.Drawing.Point(285, 450);
+            this.btnAddSchedule.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddSchedule.Name = "btnAddSchedule";
+            this.btnAddSchedule.Size = new System.Drawing.Size(141, 34);
+            this.btnAddSchedule.TabIndex = 60;
+            this.btnAddSchedule.Text = "Cerrar";
+            this.btnAddSchedule.UseVisualStyleBackColor = false;
+            this.btnAddSchedule.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnConfirm
             // 
@@ -434,6 +438,7 @@
             this.btnConfirm.TabIndex = 59;
             this.btnConfirm.Text = "Confirmar";
             this.btnConfirm.UseVisualStyleBackColor = false;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // frmInsertUpdate_Schedule
             // 
@@ -441,13 +446,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(450, 510);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAddSchedule);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.cbDurationMinuts);
+            this.Controls.Add(this.cbDurationHours);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -457,13 +462,15 @@
             this.Controls.Add(this.cbStartMinute);
             this.Controls.Add(this.cbStartHour);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.cbSchedulle);
+            this.Controls.Add(this.cbBranch);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.lblFullName);
             this.Controls.Add(this.panelBorder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MinimumSize = new System.Drawing.Size(450, 510);
             this.Name = "frmInsertUpdate_Schedule";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmInsertUpdate_Schedule";
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             this.panelBorder.ResumeLayout(false);
@@ -478,7 +485,7 @@
         private System.Windows.Forms.Label lblForm;
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.Panel panelBorder;
-        private System.Windows.Forms.ComboBox cbSchedulle;
+        private System.Windows.Forms.ComboBox cbBranch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label lblFullName;
@@ -492,11 +499,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbDurationMinuts;
+        private System.Windows.Forms.ComboBox cbDurationHours;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAddSchedule;
         private System.Windows.Forms.Button btnConfirm;
     }
 }

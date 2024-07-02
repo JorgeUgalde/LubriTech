@@ -41,6 +41,8 @@ namespace LubriTech.View.Appointment_View
         private int endHour = 17;
         private int appointmentDuration = 30;
 
+
+
         /// <summary>
         /// Variables to handle the selected button and the list of appointments
         /// </summary>
@@ -106,6 +108,8 @@ namespace LubriTech.View.Appointment_View
             month = DateTime.Now.Month;
             year = DateTime.Now.Year;
             day = DateTime.Now.Day;
+            DateTime now = DateTime.Now;
+
             setMonthInfo("");
             DisplayAppointments(day);
         }

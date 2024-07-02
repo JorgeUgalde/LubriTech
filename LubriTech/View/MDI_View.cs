@@ -212,5 +212,12 @@ namespace LubriTech.View
             OpenChildForm(frmCarModels);
             frmCarModels.BringToFront();
         }
+
+        private void btnSchedules_Click(object sender, EventArgs e)
+        {
+            frmSchedule frmSchedule = new frmSchedule();
+            OpenChildForm(frmSchedule);
+            frmSchedule.BringToFront();
+        }
     }
 }

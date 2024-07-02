@@ -23,6 +23,7 @@ namespace LubriTech.View
         public frmInsertUpdate_Branch()
         {
             InitializeComponent();
+
             branch = new Branch();
         }
 

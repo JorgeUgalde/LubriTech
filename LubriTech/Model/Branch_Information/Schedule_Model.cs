@@ -20,12 +20,18 @@ namespace LubriTech.Model.Branch_Information
             {
                 List<Schedule> schedules = new List<Schedule>();
                 
-                String selectQuery = "SELECT * FROM Schedule";
+                String selectQuery = "SELECT * FROM HorarioSucursal";
                 SqlCommand cmd = new SqlCommand(selectQuery, conn);
                 DataTable ScheduleDataTable = new DataTable();
-                SqlDataAdapter ScheduleDataAdapter = new SqlDataAdapter(cmd);
+                SqlDataAdapter adp = new SqlDataAdapter();
 
-                ScheduleDataAdapter.Fill(ScheduleDataTable);
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+                adp.SelectCommand = cmd;
+
+                adp.Fill(ScheduleDataTable);
 
                 foreach (DataRow row in ScheduleDataTable.Rows)
                 {
@@ -34,18 +40,11 @@ namespace LubriTech.Model.Branch_Information
                     Convert.ToInt32(row["Identificacion"]),
                     new Branch_Controller().get(Convert.ToInt32(row["IdentificacionSucursal"])),
                     row["Titulo"].ToString(),
-                    Convert.ToInt32(row["HoraInicio"]),
-                    Convert.ToInt32(row["HoraSalida"]),
+                    TimeSpan.Parse( row["HorarioInicio"].ToString()),
+                    TimeSpan.Parse(row["HorarioSalida"].ToString()),
                     Convert.ToInt32(row["TiempoCita"])
-                   ));
+                   )) ;
                 }
-                if (conn.State != System.Data.ConnectionState.Open)
-                {
-                    conn.Open();
-                }
-                cmd.ExecuteNonQuery();
-
-
                 return schedules;
             }
             catch (Exception ex)
@@ -66,7 +65,7 @@ namespace LubriTech.Model.Branch_Information
                 {
                     conn.Open();
                 }
-                String selectQuery = "SELECT * FROM Schedule WHERE Identificacion = @id";
+                String selectQuery = "SELECT * FROM HorarioSucursal WHERE Identificacion = @id";
                 SqlCommand cmd = new SqlCommand(selectQuery, conn);
                 cmd.Parameters.AddWithValue("@id", id);
                 DataTable scheduleDataTable = new DataTable();
@@ -82,8 +81,8 @@ namespace LubriTech.Model.Branch_Information
                     Convert.ToInt32(row["Identificacion"]),
                     new Branch_Controller().get(Convert.ToInt32(row["IdentificacionSucursal"])),
                     row["Titulo"].ToString(),
-                    Convert.ToInt32(row["HoraInicio"]),
-                    Convert.ToInt32(row["HoraSalida"]),
+                    TimeSpan.Parse(row["HorarioInicio"].ToString()),
+                    TimeSpan.Parse(row["HorarioSalida"].ToString()),
                     Convert.ToInt32(row["TiempoCita"])
                     );
 
@@ -106,11 +105,11 @@ namespace LubriTech.Model.Branch_Information
                 string query = "";
                 if (getSchedule(schedule.ScheduleID) == null)
                 {
-                    query = "INSERT INTO Schedule (IdentificacionSucursal, Titulo, HoraInicio, HoraSalida, TiempoCita) VALUES (@branchID, @title, @start, @end, @appointmentTime)";
+                    query = "INSERT INTO HorarioSucursal (IdentificacionSucursal, Titulo, HorarioInicio, HorarioSalida, TiempoCita) VALUES (@branchID, @title, @start, @end, @appointmentTime)";
                 }
                 else
                 {
-                    query = "UPDATE Schedule SET IdentificacionSucursal = @branchID, Titulo = @title, HoraInicio = @start, HoraSalida = @end, TiempoCita = @appointmentTime WHERE Identificacion = @Id";
+                    query = "UPDATE HorarioSucursal SET IdentificacionSucursal = @branchID, Titulo = @title, HorarioInicio = @start, HorarioSalida = @end, TiempoCita = @appointmentTime WHERE Identificacion = @Id";
                 }
 
                 SqlCommand cmd = new SqlCommand(query, conn);
