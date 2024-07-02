@@ -1,5 +1,6 @@
 ﻿using LubriTech.Model;
 using LubriTech.Model.InventoryManagment_Information;
+using LubriTech.Model.items_Information;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,5 +37,14 @@ namespace LubriTech.Controller
             return inventoryManagmentModel.upsertInventoryManagment(inventoryManagment);
         }
 
+        /// <summary>
+        /// Retrieves an inventory managment by its id.
+        /// </summary>
+        /// <param name="id">Identification of the inventory managment document.</param>
+        /// <returns>Inventory managment object, or null if the inventory managment was not found.</returns>
+        public InventoryManagment getInventoryManagment(int id)
+        {
+            return new InventoryManagment_Model().getInventoryManagment(id);
+        }
     }
 }

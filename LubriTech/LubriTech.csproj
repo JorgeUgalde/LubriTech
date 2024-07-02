@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -83,6 +83,7 @@
     <Compile Include="Controller\Appointment_Controller.cs" />
     <Compile Include="Controller\Branch_Controller.cs" />
     <Compile Include="Controller\Schedule_Controller.cs" />
+    <Compile Include="Controller\DetailLine_Controller.cs" />
     <Compile Include="Controller\Transmission_Controller.cs" />
     <Compile Include="Controller\Engine_Controller.cs" />
     <Compile Include="Controller\Clients_Controller.cs" />
@@ -102,7 +103,9 @@
     <Compile Include="Model\Branch_Information\Schedule_Model.cs" />
     <Compile Include="Model\Client_Information\Client.cs" />
     <Compile Include="Model\Client_Information\Client_Model.cs" />
+    <Compile Include="Model\InventoryManagment_Information\DetailLine.cs" />
     <Compile Include="Model\InventoryManagment_Information\InventoryManagment.cs" />
+    <Compile Include="Model\InventoryManagment_Information\DetailLine_Model.cs" />
     <Compile Include="Model\InventoryManagment_Information\InventoryManagment_Model.cs" />
     <Compile Include="Model\Item_Information\Item.cs" />
     <Compile Include="Model\Item_Information\Item_Model.cs" />
