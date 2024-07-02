@@ -1,6 +1,7 @@
 ﻿using LubriTech.Controller;
 using LubriTech.Model.Branch_Information;
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -20,23 +21,47 @@ namespace LubriTech.View
         Branch branch;
 
 
+
         public frmInsertUpdate_Branch()
         {
             InitializeComponent();
-
             branch = new Branch();
+            cbState.SelectedIndex = 0;
+            load_Schedules();
         }
 
         public frmInsertUpdate_Branch(Branch branch)
         {
+
             InitializeComponent();
             this.branch = branch;
+
+            load_Schedules();
+
             txtName.Text = branch.Name;
             txtAddress.Text = branch.Address;
             txtPhone.Text = branch.Phone.ToString();
             txtEmail.Text = branch.Email;
             cbState.Text = branch.State;
         }
+
+        private void load_Schedules()
+        {
+            cbSchedule.DataSource = null;
+            List <Schedule> schedules = new Schedule_Controller().loadAll(branch.Id);
+            cbSchedule.DataSource = schedules;
+            cbSchedule.DisplayMember = "Title";
+            cbSchedule.ValueMember = "ScheduleID";
+
+            // select the schedule with the state "Activo"
+            Schedule activeSchedule = schedules.Find(schedule => schedule.State == "Activo");
+            if (activeSchedule != null)
+            {
+                cbSchedule.SelectedValue = activeSchedule.ScheduleID;
+            }
+        }
+
+
 
         public event EventHandler DataChanged;
 
@@ -100,7 +125,16 @@ namespace LubriTech.View
                 branch.Email = txtEmail.Text;
                 branch.State = cbState.Text;
 
-                if (new Branch_Controller().Upsert(branch))
+
+
+                Schedule schedule = (Schedule)cbSchedule.SelectedItem;
+                if (schedule != null)
+                {
+                    schedule.State = "Activo";
+                    new Schedule_Controller().UpSert(schedule);
+                }
+                
+                if (new Branch_Controller().Upsert(branch) != -1 )
                 {
                     MessageBox.Show("Sucursal registrada con exito", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     OnDataChanged(EventArgs.Empty);
@@ -113,12 +147,35 @@ namespace LubriTech.View
             }
             catch (Exception)
             {
-
-                
                 throw;
             }
             
 
+        }
+
+        private void btnAddSchedulle_Click(object sender, EventArgs e)
+        {
+            if (txtName.Text.Trim() == "")
+            {
+                MessageBox.Show("Debe indicar el nombre de la sucrusal primero", "Atención!" , MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (branch.Id <= 0 )
+            {
+                branch.Name = txtName.Text;
+
+                branch.State = cbState.Text;
+
+                branch.Id = new Branch_Controller().Upsert(branch);
+            }
+
+           
+
+
+            frmInsertUpdate_Schedule upsertSchedule = new frmInsertUpdate_Schedule(branch);
+            upsertSchedule.MdiParent = this.MdiParent;
+            upsertSchedule.DataChanged += (s, ev) => load_Schedules();
+            upsertSchedule.Show();
         }
     }
 }

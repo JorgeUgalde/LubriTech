@@ -286,6 +286,7 @@
             this.btnAddSchedulle.TabIndex = 40;
             this.btnAddSchedulle.Text = "Añadir";
             this.btnAddSchedulle.UseVisualStyleBackColor = false;
+            this.btnAddSchedulle.Click += new System.EventHandler(this.btnAddSchedulle_Click);
             // 
             // frmInsertUpdate_Branch
             // 

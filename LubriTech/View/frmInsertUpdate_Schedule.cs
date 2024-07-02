@@ -26,7 +26,17 @@ namespace LubriTech.View
         {
             InitializeComponent();
             this.schedule = new Schedule();
+            cbState.SelectedIndex = 0;
             load_Branches();
+        }
+
+        public frmInsertUpdate_Schedule(Branch branch)
+        {
+            InitializeComponent();
+            this.schedule = new Schedule();
+            load_Branches();
+            cbState.Text = branch.State;
+            cbBranch.Text = branch.ToString();
         }
 
 
@@ -43,9 +53,7 @@ namespace LubriTech.View
             cbStartMinute.Text = schedule.StartHour.ToString(@"mm");
             cbEndHour.Text = schedule.EndHour.ToString(@"hh");
             cbEndMinute.Text = schedule.EndHour.ToString(@"mm");
-
-
-
+            cbState.Text = schedule.State;
 
             int hours = schedule.appointmentDuration;
             int durationHours = hours / 60;
@@ -53,7 +61,6 @@ namespace LubriTech.View
 
             cbDurationHours.Text = durationHours == 0 ? "00" : durationHours.ToString();
             cbDurationMinuts.Text = durationMinutes == 0 ? "00" : durationMinutes.ToString();
-
         }
 
         public event EventHandler DataChanged;
@@ -77,7 +84,6 @@ namespace LubriTech.View
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
-
         }
 
         private void pbClose_Click(object sender, EventArgs e)
@@ -121,8 +127,9 @@ namespace LubriTech.View
                 schedule.StartHour = TimeSpan.Parse(startHour + ":" + startMinute);
                 schedule.EndHour = TimeSpan.Parse(endHour + ":" + endMinute);
                 schedule.appointmentDuration = Convert.ToInt32(durationHours) * 60 + Convert.ToInt32(durationMinutes);
+                schedule.State = cbState.Text;
 
-                
+
                 if (new Schedule_Controller().UpSert(schedule))
                 {
                     OnDataChanged(EventArgs.Empty);
@@ -143,5 +150,6 @@ namespace LubriTech.View
             }
 
         }
+
     }
 }

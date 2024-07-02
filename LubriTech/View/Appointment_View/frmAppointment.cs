@@ -1,5 +1,6 @@
 using LubriTech.Controller;
 using LubriTech.Model.Appointment_Information;
+using LubriTech.Model.Branch_Information;
 using LubriTech.Model.Client_Information;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -23,6 +25,13 @@ namespace LubriTech.View.Appointment_View
     /// </summary>
     public partial class frmAppointment : Form
     {
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
         /// <summary>
         /// Variables to handle the month, year and day of the appointment
         /// </summary>      
@@ -37,11 +46,12 @@ namespace LubriTech.View.Appointment_View
         /// <summary>
         /// Variables to handle the start and end hour of work schedule, and the duration of the appointment
         /// </summary>
-        private int startHour = 8;
-        private int endHour = 17;
-        private int appointmentDuration = 30;
+        /// 
+        Schedule scheduleBranch;
 
-
+        private TimeSpan startHour; 
+        private TimeSpan endHour;
+        private int appointmentDuration;
 
         /// <summary>
         /// Variables to handle the selected button and the list of appointments
@@ -68,6 +78,10 @@ namespace LubriTech.View.Appointment_View
         {
             InitializeComponent();
             appointments  = new List<Appointment>();
+            scheduleBranch = new Schedule_Controller().get(0 , frmLogin.branch);
+            startHour = scheduleBranch.StartHour;
+            endHour = scheduleBranch.EndHour;
+            appointmentDuration = scheduleBranch.appointmentDuration;
         }
 
         /// <summary>
@@ -217,67 +231,69 @@ namespace LubriTech.View.Appointment_View
 
             DateTime selectedDate = new DateTime(year, month, selectedDay);
 
-            for (int hour = endHour - 1; hour >= startHour; hour--)
+            TimeSpan currentTime = endHour;
+
+            while (currentTime >= startHour)
             {
-                for (int minute = 60 - appointmentDuration; minute >= 0; minute -= appointmentDuration)
+                TimeSpan appointmentTime = currentTime - TimeSpan.FromMinutes(appointmentDuration);
+
+                if (appointmentTime < startHour)
                 {
-                    DateTime appointmentTime = new DateTime(selectedDate.Year, selectedDate.Month, selectedDate.Day, hour, minute, 0);
-
-                    // create a panel to hold the appointment button and label
-                    Panel simpleAppointmentPanel = new Panel
-                    {
-                        Size = new Size( Convert.ToInt32(pnlAppointments.Width *0.7f), 50),
-                        Dock = DockStyle.Top,
-                        Padding = new Padding(0, 3, 0, 0),
-                    };
-
-                    // Create a label to show the time of the appointment
-                    Label appointmentLabel = new Label
-                    {
-                        Text = appointmentTime.ToString("hh:mm tt"),
-                        TextAlign = ContentAlignment.MiddleCenter,
-                        Size = new Size(Convert.ToInt32(pnlAppointments.Width * 0.3f), 50),
-                        Padding = new Padding(5, 5, 5, 5),
-                        Margin = new Padding(5),
-                        BackColor = Color.LightGray,
-                        Dock = DockStyle.Left,
-                        Font = new Font("Segoe UI", 12)
-                    };
-
-                    // Create a button to assign the appointment
-                    Button appointmentButton = new Button
-                    {
-                        Text = "Asignar Cita",
-                        TextAlign = ContentAlignment.MiddleLeft,
-                        BackColor = Color.White,
-                        Tag = appointmentTime,
-                        Size = new Size(Convert.ToInt32(pnlAppointments.Width * 0.7f), 50),
-                        FlatStyle = FlatStyle.Popup,
-                        Cursor = Cursors.Hand,
-                        Padding = new Padding(5, 5, 5, 5),
-                        Margin = new Padding(5),
-                        Dock = DockStyle.Fill,
-                        Font = new Font("Segoe UI", 12)
-                    };
-                    appointmentButton.Click += new EventHandler(AppointmentButton_Click);
-
-                    // Create a tooltip to show the time of the appointment
-                    simpleAppointmentPanel.Controls.Add(appointmentButton);
-                    simpleAppointmentPanel.Controls.Add(appointmentLabel);
-
-                    pnlAppointments.Controls.Add(simpleAppointmentPanel);
-
+                    break;
                 }
+
+                DateTime appointmentDateTime = selectedDate.Add(appointmentTime);
+
+                // create a panel to hold the appointment button and label
+                Panel simpleAppointmentPanel = new Panel
+                {
+                    Size = new Size(Convert.ToInt32(pnlAppointments.Width * 0.7f), 50),
+                    Dock = DockStyle.Top,
+                    Padding = new Padding(0, 3, 0, 0),
+                };
+
+                // Create a label to show the time of the appointment
+                Label appointmentLabel = new Label
+                {
+                    Text = appointmentDateTime.ToString("hh:mm tt"),
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Size = new Size(Convert.ToInt32(pnlAppointments.Width * 0.3f), 50),
+                    Padding = new Padding(5, 5, 5, 5),
+                    Margin = new Padding(5),
+                    BackColor = Color.LightGray,
+                    Dock = DockStyle.Left,
+                    Font = new Font("Segoe UI", 12)
+                };
+
+                // Create a button to assign the appointment
+                Button appointmentButton = new Button
+                {
+                    Text = "Asignar Cita",
+                    TextAlign = ContentAlignment.MiddleLeft,
+                    BackColor = Color.White,
+                    Tag = appointmentDateTime,
+                    Size = new Size(Convert.ToInt32(pnlAppointments.Width * 0.7f), 50),
+                    FlatStyle = FlatStyle.Popup,
+                    Cursor = Cursors.Hand,
+                    Padding = new Padding(5, 5, 5, 5),
+                    Margin = new Padding(5),
+                    Dock = DockStyle.Fill,
+                    Font = new Font("Segoe UI", 12)
+                };
+                appointmentButton.Click += new EventHandler(AppointmentButton_Click);
+
+                // Create a tooltip to show the time of the appointment
+                simpleAppointmentPanel.Controls.Add(appointmentButton);
+                simpleAppointmentPanel.Controls.Add(appointmentLabel);
+
+                pnlAppointments.Controls.Add(simpleAppointmentPanel);
+
+                currentTime -= TimeSpan.FromMinutes(appointmentDuration);
             }
             // Get the appointments of the selected day
             GetAppointments(selectedDate);
         }
 
-
-        /// <summary>
-        /// Get the appointments of the selected day
-        /// </summary>
-        /// <param name="selectedDate">Day selected to see the appointments </param>
         private void GetAppointments(DateTime selectedDate)
         {
             appointments = new Appointment_Controller().loadDayAppointments(selectedDate);
@@ -299,6 +315,7 @@ namespace LubriTech.View.Appointment_View
                 }
             }
         }
+
 
         /// <summary>
         /// Event handler for the appointment button, assign or cancel an appointment
@@ -402,6 +419,32 @@ namespace LubriTech.View.Appointment_View
             }
         }
 
+        private void pbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
+
+        private void pbMaximize_Click(object sender, EventArgs e)
+        {
+
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+
+        }
+
+        private void panelBorder_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
         /// <summary>
         /// Open the client form to search a client
         /// </summary>
@@ -426,9 +469,16 @@ namespace LubriTech.View.Appointment_View
                 this.newAppointmentClient = client;
                 txtName.Text = client.FullName;
                 txtId.Text = client.Id;
+                load_Client_Vehicles();
             }
+        }
 
-
+        private void load_Client_Vehicles()
+        {
+            //List<Vehicle> vehicles = new Vehicle_Controller().getVehicles(newAppointmentClient.Id);
+            //cmbVehicles.DataSource = vehicles;
+            //cmbVehicles.DisplayMember = "Plate";
+            //cmbVehicles.ValueMember = "VehicleID";
         }
     }
 }

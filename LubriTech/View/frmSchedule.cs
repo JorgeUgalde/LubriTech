@@ -45,7 +45,7 @@ namespace LubriTech.View
             }
             else
             {
-                schedules = new Schedule_Controller().loadAll();
+                schedules = new Schedule_Controller().loadAll(null);
                 if (schedules == null)
                 {
                     MessageBox.Show("No hay horarios registrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -60,6 +60,7 @@ namespace LubriTech.View
             dgvSchedules.Columns["Title"].HeaderText = "Titulo";
             dgvSchedules.Columns["StartHour"].HeaderText = "Hora de Inicio";
             dgvSchedules.Columns["EndHour"].HeaderText = "Hora de Salida";
+            dgvSchedules.Columns["State"].HeaderText = "Estado";
 
             SetColumnOrder();
             typeof(DataGridView).InvokeMember(
@@ -76,6 +77,7 @@ namespace LubriTech.View
             dgvSchedules.Columns["Title"].DisplayIndex = 1;
             dgvSchedules.Columns["StartHour"].DisplayIndex = 2;
             dgvSchedules.Columns["EndHour"].DisplayIndex = 3;
+            dgvSchedules.Columns["State"].DisplayIndex = 4;
         }
 
         private void ChildFormDataChangedHandler(object sender, EventArgs e)
