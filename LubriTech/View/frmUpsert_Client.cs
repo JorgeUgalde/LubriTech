@@ -85,19 +85,19 @@ namespace LubriTech.View
         private void frmUpsert_Client_Load(object sender, EventArgs e)
         {
 
-            List<Vehicle> vehicles = new List<Vehicle>();
+            //List<Vehicle> vehicles = new List<Vehicle>();
 
             if (existingClient != null)
             {
-                Clients_Controller clients_Controller = new Clients_Controller();
-                vehicles = clients_Controller.getVehicle(existingClient.Id);
+                //Clients_Controller clients_Controller = new Clients_Controller();
+                //vehicles = clients_Controller.getVehicle(existingClient.Id);
+                LoadVehicles(sender,e);
             }
-
-            dgvVehicles.DataSource = vehicles;
-            dgvVehicles.Columns["LicensePlate"].HeaderText = "Placa";
-            dgvVehicles.Columns["Model"].HeaderText = "Modelo";
-            dgvVehicles.Columns["Client"].HeaderText = "Cliente";
-            dgvVehicles.Columns["State"].HeaderText = "Estado";
+            //dgvVehicles.DataSource = vehicles;
+            //dgvVehicles.Columns["LicensePlate"].HeaderText = "Placa";
+            //dgvVehicles.Columns["Model"].HeaderText = "Modelo";
+            //dgvVehicles.Columns["Client"].HeaderText = "Cliente";
+            //dgvVehicles.Columns["State"].HeaderText = "Estado";
 
             foreach (DataGridViewColumn column in dgvVehicles.Columns)
             {
@@ -190,14 +190,29 @@ namespace LubriTech.View
             {
                 frmInsertUpdate_Vehicle frmInsertVehicle = new frmInsertUpdate_Vehicle(existingClient);
                 frmInsertVehicle.MdiParent = this.MdiParent;
+                frmInsertVehicle.DataChanged += (s, ev) => LoadVehicles(s, ev);
                 frmInsertVehicle.Show();
             }
             else
             {
                 frmInsertUpdate_Vehicle frmNewVehicle = new frmInsertUpdate_Vehicle();
                 frmNewVehicle.MdiParent = this.MdiParent;
+                frmNewVehicle.DataChanged += (s, ev) => LoadVehicles(s, ev);
                 frmNewVehicle.Show();
             }
+        }
+
+        private void LoadVehicles(object sender, EventArgs e)
+        {
+            List<Vehicle> vehicles = new List<Vehicle>();
+            Clients_Controller clients_Controller = new Clients_Controller();
+            vehicles = clients_Controller.getVehicle(existingClient.Id);
+            dgvVehicles.DataSource = vehicles;
+
+            dgvVehicles.Columns["LicensePlate"].HeaderText = "Placa";
+            dgvVehicles.Columns["Model"].HeaderText = "Modelo";
+            dgvVehicles.Columns["Client"].HeaderText = "Cliente";
+            dgvVehicles.Columns["State"].HeaderText = "Estado";
         }
 
         /// <summary>

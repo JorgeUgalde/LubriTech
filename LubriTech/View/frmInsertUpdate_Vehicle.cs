@@ -38,6 +38,7 @@ namespace LubriTech.View
             InitializeComponent();
             setComboBoxMake();
             setComboBoxes();
+            cbState.SelectedIndex = 0;
         }
 
         public frmInsertUpdate_Vehicle(Client client)
@@ -51,6 +52,7 @@ namespace LubriTech.View
             setComboBoxes();
             tbClientName.Text = client.FullName;
             tbClientId.Text = client.Id;
+            cbState.SelectedIndex = 0;
 
         }
 
@@ -116,7 +118,7 @@ namespace LubriTech.View
                 vehicle.Client = new Clients_Controller().getClient(tbClientId.Text.Trim());
                 vehicle.Model = new CarModel_Controller().getModel(Convert.ToInt32(cbModel.SelectedValue.ToString()));
                 vehicle.Model.Make = new Make_Controller().getMake(Convert.ToInt32(cbMake.SelectedValue.ToString()));
-                vehicle.LicensePlate = tbLicensePlate.Text.Trim();
+                vehicle.LicensePlate = tbLicensePlate.Text.Trim().ToUpper();
                 vehicle.Year = Convert.ToInt32(tbYear.Text.Trim());
                 vehicle.Mileage = Convert.ToInt32(tbMileage.Text.Trim());
                 vehicle.EngineType = new Engine_Controller().getEngine(Convert.ToInt32(cbEngine.SelectedValue.ToString()));

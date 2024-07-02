@@ -18,10 +18,25 @@ namespace LubriTech.View
     public partial class frmVehicles : Form
     {
         private List<Vehicle> vehicles;
+        private Form parentForm;
+        public event Action<Vehicle> VehicleSelected;
+        string clientId = "";
 
         public frmVehicles()
         {
             vehicles = new List<Vehicle>();
+            InitializeComponent();
+            load_Vehicles(null);
+        }
+
+        public frmVehicles(Form parentForm, string clientId)
+        {
+            if (clientId != "")
+            {
+                this.clientId = clientId;
+            }
+            vehicles = new List<Vehicle>();
+            this.parentForm = parentForm;
             InitializeComponent();
             load_Vehicles(null);
         }
@@ -47,7 +62,14 @@ namespace LubriTech.View
             }
             else
             {
-                vehicles = new Vehicle_Controller().getAll();
+                if (this.clientId == "")
+                {
+                    vehicles = new Vehicle_Controller().getAll();
+                }
+                else
+                {
+                    vehicles = new Vehicle_Controller().getVehiclesByClient(this.clientId);
+                }
                 if (vehicles == null)
                 {
                     MessageBox.Show("No hay vehículos registrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -64,10 +86,21 @@ namespace LubriTech.View
             
             foreach (DataGridViewColumn column in dgvVehicles.Columns)
             {
-                if (column.Name != "LicensePlate" && column.Name != "Year" && column.Name != "State" &&
-                    column.Name != "Client" && column.Name != "Model" && column.Name != "ModifyImageColumn" && column.Name != "DetailImageColumn")
+                if (this.clientId == "")
                 {
-                    column.Visible = false;
+                    if (column.Name != "LicensePlate" && column.Name != "Year" && column.Name != "State" &&
+                    column.Name != "Client" && column.Name != "Model" && column.Name != "ModifyImageColumn" && column.Name != "DetailImageColumn")
+                    {
+                        column.Visible = false;
+                    }
+                }
+                else
+                {
+                    if (column.Name != "LicensePlate" && column.Name != "Year" && column.Name != "State" 
+                       && column.Name != "Model" && column.Name != "ModifyImageColumn" && column.Name != "DetailImageColumn")
+                    {
+                        column.Visible = false;
+                    }
                 }
             }
             SetColumnOrder();
@@ -140,17 +173,18 @@ namespace LubriTech.View
             {
                 string selectedLicensePlate = dgvVehicles.Rows[e.RowIndex].Cells["LicensePlate"].Value.ToString();
                 List<Vehicle> vehicles = new Vehicle_Controller().getAll();
-                Vehicle selectedVehicle = null;
-                foreach (Vehicle vehicle in vehicles)
+                Vehicle selectedVehicle = vehicles.FirstOrDefault(vehicle => vehicle.LicensePlate == selectedLicensePlate);
+                if(selectedVehicle != null)
                 {
-                    if (vehicle.LicensePlate == selectedLicensePlate)
+                    if(parentForm is frmWorkOrder)
                     {
-                        selectedVehicle = vehicle;
-                        break;
+                        ((frmWorkOrder)parentForm).SelectVehicleWorkOrder(selectedVehicle);
+                        this.Close();
+                        return;
                     }
                 }
 
-                string action = "Modify";
+                //string action = "Modify";
                 frmInsertUpdate_Vehicle frmInsertVehicle = new frmInsertUpdate_Vehicle(selectedVehicle);
                 frmInsertVehicle.MdiParent = this.MdiParent;
                 frmInsertVehicle.DataChanged += ChildFormDataChangedHandler;

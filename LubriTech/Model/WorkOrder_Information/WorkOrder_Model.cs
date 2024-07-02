@@ -1,4 +1,5 @@
-﻿using LubriTech.Model.Branch_Information;
+﻿using LubriTech.Controller;
+using LubriTech.Model.Branch_Information;
 using LubriTech.Model.Client_Information;
 using LubriTech.Model.Vehicle_Information;
 using System;
@@ -43,13 +44,22 @@ namespace LubriTech.Model.WorkOrder_Information
                                 Date = reader.GetDateTime(reader.GetOrdinal("Fecha")),
                                 Branch = new Branch_Model().GetBranch(reader.GetInt32(reader.GetOrdinal("IdentificacionSucursal"))),
                                 Client = new Client_Model().getClient(reader.GetString(reader.GetOrdinal("IdentificacionCliente"))),
-                                Vehicle = new Vehicle_Model().getVehicle(reader.GetString(reader.GetOrdinal("PlacaVehiculo"))),
                                 CurrentMileage = reader.GetInt32(reader.GetOrdinal("KilometrajeActual")),
                                 Amount = reader.GetDecimal(reader.GetOrdinal("Monto")),
                                 State = reader.GetInt16(reader.GetOrdinal("Estado")),
                                 workOrderLines = new WorkOrderLine_Model().LoadWorkOrderLines(reader.GetInt32(reader.GetOrdinal("Identificacion"))),
                                 Observations = new Observation_Model().LoadObservations(reader.GetInt32(reader.GetOrdinal("Identificacion")))
                             };
+
+                            // Validar si "PlacaVehiculo" es nulo
+                            if (!reader.IsDBNull(reader.GetOrdinal("PlacaVehiculo")))
+                            {
+                                workOrder.Vehicle = new Vehicle_Model().getVehicle(reader.GetString(reader.GetOrdinal("PlacaVehiculo")));
+                            }
+                            else
+                            {
+                                workOrder.Vehicle = null; // Manejar el caso cuando "PlacaVehiculo" es nulo
+                            }
 
                             workOrders.Add(workOrder);
                         }
@@ -94,13 +104,23 @@ namespace LubriTech.Model.WorkOrder_Information
                                 Date = reader.GetDateTime(reader.GetOrdinal("Fecha")),
                                 Branch = new Branch_Model().GetBranch(reader.GetInt32(reader.GetOrdinal("IdentificacionSucursal"))),
                                 Client = new Client_Model().getClient(reader.GetString(reader.GetOrdinal("IdentificacionCliente"))),
-                                Vehicle = new Vehicle_Model().getVehicle(reader.GetString(reader.GetOrdinal("PlacaVehiculo"))),
                                 CurrentMileage = reader.GetInt32(reader.GetOrdinal("KilometrajeActual")),
                                 Amount = reader.GetDecimal(reader.GetOrdinal("Monto")),
                                 State = reader.GetInt16(reader.GetOrdinal("Estado")),
                                 workOrderLines = new WorkOrderLine_Model().LoadWorkOrderLines(reader.GetInt32(reader.GetOrdinal("Identificacion"))),
                                 Observations = new Observation_Model().LoadObservations(reader.GetInt32(reader.GetOrdinal("Identificacion")))
                             };
+
+                            // Validar si "PlacaVehiculo" es nulo
+                            if (!reader.IsDBNull(reader.GetOrdinal("PlacaVehiculo")))
+                            {
+                                workOrder.Vehicle = new Vehicle_Model().getVehicle(reader.GetString(reader.GetOrdinal("PlacaVehiculo")));
+                            }
+                            else
+                            {
+                                workOrder.Vehicle = null; // Manejar el caso cuando "PlacaVehiculo" es nulo
+                            }
+
                             return workOrder;
                         }
                     }
@@ -180,6 +200,35 @@ namespace LubriTech.Model.WorkOrder_Information
             return workOrders;
         }
 
+        //update a work order without IdentificacionCliente and PlacaVehiculo, return boolean
+        public bool updateWorkOrder(WorkOrder workOrder)
+        {
+            string query = @"
+            UPDATE OrdenTrabajo
+            SET Fecha = @date,
+                IdentificacionSucursal = @branchId,
+                KilometrajeActual = @currentMileage,
+                Monto = @amount,
+                Estado = @state
+            WHERE Identificacion = @id;";
+
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@id", workOrder.Id);
+                cmd.Parameters.AddWithValue("@date", workOrder.Date);
+                cmd.Parameters.AddWithValue("@branchId", workOrder.Branch.Id);
+                cmd.Parameters.AddWithValue("@currentMileage", (object)workOrder.CurrentMileage ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@amount", workOrder.Amount);
+                cmd.Parameters.AddWithValue("@state", workOrder.State);
+
+                conn.Open();
+
+                // Ejecutar el comando
+                int rowsAffected = cmd.ExecuteNonQuery();
+                return rowsAffected > 0;
+            }
+        }
+
         public int UpsertWorkOrder(WorkOrder workOrder)
         {
             string query;
@@ -209,6 +258,7 @@ namespace LubriTech.Model.WorkOrder_Information
 
             SELECT SCOPE_IDENTITY();"; // Devuelve el ID de la nueva orden
             }
+
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 if (workOrder.Id > 0)
@@ -219,8 +269,18 @@ namespace LubriTech.Model.WorkOrder_Information
                 cmd.Parameters.AddWithValue("@Fecha", workOrder.Date);
                 cmd.Parameters.AddWithValue("@IdentificacionSucursal", workOrder.Branch.Id);
                 cmd.Parameters.AddWithValue("@IdentificacionCliente", workOrder.Client.Id);
-                cmd.Parameters.AddWithValue("@PlacaVehiculo", workOrder.Vehicle.LicensePlate);
-                cmd.Parameters.AddWithValue("@KilometrajeActual", workOrder.Vehicle.Mileage);
+
+                // Verificar si workOrder.Vehicle es null y asignar DBNull.Value en ese caso
+                if (workOrder.Vehicle == null)
+                {
+                    cmd.Parameters.AddWithValue("@PlacaVehiculo", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@PlacaVehiculo", workOrder.Vehicle.LicensePlate);
+                }
+
+                cmd.Parameters.AddWithValue("@KilometrajeActual", (object)workOrder.CurrentMileage ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@Monto", workOrder.Amount);
                 cmd.Parameters.AddWithValue("@Estado", workOrder.State);
 

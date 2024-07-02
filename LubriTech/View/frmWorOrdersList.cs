@@ -30,19 +30,19 @@ namespace LubriTech.View
             // Load all work orders
             List<WorkOrder> workOrders = new Work_Order_Controller().loadWorkOrders();
             dataGridView1.DataSource = workOrders;
-            dataGridView1.Columns["Branch"].Visible = false;
-            dataGridView1.Columns["CurrentMileage"].Visible = false;
-            dataGridView1.Columns["Amount"].Visible = false;
-            //change the value of the column State to show Active, Inactive, or Finished
-            dataGridView1.Columns["State"].DisplayIndex = 7;
-            dataGridView1.Columns["Id"].HeaderText = "Identificación";
-            dataGridView1.Columns["Date"].HeaderText = "Fecha";
-            dataGridView1.Columns["Client"].HeaderText = "Cliente";
-            dataGridView1.Columns["Vehicle"].HeaderText = " Placa Vehículo";
-            dataGridView1.Columns["Vehicle"].DefaultCellStyle.NullValue = "No asignado";
-            dataGridView1.Columns["State"].HeaderText = "Estado";
-            dataGridView1.Columns["State"].DefaultCellStyle.NullValue = "Activa";
-            dataGridView1.Columns["State"].DefaultCellStyle.Format = "Activa";
+            //dataGridView1.Columns["Branch"].Visible = false;
+            //dataGridView1.Columns["CurrentMileage"].Visible = false;
+            //dataGridView1.Columns["Amount"].Visible = false;
+            ////change the value of the column State to show Active, Inactive, or Finished
+            //dataGridView1.Columns["State"].DisplayIndex = 7;
+            //dataGridView1.Columns["Id"].HeaderText = "Identificación";
+            //dataGridView1.Columns["Date"].HeaderText = "Fecha";
+            //dataGridView1.Columns["Client"].HeaderText = "Cliente";
+            //dataGridView1.Columns["Vehicle"].HeaderText = " Placa Vehículo";
+            //dataGridView1.Columns["Vehicle"].DefaultCellStyle.NullValue = "No asignado";
+            //dataGridView1.Columns["State"].HeaderText = "Estado";
+            //dataGridView1.Columns["State"].DefaultCellStyle.NullValue = "Activa";
+            //dataGridView1.Columns["State"].DefaultCellStyle.Format = "Activa";
         }
 
         private void frmWorOrdersList_Load(object sender, EventArgs e)

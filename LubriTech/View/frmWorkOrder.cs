@@ -2,6 +2,7 @@
 using LubriTech.Model.Branch_Information;
 using LubriTech.Model.Client_Information;
 using LubriTech.Model.Item_Information;
+using LubriTech.Model.Vehicle_Information;
 using LubriTech.Model.WorkOrder_Information;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace LubriTech.View
         private int? workOrderId; // Nullable int to store the work order ID
         Work_Order_Controller workOrderController = new Work_Order_Controller();
         Client client = new Client();
+        Vehicle vehicle = new Vehicle();
         public frmWorkOrder(int? workOrderId)
         {
             InitializeComponent();
@@ -59,12 +61,14 @@ namespace LubriTech.View
             cbState.SelectedIndex = workOrder.State;
             
             cbBranch.DataSource = new Branch_Model().loadAllBranches();
-            cbBranch.DisplayMember = "Nombre";
-            cbBranch.ValueMember = "Identificacion";
+            cbBranch.DisplayMember = "Name";
+            cbBranch.ValueMember = "Id";
             cbBranch.SelectedValue = workOrder.Branch.Id;
 
             txtDate.Text = workOrder.Date.ToString();
             txtTotalAmount.Text = workOrder.Amount.ToString();
+
+            client = workOrder.Client;
             txtClientId.Enabled = false;
             txtClientId.Text = workOrder.Client.Id.ToString();
             txtClientName.Enabled = false;
@@ -75,12 +79,21 @@ namespace LubriTech.View
             txtCellphone2.Text = workOrder.Client.AdditionalPhoneNum.ToString();
             txtEmail.Enabled = false;
             txtEmail.Text = workOrder.Client.Email.ToString();
-            txtMake.Enabled = false;
-            txtMake.Text = workOrder.Vehicle.Model.Make.ToString();
-            txtModel.Enabled = false;
-            txtModel.Text = workOrder.Vehicle.Model.ToString() + " " + workOrder.Vehicle.Year;
-            txtMileage.Enabled = false;
-            txtMileage.Text = workOrder.Vehicle.Mileage.ToString();
+
+            if (workOrder.Vehicle != null)
+            {
+                vehicle = workOrder.Vehicle;
+                txtMake.Enabled = false;
+                txtMake.Text = workOrder.Vehicle.Model.Make.ToString();
+                txtModel.Enabled = false;
+                txtModel.Text = workOrder.Vehicle.Model.ToString() + " " + workOrder.Vehicle.Year;
+                txtMileage.Enabled = false;
+                txtMileage.Text = workOrder.Vehicle.Mileage.ToString();
+            }
+            else
+            {
+                txtMake.Text = "NA";
+            }
             loadWorkOrderLines(workOrder.Id);
             UpdateTotalAmount();
         }
@@ -308,17 +321,10 @@ namespace LubriTech.View
                 txtCellphone.Text = selectedClient.MainPhoneNum == null ? "NA" : selectedClient.MainPhoneNum.ToString();
                 txtCellphone2.Text = selectedClient.AdditionalPhoneNum == null ? "NA" : selectedClient.AdditionalPhoneNum.ToString();
                 txtEmail.Text = selectedClient.Email == null ? "NA" : selectedClient.Email;
+                txtMake.Text = "";
+                txtModel.Text = "";
+                txtMileage.Text = "";
             }
-
-
-        }
-
-        private void btnSelectClient_Click(object sender, EventArgs e)
-        {
-            frmClients frmClients = new frmClients(this);
-            frmClients.ClientSelected += HandleClientSelected;
-            frmClients.MdiParent = this.MdiParent;
-            frmClients.Show();
 
             if (client.Id is null)
             {
@@ -346,11 +352,107 @@ namespace LubriTech.View
                 workOrder.Client = client;
 
                 this.workOrderId = workOrderController.UpsertWorkOrder(workOrder);
-                this.Refresh();
+                loadWorkOrderLines(workOrderId.Value);
+                dataGridView1.Refresh();
             }
+        }
+
+        private void btnSelectClient_Click(object sender, EventArgs e)
+        {
+            frmClients frmClients = new frmClients(this);
+            frmClients.ClientSelected += HandleClientSelected;
+            frmClients.MdiParent = this.MdiParent;
+            frmClients.Show();
 
         }
 
-       
+        private void HandleVehicleSelected(Vehicle vehicle)
+        {
+            SelectVehicleWorkOrder(vehicle);
+        }
+
+        public void SelectVehicleWorkOrder(Vehicle vehicle)
+        {
+            if (vehicle != null)
+            {
+                txtMake.Text = vehicle.Model.Make.ToString();
+                txtModel.Text = vehicle.Model.ToString() + " " + vehicle.Year;
+                txtMileage.Text = vehicle.Mileage.ToString();
+            }
+
+            if (client != null)
+            {
+                WorkOrder existingWorkOrder = new WorkOrder();
+                existingWorkOrder.Id = (int)workOrderId;
+                existingWorkOrder.Branch = cbBranch.SelectedItem as Branch;
+                existingWorkOrder.Date = dateTimePicker.Value;
+                existingWorkOrder.State = (short)cbState.SelectedIndex;
+                existingWorkOrder.Amount = Convert.ToDecimal(txtTotalAmount.Text);
+                existingWorkOrder.Client = client;
+                existingWorkOrder.Vehicle = vehicle;
+                workOrderController.UpsertWorkOrder(existingWorkOrder);
+            }
+            else
+            {
+                WorkOrder workOrder = new WorkOrder();
+                workOrder.Id = 0;
+                workOrder.Branch = cbBranch.SelectedItem as Branch;
+                workOrder.Date = dateTimePicker.Value;
+                workOrder.State = (short)cbState.SelectedValue;
+                workOrder.Amount = Convert.ToDecimal(txtTotalAmount.Text);
+                workOrder.Client = client;
+                workOrder.Vehicle = vehicle;
+
+                this.workOrderId = workOrderController.UpsertWorkOrder(workOrder);
+                loadWorkOrderLines(workOrderId.Value);
+                dataGridView1.Refresh();
+            }
+        }
+        private void btnAddVehicle_Click(object sender, EventArgs e)
+        {
+            if(client == null)
+            {
+                MessageBox.Show("Por favor seleccione un cliente primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            frmVehicles frmVehicles = new frmVehicles(this,this.client.Id);
+            frmVehicles.VehicleSelected += HandleVehicleSelected;
+            frmVehicles.MdiParent = this.MdiParent;
+            frmVehicles.Show();
+
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void btnSaveChanges_Click(object sender, EventArgs e)
+        {
+            if (this.workOrderId.HasValue && this.client != null)
+            {
+                WorkOrder workOrder = new Work_Order_Controller().LoadWorkOrder(workOrderId.Value);
+                workOrder.Branch = cbBranch.SelectedItem as Branch;
+                workOrder.Date = dateTimePicker.Value;
+                workOrder.State = (short)cbState.SelectedIndex;
+                workOrder.Amount = Convert.ToDecimal(txtTotalAmount.Text);
+
+                if(this.vehicle != null && txtCurrentMileage.Text != "")
+                {
+
+                    workOrder.CurrentMileage = Convert.ToInt32(txtCurrentMileage.Text);
+                    this.vehicle.Mileage = Convert.ToInt32(txtCurrentMileage.Text);
+                    new Vehicle_Controller().upsert(this.vehicle);
+                }
+                if(new Work_Order_Controller().UpdateWorkOrder(workOrder))
+                {
+                    MessageBox.Show("Cambios guardados exitosamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor seleccione un cliente primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

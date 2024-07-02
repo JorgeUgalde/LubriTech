@@ -37,5 +37,9 @@ namespace LubriTech.Controller
             return vehicleModel.upsertVehicle(vehicle);
         }
 
+        public List<Vehicle> getVehiclesByClient(string clientId)
+        {
+            return vehicleModel.getVehiclesByClient(clientId);
+        }
     }
 }

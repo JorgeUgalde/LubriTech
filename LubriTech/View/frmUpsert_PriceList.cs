@@ -168,6 +168,8 @@ namespace LubriTech.View.Appointment_View
         {
             if (item != null)
             {
+                //validate if the cell in the new row is selected
+                int newRowIndex = dataGridView1.NewRowIndex;
                 // Obtener la fila actualmente seleccionada
                 int rowIndex = dataGridView1.CurrentCell.RowIndex;
                 DataGridViewRow row = dataGridView1.Rows[rowIndex];
