@@ -56,6 +56,8 @@
             this.pbMaximize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.panelCB = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbPriceList = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVehicles)).BeginInit();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
@@ -189,7 +191,7 @@
             // 
             this.lblVehicleList.AutoSize = true;
             this.lblVehicleList.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVehicleList.Location = new System.Drawing.Point(17, 249);
+            this.lblVehicleList.Location = new System.Drawing.Point(16, 313);
             this.lblVehicleList.Name = "lblVehicleList";
             this.lblVehicleList.Size = new System.Drawing.Size(129, 20);
             this.lblVehicleList.TabIndex = 14;
@@ -301,7 +303,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvVehicles.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvVehicles.GridColor = System.Drawing.Color.White;
-            this.dgvVehicles.Location = new System.Drawing.Point(20, 270);
+            this.dgvVehicles.Location = new System.Drawing.Point(20, 338);
             this.dgvVehicles.Name = "dgvVehicles";
             this.dgvVehicles.ReadOnly = true;
             this.dgvVehicles.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -315,7 +317,7 @@
             this.dgvVehicles.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvVehicles.RowHeadersVisible = false;
             this.dgvVehicles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVehicles.Size = new System.Drawing.Size(798, 333);
+            this.dgvVehicles.Size = new System.Drawing.Size(798, 265);
             this.dgvVehicles.TabIndex = 23;
             this.dgvVehicles.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvVehicles_CellMouseDoubleClick);
             // 
@@ -382,18 +384,46 @@
             // panelCB
             // 
             this.panelCB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelCB.Controls.Add(this.cbPriceList);
+            this.panelCB.Controls.Add(this.label1);
             this.panelCB.Controls.Add(this.lblAddresse);
             this.panelCB.Controls.Add(this.lblAdditionalNum);
             this.panelCB.Controls.Add(this.lblNumPrincipal);
             this.panelCB.Controls.Add(this.lblState);
             this.panelCB.Controls.Add(this.cbState);
             this.panelCB.Controls.Add(this.lblEmail);
+            this.panelCB.Controls.Add(this.lblVehicleList);
             this.panelCB.Controls.Add(this.txtEmail);
             this.panelCB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCB.Location = new System.Drawing.Point(0, 0);
             this.panelCB.Name = "panelCB";
             this.panelCB.Size = new System.Drawing.Size(840, 670);
             this.panelCB.TabIndex = 26;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(11, 220);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 20);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Lista de precios";
+            // 
+            // cbPriceList
+            // 
+            this.cbPriceList.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbPriceList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPriceList.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPriceList.FormattingEnabled = true;
+            this.cbPriceList.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.cbPriceList.Location = new System.Drawing.Point(181, 217);
+            this.cbPriceList.Name = "cbPriceList";
+            this.cbPriceList.Size = new System.Drawing.Size(205, 28);
+            this.cbPriceList.TabIndex = 22;
             // 
             // frmUpsert_Client
             // 
@@ -407,7 +437,6 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnAddClient);
             this.Controls.Add(this.btnAddVehicle);
-            this.Controls.Add(this.lblVehicleList);
             this.Controls.Add(this.txtAdditionalPhone);
             this.Controls.Add(this.txtFullName);
             this.Controls.Add(this.txtMainPhone);
@@ -459,5 +488,7 @@
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.Label lblForm;
         private System.Windows.Forms.Panel panelCB;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbPriceList;
     }
 }

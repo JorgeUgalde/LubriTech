@@ -57,5 +57,10 @@ namespace LubriTech.Controller
         {
             return new WorkOrder_Model().loadWorkOrder(workOrderId);
         }
+
+        public int UpsertWorkOrder(WorkOrder workOrder)
+        {
+            return new WorkOrder_Model().UpsertWorkOrder(workOrder);
+        }
     }
 }

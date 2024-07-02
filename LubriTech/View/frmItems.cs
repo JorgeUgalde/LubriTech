@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using LubriTech.Model.Supplier_Information;
 using LubriTech.Model.Item_Information;
 using System.Runtime.InteropServices;
+using LubriTech.View.Appointment_View;
 
 namespace LubriTech.View
 {
@@ -224,6 +225,34 @@ namespace LubriTech.View
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void dgvItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0)
+            {
+                string code = dgvItems.Rows[e.RowIndex].Cells["code"].Value.ToString();
+                Item item = new Item_Controller().get(code);
+
+                if (parentForm is frmWorkOrder)
+                {
+                    ((frmWorkOrder)parentForm).ShowItemInWorkOrder(item);
+                    this.Close();
+                }
+                else if(parentForm is frmUpsert_PriceList)
+                {
+                    ((frmUpsert_PriceList)parentForm).ShowItemInPriceList(item);
+                    this.Close();
+                }
+                else
+                {
+                    frmInsertUpdate_Item frmInsertProduct = new frmInsertUpdate_Item(item, 0);
+                    frmInsertProduct.MdiParent = this.MdiParent;
+                    frmInsertProduct.DataChanged += ChildFormDataChangedHandler;
+                    frmInsertProduct.Show();
+                    load_Items(null);
+                }
+            }
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using LubriTech.Controller;
+using LubriTech.Model.Branch_Information;
+using LubriTech.Model.Client_Information;
 using LubriTech.Model.Item_Information;
 using LubriTech.Model.WorkOrder_Information;
 using System;
@@ -18,6 +20,7 @@ namespace LubriTech.View
     {
         private int? workOrderId; // Nullable int to store the work order ID
         Work_Order_Controller workOrderController = new Work_Order_Controller();
+        Client client = new Client();
         public frmWorkOrder(int? workOrderId)
         {
             InitializeComponent();
@@ -37,15 +40,30 @@ namespace LubriTech.View
             else
             {
                 // Initialize a new work order
-                //InitializeNewWorkOrder();
+                InitializeNewWorkOrder();
             }
         }
 
         private void LoadWorkOrderData(WorkOrder workOrder)
         {
-            txtBranch.Text = workOrder.Branch.ToString();
+            //Set the data source of the combo box, State can be 0 for Inactiva 1 for Activa, 2 for En proceso, 3 for Terminada
+            cbState.DataSource = new List<KeyValuePair<short, string>>()
+            {
+                new KeyValuePair<short, string>(0, "Inactiva"),
+                new KeyValuePair<short, string>(1, "Activa"),
+                new KeyValuePair<short, string>(2, "En proceso"),
+                new KeyValuePair<short, string>(3, "Terminada")
+            };
+            cbState.DisplayMember = "Value";
+            cbState.ValueMember = "Key";
+            cbState.SelectedIndex = workOrder.State;
+            
+            cbBranch.DataSource = new Branch_Model().loadAllBranches();
+            cbBranch.DisplayMember = "Nombre";
+            cbBranch.ValueMember = "Identificacion";
+            cbBranch.SelectedValue = workOrder.Branch.Id;
+
             txtDate.Text = workOrder.Date.ToString();
-            txtState.Text = workOrder.State.ToString();
             txtTotalAmount.Text = workOrder.Amount.ToString();
             txtClientId.Enabled = false;
             txtClientId.Text = workOrder.Client.Id.ToString();
@@ -65,6 +83,47 @@ namespace LubriTech.View
             txtMileage.Text = workOrder.Vehicle.Mileage.ToString();
             loadWorkOrderLines(workOrder.Id);
             UpdateTotalAmount();
+        }
+
+        //Initialize a new work order
+        private void InitializeNewWorkOrder()
+        {
+            //Set the data source of the combo box, State can be 0 for Inactiva 1 for Activa, 2 for En proceso, 3 for Terminada
+            cbState.DataSource = new List<KeyValuePair<short, string>>()
+            {
+                new KeyValuePair<short, string>(0, "Inactiva"),
+                new KeyValuePair<short, string>(1, "Activa"),
+                new KeyValuePair<short, string>(2, "En proceso"),
+                new KeyValuePair<short, string>(3, "Terminada")
+            };
+            cbState.DisplayMember = "Value";
+            cbState.ValueMember = "Key";
+            cbState.SelectedIndex = 1;
+
+            cbBranch.DataSource = new Branch_Model().loadAllBranches();
+            cbBranch.DisplayMember = "Name";
+            cbBranch.ValueMember = "Id";
+            cbBranch.SelectedIndex = 0;
+
+            txtDate.Text = DateTime.Now.ToString();
+            txtTotalAmount.Text = "0";
+            txtClientId.Enabled = true;
+            txtClientId.Text = "";
+            txtClientName.Enabled = true;
+            txtClientName.Text = "";
+            txtCellphone.Enabled = true;
+            txtCellphone.Text = "";
+            txtCellphone2.Enabled = true;
+            txtCellphone2.Text = "";
+            txtEmail.Enabled = true;
+            txtEmail.Text = "";
+            txtMake.Enabled = true;
+            txtMake.Text = "";
+            txtModel.Enabled = true;
+            txtModel.Text = "";
+            txtMileage.Enabled = true;
+            txtMileage.Text = "";
+            dataGridView1.DataSource = new DataTable();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -232,6 +291,64 @@ namespace LubriTech.View
                     frmItems.Show();
                 }
             }
+        }
+
+        private void HandleClientSelected(Client selectedClient)
+        {
+            SelectClientWorkOrder(selectedClient);
+        }
+
+        public void SelectClientWorkOrder(Client selectedClient)
+        {
+            if (selectedClient != null)
+            {
+                this.client = selectedClient;
+                txtClientId.Text = selectedClient.Id.ToString();
+                txtClientName.Text = selectedClient.FullName;
+                txtCellphone.Text = selectedClient.MainPhoneNum == null ? "NA" : selectedClient.MainPhoneNum.ToString();
+                txtCellphone2.Text = selectedClient.AdditionalPhoneNum == null ? "NA" : selectedClient.AdditionalPhoneNum.ToString();
+                txtEmail.Text = selectedClient.Email == null ? "NA" : selectedClient.Email;
+            }
+
+
+        }
+
+        private void btnSelectClient_Click(object sender, EventArgs e)
+        {
+            frmClients frmClients = new frmClients(this);
+            frmClients.ClientSelected += HandleClientSelected;
+            frmClients.MdiParent = this.MdiParent;
+            frmClients.Show();
+
+            if (client.Id is null)
+            {
+                return;
+            }
+            if (workOrderId.HasValue)
+            {
+                WorkOrder existingWorkOrder = new WorkOrder();
+                existingWorkOrder.Id = (int)workOrderId;
+                existingWorkOrder.Branch = cbBranch.SelectedItem as Branch;
+                existingWorkOrder.Date = dateTimePicker.Value;
+                existingWorkOrder.State = (short)cbState.SelectedIndex;
+                existingWorkOrder.Amount = Convert.ToDecimal(txtTotalAmount.Text);
+                existingWorkOrder.Client = client;
+                workOrderController.UpsertWorkOrder(existingWorkOrder);
+            }
+            else
+            {
+                WorkOrder workOrder = new WorkOrder();
+                workOrder.Id = 0;
+                workOrder.Branch = cbBranch.SelectedItem as Branch;
+                workOrder.Date = dateTimePicker.Value;
+                workOrder.State = (short)cbState.SelectedValue;
+                workOrder.Amount = Convert.ToDecimal(txtTotalAmount.Text);
+                workOrder.Client = client;
+
+                this.workOrderId = workOrderController.UpsertWorkOrder(workOrder);
+                this.Refresh();
+            }
+
         }
     }
 }

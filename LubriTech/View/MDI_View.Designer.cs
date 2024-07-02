@@ -185,6 +185,7 @@ namespace LubriTech.View
             this.button13.Text = "Lista de precios de artículos";
             this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // btnParamConfig
             // 

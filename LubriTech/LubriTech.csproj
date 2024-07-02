@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Controller\Appointment_Controller.cs" />
     <Compile Include="Controller\Branch_Controller.cs" />
+    <Compile Include="Controller\PriceList_Controller.cs" />
     <Compile Include="Controller\Transmission_Controller.cs" />
     <Compile Include="Controller\Engine_Controller.cs" />
     <Compile Include="Controller\Clients_Controller.cs" />
@@ -103,6 +104,10 @@
     <Compile Include="Model\InventoryManagment_Information\InventoryManagment_Model.cs" />
     <Compile Include="Model\Item_Information\Item.cs" />
     <Compile Include="Model\Item_Information\Item_Model.cs" />
+    <Compile Include="Model\PricesList_Information\PriceList.cs" />
+    <Compile Include="Model\PricesList_Information\PriceList_Model.cs" />
+    <Compile Include="Model\PricesList_Information\Prices.cs" />
+    <Compile Include="Model\PricesList_Information\Prices_Model.cs" />
     <Compile Include="Model\Supplier_Information\Supplier.cs" />
     <Compile Include="Model\Supplier_Information\Supplier_Model.cs" />
     <Compile Include="Model\User_Information\User.cs" />
@@ -136,6 +141,12 @@
     </Compile>
     <Compile Include="View\Appointment_View\frmAppointment.Designer.cs">
       <DependentUpon>frmAppointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmUpsert_PriceList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmUpsert_PriceList.Designer.cs">
+      <DependentUpon>frmUpsert_PriceList.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmCarModels.cs">
       <SubType>Form</SubType>
@@ -241,6 +252,12 @@
     <Compile Include="View\frmMakes.Designer.cs">
       <DependentUpon>frmMakes.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmPricesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmPricesList.Designer.cs">
+      <DependentUpon>frmPricesList.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmSuppliers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -295,12 +312,6 @@
     <Compile Include="View\frmWorOrdersList.Designer.cs">
       <DependentUpon>frmWorOrdersList.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ItemCellEditor.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\ItemCellEditor.Designer.cs">
-      <DependentUpon>ItemCellEditor.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\MDI_View.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -319,6 +330,9 @@
     </Compile>
     <EmbeddedResource Include="View\Appointment_View\frmAppointment.resx">
       <DependentUpon>frmAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmUpsert_PriceList.resx">
+      <DependentUpon>frmUpsert_PriceList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmCarModels.resx">
       <DependentUpon>frmCarModels.cs</DependentUpon>
@@ -373,6 +387,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmMakes.resx">
       <DependentUpon>frmMakes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmPricesList.resx">
+      <DependentUpon>frmPricesList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmSuppliers.resx">
       <DependentUpon>frmSuppliers.cs</DependentUpon>
