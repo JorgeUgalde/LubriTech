@@ -26,17 +26,19 @@ namespace LubriTech.Model.Branch_Information
         /// <summary>
         /// Indicate the start working hour 
         /// </summary>
-        public int StartHour { get; set; }
+        public TimeSpan StartHour { get; set; }
 
         /// <summary>
         /// Indicate the end working hour
         /// </summary>
-        public int EndHour { get; set; }
+        public TimeSpan EndHour { get; set; }
 
         /// <summary>
         /// Specify the duration of the appointment
         /// </summary>
         public int appointmentDuration { get; set; }
+
+        public string State { get; set; }
 
         /// <summary>
         /// Constructor for the Schedule class
@@ -47,7 +49,8 @@ namespace LubriTech.Model.Branch_Information
         /// <param name="StartHour"></param>
         /// <param name="EndHour"></param>
         /// <param name="appointmentDuration"></param>
-        public Schedule(int ScheduleID, Branch Branch, string Title, int StartHour, int EndHour, int appointmentDuration)
+        /// <param name="State"></param>
+        public Schedule(int ScheduleID, Branch Branch, string Title, TimeSpan StartHour, TimeSpan EndHour, int appointmentDuration, string state)
         {
             this.ScheduleID = ScheduleID;
             this.Branch = Branch;
@@ -55,6 +58,7 @@ namespace LubriTech.Model.Branch_Information
             this.StartHour = StartHour;
             this.EndHour = EndHour;
             this.appointmentDuration = appointmentDuration;
+            this.State = state;
         }
 
         /// <summary>

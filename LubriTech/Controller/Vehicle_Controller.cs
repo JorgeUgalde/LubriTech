@@ -27,6 +27,7 @@ namespace LubriTech.Controller
             return vehicleModel.loadAllVehicles();
         }
 
+
         /// <summary>
         /// Inserts or updates a vehicle in the database.
         /// </summary>

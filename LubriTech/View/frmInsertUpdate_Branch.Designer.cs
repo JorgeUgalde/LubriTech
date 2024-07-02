@@ -40,12 +40,12 @@
             this.lblAddresse = new System.Windows.Forms.Label();
             this.panelBorder = new System.Windows.Forms.Panel();
             this.lblForm = new System.Windows.Forms.Label();
+            this.pbClose = new System.Windows.Forms.PictureBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAccept = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbSchedulle = new System.Windows.Forms.ComboBox();
+            this.cbSchedule = new System.Windows.Forms.ComboBox();
             this.btnAddSchedulle = new System.Windows.Forms.Button();
-            this.pbClose = new System.Windows.Forms.PictureBox();
             this.panelBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.SuspendLayout();
@@ -55,7 +55,7 @@
             this.txtAddress.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddress.Location = new System.Drawing.Point(128, 124);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddress.MaxLength = 150;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(283, 162);
@@ -84,7 +84,7 @@
             "Activo",
             "Inactivo"});
             this.cbState.Location = new System.Drawing.Point(641, 177);
-            this.cbState.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbState.Margin = new System.Windows.Forms.Padding(4);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(308, 36);
             this.cbState.TabIndex = 32;
@@ -96,7 +96,7 @@
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(641, 69);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(310, 34);
@@ -108,7 +108,7 @@
             this.txtPhone.BackColor = System.Drawing.SystemColors.Window;
             this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhone.Location = new System.Drawing.Point(641, 124);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtPhone.MaxLength = 11;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(309, 34);
@@ -120,7 +120,7 @@
             this.txtName.BackColor = System.Drawing.SystemColors.Window;
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(128, 65);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4);
             this.txtName.MaxLength = 150;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(283, 34);
@@ -182,7 +182,7 @@
             this.panelBorder.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panelBorder.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBorder.Location = new System.Drawing.Point(0, 0);
-            this.panelBorder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelBorder.Margin = new System.Windows.Forms.Padding(4);
             this.panelBorder.Name = "panelBorder";
             this.panelBorder.Size = new System.Drawing.Size(987, 44);
             this.panelBorder.TabIndex = 35;
@@ -200,6 +200,19 @@
             this.lblForm.TabIndex = 10;
             this.lblForm.Text = "Dato Maestro Sucursal";
             // 
+            // pbClose
+            // 
+            this.pbClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbClose.Image = global::LubriTech.Properties.Resources.closeIco2;
+            this.pbClose.Location = new System.Drawing.Point(943, 7);
+            this.pbClose.Margin = new System.Windows.Forms.Padding(4);
+            this.pbClose.Name = "pbClose";
+            this.pbClose.Size = new System.Drawing.Size(40, 37);
+            this.pbClose.TabIndex = 7;
+            this.pbClose.TabStop = false;
+            this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
+            // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -209,7 +222,7 @@
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnCancel.Location = new System.Drawing.Point(763, 315);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(188, 42);
             this.btnCancel.TabIndex = 37;
@@ -226,7 +239,7 @@
             this.btnAccept.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAccept.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAccept.Location = new System.Drawing.Point(33, 315);
-            this.btnAccept.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAccept.Margin = new System.Windows.Forms.Padding(4);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(188, 42);
             this.btnAccept.TabIndex = 36;
@@ -246,20 +259,17 @@
             this.label1.TabIndex = 39;
             this.label1.Text = "Horario";
             // 
-            // cbSchedulle
+            // cbSchedule
             // 
-            this.cbSchedulle.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cbSchedulle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSchedulle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSchedulle.FormattingEnabled = true;
-            this.cbSchedulle.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
-            this.cbSchedulle.Location = new System.Drawing.Point(642, 233);
-            this.cbSchedulle.Margin = new System.Windows.Forms.Padding(4);
-            this.cbSchedulle.Name = "cbSchedulle";
-            this.cbSchedulle.Size = new System.Drawing.Size(170, 36);
-            this.cbSchedulle.TabIndex = 38;
+            this.cbSchedule.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbSchedule.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSchedule.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSchedule.FormattingEnabled = true;
+            this.cbSchedule.Location = new System.Drawing.Point(642, 233);
+            this.cbSchedule.Margin = new System.Windows.Forms.Padding(4);
+            this.cbSchedule.Name = "cbSchedule";
+            this.cbSchedule.Size = new System.Drawing.Size(170, 36);
+            this.cbSchedule.TabIndex = 38;
             // 
             // btnAddSchedulle
             // 
@@ -276,19 +286,7 @@
             this.btnAddSchedulle.TabIndex = 40;
             this.btnAddSchedulle.Text = "Añadir";
             this.btnAddSchedulle.UseVisualStyleBackColor = false;
-            // 
-            // pbClose
-            // 
-            this.pbClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbClose.Image = global::LubriTech.Properties.Resources.closeIco2;
-            this.pbClose.Location = new System.Drawing.Point(943, 7);
-            this.pbClose.Margin = new System.Windows.Forms.Padding(4);
-            this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(40, 37);
-            this.pbClose.TabIndex = 7;
-            this.pbClose.TabStop = false;
-            this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
+            this.btnAddSchedulle.Click += new System.EventHandler(this.btnAddSchedulle_Click);
             // 
             // frmInsertUpdate_Branch
             // 
@@ -299,7 +297,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.btnAddSchedulle);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.cbSchedulle);
+            this.Controls.Add(this.cbSchedule);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.panelBorder);
@@ -343,7 +341,7 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbSchedulle;
+        private System.Windows.Forms.ComboBox cbSchedule;
         private System.Windows.Forms.Button btnAddSchedulle;
     }
 }

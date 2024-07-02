@@ -1,4 +1,5 @@
-﻿using LubriTech.Model.Branch_Information;
+﻿using LubriTech.Controller;
+using LubriTech.Model.Branch_Information;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,7 +45,7 @@ namespace LubriTech.View
             }
             else
             {
-                schedules = new Schedule_Model().loadAllSchedules();
+                schedules = new Schedule_Controller().loadAll(null);
                 if (schedules == null)
                 {
                     MessageBox.Show("No hay horarios registrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -59,6 +60,7 @@ namespace LubriTech.View
             dgvSchedules.Columns["Title"].HeaderText = "Titulo";
             dgvSchedules.Columns["StartHour"].HeaderText = "Hora de Inicio";
             dgvSchedules.Columns["EndHour"].HeaderText = "Hora de Salida";
+            dgvSchedules.Columns["State"].HeaderText = "Estado";
 
             SetColumnOrder();
             typeof(DataGridView).InvokeMember(
@@ -75,6 +77,7 @@ namespace LubriTech.View
             dgvSchedules.Columns["Title"].DisplayIndex = 1;
             dgvSchedules.Columns["StartHour"].DisplayIndex = 2;
             dgvSchedules.Columns["EndHour"].DisplayIndex = 3;
+            dgvSchedules.Columns["State"].DisplayIndex = 4;
         }
 
         private void ChildFormDataChangedHandler(object sender, EventArgs e)
@@ -104,11 +107,14 @@ namespace LubriTech.View
         {
             if (e.RowIndex >= 0)
             {
-                //int scheduleID = Convert.ToInt32(dgvSchedules.Rows[e.RowIndex].Cells["ScheduleID"].Value);
-                //frmInsertUpdate_Schedule frmUpsert_Schedule = new frmInsertUpdate_Schedule(scheduleID);
-                //frmUpsert_Schedule.MdiParent = this.MdiParent;
-                //frmUpsert_Schedule.DataChanged += ChildFormDataChangedHandler;
-                //frmUpsert_Schedule.Show();
+                int scheduleID = Convert.ToInt32(dgvSchedules.Rows[e.RowIndex].Cells["ScheduleID"].Value);
+
+                Schedule schedule = schedules.Where(p => p.ScheduleID == scheduleID).FirstOrDefault();
+                frmInsertUpdate_Schedule frmUpsert_Schedule = new frmInsertUpdate_Schedule(schedule);
+
+                frmUpsert_Schedule.MdiParent = this.MdiParent;
+                frmUpsert_Schedule.DataChanged += ChildFormDataChangedHandler;
+                frmUpsert_Schedule.Show();
             }
 
         }
@@ -138,10 +144,10 @@ namespace LubriTech.View
 
         private void btnAddSchedule_Click(object sender, EventArgs e)
         {
-            //frmInsertUpdate_Schedule frmUpsert_Schedule = new frmInsertUpdate_Schedule();
-            //frmUpsert_Schedule.MdiParent = this.MdiParent;
-            //frmUpsert_Schedule.DataChanged += ChildFormDataChangedHandler;
-            //frmUpsert_Schedule.Show();
+            frmInsertUpdate_Schedule frmUpsert_Schedule = new frmInsertUpdate_Schedule();
+            frmUpsert_Schedule.MdiParent = this.MdiParent;
+            frmUpsert_Schedule.DataChanged += ChildFormDataChangedHandler;
+            frmUpsert_Schedule.Show();
         }
 
         private void panelBorder_MouseDown(object sender, MouseEventArgs e)
