@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LubriTech.Controller;
+using LubriTech.Model.Vehicle_Information;
 
 namespace LubriTech.Model.InventoryManagment_Information
 {
@@ -141,12 +142,12 @@ namespace LubriTech.Model.InventoryManagment_Information
         {
             try
             {
-                string updateQuery = "UPDATE LineaDetalle SET Cantidad = @quantity, MontoTotal = @totalAmount WHERE CodigoArticulo = @itemCode AND IdentificacionGestionInventario = @inventoryManagmentId";
+                string updateQuery = "UPDATE LineaDetalle SET Cantidad = @quantity, Monto = @totalAmount WHERE CodigoArticulo = @itemCode AND IdentificacionGestionInventario = @inventoryManagmentId";
                 SqlCommand cmd = new SqlCommand(updateQuery, conn);
                 cmd.Parameters.AddWithValue("@itemCode", detailLine.getItemCode());
                 cmd.Parameters.AddWithValue("@inventoryManagmentId", detailLine.getInventoryManagmentId());
                 cmd.Parameters.AddWithValue("@quantity", detailLine.Quantity);
-                cmd.Parameters.AddWithValue("@totalAmount", detailLine.TotalAmount);
+                cmd.Parameters.AddWithValue("@totalAmount", detailLine.Amount);
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -179,12 +180,12 @@ namespace LubriTech.Model.InventoryManagment_Information
         {
             try
             {
-                string query = "INSERT INTO LineaDetalle (CodigoArticulo, IdentificacionGestionInventario, Cantidad, MontoTotal) VALUES (@itemCode, @inventoryManagmentId, @quantity, @totalAmount)";
+                string query = "INSERT INTO LineaDetalle (CodigoArticulo, IdentificacionGestionInventario, Cantidad, Monto) VALUES (@itemCode, @inventoryManagmentId, @quantity, @totalAmount)";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@itemCode", detailLine.getItemCode());
                 cmd.Parameters.AddWithValue("@inventoryManagmentId", detailLine.getInventoryManagmentId());
                 cmd.Parameters.AddWithValue("@quantity", detailLine.Quantity);
-                cmd.Parameters.AddWithValue("@totalAmount", detailLine.TotalAmount);
+                cmd.Parameters.AddWithValue("@totalAmount", detailLine.Amount);
 
 
                 if (conn.State != System.Data.ConnectionState.Open)
@@ -207,6 +208,49 @@ namespace LubriTech.Model.InventoryManagment_Information
                 {
                     conn.Close();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Retrieves all detail lines related to an inventory managment.
+        /// </summary>
+        /// <param name="id">Inventory identification.</param>
+        /// <returns>A list of all detail lines related to the specified inventory managment.</returns>
+        public List<DetailLine> getDetailLinesByInventoryManagment(int id)
+        {
+            List<DetailLine> detailLines = new List<DetailLine>();
+
+            try
+            {
+
+                String selectQuery = "SELECT * FROM LineaDetalle WHERE LineaDetalle.IdentificacionGestionInventario = @identificacion;";
+                SqlCommand cmd = new SqlCommand(selectQuery, conn);
+                cmd.Parameters.AddWithValue("@identificacion", id);
+
+                DataTable tblDetailLines = new DataTable();
+                SqlDataAdapter adp = new SqlDataAdapter();
+
+                adp.SelectCommand = cmd;
+
+                adp.Fill(tblDetailLines);
+
+                foreach (DataRow dr in tblDetailLines.Rows)
+                {
+                    detailLines.Add(new DetailLine((new Item_Controller().get(dr["CodigoArticulo"].ToString())),
+                                                (new InventoryManagment_Controller().getInventoryManagment(Convert.ToInt32(dr["IdentificacionGestionInventario"]))),
+                                                Convert.ToInt32(dr["Cantidad"]),
+                                                Convert.ToDouble(dr["Monto"])));
+                }
+                return detailLines;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                conn.Close();
             }
         }
     }

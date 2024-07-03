@@ -15,7 +15,7 @@ namespace LubriTech
         [STAThread]
         static void Main()
         {
-            
+
             frmLogin login = new frmLogin();
 
             //Mostrar el formulario de login

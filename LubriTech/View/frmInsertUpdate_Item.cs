@@ -26,15 +26,10 @@ namespace LubriTech.View
             globalItem = new Item();
         }
 
-        public frmInsertUpdate_Item(Item item , int type)
+        public frmInsertUpdate_Item(Item item)
         {
             
             InitializeComponent();
-
-            if (type == 0)
-            {
-                btnConfirm.Visible = false;
-            }
 
             this.globalItem = item;
             txtCode.Enabled = false;
