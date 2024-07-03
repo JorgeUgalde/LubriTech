@@ -23,7 +23,7 @@ namespace LubriTech.View
         private List<Branch> branches;
         private Supplier selectedSupplier = null;
         private List<DetailLine> detailLines;
-        private InventoryManagment existingInventoryManagment;
+        private InventoryManagment existingInventoryManagment = null;
 
         public frmInsertUpdate_InventoryManagment()
         {
@@ -310,6 +310,7 @@ namespace LubriTech.View
 
                     existingInventoryManagment = inventoryManagment;
                     int insertedId = inventoryManagmentController.upsert(inventoryManagment);
+                    existingInventoryManagment.Id = insertedId;
 
                     if (insertedId != -1)
                     {
