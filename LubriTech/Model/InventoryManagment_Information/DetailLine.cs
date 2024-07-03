@@ -35,7 +35,7 @@ namespace LubriTech.Model.InventoryManagment_Information
         /// <summary>
         /// Total amount of the detail line.
         /// </summary>
-        public double TotalAmount { get; set; }
+        public double Amount { get; set; }
 
         /// <summary>
         /// Default constructor from the DetailLine class.
@@ -54,7 +54,7 @@ namespace LubriTech.Model.InventoryManagment_Information
             this.Item = item;
             this.InventoryManagment = inventoryManagment;
             this.Quantity = quantity;
-            this.TotalAmount = totalAmount;
+            this.Amount = totalAmount;
         }
 
         /// <summary>

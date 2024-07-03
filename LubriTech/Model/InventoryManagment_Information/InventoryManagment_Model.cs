@@ -67,7 +67,7 @@ namespace LubriTech.Model.InventoryManagment_Information
         /// </summary>
         /// <param name="inventoryManagment">The inventory managment object to insert or update.</param>
         /// <returns>True if the operation was succeful, otherwise, false.</returns>
-        public Boolean upsertInventoryManagment(InventoryManagment inventoryManagment)
+        public int upsertInventoryManagment(InventoryManagment inventoryManagment)
         {
             try
             {
@@ -82,7 +82,7 @@ namespace LubriTech.Model.InventoryManagment_Information
             }
             catch (Exception ex)
             {
-                return false;
+                return -1;
             }
         }
 
@@ -141,7 +141,7 @@ namespace LubriTech.Model.InventoryManagment_Information
         /// </summary>
         /// <param name="inventoryManagment">The inventory managment document to update.</param>
         /// <returns>True if the operation was succeful, otherwise, false.</returns>
-        public Boolean updateInventoryManagment(InventoryManagment inventoryManagment)
+        public int updateInventoryManagment(InventoryManagment inventoryManagment)
         {
             try
             {
@@ -162,11 +162,11 @@ namespace LubriTech.Model.InventoryManagment_Information
 
                 cmd.ExecuteNonQuery();
 
-                return true;
+                return inventoryManagment.Id;
             }
             catch (Exception ex)
             {
-                return false;
+                return -1;
             }
             finally
             {
@@ -182,11 +182,30 @@ namespace LubriTech.Model.InventoryManagment_Information
         /// </summary>
         /// <param name="inventoryManagment">Inventory managment object to insert.</param>
         /// <returns>True if the operation was succeful, otherwise, false..</returns>
-        public Boolean addInventoryManagment(InventoryManagment inventoryManagment)
+        public int addInventoryManagment(InventoryManagment inventoryManagment)
         {
             try
             {
-                string query = "INSERT INTO GestionInventario (FechaDocumento, IdentificacionProveedor, Estado, MontoTotal, IdentificacionSucursal, TipoDocumento) VALUES (@documentDate, @supplierId, @state, @totalAmount, @branchId, @documentType)";
+                //string query = "INSERT INTO GestionInventario (FechaDocumento, IdentificacionProveedor, Estado, MontoTotal, IdentificacionSucursal, TipoDocumento) VALUES (@documentDate, @supplierId, @state, @totalAmount, @branchId, @documentType)";
+                //SqlCommand cmd = new SqlCommand(query, conn);
+                //cmd.Parameters.AddWithValue("@documentDate", inventoryManagment.DocumentDate);
+                //cmd.Parameters.AddWithValue("@supplierId", inventoryManagment.getSupplierId());
+                //cmd.Parameters.AddWithValue("@state", (inventoryManagment.State.Equals("Activo")) ? 1 : 0);
+                //cmd.Parameters.AddWithValue("@totalAmount", inventoryManagment.TotalAmount);
+                //cmd.Parameters.AddWithValue("@branchId", inventoryManagment.getBranchId());
+                //cmd.Parameters.AddWithValue("@documentType", inventoryManagment.DocumentType);
+
+
+                //if (conn.State != System.Data.ConnectionState.Open)
+                //{
+                //    conn.Open();
+                //}
+
+                //cmd.ExecuteNonQuery();
+
+
+                string query = "INSERT INTO GestionInventario (FechaDocumento, IdentificacionProveedor, Estado, MontoTotal, IdentificacionSucursal, TipoDocumento) VALUES (@documentDate, @supplierId, @state, @totalAmount, @branchId, @documentType);\n" +
+                    "SELECT SCOPE_IDENTITY() AS NewId;";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@documentDate", inventoryManagment.DocumentDate);
                 cmd.Parameters.AddWithValue("@supplierId", inventoryManagment.getSupplierId());
@@ -195,20 +214,28 @@ namespace LubriTech.Model.InventoryManagment_Information
                 cmd.Parameters.AddWithValue("@branchId", inventoryManagment.getBranchId());
                 cmd.Parameters.AddWithValue("@documentType", inventoryManagment.DocumentType);
 
+                DataTable tblInventoryManagmentID = new DataTable();
+                SqlDataAdapter adp = new SqlDataAdapter();
+                adp.SelectCommand = cmd;
+
+                adp.Fill(tblInventoryManagmentID);
+                DataRow dr = tblInventoryManagmentID.Rows[0];
+
+                int insertedId = Convert.ToInt32(dr["NewId"]);
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
                     conn.Open();
                 }
 
-                cmd.ExecuteNonQuery();
+                //cmd.ExecuteNonQuery();
 
-                return true;
+                return insertedId;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
-                return false;
+                return -1;
             }
             finally
             {

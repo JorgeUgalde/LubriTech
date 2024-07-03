@@ -27,6 +27,7 @@ namespace LubriTech.View
         {
             InitializeComponent();
             this.workOrderId = workOrderId;
+            //InitializeTabControl();
 
             if (workOrderId.HasValue)
             {
@@ -44,6 +45,98 @@ namespace LubriTech.View
                 // Initialize a new work order
                 InitializeNewWorkOrder();
             }
+        }
+
+        private void InitializeTabControl()
+        {
+            // Crear TabControl
+            TabControl tabControl = new TabControl();
+            tabControl.Size = this.Size;
+            tabControl.Dock = DockStyle.Fill;
+
+            // Crear pestaña de contenido
+            TabPage tabContent = new TabPage("Contenido");
+            tabContent.Controls.Add(CreateContentPanel());
+
+            // Crear pestaña de observaciones
+            TabPage tabObservations = new TabPage("Observaciones");
+            tabObservations.Controls.Add(CreateObservationsPanel());
+
+            // Agregar pestañas al TabControl
+            tabControl.TabPages.Add(tabContent);
+            tabControl.TabPages.Add(tabObservations);
+
+            // Agregar TabControl al formulario
+            this.Controls.Add(tabControl);
+        }
+
+        private Panel CreateContentPanel()
+        {
+            Panel panel = new Panel();
+            panel.AutoSize = true;
+            panel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
+            //panel.Dock = DockStyle.Fill;
+
+            // Agregar controles actuales de contenido al panel
+            panel.Controls.Add(lblBranch);
+            panel.Controls.Add(cbBranch);
+            panel.Controls.Add(lblDate);
+            panel.Controls.Add(dateTimePicker);
+            panel.Controls.Add(lblState);
+            panel.Controls.Add(cbState);
+
+            panel.Controls.Add(lblClient);
+            panel.Controls.Add(btnSelectClient);
+            panel.Controls.Add(lblClientId);
+            panel.Controls.Add(txtClientId);
+            panel.Controls.Add(lblClientName);
+            panel.Controls.Add(txtClientName);
+            panel.Controls.Add(lblMainPhone);
+            panel.Controls.Add(txtCellphone);
+            panel.Controls.Add(lblAddPhone);
+            panel.Controls.Add(txtCellphone2);
+            panel.Controls.Add(lblEmail);
+            panel.Controls.Add(txtEmail);
+
+            panel.Controls.Add(lblVehicle);
+            panel.Controls.Add(btnAddVehicle);
+            panel.Controls.Add(lblMake);
+            panel.Controls.Add(txtMake);
+            panel.Controls.Add(lblModel);
+            panel.Controls.Add(txtModel);
+            panel.Controls.Add(lblMileage);
+            panel.Controls.Add(txtMileage);
+            panel.Controls.Add(lblCurrentMileage);
+            panel.Controls.Add(txtCurrentMileage);
+
+            panel.Controls.Add(lblDetails);
+            panel.Controls.Add(dataGridView1);
+            panel.Controls.Add(lblTotalAmount);
+            panel.Controls.Add(txtTotalAmount);
+
+            return panel;
+        }
+
+        private Panel CreateObservationsPanel()
+        {
+            Panel panel = new Panel();
+            panel.Dock = DockStyle.Fill;
+
+            // Agregar TextBox para la descripción de observaciones
+            TextBox txtObservations = new TextBox();
+            txtObservations.Multiline = true;
+            txtObservations.Dock = DockStyle.Top;
+            txtObservations.Height = 100;
+            panel.Controls.Add(txtObservations);
+
+            // Agregar ListView o DataGridView para la lista de imágenes
+            ListView listViewImages = new ListView();
+            //listViewImages.View = View;
+            listViewImages.Dock = DockStyle.Fill;
+            panel.Controls.Add(listViewImages);
+
+            return panel;
         }
 
         private void LoadWorkOrderData(WorkOrder workOrder)
@@ -65,7 +158,8 @@ namespace LubriTech.View
             cbBranch.ValueMember = "Id";
             cbBranch.SelectedValue = workOrder.Branch.Id;
 
-            txtDate.Text = workOrder.Date.ToString();
+            dateTimePicker.Value = workOrder.Date;
+            //txtDate.Text = workOrder.Date.ToString();
             txtTotalAmount.Text = workOrder.Amount.ToString();
 
             client = workOrder.Client;
@@ -89,6 +183,7 @@ namespace LubriTech.View
                 txtModel.Text = workOrder.Vehicle.Model.ToString() + " " + workOrder.Vehicle.Year;
                 txtMileage.Enabled = false;
                 txtMileage.Text = workOrder.Vehicle.Mileage.ToString();
+                txtCurrentMileage.Text = workOrder.CurrentMileage.ToString();
             }
             else
             {
@@ -118,7 +213,8 @@ namespace LubriTech.View
             cbBranch.ValueMember = "Id";
             cbBranch.SelectedIndex = 0;
 
-            txtDate.Text = DateTime.Now.ToString();
+            dateTimePicker.Value = DateTime.Now;
+            //txtDate.Text = DateTime.Now.ToString();
             txtTotalAmount.Text = "0";
             txtClientId.Enabled = true;
             txtClientId.Text = "";
@@ -447,6 +543,7 @@ namespace LubriTech.View
                 }
                 if(new Work_Order_Controller().UpdateWorkOrder(workOrder))
                 {
+                    this.Dispose();
                     MessageBox.Show("Cambios guardados exitosamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
