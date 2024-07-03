@@ -89,15 +89,19 @@ namespace LubriTech.View
 
             if (existingClient != null)
             {
-                //Clients_Controller clients_Controller = new Clients_Controller();
-                //vehicles = clients_Controller.getVehicle(existingClient.Id);
                 LoadVehicles(sender,e);
             }
-            //dgvVehicles.DataSource = vehicles;
-            //dgvVehicles.Columns["LicensePlate"].HeaderText = "Placa";
-            //dgvVehicles.Columns["Model"].HeaderText = "Modelo";
-            //dgvVehicles.Columns["Client"].HeaderText = "Cliente";
-            //dgvVehicles.Columns["State"].HeaderText = "Estado";
+            else
+            {
+                dgvVehicles.DataSource = new List<Vehicle>();
+                dgvVehicles.Columns["LicensePlate"].HeaderText = "Placa";
+                dgvVehicles.Columns["Model"].HeaderText = "Modelo";
+                dgvVehicles.Columns["Client"].HeaderText = "Cliente";
+                dgvVehicles.Columns["State"].HeaderText = "Estado";
+
+
+            }
+            
 
             foreach (DataGridViewColumn column in dgvVehicles.Columns)
             {
@@ -116,10 +120,13 @@ namespace LubriTech.View
         /// </summary>
         private void SetColumnOrder()
         {
-            dgvVehicles.Columns["LicensePlate"].DisplayIndex = 0;
-            dgvVehicles.Columns["Model"].DisplayIndex = 1;
-            dgvVehicles.Columns["Client"].DisplayIndex = 2;
-            dgvVehicles.Columns["State"].DisplayIndex = 3;
+            if (existingClient != null)
+            {
+                dgvVehicles.Columns["LicensePlate"].DisplayIndex = 0;
+                dgvVehicles.Columns["Model"].DisplayIndex = 1;
+                dgvVehicles.Columns["Client"].DisplayIndex = 2;
+                dgvVehicles.Columns["State"].DisplayIndex = 3;
+            }  
             
         }
 
@@ -156,7 +163,7 @@ namespace LubriTech.View
                     /// <summary>
                     /// Intenta agregar el cliente a la base de datos.
                     /// </summary>
-                    if (clientsController.upsert(client))
+                    if (clientsController.upsert(client) )
                     {
                         OnDataChanged(EventArgs.Empty);
                         this.Dispose();
@@ -186,6 +193,30 @@ namespace LubriTech.View
         /// <param name="e">Argumentos del evento.</param>
         private void btnAddVehicle_Click(object sender, EventArgs e)
         {
+            if (txtID.Text.Trim() == "" || txtFullName.Text.Trim() == "" ||
+                cbState.Text == "" || cbPriceList.Text == "")
+            {
+                MessageBox.Show("Por favor llene todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            else
+            {
+                Client client = new Client();
+                client.Id = txtID.Text;
+                client.FullName = txtFullName.Text;
+                client.State = cbState.Text;
+                client.MainPhoneNum = Int32.TryParse(txtMainPhone.Text, out int mainPhone) ? mainPhone : (int?)null;
+                client.AdditionalPhoneNum = Int32.TryParse(txtAdditionalPhone.Text, out int additionalPhone) ? additionalPhone : (int?)null;
+                client.Email = txtEmail.Text;
+                client.Address = txtAddresse.Text;
+                client.PriceList = new PriceList_Controller().getPriceList((int)cbPriceList.SelectedValue);
+                new Clients_Controller().upsert(client);
+                existingClient = new Clients_Controller().getClient(client.Id);
+
+            }
+
+
             if (existingClient != null)
             {
                 frmInsertUpdate_Vehicle frmInsertVehicle = new frmInsertUpdate_Vehicle(existingClient);
@@ -206,6 +237,8 @@ namespace LubriTech.View
         {
             List<Vehicle> vehicles = new List<Vehicle>();
             Clients_Controller clients_Controller = new Clients_Controller();
+
+
             vehicles = clients_Controller.getVehicle(existingClient.Id);
             dgvVehicles.DataSource = vehicles;
 

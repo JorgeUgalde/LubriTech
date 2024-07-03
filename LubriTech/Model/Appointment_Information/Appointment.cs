@@ -1,5 +1,6 @@
 ﻿using LubriTech.Model.Branch_Information;
 using LubriTech.Model.Client_Information;
+using LubriTech.Model.Vehicle_Information;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,12 +28,14 @@ namespace LubriTech.Model.Appointment_Information
         /// <summary>
         /// Date and time of the appointment.
         /// </summary>
+        /// 
+        public Vehicle Vehicle { get; set; }
         public DateTime AppointmentDate { get; set; }
 
         /// <summary>
         /// Appointment state.
         /// </summary>
-        public short State { get; set; }
+        public string State { get; set; }
 
         /// <summary>
         /// Branch of the appointment.
@@ -40,20 +43,29 @@ namespace LubriTech.Model.Appointment_Information
         public Branch branch { get; set; }
 
         /// <summary>
+        /// Description of the appointment.
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
         /// Constructor of the class Appointment
         /// <summary>
         /// <param name="appointmentDate"/>Date and time of the appointment.</param>
         /// <param name="appointmentID">Identifier.</param>
+        /// <param name="Vehicle">Vehicle of the Appointment.</param>
         /// <param name="client"/>   Client .</param>
         /// <param name="state">State.</param>
         /// <param name="branch">Branch of the appointment.</param>
-        public Appointment (int appointmentID, Client client, DateTime appointmentDate, short state, Branch branch)
+        /// <param name="Description">Description of the appointment</param>
+        public Appointment (int appointmentID, Client client, Vehicle vehicle, DateTime appointmentDate, string state, Branch branch, string Description)
         {
            this.AppointmentID = appointmentID;
             this.client = client;
+            this.Vehicle = vehicle;
             this.AppointmentDate = appointmentDate;
             this.State = state;
             this.branch = branch;
+            this.Description = Description;
         }
 
 

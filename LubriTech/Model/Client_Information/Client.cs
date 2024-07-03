@@ -105,7 +105,7 @@ namespace LubriTech.Model.Client_Information
         /// </summary>
         public Client()
         {
-        }
+            }
 
         /// <summary>
         /// Sobrescribe el método ToString para mostrar el nombre completo del cliente.

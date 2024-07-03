@@ -181,7 +181,7 @@ namespace LubriTech.Model.Client_Information
         /// </summary>
         /// <param name="client">Objeto Cliente que se va a insertar o actualizar.</param>
         /// <returns>True si la operación de inserción o actualización fue exitosa, False si falló.</returns>
-        public Boolean UpSertClient(Client client)
+        public bool UpSertClient(Client client)
         {
             try
             {
@@ -207,7 +207,7 @@ namespace LubriTech.Model.Client_Information
                 {
                     bool addResult = addClient(client);
 
-                    if (addResult)
+                    if (addResult )
                     {
                         MessageBox.Show("El Cliente se ha creado correctamente");
                     }
@@ -233,11 +233,13 @@ namespace LubriTech.Model.Client_Information
         /// </summary>
         /// <param name="client">Objeto Cliente que se va a insertar.</param>
         /// <returns>True si la operación de inserción fue exitosa, False si falló.</returns>
-        public Boolean addClient(Client client)
+        public bool addClient(Client client)
         {
             try
             {
-                String insertQuery = "insert into Cliente(Identificacion, NombreCompleto, NumeroTelefonoPrincipal, NumeroTelefonoAdicional, CorreoElectronico, Direccion, Estado, IdentificacionListaPrecio) values (@id, @fullname, @mainphone, @additionalphone, @email, @address, @state, @priceListId)";
+                String insertQuery = "insert into Cliente(Identificacion, NombreCompleto, NumeroTelefonoPrincipal, NumeroTelefonoAdicional, CorreoElectronico, Direccion, Estado, IdentificacionListaPrecio) " +
+                    "values (@id, @fullname, @mainphone, @additionalphone, @email, @address, @state, @priceListId);" +
+                    "SELECT SCOPE_IDENTITY();";
 
                 SqlCommand insert = new SqlCommand(insertQuery, conn);
 
@@ -245,8 +247,8 @@ namespace LubriTech.Model.Client_Information
                 insert.Parameters.AddWithValue("@fullname", client.FullName);
                 insert.Parameters.AddWithValue("@mainphone", (object)client.MainPhoneNum ?? DBNull.Value);
                 insert.Parameters.AddWithValue("@additionalphone", (object)client.AdditionalPhoneNum ?? DBNull.Value);
-                insert.Parameters.AddWithValue("@email", client.Email);
-                insert.Parameters.AddWithValue("@address", client.Address);
+                insert.Parameters.AddWithValue("@email", (object)client.Email ?? DBNull.Value);
+                insert.Parameters.AddWithValue("@address", (object)client.Address ?? DBNull.Value);
                 insert.Parameters.AddWithValue("@state", (client.State.Equals("Activo")) ? 1 : 0);
                 insert.Parameters.AddWithValue("@priceListId", client.PriceList.id);
 
@@ -262,7 +264,7 @@ namespace LubriTech.Model.Client_Information
             }
             catch (SqlException ex)
             {
-
+                return false;
                 throw ex;
             }
             finally 
