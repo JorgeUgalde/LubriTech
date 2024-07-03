@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -147,6 +147,18 @@
     </Compile>
     <Compile Include="View\Appointment_View\frmAppointment.Designer.cs">
       <DependentUpon>frmAppointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmInsertUpdateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmInsertUpdateUser.Designer.cs">
+      <DependentUpon>frmInsertUpdateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmResetPassword.Designer.cs">
+      <DependentUpon>frmResetPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmUpsert_PriceList.cs">
       <SubType>Form</SubType>
@@ -349,6 +361,12 @@
     <EmbeddedResource Include="View\Appointment_View\frmAppointment.resx">
       <DependentUpon>frmAppointment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\frmInsertUpdateUser.resx">
+      <DependentUpon>frmInsertUpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmResetPassword.resx">
+      <DependentUpon>frmResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmUpsert_PriceList.resx">
       <DependentUpon>frmUpsert_PriceList.cs</DependentUpon>
     </EmbeddedResource>
@@ -460,12 +478,14 @@
   <ItemGroup>
     <Content Include="bin\Debug\LubriTech.exe" />
     <Content Include="bin\Debug\LubriTech.pdb" />
+    <None Include="Images\add.png" />
     <Content Include="Images\appointment.png" />
     <Content Include="Images\Back.png" />
     <None Include="Images\close.png" />
     <None Include="Images\close1.png" />
     <None Include="Images\imagenLogin1.jpg" />
     <None Include="Images\closeIco2.png" />
+    <None Include="Images\clients.png" />
     <Content Include="Images\inventory.png" />
     <Content Include="Images\logo1.jpg" />
     <Content Include="Images\logoCrop.jpg" />

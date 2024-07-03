@@ -44,6 +44,12 @@ namespace LubriTech.Model.User_Information
             this.password = password;
         }
 
+        public User()
+        {
+        }
+
+
+
         /// <summary>
         /// Cadena que representa el objeto actual.
         /// </summary>

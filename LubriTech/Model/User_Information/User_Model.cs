@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LubriTech.Model.Vehicle_Information;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -50,6 +51,130 @@ namespace LubriTech.Model.User_Information
             catch (Exception ex)
             {
                 throw new Exception("Error al obtener el usuario", ex);
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        public User EmailValidation(User user)
+        {
+            try
+            {
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                string query = "SELECT * FROM Usuario WHERE CorreoElectronico = @Email";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Email", user.email);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                User u = null;
+                if (reader.Read())
+                {
+                    u = new User(
+                        reader["CorreoElectronico"].ToString(),
+                        reader["Contrasena"].ToString(), Convert.ToInt32(
+                        reader["IdentificacionSucursal"]));
+                }
+                return u;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener el usuario", ex);
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        public bool UpdatePassword(User user, string code)
+        {
+            try
+            {
+                string query = "";
+
+                query = "update Usuario set Contrasena = @password where CorreoElectronico = @email";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@password", code);
+                cmd.Parameters.AddWithValue("@email", user.email);
+
+
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+
+
+        public bool Upsert(User user, string newPassword)
+        {
+            try
+            {
+                string query = "";
+                
+                if (GetUser(user) == null)
+                {
+                    query = "insert into Usuario (CorreoElectronico, Contrasena, IdentificacionSucursal) values (@email, @password, @branchId)";
+                }
+                else
+                {
+                    query = "update Usuario set  Contrasena = @password where CorreoElectronico = @email and  IdentificacionSucursal = @branchId";
+                }
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                if (newPassword != null)
+                {
+                    cmd.Parameters.AddWithValue("@password", newPassword);
+
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@password", user.password);
+
+                }
+                cmd.Parameters.AddWithValue("@email", user.email);
+                cmd.Parameters.AddWithValue("@branchId", user.branchID);
+
+
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
             }
             finally
             {

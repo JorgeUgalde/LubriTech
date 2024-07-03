@@ -103,7 +103,9 @@ namespace LubriTech.View
                 if (new Branch_Controller().Upsert(branch))
                 {
                     MessageBox.Show("Sucursal registrada con exito", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    OnDataChanged(EventArgs.Empty);
+                    //OnDataChanged(EventArgs.Empty);
+                    DataChanged?.Invoke(this, EventArgs.Empty);
+
                     this.Close();
                 }
                 else

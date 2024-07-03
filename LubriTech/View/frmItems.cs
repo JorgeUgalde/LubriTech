@@ -105,8 +105,6 @@ namespace LubriTech.View
             dgvItems.Columns["measureUnit"].DisplayIndex = 2;
             dgvItems.Columns["state"].DisplayIndex = 3;
             dgvItems.Columns["type"].DisplayIndex = 4;
-            dgvItems.Columns["ModifyImageColumn"].DisplayIndex = 5;
-            dgvItems.Columns["DetailImageColumn"].DisplayIndex = 6;
         }
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
@@ -133,18 +131,7 @@ namespace LubriTech.View
 
         private void SetupDataGridView()
         {
-            // Modify button column
-            DataGridViewImageColumn modifyImageColumn = new DataGridViewImageColumn();
-            modifyImageColumn.Name = "ModifyImageColumn";
-            modifyImageColumn.HeaderText = "Modificar";
-            modifyImageColumn.Image = Properties.Resources.edit;
-            dgvItems.Columns.Add(modifyImageColumn);
-
-            DataGridViewImageColumn detailImageColumn = new DataGridViewImageColumn();
-            detailImageColumn.Name = "DetailImageColumn";
-            detailImageColumn.HeaderText = "Detalles";
-            detailImageColumn.Image = Properties.Resources.detail;
-            dgvItems.Columns.Add(detailImageColumn);
+            
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
@@ -161,37 +148,6 @@ namespace LubriTech.View
             load_Items(null);
         }
 
-        private void dgvItems_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dgvItems.Columns["ModifyImageColumn"].Index && e.RowIndex >= 0)
-            {
-                string idToModify = dgvItems.Rows[e.RowIndex].Cells["code"].Value.ToString();
-                Item itemSelected = new Item_Controller().get(idToModify);                            
-
-                frmInsertUpdate_Item frmUpsert = new frmInsertUpdate_Item(itemSelected, 1);
-                frmUpsert.MdiParent = this.MdiParent;
-                this.WindowState = FormWindowState.Normal;
-                frmUpsert.DataChanged += ChildFormDataChangedHandler;
-                frmUpsert.Show();
-                return;
-            }
-
-            if (e.ColumnIndex == dgvItems.Columns["DetailImageColumn"].Index && e.RowIndex >= 0)
-            {
-                string idOfDetails = dgvItems.Rows[e.RowIndex].Cells["code"].Value.ToString();
-                Item itemSelected = new Item_Controller().get(idOfDetails);
-
-                frmInsertUpdate_Item frmUpsert = new frmInsertUpdate_Item(itemSelected, 0);
-                frmUpsert.MdiParent = this.MdiParent;
-                this.WindowState = FormWindowState.Normal;
-                frmUpsert.DataChanged += ChildFormDataChangedHandler;
-                frmUpsert.Show();
-
-                return;
-
-            }
-
-        }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -254,5 +210,6 @@ namespace LubriTech.View
                 }
             }
         }
+
     }
 }

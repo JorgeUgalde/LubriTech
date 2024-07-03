@@ -31,11 +31,6 @@ namespace LubriTech.View
             
             InitializeComponent();
 
-            if (type == 0)
-            {
-                btnConfirm.Visible = false;
-            }
-
             this.globalItem = item;
             txtCode.Enabled = false;
 
