@@ -1,6 +1,8 @@
 ﻿using LubriTech.Model;
+using LubriTech.Model.Client_Information;
 using LubriTech.Model.InventoryManagment_Information;
 using LubriTech.Model.items_Information;
+using LubriTech.Model.Vehicle_Information;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +50,12 @@ namespace LubriTech.Controller
         public DetailLine getInventoryManagment(string itemCode, int inventoryManagmentId)
         {
             return new DetailLine_Model().getDetailLine(itemCode, inventoryManagmentId);
+        }
+
+        public List<DetailLine> getDetailLines(int Id)
+        {
+            return new DetailLine_Model().getDetailLinesByInventoryManagment(Id);
+
         }
     }
 }

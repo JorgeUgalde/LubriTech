@@ -124,10 +124,10 @@ namespace LubriTech.View
                 }
 
                 string action = "Modify";
-                //frmInsertUpdate_InventoryManagment frmInsertInventoryManagment = new frmInsertUpdate_InventoryManagment(selectedInventoryManagment);
-                //frmInsertInventoryManagment.MdiParent = this.MdiParent;
-                //frmInsertInventoryManagment.DataChanged += ChildFormDataChangedHandler;
-                //frmInsertInventoryManagment.Show();
+                frmInsertUpdate_InventoryManagment frmInsertInventoryManagment = new frmInsertUpdate_InventoryManagment(selectedInventoryManagment);
+                frmInsertInventoryManagment.MdiParent = this.MdiParent;
+                frmInsertInventoryManagment.DataChanged += ChildFormDataChangedHandler;
+                frmInsertInventoryManagment.Show();
                 return;
             }
         }

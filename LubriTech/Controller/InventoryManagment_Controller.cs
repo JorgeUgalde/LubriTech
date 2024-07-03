@@ -32,7 +32,7 @@ namespace LubriTech.Controller
         /// </summary>
         /// <param name="inventoryManagment">Inventory managment object to insert or update.</param>
         /// <returns>True if the operation was succesful, otherwise, false.</returns>
-        public Boolean upsert(InventoryManagment inventoryManagment)
+        public int upsert(InventoryManagment inventoryManagment)
         {
             return inventoryManagmentModel.upsertInventoryManagment(inventoryManagment);
         }
