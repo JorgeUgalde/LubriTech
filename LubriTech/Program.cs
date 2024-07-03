@@ -15,20 +15,20 @@ namespace LubriTech
         [STAThread]
         static void Main()
         {
-            
-            //frmLogin login = new frmLogin();
 
-            ////Mostrar el formulario de login
-            //Application.Run(login);
+            frmLogin login = new frmLogin();
 
-            ////Si el formulario de login está cerrado y no se ha autenticado, salir de la aplicación
-            //if (!login.IsLogged())
-            //{
-            //    return;
-            //}
+            //Mostrar el formulario de login
+            Application.Run(login);
+
+            //Si el formulario de login está cerrado y no se ha autenticado, salir de la aplicación
+            if (!login.IsLogged())
+            {
+                return;
+            }
 
             //Continuar con la ejecución de la aplicación si el login fue exitoso
-            Application.Run(new frmInventoryManagment());
+            Application.Run(new MDI_View());
         }
     }
 }
