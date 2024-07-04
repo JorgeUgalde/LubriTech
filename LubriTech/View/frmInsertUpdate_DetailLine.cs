@@ -75,13 +75,12 @@ namespace LubriTech.View
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (tbItem.Text.Trim() == ""
-                || tbQuantity.Text.Trim() == ""
-                || tbAmount.Text.Trim() == "")
+            if (tbItemId.Text.Trim() == ""
+                || tbQuantity.Text.Trim() == "")
             {
                 MessageBox.Show("Por favor llene todos los campos");
             }
-            else if (tbItemId.Text.Trim() == "")
+            else if (tbItem.Text.Trim() == "")
             {
                 MessageBox.Show("Debe seleccionar un artículo");
             }
@@ -107,7 +106,7 @@ namespace LubriTech.View
 
         private void tbQuantity_TextChanged(object sender, EventArgs e)
         {
-            if (tbQuantity.Text.Trim() != "")
+            if (tbQuantity.Text.Trim() != "" && tbItem.Text.Trim() != "")
             {
                 double calc = (Convert.ToDouble(tbQuantity.Text.ToString().Trim()) * (new Item_Controller().get(tbItemId.Text.Trim()).purchasePrice));
                 tbAmount.Text = calc.ToString();

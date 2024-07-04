@@ -361,6 +361,9 @@
     <EmbeddedResource Include="View\Appointment_View\frmAppointment.resx">
       <DependentUpon>frmAppointment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\frmInsertUpdate_DetailLine.resx">
+      <DependentUpon>frmInsertUpdate_DetailLine.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmUpsert_PriceList.resx">
       <DependentUpon>frmUpsert_PriceList.cs</DependentUpon>
     </EmbeddedResource>

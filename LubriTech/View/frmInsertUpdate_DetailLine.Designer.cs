@@ -44,7 +44,7 @@
             // tbQuantity
             // 
             this.tbQuantity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbQuantity.Location = new System.Drawing.Point(147, 182);
+            this.tbQuantity.Location = new System.Drawing.Point(147, 178);
             this.tbQuantity.MaxLength = 9;
             this.tbQuantity.Name = "tbQuantity";
             this.tbQuantity.Size = new System.Drawing.Size(205, 29);
@@ -55,7 +55,7 @@
             // 
             this.lblQuantity.AutoSize = true;
             this.lblQuantity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuantity.Location = new System.Drawing.Point(69, 185);
+            this.lblQuantity.Location = new System.Drawing.Point(69, 181);
             this.lblQuantity.Name = "lblQuantity";
             this.lblQuantity.Size = new System.Drawing.Size(72, 21);
             this.lblQuantity.TabIndex = 63;
