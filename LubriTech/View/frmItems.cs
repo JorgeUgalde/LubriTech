@@ -150,6 +150,10 @@ namespace LubriTech.View
                     {
                         ((frmInsertUpdate_DetailLine)parentForm).ShowItemInDetailLine(selectedItem);
                         this.Close();
+                    }else if (parentForm is frmWorkOrder)
+                    {
+                        ((frmWorkOrder)parentForm).ShowItemInWorkOrder(selectedItem);
+                        this.Close();
                     }
                     else
                     {
