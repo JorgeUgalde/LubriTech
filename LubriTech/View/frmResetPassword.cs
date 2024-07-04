@@ -80,7 +80,7 @@ namespace LubriTech.View
         {
             try
             {
-                MailAddress addressFrom = new MailAddress("lubritech15@gmail.com", "LubriTech");
+                MailAddress addressFrom = new MailAddress("soportelubritech@gmail.com", "LubriTech");
                 MailAddress addressTo = new MailAddress(email);
                 MailMessage message = new MailMessage(addressFrom, addressTo)
                 {
@@ -146,7 +146,7 @@ namespace LubriTech.View
                     Port = 587,
                     EnableSsl = true,
                     UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential("lubritech15@gmail.com", "tpsp gwvn altp ainl")
+                    Credentials = new NetworkCredential("soportelubritech@gmail.com", "puux hwyd enia dmrr")
                 };
                 smtpClient.Send(message);
             }

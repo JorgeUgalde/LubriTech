@@ -30,6 +30,7 @@
         {
             this.panelBorder = new System.Windows.Forms.Panel();
             this.lblForm = new System.Windows.Forms.Label();
+            this.pbClose = new System.Windows.Forms.PictureBox();
             this.cbBranch = new System.Windows.Forms.ComboBox();
             this.txtNewPass = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -40,7 +41,6 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.pbClose = new System.Windows.Forms.PictureBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.panelBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -68,6 +68,18 @@
             this.lblForm.Size = new System.Drawing.Size(72, 21);
             this.lblForm.TabIndex = 10;
             this.lblForm.Text = "Usuarios";
+            // 
+            // pbClose
+            // 
+            this.pbClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbClose.Image = global::LubriTech.Properties.Resources.closeIco2;
+            this.pbClose.Location = new System.Drawing.Point(790, 6);
+            this.pbClose.Name = "pbClose";
+            this.pbClose.Size = new System.Drawing.Size(30, 30);
+            this.pbClose.TabIndex = 7;
+            this.pbClose.TabStop = false;
+            this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
             // 
             // cbBranch
             // 
@@ -187,18 +199,6 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(205, 29);
             this.txtPassword.TabIndex = 45;
-            // 
-            // pbClose
-            // 
-            this.pbClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbClose.Image = global::LubriTech.Properties.Resources.closeIco2;
-            this.pbClose.Location = new System.Drawing.Point(790, 6);
-            this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(30, 30);
-            this.pbClose.TabIndex = 7;
-            this.pbClose.TabStop = false;
-            this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
             // 
             // btnAdd
             // 

@@ -83,22 +83,35 @@ namespace LubriTech.View
                 Branch selectedBranch = (Branch)cbBranch.SelectedItem;
                 user.branchID = selectedBranch.Id;
 
-                bool isNewUser = new User_Controller().GetUser(user) == null;
+                //bool isNewUser = new User_Controller().GetUser(user) == null;
+                User existingUser = new User_Controller().GetUser(user);
 
-                if (new User_Controller().Upsert(user, newPassword))
+                if (existingUser == null && string.IsNullOrEmpty(txtNewPass.Text))
                 {
-                    if (isNewUser)
-                    {
-                        MessageBox.Show("Usuario registrado con éxito", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Usuario actualizado con éxito", "Actualización exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    new User_Controller().Upsert(user, newPassword);
+                    MessageBox.Show("Usuario creado con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+ 
                 }
                 else
                 {
-                    MessageBox.Show("Error al registrar/actualizar el usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (existingUser == null)
+                    {
+                        MessageBox.Show("Revise que los datos sean correctos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(txtNewPass.Text))
+                        {
+                            new User_Controller().Upsert(user, newPassword);
+                            MessageBox.Show("La contraseña se cambió con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("El usuario que intenta crear ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        }
+                    }
+
                 }
             }
             catch (Exception)

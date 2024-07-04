@@ -1,5 +1,6 @@
 ﻿using LubriTech.Model.Vehicle_Information;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -139,14 +140,17 @@ namespace LubriTech.Model.User_Information
             try
             {
                 string query = "";
-                
+
+                var existingUser = GetUser(user);
+
                 if (GetUser(user) == null)
                 {
-                    query = "insert into Usuario (CorreoElectronico, Contrasena, IdentificacionSucursal) values (@email, @password, @branchId)";
+                    query = "INSERT INTO Usuario (CorreoElectronico, Contrasena, IdentificacionSucursal) VALUES (@email, @password, @branchId)";
                 }
                 else
                 {
-                    query = "update Usuario set  Contrasena = @password where CorreoElectronico = @email and  IdentificacionSucursal = @branchId";
+                    
+                    query = "UPDATE Usuario SET Contrasena = @password WHERE CorreoElectronico = @email AND IdentificacionSucursal = @branchId";
                 }
 
                 SqlCommand cmd = new SqlCommand(query, conn);
