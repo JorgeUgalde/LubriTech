@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using LubriTech.Controller;
 using LubriTech.Model.Client_Information;
 using LubriTech.Model.Vehicle_Information;
+using LubriTech.View.Appointment_View;
 
 namespace LubriTech.View
 {
@@ -179,6 +180,12 @@ namespace LubriTech.View
                     if(parentForm is frmWorkOrder)
                     {
                         ((frmWorkOrder)parentForm).SelectVehicleWorkOrder(selectedVehicle);
+                        this.Close();
+                        return;
+                    }
+                    if(parentForm is frmAppointment)
+                    {
+                        ((frmAppointment)parentForm).SelectVehicle(selectedVehicle);
                         this.Close();
                         return;
                     }

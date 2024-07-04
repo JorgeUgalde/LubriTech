@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Controller\Appointment_Controller.cs" />
     <Compile Include="Controller\Branch_Controller.cs" />
+    <Compile Include="Controller\ItemType_Controller.cs" />
     <Compile Include="Controller\Schedule_Controller.cs" />
     <Compile Include="Controller\PriceList_Controller.cs" />
     <Compile Include="Controller\DetailLine_Controller.cs" />
@@ -109,6 +110,8 @@
     <Compile Include="Model\InventoryManagment_Information\DetailLine_Model.cs" />
     <Compile Include="Model\InventoryManagment_Information\InventoryManagment_Model.cs" />
     <Compile Include="Model\Item_Information\Item.cs" />
+    <Compile Include="Model\Item_Information\ItemType.cs" />
+    <Compile Include="Model\Item_Information\ItemType_Model.cs" />
     <Compile Include="Model\Item_Information\Item_Model.cs" />
     <Compile Include="Model\PricesList_Information\PriceList.cs" />
     <Compile Include="Model\PricesList_Information\PriceList_Model.cs" />
@@ -148,11 +151,41 @@
     <Compile Include="View\Appointment_View\frmAppointment.Designer.cs">
       <DependentUpon>frmAppointment.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmInsertUpdateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmInsertUpdateUser.Designer.cs">
+      <DependentUpon>frmInsertUpdateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmResetPassword.Designer.cs">
+      <DependentUpon>frmResetPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmInsertUpdate_DetailLine.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\frmInsertUpdate_DetailLine.Designer.cs">
       <DependentUpon>frmInsertUpdate_DetailLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Appointment_View\frmInsertUpdate_Appointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Appointment_View\frmInsertUpdate_Appointment.Designer.cs">
+      <DependentUpon>frmInsertUpdate_Appointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmInsertUpdate_ItemType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmInsertUpdate_ItemType.Designer.cs">
+      <DependentUpon>frmInsertUpdate_ItemType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmItemType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmItemType.Designer.cs">
+      <DependentUpon>frmItemType.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmUpsert_PriceList.cs">
       <SubType>Form</SubType>
@@ -358,6 +391,18 @@
     <EmbeddedResource Include="View\frmInsertUpdate_DetailLine.resx">
       <DependentUpon>frmInsertUpdate_DetailLine.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\frmInsertUpdateUser.resx">
+      <DependentUpon>frmInsertUpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmResetPassword.resx">
+      <DependentUpon>frmResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmInsertUpdate_ItemType.resx">
+      <DependentUpon>frmInsertUpdate_ItemType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmItemType.resx">
+      <DependentUpon>frmItemType.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmUpsert_PriceList.resx">
       <DependentUpon>frmUpsert_PriceList.cs</DependentUpon>
     </EmbeddedResource>
@@ -411,6 +456,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmItems.resx">
       <DependentUpon>frmItems.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -469,12 +515,14 @@
   <ItemGroup>
     <Content Include="bin\Debug\LubriTech.exe" />
     <Content Include="bin\Debug\LubriTech.pdb" />
+    <None Include="Images\add.png" />
     <Content Include="Images\appointment.png" />
     <Content Include="Images\Back.png" />
     <None Include="Images\close.png" />
     <None Include="Images\close1.png" />
     <None Include="Images\imagenLogin1.jpg" />
     <None Include="Images\closeIco2.png" />
+    <None Include="Images\clients.png" />
     <None Include="Images\icons8-flecha-30 %281%29.png" />
     <None Include="Images\Flecha Calendario Izquierda.png" />
     <None Include="Images\Flecha Calendario Derecha.png" />

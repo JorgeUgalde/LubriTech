@@ -23,6 +23,21 @@ namespace LubriTech.Controller
             return new User_Model().GetUser(user);
         }
 
+        public bool Upsert(User user, string newPassword)
+        {
+            return new User_Model().Upsert(user, newPassword);
+        }
 
+        public User Validation(User user)
+        {
+            return new User_Model().EmailValidation(user);
+
+        }
+
+        public bool Reset(User user, string code)
+        {
+            return new User_Model().UpdatePassword(user, code);
+
+        }
     }
 }

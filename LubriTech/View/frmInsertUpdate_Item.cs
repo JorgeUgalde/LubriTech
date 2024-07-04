@@ -28,7 +28,7 @@ namespace LubriTech.View
 
         public frmInsertUpdate_Item(Item item)
         {
-            
+
             InitializeComponent();
 
             this.globalItem = item;
@@ -36,7 +36,7 @@ namespace LubriTech.View
 
             txtCode.Text = item.code;
             txtName.Text = item.name;
-            cbMeasureUnit.Text = item.measureUnit;
+            cbMeasureUnit.Text = item.measureUnit.ToString();
             cbState.Text = item.state;
             tbStock.Text = item.stock.ToString();
             tbPurchasePrice.Text = item.purchasePrice.ToString();
@@ -80,7 +80,7 @@ namespace LubriTech.View
                cbState.Text.Trim() == "" ||
                tbStock.Text.Trim() == "" ||
                tbPurchasePrice.Text.Trim() == "" ||
-               cbType.Text.Trim() == "" )
+               cbType.Text.Trim() == "")
 
             {
                 MessageBox.Show("Debe llenar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -133,7 +133,7 @@ namespace LubriTech.View
 
         private void txtSellPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;            
+            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
         }
 
         private void tbStock_KeyPress(object sender, KeyPressEventArgs e)
@@ -153,7 +153,7 @@ namespace LubriTech.View
 
         private void txtRecommended_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 ;
+            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8;
         }
 
         private void txtRecommended_TextChanged(object sender, EventArgs e)
@@ -177,6 +177,5 @@ namespace LubriTech.View
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
-    
     }
-}
+    }

@@ -25,7 +25,6 @@ namespace LubriTech.View
 
         private void frmMakes_Load(object sender, EventArgs e)
         {
-            txtFilter.TextChanged += new EventHandler(txtFilter_TextChanged);
 
         }
 
@@ -69,30 +68,11 @@ namespace LubriTech.View
         {
             dgvMakes.Columns["Name"].DisplayIndex = 0;
             dgvMakes.Columns["State"].DisplayIndex = 1;
-            dgvMakes.Columns["ModifyImageColumn"].DisplayIndex = 2;
-            dgvMakes.Columns["DetailImageColumn"].DisplayIndex = 3;
         }
 
 
         private void SetupDataGridView()
         {
-            DataGridViewImageColumn modifyImageColumn = new DataGridViewImageColumn();
-            modifyImageColumn.Name = "ModifyImageColumn";
-            modifyImageColumn.HeaderText = "Modificar";
-
-            Image image = Properties.Resources.EditIco1;
-            image = new Bitmap(image, new Size(50, 50));
-            modifyImageColumn.Image = image;
-            dgvMakes.Columns.Add(modifyImageColumn);
-
-            DataGridViewImageColumn detailImageColumn = new DataGridViewImageColumn();
-            detailImageColumn.Name = "DetailImageColumn";
-            detailImageColumn.HeaderText = "Detalles";
-            Image image1 = Properties.Resources.DetailIco;
-            image1 = new Bitmap(image1, new Size(50, 50));
-            detailImageColumn.Image = image1;
-
-            dgvMakes.Columns.Add(detailImageColumn);
         }
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
@@ -133,41 +113,6 @@ namespace LubriTech.View
 
         }
 
-        private void dgvMakes_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                if (e.ColumnIndex == dgvMakes.Columns["ModifyImageColumn"].Index)
-                {
-                    Make make = makes[e.RowIndex];
-                    //frmInsertUpdate_Make frmUpsertMake = new frmInsertUpdate_Make(make);
-                    //frmUpsertMake.MdiParent = this.MdiParent;
-                    //frmUpsertMake.DataChanged += ChildFormDataChangedHandler;
-                    //frmUpsertMake.Show();
-
-                    frmUpsert_Make_Model frmUpsertMake = new frmUpsert_Make_Model(make, "Modify");
-                    frmUpsertMake.MdiParent = this.MdiParent;
-                    this.WindowState = FormWindowState.Normal;
-                    frmUpsertMake.DataChanged += ChildFormDataChangedHandler;
-                    frmUpsertMake.Show();
-
-
-                }
-                if (e.ColumnIndex == dgvMakes.Columns["DetailImageColumn"].Index)
-                {
-                    Make make = makes[e.RowIndex];
-                    //frmInsertUpdate_Make frmUpsertMake = new frmInsertUpdate_Make(make);
-                    //frmUpsertMake.MdiParent = this.MdiParent;
-                    //frmUpsertMake.Show();
-                    frmUpsert_Make_Model frmUpsertMake = new frmUpsert_Make_Model(make, "Details");
-                    frmUpsertMake.MdiParent = this.MdiParent;
-                    this.WindowState = FormWindowState.Normal;
-                    frmUpsertMake.DataChanged += ChildFormDataChangedHandler;
-                    frmUpsertMake.Show();
-                }
-            }
-        }
-
         private void pbMaximize_Click(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Normal)
@@ -195,6 +140,24 @@ namespace LubriTech.View
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void dgvMakes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                Make make = makes[e.RowIndex];
+                //frmInsertUpdate_Make frmUpsertMake = new frmInsertUpdate_Make(make);
+                //frmUpsertMake.MdiParent = this.MdiParent;
+                //frmUpsertMake.DataChanged += ChildFormDataChangedHandler;
+                //frmUpsertMake.Show();
+
+                frmUpsert_Make_Model frmUpsertMake = new frmUpsert_Make_Model(make, "Modify");
+                frmUpsertMake.MdiParent = this.MdiParent;
+                this.WindowState = FormWindowState.Normal;
+                frmUpsertMake.DataChanged += ChildFormDataChangedHandler;
+                frmUpsertMake.Show(); 
+            }
         }
     }
 }

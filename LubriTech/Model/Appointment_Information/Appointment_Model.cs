@@ -1,4 +1,5 @@
-﻿using LubriTech.Model.Branch_Information;
+﻿using LubriTech.Controller;
+using LubriTech.Model.Branch_Information;
 using LubriTech.Model.Client_Information;
 using System;
 using System.Collections.Generic;
@@ -24,16 +25,17 @@ namespace LubriTech.Model.Appointment_Information
         /// </summary>
         /// <param name="date"></param>
         /// <returns>List of Appointment objects of the date specified</returns>
-        public List<Appointment> loadDayAppointments(DateTime date)
+        public List<Appointment> loadDayAppointments(DateTime date, int branchID)
         {
             List<Appointment> appointments = new List<Appointment>();
             try
             {
                 conn.Open();
-                string query = "SELECT * FROM Cita WHERE CAST(FechaHora AS DATE) = @date and Estado = 1";
+                string query = "SELECT * FROM Cita WHERE CAST(FechaHora AS DATE) = @date and Estado = 1 and IdentificacionSucursal = @branchID";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@date", date);
+                cmd.Parameters.AddWithValue("@branchID", branchID);
                 DataTable tblAppointments = new DataTable();
                 SqlDataAdapter da = new SqlDataAdapter();
                 da.SelectCommand = cmd;
@@ -45,9 +47,12 @@ namespace LubriTech.Model.Appointment_Information
                     (
                         Convert.ToInt32(row["Identificacion"]),
                         new Client_Model().getClient(row["IdentificacionCliente"].ToString()),
+                        new Vehicle_Controller().getVehicle(row["PlacaVehiculo"].ToString()),
                         Convert.ToDateTime(row["FechaHora"]),
-                        Convert.ToInt16(row["Estado"]),
-                        new Branch_Model().GetBranch(Convert.ToInt32(row["IdentificacionSucursal"].ToString())))
+                        Convert.ToInt32(row["Estado"]) == 1 ? "Activo" : "Inactivo",
+                        new Branch_Model().GetBranch(Convert.ToInt32(row["IdentificacionSucursal"].ToString())),
+                        row["Descripcion"].ToString()
+                        )
                     );            
                 }
             }
@@ -83,16 +88,18 @@ namespace LubriTech.Model.Appointment_Information
 
                 foreach (DataRow row in tblAppointments.Rows)
                 {
-                    new Appointment
+                    return new Appointment
                     (
                         Convert.ToInt32(row["Identificacion"]),
                         new Client_Model().getClient(row["IdentificacionCliente"].ToString()),
+                        new Vehicle_Controller().getVehicle(row["PlacaVehiculo"].ToString()),
                         Convert.ToDateTime(row["FechaHora"]),
-                        Convert.ToInt16(row["Estado"]),
-                        new Branch_Model().GetBranch(Convert.ToInt32(row["IdentificacionSucursal"].ToString()))
+                        Convert.ToInt32(row["Estado"]) == 1 ? "Activo" : "Inactivo",
+                        new Branch_Model().GetBranch(Convert.ToInt32(row["IdentificacionSucursal"].ToString())),
+                        row["Descripcion"].ToString()
                     );
                 }
-
+                
             }
             catch (Exception ex)
             {
@@ -113,19 +120,20 @@ namespace LubriTech.Model.Appointment_Information
         {
             try
             {
-                string query = "INSERT INTO Cita (IdentificacionCliente, FechaHora, Estado, IdentificacionSucursal) VALUES ( @client, @date, @state, @branch)";
+                string query = "INSERT INTO Cita (IdentificacionCliente, PlacaVehiculo, FechaHora, Estado, IdentificacionSucursal, Descripcion) VALUES ( @client,@plate, @date, @state, @branch, @description)";
                 if (GetAppointment(appointment.AppointmentID) != null)
                 {
-                    query = "UPDATE Cita SET IdentificacionCliente = @client, FechaHora = @date, Estado = @state, IdentificacionSucursal = @branch WHERE Identificacion = @id";
+                    query = "UPDATE Cita SET IdentificacionCliente = @client, PlacaVehiculo = @plate, FechaHora = @date, Estado = @state, IdentificacionSucursal = @branch, Descripcion = @description WHERE Identificacion = @id";
                 }
-
                 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@id", appointment.AppointmentID);
                 cmd.Parameters.AddWithValue("@client", appointment.client.Id);
+                cmd.Parameters.AddWithValue("@plate", (object) appointment.Vehicle.LicensePlate ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@date", appointment.AppointmentDate);
-                cmd.Parameters.AddWithValue("@state", appointment.State);
+                cmd.Parameters.AddWithValue("@state", appointment.State == "Activo"? 1 : 0);
                 cmd.Parameters.AddWithValue("@branch", appointment.branch.Id);
+                cmd.Parameters.AddWithValue("@description", (object)appointment.Description ?? DBNull.Value);
 
                 if (conn.State == ConnectionState.Closed) { conn.Open(); }
 

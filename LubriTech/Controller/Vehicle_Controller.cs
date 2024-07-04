@@ -27,6 +27,16 @@ namespace LubriTech.Controller
             return vehicleModel.loadAllVehicles();
         }
 
+        /// <summary>
+        /// Search a vehicle by the identification.
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns>Return a vehicle if exist, if not, return null</returns>
+        public Vehicle getVehicle(string Id)
+        {
+            return vehicleModel.getVehicle(Id);
+        }
+
 
         /// <summary>
         /// Inserts or updates a vehicle in the database.
