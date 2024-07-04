@@ -77,9 +77,9 @@
             // 
             this.lblVehicle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblVehicle.AutoSize = true;
-            this.lblVehicle.Location = new System.Drawing.Point(315, 146);
+            this.lblVehicle.Location = new System.Drawing.Point(480, 146);
             this.lblVehicle.Name = "lblVehicle";
-            this.lblVehicle.Size = new System.Drawing.Size(50, 13);
+            this.lblVehicle.Size = new System.Drawing.Size(59, 16);
             this.lblVehicle.TabIndex = 2;
             this.lblVehicle.Text = "Vehículo";
             // 
@@ -87,9 +87,9 @@
             // 
             this.lblMake.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMake.AutoSize = true;
-            this.lblMake.Location = new System.Drawing.Point(315, 206);
+            this.lblMake.Location = new System.Drawing.Point(480, 206);
             this.lblMake.Name = "lblMake";
-            this.lblMake.Size = new System.Drawing.Size(37, 13);
+            this.lblMake.Size = new System.Drawing.Size(45, 16);
             this.lblMake.TabIndex = 3;
             this.lblMake.Text = "Marca";
             // 
@@ -97,9 +97,9 @@
             // 
             this.lblModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblModel.AutoSize = true;
-            this.lblModel.Location = new System.Drawing.Point(315, 232);
+            this.lblModel.Location = new System.Drawing.Point(480, 232);
             this.lblModel.Name = "lblModel";
-            this.lblModel.Size = new System.Drawing.Size(42, 13);
+            this.lblModel.Size = new System.Drawing.Size(53, 16);
             this.lblModel.TabIndex = 4;
             this.lblModel.Text = "Modelo";
             // 
@@ -107,9 +107,9 @@
             // 
             this.lblMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMileage.AutoSize = true;
-            this.lblMileage.Location = new System.Drawing.Point(315, 258);
+            this.lblMileage.Location = new System.Drawing.Point(480, 258);
             this.lblMileage.Name = "lblMileage";
-            this.lblMileage.Size = new System.Drawing.Size(58, 13);
+            this.lblMileage.Size = new System.Drawing.Size(74, 16);
             this.lblMileage.TabIndex = 5;
             this.lblMileage.Text = "Kilometraje";
             // 
@@ -118,7 +118,7 @@
             this.lblDate.AutoSize = true;
             this.lblDate.Location = new System.Drawing.Point(22, 63);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(37, 13);
+            this.lblDate.Size = new System.Drawing.Size(45, 16);
             this.lblDate.TabIndex = 8;
             this.lblDate.Text = "Fecha";
             // 
@@ -127,14 +127,14 @@
             this.lblBranch.AutoSize = true;
             this.lblBranch.Location = new System.Drawing.Point(22, 37);
             this.lblBranch.Name = "lblBranch";
-            this.lblBranch.Size = new System.Drawing.Size(48, 13);
+            this.lblBranch.Size = new System.Drawing.Size(59, 16);
             this.lblBranch.TabIndex = 9;
             this.lblBranch.Text = "Sucursal";
             // 
             // txtMake
             // 
             this.txtMake.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMake.Location = new System.Drawing.Point(403, 203);
+            this.txtMake.Location = new System.Drawing.Point(568, 203);
             this.txtMake.Name = "txtMake";
             this.txtMake.Size = new System.Drawing.Size(223, 22);
             this.txtMake.TabIndex = 14;
@@ -142,7 +142,7 @@
             // txtModel
             // 
             this.txtModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtModel.Location = new System.Drawing.Point(403, 229);
+            this.txtModel.Location = new System.Drawing.Point(568, 229);
             this.txtModel.Name = "txtModel";
             this.txtModel.Size = new System.Drawing.Size(223, 22);
             this.txtModel.TabIndex = 15;
@@ -150,7 +150,7 @@
             // txtMileage
             // 
             this.txtMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMileage.Location = new System.Drawing.Point(403, 255);
+            this.txtMileage.Location = new System.Drawing.Point(568, 255);
             this.txtMileage.Name = "txtMileage";
             this.txtMileage.Size = new System.Drawing.Size(223, 22);
             this.txtMileage.TabIndex = 16;
@@ -163,7 +163,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(25, 347);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(728, 202);
+            this.dataGridView1.Size = new System.Drawing.Size(893, 202);
             this.dataGridView1.TabIndex = 19;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -185,7 +185,7 @@
             this.lblClientId.AutoSize = true;
             this.lblClientId.Location = new System.Drawing.Point(22, 180);
             this.lblClientId.Name = "lblClientId";
-            this.lblClientId.Size = new System.Drawing.Size(70, 13);
+            this.lblClientId.Size = new System.Drawing.Size(85, 16);
             this.lblClientId.TabIndex = 24;
             this.lblClientId.Text = "Identificacion";
             // 
@@ -194,7 +194,7 @@
             this.lblClientName.AutoSize = true;
             this.lblClientName.Location = new System.Drawing.Point(22, 206);
             this.lblClientName.Name = "lblClientName";
-            this.lblClientName.Size = new System.Drawing.Size(44, 13);
+            this.lblClientName.Size = new System.Drawing.Size(56, 16);
             this.lblClientName.TabIndex = 26;
             this.lblClientName.Text = "Nombre";
             // 
@@ -210,7 +210,7 @@
             this.lblMainPhone.AutoSize = true;
             this.lblMainPhone.Location = new System.Drawing.Point(22, 232);
             this.lblMainPhone.Name = "lblMainPhone";
-            this.lblMainPhone.Size = new System.Drawing.Size(89, 13);
+            this.lblMainPhone.Size = new System.Drawing.Size(112, 16);
             this.lblMainPhone.TabIndex = 27;
             this.lblMainPhone.Text = "Número Teléfono";
             // 
@@ -219,7 +219,7 @@
             this.lblAddPhone.AutoSize = true;
             this.lblAddPhone.Location = new System.Drawing.Point(22, 258);
             this.lblAddPhone.Name = "lblAddPhone";
-            this.lblAddPhone.Size = new System.Drawing.Size(89, 13);
+            this.lblAddPhone.Size = new System.Drawing.Size(113, 16);
             this.lblAddPhone.TabIndex = 28;
             this.lblAddPhone.Text = "Número adicional";
             // 
@@ -228,7 +228,7 @@
             this.lblEmail.AutoSize = true;
             this.lblEmail.Location = new System.Drawing.Point(22, 284);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(38, 13);
+            this.lblEmail.Size = new System.Drawing.Size(48, 16);
             this.lblEmail.TabIndex = 29;
             this.lblEmail.Text = "Correo";
             // 
@@ -257,7 +257,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(318, 37);
+            this.label7.Location = new System.Drawing.Point(483, 37);
             this.label7.Name = "label7";
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label7.Size = new System.Drawing.Size(0, 16);
@@ -267,9 +267,9 @@
             // 
             this.lblState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblState.AutoSize = true;
-            this.lblState.Location = new System.Drawing.Point(315, 37);
+            this.lblState.Location = new System.Drawing.Point(480, 37);
             this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(40, 13);
+            this.lblState.Size = new System.Drawing.Size(50, 16);
             this.lblState.TabIndex = 34;
             this.lblState.Text = "Estado";
             // 
@@ -277,16 +277,16 @@
             // 
             this.lblTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalAmount.AutoSize = true;
-            this.lblTotalAmount.Location = new System.Drawing.Point(315, 524);
+            this.lblTotalAmount.Location = new System.Drawing.Point(480, 524);
             this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(60, 13);
+            this.lblTotalAmount.Size = new System.Drawing.Size(72, 16);
             this.lblTotalAmount.TabIndex = 36;
             this.lblTotalAmount.Text = "Monto total";
             // 
             // txtTotalAmount
             // 
             this.txtTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTotalAmount.Location = new System.Drawing.Point(403, 521);
+            this.txtTotalAmount.Location = new System.Drawing.Point(568, 521);
             this.txtTotalAmount.Name = "txtTotalAmount";
             this.txtTotalAmount.Size = new System.Drawing.Size(223, 22);
             this.txtTotalAmount.TabIndex = 37;
@@ -295,7 +295,7 @@
             // 
             this.cbState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbState.FormattingEnabled = true;
-            this.cbState.Location = new System.Drawing.Point(403, 33);
+            this.cbState.Location = new System.Drawing.Point(568, 33);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(223, 24);
             this.cbState.TabIndex = 38;
@@ -333,7 +333,7 @@
             // btnAddVehicle
             // 
             this.btnAddVehicle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddVehicle.Location = new System.Drawing.Point(403, 141);
+            this.btnAddVehicle.Location = new System.Drawing.Point(568, 141);
             this.btnAddVehicle.Name = "btnAddVehicle";
             this.btnAddVehicle.Size = new System.Drawing.Size(224, 28);
             this.btnAddVehicle.TabIndex = 42;
@@ -345,16 +345,16 @@
             // 
             this.lblCurrentMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCurrentMileage.AutoSize = true;
-            this.lblCurrentMileage.Location = new System.Drawing.Point(315, 284);
+            this.lblCurrentMileage.Location = new System.Drawing.Point(480, 284);
             this.lblCurrentMileage.Name = "lblCurrentMileage";
-            this.lblCurrentMileage.Size = new System.Drawing.Size(88, 13);
+            this.lblCurrentMileage.Size = new System.Drawing.Size(111, 16);
             this.lblCurrentMileage.TabIndex = 43;
             this.lblCurrentMileage.Text = "KilometrajeActual";
             // 
             // txtCurrentMileage
             // 
             this.txtCurrentMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCurrentMileage.Location = new System.Drawing.Point(403, 281);
+            this.txtCurrentMileage.Location = new System.Drawing.Point(568, 281);
             this.txtCurrentMileage.Name = "txtCurrentMileage";
             this.txtCurrentMileage.Size = new System.Drawing.Size(223, 22);
             this.txtCurrentMileage.TabIndex = 44;
@@ -362,7 +362,7 @@
             // btnSaveChanges
             // 
             this.btnSaveChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveChanges.Location = new System.Drawing.Point(484, 605);
+            this.btnSaveChanges.Location = new System.Drawing.Point(649, 605);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(131, 28);
             this.btnSaveChanges.TabIndex = 45;
@@ -386,7 +386,7 @@
             this.lblDetails.AutoSize = true;
             this.lblDetails.Location = new System.Drawing.Point(22, 331);
             this.lblDetails.Name = "lblDetails";
-            this.lblDetails.Size = new System.Drawing.Size(45, 13);
+            this.lblDetails.Size = new System.Drawing.Size(57, 16);
             this.lblDetails.TabIndex = 47;
             this.lblDetails.Text = "Detalles";
             // 
@@ -395,25 +395,25 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 579);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(598, 66);
+            this.panel1.Size = new System.Drawing.Size(763, 66);
             this.panel1.TabIndex = 48;
             // 
             // lblLicensePlate
             // 
             this.lblLicensePlate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLicensePlate.AutoSize = true;
-            this.lblLicensePlate.Location = new System.Drawing.Point(315, 180);
+            this.lblLicensePlate.Location = new System.Drawing.Point(480, 180);
             this.lblLicensePlate.Name = "lblLicensePlate";
-            this.lblLicensePlate.Size = new System.Drawing.Size(34, 13);
+            this.lblLicensePlate.Size = new System.Drawing.Size(42, 16);
             this.lblLicensePlate.TabIndex = 49;
             this.lblLicensePlate.Text = "Placa";
             // 
             // txtLicensePlate
             // 
             this.txtLicensePlate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLicensePlate.Location = new System.Drawing.Point(403, 177);
+            this.txtLicensePlate.Location = new System.Drawing.Point(568, 177);
             this.txtLicensePlate.Name = "txtLicensePlate";
-            this.txtLicensePlate.Size = new System.Drawing.Size(168, 20);
+            this.txtLicensePlate.Size = new System.Drawing.Size(168, 22);
             this.txtLicensePlate.TabIndex = 50;
             // 
             // tabControl1
@@ -428,20 +428,20 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(566, 425);
+            this.tabPage1.Size = new System.Drawing.Size(566, 422);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Contenido";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(566, 425);
+            this.tabPage2.Size = new System.Drawing.Size(566, 422);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Observaciones";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -451,7 +451,7 @@
             this.lblClient.AutoSize = true;
             this.lblClient.Location = new System.Drawing.Point(22, 146);
             this.lblClient.Name = "lblClient";
-            this.lblClient.Size = new System.Drawing.Size(39, 13);
+            this.lblClient.Size = new System.Drawing.Size(48, 16);
             this.lblClient.TabIndex = 1;
             this.lblClient.Text = "Cliente";
             // 
@@ -460,7 +460,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(598, 645);
+            this.ClientSize = new System.Drawing.Size(763, 645);
             this.Controls.Add(this.txtLicensePlate);
             this.Controls.Add(this.lblLicensePlate);
             this.Controls.Add(this.lblDetails);

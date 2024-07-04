@@ -10,8 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LubriTech.View
-{
-    
+{ 
 
     public partial class MDI_View : Form
     {
@@ -27,7 +26,7 @@ namespace LubriTech.View
 
         private void customizesubMenuDesign()
         {
-            panelMenu.MaximumSize = new Size(250, 0);
+            panelMenu.MaximumSize = new Size(418, 1055);
             panelMenu.MinimumSize = new Size(0, 0);
             panelClientsSubmenu.Visible = false;
             panelInventorySubmenu.Visible = false;
@@ -106,8 +105,9 @@ namespace LubriTech.View
             else
             {
                 panelMenu.Visible = true;
+                int width = panelMenu.Width;
                 //relocate the picture box to the left
-                pictureBox1.Location = new Point(260, 10);
+                pictureBox1.Location = new Point(width + 5, 10);
             }
 
         }
@@ -225,6 +225,13 @@ namespace LubriTech.View
             frmSchedule frmSchedule = new frmSchedule();
             OpenChildForm(frmSchedule);
             frmSchedule.BringToFront();
+        }
+
+        private void btnItemTypes_Click(object sender, EventArgs e)
+        {
+            frmItemType frmItemType = new frmItemType();
+            OpenChildForm(frmItemType);
+            frmItemType.BringToFront();
         }
     }
 }

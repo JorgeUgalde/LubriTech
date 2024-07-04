@@ -454,7 +454,7 @@ namespace LubriTech.View.Appointment_View
             this.lblDaySelected.ForeColor = System.Drawing.Color.White;
             this.lblDaySelected.Location = new System.Drawing.Point(374, 37);
             this.lblDaySelected.Name = "lblDaySelected";
-            this.lblDaySelected.Size = new System.Drawing.Size(652, 44);
+            this.lblDaySelected.Size = new System.Drawing.Size(661, 44);
             this.lblDaySelected.TabIndex = 48;
             this.lblDaySelected.Text = "Dia, Mes , Año";
             this.lblDaySelected.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

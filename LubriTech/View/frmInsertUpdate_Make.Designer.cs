@@ -45,7 +45,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(49, 146);
+            this.label3.Location = new System.Drawing.Point(50, 148);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 28);
             this.label3.TabIndex = 24;
@@ -54,7 +54,7 @@
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(267, 70);
+            this.txtName.Location = new System.Drawing.Point(268, 72);
             this.txtName.Margin = new System.Windows.Forms.Padding(3, 2, 8, 7);
             this.txtName.MaxLength = 100;
             this.txtName.Name = "txtName";
@@ -65,7 +65,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(49, 74);
+            this.label2.Location = new System.Drawing.Point(50, 76);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 28);
             this.label2.TabIndex = 22;
@@ -79,8 +79,8 @@
             this.cbState.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cbState.Location = new System.Drawing.Point(267, 143);
-            this.cbState.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.cbState.Location = new System.Drawing.Point(268, 145);
+            this.cbState.Margin = new System.Windows.Forms.Padding(5);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(272, 36);
             this.cbState.TabIndex = 27;
@@ -93,8 +93,8 @@
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfirm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirm.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnConfirm.Location = new System.Drawing.Point(21, 246);
-            this.btnConfirm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnConfirm.Location = new System.Drawing.Point(22, 248);
+            this.btnConfirm.Margin = new System.Windows.Forms.Padding(4);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(188, 42);
             this.btnConfirm.TabIndex = 28;
@@ -110,8 +110,8 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(367, 246);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(368, 248);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(188, 42);
             this.button1.TabIndex = 29;
@@ -127,7 +127,7 @@
             this.panelBorder.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panelBorder.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBorder.Location = new System.Drawing.Point(0, 0);
-            this.panelBorder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelBorder.Margin = new System.Windows.Forms.Padding(4);
             this.panelBorder.Name = "panelBorder";
             this.panelBorder.Size = new System.Drawing.Size(592, 44);
             this.panelBorder.TabIndex = 30;
@@ -151,7 +151,7 @@
             this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::LubriTech.Properties.Resources.closeIco2;
             this.pbClose.Location = new System.Drawing.Point(548, 7);
-            this.pbClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbClose.Margin = new System.Windows.Forms.Padding(4);
             this.pbClose.Name = "pbClose";
             this.pbClose.Size = new System.Drawing.Size(40, 37);
             this.pbClose.TabIndex = 7;
@@ -174,7 +174,6 @@
             this.Controls.Add(this.label2);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmInsertUpdate_Make";
             this.ShowIcon = false;

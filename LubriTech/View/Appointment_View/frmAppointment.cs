@@ -310,6 +310,7 @@ namespace LubriTech.View.Appointment_View
                     Text = appointmentDateTime.ToString("hh:mm tt"),
                     TextAlign = ContentAlignment.MiddleCenter,
                     Size = new Size(Convert.ToInt32(pnlAppointments.Width * 0.3f), 50),
+                    MaximumSize = new Size(Convert.ToInt32(pnlAppointments.Width * 0.3f), 50),
                     Padding = new Padding(5, 5, 5, 5),
                     Margin = new Padding(5),
                     BackColor = Color.LightGray,
