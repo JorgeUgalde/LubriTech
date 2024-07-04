@@ -30,9 +30,9 @@
         {
             this.tbQuantity = new System.Windows.Forms.TextBox();
             this.lblQuantity = new System.Windows.Forms.Label();
-            this.tbItem = new System.Windows.Forms.TextBox();
+            this.tbItemName = new System.Windows.Forms.TextBox();
             this.btnSelectItem = new System.Windows.Forms.Button();
-            this.tbItemId = new System.Windows.Forms.TextBox();
+            this.tbItemCode = new System.Windows.Forms.TextBox();
             this.lblItem = new System.Windows.Forms.Label();
             this.tbAmount = new System.Windows.Forms.TextBox();
             this.lblTotalAmount = new System.Windows.Forms.Label();
@@ -61,14 +61,14 @@
             this.lblQuantity.TabIndex = 63;
             this.lblQuantity.Text = "Cantidad";
             // 
-            // tbItem
+            // tbItemName
             // 
-            this.tbItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbItem.Location = new System.Drawing.Point(147, 126);
-            this.tbItem.MaxLength = 150;
-            this.tbItem.Name = "tbItem";
-            this.tbItem.Size = new System.Drawing.Size(205, 29);
-            this.tbItem.TabIndex = 61;
+            this.tbItemName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbItemName.Location = new System.Drawing.Point(147, 126);
+            this.tbItemName.MaxLength = 150;
+            this.tbItemName.Name = "tbItemName";
+            this.tbItemName.Size = new System.Drawing.Size(205, 29);
+            this.tbItemName.TabIndex = 61;
             // 
             // btnSelectItem
             // 
@@ -86,14 +86,15 @@
             this.btnSelectItem.UseVisualStyleBackColor = false;
             this.btnSelectItem.Click += new System.EventHandler(this.btnSelectItem_Click);
             // 
-            // tbItemId
+            // tbItemCode
             // 
-            this.tbItemId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbItemId.Location = new System.Drawing.Point(147, 69);
-            this.tbItemId.MaxLength = 150;
-            this.tbItemId.Name = "tbItemId";
-            this.tbItemId.Size = new System.Drawing.Size(205, 29);
-            this.tbItemId.TabIndex = 59;
+            this.tbItemCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbItemCode.Location = new System.Drawing.Point(147, 69);
+            this.tbItemCode.MaxLength = 150;
+            this.tbItemCode.Name = "tbItemCode";
+            this.tbItemCode.Size = new System.Drawing.Size(205, 29);
+            this.tbItemCode.TabIndex = 59;
+            this.tbItemCode.TextChanged += new System.EventHandler(this.tbItemId_TextChanged);
             // 
             // lblItem
             // 
@@ -177,9 +178,9 @@
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.tbQuantity);
             this.Controls.Add(this.lblQuantity);
-            this.Controls.Add(this.tbItem);
+            this.Controls.Add(this.tbItemName);
             this.Controls.Add(this.btnSelectItem);
-            this.Controls.Add(this.tbItemId);
+            this.Controls.Add(this.tbItemCode);
             this.Controls.Add(this.lblItem);
             this.Controls.Add(this.tbAmount);
             this.Controls.Add(this.lblTotalAmount);
@@ -194,9 +195,9 @@
 
         private System.Windows.Forms.TextBox tbQuantity;
         private System.Windows.Forms.Label lblQuantity;
-        private System.Windows.Forms.TextBox tbItem;
+        private System.Windows.Forms.TextBox tbItemName;
         private System.Windows.Forms.Button btnSelectItem;
-        private System.Windows.Forms.TextBox tbItemId;
+        private System.Windows.Forms.TextBox tbItemCode;
         private System.Windows.Forms.Label lblItem;
         private System.Windows.Forms.TextBox tbAmount;
         private System.Windows.Forms.Label lblTotalAmount;

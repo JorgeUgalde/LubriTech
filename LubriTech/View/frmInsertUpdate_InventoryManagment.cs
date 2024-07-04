@@ -14,6 +14,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace LubriTech.View
 {
@@ -46,6 +47,7 @@ namespace LubriTech.View
             InitializeComponent();
             setComboBox();
 
+            tbSupplierName.Enabled = false;
             tbSupplierName.Text = inventoryManagment.Supplier.name;
             tbSupplierId.Text = inventoryManagment.Supplier.id;
             cbBranch.Text = inventoryManagment.Branch.Name;
@@ -54,7 +56,6 @@ namespace LubriTech.View
             cbYear.Text = inventoryManagment.DocumentDate.Year.ToString();
             cbDocumentType.Text = inventoryManagment.DocumentType;
             cbState.Text = inventoryManagment.State;
-            //tbTotalAmount.Text = calculateTotalAmount().ToString();
             tbTotalAmount.Enabled = false;
 
             load_DetailLines(detailLines);
@@ -342,6 +343,30 @@ namespace LubriTech.View
         {
             detailLines = new DetailLine_Controller().getDetailLines(existingInventoryManagment.Id);
             load_DetailLines(detailLines);
+        }
+
+        private void tbSupplierId_TextChanged(object sender, EventArgs e)
+        {
+            string id = tbSupplierId.Text;
+
+            if (id.Length >= 3)
+            {
+                Supplier supplier = new Supplier_Controller().GetSupplier(id);
+
+                if (supplier != null)
+                {
+                    SelectSupplier(supplier);
+                }
+            }
+        }
+
+        public void SelectSupplier(Supplier supplier)
+        {
+            if (supplier != null)
+            {
+                tbSupplierName.Text = supplier.name;
+                tbSupplierId.Text = supplier.id;
+            }
         }
     }
 }

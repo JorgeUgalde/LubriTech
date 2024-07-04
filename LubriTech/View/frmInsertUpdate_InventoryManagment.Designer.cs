@@ -197,6 +197,7 @@
             this.tbSupplierId.Name = "tbSupplierId";
             this.tbSupplierId.Size = new System.Drawing.Size(240, 29);
             this.tbSupplierId.TabIndex = 47;
+            this.tbSupplierId.TextChanged += new System.EventHandler(this.tbSupplierId_TextChanged);
             // 
             // cbState
             // 

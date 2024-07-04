@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Controller\Appointment_Controller.cs" />
     <Compile Include="Controller\Branch_Controller.cs" />
+    <Compile Include="Controller\ItemType_Controller.cs" />
     <Compile Include="Controller\Schedule_Controller.cs" />
     <Compile Include="Controller\PriceList_Controller.cs" />
     <Compile Include="Controller\DetailLine_Controller.cs" />
@@ -109,6 +110,8 @@
     <Compile Include="Model\InventoryManagment_Information\DetailLine_Model.cs" />
     <Compile Include="Model\InventoryManagment_Information\InventoryManagment_Model.cs" />
     <Compile Include="Model\Item_Information\Item.cs" />
+    <Compile Include="Model\Item_Information\ItemType.cs" />
+    <Compile Include="Model\Item_Information\ItemType_Model.cs" />
     <Compile Include="Model\Item_Information\Item_Model.cs" />
     <Compile Include="Model\PricesList_Information\PriceList.cs" />
     <Compile Include="Model\PricesList_Information\PriceList_Model.cs" />
@@ -171,6 +174,18 @@
     </Compile>
     <Compile Include="View\Appointment_View\frmInsertUpdate_Appointment.Designer.cs">
       <DependentUpon>frmInsertUpdate_Appointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmInsertUpdate_ItemType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmInsertUpdate_ItemType.Designer.cs">
+      <DependentUpon>frmInsertUpdate_ItemType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmItemType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmItemType.Designer.cs">
+      <DependentUpon>frmItemType.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmUpsert_PriceList.cs">
       <SubType>Form</SubType>
@@ -381,6 +396,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmResetPassword.resx">
       <DependentUpon>frmResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmInsertUpdate_ItemType.resx">
+      <DependentUpon>frmInsertUpdate_ItemType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmItemType.resx">
+      <DependentUpon>frmItemType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmUpsert_PriceList.resx">
       <DependentUpon>frmUpsert_PriceList.cs</DependentUpon>

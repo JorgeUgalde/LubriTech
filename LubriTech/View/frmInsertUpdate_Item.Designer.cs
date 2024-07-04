@@ -65,7 +65,8 @@
             this.cbMeasureUnit.FormattingEnabled = true;
             this.cbMeasureUnit.Items.AddRange(new object[] {
             "Unidad",
-            "Litro"});
+            "Litro",
+            "Kilo"});
             this.cbMeasureUnit.Location = new System.Drawing.Point(641, 65);
             this.cbMeasureUnit.Margin = new System.Windows.Forms.Padding(4);
             this.cbMeasureUnit.Name = "cbMeasureUnit";

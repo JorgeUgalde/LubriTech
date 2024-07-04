@@ -25,7 +25,6 @@ namespace LubriTech.View
 
         private void frmMakes_Load(object sender, EventArgs e)
         {
-            txtFilter.TextChanged += new EventHandler(txtFilter_TextChanged);
 
         }
 
