@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace LubriTech.View
 {
@@ -19,9 +20,10 @@ namespace LubriTech.View
         public frmInsertUpdate_Item()
         {
             InitializeComponent();
-            cbMeasureUnit.SelectedIndex = 0;
+            load_ItemTypes();
             cbState.SelectedIndex = 0;
-            cbType.SelectedIndex = 0;
+
+
 
             globalItem = new Item();
         }
@@ -30,6 +32,7 @@ namespace LubriTech.View
         {
 
             InitializeComponent();
+            load_ItemTypes();
 
             this.globalItem = item;
             txtCode.Enabled = false;
@@ -38,9 +41,8 @@ namespace LubriTech.View
             txtName.Text = item.name;
             cbMeasureUnit.Text = item.measureUnit.ToString();
             cbState.Text = item.state;
-            tbStock.Text = item.stock.ToString();
             tbPurchasePrice.Text = item.purchasePrice.ToString();
-            cbType.Text = item.type;
+            cbType.Text = item.itemType.ToString();
             txtRecommended.Text = item.recommendedServiceInterval.ToString();
 
         }
@@ -51,35 +53,25 @@ namespace LubriTech.View
             DataChanged?.Invoke(this, e);
         }
 
+        private void load_ItemTypes()
+        {
+            // load from ItemTypes_Controller 
+            cbType.DataSource = new ItemType_Controller().loadAllItemTypes();
+            cbType.DisplayMember = "name";
+            cbType.ValueMember = "id";
+        }
+
 
         private void btnConfirm_Click_1(object sender, EventArgs e)
         {
-
-            // chek any input is empty, if is empty set a background color to red
-            if (txtCode.Text.Trim() == "")
-            {
-                lblCode2.Text = "Campo obligatorio";
-                lblCode2.Visible = true;
-
-            }
-            else
-            {
-                lblCode2.Visible = false;
-                txtCode.BackColor = Color.White;
-                lblCode.FlatStyle = FlatStyle.Standard;
-                lblCode.ForeColor = Color.Black;
-            }
-
-
-
-
+            
             if (txtCode.Text.Trim() == "" ||
                txtName.Text.Trim() == "" ||
-               txtSellPrice.Text.Trim() == "" ||
                cbMeasureUnit.Text.Trim() == "" ||
                cbState.Text.Trim() == "" ||
                tbStock.Text.Trim() == "" ||
                tbPurchasePrice.Text.Trim() == "" ||
+               txtFact.Text.Trim() == "" ||
                cbType.Text.Trim() == "")
 
             {
@@ -105,12 +97,13 @@ namespace LubriTech.View
             globalItem.name = txtName.Text;
             globalItem.measureUnit = cbMeasureUnit.Text;
             globalItem.state = cbState.Text;
-            globalItem.stock = Convert.ToDouble(tbStock.Text);
             globalItem.purchasePrice = Convert.ToDouble(tbPurchasePrice.Text);
-            globalItem.type = cbType.Text;
             globalItem.state = cbState.Text;
+            globalItem.itemType = (ItemType)cbType.SelectedItem;
 
-            if (new Item_Controller().UpSert(globalItem))
+            Double fact = Convert.ToDouble(txtFact.Text) / 100;
+
+            if (new Item_Controller().UpSert(globalItem, fact))
             {
                 MessageBox.Show("Producto registrado", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 OnDataChanged(EventArgs.Empty);
@@ -127,13 +120,9 @@ namespace LubriTech.View
             this.Close();
         }
 
-
-
-
-
         private void txtSellPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
+            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8;
         }
 
         private void tbStock_KeyPress(object sender, KeyPressEventArgs e)
@@ -143,7 +132,9 @@ namespace LubriTech.View
 
         private void tbPurchasePrice_KeyPress(object sender, KeyPressEventArgs e)
         {
+            // only numbers and backspace
             e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
+
         }
 
         private void txtCode_TextChanged(object sender, EventArgs e)
@@ -177,5 +168,6 @@ namespace LubriTech.View
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
     }
     }

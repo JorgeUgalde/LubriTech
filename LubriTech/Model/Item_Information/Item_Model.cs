@@ -1,4 +1,5 @@
 ﻿using LubriTech.Model.Item_Information;
+using LubriTech.Model.PricesList_Information;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -43,10 +44,9 @@ namespace LubriTech.Model.items_Information
                         dr["Nombre"].ToString(),
                         dr["UnidadMedida"].ToString(),
                         Convert.ToInt32(dr["Estado"]) == 1 ? "Activo": "Inactivo",
-                        dr["Tipo"].ToString().Equals("Producto") ? getItemStock(dr["Codigo"].ToString(), 1) : 0 ,
                         Convert.ToDouble(dr["PrecioCompra"]),
-                        dr["Tipo"].ToString(),
-                        Convert.ToDouble(dr["RecorridoRecomendado"])
+                        Convert.ToDouble(dr["RecorridoRecomendado"]),
+                        new ItemType_Model().getItemType(Convert.ToInt32(dr["IdentificacionTipoArticulo"]))
                         ));
                 }
 
@@ -115,18 +115,22 @@ namespace LubriTech.Model.items_Information
                 adp.SelectCommand = cmd;
 
                 adp.Fill(tblitems);
-                DataRow dr = tblitems.Rows[0];
-
-                Item items = new Item(
+                Item item = null;
+                foreach (DataRow dr in tblitems.Rows)
+                {
+                    item =  new Item(
                         dr["Codigo"].ToString(),
                         dr["Nombre"].ToString(),
                         dr["UnidadMedida"].ToString(),
                         Convert.ToInt32(dr["Estado"]) == 1 ? "Activo" : "Inactivo",
-                        dr["Tipo"].ToString().Equals("Producto") ? getItemStock(dr["Codigo"].ToString(), 1) : 0,
                         Convert.ToDouble(dr["PrecioCompra"]),
-                        dr["Tipo"].ToString(),
-                        Convert.ToDouble(dr["RecorridoRecomendado"])
+                        Convert.ToDouble(dr["RecorridoRecomendado"]),
+                        new ItemType_Model().getItemType(Convert.ToInt32(dr["IdentificacionTipoArticulo"]))
                         );
+                }
+
+
+
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -135,7 +139,7 @@ namespace LubriTech.Model.items_Information
 
                 cmd.ExecuteNonQuery();
 
-                return items;
+                return item;
             }
             catch (Exception ex)
             {
@@ -150,66 +154,39 @@ namespace LubriTech.Model.items_Information
             }
         }
 
-        /// <summary>
-        /// Inserta o actualiza un artículo en la base de datos.
-        /// </summary>
-        /// <param name="items">El objeto <see cref="Item"/> que representa el artículo a insertar o actualizar.</param>
-        /// <returns>Verdadero si la operación fue exitosa, de lo contrario falso.</returns>
-        public Boolean UpSertItem(Item items)
-        {
-            try
-            {
-                if(getItem(items.code) != null)
-                {
-                    return updateitems(items);
-                }
-                else
-                {
-                    return addItem(items);
-                }
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
+
 
         /// <summary>
         /// Actualiza un artículo existente en la base de datos.
         /// </summary>
         /// <param name="items">El objeto <see cref="Item"/> que representa el artículo a actualizar.</param>
         /// <returns>Verdadero si la operación fue exitosa, de lo contrario falso.</returns>
-        public Boolean updateitems(Item items)
+        public Boolean UpSertItem(Item items, double fact)
         {
             try
             {
-                string updateQuery = "update Articulo set " +
-                    "Nombre = @name, " +
-                    "UnidadMedida = @measureUnit," +
-                    "Estado = @state, " +
-                    "PrecioCompra = @purchasePrice, " +
-                    "Tipo = @type, " +
-                    "RecorridoRecomendado = @recommended " +
+                string query = "update Articulo set  Nombre = @name, UnidadMedida = @measureUnit, Estado = @state, " +
+                    " PrecioCompra = @purchasePrice, IdentificacionTipoArticulo = @type, RecorridoRecomendado = @recommended " +
                     "where Codigo = @code";
-                SqlCommand cmd = new SqlCommand(updateQuery, conn);
+                if (getItem(items.code) == null)
+                {
+                    query = "Insert into Articulo " +
+                        "(Codigo, Nombre, UnidadMedida, Estado, PrecioCompra, RecorridoRecomendado, IdentificacionTipoArticulo)" +
+                        " values (@code, @name, @measureUnit, @state, @purchasePrice, @recommended, @type)";
+
+                }
+                SqlCommand cmd = new SqlCommand(query, conn);
 
                 cmd.Parameters.AddWithValue("@code", items.code);
                 cmd.Parameters.AddWithValue("@name", items.name);
                 cmd.Parameters.AddWithValue("@measureUnit", items.measureUnit);
                 cmd.Parameters.AddWithValue("@state", (items.state.Equals("Activo")) ? 1 : 0  );
                 cmd.Parameters.AddWithValue("@purchasePrice", items.purchasePrice);
-                cmd.Parameters.AddWithValue("@type", items.type);
                 cmd.Parameters.AddWithValue("@recommended", items.recommendedServiceInterval);
-
-                string updateStockQuery = "update SeAlmacena set CantidadAlmacen = @stock " +
-                                          "where CodigoArticulo = @code and IdentificacionSucursal = @branch";
-
-                SqlCommand cmdStock = new SqlCommand(updateStockQuery, conn);
-                cmdStock.Parameters.AddWithValue("@stock", items.stock);
-                cmdStock.Parameters.AddWithValue("@code", items.code);
-                cmdStock.Parameters.AddWithValue("@branch", 1);
+                cmd.Parameters.AddWithValue("@type", items.itemType.Id);
 
 
+                // if sell price is not null, we need to include this item in all List of prices
 
 
                 if (conn.State != System.Data.ConnectionState.Open)
@@ -218,8 +195,9 @@ namespace LubriTech.Model.items_Information
                 }
 
                 cmd.ExecuteNonQuery();
-                cmdStock.ExecuteNonQuery();
-
+                
+                new PriceList_Model().insertInLists( items , fact);
+                
                 return true;
             }
             catch (Exception ex)
@@ -234,73 +212,6 @@ namespace LubriTech.Model.items_Information
                 }
             }
         }
-
-        /// <summary>
-        /// Agrega un nuevo artículo a la base de datos.
-        /// </summary>
-        /// <param name="items">El objeto <see cref="Item"/> que representa el artículo a agregar.</param>
-        /// <returns>Verdadero si la operación fue exitosa, de lo contrario falso.</returns>
-        public Boolean addItem(Item items)
-        {
-            try
-            {
-                string insertQuery = "Insert into Articulo " +
-                    "(Codigo, Nombre, UnidadMedida, Estado, PrecioCompra, Tipo, RecorridoRecomendado)" +
-                    " values " +
-                    "(@code," +
-                    "@name, " +
-                    "@measureUnit," +
-                    "@state, " +
-                    "@purchasePrice, " +
-                    "@type, " +
-                    "@recommended )";
-
-SqlCommand cmd = new SqlCommand(insertQuery, conn);
-
-
-                cmd.Parameters.AddWithValue("@code", items.code);
-                cmd.Parameters.AddWithValue("@name", items.name);
-                cmd.Parameters.AddWithValue("@measureUnit", items.measureUnit);
-                cmd.Parameters.AddWithValue("@state", (items.state.Equals("Activo")) ? 1 : 0);
-                cmd.Parameters.AddWithValue("@purchasePrice", items.purchasePrice);
-                cmd.Parameters.AddWithValue("@type", items.type);
-                cmd.Parameters.AddWithValue("@recommended", items.recommendedServiceInterval);
-
-                string insertStockQuery = "Insert into SeAlmacena " +
-                                          "(CodigoArticulo, IdentificacionSucursal, CantidadAlmacen)" +
-                                          " values " +
-                                          "(@code, @branch, @stock)";
-
-                SqlCommand cmdStock = new SqlCommand(insertStockQuery, conn);
-                cmdStock.Parameters.AddWithValue("@stock", items.stock);
-                cmdStock.Parameters.AddWithValue("@code", items.code);
-                cmdStock.Parameters.AddWithValue("@branch", 1);
-
-
-
-                if (conn.State != System.Data.ConnectionState.Open)
-                {
-                    conn.Open();
-                }
-
-                cmd.ExecuteNonQuery();
-                cmdStock.ExecuteNonQuery();
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-            finally
-            {
-                if (conn.State != System.Data.ConnectionState.Closed)
-                {
-                    conn.Close();
-                }
-            }
-        }
-
 
 
     }

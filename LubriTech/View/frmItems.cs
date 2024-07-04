@@ -73,8 +73,7 @@ namespace LubriTech.View
             dgvItems.Columns["purchasePrice"].HeaderText = "Precio Compra";
             dgvItems.Columns["measureUnit"].HeaderText = "Unidad Medida";
             dgvItems.Columns["state"].HeaderText = "Estado";
-            dgvItems.Columns["type"].HeaderText = "Tipo";
-            dgvItems.Columns["stock"].Visible = false;
+            dgvItems.Columns["itemType"].HeaderText = "Tipo";
             dgvItems.Columns["recommendedServiceInterval"].Visible = false;
 
             SetColumnOrder();
@@ -89,12 +88,7 @@ namespace LubriTech.View
 
         private void ChildFormDataChangedHandler(object sender, EventArgs e)
         {
-            dgvItems.Columns["code"].DisplayIndex = 0;
-            dgvItems.Columns["name"].DisplayIndex = 1;
-            //dgvItems.Columns["sellPrice"].DisplayIndex = 2;
-            dgvItems.Columns["measureUnit"].DisplayIndex = 2;
-            dgvItems.Columns["state"].DisplayIndex = 3;
-            dgvItems.Columns["type"].DisplayIndex = 4;
+            
             load_Items(null);
         }
 
@@ -119,10 +113,9 @@ namespace LubriTech.View
             var filteredList = items.Where(p =>
                 p.code.ToString().ToLower().Contains(filterValue) ||
                 p.name.ToString().ToLower().Contains(filterValue) ||
-                p.purchasePrice.ToString().ToLower().Contains(filterValue) ||
                 p.measureUnit.ToString().ToLower().Contains(filterValue) ||
                 p.state.ToString().ToLower().Contains(filterValue) ||
-                p.type.ToString().ToLower().Contains(filterValue)
+                p.itemType.ToString().ToLower().Contains(filterValue)
             ).ToList();
 
             // Refrescar el DataGridView
@@ -136,7 +129,7 @@ namespace LubriTech.View
             dgvItems.Columns["code"].DisplayIndex = 0;
             dgvItems.Columns["name"].DisplayIndex = 1;
             dgvItems.Columns["measureUnit"].DisplayIndex = 2;
-            dgvItems.Columns["type"].DisplayIndex = 3;
+            dgvItems.Columns["itemType"].DisplayIndex = 3;
             dgvItems.Columns["purchasePrice"].DisplayIndex = 4;
             dgvItems.Columns["state"].DisplayIndex = 5;
 

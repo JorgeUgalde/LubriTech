@@ -33,24 +33,19 @@ namespace LubriTech.Model.Item_Information
         public string state { set; get; }
 
         /// <summary>
-        /// Cantidad en inventario del artículo.
-        /// </summary>
-        public double stock { set; get; }
-
-        /// <summary>
         /// Precio de compra del artículo, es decir, el monto por el cuál se compra el artículo.
         /// </summary>
         public double purchasePrice { set; get; }
 
         /// <summary>
-        /// Tipo del artículo (producto o servicio).
-        /// </summary>
-        public string type { set; get; }
-
-        /// <summary>
         /// Recorrido recomendado para el artículo.
         /// </summary>
         public double recommendedServiceInterval { set; get; }
+
+        /// <summary>
+        /// Tipo del artículo (producto o servicio).
+        /// </summary>
+        public ItemType itemType { set; get; }
 
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Item"/>.
@@ -67,19 +62,17 @@ namespace LubriTech.Model.Item_Information
         /// <param name="sellPrice">El precio de venta del artículo.</param>
         /// <param name="measureUnit">La unidad de medida del artículo.</param>
         /// <param name="state">El estado del artículo (activo o inactivo).</param>
-        /// <param name="stock">El stock del artículo.</param>
         /// <param name="purchasePrice">El precio de compra del artículo.</param>
         /// <param name="type">El tipo del artículo (producto o servicio).</param>
         /// param name="recommendedServiceInterval">El recorrido recomendado para el artículo.</param>
-        public Item(string code, string name, string measureUnit, string state, double stock, double purchasePrice, string type, double recommendedServiceInterval)
+        public Item(string code, string name, string measureUnit, string state,  double purchasePrice, double recommendedServiceInterval, ItemType itemType)
         {
             this.code = code;
             this.name = name;
             this.measureUnit = measureUnit;
             this.state = state;
-            this.stock = stock;
             this.purchasePrice = purchasePrice;
-            this.type = type;
+            this.itemType = itemType;
             this.recommendedServiceInterval = recommendedServiceInterval;
         }
 

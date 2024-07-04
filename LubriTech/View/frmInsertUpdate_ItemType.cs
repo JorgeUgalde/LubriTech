@@ -21,6 +21,7 @@ namespace LubriTech.View
         {
             InitializeComponent();
             itemType = new ItemType();
+            cbState.SelectedItem = "Activo";
         }
 
         public frmInsertUpdate_ItemType(ItemType itemType)
