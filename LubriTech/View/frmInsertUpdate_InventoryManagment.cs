@@ -2,6 +2,7 @@
 using LubriTech.Model.Branch_Information;
 using LubriTech.Model.Client_Information;
 using LubriTech.Model.InventoryManagment_Information;
+using LubriTech.Model.Item_Information;
 using LubriTech.Model.Supplier_Information;
 using LubriTech.Model.Vehicle_Information;
 using System;
@@ -22,7 +23,7 @@ namespace LubriTech.View
     {
         private List<Supplier> suppliers;
         private List<Branch> branches;
-        private Supplier selectedSupplier = null;
+        private Supplier selectedSupplier;
         private List<DetailLine> detailLines;
         private InventoryManagment existingInventoryManagment = null;
         private Boolean clickedAddDetail = false;
@@ -59,6 +60,7 @@ namespace LubriTech.View
             tbTotalAmount.Enabled = false;
 
             load_DetailLines(detailLines);
+            checkState(inventoryManagment.State);
         }
 
         private void frmInsertUpdateInventoryManagment_Load(object sender, EventArgs e)
@@ -112,6 +114,24 @@ namespace LubriTech.View
             dgvDetailLines.Columns["Amount"].DisplayIndex = 2;
         }
 
+        private void checkState(string state)
+        {
+            if (state.Equals("Finalizado"))
+            {
+                tbSupplierName.Enabled = false;
+                tbSupplierId.Enabled = false;
+                cbBranch.Enabled = false;
+                cbDay.Enabled = false;
+                cbMonth.Enabled = false;
+                cbYear.Enabled = false;
+                cbDocumentType.Enabled = false;
+                cbState.Enabled = false;
+                tbTotalAmount.Enabled = false;
+                btnAddDetailLine.Enabled = false;
+                btnSelectSupplier.Enabled = false;
+            }
+        }
+
         public event EventHandler DataChanged;
 
         protected virtual void OnDataChanged(EventArgs e)
@@ -128,19 +148,18 @@ namespace LubriTech.View
             || cbYear.Text.Trim() == ""
             || cbBranch.Text.Trim() == ""
             || cbDocumentType.Text.Trim() == ""
-            || cbState.Text.Trim() == ""
-            || tbSupplierName.Text.Trim() == "")
+            || cbState.Text.Trim() == "")
             {
                 MessageBox.Show("Por favor llene todos los campos");
             }
-            else if (tbSupplierId.Text.Trim() == "")
+            else if (tbSupplierName.Text.Trim() == "")
             {
                 MessageBox.Show("Debe seleccionar un proveedor");
             }
             else
             {
                 InventoryManagment inventoryManagment = new InventoryManagment();
-                inventoryManagment.Supplier = new Supplier_Controller().GetSupplier(tbSupplierId.Text.Trim());
+                inventoryManagment.Supplier = selectedSupplier;
                 inventoryManagment.Branch = new Branch_Controller().get(Convert.ToInt32(cbBranch.SelectedValue.ToString()));
                 string date = cbYear.Text.Trim() + "/" + cbMonth.Text.Trim() + "/" + cbDay.Text.Trim();
                 inventoryManagment.DocumentDate = Convert.ToDateTime(date);
@@ -165,6 +184,7 @@ namespace LubriTech.View
 
                 if (insertedId != -1)
                 {
+                    tbSupplierId.Text = selectedSupplier.id;
                     existingInventoryManagment.Id = insertedId;
                     OnDataChanged(EventArgs.Empty);
                     this.Dispose();
@@ -283,12 +303,11 @@ namespace LubriTech.View
                 || cbYear.Text.Trim() == ""
                 || cbBranch.Text.Trim() == ""
                 || cbDocumentType.Text.Trim() == ""
-                || cbState.Text.Trim() == ""
-                || tbSupplierName.Text.Trim() == "")
+                || cbState.Text.Trim() == "")
                 {
                     MessageBox.Show("Por favor llene los campos anteriores");
                 }
-                else if (tbSupplierId.Text.Trim() == "")
+                else if (tbSupplierName.Text.Trim() == "")
                 {
                     MessageBox.Show("Debe seleccionar un proveedor");
                 }
@@ -297,7 +316,8 @@ namespace LubriTech.View
                     InventoryManagment_Controller inventoryManagmentController = new InventoryManagment_Controller();
                     InventoryManagment inventoryManagment = new InventoryManagment();
 
-                    inventoryManagment.Supplier = new Supplier_Controller().GetSupplier(tbSupplierId.Text.Trim());
+                    tbSupplierId.Text = selectedSupplier.id;
+                    inventoryManagment.Supplier = selectedSupplier;
                     inventoryManagment.Branch = new Branch_Controller().get(Convert.ToInt32(cbBranch.SelectedValue.ToString()));
                     string date = cbYear.Text.Trim() + "/" + cbMonth.Text.Trim() + "/" + cbDay.Text.Trim();
                     inventoryManagment.DocumentDate = Convert.ToDateTime(date);
@@ -319,7 +339,7 @@ namespace LubriTech.View
                     {
                         clickedAddDetail = true;
                         existingInventoryManagment.Id = insertedId;
-                        frmInsertUpdate_DetailLine frmUpsert_DetailLine = new frmInsertUpdate_DetailLine(insertedId);
+                        frmInsertUpdate_DetailLine frmUpsert_DetailLine = new frmInsertUpdate_DetailLine(insertedId, "");
                         frmUpsert_DetailLine.MdiParent = this.MdiParent;
                         frmUpsert_DetailLine.FormClosed += FrmUpsert_DetailLine_FormClosed;
                         frmUpsert_DetailLine.Show();
@@ -332,7 +352,8 @@ namespace LubriTech.View
             }
             else
             {
-                frmInsertUpdate_DetailLine frmUpsert_DetailLine = new frmInsertUpdate_DetailLine(existingInventoryManagment.Id);
+                tbSupplierId.Text = selectedSupplier.id;
+                frmInsertUpdate_DetailLine frmUpsert_DetailLine = new frmInsertUpdate_DetailLine(existingInventoryManagment.Id, "");
                 frmUpsert_DetailLine.MdiParent = this.MdiParent;
                 frmUpsert_DetailLine.FormClosed += FrmUpsert_DetailLine_FormClosed;
                 frmUpsert_DetailLine.Show();
@@ -364,8 +385,34 @@ namespace LubriTech.View
         {
             if (supplier != null)
             {
-                tbSupplierName.Text = supplier.name;
                 tbSupplierId.Text = supplier.id;
+            }
+                selectedSupplier = supplier;
+                tbSupplierName.Text = supplier.name;
+        }
+
+        private void dgvDetailLines_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                Item selectedItem = (Item)dgvDetailLines.Rows[e.RowIndex].Cells["Item"].Value;
+                List<DetailLine> detailLines = new DetailLine_Controller().getAll();
+                DetailLine selectedDetailLine = null;
+                foreach (DetailLine detailLine in detailLines)
+                {
+                    if (detailLine.Item.code == selectedItem.code)
+                    {
+                        selectedDetailLine = detailLine;
+                        break;
+                    }
+                }
+
+                string action = "Modify";
+                frmInsertUpdate_DetailLine frmUpsert_DetailLine = new frmInsertUpdate_DetailLine(existingInventoryManagment.Id, selectedDetailLine.Item.code);
+                frmUpsert_DetailLine.MdiParent = this.MdiParent;
+                frmUpsert_DetailLine.FormClosed += FrmUpsert_DetailLine_FormClosed;
+                frmUpsert_DetailLine.Show();
+                return;
             }
         }
     }
