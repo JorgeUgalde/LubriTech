@@ -24,6 +24,7 @@ namespace LubriTech.View
         private Supplier selectedSupplier = null;
         private List<DetailLine> detailLines;
         private InventoryManagment existingInventoryManagment = null;
+        private Boolean clickedAddDetail = false;
 
         public frmInsertUpdate_InventoryManagment()
         {
@@ -117,12 +118,6 @@ namespace LubriTech.View
             DataChanged?.Invoke(this, e);
         }
 
-        private void ChildFormDataChangedHandler(object sender, EventArgs e)
-        {
-            branches = new Branch_Controller().getAll();
-            setComboBox();
-        }
-
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             InventoryManagment_Controller inventoryManagmentController = new InventoryManagment_Controller();
@@ -165,9 +160,11 @@ namespace LubriTech.View
                 }
 
                 int insertedId = inventoryManagmentController.upsert(inventoryManagment);
+                existingInventoryManagment = inventoryManagment;
 
                 if (insertedId != -1)
                 {
+                    existingInventoryManagment.Id = insertedId;
                     OnDataChanged(EventArgs.Empty);
                     this.Dispose();
                 }
@@ -205,6 +202,10 @@ namespace LubriTech.View
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            if (clickedAddDetail)
+            {
+                new InventoryManagment_Controller().delete(existingInventoryManagment.Id);
+            }
             this.Close();
         }
 
@@ -236,8 +237,6 @@ namespace LubriTech.View
                 tbSupplierName.Text = supplier.name;
                 tbSupplierId.Text = supplier.id;
             }
-
-
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -255,7 +254,11 @@ namespace LubriTech.View
 
         private void pbClose_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            if (clickedAddDetail)
+            {
+                new InventoryManagment_Controller().delete(existingInventoryManagment.Id);
+            }
+            this.Close();
         }
 
         private void pbMaximize_Click(object sender, EventArgs e)
@@ -310,14 +313,13 @@ namespace LubriTech.View
 
                     existingInventoryManagment = inventoryManagment;
                     int insertedId = inventoryManagmentController.upsert(inventoryManagment);
-                    existingInventoryManagment.Id = insertedId;
 
                     if (insertedId != -1)
                     {
-                        OnDataChanged(EventArgs.Empty);
+                        clickedAddDetail = true;
+                        existingInventoryManagment.Id = insertedId;
                         frmInsertUpdate_DetailLine frmUpsert_DetailLine = new frmInsertUpdate_DetailLine(insertedId);
                         frmUpsert_DetailLine.MdiParent = this.MdiParent;
-                        frmUpsert_DetailLine.DataChanged += ChildFormDataChangedHandler;
                         frmUpsert_DetailLine.FormClosed += FrmUpsert_DetailLine_FormClosed;
                         frmUpsert_DetailLine.Show();
                     }
@@ -329,10 +331,8 @@ namespace LubriTech.View
             }
             else
             {
-                OnDataChanged(EventArgs.Empty);
                 frmInsertUpdate_DetailLine frmUpsert_DetailLine = new frmInsertUpdate_DetailLine(existingInventoryManagment.Id);
                 frmUpsert_DetailLine.MdiParent = this.MdiParent;
-                frmUpsert_DetailLine.DataChanged += ChildFormDataChangedHandler;
                 frmUpsert_DetailLine.FormClosed += FrmUpsert_DetailLine_FormClosed;
                 frmUpsert_DetailLine.Show();
             }
