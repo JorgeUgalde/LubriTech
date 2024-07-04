@@ -2,6 +2,7 @@
 using LubriTech.Model.Branch_Information;
 using LubriTech.Model.Client_Information;
 using LubriTech.Model.Item_Information;
+using LubriTech.Model.Vehicle_Information;
 using LubriTech.Model.WorkOrder_Information;
 using System;
 using System.Collections.Generic;
@@ -21,10 +22,12 @@ namespace LubriTech.View
         private int? workOrderId; // Nullable int to store the work order ID
         Work_Order_Controller workOrderController = new Work_Order_Controller();
         Client client = new Client();
+        Vehicle vehicle = new Vehicle();
         public frmWorkOrder(int? workOrderId)
         {
             InitializeComponent();
             this.workOrderId = workOrderId;
+            //InitializeTabControl();
 
             if (workOrderId.HasValue)
             {
@@ -44,6 +47,98 @@ namespace LubriTech.View
             }
         }
 
+        private void InitializeTabControl()
+        {
+            // Crear TabControl
+            TabControl tabControl = new TabControl();
+            tabControl.Size = this.Size;
+            tabControl.Dock = DockStyle.Fill;
+
+            // Crear pestaña de contenido
+            TabPage tabContent = new TabPage("Contenido");
+            tabContent.Controls.Add(CreateContentPanel());
+
+            // Crear pestaña de observaciones
+            TabPage tabObservations = new TabPage("Observaciones");
+            tabObservations.Controls.Add(CreateObservationsPanel());
+
+            // Agregar pestañas al TabControl
+            tabControl.TabPages.Add(tabContent);
+            tabControl.TabPages.Add(tabObservations);
+
+            // Agregar TabControl al formulario
+            this.Controls.Add(tabControl);
+        }
+
+        private Panel CreateContentPanel()
+        {
+            Panel panel = new Panel();
+            panel.AutoSize = true;
+            panel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
+            //panel.Dock = DockStyle.Fill;
+
+            // Agregar controles actuales de contenido al panel
+            panel.Controls.Add(lblBranch);
+            panel.Controls.Add(cbBranch);
+            panel.Controls.Add(lblDate);
+            panel.Controls.Add(dateTimePicker);
+            panel.Controls.Add(lblState);
+            panel.Controls.Add(cbState);
+
+            panel.Controls.Add(lblClient);
+            panel.Controls.Add(btnSelectClient);
+            panel.Controls.Add(lblClientId);
+            panel.Controls.Add(txtClientId);
+            panel.Controls.Add(lblClientName);
+            panel.Controls.Add(txtClientName);
+            panel.Controls.Add(lblMainPhone);
+            panel.Controls.Add(txtCellphone);
+            panel.Controls.Add(lblAddPhone);
+            panel.Controls.Add(txtCellphone2);
+            panel.Controls.Add(lblEmail);
+            panel.Controls.Add(txtEmail);
+
+            panel.Controls.Add(lblVehicle);
+            panel.Controls.Add(btnAddVehicle);
+            panel.Controls.Add(lblMake);
+            panel.Controls.Add(txtMake);
+            panel.Controls.Add(lblModel);
+            panel.Controls.Add(txtModel);
+            panel.Controls.Add(lblMileage);
+            panel.Controls.Add(txtMileage);
+            panel.Controls.Add(lblCurrentMileage);
+            panel.Controls.Add(txtCurrentMileage);
+
+            panel.Controls.Add(lblDetails);
+            panel.Controls.Add(dataGridView1);
+            panel.Controls.Add(lblTotalAmount);
+            panel.Controls.Add(txtTotalAmount);
+
+            return panel;
+        }
+
+        private Panel CreateObservationsPanel()
+        {
+            Panel panel = new Panel();
+            panel.Dock = DockStyle.Fill;
+
+            // Agregar TextBox para la descripción de observaciones
+            TextBox txtObservations = new TextBox();
+            txtObservations.Multiline = true;
+            txtObservations.Dock = DockStyle.Top;
+            txtObservations.Height = 100;
+            panel.Controls.Add(txtObservations);
+
+            // Agregar ListView o DataGridView para la lista de imágenes
+            ListView listViewImages = new ListView();
+            //listViewImages.View = View;
+            listViewImages.Dock = DockStyle.Fill;
+            panel.Controls.Add(listViewImages);
+
+            return panel;
+        }
+
         private void LoadWorkOrderData(WorkOrder workOrder)
         {
             //Set the data source of the combo box, State can be 0 for Inactiva 1 for Activa, 2 for En proceso, 3 for Terminada
@@ -59,12 +154,15 @@ namespace LubriTech.View
             cbState.SelectedIndex = workOrder.State;
             
             cbBranch.DataSource = new Branch_Model().loadAllBranches();
-            cbBranch.DisplayMember = "Nombre";
-            cbBranch.ValueMember = "Identificacion";
+            cbBranch.DisplayMember = "Name";
+            cbBranch.ValueMember = "Id";
             cbBranch.SelectedValue = workOrder.Branch.Id;
 
-            txtDate.Text = workOrder.Date.ToString();
+            dateTimePicker.Value = workOrder.Date;
+            //txtDate.Text = workOrder.Date.ToString();
             txtTotalAmount.Text = workOrder.Amount.ToString();
+
+            client = workOrder.Client;
             txtClientId.Enabled = false;
             txtClientId.Text = workOrder.Client.Id.ToString();
             txtClientName.Enabled = false;
@@ -75,12 +173,22 @@ namespace LubriTech.View
             txtCellphone2.Text = workOrder.Client.AdditionalPhoneNum.ToString();
             txtEmail.Enabled = false;
             txtEmail.Text = workOrder.Client.Email.ToString();
-            txtMake.Enabled = false;
-            txtMake.Text = workOrder.Vehicle.Model.Make.ToString();
-            txtModel.Enabled = false;
-            txtModel.Text = workOrder.Vehicle.Model.ToString() + " " + workOrder.Vehicle.Year;
-            txtMileage.Enabled = false;
-            txtMileage.Text = workOrder.Vehicle.Mileage.ToString();
+
+            if (workOrder.Vehicle != null)
+            {
+                vehicle = workOrder.Vehicle;
+                txtMake.Enabled = false;
+                txtMake.Text = workOrder.Vehicle.Model.Make.ToString();
+                txtModel.Enabled = false;
+                txtModel.Text = workOrder.Vehicle.Model.ToString() + " " + workOrder.Vehicle.Year;
+                txtMileage.Enabled = false;
+                txtMileage.Text = workOrder.Vehicle.Mileage.ToString();
+                txtCurrentMileage.Text = workOrder.CurrentMileage.ToString();
+            }
+            else
+            {
+                txtMake.Text = "NA";
+            }
             loadWorkOrderLines(workOrder.Id);
             UpdateTotalAmount();
         }
@@ -105,7 +213,8 @@ namespace LubriTech.View
             cbBranch.ValueMember = "Id";
             cbBranch.SelectedIndex = 0;
 
-            txtDate.Text = DateTime.Now.ToString();
+            dateTimePicker.Value = DateTime.Now;
+            //txtDate.Text = DateTime.Now.ToString();
             txtTotalAmount.Text = "0";
             txtClientId.Enabled = true;
             txtClientId.Text = "";
@@ -308,17 +417,10 @@ namespace LubriTech.View
                 txtCellphone.Text = selectedClient.MainPhoneNum == null ? "NA" : selectedClient.MainPhoneNum.ToString();
                 txtCellphone2.Text = selectedClient.AdditionalPhoneNum == null ? "NA" : selectedClient.AdditionalPhoneNum.ToString();
                 txtEmail.Text = selectedClient.Email == null ? "NA" : selectedClient.Email;
+                txtMake.Text = "";
+                txtModel.Text = "";
+                txtMileage.Text = "";
             }
-
-
-        }
-
-        private void btnSelectClient_Click(object sender, EventArgs e)
-        {
-            frmClients frmClients = new frmClients(this);
-            frmClients.ClientSelected += HandleClientSelected;
-            frmClients.MdiParent = this.MdiParent;
-            frmClients.Show();
 
             if (client.Id is null)
             {
@@ -346,11 +448,109 @@ namespace LubriTech.View
                 workOrder.Client = client;
 
                 this.workOrderId = workOrderController.UpsertWorkOrder(workOrder);
-                this.Refresh();
+                loadWorkOrderLines(workOrderId.Value);
+                dataGridView1.Refresh();
             }
+        }
+
+        private void btnSelectClient_Click(object sender, EventArgs e)
+        {
+            frmClients frmClients = new frmClients(this);
+            frmClients.ClientSelected += HandleClientSelected;
+            frmClients.MdiParent = this.MdiParent;
+            frmClients.Show();
 
         }
 
-       
+        private void HandleVehicleSelected(Vehicle vehicle)
+        {
+            SelectVehicleWorkOrder(vehicle);
+        }
+
+
+        public void SelectVehicleWorkOrder(Vehicle vehicle)
+        {
+            if (vehicle != null)
+            {
+                txtMake.Text = vehicle.Model.Make.ToString();
+                txtModel.Text = vehicle.Model.ToString() + " " + vehicle.Year;
+                txtMileage.Text = vehicle.Mileage.ToString();
+            }
+
+            if (client != null)
+            {
+                WorkOrder existingWorkOrder = new WorkOrder();
+                existingWorkOrder.Id = (int)workOrderId;
+                existingWorkOrder.Branch = cbBranch.SelectedItem as Branch;
+                existingWorkOrder.Date = dateTimePicker.Value;
+                existingWorkOrder.State = (short)cbState.SelectedIndex;
+                existingWorkOrder.Amount = Convert.ToDecimal(txtTotalAmount.Text);
+                existingWorkOrder.Client = client;
+                existingWorkOrder.Vehicle = vehicle;
+                workOrderController.UpsertWorkOrder(existingWorkOrder);
+            }
+            else
+            {
+                WorkOrder workOrder = new WorkOrder();
+                workOrder.Id = 0;
+                workOrder.Branch = cbBranch.SelectedItem as Branch;
+                workOrder.Date = dateTimePicker.Value;
+                workOrder.State = (short)cbState.SelectedValue;
+                workOrder.Amount = Convert.ToDecimal(txtTotalAmount.Text);
+                workOrder.Client = client;
+                workOrder.Vehicle = vehicle;
+
+                this.workOrderId = workOrderController.UpsertWorkOrder(workOrder);
+                loadWorkOrderLines(workOrderId.Value);
+                dataGridView1.Refresh();
+            }
+        }
+        private void btnAddVehicle_Click(object sender, EventArgs e)
+        {
+            if(client == null)
+            {
+                MessageBox.Show("Por favor seleccione un cliente primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            frmVehicles frmVehicles = new frmVehicles(this,this.client.Id);
+            frmVehicles.VehicleSelected += HandleVehicleSelected;
+            frmVehicles.MdiParent = this.MdiParent;
+            frmVehicles.Show();
+
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void btnSaveChanges_Click(object sender, EventArgs e)
+        {
+            if (this.workOrderId.HasValue && this.client != null)
+            {
+                WorkOrder workOrder = new Work_Order_Controller().LoadWorkOrder(workOrderId.Value);
+                workOrder.Branch = cbBranch.SelectedItem as Branch;
+                workOrder.Date = dateTimePicker.Value;
+                workOrder.State = (short)cbState.SelectedIndex;
+                workOrder.Amount = Convert.ToDecimal(txtTotalAmount.Text);
+
+                if(this.vehicle != null && txtCurrentMileage.Text != "")
+                {
+
+                    workOrder.CurrentMileage = Convert.ToInt32(txtCurrentMileage.Text);
+                    this.vehicle.Mileage = Convert.ToInt32(txtCurrentMileage.Text);
+                    new Vehicle_Controller().upsert(this.vehicle);
+                }
+                if(new Work_Order_Controller().UpdateWorkOrder(workOrder))
+                {
+                    this.Dispose();
+                    MessageBox.Show("Cambios guardados exitosamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor seleccione un cliente primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

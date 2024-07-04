@@ -29,7 +29,6 @@ namespace LubriTech.View
             clients = new List<Client>();
             InitializeComponent();
             load_Clients(null);
-            MessageBox.Show(frmLogin.branch + "");
 
         }
 
@@ -75,7 +74,7 @@ namespace LubriTech.View
             foreach (DataGridViewColumn column in dgvClients.Columns)
             {
                 if (column.Name != "Id" && column.Name != "FullName" && column.Name != "State" &&
-                    column.Name != "ModifyImageColumn" && column.Name != "DetailImageColumn")
+                    column.Name != "ModifyImageColumn" && column.Name != "DetailImageColumn" && column.Name != "IdentificacionListaPrecio")
                 {
                     column.Visible = false;
                 }

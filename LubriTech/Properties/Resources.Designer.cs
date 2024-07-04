@@ -213,6 +213,36 @@ namespace LubriTech.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Flecha_Calendario_Derecha {
+            get {
+                object obj = ResourceManager.GetObject("Flecha Calendario Derecha", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Flecha_Calendario_Izquierda {
+            get {
+                object obj = ResourceManager.GetObject("Flecha Calendario Izquierda", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_flecha_30__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-flecha-30 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap imagenLogin1 {
             get {
                 object obj = ResourceManager.GetObject("imagenLogin1", resourceCulture);

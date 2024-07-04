@@ -17,9 +17,9 @@ namespace LubriTech.Controller
         /// </summary>
         /// /// <param name="date">DateTime object, the day.</param>
         /// <returns>List of the appointmens belonging to the specified day.</returns>
-        public List<Appointment> loadDayAppointments(DateTime date)
+        public List<Appointment> loadDayAppointments(DateTime date, int branchID)
         {
-            return new Appointment_Model().loadDayAppointments(date);
+            return new Appointment_Model().loadDayAppointments(date, branchID);
         }
 
         public bool CancelAppointment(int appointmentID)

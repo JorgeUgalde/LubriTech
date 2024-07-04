@@ -160,6 +160,18 @@
     <Compile Include="View\frmResetPassword.Designer.cs">
       <DependentUpon>frmResetPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmInsertUpdate_DetailLine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmInsertUpdate_DetailLine.Designer.cs">
+      <DependentUpon>frmInsertUpdate_DetailLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Appointment_View\frmInsertUpdate_Appointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Appointment_View\frmInsertUpdate_Appointment.Designer.cs">
+      <DependentUpon>frmInsertUpdate_Appointment.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmUpsert_PriceList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -486,6 +498,9 @@
     <None Include="Images\imagenLogin1.jpg" />
     <None Include="Images\closeIco2.png" />
     <None Include="Images\clients.png" />
+    <None Include="Images\icons8-flecha-30 %281%29.png" />
+    <None Include="Images\Flecha Calendario Izquierda.png" />
+    <None Include="Images\Flecha Calendario Derecha.png" />
     <Content Include="Images\inventory.png" />
     <Content Include="Images\logo1.jpg" />
     <Content Include="Images\logoCrop.jpg" />

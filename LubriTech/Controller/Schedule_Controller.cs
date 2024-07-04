@@ -9,14 +9,14 @@ namespace LubriTech.Controller
 {
     public class Schedule_Controller
     {
-        public List<Schedule> loadAll()
+        public List<Schedule> loadAll(int? branch)
         {
-            return new Schedule_Model().loadAllSchedules();
+            return new Schedule_Model().loadAllSchedules(branch);
         }
 
-        public Schedule get(int id)
+        public Schedule get(int id , int? branchID)
         {
-            return new Schedule_Model().getSchedule(id);
+            return new Schedule_Model().getSchedule(id, branchID);
         }
 
         public bool UpSert(Schedule schedule)

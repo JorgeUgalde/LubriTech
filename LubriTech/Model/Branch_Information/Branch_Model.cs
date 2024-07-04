@@ -104,41 +104,58 @@ namespace LubriTech.Model.Branch_Information
         /// </summary>
         /// <param name="branch">Objeto Branch que representa la sucursal a insertar o actualizar.</param>
         /// <returns>true si la operación fue exitosa, false si ocurrió un error.</returns>
-        public bool UpsertBranch(Branch branch)
+        public int UpsertBranch(Branch branch)
         {
             try
             {
-               
-                String query = "INSERT INTO Sucursal (NombreSucursal, Direccion, NumeroTelefono, Correo, Estado) VALUES (@name, @address, @phone, @email, @state)";
-                
+                String query = "INSERT INTO Sucursal (NombreSucursal, Direccion, NumeroTelefono, Correo, Estado) VALUES (@name, @address, @phone, @email, @state); SELECT SCOPE_IDENTITY();";
+
                 if (GetBranch(branch.Id) != null)
                 {
                     query = "UPDATE Sucursal SET NombreSucursal = @name, Direccion = @address, NumeroTelefono = @phone, Correo = @email , Estado = @state WHERE Identificacion = @id";
                 }
 
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@id", branch.Id);
+
+                if (branch.Id != 0)
+                {
+                    cmd.Parameters.AddWithValue("@id", branch.Id);
+                }
+
                 cmd.Parameters.AddWithValue("@name", branch.Name);
-                cmd.Parameters.AddWithValue("@address", branch.Address);
-                cmd.Parameters.AddWithValue("@phone", branch.Phone);
-                cmd.Parameters.AddWithValue("@email", branch.Email);
-                cmd.Parameters.AddWithValue("@state", branch.State.Equals("Activo") ? 1: 0 );
+                cmd.Parameters.AddWithValue("@address", (object)branch.Address ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@phone", (object)branch.Phone ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@email", (object)branch.Email ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@state", branch.State != null && branch.State.Equals("Activo") ? 1 : 0);
+
+
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
                     conn.Open();
                 }
-                cmd.ExecuteNonQuery();
-                return true;
+
+                if (branch.Id != 0)
+                {
+                    cmd.ExecuteNonQuery();
+                    return branch.Id; // Devuelve el ID que ya existe
+                }
+                else
+                {
+                    // Para inserciones, obtenemos el ID recién insertado
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
             }
             catch (Exception ex)
             {
-                return false;
+                // Manejo de errores
+                return -1;
             }
             finally
             {
                 conn.Close();
             }
         }
+
     }
 }

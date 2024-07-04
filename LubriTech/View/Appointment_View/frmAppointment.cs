@@ -1,6 +1,8 @@
 using LubriTech.Controller;
 using LubriTech.Model.Appointment_Information;
+using LubriTech.Model.Branch_Information;
 using LubriTech.Model.Client_Information;
+using LubriTech.Model.Vehicle_Information;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +11,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -23,6 +26,13 @@ namespace LubriTech.View.Appointment_View
     /// </summary>
     public partial class frmAppointment : Form
     {
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
         /// <summary>
         /// Variables to handle the month, year and day of the appointment
         /// </summary>      
@@ -37,11 +47,12 @@ namespace LubriTech.View.Appointment_View
         /// <summary>
         /// Variables to handle the start and end hour of work schedule, and the duration of the appointment
         /// </summary>
-        private int startHour = 8;
-        private int endHour = 17;
-        private int appointmentDuration = 30;
+        /// 
+        Schedule scheduleBranch;
 
-
+        private TimeSpan startHour; 
+        private TimeSpan endHour;
+        private int appointmentDuration;
 
         /// <summary>
         /// Variables to handle the selected button and the list of appointments
@@ -64,10 +75,25 @@ namespace LubriTech.View.Appointment_View
         /// <summary>
         /// Constructor of the class
         /// </summary>
+        /// 
+        private Vehicle clientVehicle;
+
+        Branch branch;
+
+        Appointment appointment;
+
+        /// <summary>
+        ///  Class constructor to initialize the form
+        /// </summary>
         public frmAppointment()
         {
             InitializeComponent();
+            branch = new Branch_Controller().get(frmLogin.branch);
             appointments  = new List<Appointment>();
+            scheduleBranch = new Schedule_Controller().get(0 , frmLogin.branch);
+            startHour = scheduleBranch.StartHour;
+            endHour = scheduleBranch.EndHour;
+            appointmentDuration = scheduleBranch.appointmentDuration;
         }
 
         /// <summary>
@@ -78,7 +104,43 @@ namespace LubriTech.View.Appointment_View
         private void frmAppointment_Load(object sender, EventArgs e)
         {
             displayDays();
+            loadBranches();
         }
+
+        private void loadBranches()
+        {
+            List<Branch> branches = new Branch_Controller().getAll();
+            cbBranch.DataSource = branches;
+            cbBranch.DisplayMember = "Name";
+            cbBranch.ValueMember = "Id";
+            cbBranch.SelectedValue = frmLogin.branch;
+        }
+
+        private void ChildFormDataChangedHandler(object sender, EventArgs e)
+        {
+            SaveAppointment();
+        }
+
+        private void SaveAppointment()
+        {
+            if (appointment.State == "Activo")
+            {
+                selectedButton.BackColor = Color.LightBlue;
+                selectedButton.Text = appointment.client.ToString();
+                // if appointment is not in the list, add it
+                if (!appointments.Contains(appointment))
+                {
+                    appointments.Add(appointment);
+                }
+                cleanFields();
+                return;
+            }
+            cleanFields();
+            selectedButton.BackColor = Color.White;
+            selectedButton.Text = "";
+            appointments.Remove(appointment);
+        }
+
 
         /// <summary>
         /// Event handler for the next button, call a funtion to display the next month
@@ -197,7 +259,11 @@ namespace LubriTech.View.Appointment_View
         /// <param name="day"> Day selected </param>
         private void DisplayAppointments(int day)
         {
+
             pnlAppointments.Controls.Clear();
+            appointments.Clear();
+
+
             int selectedDay;
 
             if (day > 0)
@@ -217,70 +283,71 @@ namespace LubriTech.View.Appointment_View
 
             DateTime selectedDate = new DateTime(year, month, selectedDay);
 
-            for (int hour = endHour - 1; hour >= startHour; hour--)
+            TimeSpan currentTime = endHour;
+
+            while (currentTime >= startHour)
             {
-                for (int minute = 60 - appointmentDuration; minute >= 0; minute -= appointmentDuration)
+                TimeSpan appointmentTime = currentTime - TimeSpan.FromMinutes(appointmentDuration);
+
+                if (appointmentTime < startHour)
                 {
-                    DateTime appointmentTime = new DateTime(selectedDate.Year, selectedDate.Month, selectedDate.Day, hour, minute, 0);
-
-                    // create a panel to hold the appointment button and label
-                    Panel simpleAppointmentPanel = new Panel
-                    {
-                        Size = new Size( Convert.ToInt32(pnlAppointments.Width *0.7f), 50),
-                        Dock = DockStyle.Top,
-                        Padding = new Padding(0, 3, 0, 0),
-                    };
-
-                    // Create a label to show the time of the appointment
-                    Label appointmentLabel = new Label
-                    {
-                        Text = appointmentTime.ToString("hh:mm tt"),
-                        TextAlign = ContentAlignment.MiddleCenter,
-                        Size = new Size(Convert.ToInt32(pnlAppointments.Width * 0.3f), 50),
-                        Padding = new Padding(5, 5, 5, 5),
-                        Margin = new Padding(5),
-                        BackColor = Color.LightGray,
-                        Dock = DockStyle.Left,
-                        Font = new Font("Segoe UI", 12)
-                    };
-
-                    // Create a button to assign the appointment
-                    Button appointmentButton = new Button
-                    {
-                        Text = "Asignar Cita",
-                        TextAlign = ContentAlignment.MiddleLeft,
-                        BackColor = Color.White,
-                        Tag = appointmentTime,
-                        Size = new Size(Convert.ToInt32(pnlAppointments.Width * 0.7f), 50),
-                        FlatStyle = FlatStyle.Popup,
-                        Cursor = Cursors.Hand,
-                        Padding = new Padding(5, 5, 5, 5),
-                        Margin = new Padding(5),
-                        Dock = DockStyle.Fill,
-                        Font = new Font("Segoe UI", 12)
-                    };
-                    appointmentButton.Click += new EventHandler(AppointmentButton_Click);
-
-                    // Create a tooltip to show the time of the appointment
-                    simpleAppointmentPanel.Controls.Add(appointmentButton);
-                    simpleAppointmentPanel.Controls.Add(appointmentLabel);
-
-                    pnlAppointments.Controls.Add(simpleAppointmentPanel);
-
+                    break;
                 }
+
+                DateTime appointmentDateTime = selectedDate.Add(appointmentTime);
+
+                // create a panel to hold the appointment button and label
+                Panel simpleAppointmentPanel = new Panel
+                {
+                    Size = new Size(Convert.ToInt32(pnlAppointments.Width * 0.7f), 50),
+                    Dock = DockStyle.Top,
+                    Padding = new Padding(0, 3, 0, 0),
+                };
+
+                // Create a label to show the time of the appointment
+                Label appointmentLabel = new Label
+                {
+                    Text = appointmentDateTime.ToString("hh:mm tt"),
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Size = new Size(Convert.ToInt32(pnlAppointments.Width * 0.3f), 50),
+                    Padding = new Padding(5, 5, 5, 5),
+                    Margin = new Padding(5),
+                    BackColor = Color.LightGray,
+                    Dock = DockStyle.Left,
+                    Font = new Font("Segoe UI", 12)
+                };
+
+                // Create a button to assign the appointment
+                Button appointmentButton = new Button
+                {
+                    TextAlign = ContentAlignment.MiddleLeft,
+                    BackColor = Color.White,
+                    Tag = appointmentDateTime,
+                    Size = new Size(Convert.ToInt32(pnlAppointments.Width * 0.7f), 50),
+                    FlatStyle = FlatStyle.Popup,
+                    Cursor = Cursors.Hand,
+                    Padding = new Padding(5, 5, 5, 5),
+                    Margin = new Padding(5),
+                    Dock = DockStyle.Fill,
+                    Font = new Font("Segoe UI", 12)
+                };
+                appointmentButton.Click += new EventHandler(AppointmentButton_Click);
+
+                // Create a tooltip to show the time of the appointment
+                simpleAppointmentPanel.Controls.Add(appointmentButton);
+                simpleAppointmentPanel.Controls.Add(appointmentLabel);
+
+                pnlAppointments.Controls.Add(simpleAppointmentPanel);
+
+                currentTime -= TimeSpan.FromMinutes(appointmentDuration);
             }
             // Get the appointments of the selected day
             GetAppointments(selectedDate);
         }
 
-
-        /// <summary>
-        /// Get the appointments of the selected day
-        /// </summary>
-        /// <param name="selectedDate">Day selected to see the appointments </param>
         private void GetAppointments(DateTime selectedDate)
         {
-            appointments = new Appointment_Controller().loadDayAppointments(selectedDate);
+            appointments = new Appointment_Controller().loadDayAppointments(selectedDate, branch.Id);
             foreach (Appointment appointment in appointments)
             {
                 string appointmentTime = appointment.AppointmentDate.ToString("hh:mm tt");
@@ -300,6 +367,7 @@ namespace LubriTech.View.Appointment_View
             }
         }
 
+
         /// <summary>
         /// Event handler for the appointment button, assign or cancel an appointment
         /// </summary>
@@ -307,69 +375,42 @@ namespace LubriTech.View.Appointment_View
         /// <param name="e"> Event arguments</param>
         private void AppointmentButton_Click(object sender, EventArgs e)
         {
-
             selectedButton = sender as Button;
+            appointment = new Appointment();
 
-            // If the button is already assigned, ask if the user wants to cancel the appointment
-            if (selectedButton != null && selectedButton.Text != "Asignar Cita")
+            //search in the list of appointments the selected appointment
+            appointment = appointments.Find(a => a.AppointmentDate == (DateTime)selectedButton.Tag);
+            DateTime appointmentDayTime = (DateTime)selectedButton.Tag;
+            // check if the current time is greater than the appointment time
+            if (DateTime.Now > appointmentDayTime)
             {
-                DialogResult dialogResult = MessageBox.Show("¿Desea cancelar la cita?", "Cancelar Cita", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    string name = selectedButton.Text;
-                    DateTime dateTime = (DateTime)selectedButton.Tag;
-
-                    Appointment appointment = appointments.Find(a => a.client.ToString() == name && a.AppointmentDate == dateTime);
-                    if (appointment != null)
-                    {
-                        if (new Appointment_Controller().CancelAppointment(appointment.AppointmentID))
-                        {
-                            selectedButton.BackColor = Color.White;
-                            selectedButton.Text = "Asignar Cita";
-                            selectedButton = null;
-                            appointments.Remove(appointment);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Error al cancelar la cita");
-                        }
-                    }
-
-                }
+                MessageBox.Show("No se puede asignar una cita en un horario pasado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            // Check if the client is selected, if so, assign the appointment
-            if (newAppointmentClient != null)
+            if (appointment == null)
             {
-                if (selectedButton != null)
+                if( newAppointmentClient == null )
                 {
-                    DateTime date = (DateTime)selectedButton.Tag;
-                    Appointment newAppointment = new Appointment
-                    {
-                        AppointmentDate = date,
-                        client = newAppointmentClient,
-                        State = 1,
-                        branch = new Branch_Controller().get(1)
-                    };
-
-                    if (new Appointment_Controller().UpsertAppointment(newAppointment))
-                    {
-                        selectedButton.Text = newAppointmentClient.FullName;
-                        selectedButton.BackColor = Color.LightBlue;
-                        selectedButton = null;
-                        newAppointmentClient = null;
-                        txtId.Text = "";
-                        txtName.Text = "";
-                        appointments.Add(newAppointment);
-                        MessageBox.Show("Cita guardada con éxito", "Cita Agendada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error al guardar la cita");
-                        newAppointment = null;
-                    }
+                    MessageBox.Show("Debe seleccionar un cliente para asignar una cita", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
+                appointment = new Appointment();
+                appointment.AppointmentDate = appointmentDayTime;
+                appointment.client = newAppointmentClient;
+                appointment.Vehicle = clientVehicle;
+                appointment.branch = scheduleBranch.Branch;
+                appointment.State = "Activo";
             }
+            frmInsertUpdate_Appointment frmAppointmentDetails = new frmInsertUpdate_Appointment(appointment);
+            frmAppointmentDetails.DataChanged += ChildFormDataChangedHandler;
+            frmAppointmentDetails.MdiParent = this.MdiParent;
+            frmAppointmentDetails.Show();
+
+
+
+
+
         }
 
         /// <summary>
@@ -391,7 +432,7 @@ namespace LubriTech.View.Appointment_View
         {
             string id = txtId.Text;
 
-            if (id.Length > 4)
+            if (id.Length >= 3)
             {
                 Client client = await new Clients_Controller().get(id);
 
@@ -402,6 +443,32 @@ namespace LubriTech.View.Appointment_View
             }
         }
 
+        private void pbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
+
+        private void pbMaximize_Click(object sender, EventArgs e)
+        {
+
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+
+        }
+
+        private void panelBorder_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
         /// <summary>
         /// Open the client form to search a client
         /// </summary>
@@ -409,11 +476,51 @@ namespace LubriTech.View.Appointment_View
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
+            cleanFields();
             frmClients frmClients = new frmClients(this);
             frmClients.ClientSelected += HandleClientSelected;
             frmClients.MdiParent = this.MdiParent;
             frmClients.Show();
         }
+
+        private void HandleVehicleSelected(Vehicle vehicle)
+        {
+            SelectVehicle(vehicle);
+        }
+
+        public void SelectVehicle(Vehicle vehicle)
+        {
+            if (vehicle != null)
+            {
+                cbPLate.SelectedValue = vehicle.LicensePlate;
+                clientVehicle = vehicle;
+                newAppointmentClient = vehicle.Client;
+
+                txtId.Text = newAppointmentClient.Id;
+                txtName.Text = newAppointmentClient.FullName;
+                txtModel.Text = vehicle.Model.ToString();
+                load_Client_Vehicles();
+
+
+                cbPLate.SelectedValue = vehicle.LicensePlate;
+            }
+        }
+
+        private void btnSearchVehicle_Click(object sender, EventArgs e)
+        {
+            cleanFields();
+
+            frmVehicles frmVehicles;
+            if (newAppointmentClient == null)
+                 frmVehicles = new frmVehicles(this, "");
+            else
+                 frmVehicles = new frmVehicles(this, newAppointmentClient.Id);
+            
+            frmVehicles.VehicleSelected += HandleVehicleSelected;
+            frmVehicles.MdiParent = this.MdiParent;
+            frmVehicles.Show();
+
+            }
 
         /// <summary>
         /// Get the selected client and assign it to the appointment
@@ -426,9 +533,79 @@ namespace LubriTech.View.Appointment_View
                 this.newAppointmentClient = client;
                 txtName.Text = client.FullName;
                 txtId.Text = client.Id;
+                load_Client_Vehicles();
+                if (clientVehicle!= null)
+                {
+                    cbPLate.SelectedValue = clientVehicle.LicensePlate;
+                }
+            }
+        }
+
+        private void cbPLate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbPLate.SelectedItem != null)
+            {
+                clientVehicle = (Vehicle)cbPLate.SelectedItem;
+                txtModel.Text = clientVehicle.Model.ToString();
             }
 
+        }
 
+        private void cbPLate_TextUpdate(object sender, EventArgs e)
+        {
+            if (cbPLate.Text.Length == 6 )
+            {
+                clientVehicle = new Vehicle_Controller().getVehicle(cbPLate.Text);
+            }
+            if (clientVehicle != null)
+            {
+                txtModel.Text = clientVehicle.Model.ToString();
+                newAppointmentClient = clientVehicle.Client;
+                txtId.Text = newAppointmentClient.Id;
+                txtName.Text = newAppointmentClient.FullName;
+                load_Client_Vehicles();
+                cbPLate.SelectedValue = clientVehicle.LicensePlate;
+            }
+
+        }
+
+        private void cbBranch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbBranch.SelectedItem != null)
+            {
+                branch = (Branch)cbBranch.SelectedItem;
+                scheduleBranch = new Schedule_Controller().get(0, branch.Id);
+                startHour = scheduleBranch.StartHour;
+                endHour = scheduleBranch.EndHour;
+                appointmentDuration = scheduleBranch.appointmentDuration;
+                DisplayAppointments(day);
+            }
+            
+        }
+
+
+        private void load_Client_Vehicles()
+        {
+            List<Vehicle> vehicles = new Vehicle_Controller().getVehiclesByClient(newAppointmentClient.Id);
+            if (vehicles.Count > 0)
+            {
+                cbPLate.DataSource = vehicles;
+                cbPLate.DisplayMember = "LicensePlate";
+                cbPLate.ValueMember = "LicensePlate";
+                txtModel.Text = vehicles[0].Model.ToString();
+            }
+        }
+
+        private void cleanFields()
+        {
+            txtId.Text = "";
+            txtName.Text = "";
+            txtModel.Text = "";
+            cbPLate.DataSource = null;
+            cbPLate.Items.Clear();
+            cbPLate.Text = "";
+            clientVehicle = null;
+            newAppointmentClient = null;
         }
     }
 }

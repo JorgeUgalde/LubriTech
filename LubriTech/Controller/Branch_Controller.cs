@@ -36,7 +36,7 @@ namespace LubriTech.Controller
         /// </summary>
         /// <param name="branch">Branch object.</param>
         /// <returns>True if the operation completed successfully of false in case of an error.</returns>
-        public bool Upsert(Branch branch)
+        public int Upsert(Branch branch)
         {
             return new Branch_Model().UpsertBranch(branch);
         }

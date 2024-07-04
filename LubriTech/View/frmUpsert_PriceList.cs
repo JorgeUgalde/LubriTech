@@ -168,12 +168,22 @@ namespace LubriTech.View.Appointment_View
         {
             if (item != null)
             {
+                //validate if the cell in the new row is selected
+                int newRowIndex = dataGridView1.NewRowIndex;
                 // Obtener la fila actualmente seleccionada
                 int rowIndex = dataGridView1.CurrentCell.RowIndex;
-                DataGridViewRow row = dataGridView1.Rows[rowIndex];
-
-                // Asignar los valores del artículo seleccionado a la fila actual
-                row.Cells["CodigoArticulo"].Value = item.code;
+                if(rowIndex + 1 == newRowIndex)
+                {
+                    DataGridViewRow row = dataGridView1.Rows[newRowIndex];
+                    // Asignar los valores del artículo seleccionado a la fila actual
+                    row.Cells["CodigoArticulo"].Value = item.code;
+                }
+                else
+                {
+                    DataGridViewRow row = dataGridView1.Rows[rowIndex];
+                    // Asignar los valores del artículo seleccionado a la fila actual
+                    row.Cells["CodigoArticulo"].Value = item.code;
+                }
             }
         }
 
@@ -195,6 +205,20 @@ namespace LubriTech.View.Appointment_View
                     frmItems.MdiParent = this.MdiParent;
                     frmItems.Show();
                 }
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataGridView1.Columns["CodigoArticulo"].Index)
+            {
+                // Forzar la validación de la fila para guardar los cambios
+                dataGridView1.NotifyCurrentCellDirty(true);
             }
         }
     }
