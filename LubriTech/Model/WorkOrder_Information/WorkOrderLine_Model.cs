@@ -57,7 +57,18 @@ namespace LubriTech.Model.WorkOrder_Information
         public DataTable LoadWorkOrderLinesDT(int workOrderId)
         {
             DataTable workOrderLinesTable = new DataTable();
-            string selectQuery = "SELECT * FROM LineaOrdenTrabajo WHERE IdentificacionOrdenTrabajo = @workOrderId";
+            string selectQuery = "SELECT l.Identificacion," +
+                "IdentificacionOrdenTrabajo," +
+                "l.CodigoArticulo as 'Código Artículo'," +
+                "a.Nombre as Descripción," +
+                "ep.PrecioVenta as 'Precio Unitario'," +
+                "l.Cantidad," +
+                "l.Monto " +
+                "FROM LineaOrdenTrabajo as l" +
+                "\r\nINNER JOIN Articulo as a ON l.CodigoArticulo = a.Codigo" +
+                "\r\nINNER JOIN EstablecePrecio as ep ON ep.CodigoArticulo = a.Codigo" +
+                "\r\nINNER JOIN ListaPrecios as lp ON ep.IdentificacionListaPrecios = lp.Identificacion" +
+                "\r\nWHERE IdentificacionOrdenTrabajo = @workOrderId AND lp.Identificacion = 1";
 
             try
             {
@@ -68,10 +79,7 @@ namespace LubriTech.Model.WorkOrder_Information
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        // Llenar el DataTable con los datos del SqlDataReader
                         workOrderLinesTable.Load(reader);
-                        //workOrderLinesTable.Columns.Add("IsNewRow", typeof(bool));
-                        //workOrderLinesTable.Columns["IsNewRow"].DefaultValue = true;
                     }
                 }
             }
@@ -108,7 +116,7 @@ namespace LubriTech.Model.WorkOrder_Information
                     {
                         cmd.Parameters.AddWithValue("@Id", row["Identificacion"]);
                         cmd.Parameters.AddWithValue("@IdentificacionOrdenTrabajo", row["IdentificacionOrdenTrabajo"]);
-                        cmd.Parameters.AddWithValue("@CodigoArticulo", row["CodigoArticulo"]);
+                        cmd.Parameters.AddWithValue("@CodigoArticulo", row["Código Artículo"]);
                         cmd.Parameters.AddWithValue("@Cantidad", row["Cantidad"]);
                         cmd.Parameters.AddWithValue("@Monto", row["Monto"]);
 
