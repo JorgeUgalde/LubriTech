@@ -94,6 +94,8 @@ namespace LubriTech.View
             if (workOrder.Vehicle != null)
             {
                 vehicle = workOrder.Vehicle;
+                txtLicensePlate.Enabled = false;
+                txtLicensePlate.Text = workOrder.Vehicle.LicensePlate.ToString();
                 txtMake.Enabled = false;
                 txtMake.Text = workOrder.Vehicle.Model.Make.ToString();
                 txtModel.Enabled = false;
@@ -193,24 +195,28 @@ namespace LubriTech.View
                             {
                                 row.Cells["Descripción"].Value = item.name;
                                 row.Cells["Precio Unitario"].Value = new PriceList_Controller().getPriceByItem(itemCode, client.PriceList.id);
-                                return;
+                                ValidateUpsertWorkOrderLine(rowView);
                             }
+                        }
+                        else
+                        {
+                            ValidateUpsertWorkOrderLine(rowView);
                         }
                         // Verificar si los valores requeridos no son DBNull
-                        bool hasValidValues = rowView["Código Artículo"] != DBNull.Value &&
-                                          rowView["Cantidad"] != DBNull.Value &&
-                                          rowView["Monto"] != DBNull.Value;
+                        //bool hasValidValues = rowView["Código Artículo"] != DBNull.Value &&
+                        //                  rowView["Cantidad"] != DBNull.Value &&
+                        //                  rowView["Monto"] != DBNull.Value;
 
-                        if (hasValidValues)
-                        {
-                            // Hacer el upsert solo si es una fila nueva y tiene todos los valores requeridos
-                            bool success = new WorkOrderLine_Model().UpsertWorkOrderLine(rowView.Row);
-                            if (!success)
-                            {
-                                MessageBox.Show("Failed to save changes.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        UpdateTotalAmount();
+                        //if (hasValidValues)
+                        //{
+                        //    // Hacer el upsert solo si es una fila nueva y tiene todos los valores requeridos
+                        //    bool success = new WorkOrderLine_Model().UpsertWorkOrderLine(rowView.Row);
+                        //    if (!success)
+                        //    {
+                        //        MessageBox.Show("Failed to save changes.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    }
+                        //}
+                        //UpdateTotalAmount();
                     }
                 }
             }
@@ -218,6 +224,30 @@ namespace LubriTech.View
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private bool ValidateUpsertWorkOrderLine(DataRowView rowView)
+        {
+            try
+            {
+                bool hasValidValues = rowView["Código Artículo"] != DBNull.Value &&
+                                          rowView["Cantidad"] != DBNull.Value &&
+                                          rowView["Monto"] != DBNull.Value;
+
+                if (hasValidValues)
+                {
+                    return new WorkOrderLine_Model().UpsertWorkOrderLine(rowView.Row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                UpdateTotalAmount();
+            }
+            return false;
         }
 
         private void UpdateTotalAmount()
@@ -351,9 +381,10 @@ namespace LubriTech.View
                 this.client = selectedClient;
                 txtClientId.Text = selectedClient.Id.ToString();
                 txtClientName.Text = selectedClient.FullName;
-                txtCellphone.Text = selectedClient.MainPhoneNum == null ? "NA" : selectedClient.MainPhoneNum.ToString();
-                txtCellphone2.Text = selectedClient.AdditionalPhoneNum == null ? "NA" : selectedClient.AdditionalPhoneNum.ToString();
+                txtCellphone.Text = selectedClient.MainPhoneNum == null ? "No asignado" : selectedClient.MainPhoneNum.ToString();
+                txtCellphone2.Text = selectedClient.AdditionalPhoneNum == null ? "No asignado" : selectedClient.AdditionalPhoneNum.ToString();
                 txtEmail.Text = selectedClient.Email == null ? "NA" : selectedClient.Email;
+                txtLicensePlate.Text = "";
                 txtMake.Text = "";
                 txtModel.Text = "";
                 txtMileage.Text = "";
@@ -409,7 +440,8 @@ namespace LubriTech.View
         {
             if (vehicle != null)
             {
-                txtMake.Text = vehicle.Model.Make.ToString();
+                txtLicensePlate.Text = vehicle.LicensePlate.ToString();
+                txtMake.Text = vehicle.Model.Make.Name.ToString();
                 txtModel.Text = vehicle.Model.ToString() + " " + vehicle.Year;
                 txtMileage.Text = vehicle.Mileage.ToString();
             }
