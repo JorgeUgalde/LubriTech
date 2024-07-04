@@ -14,6 +14,7 @@ using System.Runtime.InteropServices;
 using LubriTech.View.Appointment_View;
 using LubriTech.Model.InventoryManagment_Information;
 using System.Reflection;
+using LubriTech.Model.Branch_Information;
 
 namespace LubriTech.View
 {
@@ -29,6 +30,7 @@ namespace LubriTech.View
             items = new List<Item>();
             InitializeComponent();
             load_Items(null);
+            load_Branches();
         }
 
         public frmItems(Form parentForm)
@@ -37,8 +39,18 @@ namespace LubriTech.View
             this.parentForm = parentForm;
             InitializeComponent();
             load_Items(null);
+            load_Branches();
         }
 
+        private void load_Branches()
+        {
+            List<Branch> branches = new Branch_Controller().getAll();
+            cbBranch.DataSource = branches;
+            cbBranch.DisplayMember = "Name";
+            cbBranch.ValueMember = "Id";
+            cbBranch.SelectedValue = frmLogin.branch;
+        }
+      
         private void frmItems_Load(object sender, EventArgs e)
         {
             txtFilter.TextChanged += new EventHandler(txtFilter_TextChanged);
@@ -157,7 +169,7 @@ namespace LubriTech.View
                     }
                     else
                     {
-                        frmInsertUpdate_Item frmInsertUpdateItem = new frmInsertUpdate_Item(selectedItem);
+                        frmInsertUpdate_Item frmInsertUpdateItem = new frmInsertUpdate_Item(selectedItem, (int)cbBranch.SelectedValue);
                         frmInsertUpdateItem.MdiParent = this.MdiParent;
                         frmInsertUpdateItem.DataChanged += ChildFormDataChangedHandler;
                         frmInsertUpdateItem.Show();
@@ -203,7 +215,6 @@ namespace LubriTech.View
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
-
 
     }
 }

@@ -167,6 +167,14 @@ namespace LubriTech.Model.PricesList_Information
                 //check if the item is already in the general list
                 Prices prices = generalList.prices.Find(x => x.Item.code == item.code);
 
+                if (fact < 0)
+                {
+                    if (prices != null)
+                    {
+                        fact = Convert.ToDouble(prices.factor);
+                    }           
+                }
+
                 string query = "INSERT INTO EstablecePrecio" +
                     " (IdentificacionListaPrecios, CodigoArticulo, Factor,  PrecioVenta) " +
                     "VALUES (@id, @code, @fact,  @price)";
@@ -182,7 +190,7 @@ namespace LubriTech.Model.PricesList_Information
                 SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@id", generalList.id);
                     cmd.Parameters.AddWithValue("@code", item.code);
-                    cmd.Parameters.AddWithValue("@fact", fact);
+                    cmd.Parameters.AddWithValue("@fact", fact);                
                     cmd.Parameters.AddWithValue("@price", item.purchasePrice + (fact * item.purchasePrice));
 
                 if (conn.State != System.Data.ConnectionState.Open)

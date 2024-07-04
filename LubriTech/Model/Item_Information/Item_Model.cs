@@ -73,20 +73,25 @@ namespace LubriTech.Model.items_Information
             }
         }
 
-        private double getItemStock(string itemCode,  int branch)
+        public double getItemStock(string itemCode,  int branch)
         {
             try
             {
                 string selectQuery = "select CantidadAlmacen from SeAlmacena where CodigoArticulo = @item and IdentificacionSucursal = @branch";
                 SqlCommand cmd = new SqlCommand(selectQuery, conn);
                 cmd.Parameters.AddWithValue("@item", itemCode);
-                cmd.Parameters.AddWithValue("@branch", 1);
+                cmd.Parameters.AddWithValue("@branch", branch);
 
                 DataTable tblitems = new DataTable();
                 SqlDataAdapter adp = new SqlDataAdapter();
                 adp.SelectCommand = cmd;
 
                 adp.Fill(tblitems);
+                // verify if there is a row
+                if (tblitems.Rows.Count == 0)
+                {
+                    return 0;
+                }
                 DataRow dr = tblitems.Rows[0];
 
                 return Convert.ToDouble(dr["CantidadAlmacen"]);
@@ -195,8 +200,7 @@ namespace LubriTech.Model.items_Information
                 }
 
                 cmd.ExecuteNonQuery();
-                
-                new PriceList_Model().insertInLists( items , fact);
+                new PriceList_Model().insertInLists(items, fact);
                 
                 return true;
             }

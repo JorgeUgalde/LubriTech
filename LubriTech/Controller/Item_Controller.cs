@@ -43,6 +43,11 @@ namespace LubriTech.Controller
         {
             return new Item_Model().UpSertItem(item, fact);
         }
-    
+
+        public double getItemStock(string code, int branch)
+        {
+            return new Item_Model().getItemStock(code, branch);
+        }
+
     }
 }

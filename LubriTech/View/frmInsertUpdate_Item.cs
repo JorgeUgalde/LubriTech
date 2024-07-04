@@ -1,4 +1,5 @@
 using LubriTech.Controller;
+using LubriTech.Model.Branch_Information;
 using LubriTech.Model.Item_Information;
 using System;
 using System.Collections.Generic;
@@ -22,17 +23,24 @@ namespace LubriTech.View
             InitializeComponent();
             load_ItemTypes();
             cbState.SelectedIndex = 0;
-
-
+            tbStock.Visible = false;
+            lblStock.Visible = false;
 
             globalItem = new Item();
         }
 
-        public frmInsertUpdate_Item(Item item)
+        public frmInsertUpdate_Item(Item item, int branchId)
         {
 
             InitializeComponent();
             load_ItemTypes();
+
+            tbStock.Text = new Item_Controller().getItemStock(item.code, branchId).ToString();
+
+            tbStock.Enabled = false;
+            txtFact.Visible = false;
+            lblSellPrice.Visible = false;
+            lblPercentage.Visible = false;
 
             this.globalItem = item;
             txtCode.Enabled = false;
@@ -64,14 +72,17 @@ namespace LubriTech.View
 
         private void btnConfirm_Click_1(object sender, EventArgs e)
         {
+            if (txtFact.Visible == true && txtFact.Text.Trim() == "" )
+            {
+                MessageBox.Show("Debe llenar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             
             if (txtCode.Text.Trim() == "" ||
                txtName.Text.Trim() == "" ||
                cbMeasureUnit.Text.Trim() == "" ||
                cbState.Text.Trim() == "" ||
-               tbStock.Text.Trim() == "" ||
                tbPurchasePrice.Text.Trim() == "" ||
-               txtFact.Text.Trim() == "" ||
                cbType.Text.Trim() == "")
 
             {
@@ -101,7 +112,13 @@ namespace LubriTech.View
             globalItem.state = cbState.Text;
             globalItem.itemType = (ItemType)cbType.SelectedItem;
 
-            Double fact = Convert.ToDouble(txtFact.Text) / 100;
+            Double fact = -1;
+
+            if (txtFact.Visible == true)
+            {
+                fact = Convert.ToDouble(txtFact.Text) / 100;
+            }
+
 
             if (new Item_Controller().UpSert(globalItem, fact))
             {
@@ -135,11 +152,6 @@ namespace LubriTech.View
             // only numbers and backspace
             e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
 
-        }
-
-        private void txtCode_TextChanged(object sender, EventArgs e)
-        {
-            lblCode2.Visible = false;
         }
 
         private void txtRecommended_KeyPress(object sender, KeyPressEventArgs e)
