@@ -186,24 +186,6 @@ namespace LubriTech.Model.InventoryManagment_Information
         {
             try
             {
-                //string query = "INSERT INTO GestionInventario (FechaDocumento, IdentificacionProveedor, Estado, MontoTotal, IdentificacionSucursal, TipoDocumento) VALUES (@documentDate, @supplierId, @state, @totalAmount, @branchId, @documentType)";
-                //SqlCommand cmd = new SqlCommand(query, conn);
-                //cmd.Parameters.AddWithValue("@documentDate", inventoryManagment.DocumentDate);
-                //cmd.Parameters.AddWithValue("@supplierId", inventoryManagment.getSupplierId());
-                //cmd.Parameters.AddWithValue("@state", (inventoryManagment.State.Equals("Activo")) ? 1 : 0);
-                //cmd.Parameters.AddWithValue("@totalAmount", inventoryManagment.TotalAmount);
-                //cmd.Parameters.AddWithValue("@branchId", inventoryManagment.getBranchId());
-                //cmd.Parameters.AddWithValue("@documentType", inventoryManagment.DocumentType);
-
-
-                //if (conn.State != System.Data.ConnectionState.Open)
-                //{
-                //    conn.Open();
-                //}
-
-                //cmd.ExecuteNonQuery();
-
-
                 string query = "INSERT INTO GestionInventario (FechaDocumento, IdentificacionProveedor, Estado, MontoTotal, IdentificacionSucursal, TipoDocumento) VALUES (@documentDate, @supplierId, @state, @totalAmount, @branchId, @documentType);\n" +
                     "SELECT SCOPE_IDENTITY() AS NewId;";
                 SqlCommand cmd = new SqlCommand(query, conn);
@@ -236,6 +218,41 @@ namespace LubriTech.Model.InventoryManagment_Information
             {
                 MessageBox.Show("Error: " + ex.Message);
                 return -1;
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Deletes an inventory managment in the databse.
+        /// </summary>
+        /// <param name="inventoryManagmentId">Identification of the inventory managment document to delete.</param>
+        /// <returns>True if the operation was succeful, otherwise, false.</returns>
+        public Boolean deleteInventoryManagment(int inventoryManagmentId)
+        {
+            try
+            {
+                string deleteQuery = "DELETE FROM GestionInventario WHERE Identificacion = @id";
+                SqlCommand cmd = new SqlCommand(deleteQuery, conn);
+                cmd.Parameters.AddWithValue("@id", inventoryManagmentId);
+
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                cmd.ExecuteNonQuery();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
             finally
             {

@@ -49,12 +49,12 @@ namespace LubriTech.View
             this.btnWorkOrders = new System.Windows.Forms.Button();
             this.btnAppointments = new System.Windows.Forms.Button();
             this.panelClientsSubmenu = new System.Windows.Forms.Panel();
-            this.btnVehicleMasterData = new System.Windows.Forms.Button();
             this.btnClientMasterData = new System.Windows.Forms.Button();
-            this.btnClients = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnVehicleMasterData = new System.Windows.Forms.Button();
+            this.btnClients = new System.Windows.Forms.Button();
             this.btnItemTypes = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelParametersSubmenu.SuspendLayout();
@@ -469,18 +469,17 @@ namespace LubriTech.View
             // 
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.MaximumSize = new System.Drawing.Size(311, 55);
+            this.label1.MaximumSize = new System.Drawing.Size(233, 45);
             this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.label1.Size = new System.Drawing.Size(311, 55);
+            this.label1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label1.Size = new System.Drawing.Size(233, 45);
             this.label1.TabIndex = 9;
             this.label1.Text = "Lubricentro Santa Teresita";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
             // 
@@ -488,8 +487,9 @@ namespace LubriTech.View
             this.pictureBox1.Image = global::LubriTech.Properties.Resources.menu1;
             this.pictureBox1.Location = new System.Drawing.Point(393, 12);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(260, 10);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(53, 49);
+            this.pictureBox1.Size = new System.Drawing.Size(40, 40);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
@@ -515,11 +515,11 @@ namespace LubriTech.View
             // 
             // MDI_View
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(925, 1055);
+            this.ClientSize = new System.Drawing.Size(694, 857);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panelMenu);
             this.DoubleBuffered = true;

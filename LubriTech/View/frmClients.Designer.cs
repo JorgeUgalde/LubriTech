@@ -203,9 +203,9 @@ namespace LubriTech.View
             this.panelBorder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelBorder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            this.panelBorder.Controls.Add(this.lblForm);
             this.panelBorder.Controls.Add(this.pbMaximize);
             this.panelBorder.Controls.Add(this.pbClose);
+            this.panelBorder.Controls.Add(this.lblForm);
             this.panelBorder.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panelBorder.Location = new System.Drawing.Point(0, 0);
             this.panelBorder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -259,8 +259,8 @@ namespace LubriTech.View
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.ClientSize = new System.Drawing.Size(1073, 646);
             this.ControlBox = false;
-            this.Controls.Add(this.panelBorder);
             this.Controls.Add(this.panelControlBox);
+            this.Controls.Add(this.panelBorder);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

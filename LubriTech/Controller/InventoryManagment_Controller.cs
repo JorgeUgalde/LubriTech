@@ -46,5 +46,15 @@ namespace LubriTech.Controller
         {
             return new InventoryManagment_Model().getInventoryManagment(id);
         }
+
+        /// <summary>
+        /// Deletes an inventory managment by its id.
+        /// </summary>
+        /// <param name="id">Identification of the inventory managment document.</param>
+        /// <returns>True if the operation was succesful, otherwise, false.</returns>
+        public Boolean delete(int id)
+        {
+            return new InventoryManagment_Model().deleteInventoryManagment(id);
+        }
     }
 }

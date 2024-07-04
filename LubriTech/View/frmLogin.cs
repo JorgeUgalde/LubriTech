@@ -118,5 +118,18 @@ namespace LubriTech
         {
 
         }
+
+        private void lblAdd_Click(object sender, EventArgs e)
+        {
+            int mode = 0;
+            frmInsertUpdateUser frmInsert_User = new frmInsertUpdateUser(mode);
+            frmInsert_User.Show();
+        }
+
+        private void lblRecoverPassword_Click(object sender, EventArgs e)
+        {
+            frmResetPassword frmResetPassword = new frmResetPassword();
+            frmResetPassword.Show();
+        }
     }
 }

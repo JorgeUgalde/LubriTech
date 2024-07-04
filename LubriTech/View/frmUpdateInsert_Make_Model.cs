@@ -36,11 +36,11 @@ namespace LubriTech.View
                 lblMake.Visible = false;
                 cbMakes.Visible = false;
 
-                Point point = cbState.Location;
-                point.Y += 70;
-                btnConfirm.Location = point;
-                btnClose.Location = new Point(point.X, point.Y += 70);
-                this.Size = new Size(this.MaximumSize.Width, this.MaximumSize.Height - 98);
+                //Point point = cbState.Location;
+                //point.Y += 70;
+                //btnConfirm.Location = point;
+                //btnClose.Location = new Point(point.X, point.Y += 70);
+                //this.Size = new Size(this.MaximumSize.Width, this.MaximumSize.Height - 98);
             }
             else
             {
@@ -67,27 +67,7 @@ namespace LubriTech.View
             txtName.Text = make.Name;
             cbState.SelectedIndex = cbState.FindStringExact(make.State);
 
-            if (action == "Details")
-            {          
-                btnConfirm.Visible = false;
-
-                txtName.Enabled = false;
-                cbState.Enabled = false;
-                cbMakes.Enabled = false;
-
-                Point point = cbState.Location;
-                point.Y += 70;
-                btnClose.Location = point;
-                this.Size = MinimumSize;
-            } else
-            {
-                Point point = cbState.Location;
-                point.Y += 70;
-                btnConfirm.Location = point;
-                btnClose.Location = new Point(point.X, point.Y += 70);
-                this.Size = new Size(this.MaximumSize.Width, this.MaximumSize.Height - 98);
-
-            }
+            
 
         }
 
@@ -104,19 +84,7 @@ namespace LubriTech.View
             cbState.SelectedIndex = cbState.FindStringExact(carModel.State);
             cbMakes.SelectedIndex = cbMakes.FindStringExact(carModel.Make.Name);
 
-            if (action == "Details")
-            {
-                btnConfirm.Visible = false;
-
-                txtName.Enabled = false;
-                cbState.Enabled = false;
-                cbMakes.Enabled = false;
-
-                Point point = cbMakes.Location;
-                point.Y += 70;
-                btnClose.Location = point;
-                this.Size = new Size(this.MaximumSize.Width, this.MaximumSize.Height - 49);
-            }
+            
             
 
         }
