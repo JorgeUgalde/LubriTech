@@ -236,6 +236,18 @@ namespace LubriTech.View
             cbBranch.ValueMember = "Id";
             cbBranch.DisplayMember = "Name";
             cbBranch.SelectedIndex = -1;
+
+            List<int> years = new List<int>();
+            int currentYear = DateTime.Now.Year - 10;
+
+            for (int i = 0; i <= 10; i++)
+            {
+                years.Add(currentYear);
+                currentYear += 1;
+            }
+
+            cbYear.DataSource = years;
+            cbYear.SelectedIndex = -1;
         }
 
         private void btnSelectSupplier_Click(object sender, EventArgs e)
