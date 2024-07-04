@@ -1,4 +1,5 @@
-﻿using LubriTech.Model.Supplier_Information;
+﻿using LubriTech.Model.Client_Information;
+using LubriTech.Model.Supplier_Information;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,7 @@ namespace LubriTech.Controller
         /// <returns>Proveedor encontrado, o null si no se encuentra.</returns>
         public Supplier GetSupplier(string id)
         {
+            //await Task.Delay(100);
             return new Supplier_Model().getSupplier(id);
         }
 

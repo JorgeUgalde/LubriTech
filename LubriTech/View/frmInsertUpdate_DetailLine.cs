@@ -28,7 +28,7 @@ namespace LubriTech.View
         {
             InitializeComponent();
             detailLine.InventoryManagment = new InventoryManagment_Controller().getInventoryManagment(inventoryManagmentId);
-            tbItem.Enabled = false;
+            tbItemName.Enabled = false;
             tbAmount.Enabled = false;
         }
 
@@ -61,8 +61,8 @@ namespace LubriTech.View
         {
             if (item != null)
             {
-                tbItem.Text = item.name;
-                tbItemId.Text = item.code;
+                tbItemName.Text = item.name;
+                tbItemCode.Text = item.code;
             }
 
 
@@ -75,12 +75,12 @@ namespace LubriTech.View
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (tbItemId.Text.Trim() == ""
+            if (tbItemCode.Text.Trim() == ""
                 || tbQuantity.Text.Trim() == "")
             {
                 MessageBox.Show("Por favor llene todos los campos");
             }
-            else if (tbItem.Text.Trim() == "")
+            else if (tbItemName.Text.Trim() == "")
             {
                 MessageBox.Show("Debe seleccionar un artículo");
             }
@@ -88,7 +88,7 @@ namespace LubriTech.View
             {
                 DetailLine_Controller detailLineController = new DetailLine_Controller();
 
-                detailLine.Item = new Item_Controller().get(tbItemId.Text.Trim());
+                detailLine.Item = new Item_Controller().get(tbItemCode.Text.Trim());
                 detailLine.Quantity = Convert.ToInt32(tbQuantity.Text.Trim());
                 detailLine.Amount = Convert.ToDouble(tbAmount.Text.Trim());
 
@@ -106,14 +106,38 @@ namespace LubriTech.View
 
         private void tbQuantity_TextChanged(object sender, EventArgs e)
         {
-            if (tbQuantity.Text.Trim() != "" && tbItem.Text.Trim() != "")
+            if (tbQuantity.Text.Trim() != "" && tbItemName.Text.Trim() != "")
             {
-                double calc = (Convert.ToDouble(tbQuantity.Text.ToString().Trim()) * (new Item_Controller().get(tbItemId.Text.Trim()).purchasePrice));
+                double calc = (Convert.ToDouble(tbQuantity.Text.ToString().Trim()) * (new Item_Controller().get(tbItemCode.Text.Trim()).purchasePrice));
                 tbAmount.Text = calc.ToString();
             }
             if (tbQuantity.Text.Trim() == "")
             {
                 tbAmount.Text = "";
+            }
+        }
+
+        private void tbItemId_TextChanged(object sender, EventArgs e)
+        {
+            string code = tbItemCode.Text;
+
+            if (code.Length >= 3)
+            {
+                Item item = new Item_Controller().get(code);
+
+                if (item != null)
+                {
+                    SelectItem(item);
+                }
+            }
+        }
+
+        public void SelectItem(Item item)
+        {
+            if (item != null)
+            {
+                tbItemName.Text = item.name;
+                tbItemCode.Text = item.code;
             }
         }
     }
