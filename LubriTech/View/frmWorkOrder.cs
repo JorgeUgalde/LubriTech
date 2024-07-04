@@ -2,6 +2,7 @@
 using LubriTech.Model.Branch_Information;
 using LubriTech.Model.Client_Information;
 using LubriTech.Model.Item_Information;
+using LubriTech.Model.items_Information;
 using LubriTech.Model.Vehicle_Information;
 using LubriTech.Model.WorkOrder_Information;
 using System;
@@ -11,6 +12,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +21,13 @@ namespace LubriTech.View
 {
     public partial class frmWorkOrder : Form
     {
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
         private int? workOrderId; // Nullable int to store the work order ID
         Work_Order_Controller workOrderController = new Work_Order_Controller();
         Client client = new Client();
@@ -45,98 +54,6 @@ namespace LubriTech.View
                 // Initialize a new work order
                 InitializeNewWorkOrder();
             }
-        }
-
-        private void InitializeTabControl()
-        {
-            // Crear TabControl
-            TabControl tabControl = new TabControl();
-            tabControl.Size = this.Size;
-            tabControl.Dock = DockStyle.Fill;
-
-            // Crear pestaña de contenido
-            TabPage tabContent = new TabPage("Contenido");
-            tabContent.Controls.Add(CreateContentPanel());
-
-            // Crear pestaña de observaciones
-            TabPage tabObservations = new TabPage("Observaciones");
-            tabObservations.Controls.Add(CreateObservationsPanel());
-
-            // Agregar pestañas al TabControl
-            tabControl.TabPages.Add(tabContent);
-            tabControl.TabPages.Add(tabObservations);
-
-            // Agregar TabControl al formulario
-            this.Controls.Add(tabControl);
-        }
-
-        private Panel CreateContentPanel()
-        {
-            Panel panel = new Panel();
-            panel.AutoSize = true;
-            panel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-
-            //panel.Dock = DockStyle.Fill;
-
-            // Agregar controles actuales de contenido al panel
-            panel.Controls.Add(lblBranch);
-            panel.Controls.Add(cbBranch);
-            panel.Controls.Add(lblDate);
-            panel.Controls.Add(dateTimePicker);
-            panel.Controls.Add(lblState);
-            panel.Controls.Add(cbState);
-
-            panel.Controls.Add(lblClient);
-            panel.Controls.Add(btnSelectClient);
-            panel.Controls.Add(lblClientId);
-            panel.Controls.Add(txtClientId);
-            panel.Controls.Add(lblClientName);
-            panel.Controls.Add(txtClientName);
-            panel.Controls.Add(lblMainPhone);
-            panel.Controls.Add(txtCellphone);
-            panel.Controls.Add(lblAddPhone);
-            panel.Controls.Add(txtCellphone2);
-            panel.Controls.Add(lblEmail);
-            panel.Controls.Add(txtEmail);
-
-            panel.Controls.Add(lblVehicle);
-            panel.Controls.Add(btnAddVehicle);
-            panel.Controls.Add(lblMake);
-            panel.Controls.Add(txtMake);
-            panel.Controls.Add(lblModel);
-            panel.Controls.Add(txtModel);
-            panel.Controls.Add(lblMileage);
-            panel.Controls.Add(txtMileage);
-            panel.Controls.Add(lblCurrentMileage);
-            panel.Controls.Add(txtCurrentMileage);
-
-            panel.Controls.Add(lblDetails);
-            panel.Controls.Add(dataGridView1);
-            panel.Controls.Add(lblTotalAmount);
-            panel.Controls.Add(txtTotalAmount);
-
-            return panel;
-        }
-
-        private Panel CreateObservationsPanel()
-        {
-            Panel panel = new Panel();
-            panel.Dock = DockStyle.Fill;
-
-            // Agregar TextBox para la descripción de observaciones
-            TextBox txtObservations = new TextBox();
-            txtObservations.Multiline = true;
-            txtObservations.Dock = DockStyle.Top;
-            txtObservations.Height = 100;
-            panel.Controls.Add(txtObservations);
-
-            // Agregar ListView o DataGridView para la lista de imágenes
-            ListView listViewImages = new ListView();
-            //listViewImages.View = View;
-            listViewImages.Dock = DockStyle.Fill;
-            panel.Controls.Add(listViewImages);
-
-            return panel;
         }
 
         private void LoadWorkOrderData(WorkOrder workOrder)
@@ -177,6 +94,8 @@ namespace LubriTech.View
             if (workOrder.Vehicle != null)
             {
                 vehicle = workOrder.Vehicle;
+                txtLicensePlate.Enabled = false;
+                txtLicensePlate.Text = workOrder.Vehicle.LicensePlate.ToString();
                 txtMake.Enabled = false;
                 txtMake.Text = workOrder.Vehicle.Model.Make.ToString();
                 txtModel.Enabled = false;
@@ -248,6 +167,7 @@ namespace LubriTech.View
         private void loadWorkOrderLines(int workOrderId)
         {
             dataGridView1.DataSource = new WorkOrderLine_Model().LoadWorkOrderLinesDT(workOrderId);
+            dataGridView1.Columns["Identificacion"].Visible = false;
         }
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -261,21 +181,42 @@ namespace LubriTech.View
 
                     if (rowView != null)
                     {
-                        // Verificar si los valores requeridos no son DBNull
-                        bool hasValidValues = rowView["CodigoArticulo"] != DBNull.Value &&
-                                          rowView["Cantidad"] != DBNull.Value &&
-                                          rowView["Monto"] != DBNull.Value;
-
-                        if (hasValidValues)
+                        // Verificar si la columna modificada es la de CodigoArticulo
+                        if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Código Artículo")
                         {
-                            // Hacer el upsert solo si es una fila nueva y tiene todos los valores requeridos
-                            bool success = new WorkOrderLine_Model().UpsertWorkOrderLine(rowView.Row);
-                            if (!success)
+                            // Obtener el código del artículo
+                            string itemCode = rowView["Código Artículo"].ToString();
+
+                            // Obtener el artículo desde la base de datos
+                            Item item = new Item_Model().getItem(itemCode);
+
+                            // Asignar los valores del artículo a la fila actual
+                            if (item != null)
                             {
-                                MessageBox.Show("Failed to save changes.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                row.Cells["Descripción"].Value = item.name;
+                                row.Cells["Precio Unitario"].Value = new PriceList_Controller().getPriceByItem(itemCode, client.PriceList.id);
+                                ValidateUpsertWorkOrderLine(rowView);
                             }
                         }
-                        UpdateTotalAmount();
+                        else
+                        {
+                            ValidateUpsertWorkOrderLine(rowView);
+                        }
+                        // Verificar si los valores requeridos no son DBNull
+                        //bool hasValidValues = rowView["Código Artículo"] != DBNull.Value &&
+                        //                  rowView["Cantidad"] != DBNull.Value &&
+                        //                  rowView["Monto"] != DBNull.Value;
+
+                        //if (hasValidValues)
+                        //{
+                        //    // Hacer el upsert solo si es una fila nueva y tiene todos los valores requeridos
+                        //    bool success = new WorkOrderLine_Model().UpsertWorkOrderLine(rowView.Row);
+                        //    if (!success)
+                        //    {
+                        //        MessageBox.Show("Failed to save changes.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //    }
+                        //}
+                        //UpdateTotalAmount();
                     }
                 }
             }
@@ -283,6 +224,30 @@ namespace LubriTech.View
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private bool ValidateUpsertWorkOrderLine(DataRowView rowView)
+        {
+            try
+            {
+                bool hasValidValues = rowView["Código Artículo"] != DBNull.Value &&
+                                          rowView["Cantidad"] != DBNull.Value &&
+                                          rowView["Monto"] != DBNull.Value;
+
+                if (hasValidValues)
+                {
+                    return new WorkOrderLine_Model().UpsertWorkOrderLine(rowView.Row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                UpdateTotalAmount();
+            }
+            return false;
         }
 
         private void UpdateTotalAmount()
@@ -343,13 +308,15 @@ namespace LubriTech.View
                 DataGridViewRow row = dataGridView1.Rows[rowIndex];
 
                 // Asignar los valores del artículo seleccionado a la fila actual
-                row.Cells["CodigoArticulo"].Value = item.code;
+                row.Cells["Código Artículo"].Value = item.code;
+                row.Cells["Descripción"].Value = item.name;
+                row.Cells["Precio Unitario"].Value = new PriceList_Controller().getPriceByItem(item.code,client.PriceList.id);
             }
         }
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.ColumnIndex == dataGridView1.Columns["CodigoArticulo"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dataGridView1.Columns["Código Artículo"].Index && e.RowIndex >= 0)
             {
                 //Validate if the cell already has a button
                 if (e.Value != null && e.Value.ToString() == "...")
@@ -383,7 +350,7 @@ namespace LubriTech.View
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dataGridView1.Columns["CodigoArticulo"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dataGridView1.Columns["Código Artículo"].Index && e.RowIndex >= 0)
             {
                 // Verificar si el clic ocurrió en el botón
                 var rect = dataGridView1.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
@@ -414,9 +381,10 @@ namespace LubriTech.View
                 this.client = selectedClient;
                 txtClientId.Text = selectedClient.Id.ToString();
                 txtClientName.Text = selectedClient.FullName;
-                txtCellphone.Text = selectedClient.MainPhoneNum == null ? "NA" : selectedClient.MainPhoneNum.ToString();
-                txtCellphone2.Text = selectedClient.AdditionalPhoneNum == null ? "NA" : selectedClient.AdditionalPhoneNum.ToString();
+                txtCellphone.Text = selectedClient.MainPhoneNum == null ? "No asignado" : selectedClient.MainPhoneNum.ToString();
+                txtCellphone2.Text = selectedClient.AdditionalPhoneNum == null ? "No asignado" : selectedClient.AdditionalPhoneNum.ToString();
                 txtEmail.Text = selectedClient.Email == null ? "NA" : selectedClient.Email;
+                txtLicensePlate.Text = "";
                 txtMake.Text = "";
                 txtModel.Text = "";
                 txtMileage.Text = "";
@@ -472,7 +440,8 @@ namespace LubriTech.View
         {
             if (vehicle != null)
             {
-                txtMake.Text = vehicle.Model.Make.ToString();
+                txtLicensePlate.Text = vehicle.LicensePlate.ToString();
+                txtMake.Text = vehicle.Model.Make.Name.ToString();
                 txtModel.Text = vehicle.Model.ToString() + " " + vehicle.Year;
                 txtMileage.Text = vehicle.Mileage.ToString();
             }

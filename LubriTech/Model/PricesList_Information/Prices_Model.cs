@@ -38,6 +38,27 @@ namespace LubriTech.Model.PricesList_Information
             return dt;
         }
 
+        public decimal getPriceByItem(string itemCode, int priceListId)
+        {
+            decimal price = 0;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("SELECT PrecioVenta FROM EstablecePrecio WHERE CodigoArticulo = @itemCode AND IdentificacionListaPrecios = @priceListId", conn))
+                {
+                    cmd.Parameters.AddWithValue("@itemCode", itemCode);
+                    cmd.Parameters.AddWithValue("@priceListId", priceListId);
+                    conn.Open();
+                    price = (decimal)cmd.ExecuteScalar();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+            return price;
+        }
+
         //get all prices from a price list and return a list
         public List<Prices> getPricesByPriceList(int priceListId)
         {

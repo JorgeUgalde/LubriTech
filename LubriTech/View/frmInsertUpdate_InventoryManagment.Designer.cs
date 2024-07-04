@@ -206,7 +206,8 @@
             this.cbState.FormattingEnabled = true;
             this.cbState.Items.AddRange(new object[] {
             "Activo",
-            "Inactivo"});
+            "Inactivo",
+            "Finalizado"});
             this.cbState.Location = new System.Drawing.Point(536, 137);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(120, 29);
@@ -272,6 +273,7 @@
             this.dgvDetailLines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDetailLines.Size = new System.Drawing.Size(756, 229);
             this.dgvDetailLines.TabIndex = 56;
+            this.dgvDetailLines.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDetailLines_CellMouseDoubleClick);
             // 
             // cbMonth
             // 

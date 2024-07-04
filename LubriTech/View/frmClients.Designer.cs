@@ -196,7 +196,6 @@ namespace LubriTech.View
             this.btnAddClient.TabIndex = 3;
             this.btnAddClient.Text = "Aceptar";
             this.btnAddClient.UseVisualStyleBackColor = false;
-            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
             // 
             // panelBorder
             // 

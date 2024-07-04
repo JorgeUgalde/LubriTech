@@ -45,5 +45,10 @@ namespace LubriTech.Controller
         {
             return new Prices_Model().deletePrice(id);
         }
+
+        public decimal getPriceByItem(string itemCode, int priceListId)
+        {
+            return new Prices_Model().getPriceByItem(itemCode, priceListId);
+        }
     }
 }
