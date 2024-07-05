@@ -54,7 +54,7 @@ namespace LubriTech.Model.WorkOrder_Information
             return workOrderLines;
         }
 
-        public DataTable LoadWorkOrderLinesDT(int workOrderId)
+        public DataTable LoadWorkOrderLinesDT(int workOrderId, int priceListId)
         {
             DataTable workOrderLinesTable = new DataTable();
             string selectQuery = "SELECT l.Identificacion," +
@@ -68,13 +68,14 @@ namespace LubriTech.Model.WorkOrder_Information
                 "\r\nINNER JOIN Articulo as a ON l.CodigoArticulo = a.Codigo" +
                 "\r\nINNER JOIN EstablecePrecio as ep ON ep.CodigoArticulo = a.Codigo" +
                 "\r\nINNER JOIN ListaPrecios as lp ON ep.IdentificacionListaPrecios = lp.Identificacion" +
-                "\r\nWHERE IdentificacionOrdenTrabajo = @workOrderId AND lp.Identificacion = 1";
+                "\r\nWHERE IdentificacionOrdenTrabajo = @workOrderId AND lp.Identificacion = @priceListId";
 
             try
             {
                 using (SqlCommand cmd = new SqlCommand(selectQuery, conn))
                 {
                     cmd.Parameters.AddWithValue("@workOrderId", workOrderId);
+                    cmd.Parameters.AddWithValue("@priceListId", priceListId);
                     conn.Open();
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -98,23 +99,15 @@ namespace LubriTech.Model.WorkOrder_Information
         public bool UpsertWorkOrderLine(DataRow row)
         {
             string upsertQuery = @"
-            MERGE INTO LineaOrdenTrabajo AS target
-            USING (SELECT @Id AS Id, @IdentificacionOrdenTrabajo AS IdentificacionOrdenTrabajo, @CodigoArticulo AS CodigoArticulo, @Cantidad AS Cantidad, @Monto AS Monto) AS source
-            ON (target.Identificacion = source.Id)
-            WHEN MATCHED THEN 
-                UPDATE SET IdentificacionOrdenTrabajo = source.IdentificacionOrdenTrabajo, CodigoArticulo = source.CodigoArticulo, Cantidad = source.Cantidad, Monto = source.Monto
-            WHEN NOT MATCHED THEN
-                INSERT (IdentificacionOrdenTrabajo, CodigoArticulo, Cantidad, Monto)
-                VALUES (source.IdentificacionOrdenTrabajo, source.CodigoArticulo, source.Cantidad, source.Monto);";
+                INSERT INTO LineaOrdenTrabajo(IdentificacionOrdenTrabajo, CodigoArticulo, Cantidad, Monto)
+                VALUES (@IdentificacionOrdenTrabajo, @CodigoArticulo, @Cantidad, @Monto)";
 
-            using (SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString))
-            {
                 try
                 {
                     conn.Open();
                     using (SqlCommand cmd = new SqlCommand(upsertQuery, conn))
                     {
-                        cmd.Parameters.AddWithValue("@Id", row["Identificacion"]);
+                        //cmd.Parameters.AddWithValue("@Id", row["Identificacion"]);
                         cmd.Parameters.AddWithValue("@IdentificacionOrdenTrabajo", row["IdentificacionOrdenTrabajo"]);
                         cmd.Parameters.AddWithValue("@CodigoArticulo", row["Código Artículo"]);
                         cmd.Parameters.AddWithValue("@Cantidad", row["Cantidad"]);
@@ -129,8 +122,36 @@ namespace LubriTech.Model.WorkOrder_Information
                     Console.WriteLine($"Error upserting WorkOrderLine: {ex.Message}");
                     return false; // Operation failed
                 }
+            
+        }
+
+        //consultar si existe una linea de orden de trabajo con un id especifico
+        public bool WorkOrderLineExists(int workOrderLineId)
+        {
+            string selectQuery = "SELECT COUNT(*) FROM LineaOrdenTrabajo WHERE Identificacion = @Id";
+
+            using (SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(selectQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Id", workOrderLineId);
+
+                        int count = (int)cmd.ExecuteScalar();
+                        return count > 0; // Return true if a row was found, otherwise false
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error checking if WorkOrderLine exists: {ex.Message}");
+                    return false; // Return false if an exception occurred
+                }
             }
         }
+
+
 
         public bool DeleteWorkOrderLine(int workOrderLineId)
         {

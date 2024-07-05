@@ -43,7 +43,7 @@ namespace LubriTech.View
                 // Load the existing work order
                 WorkOrder workOrder = workOrderController.LoadWorkOrder(workOrderId.Value);
                 LoadWorkOrderData(workOrder);
-                DataTable workOrderLinesTable = new WorkOrderLine_Model().LoadWorkOrderLinesDT(workOrderId.Value);
+                DataTable workOrderLinesTable = new WorkOrderLine_Model().LoadWorkOrderLinesDT(workOrderId.Value,client.PriceList.id);
                 dataGridView1.DataSource = workOrderLinesTable;
                 UpdateTotalAmount();
                 //dataGridView1.Columns["Identificacion"].Visible = false;
@@ -104,10 +104,10 @@ namespace LubriTech.View
                 txtMileage.Text = workOrder.Vehicle.Mileage.ToString();
                 txtCurrentMileage.Text = workOrder.CurrentMileage.ToString();
             }
-            else
-            {
-                txtMake.Text = "NA";
-            }
+            //else
+            //{
+            //    txtMake.Text = "NA";
+            //}
             loadWorkOrderLines(workOrder.Id);
             UpdateTotalAmount();
         }
@@ -166,8 +166,9 @@ namespace LubriTech.View
 
         private void loadWorkOrderLines(int workOrderId)
         {
-            dataGridView1.DataSource = new WorkOrderLine_Model().LoadWorkOrderLinesDT(workOrderId);
+            dataGridView1.DataSource = new WorkOrderLine_Model().LoadWorkOrderLinesDT(workOrderId, client.PriceList.id);
             dataGridView1.Columns["Identificacion"].Visible = false;
+
         }
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -195,28 +196,18 @@ namespace LubriTech.View
                             {
                                 row.Cells["Descripción"].Value = item.name;
                                 row.Cells["Precio Unitario"].Value = new PriceList_Controller().getPriceByItem(itemCode, client.PriceList.id);
-                                ValidateUpsertWorkOrderLine(rowView);
                             }
                         }
-                        else
+                        else if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Cantidad")
                         {
-                            ValidateUpsertWorkOrderLine(rowView);
+                            row.Cells["Monto"].Value = Convert.ToDecimal(rowView["Cantidad"]) * Convert.ToDecimal(rowView["Precio Unitario"]);
                         }
-                        // Verificar si los valores requeridos no son DBNull
-                        //bool hasValidValues = rowView["Código Artículo"] != DBNull.Value &&
-                        //                  rowView["Cantidad"] != DBNull.Value &&
-                        //                  rowView["Monto"] != DBNull.Value;
 
-                        //if (hasValidValues)
-                        //{
-                        //    // Hacer el upsert solo si es una fila nueva y tiene todos los valores requeridos
-                        //    bool success = new WorkOrderLine_Model().UpsertWorkOrderLine(rowView.Row);
-                        //    if (!success)
-                        //    {
-                        //        MessageBox.Show("Failed to save changes.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //    }
-                        //}
-                        //UpdateTotalAmount();
+                        // Solo validar y actualizar la línea de orden de trabajo si la cantidad y el código de artículo han sido actualizados
+                        if (dataGridView1.Columns[e.ColumnIndex].HeaderText != "Descripción" && dataGridView1.Columns[e.ColumnIndex].HeaderText != "Precio Unitario")
+                        {
+                            ValidateUpsertWorkOrderLine(rowView, row);
+                        }
                     }
                 }
             }
@@ -226,7 +217,7 @@ namespace LubriTech.View
             }
         }
 
-        private bool ValidateUpsertWorkOrderLine(DataRowView rowView)
+        private bool ValidateUpsertWorkOrderLine(DataRowView rowView, DataGridViewRow row)
         {
             try
             {
@@ -236,7 +227,25 @@ namespace LubriTech.View
 
                 if (hasValidValues)
                 {
-                    return new WorkOrderLine_Model().UpsertWorkOrderLine(rowView.Row);
+                    if (row.Cells["Código Artículo"].ReadOnly == true || row.Cells["Descripción"].ReadOnly == true
+                        || row.Cells["Precio Unitario"].ReadOnly == true || row.Cells["Cantidad"].ReadOnly == true
+                        || row.Cells["Cantidad"].ReadOnly == true || row.Cells["Monto"].ReadOnly == true)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        row.Cells["Código Artículo"].ReadOnly = true;
+                        row.Cells["Descripción"].ReadOnly = true;
+                        row.Cells["Precio Unitario"].ReadOnly = true;
+                        row.Cells["Cantidad"].ReadOnly = true;
+                        row.Cells["Monto"].ReadOnly = true;
+                        row.Cells["IdentificacionOrdenTrabajo"].Value = this.workOrderId;
+                        if (new Work_Order_Controller().WorkOrderLineExists((int)row.Cells["Identificacion"].Value) == false)
+                        {
+                            return new WorkOrderLine_Model().UpsertWorkOrderLine(rowView.Row);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -281,8 +290,16 @@ namespace LubriTech.View
 
         private void dataGridView1_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
-            e.Row.Cells["IdentificacionOrdenTrabajo"].Value = workOrderId;
+            //e.Row.Cells["IdentificacionOrdenTrabajo"].Value = workOrderId;
             //e.Row.Cells["IsNewRow"].Value = true;
+
+            // Deshabilitar temporalmente el evento CellValueChanged
+            //dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
+
+            //e.Row.Cells["IdentificacionOrdenTrabajo"].Value = workOrderId;
+
+            //// Rehabilitar el evento CellValueChanged
+            //dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
         }
 
         private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -383,7 +400,7 @@ namespace LubriTech.View
                 txtClientName.Text = selectedClient.FullName;
                 txtCellphone.Text = selectedClient.MainPhoneNum == null ? "No asignado" : selectedClient.MainPhoneNum.ToString();
                 txtCellphone2.Text = selectedClient.AdditionalPhoneNum == null ? "No asignado" : selectedClient.AdditionalPhoneNum.ToString();
-                txtEmail.Text = selectedClient.Email == null ? "NA" : selectedClient.Email;
+                txtEmail.Text = selectedClient.Email == null ? "No asignado" : selectedClient.Email;
                 txtLicensePlate.Text = "";
                 txtMake.Text = "";
                 txtModel.Text = "";

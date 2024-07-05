@@ -67,5 +67,10 @@ namespace LubriTech.Controller
         {
             return new WorkOrder_Model().updateWorkOrder(workOrder);
         }
+
+        public bool WorkOrderLineExists(int workOrderId)
+        {
+            return new WorkOrderLine_Model().WorkOrderLineExists(workOrderId);
+        }
     }
 }
