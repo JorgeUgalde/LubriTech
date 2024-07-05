@@ -279,27 +279,27 @@ namespace LubriTech.View
             DataRowView rowView = e.Row.DataBoundItem as DataRowView;
             if (rowView != null)
             {
-                bool success = new WorkOrderLine_Model().DeleteWorkOrderLine((int)rowView["Identificacion"]);
-                if (!success)
+                int identificacion;
+                if (int.TryParse(rowView["Identificacion"].ToString(), out identificacion))
                 {
-                    MessageBox.Show("Failed to delete row.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    e.Cancel = true; // Cancel the deletion if the delete operation failed
+                    bool success = new WorkOrderLine_Model().DeleteWorkOrderLine(identificacion);
+                    if (!success)
+                    {
+                        MessageBox.Show("Failed to delete row.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        e.Cancel = true; // Cancel the deletion if the delete operation failed
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid row identification.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true; // Cancel the deletion if the identification is invalid
                 }
             }
         }
 
         private void dataGridView1_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
-            //e.Row.Cells["IdentificacionOrdenTrabajo"].Value = workOrderId;
-            //e.Row.Cells["IsNewRow"].Value = true;
-
-            // Deshabilitar temporalmente el evento CellValueChanged
-            //dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
-
-            //e.Row.Cells["IdentificacionOrdenTrabajo"].Value = workOrderId;
-
-            //// Rehabilitar el evento CellValueChanged
-            //dataGridView1.CellValueChanged += dataGridView1_CellValueChanged;
+            e.Row.Cells["IdentificacionOrdenTrabajo"].Value = workOrderId;
         }
 
         private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -320,14 +320,7 @@ namespace LubriTech.View
         {
             if (item != null)
             {
-                // Obtener la fila actualmente seleccionada
-                int rowIndex = dataGridView1.CurrentCell.RowIndex;
-                DataGridViewRow row = dataGridView1.Rows[rowIndex];
-
-                // Asignar los valores del artículo seleccionado a la fila actual
-                row.Cells["Código Artículo"].Value = item.code;
-                row.Cells["Descripción"].Value = item.name;
-                row.Cells["Precio Unitario"].Value = new PriceList_Controller().getPriceByItem(item.code,client.PriceList.id);
+                
             }
         }
 
