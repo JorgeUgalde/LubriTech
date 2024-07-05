@@ -82,7 +82,7 @@
             // 
             this.lblVehicle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblVehicle.AutoSize = true;
-            this.lblVehicle.Location = new System.Drawing.Point(371, 17);
+            this.lblVehicle.Location = new System.Drawing.Point(416, 17);
             this.lblVehicle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblVehicle.Name = "lblVehicle";
             this.lblVehicle.Size = new System.Drawing.Size(50, 13);
@@ -93,7 +93,7 @@
             // 
             this.lblMake.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMake.AutoSize = true;
-            this.lblMake.Location = new System.Drawing.Point(371, 66);
+            this.lblMake.Location = new System.Drawing.Point(416, 66);
             this.lblMake.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMake.Name = "lblMake";
             this.lblMake.Size = new System.Drawing.Size(37, 13);
@@ -104,7 +104,7 @@
             // 
             this.lblModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblModel.AutoSize = true;
-            this.lblModel.Location = new System.Drawing.Point(371, 87);
+            this.lblModel.Location = new System.Drawing.Point(416, 87);
             this.lblModel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblModel.Name = "lblModel";
             this.lblModel.Size = new System.Drawing.Size(42, 13);
@@ -115,7 +115,7 @@
             // 
             this.lblMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMileage.AutoSize = true;
-            this.lblMileage.Location = new System.Drawing.Point(371, 108);
+            this.lblMileage.Location = new System.Drawing.Point(416, 108);
             this.lblMileage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMileage.Name = "lblMileage";
             this.lblMileage.Size = new System.Drawing.Size(58, 13);
@@ -199,7 +199,7 @@
             // lblClientId
             // 
             this.lblClientId.AutoSize = true;
-            this.lblClientId.Location = new System.Drawing.Point(4, 45);
+            this.lblClientId.Location = new System.Drawing.Point(12, 45);
             this.lblClientId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblClientId.Name = "lblClientId";
             this.lblClientId.Size = new System.Drawing.Size(70, 13);
@@ -209,7 +209,7 @@
             // lblClientName
             // 
             this.lblClientName.AutoSize = true;
-            this.lblClientName.Location = new System.Drawing.Point(4, 66);
+            this.lblClientName.Location = new System.Drawing.Point(12, 66);
             this.lblClientName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblClientName.Name = "lblClientName";
             this.lblClientName.Size = new System.Drawing.Size(44, 13);
@@ -227,7 +227,7 @@
             // lblMainPhone
             // 
             this.lblMainPhone.AutoSize = true;
-            this.lblMainPhone.Location = new System.Drawing.Point(4, 87);
+            this.lblMainPhone.Location = new System.Drawing.Point(12, 87);
             this.lblMainPhone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMainPhone.Name = "lblMainPhone";
             this.lblMainPhone.Size = new System.Drawing.Size(89, 13);
@@ -237,7 +237,7 @@
             // lblAddPhone
             // 
             this.lblAddPhone.AutoSize = true;
-            this.lblAddPhone.Location = new System.Drawing.Point(4, 108);
+            this.lblAddPhone.Location = new System.Drawing.Point(12, 108);
             this.lblAddPhone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAddPhone.Name = "lblAddPhone";
             this.lblAddPhone.Size = new System.Drawing.Size(89, 13);
@@ -247,7 +247,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(4, 129);
+            this.lblEmail.Location = new System.Drawing.Point(12, 129);
             this.lblEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(38, 13);
@@ -282,7 +282,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(509, 30);
+            this.label7.Location = new System.Drawing.Point(431, 30);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -293,7 +293,7 @@
             // 
             this.lblState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblState.AutoSize = true;
-            this.lblState.Location = new System.Drawing.Point(507, 30);
+            this.lblState.Location = new System.Drawing.Point(429, 30);
             this.lblState.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(40, 13);
@@ -304,7 +304,7 @@
             // 
             this.lblTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalAmount.AutoSize = true;
-            this.lblTotalAmount.Location = new System.Drawing.Point(371, 324);
+            this.lblTotalAmount.Location = new System.Drawing.Point(416, 364);
             this.lblTotalAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalAmount.Name = "lblTotalAmount";
             this.lblTotalAmount.Size = new System.Drawing.Size(60, 13);
@@ -379,7 +379,7 @@
             // 
             this.lblCurrentMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCurrentMileage.AutoSize = true;
-            this.lblCurrentMileage.Location = new System.Drawing.Point(371, 129);
+            this.lblCurrentMileage.Location = new System.Drawing.Point(416, 129);
             this.lblCurrentMileage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCurrentMileage.Name = "lblCurrentMileage";
             this.lblCurrentMileage.Size = new System.Drawing.Size(88, 13);
@@ -422,7 +422,7 @@
             // lblDetails
             // 
             this.lblDetails.AutoSize = true;
-            this.lblDetails.Location = new System.Drawing.Point(4, 167);
+            this.lblDetails.Location = new System.Drawing.Point(12, 165);
             this.lblDetails.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDetails.Name = "lblDetails";
             this.lblDetails.Size = new System.Drawing.Size(45, 13);
@@ -453,7 +453,7 @@
             // 
             this.lblLicensePlate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLicensePlate.AutoSize = true;
-            this.lblLicensePlate.Location = new System.Drawing.Point(371, 45);
+            this.lblLicensePlate.Location = new System.Drawing.Point(416, 45);
             this.lblLicensePlate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLicensePlate.Name = "lblLicensePlate";
             this.lblLicensePlate.Size = new System.Drawing.Size(34, 13);
@@ -466,7 +466,7 @@
             this.txtLicensePlate.Location = new System.Drawing.Point(437, 42);
             this.txtLicensePlate.Margin = new System.Windows.Forms.Padding(2);
             this.txtLicensePlate.Name = "txtLicensePlate";
-            this.txtLicensePlate.Size = new System.Drawing.Size(127, 20);
+            this.txtLicensePlate.Size = new System.Drawing.Size(168, 20);
             this.txtLicensePlate.TabIndex = 50;
             // 
             // tabControl1
@@ -479,11 +479,12 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(577, 366);
+            this.tabControl1.Size = new System.Drawing.Size(701, 420);
             this.tabControl1.TabIndex = 51;
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.White;
             this.tabPage1.Controls.Add(this.lblDetails);
             this.tabPage1.Controls.Add(this.txtLicensePlate);
             this.tabPage1.Controls.Add(this.txtCurrentMileage);
@@ -519,12 +520,11 @@
             this.tabPage1.Size = new System.Drawing.Size(569, 340);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Contenido";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // lblClient
             // 
             this.lblClient.AutoSize = true;
-            this.lblClient.Location = new System.Drawing.Point(4, 17);
+            this.lblClient.Location = new System.Drawing.Point(12, 17);
             this.lblClient.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblClient.Name = "lblClient";
             this.lblClient.Size = new System.Drawing.Size(39, 13);
@@ -558,7 +558,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(595, 524);
+            this.ClientSize = new System.Drawing.Size(736, 551);
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.cbBranch);
             this.Controls.Add(this.cbState);
@@ -568,7 +568,6 @@
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSaveChanges);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmWorkOrder";
@@ -621,7 +620,6 @@
         private System.Windows.Forms.Button btnSaveChanges;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblDetails;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblLicensePlate;
         private System.Windows.Forms.TextBox txtLicensePlate;
         private System.Windows.Forms.TabControl tabControl1;

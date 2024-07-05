@@ -39,10 +39,15 @@ namespace LubriTech.Controller
         /// </summary>
         /// <param name="item">Item object to update or insert.</param>
         /// <returns>True if the operation was succesful, otherwise false.</returns>
-        public bool UpSert(Item item)
+        public bool UpSert(Item item, double fact)
         {
-            return new Item_Model().UpSertItem(item);
+            return new Item_Model().UpSertItem(item, fact);
         }
-    
+
+        public double getItemStock(string code, int branch)
+        {
+            return new Item_Model().getItemStock(code, branch);
+        }
+
     }
 }

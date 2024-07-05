@@ -57,5 +57,11 @@ namespace LubriTech.Controller
             return new DetailLine_Model().getDetailLinesByInventoryManagment(Id);
 
         }
+
+        public DetailLine getDetailLine(string itemCode, int inventoryManagmentId)
+        {
+            return new DetailLine_Model().getDetailLine(itemCode, inventoryManagmentId);
+
+        }
     }
 }

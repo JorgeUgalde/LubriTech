@@ -42,7 +42,7 @@ namespace LubriTech.Model.InventoryManagment_Information
                     inventoryManagments.Add(new InventoryManagment(Convert.ToInt32(dr["Identificacion"]),
                                                 Convert.ToDateTime(dr["FechaDocumento"].ToString()),
                                                 (new Supplier_Controller().GetSupplier(dr["IdentificacionProveedor"].ToString())),
-                                                ((Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo"),
+                                                ((Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : ((Convert.ToInt32(dr["Estado"]) == 2) ? "Inactivo" : "Finalizado")),
                                                 Convert.ToDouble(dr["MontoTotal"]),
                                                 (new Branch_Controller().get(Convert.ToInt32(dr["IdentificacionSucursal"]))),
                                                 dr["TipoDocumento"].ToString()));
@@ -109,7 +109,7 @@ namespace LubriTech.Model.InventoryManagment_Information
                 InventoryManagment inventoryManagment = new InventoryManagment(Convert.ToInt32(dr["Identificacion"]),
                                                 Convert.ToDateTime(dr["FechaDocumento"].ToString()),
                                                 (new Supplier_Controller().GetSupplier(dr["IdentificacionProveedor"].ToString())),
-                                                ((Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo"),
+                                                ((Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : ((Convert.ToInt32(dr["Estado"]) == 2) ? "Inactivo" : "Finalizado")),
                                                 Convert.ToDouble(dr["MontoTotal"]),
                                                 (new Branch_Controller().get(Convert.ToInt32(dr["IdentificacionSucursal"]))),
                                                 dr["TipoDocumento"].ToString());
@@ -150,7 +150,7 @@ namespace LubriTech.Model.InventoryManagment_Information
                 cmd.Parameters.AddWithValue("@id", inventoryManagment.Id);
                 cmd.Parameters.AddWithValue("@documentDate", inventoryManagment.DocumentDate);
                 cmd.Parameters.AddWithValue("@supplierId", inventoryManagment.getSupplierId());
-                cmd.Parameters.AddWithValue("@state", (inventoryManagment.State.Equals("Activo")) ? 1 : 0);
+                cmd.Parameters.AddWithValue("@state", (inventoryManagment.State.Equals("Activo")) ? 1 : ((inventoryManagment.State.Equals("Inactivo")) ? 2 : 3));
                 cmd.Parameters.AddWithValue("@totalAmount", inventoryManagment.TotalAmount);
                 cmd.Parameters.AddWithValue("@branchId", inventoryManagment.getBranchId());
                 cmd.Parameters.AddWithValue("@documentType", inventoryManagment.DocumentType);
@@ -191,7 +191,7 @@ namespace LubriTech.Model.InventoryManagment_Information
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@documentDate", inventoryManagment.DocumentDate);
                 cmd.Parameters.AddWithValue("@supplierId", inventoryManagment.getSupplierId());
-                cmd.Parameters.AddWithValue("@state", (inventoryManagment.State.Equals("Activo")) ? 1 : 0);
+                cmd.Parameters.AddWithValue("@state", (inventoryManagment.State.Equals("Activo")) ? 1 : ((inventoryManagment.State.Equals("Inactivo")) ? 2 : 3));
                 cmd.Parameters.AddWithValue("@totalAmount", inventoryManagment.TotalAmount);
                 cmd.Parameters.AddWithValue("@branchId", inventoryManagment.getBranchId());
                 cmd.Parameters.AddWithValue("@documentType", inventoryManagment.DocumentType);
@@ -237,7 +237,8 @@ namespace LubriTech.Model.InventoryManagment_Information
         {
             try
             {
-                string deleteQuery = "DELETE FROM GestionInventario WHERE Identificacion = @id";
+                string deleteQuery = "DELETE FROM LineaDetalle WHERE IdentificacionGestionInventario = @id;\n" +
+                    "DELETE FROM GestionInventario WHERE Identificacion = @id;";
                 SqlCommand cmd = new SqlCommand(deleteQuery, conn);
                 cmd.Parameters.AddWithValue("@id", inventoryManagmentId);
 

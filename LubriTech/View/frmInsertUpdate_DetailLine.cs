@@ -17,19 +17,47 @@ namespace LubriTech.View
 {
     public partial class frmInsertUpdate_DetailLine : Form
     {
-        DetailLine detailLine = new DetailLine();
+        private DetailLine detailLine = new DetailLine();
+        private Item selectedItem = null;
 
         public frmInsertUpdate_DetailLine()
         {
             InitializeComponent();
         }
 
-        public frmInsertUpdate_DetailLine(int inventoryManagmentId)
+        public frmInsertUpdate_DetailLine(int inventoryManagmentId, string itemCode)
         {
             InitializeComponent();
-            detailLine.InventoryManagment = new InventoryManagment_Controller().getInventoryManagment(inventoryManagmentId);
-            tbItemName.Enabled = false;
-            tbAmount.Enabled = false;
+            if (itemCode != "")
+            {
+                detailLine = new DetailLine_Controller().getDetailLine(itemCode, inventoryManagmentId);
+                tbAmount.Text = detailLine.Amount.ToString();
+                tbQuantity.Text = detailLine.Quantity.ToString();
+                selectedItem = new Item_Controller().get(itemCode);
+                tbItemName.Text = selectedItem.name;
+                tbItemCode.Text = selectedItem.code;
+                tbItemName.Enabled = false;
+                tbItemCode.Enabled = false;
+                btnSelectItem.Enabled = false;
+                tbAmount.Enabled = false;
+                checkInventoryState(detailLine);
+            }
+            else
+            {
+                detailLine.InventoryManagment = new InventoryManagment_Controller().getInventoryManagment(inventoryManagmentId);
+                tbItemName.Enabled = false;
+                tbAmount.Enabled = false;
+            }
+        }
+
+        private void checkInventoryState(DetailLine detail)
+        {
+            if (detail.InventoryManagment.State.Equals("Finalizado"))
+            {
+                tbItemCode.Enabled = false;
+                tbQuantity.Enabled = false;
+                btnSelectItem.Enabled = false;
+            }
         }
 
         public event EventHandler DataChanged;
@@ -88,7 +116,7 @@ namespace LubriTech.View
             {
                 DetailLine_Controller detailLineController = new DetailLine_Controller();
 
-                detailLine.Item = new Item_Controller().get(tbItemCode.Text.Trim());
+                detailLine.Item = selectedItem;
                 detailLine.Quantity = Convert.ToInt32(tbQuantity.Text.Trim());
                 detailLine.Amount = Convert.ToDouble(tbAmount.Text.Trim());
 
@@ -136,9 +164,15 @@ namespace LubriTech.View
         {
             if (item != null)
             {
+                selectedItem = item;
                 tbItemName.Text = item.name;
                 tbItemCode.Text = item.code;
             }
+        }
+
+        private void tbQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
         }
     }
 }

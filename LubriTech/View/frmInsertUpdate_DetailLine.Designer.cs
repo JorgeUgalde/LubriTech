@@ -50,6 +50,7 @@
             this.tbQuantity.Size = new System.Drawing.Size(205, 29);
             this.tbQuantity.TabIndex = 62;
             this.tbQuantity.TextChanged += new System.EventHandler(this.tbQuantity_TextChanged);
+            this.tbQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbQuantity_KeyPress);
             // 
             // lblQuantity
             // 

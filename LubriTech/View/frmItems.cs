@@ -14,6 +14,7 @@ using System.Runtime.InteropServices;
 using LubriTech.View.Appointment_View;
 using LubriTech.Model.InventoryManagment_Information;
 using System.Reflection;
+using LubriTech.Model.Branch_Information;
 
 namespace LubriTech.View
 {
@@ -29,6 +30,7 @@ namespace LubriTech.View
             items = new List<Item>();
             InitializeComponent();
             load_Items(null);
+            load_Branches();
         }
 
         public frmItems(Form parentForm)
@@ -37,8 +39,18 @@ namespace LubriTech.View
             this.parentForm = parentForm;
             InitializeComponent();
             load_Items(null);
+            load_Branches();
         }
 
+        private void load_Branches()
+        {
+            List<Branch> branches = new Branch_Controller().getAll();
+            cbBranch.DataSource = branches;
+            cbBranch.DisplayMember = "Name";
+            cbBranch.ValueMember = "Id";
+            cbBranch.SelectedValue = frmLogin.branch;
+        }
+      
         private void frmItems_Load(object sender, EventArgs e)
         {
             txtFilter.TextChanged += new EventHandler(txtFilter_TextChanged);
@@ -73,8 +85,7 @@ namespace LubriTech.View
             dgvItems.Columns["purchasePrice"].HeaderText = "Precio Compra";
             dgvItems.Columns["measureUnit"].HeaderText = "Unidad Medida";
             dgvItems.Columns["state"].HeaderText = "Estado";
-            dgvItems.Columns["type"].HeaderText = "Tipo";
-            dgvItems.Columns["stock"].Visible = false;
+            dgvItems.Columns["itemType"].HeaderText = "Tipo";
             dgvItems.Columns["recommendedServiceInterval"].Visible = false;
 
             SetColumnOrder();
@@ -89,12 +100,7 @@ namespace LubriTech.View
 
         private void ChildFormDataChangedHandler(object sender, EventArgs e)
         {
-            dgvItems.Columns["code"].DisplayIndex = 0;
-            dgvItems.Columns["name"].DisplayIndex = 1;
-            //dgvItems.Columns["sellPrice"].DisplayIndex = 2;
-            dgvItems.Columns["measureUnit"].DisplayIndex = 2;
-            dgvItems.Columns["state"].DisplayIndex = 3;
-            dgvItems.Columns["type"].DisplayIndex = 4;
+            
             load_Items(null);
         }
 
@@ -119,10 +125,9 @@ namespace LubriTech.View
             var filteredList = items.Where(p =>
                 p.code.ToString().ToLower().Contains(filterValue) ||
                 p.name.ToString().ToLower().Contains(filterValue) ||
-                p.purchasePrice.ToString().ToLower().Contains(filterValue) ||
                 p.measureUnit.ToString().ToLower().Contains(filterValue) ||
                 p.state.ToString().ToLower().Contains(filterValue) ||
-                p.type.ToString().ToLower().Contains(filterValue)
+                p.itemType.ToString().ToLower().Contains(filterValue)
             ).ToList();
 
             // Refrescar el DataGridView
@@ -136,7 +141,7 @@ namespace LubriTech.View
             dgvItems.Columns["code"].DisplayIndex = 0;
             dgvItems.Columns["name"].DisplayIndex = 1;
             dgvItems.Columns["measureUnit"].DisplayIndex = 2;
-            dgvItems.Columns["type"].DisplayIndex = 3;
+            dgvItems.Columns["itemType"].DisplayIndex = 3;
             dgvItems.Columns["purchasePrice"].DisplayIndex = 4;
             dgvItems.Columns["state"].DisplayIndex = 5;
 
@@ -157,10 +162,14 @@ namespace LubriTech.View
                     {
                         ((frmInsertUpdate_DetailLine)parentForm).ShowItemInDetailLine(selectedItem);
                         this.Close();
+                    }else if (parentForm is frmWorkOrder)
+                    {
+                        ((frmWorkOrder)parentForm).ShowItemInWorkOrder(selectedItem);
+                        this.Close();
                     }
                     else
                     {
-                        frmInsertUpdate_Item frmInsertUpdateItem = new frmInsertUpdate_Item(selectedItem);
+                        frmInsertUpdate_Item frmInsertUpdateItem = new frmInsertUpdate_Item(selectedItem, (int)cbBranch.SelectedValue);
                         frmInsertUpdateItem.MdiParent = this.MdiParent;
                         frmInsertUpdateItem.DataChanged += ChildFormDataChangedHandler;
                         frmInsertUpdateItem.Show();
@@ -206,7 +215,6 @@ namespace LubriTech.View
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
-
 
     }
 }
