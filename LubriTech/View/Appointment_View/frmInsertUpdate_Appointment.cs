@@ -102,13 +102,13 @@ namespace LubriTech.View.Appointment_View
             appointment.Description = txtDescription.Text;
             if (new Appointment_Controller().UpsertAppointment(appointment))
             {
-                MessageBox.Show("Appointment saved successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("La acción se realizo con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information  );
                 OnDataChanged(EventArgs.Empty);
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Error saving appointment", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al realizar la acción", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
