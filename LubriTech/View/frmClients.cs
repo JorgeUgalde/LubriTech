@@ -102,16 +102,6 @@ namespace LubriTech.View
         {
             ApplyFilter();
         }
-
-      
-        private void btnAddClient_Click(object sender, EventArgs e)
-        {
-            frmUpsert_Client frmInsert_Client = new frmUpsert_Client();
-            frmInsert_Client.MdiParent = this.MdiParent;
-            frmInsert_Client.DataChanged += ChildFormDataChangedHandler;
-            frmInsert_Client.Show();
-        }
-
       
         private void ApplyFilter()
         {
@@ -211,5 +201,12 @@ namespace LubriTech.View
 
         }
 
+        private void btnAddClient_Click_1(object sender, EventArgs e)
+        {
+            frmUpsert_Client frmInsert_Client = new frmUpsert_Client();
+            frmInsert_Client.MdiParent = this.MdiParent;
+            frmInsert_Client.DataChanged += ChildFormDataChangedHandler;
+            frmInsert_Client.Show();
+        }
     }
 }

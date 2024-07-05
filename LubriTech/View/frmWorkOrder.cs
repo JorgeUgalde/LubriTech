@@ -1,4 +1,7 @@
-﻿using LubriTech.Controller;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.tool.xml;
+using LubriTech.Controller;
 using LubriTech.Model.Branch_Information;
 using LubriTech.Model.Client_Information;
 using LubriTech.Model.Item_Information;
@@ -11,16 +14,22 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Image = System.Drawing.Image;
+using Rectangle = System.Drawing.Rectangle;
 
 namespace LubriTech.View
 {
     public partial class frmWorkOrder : Form
     {
+        PictureBox pictureBoxOpen = new PictureBox();
+        int imageId;
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
 
@@ -32,6 +41,9 @@ namespace LubriTech.View
         Work_Order_Controller workOrderController = new Work_Order_Controller();
         Client client = new Client();
         Vehicle vehicle = new Vehicle();
+        WorkOrder workOrderTemplate = new WorkOrder();
+        List<ObservationPhotos> observationPhotos2;
+
         public frmWorkOrder(int? workOrderId)
         {
             InitializeComponent();
@@ -42,6 +54,7 @@ namespace LubriTech.View
             {
                 // Load the existing work order
                 WorkOrder workOrder = workOrderController.LoadWorkOrder(workOrderId.Value);
+                workOrderTemplate = workOrder;
                 LoadWorkOrderData(workOrder);
                 DataTable workOrderLinesTable = new WorkOrderLine_Model().LoadWorkOrderLinesDT(workOrderId.Value);
                 dataGridView1.DataSource = workOrderLinesTable;
@@ -54,6 +67,7 @@ namespace LubriTech.View
                 // Initialize a new work order
                 InitializeNewWorkOrder();
             }
+            LoadImages();
         }
 
         private void LoadWorkOrderData(WorkOrder workOrder)
@@ -487,6 +501,180 @@ namespace LubriTech.View
             else
             {
                 MessageBox.Show("Por favor seleccione un cliente primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadImages()
+        {
+            tabPage2.Controls.Clear();
+
+            List<ObservationPhotos> observationPhotos = new ObservationPhotos_Controller().GetAll(6);
+            observationPhotos2 = observationPhotos;
+            List<byte[]> images = observationPhotos.Select(op => op.Photo).ToList();
+            
+            FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel();
+            flowLayoutPanel.Dock = DockStyle.Fill;
+            flowLayoutPanel.FlowDirection = FlowDirection.TopDown; 
+            flowLayoutPanel.WrapContents = true;
+            flowLayoutPanel.AutoScroll = true;
+            this.Controls.Add(flowLayoutPanel);
+
+            foreach (var photo in observationPhotos)
+            {
+                PictureBox pictureBox = new PictureBox();
+                pictureBox.Width = 200; 
+                pictureBox.Height = 150;
+                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                if (photo.Photo != null)
+                {
+                    using (MemoryStream ms = new MemoryStream(photo.Photo))
+                    {
+                        pictureBox.Tag = photo;
+                        pictureBox.Image = Image.FromStream(ms);
+                    }
+                }
+
+                pictureBox.MouseEnter += (sender, e) => pictureBox.Cursor = Cursors.Hand;
+
+                pictureBox.Click += (sender, e) =>
+                {
+                    pictureBoxOpen = pictureBox;
+                    PictureBox_Click(sender, e);
+                   
+                };
+
+                flowLayoutPanel.Controls.Add(pictureBox);
+            }
+            tabPage2.Controls.Add(flowLayoutPanel);
+
+        }
+
+        private void ChildFormDataChangedHandler(object sender, EventArgs e)
+        {
+            LoadImages();
+        }
+        private void PictureBox_Click(object sender, EventArgs e)
+        {
+            ObservationPhotos observationPhoto = pictureBoxOpen.Tag as ObservationPhotos;
+
+            if (pictureBoxOpen.Image != null)
+            {
+                int observationPhotoId = observationPhoto.Id;
+                // Crear una instancia de frmImage y pasar la imagen
+                frmImage frmImage = new frmImage(pictureBoxOpen.Image, observationPhotoId);
+                frmImage.MdiParent = this.MdiParent;
+                frmImage.DataChanged += ChildFormDataChangedHandler;
+                frmImage.Show(); 
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                int Tamanio = (int)openFileDialog1.OpenFile().Length;
+                byte[] ImagenOriginal = new byte[Tamanio];
+
+                using (BinaryReader reader = new BinaryReader(openFileDialog1.OpenFile()))
+                {
+                    reader.Read(ImagenOriginal, 0, Tamanio);
+                }
+                new ObservationPhotos_Controller().Upsert(6, ImagenOriginal);
+            }
+            LoadImages();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.Filter = "Archivos de Pdf|*.pdf";
+            savefile.FileName = string.Format(DateTime.Now.ToString("ddMMyyyyHHmmss"));
+
+            string PaginaHTML_Texto = Properties.Resources.Template.ToString();
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@BRANCH", workOrderTemplate.Branch.Name);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DATE", workOrderTemplate.Date.ToString());
+
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ID", client.Id);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NAME", client.FullName);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MAINPHONE", client.MainPhoneNum.ToString());
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ADDITIONALPHONE", client.AdditionalPhoneNum.ToString());
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@EMAIL", client.Email);
+
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@LICENSEPLATE", vehicle.LicensePlate);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MAKE", workOrderTemplate.Vehicle.Model.Make.ToString());
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MODEL", vehicle.Model + " " + vehicle.Year);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MILEAGE", vehicle.Mileage.ToString());
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CURRENTMILEAGE", workOrderTemplate.CurrentMileage.ToString());
+
+            string htmlTable = "<table border='1'><tr>";
+
+            // Agrega las cabeceras de las columnas
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                htmlTable += "<th>" + column.HeaderText + "</th>";
+            }
+            htmlTable += "</tr>";
+
+            // Agrega las filas y celdas de datos
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                htmlTable += "<tr>";
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    htmlTable += "<td>" + cell.Value?.ToString() + "</td>"; // Agrega el valor de la celda como contenido de <td>
+                }
+                htmlTable += "</tr>";
+            }
+
+            // Cierra la tabla HTML
+            htmlTable += "</table>";
+
+            // Reemplaza @TABLA_PRODUCTOS en PaginaHTML_Texto con la tabla HTML generada
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TABLA_PRODUCTOS", htmlTable);
+
+
+
+
+            //string imagenesHTML = string.Empty;
+
+            //foreach (var photo in observationPhotos2)
+            //{
+            //    string base64Image = Convert.ToBase64String(photo.Photo);
+            //    imagenesHTML += $"<img src=\"data:image/png;base64,{base64Image}\" alt=\"Observation Photo\" />";
+            //}
+
+            //// Ahora reemplazamos @IMAGENES en PaginaHTML_Texto con imagenesHTML
+            //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@IMAGENES", imagenesHTML);
+
+            //< img src = "data:image/png;base64,@image" alt = "Observation Photo" />
+
+
+
+            if (savefile.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream stream = new FileStream(savefile.FileName, FileMode.Create))
+                {
+                    //Creamos un nuevo documento y lo definimos como PDF
+                    Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
+
+                    PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+                    pdfDoc.Open();
+                    pdfDoc.Add(new Phrase(""));
+
+                    //pdfDoc.Add(new Phrase("Hola Mundo"));
+                    using (StringReader sr = new StringReader(PaginaHTML_Texto))
+                    {
+                        XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+                    }
+
+                    pdfDoc.Close();
+                    stream.Close();
+                }
+
+
             }
         }
     }
