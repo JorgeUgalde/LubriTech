@@ -437,6 +437,7 @@ namespace LubriTech.View.Appointment_View
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlAppointments.AutoScroll = true;
             this.pnlAppointments.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pnlAppointments.BackColor = System.Drawing.Color.White;
             this.pnlAppointments.Location = new System.Drawing.Point(381, 83);
             this.pnlAppointments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlAppointments.MinimumSize = new System.Drawing.Size(606, 620);

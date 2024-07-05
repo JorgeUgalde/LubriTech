@@ -18,7 +18,7 @@ namespace LubriTech.Controller
 
         public PriceList getPriceList(int id)
         {
-            return new PriceList_Model().getPriceList(id);
+            return new PriceList_Model().getPriceList(id, "");
         }
 
         public bool upsertPriceList(PriceList priceList)

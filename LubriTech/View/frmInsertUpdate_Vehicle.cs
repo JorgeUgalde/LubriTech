@@ -39,6 +39,7 @@ namespace LubriTech.View
             setComboBoxMake();
             setComboBoxes();
             cbState.SelectedIndex = 0;
+            tbClientName.Enabled = false;
         }
 
         public frmInsertUpdate_Vehicle(Client client)
@@ -53,7 +54,7 @@ namespace LubriTech.View
             tbClientName.Text = client.FullName;
             tbClientId.Text = client.Id;
             cbState.SelectedIndex = 0;
-
+            tbClientName.Enabled = false;
         }
 
         public frmInsertUpdate_Vehicle(Vehicle vehicle)
@@ -67,6 +68,7 @@ namespace LubriTech.View
             setComboBoxMake();
             setComboBoxes();
 
+            tbLicensePlate.Enabled = false;
             tbClientName.Text = vehicle.Client.FullName;
             tbClientId.Text = vehicle.Client.Id;
             cbMake.Text = vehicle.Model.Make.Name;
@@ -76,6 +78,8 @@ namespace LubriTech.View
             tbMileage.Text = vehicle.Mileage.ToString();
             cbEngine.Text = vehicle.EngineType.EngineType;
             cbTransmission.Text = vehicle.TransmissionType.TransmissionType;
+            tbClientName.Enabled = false;
+            cbState.Text = vehicle.State;
         }
 
         public event EventHandler DataChanged;
@@ -95,8 +99,7 @@ namespace LubriTech.View
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (tbClientName.Text.Trim() == ""
-                || cbMake.Text.Trim() == ""
+            if (cbMake.Text.Trim() == ""
                 || cbModel.Text.Trim() == ""
                 || tbLicensePlate.Text.Trim() == ""
                 || tbYear.Text.Trim() == ""
@@ -106,7 +109,7 @@ namespace LubriTech.View
             {
                 MessageBox.Show("Por favor llene todos los campos");
             }
-            else if (tbClientId.Text.Trim() == "")
+            else if (tbClientName.Text.Trim() == "")
             {
                 MessageBox.Show("Debe seleccionar un cliente");
             }
@@ -115,6 +118,7 @@ namespace LubriTech.View
                 Vehicle_Controller vehicleController = new Vehicle_Controller();
                 
                 Vehicle vehicle = new Vehicle();
+                tbClientId.Text = selectedClient.Id;
                 vehicle.Client = new Clients_Controller().getClient(tbClientId.Text.Trim());
                 vehicle.Model = new CarModel_Controller().getModel(Convert.ToInt32(cbModel.SelectedValue.ToString()));
                 vehicle.Model.Make = new Make_Controller().getMake(Convert.ToInt32(cbMake.SelectedValue.ToString()));
@@ -139,7 +143,7 @@ namespace LubriTech.View
 
         private void tbNumeric_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
+            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -189,6 +193,8 @@ namespace LubriTech.View
             cbTransmission.ValueMember = "Id";
             cbTransmission.DisplayMember = "TransmissionType";
             cbTransmission.SelectedIndex = -1;
+
+            cbState.SelectedIndex = -1;
         }
 
         // Método que se llama cuando cambia el valor seleccionado en cbMake
@@ -269,6 +275,31 @@ namespace LubriTech.View
             {
                 this.WindowState = FormWindowState.Normal;
             }
+        }
+
+        private void tbClientId_TextChanged(object sender, EventArgs e)
+        {
+            string id = tbClientId.Text;
+
+            if (id.Length >= 3)
+            {
+                Client client = new Clients_Controller().getClient(id);
+
+                if (client != null)
+                {
+                    SelectClient(client);
+                }
+            }
+        }
+
+        public void SelectClient(Client client)
+        {
+            if (client != null)
+            {
+                tbClientId.Text = client.Id;
+            }
+            selectedClient = client;
+            tbClientName.Text = client.FullName;
         }
     }
 }

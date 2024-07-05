@@ -169,5 +169,10 @@ namespace LubriTech.View
                 tbItemCode.Text = item.code;
             }
         }
+
+        private void tbQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
+        }
     }
 }
