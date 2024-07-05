@@ -321,8 +321,11 @@ namespace LubriTech.View
             if (item != null)
             {
                 // Obtener la fila actualmente seleccionada
-                int rowIndex = dataGridView1.CurrentCell.RowIndex;
+                int rowIndex = dataGridView1.NewRowIndex;
                 DataGridViewRow row = dataGridView1.Rows[rowIndex];
+
+                // set the current row to the last row
+                dataGridView1.CurrentCell = row.Cells[0];
 
                 // Asignar los valores del artículo seleccionado a la fila actual
                 row.Cells["Código Artículo"].Value = item.code;

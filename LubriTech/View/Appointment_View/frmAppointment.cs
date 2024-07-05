@@ -383,7 +383,12 @@ namespace LubriTech.View.Appointment_View
             appointment = appointments.Find(a => a.AppointmentDate == (DateTime)selectedButton.Tag);
             DateTime appointmentDayTime = (DateTime)selectedButton.Tag;
             // check if the current time is greater than the appointment time
-            if (DateTime.Now > appointmentDayTime)
+
+            DateTime actualDate = DateTime.Now;
+            // set the same format to compare the dates
+            actualDate = new DateTime(actualDate.Year, actualDate.Month, actualDate.Day, actualDate.Hour, actualDate.Minute, actualDate.Second);
+
+            if (actualDate > appointmentDayTime && selectedButton.Text.Trim() == "")
             {
                 MessageBox.Show("No se puede asignar una cita en un horario pasado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -407,11 +412,6 @@ namespace LubriTech.View.Appointment_View
             frmAppointmentDetails.DataChanged += ChildFormDataChangedHandler;
             frmAppointmentDetails.MdiParent = this.MdiParent;
             frmAppointmentDetails.Show();
-
-
-
-
-
         }
 
         /// <summary>
