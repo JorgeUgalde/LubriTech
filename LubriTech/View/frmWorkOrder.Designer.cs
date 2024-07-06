@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblVehicle = new System.Windows.Forms.Label();
             this.lblMake = new System.Windows.Forms.Label();
             this.lblModel = new System.Windows.Forms.Label();
@@ -65,7 +65,6 @@
             this.btnSaveChanges = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblDetails = new System.Windows.Forms.Label();
-            this.btnPrint = new System.Windows.Forms.Button();
             this.lblLicensePlate = new System.Windows.Forms.Label();
             this.txtLicensePlate = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -88,8 +87,8 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWorkOrderDetails)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvObservation)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvObservation)).BeginInit();
             this.SuspendLayout();
             // 
             // lblVehicle
@@ -424,15 +423,6 @@
             this.lblDetails.TabIndex = 47;
             this.lblDetails.Text = "Detalles";
             // 
-            // btnPrint
-            // 
-            this.btnPrint.Location = new System.Drawing.Point(507, 19);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(75, 23);
-            this.btnPrint.TabIndex = 52;
-            this.btnPrint.Text = "button1";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            // 
             // lblLicensePlate
             // 
             this.lblLicensePlate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -518,7 +508,7 @@
             // 
             // btnAddWorkOrderLine
             // 
-            this.btnAddWorkOrderLine.Location = new System.Drawing.Point(588, 201);
+            this.btnAddWorkOrderLine.Location = new System.Drawing.Point(586, 207);
             this.btnAddWorkOrderLine.Name = "btnAddWorkOrderLine";
             this.btnAddWorkOrderLine.Size = new System.Drawing.Size(92, 23);
             this.btnAddWorkOrderLine.TabIndex = 60;
@@ -535,7 +525,7 @@
             this.btnSelectItem.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
             this.btnSelectItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSelectItem.Image = global::LubriTech.Properties.Resources.searchClient;
-            this.btnSelectItem.Location = new System.Drawing.Point(285, 171);
+            this.btnSelectItem.Location = new System.Drawing.Point(294, 172);
             this.btnSelectItem.Name = "btnSelectItem";
             this.btnSelectItem.Size = new System.Drawing.Size(32, 29);
             this.btnSelectItem.TabIndex = 59;
@@ -544,9 +534,9 @@
             // 
             // dgvWorkOrderDetails
             // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
-            this.dgvWorkOrderDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
+            this.dgvWorkOrderDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvWorkOrderDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -556,36 +546,36 @@
             this.dgvWorkOrderDetails.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvWorkOrderDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvWorkOrderDetails.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvWorkOrderDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvWorkOrderDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvWorkOrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvWorkOrderDetails.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvWorkOrderDetails.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvWorkOrderDetails.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvWorkOrderDetails.GridColor = System.Drawing.Color.White;
             this.dgvWorkOrderDetails.Location = new System.Drawing.Point(15, 237);
             this.dgvWorkOrderDetails.Name = "dgvWorkOrderDetails";
             this.dgvWorkOrderDetails.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvWorkOrderDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvWorkOrderDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvWorkOrderDetails.RowHeadersVisible = false;
             this.dgvWorkOrderDetails.RowHeadersWidth = 51;
             this.dgvWorkOrderDetails.Size = new System.Drawing.Size(665, 164);
@@ -684,8 +674,8 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.btnAdd);
             this.tabPage2.Controls.Add(this.dgvObservation);
+            this.tabPage2.Controls.Add(this.btnAdd);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
@@ -695,44 +685,14 @@
             this.tabPage2.Text = "Observaciones";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // btnSelectItem
-            // 
-            this.btnSelectItem.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnSelectItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
-            this.btnSelectItem.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSelectItem.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSelectItem.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
-            this.btnSelectItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSelectItem.Image = global::LubriTech.Properties.Resources.searchClient;
-            this.btnSelectItem.Location = new System.Drawing.Point(294, 172);
-            this.btnSelectItem.Name = "btnSelectItem";
-            this.btnSelectItem.Size = new System.Drawing.Size(32, 29);
-            this.btnSelectItem.TabIndex = 59;
-            this.btnSelectItem.UseVisualStyleBackColor = false;
-            this.btnSelectItem.Click += new System.EventHandler(this.btnSelectItem_Click);
-            // 
-            // btnAddWorkOrderLine
-            // 
-            this.btnAddWorkOrderLine.Location = new System.Drawing.Point(586, 207);
-            this.btnAddWorkOrderLine.Name = "btnAddWorkOrderLine";
-            this.btnAddWorkOrderLine.Size = new System.Drawing.Size(92, 23);
-            this.btnAddWorkOrderLine.TabIndex = 60;
-            this.btnAddWorkOrderLine.Text = "Agregar detalle";
-            this.btnAddWorkOrderLine.UseVisualStyleBackColor = true;
-            this.btnAddWorkOrderLine.Click += new System.EventHandler(this.btnAddWorkOrderLine_Click);
-            // 
             // dgvObservation
             // 
-            this.dgvObservation.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvObservation.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
-            this.dgvObservation.BackgroundColor = System.Drawing.Color.White;
             this.dgvObservation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvObservation.Location = new System.Drawing.Point(3, 21);
+            this.dgvObservation.Location = new System.Drawing.Point(-1, 26);
             this.dgvObservation.Name = "dgvObservation";
-            this.dgvObservation.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.dgvObservation.Size = new System.Drawing.Size(689, 370);
-            this.dgvObservation.TabIndex = 0;
-            this.dgvObservation.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvObservation_CellMouseDoubleClick);
+            this.dgvObservation.Size = new System.Drawing.Size(696, 414);
+            this.dgvObservation.TabIndex = 1;
+            this.dgvObservation.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvObservation_CellMouseDoubleClick_1);
             // 
             // btnAdd
             // 
@@ -742,7 +702,7 @@
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Añadir Observacion";
             this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
             // 
             // frmWorkOrder
             // 
@@ -765,7 +725,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Órdenes de trabajo";
             this.Load += new System.EventHandler(this.frmWorkOrder_Load);
-            this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -829,5 +788,6 @@
         private System.Windows.Forms.Button btnAddWorkOrderLine;
         private System.Windows.Forms.Label lblClient;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.DataGridView dgvObservation;
     }
 }

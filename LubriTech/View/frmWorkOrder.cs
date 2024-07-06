@@ -488,7 +488,12 @@ namespace LubriTech.View
             dgvObservation.Columns["Description"].DisplayIndex = 1;
         }
 
-        private void dgvObservation_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void FrmInsertObservation_ObservationChanged(object sender, EventArgs e)
+        {
+            load_Observation();
+        }
+
+        private void dgvObservation_CellMouseDoubleClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -502,12 +507,12 @@ namespace LubriTech.View
                     frmInsertObservation.ObservationChanged += FrmInsertObservation_ObservationChanged;
                     frmInsertObservation.MdiParent = this.MdiParent;
                     frmInsertObservation.Show();
-                        load_Observation();
+                    load_Observation();
                 }
             }
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnAdd_Click_1(object sender, EventArgs e)
         {
             string mode = "";
             Observation newObservation = new Observation();
@@ -517,11 +522,6 @@ namespace LubriTech.View
             frmInsertUpsertObservation.ObservationChanged += FrmInsertObservation_ObservationChanged;
             frmInsertUpsertObservation.MdiParent = this.MdiParent;
             frmInsertUpsertObservation.Show();
-        }
-
-        private void FrmInsertObservation_ObservationChanged(object sender, EventArgs e)
-        {
-            load_Observation();
         }
 
 
