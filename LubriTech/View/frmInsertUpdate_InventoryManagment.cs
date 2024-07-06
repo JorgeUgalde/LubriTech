@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using static System.Windows.Forms.AxHost;
 
 namespace LubriTech.View
 {
@@ -35,6 +36,8 @@ namespace LubriTech.View
             tbItemName.Enabled = false;
             tbQuantity.Enabled = false;
             tbAmount.Enabled = false;
+            tbSupplierId.Enabled = false;
+            btnSelectSupplier.Enabled = false;
         }
 
         public frmInsertUpdate_InventoryManagment(InventoryManagment inventoryManagment)
@@ -49,14 +52,21 @@ namespace LubriTech.View
             tbSupplierName.Enabled = false;
             tbItemName.Enabled = false;
             tbAmount.Enabled = false;
-            tbSupplierName.Text = inventoryManagment.Supplier.name;
-            tbSupplierId.Text = inventoryManagment.Supplier.id;
+            if (inventoryManagment.Supplier != null) {
+                tbSupplierName.Text = inventoryManagment.Supplier.name;
+                tbSupplierId.Text = inventoryManagment.Supplier.id;
+            }
             cbBranch.Text = inventoryManagment.Branch.Name;
             dtpDate.Value = inventoryManagment.DocumentDate;
             cbDocumentType.Text = inventoryManagment.DocumentType;
             cbState.Text = inventoryManagment.State;
             tbQuantity.Enabled = false;
             tbTotalAmount.Enabled = false;
+            if (!cbDocumentType.Text.Equals("Compra"))
+            {
+                tbSupplierId.Enabled = false;
+                btnSelectSupplier.Enabled = false;
+            }
 
             SetupDetailLinesDGV();
             load_DetailLines(detailLines);
@@ -137,7 +147,7 @@ namespace LubriTech.View
             {
                 MessageBox.Show("Por favor llene todos los campos");
             }
-            else if (tbSupplierName.Text.Trim() == "")
+            else if (tbSupplierName.Text.Trim() == "" && cbDocumentType.Text.Equals("Compra"))
             {
                 MessageBox.Show("Debe seleccionar un proveedor");
             }
@@ -169,7 +179,10 @@ namespace LubriTech.View
 
                 if (insertedId != -1 && quantityUpdated.Equals(""))
                 {
-                    tbSupplierId.Text = selectedSupplier.id;
+                    if (selectedSupplier != null)
+                    {
+                        tbSupplierId.Text = selectedSupplier.id;
+                    }
                     existingInventoryManagment.Id = insertedId;
                     OnDataChanged(EventArgs.Empty);
                     this.Dispose();
@@ -203,9 +216,17 @@ namespace LubriTech.View
 
         private void tbNumeric_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
+            TextBox textBox = sender as TextBox;
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != ',')
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == ',' && textBox.Text.Contains(","))
+            {
+                e.Handled = true;
+            }
         }
-
+        
         private void btnClose_Click(object sender, EventArgs e)
         {
             if (clickedAddDetail)
@@ -221,18 +242,6 @@ namespace LubriTech.View
             cbBranch.ValueMember = "Id";
             cbBranch.DisplayMember = "Name";
             cbBranch.SelectedIndex = -1;
-
-            //List<int> years = new List<int>();
-            //int currentYear = DateTime.Now.Year - 10;
-
-            //for (int i = 0; i <= 10; i++)
-            //{
-            //    years.Add(currentYear);
-            //    currentYear += 1;
-            //}
-
-            //cbYear.DataSource = years;
-            //cbYear.SelectedIndex = -1;
         }
 
         private void btnSelectSupplier_Click(object sender, EventArgs e)
@@ -301,7 +310,7 @@ namespace LubriTech.View
                 {
                     MessageBox.Show("Por favor llene los campos anteriores");
                 }
-                else if (tbSupplierName.Text.Trim() == "")
+                else if (tbSupplierName.Text.Trim() == "" && cbDocumentType.Text.Equals("Compra"))
                 {
                     MessageBox.Show("Debe seleccionar un proveedor");
                 }
@@ -309,8 +318,11 @@ namespace LubriTech.View
                 {
                     InventoryManagment_Controller inventoryManagmentController = new InventoryManagment_Controller();
                     InventoryManagment inventoryManagment = new InventoryManagment();
+                    if(selectedSupplier != null)
+                    {
+                        tbSupplierId.Text = selectedSupplier.id;
+                    }
 
-                    tbSupplierId.Text = selectedSupplier.id;
                     inventoryManagment.Supplier = selectedSupplier;
                     inventoryManagment.Branch = new Branch_Controller().get(Convert.ToInt32(cbBranch.SelectedValue.ToString()));
                     inventoryManagment.DocumentDate = dtpDate.Value;
@@ -356,7 +368,7 @@ namespace LubriTech.View
 
                             detailLine.InventoryManagment = existingInventoryManagment;
                             detailLine.Item = selectedItem;
-                            detailLine.Quantity = Convert.ToInt32(tbQuantity.Text.Trim());
+                            detailLine.Quantity = Convert.ToDouble(tbQuantity.Text.Trim());
                             detailLine.Amount = Convert.ToDouble(tbAmount.Text.Trim());
 
                             if (detailLineController.upsert(detailLine))
@@ -383,7 +395,10 @@ namespace LubriTech.View
             }
             else
             {
-                tbSupplierId.Text = selectedSupplier.id;
+                if(selectedSupplier != null)
+                {
+                    tbSupplierId.Text = selectedSupplier.id;
+                }
 
                 if (tbQuantity.Text.Trim() == "")
                 {
@@ -409,7 +424,7 @@ namespace LubriTech.View
 
                     detailLine.InventoryManagment = existingInventoryManagment;
                     detailLine.Item = selectedItem;
-                    detailLine.Quantity = Convert.ToInt32(tbQuantity.Text.Trim());
+                    detailLine.Quantity = Convert.ToDouble(tbQuantity.Text.Trim());
                     detailLine.Amount = Convert.ToDouble(tbAmount.Text.Trim());
 
                     if (detailLineController.upsert(detailLine))
@@ -431,13 +446,22 @@ namespace LubriTech.View
 
         private void tbQuantity_TextChanged(object sender, EventArgs e)
         {
-            if (tbQuantity.Text.Trim() != "" && tbItemName.Text.Trim() != "")
+            double quantity;
+            double purchasePrice;
+
+            bool isQuantityValid = double.TryParse(tbQuantity.Text.Trim(), out quantity);
+
+            if (!string.IsNullOrEmpty(tbQuantity.Text.Trim()) &&
+                !string.IsNullOrEmpty(tbItemName.Text.Trim()) &&
+                isQuantityValid)
             {
                 tbItemCode.Text = selectedItem.code;
-                double calc = (Convert.ToDouble(tbQuantity.Text.ToString().Trim()) * (new Item_Controller().get(tbItemCode.Text.Trim()).purchasePrice));
+                purchasePrice = new Item_Controller().get(tbItemCode.Text.Trim()).purchasePrice;
+                double calc = quantity * purchasePrice;
+
                 tbAmount.Text = calc.ToString();
             }
-            if (tbQuantity.Text.Trim() == "")
+            else
             {
                 tbAmount.Text = "";
             }
@@ -515,30 +539,29 @@ namespace LubriTech.View
                 tbQuantity.Text = selectedDetailLine.Quantity.ToString();
                 tbAmount.Text = selectedDetailLine.Amount.ToString();
 
-                if (!cbState.Text.Equals("Finalizado"))
-                {
-                    if (e.ColumnIndex == dgvDetailLines.Columns["deleteImageColumn"].Index)
-                    {
-                        DialogResult result = MessageBox.Show("¿Desea eliminar esta línea de detalle?", "Confirmar selección", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                        if (result == DialogResult.Yes)
+                if (e.ColumnIndex == dgvDetailLines.Columns["deleteImageColumn"].Index)
+                {
+                    DialogResult result = MessageBox.Show("¿Desea eliminar esta línea de detalle?", "Confirmar selección", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        if (new DetailLine_Controller().delete(selectedDetailLine))
                         {
-                            if (new DetailLine_Controller().delete(selectedDetailLine))
-                            {
-                                detailLines = new DetailLine_Controller().getDetailLines(existingInventoryManagment.Id);
-                                load_DetailLines(detailLines);
-                                tbItemCode.Text = "";
-                                tbItemName.Text = "";
-                                tbQuantity.Text = "";
-                                tbAmount.Text = "";
-                            }
-                            else
-                            {
-                                MessageBox.Show("Línea de detalle no se eliminó");
-                            }
+                            detailLines = new DetailLine_Controller().getDetailLines(existingInventoryManagment.Id);
+                            load_DetailLines(detailLines);
+                            tbItemCode.Text = "";
+                            tbItemName.Text = "";
+                            tbQuantity.Text = "";
+                            tbAmount.Text = "";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Línea de detalle no se eliminó");
                         }
                     }
                 }
+
                 return;
             }
         }
@@ -652,13 +675,61 @@ namespace LubriTech.View
 
         private void tbItemName_TextChanged(object sender, EventArgs e)
         {
-            if(tbItemName.Text.Trim().Equals("") || cbState.Text.Trim().Equals("Finalizado"))
+            if (tbItemName.Text.Trim().Equals("") || cbState.Text.Trim().Equals("Finalizado"))
             {
                 tbQuantity.Enabled = false;
             }
             else
             {
                 tbQuantity.Enabled = true;
+            }
+        }
+
+        private void cbDocumentType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbDocumentType.Text.Equals("Compra"))
+            {
+                tbSupplierId.Enabled = true;
+                btnSelectSupplier.Enabled = true;
+            }
+            else
+            {
+                tbSupplierId.Enabled = false;
+                btnSelectSupplier.Enabled = false;
+                tbSupplierId.Text = "";
+                tbSupplierName.Text = "";
+                selectedSupplier = null;
+            }
+        }
+
+        private void cbState_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbState.Text.Equals("Finalizado"))
+            {
+                tbSupplierId.Enabled = false;
+                tbItemCode.Enabled = false;
+                cbBranch.Enabled = false;
+                dtpDate.Enabled = false;
+                cbDocumentType.Enabled = false;
+                tbQuantity.Enabled = false;
+                btnAddDetailLine.Enabled = false;
+                btnSelectSupplier.Enabled = false;
+                btnSelectItem.Enabled = false;
+            }
+            else
+            {
+                if (cbDocumentType.Text.Equals("Compra"))
+                {
+                    tbSupplierId.Enabled = true;
+                    btnSelectSupplier.Enabled = true;
+                }
+                tbItemCode.Enabled = true;
+                cbBranch.Enabled = true;
+                dtpDate.Enabled = true;
+                cbDocumentType.Enabled = true;
+                tbQuantity.Enabled = true;
+                btnAddDetailLine.Enabled = true;
+                btnSelectItem.Enabled = true;
             }
         }
     }

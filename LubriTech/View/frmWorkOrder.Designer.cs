@@ -62,7 +62,6 @@
             this.btnSaveChanges = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblDetails = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btnPrint = new System.Windows.Forms.Button();
             this.lblLicensePlate = new System.Windows.Forms.Label();
             this.txtLicensePlate = new System.Windows.Forms.TextBox();
@@ -72,7 +71,6 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -427,18 +425,7 @@
             this.lblDetails.Name = "lblDetails";
             this.lblDetails.Size = new System.Drawing.Size(45, 13);
             this.lblDetails.TabIndex = 47;
-            this.lblDetails.Text = "Detalles";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnPrint);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 470);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(595, 54);
-            this.panel1.TabIndex = 48;
-            // 
+            this.lblDetails.Text = "Detalles"; 
             // btnPrint
             // 
             this.btnPrint.Location = new System.Drawing.Point(507, 19);
@@ -575,7 +562,6 @@
             this.Text = "Órdenes de trabajo";
             this.Load += new System.EventHandler(this.frmWorkOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

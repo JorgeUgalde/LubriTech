@@ -149,7 +149,14 @@ namespace LubriTech.Model.InventoryManagment_Information
                 SqlCommand cmd = new SqlCommand(updateQuery, conn);
                 cmd.Parameters.AddWithValue("@id", inventoryManagment.Id);
                 cmd.Parameters.AddWithValue("@documentDate", inventoryManagment.DocumentDate);
-                cmd.Parameters.AddWithValue("@supplierId", inventoryManagment.getSupplierId());
+                if(inventoryManagment.Supplier == null)
+                {
+                    cmd.Parameters.AddWithValue("@supplierId", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@supplierId", inventoryManagment.getSupplierId());
+                }
                 cmd.Parameters.AddWithValue("@state", (inventoryManagment.State.Equals("Activo")) ? 1 : ((inventoryManagment.State.Equals("Inactivo")) ? 2 : 3));
                 cmd.Parameters.AddWithValue("@totalAmount", inventoryManagment.TotalAmount);
                 cmd.Parameters.AddWithValue("@branchId", inventoryManagment.getBranchId());
@@ -190,7 +197,14 @@ namespace LubriTech.Model.InventoryManagment_Information
                     "SELECT SCOPE_IDENTITY() AS NewId;";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@documentDate", inventoryManagment.DocumentDate);
-                cmd.Parameters.AddWithValue("@supplierId", inventoryManagment.getSupplierId());
+                if (inventoryManagment.Supplier == null)
+                {
+                    cmd.Parameters.AddWithValue("@supplierId", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@supplierId", inventoryManagment.getSupplierId());
+                }
                 cmd.Parameters.AddWithValue("@state", (inventoryManagment.State.Equals("Activo")) ? 1 : ((inventoryManagment.State.Equals("Inactivo")) ? 2 : 3));
                 cmd.Parameters.AddWithValue("@totalAmount", inventoryManagment.TotalAmount);
                 cmd.Parameters.AddWithValue("@branchId", inventoryManagment.getBranchId());

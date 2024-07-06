@@ -42,7 +42,7 @@ namespace LubriTech.Model.InventoryManagment_Information
                 {
                     detailLines.Add(new DetailLine((new Item_Controller().get((dr["CodigoArticulo"].ToString()))),
                                                 (new InventoryManagment_Controller().getInventoryManagment(Convert.ToInt32(dr["IdentificacionGestionInventario"]))),
-                                                Convert.ToInt32(dr["Cantidad"]),
+                                                Convert.ToDouble(dr["Cantidad"]),
                                                 Convert.ToDouble(dr["Monto"])));
                 }
                 return detailLines;
@@ -132,7 +132,7 @@ namespace LubriTech.Model.InventoryManagment_Information
 
                 DetailLine detailLine = new DetailLine((new Item_Controller().get((dr["CodigoArticulo"].ToString()))),
                                                 (new InventoryManagment_Controller().getInventoryManagment(Convert.ToInt32(dr["IdentificacionGestionInventario"]))),
-                                                Convert.ToInt32(dr["Cantidad"]),
+                                                Convert.ToDouble(dr["Cantidad"]),
                                                 Convert.ToDouble(dr["Monto"]));
 
                 if (conn.State != System.Data.ConnectionState.Open)
@@ -300,7 +300,7 @@ namespace LubriTech.Model.InventoryManagment_Information
                 {
                     detailLines.Add(new DetailLine((new Item_Controller().get(dr["CodigoArticulo"].ToString())),
                                                 (new InventoryManagment_Controller().getInventoryManagment(Convert.ToInt32(dr["IdentificacionGestionInventario"]))),
-                                                Convert.ToInt32(dr["Cantidad"]),
+                                                Convert.ToDouble(dr["Cantidad"]),
                                                 Convert.ToDouble(dr["Monto"])));
                 }
                 return detailLines;
