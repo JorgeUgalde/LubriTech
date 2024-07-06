@@ -52,9 +52,7 @@ namespace LubriTech.View
             tbSupplierName.Text = inventoryManagment.Supplier.name;
             tbSupplierId.Text = inventoryManagment.Supplier.id;
             cbBranch.Text = inventoryManagment.Branch.Name;
-            cbDay.Text = inventoryManagment.DocumentDate.Day.ToString();
-            cbMonth.Text = inventoryManagment.DocumentDate.Month.ToString();
-            cbYear.Text = inventoryManagment.DocumentDate.Year.ToString();
+            dtpDate.Value = inventoryManagment.DocumentDate;
             cbDocumentType.Text = inventoryManagment.DocumentType;
             cbState.Text = inventoryManagment.State;
             tbQuantity.Enabled = false;
@@ -112,9 +110,7 @@ namespace LubriTech.View
                 tbSupplierId.Enabled = false;
                 tbItemCode.Enabled = false;
                 cbBranch.Enabled = false;
-                cbDay.Enabled = false;
-                cbMonth.Enabled = false;
-                cbYear.Enabled = false;
+                dtpDate.Enabled = false;
                 cbDocumentType.Enabled = false;
                 cbState.Enabled = false;
                 tbQuantity.Enabled = false;
@@ -135,10 +131,7 @@ namespace LubriTech.View
         {
             InventoryManagment_Controller inventoryManagmentController = new InventoryManagment_Controller();
 
-            if (cbDay.Text.Trim() == ""
-            || cbMonth.Text.Trim() == ""
-            || cbYear.Text.Trim() == ""
-            || cbBranch.Text.Trim() == ""
+            if (cbBranch.Text.Trim() == ""
             || cbDocumentType.Text.Trim() == ""
             || cbState.Text.Trim() == "")
             {
@@ -153,8 +146,7 @@ namespace LubriTech.View
                 InventoryManagment inventoryManagment = new InventoryManagment();
                 inventoryManagment.Supplier = selectedSupplier;
                 inventoryManagment.Branch = new Branch_Controller().get(Convert.ToInt32(cbBranch.SelectedValue.ToString()));
-                string date = cbYear.Text.Trim() + "/" + cbMonth.Text.Trim() + "/" + cbDay.Text.Trim();
-                inventoryManagment.DocumentDate = Convert.ToDateTime(date);
+                inventoryManagment.DocumentDate = dtpDate.Value;
                 inventoryManagment.DocumentType = cbDocumentType.Text;
                 inventoryManagment.State = cbState.Text;
                 if (tbTotalAmount.Text.Trim() != "")
@@ -230,17 +222,17 @@ namespace LubriTech.View
             cbBranch.DisplayMember = "Name";
             cbBranch.SelectedIndex = -1;
 
-            List<int> years = new List<int>();
-            int currentYear = DateTime.Now.Year - 10;
+            //List<int> years = new List<int>();
+            //int currentYear = DateTime.Now.Year - 10;
 
-            for (int i = 0; i <= 10; i++)
-            {
-                years.Add(currentYear);
-                currentYear += 1;
-            }
+            //for (int i = 0; i <= 10; i++)
+            //{
+            //    years.Add(currentYear);
+            //    currentYear += 1;
+            //}
 
-            cbYear.DataSource = years;
-            cbYear.SelectedIndex = -1;
+            //cbYear.DataSource = years;
+            //cbYear.SelectedIndex = -1;
         }
 
         private void btnSelectSupplier_Click(object sender, EventArgs e)
@@ -303,10 +295,7 @@ namespace LubriTech.View
         {
             if (existingInventoryManagment == null)
             {
-                if (cbDay.Text.Trim() == ""
-                || cbMonth.Text.Trim() == ""
-                || cbYear.Text.Trim() == ""
-                || cbBranch.Text.Trim() == ""
+                if (cbBranch.Text.Trim() == ""
                 || cbDocumentType.Text.Trim() == ""
                 || cbState.Text.Trim() == "")
                 {
@@ -324,8 +313,7 @@ namespace LubriTech.View
                     tbSupplierId.Text = selectedSupplier.id;
                     inventoryManagment.Supplier = selectedSupplier;
                     inventoryManagment.Branch = new Branch_Controller().get(Convert.ToInt32(cbBranch.SelectedValue.ToString()));
-                    string date = cbYear.Text.Trim() + "/" + cbMonth.Text.Trim() + "/" + cbDay.Text.Trim();
-                    inventoryManagment.DocumentDate = Convert.ToDateTime(date);
+                    inventoryManagment.DocumentDate = dtpDate.Value;
                     inventoryManagment.DocumentType = cbDocumentType.Text;
                     inventoryManagment.State = cbState.Text;
                     if (tbTotalAmount.Text.Trim() != "")

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbBranch = new System.Windows.Forms.ComboBox();
             this.cbDocumentType = new System.Windows.Forms.ComboBox();
             this.tbTotalAmount = new System.Windows.Forms.TextBox();
@@ -47,12 +47,6 @@
             this.cbState = new System.Windows.Forms.ComboBox();
             this.lblState = new System.Windows.Forms.Label();
             this.dgvDetailLines = new System.Windows.Forms.DataGridView();
-            this.cbMonth = new System.Windows.Forms.ComboBox();
-            this.cbDay = new System.Windows.Forms.ComboBox();
-            this.cbYear = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnSelectSupplier = new System.Windows.Forms.Button();
             this.lblSupplierName = new System.Windows.Forms.Label();
             this.btnAddDetailLine = new System.Windows.Forms.Button();
@@ -67,6 +61,7 @@
             this.lblAmount = new System.Windows.Forms.Label();
             this.lblDetailLine = new System.Windows.Forms.Label();
             this.lblInventoryManagment = new System.Windows.Forms.Label();
+            this.dtpDate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetailLines)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,7 +72,7 @@
             this.cbBranch.FormattingEnabled = true;
             this.cbBranch.Location = new System.Drawing.Point(110, 113);
             this.cbBranch.Name = "cbBranch";
-            this.cbBranch.Size = new System.Drawing.Size(205, 29);
+            this.cbBranch.Size = new System.Drawing.Size(296, 29);
             this.cbBranch.TabIndex = 41;
             this.cbBranch.Tag = "";
             // 
@@ -90,9 +85,9 @@
             "Compra",
             "Entrada",
             "Salida"});
-            this.cbDocumentType.Location = new System.Drawing.Point(110, 148);
+            this.cbDocumentType.Location = new System.Drawing.Point(110, 150);
             this.cbDocumentType.Name = "cbDocumentType";
-            this.cbDocumentType.Size = new System.Drawing.Size(205, 29);
+            this.cbDocumentType.Size = new System.Drawing.Size(130, 29);
             this.cbDocumentType.TabIndex = 39;
             this.cbDocumentType.Tag = "";
             // 
@@ -187,7 +182,7 @@
             // 
             this.lblSupplierId.AutoSize = true;
             this.lblSupplierId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSupplierId.Location = new System.Drawing.Point(351, 82);
+            this.lblSupplierId.Location = new System.Drawing.Point(426, 80);
             this.lblSupplierId.Name = "lblSupplierId";
             this.lblSupplierId.Size = new System.Drawing.Size(178, 21);
             this.lblSupplierId.TabIndex = 29;
@@ -196,7 +191,7 @@
             // tbSupplierName
             // 
             this.tbSupplierName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSupplierName.Location = new System.Drawing.Point(535, 114);
+            this.tbSupplierName.Location = new System.Drawing.Point(610, 112);
             this.tbSupplierName.MaxLength = 150;
             this.tbSupplierName.Name = "tbSupplierName";
             this.tbSupplierName.Size = new System.Drawing.Size(240, 29);
@@ -205,7 +200,7 @@
             // tbSupplierId
             // 
             this.tbSupplierId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSupplierId.Location = new System.Drawing.Point(535, 79);
+            this.tbSupplierId.Location = new System.Drawing.Point(610, 77);
             this.tbSupplierId.MaxLength = 150;
             this.tbSupplierId.Name = "tbSupplierId";
             this.tbSupplierId.Size = new System.Drawing.Size(240, 29);
@@ -221,9 +216,9 @@
             "Activo",
             "Inactivo",
             "Finalizado"});
-            this.cbState.Location = new System.Drawing.Point(535, 149);
+            this.cbState.Location = new System.Drawing.Point(610, 150);
             this.cbState.Name = "cbState";
-            this.cbState.Size = new System.Drawing.Size(120, 29);
+            this.cbState.Size = new System.Drawing.Size(130, 29);
             this.cbState.TabIndex = 49;
             this.cbState.Tag = "";
             // 
@@ -231,7 +226,7 @@
             // 
             this.lblState.AutoSize = true;
             this.lblState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblState.Location = new System.Drawing.Point(473, 152);
+            this.lblState.Location = new System.Drawing.Point(548, 150);
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(56, 21);
             this.lblState.TabIndex = 48;
@@ -239,9 +234,9 @@
             // 
             // dgvDetailLines
             // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            this.dgvDetailLines.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.White;
+            this.dgvDetailLines.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle25;
             this.dgvDetailLines.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -251,163 +246,42 @@
             this.dgvDetailLines.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvDetailLines.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvDetailLines.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetailLines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetailLines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
             this.dgvDetailLines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetailLines.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDetailLines.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDetailLines.DefaultCellStyle = dataGridViewCellStyle27;
             this.dgvDetailLines.GridColor = System.Drawing.Color.White;
             this.dgvDetailLines.Location = new System.Drawing.Point(39, 306);
             this.dgvDetailLines.Name = "dgvDetailLines";
             this.dgvDetailLines.ReadOnly = true;
             this.dgvDetailLines.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetailLines.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetailLines.RowHeadersDefaultCellStyle = dataGridViewCellStyle28;
             this.dgvDetailLines.RowHeadersVisible = false;
             this.dgvDetailLines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDetailLines.Size = new System.Drawing.Size(849, 297);
             this.dgvDetailLines.TabIndex = 56;
             this.dgvDetailLines.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDetailLines_CellMouseDoubleClick);
-            // 
-            // cbMonth
-            // 
-            this.cbMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbMonth.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbMonth.FormattingEnabled = true;
-            this.cbMonth.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"});
-            this.cbMonth.Location = new System.Drawing.Point(170, 78);
-            this.cbMonth.Name = "cbMonth";
-            this.cbMonth.Size = new System.Drawing.Size(53, 29);
-            this.cbMonth.TabIndex = 57;
-            this.cbMonth.Tag = "";
-            // 
-            // cbDay
-            // 
-            this.cbDay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDay.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbDay.FormattingEnabled = true;
-            this.cbDay.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31"});
-            this.cbDay.Location = new System.Drawing.Point(111, 78);
-            this.cbDay.Name = "cbDay";
-            this.cbDay.Size = new System.Drawing.Size(53, 29);
-            this.cbDay.TabIndex = 58;
-            this.cbDay.Tag = "";
-            // 
-            // cbYear
-            // 
-            this.cbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbYear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbYear.FormattingEnabled = true;
-            this.cbYear.Items.AddRange(new object[] {
-            "2000",
-            "2001",
-            "2002"});
-            this.cbYear.Location = new System.Drawing.Point(229, 78);
-            this.cbYear.Name = "cbYear";
-            this.cbYear.Size = new System.Drawing.Size(87, 29);
-            this.cbYear.TabIndex = 59;
-            this.cbYear.Tag = "";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(175, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 21);
-            this.label2.TabIndex = 61;
-            this.label2.Text = "Mes";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(253, 49);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 21);
-            this.label3.TabIndex = 62;
-            this.label3.Text = "Año";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(121, 49);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 21);
-            this.label1.TabIndex = 63;
-            this.label1.Text = "Día";
             // 
             // btnSelectSupplier
             // 
@@ -418,7 +292,7 @@
             this.btnSelectSupplier.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
             this.btnSelectSupplier.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSelectSupplier.Image = global::LubriTech.Properties.Resources.searchClient;
-            this.btnSelectSupplier.Location = new System.Drawing.Point(781, 79);
+            this.btnSelectSupplier.Location = new System.Drawing.Point(856, 77);
             this.btnSelectSupplier.Name = "btnSelectSupplier";
             this.btnSelectSupplier.Size = new System.Drawing.Size(32, 29);
             this.btnSelectSupplier.TabIndex = 37;
@@ -429,7 +303,7 @@
             // 
             this.lblSupplierName.AutoSize = true;
             this.lblSupplierName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSupplierName.Location = new System.Drawing.Point(385, 117);
+            this.lblSupplierName.Location = new System.Drawing.Point(460, 115);
             this.lblSupplierName.Name = "lblSupplierName";
             this.lblSupplierName.Size = new System.Drawing.Size(144, 21);
             this.lblSupplierName.TabIndex = 65;
@@ -561,11 +435,20 @@
             // 
             this.lblInventoryManagment.AutoSize = true;
             this.lblInventoryManagment.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInventoryManagment.Location = new System.Drawing.Point(35, 19);
+            this.lblInventoryManagment.Location = new System.Drawing.Point(35, 42);
             this.lblInventoryManagment.Name = "lblInventoryManagment";
             this.lblInventoryManagment.Size = new System.Drawing.Size(151, 21);
             this.lblInventoryManagment.TabIndex = 77;
             this.lblInventoryManagment.Text = "Gestión Inventario";
+            // 
+            // dtpDate
+            // 
+            this.dtpDate.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.dtpDate.Location = new System.Drawing.Point(110, 76);
+            this.dtpDate.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpDate.Name = "dtpDate";
+            this.dtpDate.Size = new System.Drawing.Size(296, 29);
+            this.dtpDate.TabIndex = 78;
             // 
             // frmInsertUpdate_InventoryManagment
             // 
@@ -573,6 +456,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(929, 699);
+            this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.lblInventoryManagment);
             this.Controls.Add(this.lblDetailLine);
             this.Controls.Add(this.tbQuantity);
@@ -586,12 +470,6 @@
             this.Controls.Add(this.lblItem);
             this.Controls.Add(this.btnAddDetailLine);
             this.Controls.Add(this.lblSupplierName);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.cbYear);
-            this.Controls.Add(this.cbDay);
-            this.Controls.Add(this.cbMonth);
             this.Controls.Add(this.dgvDetailLines);
             this.Controls.Add(this.cbState);
             this.Controls.Add(this.lblState);
@@ -634,12 +512,6 @@
         private System.Windows.Forms.ComboBox cbState;
         private System.Windows.Forms.Label lblState;
         private System.Windows.Forms.DataGridView dgvDetailLines;
-        private System.Windows.Forms.ComboBox cbMonth;
-        private System.Windows.Forms.ComboBox cbDay;
-        private System.Windows.Forms.ComboBox cbYear;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblSupplierName;
         private System.Windows.Forms.Button btnAddDetailLine;
         private System.Windows.Forms.Label lblItemName;
@@ -653,5 +525,6 @@
         private System.Windows.Forms.Label lblAmount;
         private System.Windows.Forms.Label lblDetailLine;
         private System.Windows.Forms.Label lblInventoryManagment;
+        private System.Windows.Forms.DateTimePicker dtpDate;
     }
 }
