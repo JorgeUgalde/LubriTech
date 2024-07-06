@@ -179,12 +179,6 @@
     <Compile Include="View\frmResetPassword.Designer.cs">
       <DependentUpon>frmResetPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\frmInsertUpdate_DetailLine.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\frmInsertUpdate_DetailLine.Designer.cs">
-      <DependentUpon>frmInsertUpdate_DetailLine.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\Appointment_View\frmInsertUpdate_Appointment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -406,9 +400,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmImage.resx">
       <DependentUpon>frmImage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\frmInsertUpdate_DetailLine.resx">
-      <DependentUpon>frmInsertUpdate_DetailLine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmInsertUpdateUser.resx">
       <DependentUpon>frmInsertUpdateUser.cs</DependentUpon>
