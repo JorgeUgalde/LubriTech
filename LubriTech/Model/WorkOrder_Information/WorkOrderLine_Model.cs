@@ -14,16 +14,28 @@ namespace LubriTech.Model.WorkOrder_Information
         SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
 
         //load all work order lines from a work order
-        public List<WorkOrderLine> LoadWorkOrderLines(int? workOrderId)
+        public List<WorkOrderLine> LoadWorkOrderLines(int? workOrderId, int clientPriceListId)
         {
             List<WorkOrderLine> workOrderLines = new List<WorkOrderLine>();
-            string selectQuery = "SELECT * FROM LineaOrdenTrabajo WHERE IdentificacionOrdenTrabajo = @workOrderId";
+            string selectQuery = "SELECT l.Identificacion," +
+                "IdentificacionOrdenTrabajo," +
+                "l.CodigoArticulo," +
+                "a.Nombre," +
+                "ep.PrecioVenta," +
+                "l.Cantidad," +
+                "l.Monto " +
+                "FROM LineaOrdenTrabajo as l" +
+                "\r\nINNER JOIN Articulo as a ON l.CodigoArticulo = a.Codigo" +
+                "\r\nINNER JOIN EstablecePrecio as ep ON ep.CodigoArticulo = a.Codigo" +
+                "\r\nINNER JOIN ListaPrecios as lp ON ep.IdentificacionListaPrecios = lp.Identificacion" +
+                "\r\nWHERE IdentificacionOrdenTrabajo = @workOrderId AND lp.Identificacion = @priceListId";
 
             try
             {
                 using (SqlCommand cmd = new SqlCommand(selectQuery, conn))
                 {
                     cmd.Parameters.AddWithValue("@workOrderId", workOrderId);
+                    cmd.Parameters.AddWithValue("@priceListId", clientPriceListId);
                     conn.Open();
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -36,6 +48,7 @@ namespace LubriTech.Model.WorkOrder_Information
                                 WorkOrderId = reader.GetInt32(reader.GetOrdinal("IdentificacionOrdenTrabajo")),
                                 item = new Item_Model().getItem(reader.GetString(reader.GetOrdinal("CodigoArticulo"))),
                                 Quantity = reader.GetDecimal(reader.GetOrdinal("Cantidad")),
+                                UnitPrice = reader.GetDecimal(reader.GetOrdinal("PrecioVenta")),
                                 Amount = reader.GetDecimal(reader.GetOrdinal("Monto"))
                             };
                             workOrderLines.Add(workOrderLine);
@@ -96,7 +109,7 @@ namespace LubriTech.Model.WorkOrder_Information
         }
 
         //upsert a work order line
-        public bool UpsertWorkOrderLine(DataRow row)
+        public bool UpsertWorkOrderLine(WorkOrderLine workOrderLine)
         {
             string upsertQuery = @"
                 INSERT INTO LineaOrdenTrabajo(IdentificacionOrdenTrabajo, CodigoArticulo, Cantidad, Monto)
@@ -108,10 +121,10 @@ namespace LubriTech.Model.WorkOrder_Information
                     using (SqlCommand cmd = new SqlCommand(upsertQuery, conn))
                     {
                         //cmd.Parameters.AddWithValue("@Id", row["Identificacion"]);
-                        cmd.Parameters.AddWithValue("@IdentificacionOrdenTrabajo", row["IdentificacionOrdenTrabajo"]);
-                        cmd.Parameters.AddWithValue("@CodigoArticulo", row["Código Artículo"]);
-                        cmd.Parameters.AddWithValue("@Cantidad", row["Cantidad"]);
-                        cmd.Parameters.AddWithValue("@Monto", row["Monto"]);
+                        cmd.Parameters.AddWithValue("@IdentificacionOrdenTrabajo", workOrderLine.WorkOrderId);
+                        cmd.Parameters.AddWithValue("@CodigoArticulo", workOrderLine.item.code);
+                        cmd.Parameters.AddWithValue("@Cantidad", workOrderLine.Quantity);
+                        cmd.Parameters.AddWithValue("@Monto", workOrderLine.Amount);
 
                         cmd.ExecuteNonQuery();
                         return true; // Operation was successful

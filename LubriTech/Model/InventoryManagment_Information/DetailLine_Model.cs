@@ -42,7 +42,7 @@ namespace LubriTech.Model.InventoryManagment_Information
                 {
                     detailLines.Add(new DetailLine((new Item_Controller().get((dr["CodigoArticulo"].ToString()))),
                                                 (new InventoryManagment_Controller().getInventoryManagment(Convert.ToInt32(dr["IdentificacionGestionInventario"]))),
-                                                Convert.ToInt32(dr["Cantidad"]),
+                                                Convert.ToDouble(dr["Cantidad"]),
                                                 Convert.ToDouble(dr["Monto"])));
                 }
                 return detailLines;
@@ -85,6 +85,30 @@ namespace LubriTech.Model.InventoryManagment_Information
         }
 
         /// <summary>
+        /// Deletes a detail line from the datebase.
+        /// </summary>
+        /// <param name="detailLine">The detail line object to delete.</param>
+        /// <returns>True if the operation was successful, otherwise, false.</returns>
+        public Boolean delete(DetailLine detailLine)
+        {
+            try
+            {
+                if (getDetailLine(detailLine.Item.code, detailLine.InventoryManagment.Id) != null)
+                {
+                    return deleteDetailLine(detailLine);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Gets a detail line from the database by its item and inventory managment.
         /// </summary>
         /// <param name="itemCode">The code of the item related to the detail line.</param>
@@ -108,7 +132,7 @@ namespace LubriTech.Model.InventoryManagment_Information
 
                 DetailLine detailLine = new DetailLine((new Item_Controller().get((dr["CodigoArticulo"].ToString()))),
                                                 (new InventoryManagment_Controller().getInventoryManagment(Convert.ToInt32(dr["IdentificacionGestionInventario"]))),
-                                                Convert.ToInt32(dr["Cantidad"]),
+                                                Convert.ToDouble(dr["Cantidad"]),
                                                 Convert.ToDouble(dr["Monto"]));
 
                 if (conn.State != System.Data.ConnectionState.Open)
@@ -123,6 +147,44 @@ namespace LubriTech.Model.InventoryManagment_Information
             catch (Exception ex)
             {
                 return null;
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Deletes a detail line from the database.
+        /// </summary>
+        /// <param name="detailLine">Detail line object to delete.</param>
+        /// <returns>True if the operation was successful, otherwise, false..</returns>
+        public Boolean deleteDetailLine(DetailLine detailLine)
+        {
+            try
+            {
+                string query = "DELETE FROM LineaDetalle WHERE CodigoArticulo = @itemCode and IdentificacionGestionInventario = @inventoryManagmentId;";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@itemCode", detailLine.getItemCode());
+                cmd.Parameters.AddWithValue("@inventoryManagmentId", detailLine.getInventoryManagmentId());
+
+
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                cmd.ExecuteNonQuery();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                return false;
             }
             finally
             {
@@ -238,7 +300,7 @@ namespace LubriTech.Model.InventoryManagment_Information
                 {
                     detailLines.Add(new DetailLine((new Item_Controller().get(dr["CodigoArticulo"].ToString())),
                                                 (new InventoryManagment_Controller().getInventoryManagment(Convert.ToInt32(dr["IdentificacionGestionInventario"]))),
-                                                Convert.ToInt32(dr["Cantidad"]),
+                                                Convert.ToDouble(dr["Cantidad"]),
                                                 Convert.ToDouble(dr["Monto"])));
                 }
                 return detailLines;

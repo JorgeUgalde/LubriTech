@@ -83,7 +83,11 @@ namespace LubriTech.Model.InventoryManagment_Information
         /// <returns>The supplier id.</returns>
         public string getSupplierId()
         {
-            return this.Supplier.id;
+            if(this.Supplier != null)
+            {
+                return this.Supplier.id;
+            }
+            return null;
         }
 
         /// <summary>

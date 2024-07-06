@@ -33,9 +33,9 @@ namespace LubriTech.Controller
             return new WorkOrder_Model().loadWorkOrdersFromClient(clientId);
         }
 
-        public List<WorkOrderLine> loadWorkOrderLines(int? workOrderId)
+        public List<WorkOrderLine> loadWorkOrderLines(int? workOrderId, int clientPriceListId)
         {
-            return new WorkOrderLine_Model().LoadWorkOrderLines(workOrderId);
+            return new WorkOrderLine_Model().LoadWorkOrderLines(workOrderId, clientPriceListId);
         }
 
         /// <summary>
@@ -48,9 +48,9 @@ namespace LubriTech.Controller
             return new Observation_Model().LoadObservations(workOrderId);
         }
 
-        public bool upsertWorkOrderLine(DataRow row)
+        public bool upsertWorkOrderLine(WorkOrderLine workOrderLine)
         {
-            return new WorkOrderLine_Model().UpsertWorkOrderLine(row);
+            return new WorkOrderLine_Model().UpsertWorkOrderLine(workOrderLine);
         }
 
         public WorkOrder LoadWorkOrder(int workOrderId)

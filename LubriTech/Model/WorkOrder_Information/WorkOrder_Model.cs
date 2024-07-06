@@ -47,7 +47,7 @@ namespace LubriTech.Model.WorkOrder_Information
                                 CurrentMileage = reader.GetInt32(reader.GetOrdinal("KilometrajeActual")),
                                 Amount = reader.GetDecimal(reader.GetOrdinal("Monto")),
                                 State = reader.GetInt16(reader.GetOrdinal("Estado")),
-                                workOrderLines = new WorkOrderLine_Model().LoadWorkOrderLines(reader.GetInt32(reader.GetOrdinal("Identificacion"))),
+                                //workOrderLines = new WorkOrderLine_Model().LoadWorkOrderLines(reader.GetInt32(reader.GetOrdinal("Identificacion"))),
                                 Observations = new Observation_Model().LoadObservations(reader.GetInt32(reader.GetOrdinal("Identificacion")))
                             };
 
@@ -107,7 +107,7 @@ namespace LubriTech.Model.WorkOrder_Information
                                 CurrentMileage = reader.GetInt32(reader.GetOrdinal("KilometrajeActual")),
                                 Amount = reader.GetDecimal(reader.GetOrdinal("Monto")),
                                 State = reader.GetInt16(reader.GetOrdinal("Estado")),
-                                workOrderLines = new WorkOrderLine_Model().LoadWorkOrderLines(reader.GetInt32(reader.GetOrdinal("Identificacion"))),
+                                //workOrderLines = new WorkOrderLine_Model().LoadWorkOrderLines(reader.GetInt32(reader.GetOrdinal("Identificacion"))),
                                 Observations = new Observation_Model().LoadObservations(reader.GetInt32(reader.GetOrdinal("Identificacion")))
                             };
 
@@ -175,7 +175,7 @@ namespace LubriTech.Model.WorkOrder_Information
                                 CurrentMileage = reader.GetInt32(reader.GetOrdinal("KilometrajeActual")),
                                 Amount = reader.GetDecimal(reader.GetOrdinal("Monto")),
                                 State = reader.GetInt16(reader.GetOrdinal("Estado")),
-                                workOrderLines = new WorkOrderLine_Model().LoadWorkOrderLines(reader.GetInt32(reader.GetOrdinal("Identificacion"))),
+                                //workOrderLines = new WorkOrderLine_Model().LoadWorkOrderLines(reader.GetInt32(reader.GetOrdinal("Identificacion"))),
                                 Observations = new Observation_Model().LoadObservations(reader.GetInt32(reader.GetOrdinal("Identificacion")))
                             };
 

@@ -30,7 +30,7 @@ namespace LubriTech.Model.InventoryManagment_Information
         /// <summary>
         /// Quantity of the item in the detail line.
         /// </summary>
-        public int Quantity { get; set; }
+        public double Quantity { get; set; }
 
         /// <summary>
         /// Total amount of the detail line.
@@ -49,7 +49,7 @@ namespace LubriTech.Model.InventoryManagment_Information
         /// <param name="inventoryManagment">The inventory managment document related to the detail line.</param>
         /// <param name="quantity">The quantity of items in the detail line.</param>
         /// <param name="totalAmount">The total amount of the detail line.</param>
-        public DetailLine(Item item, InventoryManagment inventoryManagment, int quantity, double totalAmount)
+        public DetailLine(Item item, InventoryManagment inventoryManagment, double quantity, double totalAmount)
         {
             this.Item = item;
             this.InventoryManagment = inventoryManagment;

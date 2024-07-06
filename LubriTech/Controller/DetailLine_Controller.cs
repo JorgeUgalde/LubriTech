@@ -63,5 +63,15 @@ namespace LubriTech.Controller
             return new DetailLine_Model().getDetailLine(itemCode, inventoryManagmentId);
 
         }
+
+        /// <summary>
+        /// Deletes a detail line from the database.
+        /// </summary>
+        /// <param name="detailLine">Detail line object to delete.</param>
+        /// <returns>True if the operation was succesful, otherwise, false.</returns>
+        public Boolean delete(DetailLine detailLine)
+        {
+            return detailLineModel.delete(detailLine);
+        }
     }
 }
