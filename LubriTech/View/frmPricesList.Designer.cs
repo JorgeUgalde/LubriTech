@@ -28,84 +28,209 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtFilter = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnAddClient = new System.Windows.Forms.Button();
+            this.panelBorder = new System.Windows.Forms.Panel();
+            this.lblForm = new System.Windows.Forms.Label();
+            this.pbMaximize = new System.Windows.Forms.PictureBox();
+            this.pbClose = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.btnAddPricesList = new System.Windows.Forms.Button();
+            this.dgvPricesList = new System.Windows.Forms.DataGridView();
+            this.panelBorder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPricesList)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 61);
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(21, 61);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
+            this.label1.Size = new System.Drawing.Size(124, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "Lista de precios";
             // 
-            // dataGridView1
+            // txtFilter
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 84);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(479, 167);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(391, 58);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtFilter.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.txtFilter.Location = new System.Drawing.Point(382, 61);
+            this.txtFilter.Name = "txtFilter";
+            this.txtFilter.Size = new System.Drawing.Size(141, 29);
+            this.txtFilter.TabIndex = 2;
+            this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(335, 61);
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(294, 64);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 13);
+            this.label2.Size = new System.Drawing.Size(82, 21);
             this.label2.TabIndex = 3;
             this.label2.Text = "Filtrar por";
             // 
-            // btnAddClient
+            // panelBorder
             // 
-            this.btnAddClient.Location = new System.Drawing.Point(12, 270);
-            this.btnAddClient.Name = "btnAddClient";
-            this.btnAddClient.Size = new System.Drawing.Size(75, 23);
-            this.btnAddClient.TabIndex = 4;
-            this.btnAddClient.Text = "Crear";
-            this.btnAddClient.UseVisualStyleBackColor = true;
-            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
+            this.panelBorder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            this.panelBorder.Controls.Add(this.lblForm);
+            this.panelBorder.Controls.Add(this.pbMaximize);
+            this.panelBorder.Controls.Add(this.pbClose);
+            this.panelBorder.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.panelBorder.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelBorder.Location = new System.Drawing.Point(0, 0);
+            this.panelBorder.Name = "panelBorder";
+            this.panelBorder.Size = new System.Drawing.Size(549, 36);
+            this.panelBorder.TabIndex = 80;
+            this.panelBorder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBorder_MouseDown);
+            // 
+            // lblForm
+            // 
+            this.lblForm.AutoSize = true;
+            this.lblForm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblForm.ForeColor = System.Drawing.Color.White;
+            this.lblForm.Location = new System.Drawing.Point(12, 6);
+            this.lblForm.Name = "lblForm";
+            this.lblForm.Size = new System.Drawing.Size(123, 21);
+            this.lblForm.TabIndex = 10;
+            this.lblForm.Text = "Lista de Precios";
+            // 
+            // pbMaximize
+            // 
+            this.pbMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbMaximize.Image = global::LubriTech.Properties.Resources.maximize;
+            this.pbMaximize.Location = new System.Drawing.Point(480, 6);
+            this.pbMaximize.Name = "pbMaximize";
+            this.pbMaximize.Size = new System.Drawing.Size(30, 30);
+            this.pbMaximize.TabIndex = 8;
+            this.pbMaximize.TabStop = false;
+            this.pbMaximize.Click += new System.EventHandler(this.pbMaximize_Click);
+            // 
+            // pbClose
+            // 
+            this.pbClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbClose.Image = global::LubriTech.Properties.Resources.closeIco2;
+            this.pbClose.Location = new System.Drawing.Point(516, 6);
+            this.pbClose.Name = "pbClose";
+            this.pbClose.Size = new System.Drawing.Size(30, 30);
+            this.pbClose.TabIndex = 7;
+            this.pbClose.TabStop = false;
+            this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(416, 270);
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnClose.Location = new System.Drawing.Point(382, 369);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 5;
+            this.btnClose.Size = new System.Drawing.Size(141, 34);
+            this.btnClose.TabIndex = 82;
             this.btnClose.Text = "Cerrar";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnAddPricesList
+            // 
+            this.btnAddPricesList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAddPricesList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
+            this.btnAddPricesList.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddPricesList.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAddPricesList.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddPricesList.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAddPricesList.Location = new System.Drawing.Point(25, 369);
+            this.btnAddPricesList.Name = "btnAddPricesList";
+            this.btnAddPricesList.Size = new System.Drawing.Size(141, 34);
+            this.btnAddPricesList.TabIndex = 81;
+            this.btnAddPricesList.Text = "Crear";
+            this.btnAddPricesList.UseVisualStyleBackColor = false;
+            this.btnAddPricesList.Click += new System.EventHandler(this.btnAddPricesList_Click);
+            // 
+            // dgvPricesList
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            this.dgvPricesList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvPricesList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvPricesList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPricesList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvPricesList.BackgroundColor = System.Drawing.Color.White;
+            this.dgvPricesList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvPricesList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
+            this.dgvPricesList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPricesList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvPricesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPricesList.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPricesList.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvPricesList.GridColor = System.Drawing.Color.White;
+            this.dgvPricesList.Location = new System.Drawing.Point(25, 96);
+            this.dgvPricesList.Name = "dgvPricesList";
+            this.dgvPricesList.ReadOnly = true;
+            this.dgvPricesList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPricesList.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvPricesList.RowHeadersVisible = false;
+            this.dgvPricesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPricesList.Size = new System.Drawing.Size(498, 257);
+            this.dgvPricesList.TabIndex = 83;
+            this.dgvPricesList.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPricesList_CellMouseDoubleClick);
             // 
             // frmPricesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(503, 326);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(549, 425);
+            this.Controls.Add(this.dgvPricesList);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnAddClient);
+            this.Controls.Add(this.btnAddPricesList);
+            this.Controls.Add(this.panelBorder);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmPricesList";
             this.Text = "Lista de precios";
             this.Load += new System.EventHandler(this.frmPricesList_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panelBorder.ResumeLayout(false);
+            this.panelBorder.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPricesList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,10 +239,14 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtFilter;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnAddClient;
+        private System.Windows.Forms.Panel panelBorder;
+        private System.Windows.Forms.Label lblForm;
+        private System.Windows.Forms.PictureBox pbMaximize;
+        private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnAddPricesList;
+        private System.Windows.Forms.DataGridView dgvPricesList;
     }
 }

@@ -52,7 +52,8 @@ namespace LubriTech.View
             tbSupplierName.Enabled = false;
             tbItemName.Enabled = false;
             tbAmount.Enabled = false;
-            if (inventoryManagment.Supplier != null) {
+            if (inventoryManagment.Supplier != null)
+            {
                 tbSupplierName.Text = inventoryManagment.Supplier.name;
                 tbSupplierId.Text = inventoryManagment.Supplier.id;
             }
@@ -226,7 +227,7 @@ namespace LubriTech.View
                 e.Handled = true;
             }
         }
-        
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             if (clickedAddDetail)
@@ -273,18 +274,8 @@ namespace LubriTech.View
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
-        private void panelControlBox_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
         private void pbClose_Click(object sender, EventArgs e)
         {
-            if (clickedAddDetail)
-            {
-                new InventoryManagment_Controller().delete(existingInventoryManagment.Id);
-            }
             this.Close();
         }
 
@@ -318,7 +309,7 @@ namespace LubriTech.View
                 {
                     InventoryManagment_Controller inventoryManagmentController = new InventoryManagment_Controller();
                     InventoryManagment inventoryManagment = new InventoryManagment();
-                    if(selectedSupplier != null)
+                    if (selectedSupplier != null)
                     {
                         tbSupplierId.Text = selectedSupplier.id;
                     }
@@ -395,7 +386,7 @@ namespace LubriTech.View
             }
             else
             {
-                if(selectedSupplier != null)
+                if (selectedSupplier != null)
                 {
                     tbSupplierId.Text = selectedSupplier.id;
                 }
@@ -731,6 +722,12 @@ namespace LubriTech.View
                 btnAddDetailLine.Enabled = true;
                 btnSelectItem.Enabled = true;
             }
+        }
+
+        private void panelBorder_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }
