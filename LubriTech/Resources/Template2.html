@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Gestión de Inventario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            font-size: 13px;
+        }
+
+        .container {
+            width: 100%;
+            margin: 30px auto;
+            background-color: #ffffff;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+            .section h2 {
+                background-color: #003366;
+                color: white;
+                padding: 10px;
+                text-align: center;
+                margin: 0;
+            }
+
+        h3 {
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 0 0 5px 5px;
+            border: 1px solid #ccc;
+        }
+
+        .inventory-magament-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            .inventory-magament-table th, .inventory-magament-table td {
+                border: 1px solid #ccc;
+                padding: 5px;
+                font-size: 13px;
+            }
+
+            .inventory-magament-table thead th {
+                font-size: larger;
+            }
+
+            .inventory-magament-table tbody tr {
+                border-bottom: 1px solid #ccc;
+            }
+
+                .inventory-magament-table tbody tr:last-child {
+                    border-bottom: none;
+                }
+
+        .tittle {
+            background-color: #003366;
+            color: white;
+            padding: 5px;
+            text-align: center;
+            margin-bottom: 5px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .content table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+        }
+
+            .content table td {
+                padding: 10px;
+                text-align: left;
+                font-size: 13px;
+            }
+
+            .content table th {
+                background-color: #ffff;
+            }
+
+            .content table td:first-child {
+                font-weight: bold !important;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>GESTIÓN DE INVENTARIO</h1>
+            <h2>LubriTech</h2>
+        </div>
+        <div class="section">
+            <div class="content">
+                <table>
+                    <tr>
+                        <td style="width: 100%;">
+                            <table>
+                                <tr>
+                                    <td>Fecha:</td>
+                                    <td>@DATE</td>
+                                </tr>
+                                <tr>
+                                    <td>Sucursal:</td>
+                                    <td>@BRANCH</td>
+                                </tr>
+                                <tr>
+                                    <td>Tipo:</td>
+                                    <td>@TYPE</td>
+                                </tr>
+                                <tr>
+                                    <td>Estado:</td>
+                                    <td>@STATE</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="section">
+            <div class="content">
+                <h3>Proveedor</h3>
+                <table>
+                    <tr>
+                        <td style="width: 100%; vertical-align: top;">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td>Identificación:</td>
+                                    <td>@ID</td>
+                                </tr>
+                                <tr>
+                                    <td>Nombre:</td>
+                                    <td>@NAME</td>
+                                </tr>
+                                <tr>
+                                    <td>Teléfono:</td>
+                                    <td>@MAINPHONE</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 40%;">Correo electrónico:</td>
+                                    <td style="width: 60%; word-wrap: break-word;">@EMAIL</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="section">
+            <div class="content">
+                <h3>Detalle</h3>
+                @INVENTORYMANAGEMENT
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

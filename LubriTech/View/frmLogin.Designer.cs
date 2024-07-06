@@ -38,20 +38,20 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblAdd = new System.Windows.Forms.Label();
             this.lblRecoverPassword = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -65,7 +65,7 @@
             this.btLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.btLogin.Location = new System.Drawing.Point(556, 348);
+            this.btLogin.Location = new System.Drawing.Point(556, 403);
             this.btLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btLogin.MinimumSize = new System.Drawing.Size(348, 41);
             this.btLogin.Name = "btLogin";
@@ -82,10 +82,10 @@
             this.txtEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(556, 215);
+            this.txtEmail.Location = new System.Drawing.Point(556, 230);
             this.txtEmail.MinimumSize = new System.Drawing.Size(348, 34);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(348, 28);
+            this.txtEmail.Size = new System.Drawing.Size(348, 34);
             this.txtEmail.TabIndex = 2;
             this.txtEmail.MouseEnter += new System.EventHandler(this.txtEmail_MouseEnter);
             this.txtEmail.MouseLeave += new System.EventHandler(this.txtEmail_MouseLeave);
@@ -97,11 +97,11 @@
             this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(556, 288);
+            this.txtPassword.Location = new System.Drawing.Point(556, 316);
             this.txtPassword.MinimumSize = new System.Drawing.Size(348, 34);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(348, 28);
+            this.txtPassword.Size = new System.Drawing.Size(348, 34);
             this.txtPassword.TabIndex = 3;
             this.txtPassword.MouseEnter += new System.EventHandler(this.txtPassword_MouseEnter);
             this.txtPassword.MouseLeave += new System.EventHandler(this.txtPassword_MouseLeave);
@@ -112,7 +112,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(551, 186);
+            this.label1.Location = new System.Drawing.Point(551, 192);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(210, 26);
             this.label1.TabIndex = 4;
@@ -124,7 +124,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(551, 259);
+            this.label2.Location = new System.Drawing.Point(551, 277);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(136, 26);
             this.label2.TabIndex = 5;
@@ -176,6 +176,17 @@
             this.panel5.Size = new System.Drawing.Size(21, 500);
             this.panel5.TabIndex = 10;
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::LubriTech.Properties.Resources.imagenLogin1;
+            this.pictureBox4.Location = new System.Drawing.Point(-86, 0);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(736, 500);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 0;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.RoyalBlue;
@@ -199,7 +210,7 @@
             this.lblAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblAdd.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAdd.ForeColor = System.Drawing.Color.Blue;
-            this.lblAdd.Location = new System.Drawing.Point(829, 322);
+            this.lblAdd.Location = new System.Drawing.Point(829, 350);
             this.lblAdd.Name = "lblAdd";
             this.lblAdd.Size = new System.Drawing.Size(75, 17);
             this.lblAdd.TabIndex = 10;
@@ -212,7 +223,7 @@
             this.lblRecoverPassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblRecoverPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecoverPassword.ForeColor = System.Drawing.Color.Blue;
-            this.lblRecoverPassword.Location = new System.Drawing.Point(553, 322);
+            this.lblRecoverPassword.Location = new System.Drawing.Point(553, 350);
             this.lblRecoverPassword.Name = "lblRecoverPassword";
             this.lblRecoverPassword.Size = new System.Drawing.Size(148, 17);
             this.lblRecoverPassword.TabIndex = 11;
@@ -228,17 +239,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::LubriTech.Properties.Resources.imagenLogin1;
-            this.pictureBox4.Location = new System.Drawing.Point(-86, 0);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(736, 500);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 0;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // pictureBox3
             // 
@@ -291,9 +291,9 @@
             this.panel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);

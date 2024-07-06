@@ -587,6 +587,7 @@
     <Content Include="Resources\services.png" />
     <Content Include="Resources\suppliers.png" />
     <None Include="Resources\Template.html" />
+    <EmbeddedResource Include="Resources\Template2.html" />
     <Content Include="Resources\vehicle.png" />
     <Content Include="Resources\work order.jpg" />
   </ItemGroup>
