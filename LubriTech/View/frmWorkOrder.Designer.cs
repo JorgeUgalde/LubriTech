@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblVehicle = new System.Windows.Forms.Label();
             this.lblMake = new System.Windows.Forms.Label();
             this.lblModel = new System.Windows.Forms.Label();
@@ -70,6 +70,8 @@
             this.txtLicensePlate = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnAddWorkOrderLine = new System.Windows.Forms.Button();
+            this.btnSelectItem = new System.Windows.Forms.Button();
             this.dgvWorkOrderDetails = new System.Windows.Forms.DataGridView();
             this.lbLineAmount = new System.Windows.Forms.Label();
             this.lbQuantiy = new System.Windows.Forms.Label();
@@ -83,21 +85,18 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvObservation = new System.Windows.Forms.DataGridView();
             this.btnAdd = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.btnSelectItem = new System.Windows.Forms.Button();
-            this.btnAddWorkOrderLine = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWorkOrderDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvObservation)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblVehicle
             // 
             this.lblVehicle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblVehicle.AutoSize = true;
-            this.lblVehicle.Location = new System.Drawing.Point(418, 17);
+            this.lblVehicle.Location = new System.Drawing.Point(322, 17);
             this.lblVehicle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblVehicle.Name = "lblVehicle";
             this.lblVehicle.Size = new System.Drawing.Size(50, 13);
@@ -108,7 +107,7 @@
             // 
             this.lblMake.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMake.AutoSize = true;
-            this.lblMake.Location = new System.Drawing.Point(418, 66);
+            this.lblMake.Location = new System.Drawing.Point(322, 66);
             this.lblMake.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMake.Name = "lblMake";
             this.lblMake.Size = new System.Drawing.Size(37, 13);
@@ -119,7 +118,7 @@
             // 
             this.lblModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblModel.AutoSize = true;
-            this.lblModel.Location = new System.Drawing.Point(418, 87);
+            this.lblModel.Location = new System.Drawing.Point(322, 87);
             this.lblModel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblModel.Name = "lblModel";
             this.lblModel.Size = new System.Drawing.Size(42, 13);
@@ -130,7 +129,7 @@
             // 
             this.lblMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMileage.AutoSize = true;
-            this.lblMileage.Location = new System.Drawing.Point(418, 108);
+            this.lblMileage.Location = new System.Drawing.Point(322, 108);
             this.lblMileage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMileage.Name = "lblMileage";
             this.lblMileage.Size = new System.Drawing.Size(58, 13);
@@ -160,7 +159,7 @@
             // txtMake
             // 
             this.txtMake.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMake.Location = new System.Drawing.Point(437, 63);
+            this.txtMake.Location = new System.Drawing.Point(415, 62);
             this.txtMake.Margin = new System.Windows.Forms.Padding(2);
             this.txtMake.Name = "txtMake";
             this.txtMake.Size = new System.Drawing.Size(168, 20);
@@ -169,7 +168,7 @@
             // txtModel
             // 
             this.txtModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtModel.Location = new System.Drawing.Point(437, 84);
+            this.txtModel.Location = new System.Drawing.Point(415, 83);
             this.txtModel.Margin = new System.Windows.Forms.Padding(2);
             this.txtModel.Name = "txtModel";
             this.txtModel.Size = new System.Drawing.Size(168, 20);
@@ -178,7 +177,7 @@
             // txtMileage
             // 
             this.txtMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMileage.Location = new System.Drawing.Point(437, 106);
+            this.txtMileage.Location = new System.Drawing.Point(415, 105);
             this.txtMileage.Margin = new System.Windows.Forms.Padding(2);
             this.txtMileage.Name = "txtMileage";
             this.txtMileage.Size = new System.Drawing.Size(168, 20);
@@ -186,7 +185,7 @@
             // 
             // txtClientId
             // 
-            this.txtClientId.Location = new System.Drawing.Point(78, 42);
+            this.txtClientId.Location = new System.Drawing.Point(112, 41);
             this.txtClientId.Margin = new System.Windows.Forms.Padding(2);
             this.txtClientId.Name = "txtClientId";
             this.txtClientId.Size = new System.Drawing.Size(168, 20);
@@ -214,7 +213,7 @@
             // 
             // txtClientName
             // 
-            this.txtClientName.Location = new System.Drawing.Point(78, 63);
+            this.txtClientName.Location = new System.Drawing.Point(112, 62);
             this.txtClientName.Margin = new System.Windows.Forms.Padding(2);
             this.txtClientName.Name = "txtClientName";
             this.txtClientName.Size = new System.Drawing.Size(168, 20);
@@ -252,7 +251,7 @@
             // 
             // txtCellphone
             // 
-            this.txtCellphone.Location = new System.Drawing.Point(78, 84);
+            this.txtCellphone.Location = new System.Drawing.Point(112, 83);
             this.txtCellphone.Margin = new System.Windows.Forms.Padding(2);
             this.txtCellphone.Name = "txtCellphone";
             this.txtCellphone.Size = new System.Drawing.Size(168, 20);
@@ -260,7 +259,7 @@
             // 
             // txtCellphone2
             // 
-            this.txtCellphone2.Location = new System.Drawing.Point(78, 106);
+            this.txtCellphone2.Location = new System.Drawing.Point(112, 105);
             this.txtCellphone2.Margin = new System.Windows.Forms.Padding(2);
             this.txtCellphone2.Name = "txtCellphone2";
             this.txtCellphone2.Size = new System.Drawing.Size(168, 20);
@@ -268,7 +267,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(78, 127);
+            this.txtEmail.Location = new System.Drawing.Point(112, 126);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(168, 20);
@@ -289,7 +288,7 @@
             // 
             this.lblState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblState.AutoSize = true;
-            this.lblState.Location = new System.Drawing.Point(431, 30);
+            this.lblState.Location = new System.Drawing.Point(480, 30);
             this.lblState.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(40, 13);
@@ -310,7 +309,7 @@
             // txtTotalAmount
             // 
             this.txtTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTotalAmount.Location = new System.Drawing.Point(437, 322);
+            this.txtTotalAmount.Location = new System.Drawing.Point(510, 410);
             this.txtTotalAmount.Margin = new System.Windows.Forms.Padding(2);
             this.txtTotalAmount.Name = "txtTotalAmount";
             this.txtTotalAmount.Size = new System.Drawing.Size(168, 20);
@@ -320,7 +319,7 @@
             // 
             this.cbState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbState.FormattingEnabled = true;
-            this.cbState.Location = new System.Drawing.Point(573, 27);
+            this.cbState.Location = new System.Drawing.Point(544, 27);
             this.cbState.Margin = new System.Windows.Forms.Padding(2);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(168, 21);
@@ -350,7 +349,7 @@
             this.btnSelectClient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSelectClient.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnSelectClient.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSelectClient.Location = new System.Drawing.Point(78, 13);
+            this.btnSelectClient.Location = new System.Drawing.Point(112, 12);
             this.btnSelectClient.Margin = new System.Windows.Forms.Padding(2);
             this.btnSelectClient.Name = "btnSelectClient";
             this.btnSelectClient.Size = new System.Drawing.Size(168, 23);
@@ -362,7 +361,7 @@
             // btnAddVehicle
             // 
             this.btnAddVehicle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddVehicle.Location = new System.Drawing.Point(437, 13);
+            this.btnAddVehicle.Location = new System.Drawing.Point(415, 12);
             this.btnAddVehicle.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddVehicle.Name = "btnAddVehicle";
             this.btnAddVehicle.Size = new System.Drawing.Size(168, 23);
@@ -375,7 +374,7 @@
             // 
             this.lblCurrentMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCurrentMileage.AutoSize = true;
-            this.lblCurrentMileage.Location = new System.Drawing.Point(418, 129);
+            this.lblCurrentMileage.Location = new System.Drawing.Point(322, 129);
             this.lblCurrentMileage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCurrentMileage.Name = "lblCurrentMileage";
             this.lblCurrentMileage.Size = new System.Drawing.Size(91, 13);
@@ -385,7 +384,7 @@
             // txtCurrentMileage
             // 
             this.txtCurrentMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCurrentMileage.Location = new System.Drawing.Point(437, 127);
+            this.txtCurrentMileage.Location = new System.Drawing.Point(415, 126);
             this.txtCurrentMileage.Margin = new System.Windows.Forms.Padding(2);
             this.txtCurrentMileage.Name = "txtCurrentMileage";
             this.txtCurrentMileage.Size = new System.Drawing.Size(168, 20);
@@ -394,7 +393,7 @@
             // btnSaveChanges
             // 
             this.btnSaveChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveChanges.Location = new System.Drawing.Point(605, 517);
+            this.btnSaveChanges.Location = new System.Drawing.Point(610, 566);
             this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(98, 23);
@@ -406,7 +405,7 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnClose.Location = new System.Drawing.Point(13, 517);
+            this.btnClose.Location = new System.Drawing.Point(9, 566);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(98, 23);
@@ -421,9 +420,10 @@
             this.lblDetails.Location = new System.Drawing.Point(12, 164);
             this.lblDetails.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDetails.Name = "lblDetails";
-            this.lblDetails.Size = new System.Drawing.Size(71, 13);
+            this.lblDetails.Size = new System.Drawing.Size(45, 13);
             this.lblDetails.TabIndex = 47;
-            this.lblDetails.Text = "Detalles"; 
+            this.lblDetails.Text = "Detalles";
+            // 
             // btnPrint
             // 
             this.btnPrint.Location = new System.Drawing.Point(507, 19);
@@ -437,7 +437,7 @@
             // 
             this.lblLicensePlate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLicensePlate.AutoSize = true;
-            this.lblLicensePlate.Location = new System.Drawing.Point(418, 45);
+            this.lblLicensePlate.Location = new System.Drawing.Point(322, 45);
             this.lblLicensePlate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLicensePlate.Name = "lblLicensePlate";
             this.lblLicensePlate.Size = new System.Drawing.Size(34, 13);
@@ -447,7 +447,7 @@
             // txtLicensePlate
             // 
             this.txtLicensePlate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLicensePlate.Location = new System.Drawing.Point(437, 42);
+            this.txtLicensePlate.Location = new System.Drawing.Point(415, 41);
             this.txtLicensePlate.Margin = new System.Windows.Forms.Padding(2);
             this.txtLicensePlate.Name = "txtLicensePlate";
             this.txtLicensePlate.Size = new System.Drawing.Size(168, 20);
@@ -512,15 +512,41 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(693, 394);
+            this.tabPage1.Size = new System.Drawing.Size(695, 443);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Contenido";
             // 
+            // btnAddWorkOrderLine
+            // 
+            this.btnAddWorkOrderLine.Location = new System.Drawing.Point(588, 201);
+            this.btnAddWorkOrderLine.Name = "btnAddWorkOrderLine";
+            this.btnAddWorkOrderLine.Size = new System.Drawing.Size(92, 23);
+            this.btnAddWorkOrderLine.TabIndex = 60;
+            this.btnAddWorkOrderLine.Text = "Agregar detalle";
+            this.btnAddWorkOrderLine.UseVisualStyleBackColor = true;
+            this.btnAddWorkOrderLine.Click += new System.EventHandler(this.btnAddWorkOrderLine_Click);
+            // 
+            // btnSelectItem
+            // 
+            this.btnSelectItem.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnSelectItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
+            this.btnSelectItem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSelectItem.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSelectItem.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
+            this.btnSelectItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSelectItem.Image = global::LubriTech.Properties.Resources.searchClient;
+            this.btnSelectItem.Location = new System.Drawing.Point(285, 171);
+            this.btnSelectItem.Name = "btnSelectItem";
+            this.btnSelectItem.Size = new System.Drawing.Size(32, 29);
+            this.btnSelectItem.TabIndex = 59;
+            this.btnSelectItem.UseVisualStyleBackColor = false;
+            this.btnSelectItem.Click += new System.EventHandler(this.btnSelectItem_Click);
+            // 
             // dgvWorkOrderDetails
             // 
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
-            this.dgvWorkOrderDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
+            this.dgvWorkOrderDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
             this.dgvWorkOrderDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -530,36 +556,36 @@
             this.dgvWorkOrderDetails.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvWorkOrderDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvWorkOrderDetails.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvWorkOrderDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvWorkOrderDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dgvWorkOrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvWorkOrderDetails.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvWorkOrderDetails.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvWorkOrderDetails.DefaultCellStyle = dataGridViewCellStyle19;
             this.dgvWorkOrderDetails.GridColor = System.Drawing.Color.White;
-            this.dgvWorkOrderDetails.Location = new System.Drawing.Point(15, 241);
+            this.dgvWorkOrderDetails.Location = new System.Drawing.Point(15, 237);
             this.dgvWorkOrderDetails.Name = "dgvWorkOrderDetails";
             this.dgvWorkOrderDetails.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle32.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvWorkOrderDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvWorkOrderDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.dgvWorkOrderDetails.RowHeadersVisible = false;
             this.dgvWorkOrderDetails.RowHeadersWidth = 51;
             this.dgvWorkOrderDetails.Size = new System.Drawing.Size(665, 164);
@@ -569,7 +595,7 @@
             // 
             this.lbLineAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbLineAmount.AutoSize = true;
-            this.lbLineAmount.Location = new System.Drawing.Point(358, 211);
+            this.lbLineAmount.Location = new System.Drawing.Point(322, 207);
             this.lbLineAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbLineAmount.Name = "lbLineAmount";
             this.lbLineAmount.Size = new System.Drawing.Size(37, 13);
@@ -580,7 +606,7 @@
             // 
             this.lbQuantiy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbQuantiy.AutoSize = true;
-            this.lbQuantiy.Location = new System.Drawing.Point(357, 187);
+            this.lbQuantiy.Location = new System.Drawing.Point(322, 187);
             this.lbQuantiy.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbQuantiy.Name = "lbQuantiy";
             this.lbQuantiy.Size = new System.Drawing.Size(49, 13);
@@ -628,7 +654,7 @@
             // txtLineAmount
             // 
             this.txtLineAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLineAmount.Location = new System.Drawing.Point(410, 208);
+            this.txtLineAmount.Location = new System.Drawing.Point(415, 204);
             this.txtLineAmount.Margin = new System.Windows.Forms.Padding(2);
             this.txtLineAmount.Name = "txtLineAmount";
             this.txtLineAmount.Size = new System.Drawing.Size(168, 20);
@@ -637,7 +663,7 @@
             // txtQuantity
             // 
             this.txtQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtQuantity.Location = new System.Drawing.Point(410, 181);
+            this.txtQuantity.Location = new System.Drawing.Point(415, 180);
             this.txtQuantity.Margin = new System.Windows.Forms.Padding(2);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(168, 20);
@@ -664,7 +690,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(693, 394);
+            this.tabPage2.Size = new System.Drawing.Size(695, 443);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Observaciones";
             this.tabPage2.UseVisualStyleBackColor = true;
