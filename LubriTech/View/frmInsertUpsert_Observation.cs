@@ -26,8 +26,6 @@ namespace LubriTech.View
             o = observation;
             InitializeComponent();
             LoadImages();
-            txtCode.Text = observation.Code.ToString();
-            txtCode.Enabled = false;
             txtDescription.Text = observation.Description;
         }
 
@@ -39,8 +37,6 @@ namespace LubriTech.View
             o= observation;
             if (observation != null)
             {
-                txtCode.Text = observation.Code.ToString();
-                txtCode.Enabled = false;
                 txtDescription.Text = observation.Description;
             }
             else
@@ -52,11 +48,10 @@ namespace LubriTech.View
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(this.txtCode.Text) || !string.IsNullOrEmpty(this.txtDescription.Text))
-            {
                 OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Archivos de imagen|*.png;*.jpeg;*.jpg";
 
-                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     int fileSize = (int)openFileDialog1.OpenFile().Length;
                     byte[] imageBytes = new byte[fileSize];
@@ -74,7 +69,6 @@ namespace LubriTech.View
 
                 // Recargar las imágenes después de realizar el upsert
                 LoadImages();
-            }
 
         }
 

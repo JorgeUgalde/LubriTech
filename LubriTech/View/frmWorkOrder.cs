@@ -26,6 +26,8 @@ using System.Windows.Forms;
 using Image = System.Drawing.Image;
 using Rectangle = System.Drawing.Rectangle;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Net.Mail;
+using System.Net;
 
 namespace LubriTech.View
 {
@@ -45,6 +47,7 @@ namespace LubriTech.View
         Vehicle vehicle = new Vehicle();
         WorkOrder workOrderTemplate = new WorkOrder();
         List<Observation> observations;
+        decimal totalA;
 
         public frmWorkOrder(int? workOrderId)
         {
@@ -171,9 +174,8 @@ namespace LubriTech.View
             dgvWorkOrderDetails.DataSource = new WorkOrderLine_Model().LoadWorkOrderLines(workOrderId, client.PriceList.id);
             dgvWorkOrderDetails.Columns["Id"].Visible = false;
             dgvWorkOrderDetails.Columns["WorkOrderId"].Visible = false;
-            dgvWorkOrderDetails.Columns["item"].Visible = false;
             dgvWorkOrderDetails.Columns["ItemName"].Visible = false;
-
+            
         }
 
         private void UpdateTotalAmount()
@@ -187,6 +189,8 @@ namespace LubriTech.View
             }
 
             txtTotalAmount.Text = totalAmount.ToString("N2"); // Formatear el número como decimal
+
+            totalA = totalAmount;
         }
 
         private void HandleItemSelected(Item item)
@@ -524,99 +528,163 @@ namespace LubriTech.View
             frmInsertUpsertObservation.Show();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.Filter = "Archivos de Pdf|*.pdf";
+            savefile.FileName = string.Format(DateTime.Now.ToString("ddMMyyyyHHmmss"));
+
+            string PaginaHTML_Texto = Properties.Resources.Template.ToString();
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@BRANCH", workOrderTemplate.Branch.Name);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DATE", workOrderTemplate.Date.ToString());
+
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ID", client.Id);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NAME", client.FullName);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MAINPHONE", client.MainPhoneNum.ToString());
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ADDITIONALPHONE", client.AdditionalPhoneNum.ToString());
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@EMAIL", client.Email);
+
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@LICENSEPLATE", vehicle.LicensePlate);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MAKE", workOrderTemplate.Vehicle.Model.Make.ToString());
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MODEL", vehicle.Model + " " + vehicle.Year);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MILEAGE", vehicle.Mileage.ToString());
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CURRENTMILEAGE", workOrderTemplate.CurrentMileage.ToString());
+
+            
+            DataGridView dgvWorkOrderLine;
+            dgvWorkOrderLine = dgvWorkOrderDetails;
+            dgvWorkOrderLine.Columns["ItemName"].HeaderText = "Articulo";
+            dgvWorkOrderLine.Columns["Quantity"].HeaderText = "Cantidad";
+            dgvWorkOrderLine.Columns["UnitPrice"].HeaderText = "Precio Unitario";
+            dgvWorkOrderLine.Columns["Amount"].HeaderText = "Monto";
+
+            dgvWorkOrderLine.Columns.Remove("Id");
+            dgvWorkOrderLine.Columns.Remove("WorkOrderId");
+            dgvWorkOrderLine.Columns.Remove("Item");
+
+            string htmlTable = "<table class='work-order-table' style='border-collapse: collapse; width: 100%;'>";
+            
+            htmlTable += "<tr>";
+            foreach (DataGridViewColumn column in dgvWorkOrderDetails.Columns)
+            {
+                htmlTable += "<th>" + column.HeaderText + "</th>";
+            }
+            htmlTable += "</tr>";
+            
+
+
+            
+            foreach (DataGridViewRow row in dgvWorkOrderDetails.Rows)
+            {
+                htmlTable += "<tr>";
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    htmlTable += "<td>" + cell.Value?.ToString() + "</td>";
+                }
+
+                htmlTable += "</tr>";
+            }
+
+            htmlTable += "<tr>";
+            htmlTable += "<td colspan='" + (dgvWorkOrderDetails.Columns.Count - 1) + "' style='text-align: right; font-weight: bold;'>MontoTotal:</td>";
+            htmlTable += "<td>" + totalA.ToString() + "</td>";
+            htmlTable += "</tr>";
+
+            htmlTable += "</table>";
+
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@WORKORDERLINE", htmlTable);
+
+            string observacionesHTML = "<ul class='observations-list'>";
+            foreach (var observation in workOrderTemplate.Observations)
+            {
+                observacionesHTML += $"<li>{observation.Description}";
+
+                // Obtener las imágenes asociadas a la observación desde el controlador
+                var observationPhotos = new ObservationPhotos_Controller().GetAll(observation.Code);
+
+                if (observationPhotos != null && observationPhotos.Any())
+                {
+                    observacionesHTML += "<br/><div class='observation-images'>";
+
+                    foreach (var photo in observationPhotos)
+                    {
+                        if (photo.Photo != null && photo.Photo.Length > 0)
+                        {
+                            string base64Image = Convert.ToBase64String(photo.Photo);
+                            observacionesHTML += $"<img src=\"data:image/png;base64,{base64Image}\" alt=\"Observation Photo\" style=\"width:200px;height:150px;\" />";
+                        }
+                    }
+
+                    observacionesHTML += "</div>";
+                }
+
+                observacionesHTML += "</li>";
+            }
+            observacionesHTML += "</ul>";
+
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@OBSERVATIONS", observacionesHTML);
+
+            if (savefile.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = savefile.FileName;
+
+                using (FileStream stream = new FileStream(savefile.FileName, FileMode.Create))
+                {
+                    Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
+
+                    PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+                    pdfDoc.Open();
+                    pdfDoc.Add(new Phrase(""));
+
+                    using (StringReader sr = new StringReader(PaginaHTML_Texto))
+                    {
+                        XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+                    }
+
+                    pdfDoc.Close();
+                    stream.Close();
+                }
+
+                SendEmail(client.Email, filePath);
+            }
+        }
 
 
 
+        private void SendEmail(string email, string pdfFilePath)
+        {
+            try
+            {
+                MailAddress addressFrom = new MailAddress("soportelubritech@gmail.com", "LubriTech");
+                MailAddress addressTo = new MailAddress(email);
+                MailMessage message = new MailMessage(addressFrom, addressTo);
 
-        //private void btnPrint_Click(object sender, EventArgs e)
-        //{
-        //    SaveFileDialog savefile = new SaveFileDialog();
-        //    savefile.Filter = "Archivos de Pdf|*.pdf";
-        //    savefile.FileName = string.Format(DateTime.Now.ToString("ddMMyyyyHHmmss"));
-
-        //    string PaginaHTML_Texto = Properties.Resources.Template.ToString();
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@BRANCH", workOrderTemplate.Branch.Name);
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DATE", workOrderTemplate.Date.ToString());
-
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ID", client.Id);
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NAME", client.FullName);
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MAINPHONE", client.MainPhoneNum.ToString());
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ADDITIONALPHONE", client.AdditionalPhoneNum.ToString());
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@EMAIL", client.Email);
-
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@LICENSEPLATE", vehicle.LicensePlate);
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MAKE", workOrderTemplate.Vehicle.Model.Make.ToString());
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MODEL", vehicle.Model + " " + vehicle.Year);
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MILEAGE", vehicle.Mileage.ToString());
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CURRENTMILEAGE", workOrderTemplate.CurrentMileage.ToString());
-
-        //    string htmlTable = "<table border='1'><tr>";
-
-        //    // Agrega las cabeceras de las columnas
-        //    foreach (DataGridViewColumn column in dataGridView1.Columns)
-        //    {
-        //        htmlTable += "<th>" + column.HeaderText + "</th>";
-        //    }
-        //    htmlTable += "</tr>";
-
-        //    // Agrega las filas y celdas de datos
-        //    foreach (DataGridViewRow row in dataGridView1.Rows)
-        //    {
-        //        htmlTable += "<tr>";
-        //        foreach (DataGridViewCell cell in row.Cells)
-        //        {
-        //            htmlTable += "<td>" + cell.Value?.ToString() + "</td>"; // Agrega el valor de la celda como contenido de <td>
-        //        }
-        //        htmlTable += "</tr>";
-        //    }
-
-        //    // Cierra la tabla HTML
-        //    htmlTable += "</table>";
-
-        //    // Reemplaza @TABLA_PRODUCTOS en PaginaHTML_Texto con la tabla HTML generada
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TABLA_PRODUCTOS", htmlTable);
+                message.Subject = "Orden de Trabajo";
+                message.Body = "Estimado cliente,\n\nAdjunto encontrará la Orden de Trabajo en formato PDF.\n\nAtentamente,\nLubricentro Santa Teresita";
 
 
+                Attachment pdfAttachment = new Attachment(pdfFilePath);
+                message.Attachments.Add(pdfAttachment);
 
+                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com")
+                {
+                    Port = 587,
+                    EnableSsl = true,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential("soportelubritech@gmail.com", "puux hwyd enia dmrr")
+                };
 
-        //string imagenesHTML = string.Empty;
+                smtpClient.Send(message);
 
-        //foreach (var photo in observationPhotos2)
-        //{
-        //    string base64Image = Convert.ToBase64String(photo.Photo);
-        //    imagenesHTML += $"<img src=\"data:image/png;base64,{base64Image}\" alt=\"Observation Photo\" />";
-        //}
+                pdfAttachment.Dispose();
+                message.Dispose();
 
-        //// Ahora reemplazamos @IMAGENES en PaginaHTML_Texto con imagenesHTML
-        //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@IMAGENES", imagenesHTML);
-
-        //< img src = "data:image/png;base64,@image" alt = "Observation Photo" />
-
-
-
-        //    if (savefile.ShowDialog() == DialogResult.OK)
-        //    {
-        //        using (FileStream stream = new FileStream(savefile.FileName, FileMode.Create))
-        //        {
-        //            //Creamos un nuevo documento y lo definimos como PDF
-        //            Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
-
-        //            PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
-        //            pdfDoc.Open();
-        //            pdfDoc.Add(new Phrase(""));
-
-        //            //pdfDoc.Add(new Phrase("Hola Mundo"));
-        //            using (StringReader sr = new StringReader(PaginaHTML_Texto))
-        //            {
-        //                XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
-        //            }
-
-        //            pdfDoc.Close();
-        //            stream.Close();
-        //        }
-
-
-        //    }
-        //}
+                MessageBox.Show("Correo enviado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al enviar el correo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <title>Orden de Recepción</title>
     <style>
@@ -7,7 +8,8 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f7f7f7;
+            background-color: #ffffff;
+            font-size: 13px;
         }
 
         .container {
@@ -20,7 +22,6 @@
         .header {
             background-color: #003366;
             color: white;
-            padding: 20px;
             text-align: center;
             margin-bottom: 20px;
         }
@@ -43,76 +44,80 @@
             border-radius: 0 0 5px 5px;
             border: 1px solid #ccc;
         }
-        .image-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
+
+        .work-order-table {
+            border-collapse: collapse;
+            width: 100%;
         }
 
-            .image-container img {
-                width: 200px;
-                height: 150px;
-                object-fit: cover;
+            .work-order-table th, .work-order-table td {
                 border: 1px solid #ccc;
                 padding: 5px;
-                background-color: #fff;
-            }
-            .tittle {
-                background-color: #003366;
-                color: white;
-                padding: 5px;
-                text-align: center;
-                margin-bottom: 5px;
+                font-size: 13px;
             }
 
-            .content table {
-                width: 100%;
-                border-collapse: collapse;
+            .work-order-table thead th {
+                font-size: larger;
+            }
+
+            .work-order-table tbody tr {
+                border-bottom: 1px solid #ccc;
+            }
+
+                .work-order-table tbody tr:last-child {
+                    border-bottom: none;
+                }
+
+        .observations-list {
+            list-style-type: disc; 
+            padding: 0 20px; 
+        }
+
+            .observations-list li {
+                background-color: #ffffff;
                 border: 1px solid #ccc;
+                margin-bottom: 10px;
+                padding: 10px;
+                border-radius: 5px;
             }
 
-                .content table td {
-                    padding: 10px;
-                    text-align: left;
-                }
+        .tittle {
+            background-color: #003366;
+            color: white;
+            padding: 5px;
+            text-align: center;
+            margin-bottom: 5px;
+            font-size: 15px;
+            font-weight: bold;
+        }
 
-                .content table th {
-                    background-color: #f2f2f2;
-                }
-
-                .content table td:first-child {
-                    font-weight: bold;
-                }
-        .product-table {
+        .content table {
             width: 100%;
             border-collapse: collapse;
             border: 1px solid #ccc;
-            margin: 20px auto; /* Centra la tabla y da espacio */
         }
 
-            .product-table th,
-            .product-table td {
+            .content table td {
                 padding: 10px;
                 text-align: left;
-                border: 1px solid #ccc;
+                font-size: 13px;
             }
 
-            .product-table th {
-                background-color: #003366;
-                color: white;
+            .content table th {
+                background-color: #ffff;
             }
 
-            .product-table td:first-child {
-                font-weight: bold;
+            .content table td:first-child {
+                font-weight: bold !important;
             }
-                
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
             <h1>ORDEN DE RECEPCIÓN</h1>
+            <h2>LubriTech</h2>
         </div>
         <div class="section">
             <div class="content">
@@ -163,7 +168,7 @@
                             </table>
                         </td>
                         <td style="width: 100%; vertical-align: top;">
-                            <table>
+                            <table style="width: 100%;">
                                 <tr>
                                     <td>Identificación:</td>
                                     <td>@ID</td>
@@ -181,8 +186,8 @@
                                     <td>@ADDITIONALPHONE</td>
                                 </tr>
                                 <tr>
-                                    <td>Correo electrónico:</td>
-                                    <td>@EMAIL</td>
+                                    <td style="width: 40%;">Correo electrónico:</td>
+                                    <td style="width: 60%; word-wrap: break-word;">@EMAIL</td>
                                 </tr>
                             </table>
                         </td>
@@ -191,12 +196,17 @@
             </div>
         </div>
         <div class="section">
-            <div class="tittle">
-                <table class="product-table">
-                        @TABLA_PRODUCTOS
-                </table>
+            <div class="content">
+                @WORKORDERLINE
+            </div>
+        </div>
+        <div class="section">
+            <div class="tittle">Observaciones</div>
+            <div class="content">
+                @OBSERVATIONS
             </div>
         </div>
     </div>
 </body>
 </html>
+
