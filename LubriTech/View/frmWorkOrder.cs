@@ -16,6 +16,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LubriTech.View
 {
@@ -43,11 +44,7 @@ namespace LubriTech.View
                 // Load the existing work order
                 WorkOrder workOrder = workOrderController.LoadWorkOrder(workOrderId.Value);
                 LoadWorkOrderData(workOrder);
-                DataTable workOrderLinesTable = new WorkOrderLine_Model().LoadWorkOrderLinesDT(workOrderId.Value,client.PriceList.id);
-                dataGridView1.DataSource = workOrderLinesTable;
                 UpdateTotalAmount();
-                //dataGridView1.Columns["Identificacion"].Visible = false;
-                //dataGridView1.Columns["IdentificacionOrdenTrabajo"].Visible = false;
             }
             else
             {
@@ -76,7 +73,6 @@ namespace LubriTech.View
             cbBranch.SelectedValue = workOrder.Branch.Id;
 
             dateTimePicker.Value = workOrder.Date;
-            //txtDate.Text = workOrder.Date.ToString();
             txtTotalAmount.Text = workOrder.Amount.ToString();
 
             client = workOrder.Client;
@@ -104,10 +100,6 @@ namespace LubriTech.View
                 txtMileage.Text = workOrder.Vehicle.Mileage.ToString();
                 txtCurrentMileage.Text = workOrder.CurrentMileage.ToString();
             }
-            //else
-            //{
-            //    txtMake.Text = "NA";
-            //}
             loadWorkOrderLines(workOrder.Id);
             UpdateTotalAmount();
         }
@@ -151,12 +143,6 @@ namespace LubriTech.View
             txtModel.Text = "";
             txtMileage.Enabled = true;
             txtMileage.Text = "";
-            dataGridView1.DataSource = new DataTable();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void frmWorkOrder_Load(object sender, EventArgs e)
@@ -166,149 +152,25 @@ namespace LubriTech.View
 
         private void loadWorkOrderLines(int workOrderId)
         {
-            dataGridView1.DataSource = new WorkOrderLine_Model().LoadWorkOrderLinesDT(workOrderId, client.PriceList.id);
-            dataGridView1.Columns["Identificacion"].Visible = false;
+            dgvWorkOrderDetails.DataSource = new WorkOrderLine_Model().LoadWorkOrderLines(workOrderId, client.PriceList.id);
+            dgvWorkOrderDetails.Columns["Id"].Visible = false;
+            dgvWorkOrderDetails.Columns["WorkOrderId"].Visible = false;
+            dgvWorkOrderDetails.Columns["item"].Visible = false;
+            dgvWorkOrderDetails.Columns["ItemName"].Visible = false;
 
-        }
-
-        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (e.RowIndex >= 0)
-                {
-                    DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-                    DataRowView rowView = row.DataBoundItem as DataRowView;
-
-                    if (rowView != null)
-                    {
-                        // Verificar si la columna modificada es la de CodigoArticulo
-                        if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Código Artículo")
-                        {
-                            // Obtener el código del artículo
-                            string itemCode = rowView["Código Artículo"].ToString();
-
-                            // Obtener el artículo desde la base de datos
-                            Item item = new Item_Model().getItem(itemCode);
-
-                            // Asignar los valores del artículo a la fila actual
-                            if (item != null)
-                            {
-                                row.Cells["Descripción"].Value = item.name;
-                                row.Cells["Precio Unitario"].Value = new PriceList_Controller().getPriceByItem(itemCode, client.PriceList.id);
-                            }
-                        }
-                        else if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Cantidad")
-                        {
-                            row.Cells["Monto"].Value = Convert.ToDecimal(rowView["Cantidad"]) * Convert.ToDecimal(rowView["Precio Unitario"]);
-                        }
-
-                        // Solo validar y actualizar la línea de orden de trabajo si la cantidad y el código de artículo han sido actualizados
-                        if (dataGridView1.Columns[e.ColumnIndex].HeaderText != "Descripción" && dataGridView1.Columns[e.ColumnIndex].HeaderText != "Precio Unitario")
-                        {
-                            ValidateUpsertWorkOrderLine(rowView, row);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private bool ValidateUpsertWorkOrderLine(DataRowView rowView, DataGridViewRow row)
-        {
-            try
-            {
-                bool hasValidValues = rowView["Código Artículo"] != DBNull.Value &&
-                                          rowView["Cantidad"] != DBNull.Value &&
-                                          rowView["Monto"] != DBNull.Value;
-
-                if (hasValidValues)
-                {
-                    if (row.Cells["Código Artículo"].ReadOnly == true || row.Cells["Descripción"].ReadOnly == true
-                        || row.Cells["Precio Unitario"].ReadOnly == true || row.Cells["Cantidad"].ReadOnly == true
-                        || row.Cells["Cantidad"].ReadOnly == true || row.Cells["Monto"].ReadOnly == true)
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        row.Cells["Código Artículo"].ReadOnly = true;
-                        row.Cells["Descripción"].ReadOnly = true;
-                        row.Cells["Precio Unitario"].ReadOnly = true;
-                        row.Cells["Cantidad"].ReadOnly = true;
-                        row.Cells["Monto"].ReadOnly = true;
-                        row.Cells["IdentificacionOrdenTrabajo"].Value = this.workOrderId;
-                        if (new Work_Order_Controller().WorkOrderLineExists((int)row.Cells["Identificacion"].Value) == false)
-                        {
-                            return new WorkOrderLine_Model().UpsertWorkOrderLine(rowView.Row);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                UpdateTotalAmount();
-            }
-            return false;
         }
 
         private void UpdateTotalAmount()
         {
             decimal totalAmount = 0;
 
-            foreach (DataRow row in ((DataTable)dataGridView1.DataSource).Rows)
+            // Sum the amount of each work order line
+            foreach (DataGridViewRow row in dgvWorkOrderDetails.Rows)
             {
-                if (row["Monto"] != DBNull.Value)
-                {
-                    totalAmount += Convert.ToDecimal(row["Monto"]);
-                }
+                totalAmount += Convert.ToDecimal(row.Cells["Amount"].Value);
             }
 
             txtTotalAmount.Text = totalAmount.ToString("N2"); // Formatear el número como decimal
-        }
-
-        private void dataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
-            DataRowView rowView = e.Row.DataBoundItem as DataRowView;
-            if (rowView != null)
-            {
-                int identificacion;
-                if (int.TryParse(rowView["Identificacion"].ToString(), out identificacion))
-                {
-                    bool success = new WorkOrderLine_Model().DeleteWorkOrderLine(identificacion);
-                    if (!success)
-                    {
-                        MessageBox.Show("Failed to delete row.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        e.Cancel = true; // Cancel the deletion if the delete operation failed
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Invalid row identification.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    e.Cancel = true; // Cancel the deletion if the identification is invalid
-                }
-            }
-        }
-
-        private void dataGridView1_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
-        {
-            e.Row.Cells["IdentificacionOrdenTrabajo"].Value = workOrderId;
-        }
-
-        private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-
-            string errorMessage = e.Exception.Message;
-            errorMessage = errorMessage.Replace("nulls", "vacíos");
-            MessageBox.Show("Error: " + errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
         }
 
         private void HandleItemSelected(Item item)
@@ -320,62 +182,8 @@ namespace LubriTech.View
         {
             if (item != null)
             {
-                
-            }
-        }
-
-        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
-        {
-            if (e.ColumnIndex == dataGridView1.Columns["Código Artículo"].Index && e.RowIndex >= 0)
-            {
-                //Validate if the cell already has a button
-                if (e.Value != null && e.Value.ToString() == "...")
-                {
-                    e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-                    e.Handled = true;
-                    return;
-                }
-                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-
-                // Crear el botón
-                Button btn = new Button();
-                btn.Text = "...";
-                btn.Size = new Size(13, e.CellBounds.Height - 8);
-
-                // Calcular la posición del botón
-                var buttonWidth = btn.Width;
-                var buttonHeight = btn.Height;
-                var x = e.CellBounds.Left + e.CellBounds.Width - buttonWidth - 5;
-                var y = e.CellBounds.Top + (e.CellBounds.Height - buttonHeight) / 2;
-
-
-                // Dibujar el botón en la celda
-                e.Graphics.FillRectangle(Brushes.White, x, y, buttonWidth, buttonHeight);
-                e.Graphics.DrawRectangle(Pens.Black, x, y, buttonWidth, buttonHeight);
-                TextRenderer.DrawText(e.Graphics, "...", btn.Font, new Rectangle(x, y, buttonWidth, buttonHeight), btn.ForeColor);
-
-                e.Handled = true;
-            }
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dataGridView1.Columns["Código Artículo"].Index && e.RowIndex >= 0)
-            {
-                // Verificar si el clic ocurrió en el botón
-                var rect = dataGridView1.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
-                var buttonWidth = 20;
-                var x = rect.Right - buttonWidth - 2;
-
-                if (dataGridView1.PointToClient(Cursor.Position).X >= x)
-                {
-                    dataGridView1.EndEdit(); // Finalizar la edición de la celda actual
-
-                    frmItems frmItems = new frmItems(this);
-                    frmItems.ItemSelected += HandleItemSelected;
-                    frmItems.MdiParent = this.MdiParent;
-                    frmItems.Show();
-                }
+                txtItemCode.Text = item.code;
+                txtItemName.Text = item.name;
             }
         }
 
@@ -427,7 +235,7 @@ namespace LubriTech.View
 
                 this.workOrderId = workOrderController.UpsertWorkOrder(workOrder);
                 loadWorkOrderLines(workOrderId.Value);
-                dataGridView1.Refresh();
+                dgvWorkOrderDetails.Refresh();
             }
         }
 
@@ -481,7 +289,7 @@ namespace LubriTech.View
 
                 this.workOrderId = workOrderController.UpsertWorkOrder(workOrder);
                 loadWorkOrderLines(workOrderId.Value);
-                dataGridView1.Refresh();
+                dgvWorkOrderDetails.Refresh();
             }
         }
         private void btnAddVehicle_Click(object sender, EventArgs e)
@@ -529,6 +337,121 @@ namespace LubriTech.View
             else
             {
                 MessageBox.Show("Por favor seleccione un cliente primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSelectItem_Click(object sender, EventArgs e)
+        {
+            frmItems frmItems = new frmItems(this);
+            frmItems.ItemSelected += HandleItemSelected;
+            frmItems.MdiParent = this.MdiParent;
+            frmItems.Show();
+        }
+
+        private void btnAddWorkOrderLine_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool hasValidValues = txtItemCode.ToString() != "" &&
+                                          txtItemName.ToString() != "" &&
+                                          txtQuantity.ToString() != "" &&
+                                          txtLineAmount.ToString() != "";
+
+                if (hasValidValues)
+                {
+                    if(workOrderId.HasValue)
+                    {
+                        WorkOrderLine workOrderLine = new WorkOrderLine();
+                        workOrderLine.WorkOrderId = (int)workOrderId.Value;
+                        workOrderLine.item = new Item_Controller().get(txtItemCode.Text.ToString());
+                        decimal quantity = Convert.ToDecimal(txtQuantity.Text);
+                        workOrderLine.Quantity = quantity;
+                        decimal amount = Convert.ToDecimal(txtLineAmount.Text);
+                        workOrderLine.Amount = amount;
+                        if (new WorkOrderLine_Model().UpsertWorkOrderLine(workOrderLine))
+                        {
+                            txtItemCode.Text = "";
+                            txtItemName.Text = "";
+                            txtQuantity.Text = "";
+                            txtLineAmount.Text = "";
+                            loadWorkOrderLines(workOrderId.Value);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Por favor seleccione un cliente primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Por favor llene todos los campos de la línea.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                UpdateTotalAmount();
+            }
+        }
+
+        private bool ValidateWorkOrderLine()
+        {
+            if (txtItemCode.Text == "")
+            {
+                MessageBox.Show("Por favor seleccione un artículo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtQuantity.Text = "";
+                return false;
+            }
+            if (txtQuantity.Text == "")
+            {
+                MessageBox.Show("Por favor ingrese una cantidad.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
+        private void txtQuantity_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void txtItemCode_Leave(object sender, EventArgs e)
+        {
+            if (txtItemCode.Text != "")
+            {
+                Item item = new Item_Controller().get(txtItemCode.Text.ToString());
+                if (item != null)
+                {
+                    txtItemName.Text = item.name;
+                }
+                else
+                {
+                    MessageBox.Show("El artículo no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtItemCode.Text = "";
+                    txtItemName.Text = "";
+                }
+            }
+        }
+
+        private void txtQuantity_Enter(object sender, EventArgs e)
+        {
+            if (txtQuantity.Text == "0")
+            {
+                txtQuantity.Text = "";
+            }
+        }
+
+        private void txtQuantity_Leave(object sender, EventArgs e)
+        {
+            if (ValidateWorkOrderLine() == true && client != null)
+            {
+                decimal quantity = Convert.ToDecimal(txtQuantity.Text);
+                decimal unitPrice = new PriceList_Controller().getPriceByItem(txtItemCode.Text.ToString(), client.PriceList.id);
+                txtQuantity.Text = quantity.ToString("N2");
+                txtLineAmount.Text = (Convert.ToDecimal(txtQuantity.Text) * unitPrice).ToString();
             }
         }
     }

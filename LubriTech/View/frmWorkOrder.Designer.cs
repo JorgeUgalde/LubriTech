@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblVehicle = new System.Windows.Forms.Label();
             this.lblMake = new System.Windows.Forms.Label();
             this.lblModel = new System.Windows.Forms.Label();
@@ -37,7 +41,6 @@
             this.txtMake = new System.Windows.Forms.TextBox();
             this.txtModel = new System.Windows.Forms.TextBox();
             this.txtMileage = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtClientId = new System.Windows.Forms.TextBox();
             this.lblClientId = new System.Windows.Forms.Label();
             this.lblClientName = new System.Windows.Forms.Label();
@@ -66,18 +69,29 @@
             this.txtLicensePlate = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dgvWorkOrderDetails = new System.Windows.Forms.DataGridView();
+            this.lbLineAmount = new System.Windows.Forms.Label();
+            this.lbQuantiy = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbItemCode = new System.Windows.Forms.Label();
+            this.txtItemName = new System.Windows.Forms.TextBox();
+            this.txtItemCode = new System.Windows.Forms.TextBox();
+            this.txtLineAmount = new System.Windows.Forms.TextBox();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
             this.lblClient = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.btnSelectItem = new System.Windows.Forms.Button();
+            this.btnAddWorkOrderLine = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvWorkOrderDetails)).BeginInit();
             this.SuspendLayout();
             // 
             // lblVehicle
             // 
-            this.lblVehicle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblVehicle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblVehicle.AutoSize = true;
-            this.lblVehicle.Location = new System.Drawing.Point(416, 17);
+            this.lblVehicle.Location = new System.Drawing.Point(418, 17);
             this.lblVehicle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblVehicle.Name = "lblVehicle";
             this.lblVehicle.Size = new System.Drawing.Size(50, 13);
@@ -86,9 +100,9 @@
             // 
             // lblMake
             // 
-            this.lblMake.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMake.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMake.AutoSize = true;
-            this.lblMake.Location = new System.Drawing.Point(416, 66);
+            this.lblMake.Location = new System.Drawing.Point(418, 66);
             this.lblMake.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMake.Name = "lblMake";
             this.lblMake.Size = new System.Drawing.Size(37, 13);
@@ -97,9 +111,9 @@
             // 
             // lblModel
             // 
-            this.lblModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblModel.AutoSize = true;
-            this.lblModel.Location = new System.Drawing.Point(416, 87);
+            this.lblModel.Location = new System.Drawing.Point(418, 87);
             this.lblModel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblModel.Name = "lblModel";
             this.lblModel.Size = new System.Drawing.Size(42, 13);
@@ -108,9 +122,9 @@
             // 
             // lblMileage
             // 
-            this.lblMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMileage.AutoSize = true;
-            this.lblMileage.Location = new System.Drawing.Point(416, 108);
+            this.lblMileage.Location = new System.Drawing.Point(418, 108);
             this.lblMileage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMileage.Name = "lblMileage";
             this.lblMileage.Size = new System.Drawing.Size(58, 13);
@@ -139,54 +153,35 @@
             // 
             // txtMake
             // 
-            this.txtMake.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMake.Location = new System.Drawing.Point(510, 63);
-            this.txtMake.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMake.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMake.Location = new System.Drawing.Point(512, 63);
+            this.txtMake.Margin = new System.Windows.Forms.Padding(2);
             this.txtMake.Name = "txtMake";
             this.txtMake.Size = new System.Drawing.Size(168, 20);
             this.txtMake.TabIndex = 14;
             // 
             // txtModel
             // 
-            this.txtModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtModel.Location = new System.Drawing.Point(510, 84);
-            this.txtModel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtModel.Location = new System.Drawing.Point(512, 84);
+            this.txtModel.Margin = new System.Windows.Forms.Padding(2);
             this.txtModel.Name = "txtModel";
             this.txtModel.Size = new System.Drawing.Size(168, 20);
             this.txtModel.TabIndex = 15;
             // 
             // txtMileage
             // 
-            this.txtMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMileage.Location = new System.Drawing.Point(510, 106);
-            this.txtMileage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMileage.Location = new System.Drawing.Point(512, 106);
+            this.txtMileage.Margin = new System.Windows.Forms.Padding(2);
             this.txtMileage.Name = "txtMileage";
             this.txtMileage.Size = new System.Drawing.Size(168, 20);
             this.txtMileage.TabIndex = 16;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 182);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(663, 164);
-            this.dataGridView1.TabIndex = 19;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
-            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-            this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
-            this.dataGridView1.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView1_DefaultValuesNeeded);
-            this.dataGridView1.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView1_UserDeletingRow);
-            // 
             // txtClientId
             // 
             this.txtClientId.Location = new System.Drawing.Point(112, 42);
-            this.txtClientId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtClientId.Margin = new System.Windows.Forms.Padding(2);
             this.txtClientId.Name = "txtClientId";
             this.txtClientId.Size = new System.Drawing.Size(168, 20);
             this.txtClientId.TabIndex = 23;
@@ -214,7 +209,7 @@
             // txtClientName
             // 
             this.txtClientName.Location = new System.Drawing.Point(112, 63);
-            this.txtClientName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtClientName.Margin = new System.Windows.Forms.Padding(2);
             this.txtClientName.Name = "txtClientName";
             this.txtClientName.Size = new System.Drawing.Size(168, 20);
             this.txtClientName.TabIndex = 25;
@@ -252,7 +247,7 @@
             // txtCellphone
             // 
             this.txtCellphone.Location = new System.Drawing.Point(112, 84);
-            this.txtCellphone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCellphone.Margin = new System.Windows.Forms.Padding(2);
             this.txtCellphone.Name = "txtCellphone";
             this.txtCellphone.Size = new System.Drawing.Size(168, 20);
             this.txtCellphone.TabIndex = 30;
@@ -260,7 +255,7 @@
             // txtCellphone2
             // 
             this.txtCellphone2.Location = new System.Drawing.Point(112, 106);
-            this.txtCellphone2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCellphone2.Margin = new System.Windows.Forms.Padding(2);
             this.txtCellphone2.Name = "txtCellphone2";
             this.txtCellphone2.Size = new System.Drawing.Size(168, 20);
             this.txtCellphone2.TabIndex = 31;
@@ -268,7 +263,7 @@
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(112, 127);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(168, 20);
             this.txtEmail.TabIndex = 32;
@@ -277,7 +272,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(431, 30);
+            this.label7.Location = new System.Drawing.Point(433, 30);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -288,7 +283,7 @@
             // 
             this.lblState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblState.AutoSize = true;
-            this.lblState.Location = new System.Drawing.Point(429, 30);
+            this.lblState.Location = new System.Drawing.Point(431, 30);
             this.lblState.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(40, 13);
@@ -299,7 +294,7 @@
             // 
             this.lblTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalAmount.AutoSize = true;
-            this.lblTotalAmount.Location = new System.Drawing.Point(416, 364);
+            this.lblTotalAmount.Location = new System.Drawing.Point(418, 413);
             this.lblTotalAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalAmount.Name = "lblTotalAmount";
             this.lblTotalAmount.Size = new System.Drawing.Size(60, 13);
@@ -309,8 +304,8 @@
             // txtTotalAmount
             // 
             this.txtTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTotalAmount.Location = new System.Drawing.Point(510, 361);
-            this.txtTotalAmount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTotalAmount.Location = new System.Drawing.Point(512, 410);
+            this.txtTotalAmount.Margin = new System.Windows.Forms.Padding(2);
             this.txtTotalAmount.Name = "txtTotalAmount";
             this.txtTotalAmount.Size = new System.Drawing.Size(168, 20);
             this.txtTotalAmount.TabIndex = 37;
@@ -319,8 +314,8 @@
             // 
             this.cbState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbState.FormattingEnabled = true;
-            this.cbState.Location = new System.Drawing.Point(523, 27);
-            this.cbState.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbState.Location = new System.Drawing.Point(525, 27);
+            this.cbState.Margin = new System.Windows.Forms.Padding(2);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(168, 21);
             this.cbState.TabIndex = 38;
@@ -329,7 +324,7 @@
             // 
             this.cbBranch.FormattingEnabled = true;
             this.cbBranch.Location = new System.Drawing.Point(117, 27);
-            this.cbBranch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbBranch.Margin = new System.Windows.Forms.Padding(2);
             this.cbBranch.Name = "cbBranch";
             this.cbBranch.Size = new System.Drawing.Size(168, 21);
             this.cbBranch.TabIndex = 39;
@@ -337,7 +332,7 @@
             // dateTimePicker
             // 
             this.dateTimePicker.Location = new System.Drawing.Point(117, 49);
-            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(168, 20);
             this.dateTimePicker.TabIndex = 40;
@@ -350,7 +345,7 @@
             this.btnSelectClient.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnSelectClient.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSelectClient.Location = new System.Drawing.Point(112, 13);
-            this.btnSelectClient.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSelectClient.Margin = new System.Windows.Forms.Padding(2);
             this.btnSelectClient.Name = "btnSelectClient";
             this.btnSelectClient.Size = new System.Drawing.Size(168, 23);
             this.btnSelectClient.TabIndex = 41;
@@ -360,9 +355,9 @@
             // 
             // btnAddVehicle
             // 
-            this.btnAddVehicle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddVehicle.Location = new System.Drawing.Point(510, 13);
-            this.btnAddVehicle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddVehicle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddVehicle.Location = new System.Drawing.Point(512, 13);
+            this.btnAddVehicle.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddVehicle.Name = "btnAddVehicle";
             this.btnAddVehicle.Size = new System.Drawing.Size(168, 23);
             this.btnAddVehicle.TabIndex = 42;
@@ -372,20 +367,20 @@
             // 
             // lblCurrentMileage
             // 
-            this.lblCurrentMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCurrentMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCurrentMileage.AutoSize = true;
-            this.lblCurrentMileage.Location = new System.Drawing.Point(416, 129);
+            this.lblCurrentMileage.Location = new System.Drawing.Point(418, 129);
             this.lblCurrentMileage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCurrentMileage.Name = "lblCurrentMileage";
-            this.lblCurrentMileage.Size = new System.Drawing.Size(88, 13);
+            this.lblCurrentMileage.Size = new System.Drawing.Size(91, 13);
             this.lblCurrentMileage.TabIndex = 43;
-            this.lblCurrentMileage.Text = "KilometrajeActual";
+            this.lblCurrentMileage.Text = "Kilometraje Actual";
             // 
             // txtCurrentMileage
             // 
-            this.txtCurrentMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCurrentMileage.Location = new System.Drawing.Point(510, 127);
-            this.txtCurrentMileage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCurrentMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCurrentMileage.Location = new System.Drawing.Point(512, 127);
+            this.txtCurrentMileage.Margin = new System.Windows.Forms.Padding(2);
             this.txtCurrentMileage.Name = "txtCurrentMileage";
             this.txtCurrentMileage.Size = new System.Drawing.Size(168, 20);
             this.txtCurrentMileage.TabIndex = 44;
@@ -393,8 +388,8 @@
             // btnSaveChanges
             // 
             this.btnSaveChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveChanges.Location = new System.Drawing.Point(612, 519);
-            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSaveChanges.Location = new System.Drawing.Point(599, 568);
+            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(98, 23);
             this.btnSaveChanges.TabIndex = 45;
@@ -405,8 +400,8 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnClose.Location = new System.Drawing.Point(9, 519);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Location = new System.Drawing.Point(9, 568);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(98, 23);
             this.btnClose.TabIndex = 46;
@@ -417,18 +412,18 @@
             // lblDetails
             // 
             this.lblDetails.AutoSize = true;
-            this.lblDetails.Location = new System.Drawing.Point(12, 165);
+            this.lblDetails.Location = new System.Drawing.Point(12, 164);
             this.lblDetails.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDetails.Name = "lblDetails";
-            this.lblDetails.Size = new System.Drawing.Size(45, 13);
+            this.lblDetails.Size = new System.Drawing.Size(71, 13);
             this.lblDetails.TabIndex = 47;
-            this.lblDetails.Text = "Detalles";
+            this.lblDetails.Text = "Línea Detalle";
             // 
             // lblLicensePlate
             // 
-            this.lblLicensePlate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblLicensePlate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLicensePlate.AutoSize = true;
-            this.lblLicensePlate.Location = new System.Drawing.Point(416, 45);
+            this.lblLicensePlate.Location = new System.Drawing.Point(418, 45);
             this.lblLicensePlate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLicensePlate.Name = "lblLicensePlate";
             this.lblLicensePlate.Size = new System.Drawing.Size(34, 13);
@@ -437,29 +432,41 @@
             // 
             // txtLicensePlate
             // 
-            this.txtLicensePlate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLicensePlate.Location = new System.Drawing.Point(510, 42);
-            this.txtLicensePlate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLicensePlate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLicensePlate.Location = new System.Drawing.Point(512, 42);
+            this.txtLicensePlate.Margin = new System.Windows.Forms.Padding(2);
             this.txtLicensePlate.Name = "txtLicensePlate";
             this.txtLicensePlate.Size = new System.Drawing.Size(168, 20);
             this.txtLicensePlate.TabIndex = 50;
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(9, 84);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(701, 420);
+            this.tabControl1.Size = new System.Drawing.Size(703, 469);
             this.tabControl1.TabIndex = 51;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.btnAddWorkOrderLine);
+            this.tabPage1.Controls.Add(this.btnSelectItem);
+            this.tabPage1.Controls.Add(this.dgvWorkOrderDetails);
+            this.tabPage1.Controls.Add(this.lbLineAmount);
+            this.tabPage1.Controls.Add(this.lbQuantiy);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.lbItemCode);
+            this.tabPage1.Controls.Add(this.txtItemName);
+            this.tabPage1.Controls.Add(this.txtItemCode);
+            this.tabPage1.Controls.Add(this.txtLineAmount);
+            this.tabPage1.Controls.Add(this.txtQuantity);
             this.tabPage1.Controls.Add(this.lblDetails);
             this.tabPage1.Controls.Add(this.txtLicensePlate);
             this.tabPage1.Controls.Add(this.txtCurrentMileage);
@@ -469,7 +476,6 @@
             this.tabPage1.Controls.Add(this.lblLicensePlate);
             this.tabPage1.Controls.Add(this.lblClientId);
             this.tabPage1.Controls.Add(this.btnAddVehicle);
-            this.tabPage1.Controls.Add(this.dataGridView1);
             this.tabPage1.Controls.Add(this.lblCurrentMileage);
             this.tabPage1.Controls.Add(this.lblClientName);
             this.tabPage1.Controls.Add(this.lblMainPhone);
@@ -489,12 +495,142 @@
             this.tabPage1.Controls.Add(this.lblModel);
             this.tabPage1.Controls.Add(this.lblMileage);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage1.Size = new System.Drawing.Size(693, 394);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage1.Size = new System.Drawing.Size(695, 443);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Contenido";
+            // 
+            // dgvWorkOrderDetails
+            // 
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
+            this.dgvWorkOrderDetails.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle29;
+            this.dgvWorkOrderDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvWorkOrderDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvWorkOrderDetails.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvWorkOrderDetails.BackgroundColor = System.Drawing.Color.White;
+            this.dgvWorkOrderDetails.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvWorkOrderDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
+            this.dgvWorkOrderDetails.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvWorkOrderDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle30;
+            this.dgvWorkOrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvWorkOrderDetails.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvWorkOrderDetails.DefaultCellStyle = dataGridViewCellStyle31;
+            this.dgvWorkOrderDetails.GridColor = System.Drawing.Color.White;
+            this.dgvWorkOrderDetails.Location = new System.Drawing.Point(15, 241);
+            this.dgvWorkOrderDetails.Name = "dgvWorkOrderDetails";
+            this.dgvWorkOrderDetails.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle32.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvWorkOrderDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle32;
+            this.dgvWorkOrderDetails.RowHeadersVisible = false;
+            this.dgvWorkOrderDetails.RowHeadersWidth = 51;
+            this.dgvWorkOrderDetails.Size = new System.Drawing.Size(665, 164);
+            this.dgvWorkOrderDetails.TabIndex = 52;
+            // 
+            // lbLineAmount
+            // 
+            this.lbLineAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbLineAmount.AutoSize = true;
+            this.lbLineAmount.Location = new System.Drawing.Point(358, 211);
+            this.lbLineAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbLineAmount.Name = "lbLineAmount";
+            this.lbLineAmount.Size = new System.Drawing.Size(37, 13);
+            this.lbLineAmount.TabIndex = 58;
+            this.lbLineAmount.Text = "Monto";
+            // 
+            // lbQuantiy
+            // 
+            this.lbQuantiy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbQuantiy.AutoSize = true;
+            this.lbQuantiy.Location = new System.Drawing.Point(357, 187);
+            this.lbQuantiy.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbQuantiy.Name = "lbQuantiy";
+            this.lbQuantiy.Size = new System.Drawing.Size(49, 13);
+            this.lbQuantiy.TabIndex = 57;
+            this.lbQuantiy.Text = "Cantidad";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 207);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 13);
+            this.label1.TabIndex = 56;
+            this.label1.Text = "Nombre Artículo";
+            // 
+            // lbItemCode
+            // 
+            this.lbItemCode.AutoSize = true;
+            this.lbItemCode.Location = new System.Drawing.Point(12, 187);
+            this.lbItemCode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbItemCode.Name = "lbItemCode";
+            this.lbItemCode.Size = new System.Drawing.Size(80, 13);
+            this.lbItemCode.TabIndex = 55;
+            this.lbItemCode.Text = "Código Artículo";
+            // 
+            // txtItemName
+            // 
+            this.txtItemName.Enabled = false;
+            this.txtItemName.Location = new System.Drawing.Point(112, 204);
+            this.txtItemName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtItemName.Name = "txtItemName";
+            this.txtItemName.Size = new System.Drawing.Size(168, 20);
+            this.txtItemName.TabIndex = 54;
+            // 
+            // txtItemCode
+            // 
+            this.txtItemCode.Location = new System.Drawing.Point(112, 180);
+            this.txtItemCode.Margin = new System.Windows.Forms.Padding(2);
+            this.txtItemCode.Name = "txtItemCode";
+            this.txtItemCode.Size = new System.Drawing.Size(168, 20);
+            this.txtItemCode.TabIndex = 53;
+            this.txtItemCode.Leave += new System.EventHandler(this.txtItemCode_Leave);
+            // 
+            // txtLineAmount
+            // 
+            this.txtLineAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLineAmount.Location = new System.Drawing.Point(410, 208);
+            this.txtLineAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.txtLineAmount.Name = "txtLineAmount";
+            this.txtLineAmount.Size = new System.Drawing.Size(168, 20);
+            this.txtLineAmount.TabIndex = 52;
+            // 
+            // txtQuantity
+            // 
+            this.txtQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtQuantity.Location = new System.Drawing.Point(410, 181);
+            this.txtQuantity.Margin = new System.Windows.Forms.Padding(2);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(168, 20);
+            this.txtQuantity.TabIndex = 51;
+            this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
+            this.txtQuantity.Enter += new System.EventHandler(this.txtQuantity_Enter);
+            this.txtQuantity.Leave += new System.EventHandler(this.txtQuantity_Leave);
             // 
             // lblClient
             // 
@@ -509,20 +645,46 @@
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage2.Size = new System.Drawing.Size(422, 340);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage2.Size = new System.Drawing.Size(693, 443);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Observaciones";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnSelectItem
+            // 
+            this.btnSelectItem.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnSelectItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
+            this.btnSelectItem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSelectItem.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSelectItem.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
+            this.btnSelectItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSelectItem.Image = global::LubriTech.Properties.Resources.searchClient;
+            this.btnSelectItem.Location = new System.Drawing.Point(294, 172);
+            this.btnSelectItem.Name = "btnSelectItem";
+            this.btnSelectItem.Size = new System.Drawing.Size(32, 29);
+            this.btnSelectItem.TabIndex = 59;
+            this.btnSelectItem.UseVisualStyleBackColor = false;
+            this.btnSelectItem.Click += new System.EventHandler(this.btnSelectItem_Click);
+            // 
+            // btnAddWorkOrderLine
+            // 
+            this.btnAddWorkOrderLine.Location = new System.Drawing.Point(586, 207);
+            this.btnAddWorkOrderLine.Name = "btnAddWorkOrderLine";
+            this.btnAddWorkOrderLine.Size = new System.Drawing.Size(92, 23);
+            this.btnAddWorkOrderLine.TabIndex = 60;
+            this.btnAddWorkOrderLine.Text = "Agregar detalle";
+            this.btnAddWorkOrderLine.UseVisualStyleBackColor = true;
+            this.btnAddWorkOrderLine.Click += new System.EventHandler(this.btnAddWorkOrderLine_Click);
             // 
             // frmWorkOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(736, 551);
+            this.ClientSize = new System.Drawing.Size(723, 600);
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.cbBranch);
             this.Controls.Add(this.cbState);
@@ -533,15 +695,15 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSaveChanges);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmWorkOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Órdenes de trabajo";
             this.Load += new System.EventHandler(this.frmWorkOrder_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvWorkOrderDetails)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -557,7 +719,6 @@
         private System.Windows.Forms.TextBox txtMake;
         private System.Windows.Forms.TextBox txtModel;
         private System.Windows.Forms.TextBox txtMileage;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox txtClientId;
         private System.Windows.Forms.Label lblClientId;
         private System.Windows.Forms.Label lblClientName;
@@ -588,5 +749,16 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label lblClient;
+        private System.Windows.Forms.TextBox txtItemName;
+        private System.Windows.Forms.TextBox txtItemCode;
+        private System.Windows.Forms.TextBox txtLineAmount;
+        private System.Windows.Forms.TextBox txtQuantity;
+        private System.Windows.Forms.Label lbLineAmount;
+        private System.Windows.Forms.Label lbQuantiy;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbItemCode;
+        private System.Windows.Forms.DataGridView dgvWorkOrderDetails;
+        private System.Windows.Forms.Button btnSelectItem;
+        private System.Windows.Forms.Button btnAddWorkOrderLine;
     }
 }

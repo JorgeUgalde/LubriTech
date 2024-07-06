@@ -7,7 +7,16 @@ namespace LubriTech.Model.WorkOrder_Information
         public int Id { get; set; }
         public int WorkOrderId { get; set; }
         public Item item { get; set; }
+
+        public string ItemName
+        {
+            get
+            {
+                return item.name;
+            }
+        }
         public decimal Quantity { get; set; }
+        public decimal UnitPrice { get; set; }
         public decimal Amount { get; set; }
 
         public WorkOrderLine() { }
