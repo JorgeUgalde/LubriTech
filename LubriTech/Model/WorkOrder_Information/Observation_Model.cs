@@ -63,17 +63,13 @@ namespace LubriTech.Model.WorkOrder_Information
         }
 
 
-        /// <summary>
-        /// Inserta o actualiza una observación en la base de datos.
-        /// </summary>
-        /// <param name="observation">Objeto Observation a insertar o actualizar.</param>
-        /// <returns>true si la operación fue exitosa, false si hubo algún error.</returns>
-        public bool upsertObservation(Observation observation)
+        
+        public Observation upsertObservation(Observation observation)
         {
             try
             {
                 conn.Open();
-                String selectQuery = "SELECT * FROM Observacion where CodigoObservacion = @id";
+                String selectQuery = "SELECT * FROM Observacion WHERE CodigoObservacion = @id";
                 SqlCommand cmd = new SqlCommand(selectQuery, conn);
                 cmd.Parameters.AddWithValue("@id", observation.Code);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -82,10 +78,9 @@ namespace LubriTech.Model.WorkOrder_Information
                 {
                     conn.Close();
                     conn.Open();
-                    String updateQuery = "UPDATE Observacion SET Descripcion = @description, Fotografia = @photos WHERE Id = @id";
+                    String updateQuery = "UPDATE Observacion SET Descripcion = @description WHERE CodigoObservacion = @id";
                     SqlCommand cmd2 = new SqlCommand(updateQuery, conn);
                     cmd2.Parameters.AddWithValue("@description", observation.Description);
-                    cmd2.Parameters.AddWithValue("@photos", observation.Photos);
                     cmd2.Parameters.AddWithValue("@id", observation.Code);
                     cmd2.ExecuteNonQuery();
                 }
@@ -93,23 +88,26 @@ namespace LubriTech.Model.WorkOrder_Information
                 {
                     conn.Close();
                     conn.Open();
-                    String insertQuery = "INSERT INTO Observacion (Descripcion, Fotografia, IdentificacionOrdenTrabajo) VALUES (@description, @photos, @workOrderId)";
+                    String insertQuery = "INSERT INTO Observacion (IdentificacionOrdenTrabajo, Descripcion) OUTPUT INSERTED.CodigoObservacion VALUES (@workOrderId, @description)";
                     SqlCommand cmd2 = new SqlCommand(insertQuery, conn);
                     cmd2.Parameters.AddWithValue("@description", observation.Description);
-                    cmd2.Parameters.AddWithValue("@photos", observation.Photos);
                     cmd2.Parameters.AddWithValue("@workOrderId", observation.WorkOrderId);
-                    cmd2.ExecuteNonQuery();
+
+                    // Retrieve the new CodigoObservacion (primary key)
+                    observation.Code = (int)cmd2.ExecuteScalar();
                 }
-                return true;
+
             }
             catch (Exception ex)
             {
-                return false;
+                Console.WriteLine($"Error loading observations: {ex.Message}");
             }
             finally
             {
                 conn.Close();
             }
+            return observation;
+
         }
 
         /// <summary>

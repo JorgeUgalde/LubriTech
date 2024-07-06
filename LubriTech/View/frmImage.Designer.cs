@@ -30,10 +30,11 @@
         {
             this.pbImage = new System.Windows.Forms.PictureBox();
             this.panelBorder = new System.Windows.Forms.Panel();
+            this.lblForm = new System.Windows.Forms.Label();
             this.pbMaximize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.lblForm = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.panelBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
@@ -63,6 +64,17 @@
             this.panelBorder.Size = new System.Drawing.Size(805, 36);
             this.panelBorder.TabIndex = 8;
             // 
+            // lblForm
+            // 
+            this.lblForm.AutoSize = true;
+            this.lblForm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblForm.ForeColor = System.Drawing.Color.White;
+            this.lblForm.Location = new System.Drawing.Point(39, 6);
+            this.lblForm.Name = "lblForm";
+            this.lblForm.Size = new System.Drawing.Size(93, 21);
+            this.lblForm.TabIndex = 11;
+            this.lblForm.Text = "Fotografías";
+            // 
             // pbMaximize
             // 
             this.pbMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -90,30 +102,41 @@
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Location = new System.Drawing.Point(694, 478);
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDelete.Location = new System.Drawing.Point(12, 479);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(99, 35);
-            this.btnDelete.TabIndex = 9;
-            this.btnDelete.Text = "button1";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Size = new System.Drawing.Size(141, 34);
+            this.btnDelete.TabIndex = 10;
+            this.btnDelete.Text = "Eliminar";
+            this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // lblForm
+            // btnClose
             // 
-            this.lblForm.AutoSize = true;
-            this.lblForm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblForm.ForeColor = System.Drawing.Color.White;
-            this.lblForm.Location = new System.Drawing.Point(39, 6);
-            this.lblForm.Name = "lblForm";
-            this.lblForm.Size = new System.Drawing.Size(93, 21);
-            this.lblForm.TabIndex = 11;
-            this.lblForm.Text = "Fotografías";
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnClose.Location = new System.Drawing.Point(652, 479);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(141, 34);
+            this.btnClose.TabIndex = 11;
+            this.btnClose.Text = "Cancelar";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmImage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(805, 525);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.panelBorder);
             this.Controls.Add(this.pbImage);
@@ -136,7 +159,8 @@
         private System.Windows.Forms.Panel panelBorder;
         private System.Windows.Forms.PictureBox pbMaximize;
         private System.Windows.Forms.PictureBox pbClose;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label lblForm;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnClose;
     }
 }

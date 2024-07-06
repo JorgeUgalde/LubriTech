@@ -51,9 +51,13 @@ namespace LubriTech.View
             this.Dispose();
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
             new ObservationPhotos_Controller().Delete(IdToRemove);
             OnDataChanged(EventArgs.Empty);
             this.Dispose();

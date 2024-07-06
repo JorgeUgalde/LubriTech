@@ -64,6 +64,14 @@ namespace LubriTech.Model.WorkOrder_Information
             this.Photos = photos;
         }
 
+        public Observation(int workOrderId, string description)
+        {
+            WorkOrderId = workOrderId;
+            Description = description;
+        }
+
+
+
         /// <summary>
         /// Devuelve una cadena que representa el objeto actual.
         /// </summary>

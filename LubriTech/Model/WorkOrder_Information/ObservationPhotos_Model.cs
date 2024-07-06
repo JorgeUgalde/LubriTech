@@ -91,7 +91,7 @@ namespace LubriTech.Model.WorkOrder_Information
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@ObservationId", 6);
+                    cmd.Parameters.AddWithValue("@ObservationId", observationId);
                     cmd.Parameters.AddWithValue("@Photo", imageBytes);
 
                     int rowsAffected = cmd.ExecuteNonQuery();

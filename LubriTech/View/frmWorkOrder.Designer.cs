@@ -62,7 +62,6 @@
             this.btnSaveChanges = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblDetails = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btnPrint = new System.Windows.Forms.Button();
             this.lblLicensePlate = new System.Windows.Forms.Label();
             this.txtLicensePlate = new System.Windows.Forms.TextBox();
@@ -70,12 +69,13 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lblClient = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dgvObservation = new System.Windows.Forms.DataGridView();
             this.btnAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvObservation)).BeginInit();
             this.SuspendLayout();
             // 
             // lblVehicle
@@ -398,7 +398,7 @@
             // btnSaveChanges
             // 
             this.btnSaveChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveChanges.Location = new System.Drawing.Point(634, 492);
+            this.btnSaveChanges.Location = new System.Drawing.Point(605, 517);
             this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(98, 23);
@@ -410,7 +410,7 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnClose.Location = new System.Drawing.Point(12, 492);
+            this.btnClose.Location = new System.Drawing.Point(13, 517);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(98, 23);
@@ -429,16 +429,6 @@
             this.lblDetails.TabIndex = 47;
             this.lblDetails.Text = "Detalles";
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnPrint);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 470);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(595, 54);
-            this.panel1.TabIndex = 48;
-            // 
             // btnPrint
             // 
             this.btnPrint.Location = new System.Drawing.Point(507, 19);
@@ -447,7 +437,6 @@
             this.btnPrint.TabIndex = 52;
             this.btnPrint.Text = "button1";
             this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // lblLicensePlate
             // 
@@ -517,7 +506,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(569, 340);
+            this.tabPage1.Size = new System.Drawing.Size(693, 394);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Contenido";
             // 
@@ -534,22 +523,36 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.btnAdd);
+            this.tabPage2.Controls.Add(this.dgvObservation);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(569, 340);
+            this.tabPage2.Size = new System.Drawing.Size(693, 394);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Observaciones";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // dgvObservation
+            // 
+            this.dgvObservation.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvObservation.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.dgvObservation.BackgroundColor = System.Drawing.Color.White;
+            this.dgvObservation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvObservation.Location = new System.Drawing.Point(3, 21);
+            this.dgvObservation.Name = "dgvObservation";
+            this.dgvObservation.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dgvObservation.Size = new System.Drawing.Size(689, 370);
+            this.dgvObservation.TabIndex = 0;
+            this.dgvObservation.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvObservation_CellMouseDoubleClick);
+            // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(468, 312);
+            this.btnAdd.Location = new System.Drawing.Point(571, 0);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(101, 23);
+            this.btnAdd.Size = new System.Drawing.Size(122, 23);
             this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "Añadir imagen";
+            this.btnAdd.Text = "Añadir Observacion";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -575,11 +578,11 @@
             this.Text = "Órdenes de trabajo";
             this.Load += new System.EventHandler(this.frmWorkOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvObservation)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -626,7 +629,8 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label lblClient;
-        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.DataGridView dgvObservation;
+        private System.Windows.Forms.Button btnAdd;
     }
 }

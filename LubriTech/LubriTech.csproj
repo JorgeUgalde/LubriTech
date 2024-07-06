@@ -93,6 +93,7 @@
     <Compile Include="Controller\Branch_Controller.cs" />
     <Compile Include="Controller\ItemType_Controller.cs" />
     <Compile Include="Controller\ObservationPhotos_Controller.cs" />
+    <Compile Include="Controller\Observation_Controller.cs" />
     <Compile Include="Controller\Schedule_Controller.cs" />
     <Compile Include="Controller\PriceList_Controller.cs" />
     <Compile Include="Controller\DetailLine_Controller.cs" />
@@ -172,6 +173,12 @@
     </Compile>
     <Compile Include="View\frmInsertUpdateUser.Designer.cs">
       <DependentUpon>frmInsertUpdateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmInsertUpsert_Observation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmInsertUpsert_Observation.Designer.cs">
+      <DependentUpon>frmInsertUpsert_Observation.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmResetPassword.cs">
       <SubType>Form</SubType>
@@ -412,6 +419,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmInsertUpdateUser.resx">
       <DependentUpon>frmInsertUpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmInsertUpsert_Observation.resx">
+      <DependentUpon>frmInsertUpsert_Observation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmResetPassword.resx">
       <DependentUpon>frmResetPassword.cs</DependentUpon>
