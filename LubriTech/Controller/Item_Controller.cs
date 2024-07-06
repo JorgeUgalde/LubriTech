@@ -49,5 +49,9 @@ namespace LubriTech.Controller
             return new Item_Model().getItemStock(code, branch);
         }
 
+        public bool updateQuantity(string itemCode, int branch, double quantity)
+        {
+            return new Item_Model().updateItemQuantity(itemCode, branch, quantity);
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace LubriTech.Model.WorkOrder_Information
         public List<ObservationPhotos> LoadObservationPhotos(int observationId)
         {
             List<ObservationPhotos> photos = new List<ObservationPhotos>();
-            string selectQuery = "SELECT Identificacion, CodigoObservacion, Fotografia FROM ObservationPhotos WHERE CodigoObservacion = @observationId";
+            string selectQuery = "SELECT Identificacion, CodigoObservacion, Fotografia FROM FotosObservacion WHERE CodigoObservacion = @observationId";
 
             SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
 
@@ -33,7 +33,7 @@ namespace LubriTech.Model.WorkOrder_Information
                             {
                                 Id = reader.GetInt32(reader.GetOrdinal("Identificacion")),
                                 ObservationId = reader.GetInt32(reader.GetOrdinal("CodigoObservacion")),
-                                Photo = reader.IsDBNull(reader.GetOrdinal("Fotografia")) ? null : (byte[])reader["Photo"]
+                                Photo = reader.IsDBNull(reader.GetOrdinal("Fotografia")) ? null : (byte[])reader["Fotografia"]
                             };
 
                             photos.Add(photo);
@@ -71,9 +71,9 @@ namespace LubriTech.Model.WorkOrder_Information
             return imageArray;
         }
 
-        public void UpsertObservationPhoto(int observationId, string imagePath)
+        public void UpsertObservationPhoto(int observationId, byte[] imageBytes)
         {
-            byte[] imageBytes = ConvertImageToByteArray(imagePath);
+            
 
             if (imageBytes == null)
             {
@@ -81,25 +81,18 @@ namespace LubriTech.Model.WorkOrder_Information
                 return;
             }
 
-            string upsertQuery = @"
-            MERGE INTO FotosObservacion AS target
-            USING (SELECT @ObservationId AS ObservationId, @Foto AS Foto) AS source
-            ON (target.ObservationId = source.ObservationId)
-            WHEN MATCHED THEN 
-                UPDATE SET Foto = source.Foto
-            WHEN NOT MATCHED THEN
-                INSERT (ObservationId, Foto)
-                VALUES (source.ObservationId, source.Foto);";
+            string query = "INSERT INTO FotosObservacion (CodigoObservacion ,Fotografia) VALUES (@ObservationId ,@Photo)";
+
 
             SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
 
             try
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand(upsertQuery, conn))
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@ObservationId", observationId);
-                    cmd.Parameters.AddWithValue("@Foto", imageBytes);
+                    cmd.Parameters.AddWithValue("@ObservationId", 6);
+                    cmd.Parameters.AddWithValue("@Photo", imageBytes);
 
                     int rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected > 0)
@@ -122,9 +115,9 @@ namespace LubriTech.Model.WorkOrder_Information
             }
         }
 
-        public void DeleteObservationPhoto(int observationId)
+        public void DeleteObservationPhoto(int Id)
         {
-            string deleteQuery = "DELETE FROM FotosObservacion WHERE ObservationId = @ObservationId";
+            string deleteQuery = "DELETE FROM FotosObservacion WHERE Identificacion = @Id";
 
             SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
 
@@ -133,7 +126,7 @@ namespace LubriTech.Model.WorkOrder_Information
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand(deleteQuery, conn))
                 {
-                    cmd.Parameters.AddWithValue("@ObservationId", observationId);
+                    cmd.Parameters.AddWithValue("@Id", Id);
 
                     int rowsAffected = cmd.ExecuteNonQuery();
                     if (rowsAffected > 0)

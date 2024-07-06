@@ -1,21 +1,14 @@
 ﻿using LubriTech.Controller;
 using LubriTech.Model.Branch_Information;
-using LubriTech.Model.Client_Information;
 using LubriTech.Model.InventoryManagment_Information;
 using LubriTech.Model.Item_Information;
 using LubriTech.Model.Supplier_Information;
-using LubriTech.Model.Vehicle_Information;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
+using static System.Windows.Forms.AxHost;
 
 namespace LubriTech.View
 {
@@ -23,7 +16,9 @@ namespace LubriTech.View
     {
         private List<Supplier> suppliers;
         private List<Branch> branches;
-        private Supplier selectedSupplier;
+        private Supplier selectedSupplier = null;
+        private Item selectedItem = null;
+        private DetailLine detailLine = new DetailLine();
         private List<DetailLine> detailLines;
         private InventoryManagment existingInventoryManagment = null;
         private Boolean clickedAddDetail = false;
@@ -34,9 +29,15 @@ namespace LubriTech.View
             branches = new Branch_Controller().getAll();
             detailLines = new List<DetailLine>();
             InitializeComponent();
+            SetupDetailLinesDGV();
             setComboBox();
             tbSupplierName.Enabled = false;
             tbTotalAmount.Enabled = false;
+            tbItemName.Enabled = false;
+            tbQuantity.Enabled = false;
+            tbAmount.Enabled = false;
+            tbSupplierId.Enabled = false;
+            btnSelectSupplier.Enabled = false;
         }
 
         public frmInsertUpdate_InventoryManagment(InventoryManagment inventoryManagment)
@@ -49,16 +50,25 @@ namespace LubriTech.View
             setComboBox();
 
             tbSupplierName.Enabled = false;
-            tbSupplierName.Text = inventoryManagment.Supplier.name;
-            tbSupplierId.Text = inventoryManagment.Supplier.id;
+            tbItemName.Enabled = false;
+            tbAmount.Enabled = false;
+            if (inventoryManagment.Supplier != null) {
+                tbSupplierName.Text = inventoryManagment.Supplier.name;
+                tbSupplierId.Text = inventoryManagment.Supplier.id;
+            }
             cbBranch.Text = inventoryManagment.Branch.Name;
-            cbDay.Text = inventoryManagment.DocumentDate.Day.ToString();
-            cbMonth.Text = inventoryManagment.DocumentDate.Month.ToString();
-            cbYear.Text = inventoryManagment.DocumentDate.Year.ToString();
+            dtpDate.Value = inventoryManagment.DocumentDate;
             cbDocumentType.Text = inventoryManagment.DocumentType;
             cbState.Text = inventoryManagment.State;
+            tbQuantity.Enabled = false;
             tbTotalAmount.Enabled = false;
+            if (!cbDocumentType.Text.Equals("Compra"))
+            {
+                tbSupplierId.Enabled = false;
+                btnSelectSupplier.Enabled = false;
+            }
 
+            SetupDetailLinesDGV();
             load_DetailLines(detailLines);
             checkState(inventoryManagment.State);
         }
@@ -70,7 +80,6 @@ namespace LubriTech.View
                 DetailLine_Controller detailLine_Controller = new DetailLine_Controller();
                 detailLines = detailLine_Controller.getDetailLines(existingInventoryManagment.Id);
             }
-
             load_DetailLines(detailLines);
         }
 
@@ -88,17 +97,6 @@ namespace LubriTech.View
                     dgvDetailLines.DataSource = filteredList;
                 }
             }
-            else
-            {
-                detailLines = new DetailLine_Controller().getAll();
-                if (detailLines == null)
-                {
-                    MessageBox.Show("No hay líneas de detalle en esta gestión de inventario", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                dgvDetailLines.DataSource = detailLines;
-            }
-            dgvDetailLines.DataSource = detailLines;
             dgvDetailLines.Columns["InventoryManagment"].Visible = false;
             dgvDetailLines.Columns["Item"].HeaderText = "Artículo";
             dgvDetailLines.Columns["Quantity"].HeaderText = "Cantidad";
@@ -112,23 +110,23 @@ namespace LubriTech.View
             dgvDetailLines.Columns["Item"].DisplayIndex = 0;
             dgvDetailLines.Columns["Quantity"].DisplayIndex = 1;
             dgvDetailLines.Columns["Amount"].DisplayIndex = 2;
+            dgvDetailLines.Columns["deleteImageColumn"].DisplayIndex = 3;
         }
 
         private void checkState(string state)
         {
             if (state.Equals("Finalizado"))
             {
-                tbSupplierName.Enabled = false;
                 tbSupplierId.Enabled = false;
+                tbItemCode.Enabled = false;
                 cbBranch.Enabled = false;
-                cbDay.Enabled = false;
-                cbMonth.Enabled = false;
-                cbYear.Enabled = false;
+                dtpDate.Enabled = false;
                 cbDocumentType.Enabled = false;
                 cbState.Enabled = false;
-                tbTotalAmount.Enabled = false;
+                tbQuantity.Enabled = false;
                 btnAddDetailLine.Enabled = false;
                 btnSelectSupplier.Enabled = false;
+                btnSelectItem.Enabled = false;
             }
         }
 
@@ -143,16 +141,13 @@ namespace LubriTech.View
         {
             InventoryManagment_Controller inventoryManagmentController = new InventoryManagment_Controller();
 
-            if (cbDay.Text.Trim() == ""
-            || cbMonth.Text.Trim() == ""
-            || cbYear.Text.Trim() == ""
-            || cbBranch.Text.Trim() == ""
+            if (cbBranch.Text.Trim() == ""
             || cbDocumentType.Text.Trim() == ""
             || cbState.Text.Trim() == "")
             {
                 MessageBox.Show("Por favor llene todos los campos");
             }
-            else if (tbSupplierName.Text.Trim() == "")
+            else if (tbSupplierName.Text.Trim() == "" && cbDocumentType.Text.Equals("Compra"))
             {
                 MessageBox.Show("Debe seleccionar un proveedor");
             }
@@ -161,8 +156,7 @@ namespace LubriTech.View
                 InventoryManagment inventoryManagment = new InventoryManagment();
                 inventoryManagment.Supplier = selectedSupplier;
                 inventoryManagment.Branch = new Branch_Controller().get(Convert.ToInt32(cbBranch.SelectedValue.ToString()));
-                string date = cbYear.Text.Trim() + "/" + cbMonth.Text.Trim() + "/" + cbDay.Text.Trim();
-                inventoryManagment.DocumentDate = Convert.ToDateTime(date);
+                inventoryManagment.DocumentDate = dtpDate.Value;
                 inventoryManagment.DocumentType = cbDocumentType.Text;
                 inventoryManagment.State = cbState.Text;
                 if (tbTotalAmount.Text.Trim() != "")
@@ -174,24 +168,28 @@ namespace LubriTech.View
                     inventoryManagment.TotalAmount = 0;
                 }
 
-                if(existingInventoryManagment != null)
+                if (existingInventoryManagment != null)
                 {
                     inventoryManagment.Id = existingInventoryManagment.Id;
                 }
 
                 int insertedId = inventoryManagmentController.upsert(inventoryManagment);
                 existingInventoryManagment = inventoryManagment;
+                string quantityUpdated = updateItemsQuantity();
 
-                if (insertedId != -1)
+                if (insertedId != -1 && quantityUpdated.Equals(""))
                 {
-                    tbSupplierId.Text = selectedSupplier.id;
+                    if (selectedSupplier != null)
+                    {
+                        tbSupplierId.Text = selectedSupplier.id;
+                    }
                     existingInventoryManagment.Id = insertedId;
                     OnDataChanged(EventArgs.Empty);
                     this.Dispose();
                 }
                 else
                 {
-                    MessageBox.Show("El manejo de inventario no se ha agregado correctamente");
+                    MessageBox.Show("El manejo de inventario no se ha agregado correctamente\n" + quantityUpdated);
                 }
             }
 
@@ -218,9 +216,17 @@ namespace LubriTech.View
 
         private void tbNumeric_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
+            TextBox textBox = sender as TextBox;
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != ',')
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == ',' && textBox.Text.Contains(","))
+            {
+                e.Handled = true;
+            }
         }
-
+        
         private void btnClose_Click(object sender, EventArgs e)
         {
             if (clickedAddDetail)
@@ -236,18 +242,6 @@ namespace LubriTech.View
             cbBranch.ValueMember = "Id";
             cbBranch.DisplayMember = "Name";
             cbBranch.SelectedIndex = -1;
-
-            List<int> years = new List<int>();
-            int currentYear = DateTime.Now.Year - 10;
-
-            for (int i = 0; i <= 10; i++)
-            {
-                years.Add(currentYear);
-                currentYear += 1;
-            }
-
-            cbYear.DataSource = years;
-            cbYear.SelectedIndex = -1;
         }
 
         private void btnSelectSupplier_Click(object sender, EventArgs e)
@@ -310,16 +304,13 @@ namespace LubriTech.View
         {
             if (existingInventoryManagment == null)
             {
-                if (cbDay.Text.Trim() == ""
-                || cbMonth.Text.Trim() == ""
-                || cbYear.Text.Trim() == ""
-                || cbBranch.Text.Trim() == ""
+                if (cbBranch.Text.Trim() == ""
                 || cbDocumentType.Text.Trim() == ""
                 || cbState.Text.Trim() == "")
                 {
                     MessageBox.Show("Por favor llene los campos anteriores");
                 }
-                else if (tbSupplierName.Text.Trim() == "")
+                else if (tbSupplierName.Text.Trim() == "" && cbDocumentType.Text.Equals("Compra"))
                 {
                     MessageBox.Show("Debe seleccionar un proveedor");
                 }
@@ -327,12 +318,14 @@ namespace LubriTech.View
                 {
                     InventoryManagment_Controller inventoryManagmentController = new InventoryManagment_Controller();
                     InventoryManagment inventoryManagment = new InventoryManagment();
+                    if(selectedSupplier != null)
+                    {
+                        tbSupplierId.Text = selectedSupplier.id;
+                    }
 
-                    tbSupplierId.Text = selectedSupplier.id;
                     inventoryManagment.Supplier = selectedSupplier;
                     inventoryManagment.Branch = new Branch_Controller().get(Convert.ToInt32(cbBranch.SelectedValue.ToString()));
-                    string date = cbYear.Text.Trim() + "/" + cbMonth.Text.Trim() + "/" + cbDay.Text.Trim();
-                    inventoryManagment.DocumentDate = Convert.ToDateTime(date);
+                    inventoryManagment.DocumentDate = dtpDate.Value;
                     inventoryManagment.DocumentType = cbDocumentType.Text;
                     inventoryManagment.State = cbState.Text;
                     if (tbTotalAmount.Text.Trim() != "")
@@ -351,31 +344,152 @@ namespace LubriTech.View
                     {
                         clickedAddDetail = true;
                         existingInventoryManagment.Id = insertedId;
-                        frmInsertUpdate_DetailLine frmUpsert_DetailLine = new frmInsertUpdate_DetailLine(insertedId, "");
-                        frmUpsert_DetailLine.MdiParent = this.MdiParent;
-                        frmUpsert_DetailLine.FormClosed += FrmUpsert_DetailLine_FormClosed;
-                        frmUpsert_DetailLine.Show();
+                        if (tbQuantity.Text.Trim() == "")
+                        {
+                            MessageBox.Show("Por favor llene todos los campos");
+                        }
+                        else if (tbQuantity.Text.Trim() == "0")
+                        {
+                            MessageBox.Show("La cantidad de artículos debe ser mayor a 0");
+                        }
+                        else if (tbItemName.Text.Trim() == "")
+                        {
+                            MessageBox.Show("Debe seleccionar un artículo");
+                        }
+                        else if (cbDocumentType.Text.Trim() == "Salida" && !validateItemStock(selectedItem.code, frmLogin.branch, Convert.ToDouble(tbQuantity.Text.Trim())))
+                        {
+                            MessageBox.Show("La cantidad de artículos ingresada excede la cantidad disponible en la sucursal");
+                        }
+                        else
+                        {
+                            DetailLine_Controller detailLineController = new DetailLine_Controller();
+
+                            tbItemCode.Text = selectedItem.code;
+
+                            detailLine.InventoryManagment = existingInventoryManagment;
+                            detailLine.Item = selectedItem;
+                            detailLine.Quantity = Convert.ToDouble(tbQuantity.Text.Trim());
+                            detailLine.Amount = Convert.ToDouble(tbAmount.Text.Trim());
+
+                            if (detailLineController.upsert(detailLine))
+                            {
+                                detailLines = new DetailLine_Controller().getDetailLines(existingInventoryManagment.Id);
+                                load_DetailLines(detailLines);
+                                tbItemCode.Text = "";
+                                tbItemName.Text = "";
+                                tbQuantity.Text = "";
+                                tbAmount.Text = "";
+                            }
+                            else
+                            {
+                                MessageBox.Show("Línea de detalle no insertada");
+                            }
+                        }
                     }
                     else
                     {
                         MessageBox.Show("Error con el manejo de inventario");
                     }
+
                 }
             }
             else
             {
-                tbSupplierId.Text = selectedSupplier.id;
-                frmInsertUpdate_DetailLine frmUpsert_DetailLine = new frmInsertUpdate_DetailLine(existingInventoryManagment.Id, "");
-                frmUpsert_DetailLine.MdiParent = this.MdiParent;
-                frmUpsert_DetailLine.FormClosed += FrmUpsert_DetailLine_FormClosed;
-                frmUpsert_DetailLine.Show();
+                if(selectedSupplier != null)
+                {
+                    tbSupplierId.Text = selectedSupplier.id;
+                }
+
+                if (tbQuantity.Text.Trim() == "")
+                {
+                    MessageBox.Show("Por favor llene todos los campos");
+                }
+                else if (tbQuantity.Text.Trim() == "0")
+                {
+                    MessageBox.Show("La cantidad de artículos debe ser mayor a 0");
+                }
+                else if (tbItemName.Text.Trim() == "")
+                {
+                    MessageBox.Show("Debe seleccionar un artículo");
+                }
+                else if (cbDocumentType.Text.Trim() == "Salida" && !validateItemStock(selectedItem.code, frmLogin.branch, Convert.ToDouble(tbQuantity.Text.Trim())))
+                {
+                    MessageBox.Show("La cantidad de artículos ingresada excede la cantidad disponible en la sucursal");
+                }
+                else
+                {
+                    DetailLine_Controller detailLineController = new DetailLine_Controller();
+
+                    tbItemCode.Text = selectedItem.code;
+
+                    detailLine.InventoryManagment = existingInventoryManagment;
+                    detailLine.Item = selectedItem;
+                    detailLine.Quantity = Convert.ToDouble(tbQuantity.Text.Trim());
+                    detailLine.Amount = Convert.ToDouble(tbAmount.Text.Trim());
+
+                    if (detailLineController.upsert(detailLine))
+                    {
+                        detailLines = new DetailLine_Controller().getDetailLines(existingInventoryManagment.Id);
+                        load_DetailLines(detailLines);
+                        tbItemCode.Text = "";
+                        tbItemName.Text = "";
+                        tbQuantity.Text = "";
+                        tbAmount.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Línea de detalle no insertada");
+                    }
+                }
             }
         }
 
-        private void FrmUpsert_DetailLine_FormClosed(object sender, FormClosedEventArgs e)
+        private void tbQuantity_TextChanged(object sender, EventArgs e)
         {
-            detailLines = new DetailLine_Controller().getDetailLines(existingInventoryManagment.Id);
-            load_DetailLines(detailLines);
+            double quantity;
+            double purchasePrice;
+
+            bool isQuantityValid = double.TryParse(tbQuantity.Text.Trim(), out quantity);
+
+            if (!string.IsNullOrEmpty(tbQuantity.Text.Trim()) &&
+                !string.IsNullOrEmpty(tbItemName.Text.Trim()) &&
+                isQuantityValid)
+            {
+                tbItemCode.Text = selectedItem.code;
+                purchasePrice = new Item_Controller().get(tbItemCode.Text.Trim()).purchasePrice;
+                double calc = quantity * purchasePrice;
+
+                tbAmount.Text = calc.ToString();
+            }
+            else
+            {
+                tbAmount.Text = "";
+            }
+        }
+
+        private void tbItemCode_TextChanged(object sender, EventArgs e)
+        {
+            string code = tbItemCode.Text;
+
+            if (code.Length >= 3)
+            {
+                Item item = new Item_Controller().get(code);
+
+                if (item != null)
+                {
+                    SelectItem(item);
+                }
+            }
+        }
+
+        public void SelectItem(Item item)
+        {
+            if (item != null)
+            {
+                selectedItem = item;
+                tbItemName.Text = item.name;
+                tbItemCode.Text = item.code;
+            }
         }
 
         private void tbSupplierId_TextChanged(object sender, EventArgs e)
@@ -399,8 +513,8 @@ namespace LubriTech.View
             {
                 tbSupplierId.Text = supplier.id;
             }
-                selectedSupplier = supplier;
-                tbSupplierName.Text = supplier.name;
+            selectedSupplier = supplier;
+            tbSupplierName.Text = supplier.name;
         }
 
         private void dgvDetailLines_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -408,8 +522,9 @@ namespace LubriTech.View
             if (e.RowIndex >= 0)
             {
                 Item selectedItem = (Item)dgvDetailLines.Rows[e.RowIndex].Cells["Item"].Value;
-                List<DetailLine> detailLines = new DetailLine_Controller().getAll();
+                List<DetailLine> detailLines = new DetailLine_Controller().getDetailLines(existingInventoryManagment.Id);
                 DetailLine selectedDetailLine = null;
+
                 foreach (DetailLine detailLine in detailLines)
                 {
                     if (detailLine.Item.code == selectedItem.code)
@@ -419,12 +534,202 @@ namespace LubriTech.View
                     }
                 }
 
-                string action = "Modify";
-                frmInsertUpdate_DetailLine frmUpsert_DetailLine = new frmInsertUpdate_DetailLine(existingInventoryManagment.Id, selectedDetailLine.Item.code);
-                frmUpsert_DetailLine.MdiParent = this.MdiParent;
-                frmUpsert_DetailLine.FormClosed += FrmUpsert_DetailLine_FormClosed;
-                frmUpsert_DetailLine.Show();
+                tbItemCode.Text = selectedDetailLine.Item.code;
+                tbItemName.Text = selectedDetailLine.Item.name;
+                tbQuantity.Text = selectedDetailLine.Quantity.ToString();
+                tbAmount.Text = selectedDetailLine.Amount.ToString();
+
+
+                if (e.ColumnIndex == dgvDetailLines.Columns["deleteImageColumn"].Index)
+                {
+                    DialogResult result = MessageBox.Show("¿Desea eliminar esta línea de detalle?", "Confirmar selección", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        if (new DetailLine_Controller().delete(selectedDetailLine))
+                        {
+                            detailLines = new DetailLine_Controller().getDetailLines(existingInventoryManagment.Id);
+                            load_DetailLines(detailLines);
+                            tbItemCode.Text = "";
+                            tbItemName.Text = "";
+                            tbQuantity.Text = "";
+                            tbAmount.Text = "";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Línea de detalle no se eliminó");
+                        }
+                    }
+                }
+
                 return;
+            }
+        }
+
+        private void btnSelectItem_Click(object sender, EventArgs e)
+        {
+            frmItems frmItems = new frmItems(this);
+            frmItems.ItemSelected += HandleItemSelected;
+            frmItems.MdiParent = this.MdiParent;
+            frmItems.Show();
+        }
+
+        private void HandleItemSelected(Item itemSelected)
+        {
+            ShowItemInDetailLine(itemSelected);
+        }
+
+        public void ShowItemInDetailLine(Item item)
+        {
+            if (item != null)
+            {
+                tbItemName.Text = item.name;
+                tbItemCode.Text = item.code;
+            }
+
+
+        }
+
+        private void SetupDetailLinesDGV()
+        {
+            DataGridViewImageColumn deleteImageColumn = new DataGridViewImageColumn();
+            deleteImageColumn.Name = "deleteImageColumn";
+            deleteImageColumn.HeaderText = "";
+            deleteImageColumn.Image = Properties.Resources.DeleteIco1;
+            deleteImageColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            //deleteImageColumn.Width = Properties.Resources.DeleteIco1.Width * 2;
+            dgvDetailLines.Columns.Add(deleteImageColumn);
+        }
+
+        private Boolean validateItemStock(string itemCode, int branchId, double quantity)
+        {
+            if (new Item_Controller().getItemStock(itemCode, branchId) < quantity)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private string updateItemsQuantity()
+        {
+            double newQuantity;
+            if (cbDocumentType.Text.Equals("Entrada"))
+            {
+                if (cbState.Text.Equals("Finalizado"))
+                {
+                    foreach (var detailLine in detailLines)
+                    {
+                        newQuantity = ((new Item_Controller().getItemStock(detailLine.Item.code, frmLogin.branch)) + detailLine.Quantity);
+                        if (!new Item_Controller().updateQuantity(detailLine.Item.code, frmLogin.branch, newQuantity))
+                        {
+                            return "No se pudo actualizar la cantidad del artículo: " + detailLine.Item.name + " - Código: " + detailLine.Item.code;
+                        }
+                    }
+                    return "";
+                }
+                return "";
+            }
+            else if (cbDocumentType.Text.Equals("Compra"))
+            {
+                if (cbState.Text.Equals("Finalizado"))
+                {
+                    foreach (var detailLine in detailLines)
+                    {
+                        newQuantity = ((new Item_Controller().getItemStock(detailLine.Item.code, frmLogin.branch)) + detailLine.Quantity);
+                        if (!new Item_Controller().updateQuantity(detailLine.Item.code, frmLogin.branch, newQuantity))
+                        {
+                            return "No se pudo actualizar la cantidad del artículo: " + detailLine.Item.name + " - Código: " + detailLine.Item.code;
+                        }
+                    }
+                    return "";
+                }
+                return "";
+            }
+            else
+            {
+                if (cbState.Text.Equals("Finalizado"))
+                {
+                    foreach (var detailLine in detailLines)
+                    {
+                        if (!validateItemStock(detailLine.Item.code, frmLogin.branch, Convert.ToDouble(detailLine.Quantity)))
+                        {
+                            return "No hay suficientes artículos de: " + detailLine.Item.name + " - Código: " + detailLine.Item.code + " disponibles en la sucursal";
+                        }
+                    }
+                    foreach (var detailLine in detailLines)
+                    {
+                        newQuantity = ((new Item_Controller().getItemStock(detailLine.Item.code, frmLogin.branch)) - detailLine.Quantity);
+                        if (!new Item_Controller().updateQuantity(detailLine.Item.code, frmLogin.branch, newQuantity))
+                        {
+                            return "No se pudo actualizar la cantidad del artículo: " + detailLine.Item.name + " - Código: " + detailLine.Item.code;
+                        }
+                    }
+                    return "";
+                }
+                return "";
+            }
+        }
+
+        private void tbItemName_TextChanged(object sender, EventArgs e)
+        {
+            if (tbItemName.Text.Trim().Equals("") || cbState.Text.Trim().Equals("Finalizado"))
+            {
+                tbQuantity.Enabled = false;
+            }
+            else
+            {
+                tbQuantity.Enabled = true;
+            }
+        }
+
+        private void cbDocumentType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbDocumentType.Text.Equals("Compra"))
+            {
+                tbSupplierId.Enabled = true;
+                btnSelectSupplier.Enabled = true;
+            }
+            else
+            {
+                tbSupplierId.Enabled = false;
+                btnSelectSupplier.Enabled = false;
+                tbSupplierId.Text = "";
+                tbSupplierName.Text = "";
+                selectedSupplier = null;
+            }
+        }
+
+        private void cbState_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbState.Text.Equals("Finalizado"))
+            {
+                tbSupplierId.Enabled = false;
+                tbItemCode.Enabled = false;
+                cbBranch.Enabled = false;
+                dtpDate.Enabled = false;
+                cbDocumentType.Enabled = false;
+                tbQuantity.Enabled = false;
+                btnAddDetailLine.Enabled = false;
+                btnSelectSupplier.Enabled = false;
+                btnSelectItem.Enabled = false;
+            }
+            else
+            {
+                if (cbDocumentType.Text.Equals("Compra"))
+                {
+                    tbSupplierId.Enabled = true;
+                    btnSelectSupplier.Enabled = true;
+                }
+                tbItemCode.Enabled = true;
+                cbBranch.Enabled = true;
+                dtpDate.Enabled = true;
+                cbDocumentType.Enabled = true;
+                tbQuantity.Enabled = true;
+                btnAddDetailLine.Enabled = true;
+                btnSelectItem.Enabled = true;
             }
         }
     }

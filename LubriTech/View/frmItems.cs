@@ -158,9 +158,9 @@ namespace LubriTech.View
 
                 if (selectedItem != null)
                 {
-                    if (parentForm is frmInsertUpdate_DetailLine)
+                    if (parentForm is frmInsertUpdate_InventoryManagment)
                     {
-                        ((frmInsertUpdate_DetailLine)parentForm).ShowItemInDetailLine(selectedItem);
+                        ((frmInsertUpdate_InventoryManagment)parentForm).ShowItemInDetailLine(selectedItem);
                         this.Close();
                     }else if (parentForm is frmWorkOrder)
                     {

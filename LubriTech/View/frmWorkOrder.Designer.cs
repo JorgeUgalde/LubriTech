@@ -65,6 +65,7 @@
             this.btnSaveChanges = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblDetails = new System.Windows.Forms.Label();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.lblLicensePlate = new System.Windows.Forms.Label();
             this.txtLicensePlate = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -80,10 +81,13 @@
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.lblClient = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnAdd = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.btnSelectItem = new System.Windows.Forms.Button();
             this.btnAddWorkOrderLine = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWorkOrderDetails)).BeginInit();
             this.SuspendLayout();
             // 
@@ -153,8 +157,8 @@
             // 
             // txtMake
             // 
-            this.txtMake.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMake.Location = new System.Drawing.Point(512, 63);
+            this.txtMake.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMake.Location = new System.Drawing.Point(437, 63);
             this.txtMake.Margin = new System.Windows.Forms.Padding(2);
             this.txtMake.Name = "txtMake";
             this.txtMake.Size = new System.Drawing.Size(168, 20);
@@ -162,8 +166,8 @@
             // 
             // txtModel
             // 
-            this.txtModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtModel.Location = new System.Drawing.Point(512, 84);
+            this.txtModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtModel.Location = new System.Drawing.Point(437, 84);
             this.txtModel.Margin = new System.Windows.Forms.Padding(2);
             this.txtModel.Name = "txtModel";
             this.txtModel.Size = new System.Drawing.Size(168, 20);
@@ -171,8 +175,8 @@
             // 
             // txtMileage
             // 
-            this.txtMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMileage.Location = new System.Drawing.Point(512, 106);
+            this.txtMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMileage.Location = new System.Drawing.Point(437, 106);
             this.txtMileage.Margin = new System.Windows.Forms.Padding(2);
             this.txtMileage.Name = "txtMileage";
             this.txtMileage.Size = new System.Drawing.Size(168, 20);
@@ -180,7 +184,7 @@
             // 
             // txtClientId
             // 
-            this.txtClientId.Location = new System.Drawing.Point(112, 42);
+            this.txtClientId.Location = new System.Drawing.Point(78, 42);
             this.txtClientId.Margin = new System.Windows.Forms.Padding(2);
             this.txtClientId.Name = "txtClientId";
             this.txtClientId.Size = new System.Drawing.Size(168, 20);
@@ -208,7 +212,7 @@
             // 
             // txtClientName
             // 
-            this.txtClientName.Location = new System.Drawing.Point(112, 63);
+            this.txtClientName.Location = new System.Drawing.Point(78, 63);
             this.txtClientName.Margin = new System.Windows.Forms.Padding(2);
             this.txtClientName.Name = "txtClientName";
             this.txtClientName.Size = new System.Drawing.Size(168, 20);
@@ -246,7 +250,7 @@
             // 
             // txtCellphone
             // 
-            this.txtCellphone.Location = new System.Drawing.Point(112, 84);
+            this.txtCellphone.Location = new System.Drawing.Point(78, 84);
             this.txtCellphone.Margin = new System.Windows.Forms.Padding(2);
             this.txtCellphone.Name = "txtCellphone";
             this.txtCellphone.Size = new System.Drawing.Size(168, 20);
@@ -254,7 +258,7 @@
             // 
             // txtCellphone2
             // 
-            this.txtCellphone2.Location = new System.Drawing.Point(112, 106);
+            this.txtCellphone2.Location = new System.Drawing.Point(78, 106);
             this.txtCellphone2.Margin = new System.Windows.Forms.Padding(2);
             this.txtCellphone2.Name = "txtCellphone2";
             this.txtCellphone2.Size = new System.Drawing.Size(168, 20);
@@ -262,7 +266,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(112, 127);
+            this.txtEmail.Location = new System.Drawing.Point(78, 127);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(168, 20);
@@ -304,7 +308,7 @@
             // txtTotalAmount
             // 
             this.txtTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTotalAmount.Location = new System.Drawing.Point(512, 410);
+            this.txtTotalAmount.Location = new System.Drawing.Point(437, 322);
             this.txtTotalAmount.Margin = new System.Windows.Forms.Padding(2);
             this.txtTotalAmount.Name = "txtTotalAmount";
             this.txtTotalAmount.Size = new System.Drawing.Size(168, 20);
@@ -314,7 +318,7 @@
             // 
             this.cbState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbState.FormattingEnabled = true;
-            this.cbState.Location = new System.Drawing.Point(525, 27);
+            this.cbState.Location = new System.Drawing.Point(573, 27);
             this.cbState.Margin = new System.Windows.Forms.Padding(2);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(168, 21);
@@ -323,7 +327,7 @@
             // cbBranch
             // 
             this.cbBranch.FormattingEnabled = true;
-            this.cbBranch.Location = new System.Drawing.Point(117, 27);
+            this.cbBranch.Location = new System.Drawing.Point(90, 27);
             this.cbBranch.Margin = new System.Windows.Forms.Padding(2);
             this.cbBranch.Name = "cbBranch";
             this.cbBranch.Size = new System.Drawing.Size(168, 21);
@@ -331,7 +335,7 @@
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(117, 49);
+            this.dateTimePicker.Location = new System.Drawing.Point(90, 49);
             this.dateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(168, 20);
@@ -344,7 +348,7 @@
             this.btnSelectClient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSelectClient.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
             this.btnSelectClient.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSelectClient.Location = new System.Drawing.Point(112, 13);
+            this.btnSelectClient.Location = new System.Drawing.Point(78, 13);
             this.btnSelectClient.Margin = new System.Windows.Forms.Padding(2);
             this.btnSelectClient.Name = "btnSelectClient";
             this.btnSelectClient.Size = new System.Drawing.Size(168, 23);
@@ -355,8 +359,8 @@
             // 
             // btnAddVehicle
             // 
-            this.btnAddVehicle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddVehicle.Location = new System.Drawing.Point(512, 13);
+            this.btnAddVehicle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddVehicle.Location = new System.Drawing.Point(437, 13);
             this.btnAddVehicle.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddVehicle.Name = "btnAddVehicle";
             this.btnAddVehicle.Size = new System.Drawing.Size(168, 23);
@@ -378,8 +382,8 @@
             // 
             // txtCurrentMileage
             // 
-            this.txtCurrentMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCurrentMileage.Location = new System.Drawing.Point(512, 127);
+            this.txtCurrentMileage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCurrentMileage.Location = new System.Drawing.Point(437, 127);
             this.txtCurrentMileage.Margin = new System.Windows.Forms.Padding(2);
             this.txtCurrentMileage.Name = "txtCurrentMileage";
             this.txtCurrentMileage.Size = new System.Drawing.Size(168, 20);
@@ -388,7 +392,7 @@
             // btnSaveChanges
             // 
             this.btnSaveChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveChanges.Location = new System.Drawing.Point(599, 568);
+            this.btnSaveChanges.Location = new System.Drawing.Point(634, 492);
             this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(98, 23);
@@ -400,7 +404,7 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnClose.Location = new System.Drawing.Point(9, 568);
+            this.btnClose.Location = new System.Drawing.Point(12, 492);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(98, 23);
@@ -417,7 +421,16 @@
             this.lblDetails.Name = "lblDetails";
             this.lblDetails.Size = new System.Drawing.Size(71, 13);
             this.lblDetails.TabIndex = 47;
-            this.lblDetails.Text = "Línea Detalle";
+            this.lblDetails.Text = "Detalles"; 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(507, 19);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(75, 23);
+            this.btnPrint.TabIndex = 52;
+            this.btnPrint.Text = "button1";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // lblLicensePlate
             // 
@@ -432,8 +445,8 @@
             // 
             // txtLicensePlate
             // 
-            this.txtLicensePlate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLicensePlate.Location = new System.Drawing.Point(512, 42);
+            this.txtLicensePlate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLicensePlate.Location = new System.Drawing.Point(437, 42);
             this.txtLicensePlate.Margin = new System.Windows.Forms.Padding(2);
             this.txtLicensePlate.Name = "txtLicensePlate";
             this.txtLicensePlate.Size = new System.Drawing.Size(168, 20);
@@ -498,7 +511,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(695, 443);
+            this.tabPage1.Size = new System.Drawing.Size(569, 340);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Contenido";
             // 
@@ -644,11 +657,12 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnAdd);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(693, 443);
+            this.tabPage2.Size = new System.Drawing.Size(569, 340);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Observaciones";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -679,6 +693,16 @@
             this.btnAddWorkOrderLine.UseVisualStyleBackColor = true;
             this.btnAddWorkOrderLine.Click += new System.EventHandler(this.btnAddWorkOrderLine_Click);
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(468, 312);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(101, 23);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "Añadir imagen";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // frmWorkOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -704,6 +728,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWorkOrderDetails)).EndInit();
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -760,5 +785,7 @@
         private System.Windows.Forms.DataGridView dgvWorkOrderDetails;
         private System.Windows.Forms.Button btnSelectItem;
         private System.Windows.Forms.Button btnAddWorkOrderLine;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Orden de Recepción</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            width: 100%;
+            margin: 30px auto;
+            background-color: #ffffff;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+            .section h2 {
+                background-color: #003366;
+                color: white;
+                padding: 10px;
+                text-align: center;
+                margin: 0;
+            }
+
+        .content {
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 0 0 5px 5px;
+            border: 1px solid #ccc;
+        }
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+            .image-container img {
+                width: 200px;
+                height: 150px;
+                object-fit: cover;
+                border: 1px solid #ccc;
+                padding: 5px;
+                background-color: #fff;
+            }
+            .tittle {
+                background-color: #003366;
+                color: white;
+                padding: 5px;
+                text-align: center;
+                margin-bottom: 5px;
+            }
+
+            .content table {
+                width: 100%;
+                border-collapse: collapse;
+                border: 1px solid #ccc;
+            }
+
+                .content table td {
+                    padding: 10px;
+                    text-align: left;
+                }
+
+                .content table th {
+                    background-color: #f2f2f2;
+                }
+
+                .content table td:first-child {
+                    font-weight: bold;
+                }
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+            margin: 20px auto; /* Centra la tabla y da espacio */
+        }
+
+            .product-table th,
+            .product-table td {
+                padding: 10px;
+                text-align: left;
+                border: 1px solid #ccc;
+            }
+
+            .product-table th {
+                background-color: #003366;
+                color: white;
+            }
+
+            .product-table td:first-child {
+                font-weight: bold;
+            }
+                
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ORDEN DE RECEPCIÓN</h1>
+        </div>
+        <div class="section">
+            <div class="content">
+                <table>
+                    <tr>
+                        <td style="width: 100%;">
+                            <table>
+                                <tr>
+                                    <td>Sucursal:</td>
+                                    <td>@BRANCH</td>
+                                </tr>
+                                <tr>
+                                    <td>Fecha:</td>
+                                    <td>@DATE</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="section">
+            <div class="content">
+                <table>
+                    <tr>
+                        <td style="width: 100%; vertical-align: top;">
+                            <table>
+                                <tr>
+                                    <td>Placa:</td>
+                                    <td>@LICENSEPLATE</td>
+                                </tr>
+                                <tr>
+                                    <td>Marca:</td>
+                                    <td>@MAKE</td>
+                                </tr>
+                                <tr>
+                                    <td>Modelo:</td>
+                                    <td>@MODEL</td>
+                                </tr>
+                                <tr>
+                                    <td>Kilometraje:</td>
+                                    <td>@MILEAGE</td>
+                                </tr>
+                                <tr>
+                                    <td>Kilometraje Actual:</td>
+                                    <td>@CURRENTMILEAGE</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td style="width: 100%; vertical-align: top;">
+                            <table>
+                                <tr>
+                                    <td>Identificación:</td>
+                                    <td>@ID</td>
+                                </tr>
+                                <tr>
+                                    <td>Nombre:</td>
+                                    <td>@NAME</td>
+                                </tr>
+                                <tr>
+                                    <td>Teléfono:</td>
+                                    <td>@MAINPHONE</td>
+                                </tr>
+                                <tr>
+                                    <td>Teléfono adicional:</td>
+                                    <td>@ADDITIONALPHONE</td>
+                                </tr>
+                                <tr>
+                                    <td>Correo electrónico:</td>
+                                    <td>@EMAIL</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="section">
+            <div class="tittle">
+                <table class="product-table">
+                        @TABLA_PRODUCTOS
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

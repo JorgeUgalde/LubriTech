@@ -102,6 +102,38 @@ namespace LubriTech.Model.items_Information
             }
         }
 
+        public Boolean updateItemQuantity(string item, int branch, double quantity)
+        {
+            try
+            {
+                string query = "UPDATE SeAlmacena SET  CantidadAlmacen = @quantity WHERE CodigoArticulo = @itemCode and IdentificacionSucursal = @branchId;";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@itemCode", item);
+                cmd.Parameters.AddWithValue("@branchId", branch);
+                cmd.Parameters.AddWithValue("@quantity", quantity);
+
+                if (conn.State != System.Data.ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                cmd.ExecuteNonQuery();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
         /// <summary>
         /// Obtiene un artículo específico de la base de datos según su código.
         /// </summary>
