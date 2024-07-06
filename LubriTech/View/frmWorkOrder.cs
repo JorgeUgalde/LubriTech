@@ -117,7 +117,6 @@ namespace LubriTech.View
                 txtCurrentMileage.Text = workOrder.CurrentMileage.ToString();
             }
             loadWorkOrderLines(workOrder.Id);
-            UpdateTotalAmount();
         }
 
         //Initialize a new work order
@@ -159,6 +158,19 @@ namespace LubriTech.View
             txtModel.Text = "";
             txtMileage.Enabled = true;
             txtMileage.Text = "";
+
+            txtCurrentMileage.Text = "";
+
+            dgvWorkOrderDetails.DataSource = new List<WorkOrderLine>();
+            dgvWorkOrderDetails.Columns["Id"].Visible = false;
+            dgvWorkOrderDetails.Columns["WorkOrderId"].Visible = false;
+            dgvWorkOrderDetails.Columns["item"].Visible = false;
+            dgvWorkOrderDetails.Columns["ItemName"].HeaderText = "Descripción";
+            dgvWorkOrderDetails.Columns["Quantity"].HeaderText = "Cantidad";
+            dgvWorkOrderDetails.Columns["UnitPrice"].HeaderText = "Precio Unitario";
+            dgvWorkOrderDetails.Columns["Amount"].HeaderText = "Monto";
+
+            SetColumnOrder();
         }
 
         private void frmWorkOrder_Load(object sender, EventArgs e)
@@ -172,8 +184,23 @@ namespace LubriTech.View
             dgvWorkOrderDetails.Columns["Id"].Visible = false;
             dgvWorkOrderDetails.Columns["WorkOrderId"].Visible = false;
             dgvWorkOrderDetails.Columns["item"].Visible = false;
-            dgvWorkOrderDetails.Columns["ItemName"].Visible = false;
+            dgvWorkOrderDetails.Columns["ItemName"].HeaderText = "Descripción";
+            dgvWorkOrderDetails.Columns["UnitPrice"].HeaderText = "Precio Unitario";
+            dgvWorkOrderDetails.Columns["Quantity"].HeaderText = "Cantidad";
+            dgvWorkOrderDetails.Columns["Amount"].HeaderText = "Monto";
 
+            SetColumnOrder();
+        }
+
+        private void SetColumnOrder()
+        {
+            dgvWorkOrderDetails.Columns["Id"].DisplayIndex = 0;
+            dgvWorkOrderDetails.Columns["WorkOrderId"].DisplayIndex = 1;
+            dgvWorkOrderDetails.Columns["item"].DisplayIndex = 2;
+            dgvWorkOrderDetails.Columns["ItemName"].DisplayIndex = 3;
+            dgvWorkOrderDetails.Columns["UnitPrice"].DisplayIndex = 4;
+            dgvWorkOrderDetails.Columns["Quantity"].DisplayIndex = 5;
+            dgvWorkOrderDetails.Columns["Amount"].DisplayIndex = 6;
         }
 
         private void UpdateTotalAmount()
