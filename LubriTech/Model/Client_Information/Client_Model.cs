@@ -21,42 +21,43 @@ namespace LubriTech.Model.Client_Information
 
         SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
 
-        /// <summary>
-        /// Carga todos los clientes desde la base de datos.
-        /// </summary>
-        /// <returns>Lista de objetos Cliente cargados desde la base de datos.</returns>
         public List<Client> loadAllClients()
         {
-            
-
             try
             {
                 List<Client> clients = new List<Client>();
-
-                conn.Open();
-                String selectQuery = "SELECT * FROM Cliente";
-                SqlCommand cmd = new SqlCommand(selectQuery, conn);
-                DataTable tblClients = new DataTable();
-                SqlDataAdapter adp = new SqlDataAdapter();
-
-                adp.SelectCommand = cmd;
-
-                adp.Fill(tblClients);
-
-                foreach (DataRow dr in tblClients.Rows)
+                Dictionary<int, PriceList> priceLists = new PriceList_Controller().getPriceLists().ToDictionary(pl => pl.id, pl => pl);
                 {
-                    PriceList priceList = new PriceList_Controller().getPriceList(Convert.ToInt32(dr["IdentificacionListaPrecio"]));
-                    clients.Add(new Client(
-                dr["Identificacion"].ToString(),
-                dr["NombreCompleto"].ToString(),
-                dr["NumeroTelefonoPrincipal"] != DBNull.Value ? Convert.ToInt64(dr["NumeroTelefonoPrincipal"]) : (Int64?)null,
-                dr["NumeroTelefonoAdicional"] != DBNull.Value ? Convert.ToInt64(dr["NumeroTelefonoAdicional"]) : (Int64?)null,
-                dr["CorreoElectronico"].ToString(),
-                dr["Direccion"].ToString(),
-                getVehicle(dr["Identificacion"].ToString()),
-                (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo",
-                priceList));
+                    conn.Open();
+                   
+
+                    // Cargar todos los clientes en un DataTable
+                    string selectQuery = "SELECT * FROM Cliente";
+                    DataTable tblClients = new DataTable();
+                    using (SqlCommand cmd = new SqlCommand(selectQuery, conn))
+                    using (SqlDataAdapter adp = new SqlDataAdapter(cmd))
+                    {
+                        adp.Fill(tblClients);
+                    }
+
+                    // Procesar los datos de clientes
+                    foreach (DataRow dr in tblClients.Rows)
+                    {
+                        int priceListId = Convert.ToInt32(dr["IdentificacionListaPrecio"]);
+                        PriceList priceList = priceLists.ContainsKey(priceListId) ? priceLists[priceListId] : null;
+
+                        clients.Add(new Client(
+                            dr["Identificacion"].ToString(),
+                            dr["NombreCompleto"].ToString(),
+                            dr["NumeroTelefonoPrincipal"] != DBNull.Value ? Convert.ToInt64(dr["NumeroTelefonoPrincipal"]) : (Int64?)null,
+                            dr["NumeroTelefonoAdicional"] != DBNull.Value ? Convert.ToInt64(dr["NumeroTelefonoAdicional"]) : (Int64?)null,
+                            dr["CorreoElectronico"].ToString(),
+                            dr["Direccion"].ToString(),
+                            (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo",
+                            priceList));
+                    }
                 }
+
                 return clients;
             }
             catch (Exception ex)
@@ -64,11 +65,8 @@ namespace LubriTech.Model.Client_Information
                 MessageBox.Show("Error: " + ex.Message);
                 return null;
             }
-            finally
-            {
-                conn.Close();
-            }
         }
+
 
         /// <summary>
         /// Obtiene todos los vehículos asociados a un cliente específico.
@@ -81,14 +79,12 @@ namespace LubriTech.Model.Client_Information
 
             try
             {
-
                 String selectQuery = "SELECT * FROM Vehiculo WHERE Vehiculo.IdentificacionCliente = @identificacion;";
                 SqlCommand cmd = new SqlCommand(selectQuery, conn);
                 cmd.Parameters.AddWithValue("@identificacion", ClientId);
 
                 DataTable tblVehicles = new DataTable();
                 SqlDataAdapter adp = new SqlDataAdapter();
-
                 adp.SelectCommand = cmd;
 
                 adp.Fill(tblVehicles);

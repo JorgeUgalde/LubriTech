@@ -62,11 +62,10 @@
             this.lblForm.AutoSize = true;
             this.lblForm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblForm.ForeColor = System.Drawing.Color.White;
-            this.lblForm.Location = new System.Drawing.Point(16, 7);
-            this.lblForm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblForm.Location = new System.Drawing.Point(12, 6);
             this.lblForm.Name = "lblForm";
-            this.lblForm.Size = new System.Drawing.Size(209, 28);
-            this.lblForm.TabIndex = 10;
+            this.lblForm.Size = new System.Drawing.Size(170, 21);
+            this.lblForm.TabIndex = 25;
             this.lblForm.Text = "Dato Maestro Horario";
             // 
             // pbClose
@@ -74,10 +73,9 @@
             this.pbClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::LubriTech.Properties.Resources.closeIco2;
-            this.pbClose.Location = new System.Drawing.Point(406, 7);
-            this.pbClose.Margin = new System.Windows.Forms.Padding(4);
+            this.pbClose.Location = new System.Drawing.Point(341, 6);
             this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(40, 37);
+            this.pbClose.Size = new System.Drawing.Size(30, 30);
             this.pbClose.TabIndex = 7;
             this.pbClose.TabStop = false;
             this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
@@ -90,9 +88,8 @@
             this.panelBorder.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panelBorder.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBorder.Location = new System.Drawing.Point(0, 0);
-            this.panelBorder.Margin = new System.Windows.Forms.Padding(4);
             this.panelBorder.Name = "panelBorder";
-            this.panelBorder.Size = new System.Drawing.Size(450, 44);
+            this.panelBorder.Size = new System.Drawing.Size(375, 36);
             this.panelBorder.TabIndex = 36;
             this.panelBorder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBorder_MouseDown);
             // 
@@ -105,21 +102,19 @@
             this.cbBranch.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cbBranch.Location = new System.Drawing.Point(143, 146);
-            this.cbBranch.Margin = new System.Windows.Forms.Padding(4);
+            this.cbBranch.Location = new System.Drawing.Point(125, 119);
             this.cbBranch.Name = "cbBranch";
-            this.cbBranch.Size = new System.Drawing.Size(283, 36);
-            this.cbBranch.TabIndex = 44;
+            this.cbBranch.Size = new System.Drawing.Size(213, 29);
+            this.cbBranch.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(28, 154);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(32, 122);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 28);
+            this.label1.Size = new System.Drawing.Size(69, 21);
             this.label1.TabIndex = 43;
             this.label1.Text = "Sucursal";
             // 
@@ -128,24 +123,22 @@
             this.txtTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtTitle.BackColor = System.Drawing.SystemColors.Window;
             this.txtTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitle.Location = new System.Drawing.Point(143, 71);
-            this.txtTitle.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTitle.Location = new System.Drawing.Point(125, 63);
             this.txtTitle.MaxLength = 50;
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(283, 34);
-            this.txtTitle.TabIndex = 42;
+            this.txtTitle.Size = new System.Drawing.Size(213, 29);
+            this.txtTitle.TabIndex = 1;
             // 
             // lblFullName
             // 
             this.lblFullName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblFullName.AutoSize = true;
             this.lblFullName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFullName.Location = new System.Drawing.Point(28, 77);
-            this.lblFullName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFullName.Location = new System.Drawing.Point(32, 66);
             this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(62, 28);
+            this.lblFullName.Size = new System.Drawing.Size(49, 21);
             this.lblFullName.TabIndex = 41;
-            this.lblFullName.Text = "Titulo";
+            this.lblFullName.Text = "Título";
             // 
             // cbStartHour
             // 
@@ -179,21 +172,19 @@
             "22",
             "23",
             "24"});
-            this.cbStartHour.Location = new System.Drawing.Point(207, 334);
-            this.cbStartHour.Margin = new System.Windows.Forms.Padding(4);
+            this.cbStartHour.Location = new System.Drawing.Point(173, 271);
             this.cbStartHour.Name = "cbStartHour";
-            this.cbStartHour.Size = new System.Drawing.Size(92, 36);
-            this.cbStartHour.TabIndex = 46;
+            this.cbStartHour.Size = new System.Drawing.Size(70, 29);
+            this.cbStartHour.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(29, 342);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(32, 274);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 28);
+            this.label2.Size = new System.Drawing.Size(85, 21);
             this.label2.TabIndex = 45;
             this.label2.Text = "Hora Inicio";
             // 
@@ -208,11 +199,10 @@
             "15",
             "30",
             "45"});
-            this.cbStartMinute.Location = new System.Drawing.Point(334, 334);
-            this.cbStartMinute.Margin = new System.Windows.Forms.Padding(4);
+            this.cbStartMinute.Location = new System.Drawing.Point(268, 271);
             this.cbStartMinute.Name = "cbStartMinute";
-            this.cbStartMinute.Size = new System.Drawing.Size(92, 36);
-            this.cbStartMinute.TabIndex = 47;
+            this.cbStartMinute.Size = new System.Drawing.Size(70, 29);
+            this.cbStartMinute.TabIndex = 5;
             // 
             // cbEndMinute
             // 
@@ -225,11 +215,10 @@
             "15",
             "30",
             "45"});
-            this.cbEndMinute.Location = new System.Drawing.Point(334, 394);
-            this.cbEndMinute.Margin = new System.Windows.Forms.Padding(4);
+            this.cbEndMinute.Location = new System.Drawing.Point(268, 320);
             this.cbEndMinute.Name = "cbEndMinute";
-            this.cbEndMinute.Size = new System.Drawing.Size(92, 36);
-            this.cbEndMinute.TabIndex = 50;
+            this.cbEndMinute.Size = new System.Drawing.Size(70, 29);
+            this.cbEndMinute.TabIndex = 7;
             // 
             // cbEndHour
             // 
@@ -263,21 +252,19 @@
             "22",
             "23",
             "24"});
-            this.cbEndHour.Location = new System.Drawing.Point(207, 394);
-            this.cbEndHour.Margin = new System.Windows.Forms.Padding(4);
+            this.cbEndHour.Location = new System.Drawing.Point(173, 320);
             this.cbEndHour.Name = "cbEndHour";
-            this.cbEndHour.Size = new System.Drawing.Size(92, 36);
-            this.cbEndHour.TabIndex = 49;
+            this.cbEndHour.Size = new System.Drawing.Size(70, 29);
+            this.cbEndHour.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(29, 402);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(35, 323);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 28);
+            this.label3.Size = new System.Drawing.Size(90, 21);
             this.label3.TabIndex = 48;
             this.label3.Text = "Hora Salida";
             // 
@@ -286,10 +273,9 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(310, 334);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(249, 274);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(16, 28);
+            this.label4.Size = new System.Drawing.Size(13, 21);
             this.label4.TabIndex = 51;
             this.label4.Text = ":";
             // 
@@ -298,10 +284,9 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(310, 394);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(249, 323);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(16, 28);
+            this.label5.Size = new System.Drawing.Size(13, 21);
             this.label5.TabIndex = 52;
             this.label5.Text = ":";
             // 
@@ -310,10 +295,9 @@
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(29, 463);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(32, 373);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(154, 28);
+            this.label7.Size = new System.Drawing.Size(122, 21);
             this.label7.TabIndex = 53;
             this.label7.Text = "Duración de cita";
             // 
@@ -322,10 +306,9 @@
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(310, 455);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(249, 373);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(16, 28);
+            this.label6.Size = new System.Drawing.Size(13, 21);
             this.label6.TabIndex = 56;
             this.label6.Text = ":";
             // 
@@ -340,11 +323,10 @@
             "15",
             "30",
             "45"});
-            this.cbDurationMinuts.Location = new System.Drawing.Point(334, 455);
-            this.cbDurationMinuts.Margin = new System.Windows.Forms.Padding(4);
+            this.cbDurationMinuts.Location = new System.Drawing.Point(268, 370);
             this.cbDurationMinuts.Name = "cbDurationMinuts";
-            this.cbDurationMinuts.Size = new System.Drawing.Size(92, 36);
-            this.cbDurationMinuts.TabIndex = 55;
+            this.cbDurationMinuts.Size = new System.Drawing.Size(70, 29);
+            this.cbDurationMinuts.TabIndex = 9;
             // 
             // cbDurationHours
             // 
@@ -378,21 +360,19 @@
             "22",
             "23",
             "24"});
-            this.cbDurationHours.Location = new System.Drawing.Point(207, 455);
-            this.cbDurationHours.Margin = new System.Windows.Forms.Padding(4);
+            this.cbDurationHours.Location = new System.Drawing.Point(173, 370);
             this.cbDurationHours.Name = "cbDurationHours";
-            this.cbDurationHours.Size = new System.Drawing.Size(92, 36);
-            this.cbDurationHours.TabIndex = 54;
+            this.cbDurationHours.Size = new System.Drawing.Size(70, 29);
+            this.cbDurationHours.TabIndex = 8;
             // 
             // label8
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(219, 292);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(182, 237);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(63, 28);
+            this.label8.Size = new System.Drawing.Size(51, 21);
             this.label8.TabIndex = 57;
             this.label8.Text = "Horas";
             // 
@@ -401,10 +381,9 @@
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(342, 292);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(271, 237);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(84, 28);
+            this.label9.Size = new System.Drawing.Size(67, 21);
             this.label9.TabIndex = 58;
             this.label9.Text = "Minutos";
             // 
@@ -416,12 +395,12 @@
             this.btnAddSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddSchedule.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddSchedule.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAddSchedule.Location = new System.Drawing.Point(285, 550);
-            this.btnAddSchedule.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddSchedule.Location = new System.Drawing.Point(197, 437);
+            this.btnAddSchedule.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAddSchedule.Name = "btnAddSchedule";
             this.btnAddSchedule.Size = new System.Drawing.Size(141, 34);
-            this.btnAddSchedule.TabIndex = 60;
-            this.btnAddSchedule.Text = "Cerrar";
+            this.btnAddSchedule.TabIndex = 11;
+            this.btnAddSchedule.Text = "Cancelar";
             this.btnAddSchedule.UseVisualStyleBackColor = false;
             this.btnAddSchedule.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -433,11 +412,11 @@
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfirm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirm.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnConfirm.Location = new System.Drawing.Point(26, 550);
-            this.btnConfirm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnConfirm.Location = new System.Drawing.Point(36, 437);
+            this.btnConfirm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(141, 34);
-            this.btnConfirm.TabIndex = 59;
+            this.btnConfirm.TabIndex = 10;
             this.btnConfirm.Text = "Confirmar";
             this.btnConfirm.UseVisualStyleBackColor = false;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
@@ -450,28 +429,29 @@
             this.cbState.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cbState.Location = new System.Drawing.Point(143, 222);
-            this.cbState.Margin = new System.Windows.Forms.Padding(5);
+            this.cbState.Location = new System.Drawing.Point(125, 175);
+            this.cbState.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbState.Name = "cbState";
-            this.cbState.Size = new System.Drawing.Size(283, 36);
-            this.cbState.TabIndex = 62;
+            this.cbState.Size = new System.Drawing.Size(213, 29);
+            this.cbState.TabIndex = 3;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(29, 225);
+            this.label10.Location = new System.Drawing.Point(32, 178);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(71, 28);
+            this.label10.Size = new System.Drawing.Size(56, 21);
             this.label10.TabIndex = 61;
             this.label10.Text = "Estado";
             // 
             // frmInsertUpdate_Schedule
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(450, 610);
+            this.ClientSize = new System.Drawing.Size(375, 496);
             this.Controls.Add(this.cbState);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnAddSchedule);
@@ -497,7 +477,8 @@
             this.Controls.Add(this.panelBorder);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MinimumSize = new System.Drawing.Size(450, 510);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimumSize = new System.Drawing.Size(338, 414);
             this.Name = "frmInsertUpdate_Schedule";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmInsertUpdate_Schedule";

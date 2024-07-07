@@ -1,9 +1,12 @@
-﻿using LubriTech.Model.Item_Information;
+﻿using LubriTech.Controller;
+using LubriTech.Model.Item_Information;
 using LubriTech.Model.PricesList_Information;
+using LubriTech.Model.Vehicle_Information;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace LubriTech.Model.items_Information
@@ -24,6 +27,8 @@ namespace LubriTech.Model.items_Information
         {
             List<Item> items = new List<Item>();
 
+            Dictionary<int, ItemType> itemTypes = new ItemType_Model().loadAllItemTypes().ToDictionary(e => e.Id, e => e);
+
             try
             {
                 string selectQuery = "select * from Articulo";
@@ -39,15 +44,16 @@ namespace LubriTech.Model.items_Information
 
                 foreach (DataRow dr in tblitems.Rows)
                 {
+                    int idType = Convert.ToInt32(dr["IdentificacionTipoArticulo"]);
                     items.Add(new Item(
                         dr["Codigo"].ToString(),
                         dr["Nombre"].ToString(),
                         dr["UnidadMedida"].ToString(),
-                        Convert.ToInt32(dr["Estado"]) == 1 ? "Activo": "Inactivo",
+                        Convert.ToInt32(dr["Estado"]) == 1 ? "Activo" : "Inactivo",
                         Convert.ToDouble(dr["PrecioCompra"]),
-                        Convert.ToDouble(dr["RecorridoRecomendado"]),
-                        new ItemType_Model().getItemType(Convert.ToInt32(dr["IdentificacionTipoArticulo"]))
-                        ));
+                        (dr["RecorridoRecomendado"] != DBNull.Value ? Convert.ToDouble(dr["RecorridoRecomendado"]) : 0),
+                        itemTypes.ContainsKey(idType) ? itemTypes[idType] : null
+                        )) ;
                 }
 
                 if (conn.State != System.Data.ConnectionState.Open)
@@ -72,6 +78,7 @@ namespace LubriTech.Model.items_Information
                 }
             }
         }
+
 
         public double getItemStock(string itemCode,  int branch)
         {
@@ -163,7 +170,7 @@ namespace LubriTech.Model.items_Information
                         dr["UnidadMedida"].ToString(),
                         Convert.ToInt32(dr["Estado"]) == 1 ? "Activo" : "Inactivo",
                         Convert.ToDouble(dr["PrecioCompra"]),
-                        Convert.ToDouble(dr["RecorridoRecomendado"]),
+                        (dr["RecorridoRecomendado"] != DBNull.Value ? Convert.ToDouble(dr["RecorridoRecomendado"]) : 0),
                         new ItemType_Model().getItemType(Convert.ToInt32(dr["IdentificacionTipoArticulo"]))
                         );
                 }
@@ -221,7 +228,15 @@ namespace LubriTech.Model.items_Information
                 cmd.Parameters.AddWithValue("@measureUnit", items.measureUnit);
                 cmd.Parameters.AddWithValue("@state", (items.state.Equals("Activo")) ? 1 : 0  );
                 cmd.Parameters.AddWithValue("@purchasePrice", items.purchasePrice);
-                cmd.Parameters.AddWithValue("@recommended", items.recommendedServiceInterval);
+
+                if(items.recommendedServiceInterval == 0)
+                {
+                    cmd.Parameters.AddWithValue("@recommended", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@recommended", items.recommendedServiceInterval);
+                }
                 cmd.Parameters.AddWithValue("@type", items.itemType.Id);
 
 

@@ -70,25 +70,12 @@ namespace LubriTech.View
             dgvClients.Columns["Id"].HeaderText = "Identificación";
             dgvClients.Columns["FullName"].HeaderText = "  Nombre Completo";
             dgvClients.Columns["State"].HeaderText = "  Estado";
-            
-            foreach (DataGridViewColumn column in dgvClients.Columns)
-            {
-                if (column.Name != "Id" && column.Name != "FullName" && column.Name != "State" &&
-                    column.Name != "ModifyImageColumn" && column.Name != "DetailImageColumn" && column.Name != "IdentificacionListaPrecio")
-                {
-                    column.Visible = false;
-                }
-            }
-
+            dgvClients.Columns["MainPhoneNum"].Visible = false;
+            dgvClients.Columns["AdditionalPhoneNum"].Visible = false;
+            dgvClients.Columns["Email"].Visible = false;
+            dgvClients.Columns["Address"].Visible = false;
 
             SetColumnOrder();
-
-            typeof(DataGridView).InvokeMember(
-                "DoubleBuffered",
-                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
-                null,
-                dgvClients,
-                new object[] { true });
         }
 
        
@@ -157,6 +144,7 @@ namespace LubriTech.View
                     else
                     {
                         frmUpsert_Client frmInsertClient = new frmUpsert_Client(selectedClient);
+                        this.WindowState = FormWindowState.Normal;
                         frmInsertClient.MdiParent = this.MdiParent;
                         frmInsertClient.DataChanged += ChildFormDataChangedHandler;
                         frmInsertClient.Show();
@@ -204,6 +192,7 @@ namespace LubriTech.View
         private void btnAddClient_Click_1(object sender, EventArgs e)
         {
             frmUpsert_Client frmInsert_Client = new frmUpsert_Client();
+            this.WindowState = FormWindowState.Normal;
             frmInsert_Client.MdiParent = this.MdiParent;
             frmInsert_Client.DataChanged += ChildFormDataChangedHandler;
             frmInsert_Client.Show();

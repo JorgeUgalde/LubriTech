@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblID = new System.Windows.Forms.Label();
             this.lblNumPrincipal = new System.Windows.Forms.Label();
             this.lblAddresse = new System.Windows.Forms.Label();
@@ -56,8 +56,8 @@
             this.pbMaximize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.panelCB = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.cbPriceList = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVehicles)).BeginInit();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
@@ -69,110 +69,110 @@
             // 
             this.lblID.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblID.AutoSize = true;
-            this.lblID.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblID.Location = new System.Drawing.Point(13, 63);
+            this.lblID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblID.Location = new System.Drawing.Point(24, 56);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(99, 20);
-            this.lblID.TabIndex = 0;
+            this.lblID.Size = new System.Drawing.Size(102, 21);
+            this.lblID.TabIndex = 25;
             this.lblID.Text = "Identificación";
             // 
             // lblNumPrincipal
             // 
             this.lblNumPrincipal.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblNumPrincipal.AutoSize = true;
-            this.lblNumPrincipal.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumPrincipal.Location = new System.Drawing.Point(463, 61);
+            this.lblNumPrincipal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumPrincipal.Location = new System.Drawing.Point(462, 56);
             this.lblNumPrincipal.Name = "lblNumPrincipal";
-            this.lblNumPrincipal.Size = new System.Drawing.Size(128, 20);
-            this.lblNumPrincipal.TabIndex = 1;
+            this.lblNumPrincipal.Size = new System.Drawing.Size(132, 21);
+            this.lblNumPrincipal.TabIndex = 30;
             this.lblNumPrincipal.Text = "Teléfono Principal";
             // 
             // lblAddresse
             // 
             this.lblAddresse.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblAddresse.AutoSize = true;
-            this.lblAddresse.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddresse.Location = new System.Drawing.Point(463, 137);
+            this.lblAddresse.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddresse.Location = new System.Drawing.Point(462, 137);
             this.lblAddresse.Name = "lblAddresse";
-            this.lblAddresse.Size = new System.Drawing.Size(72, 20);
-            this.lblAddresse.TabIndex = 2;
+            this.lblAddresse.Size = new System.Drawing.Size(75, 21);
+            this.lblAddresse.TabIndex = 32;
             this.lblAddresse.Text = "Dirección";
             // 
             // lblFullName
             // 
             this.lblFullName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblFullName.AutoSize = true;
-            this.lblFullName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFullName.Location = new System.Drawing.Point(13, 99);
+            this.lblFullName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFullName.Location = new System.Drawing.Point(24, 96);
             this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(134, 20);
-            this.lblFullName.TabIndex = 3;
+            this.lblFullName.Size = new System.Drawing.Size(140, 21);
+            this.lblFullName.TabIndex = 26;
             this.lblFullName.Text = "Nombre Completo";
             // 
             // lblAdditionalNum
             // 
             this.lblAdditionalNum.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblAdditionalNum.AutoSize = true;
-            this.lblAdditionalNum.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdditionalNum.Location = new System.Drawing.Point(463, 97);
+            this.lblAdditionalNum.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdditionalNum.Location = new System.Drawing.Point(462, 97);
             this.lblAdditionalNum.Name = "lblAdditionalNum";
-            this.lblAdditionalNum.Size = new System.Drawing.Size(134, 20);
-            this.lblAdditionalNum.TabIndex = 4;
+            this.lblAdditionalNum.Size = new System.Drawing.Size(136, 21);
+            this.lblAdditionalNum.TabIndex = 31;
             this.lblAdditionalNum.Text = "Teléfono Adicional";
             // 
             // lblEmail
             // 
             this.lblEmail.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(11, 140);
+            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.Location = new System.Drawing.Point(24, 136);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(132, 20);
-            this.lblEmail.TabIndex = 5;
+            this.lblEmail.Size = new System.Drawing.Size(138, 21);
+            this.lblEmail.TabIndex = 27;
             this.lblEmail.Text = "Correo Electrónico";
             // 
             // txtID
             // 
             this.txtID.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtID.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtID.Location = new System.Drawing.Point(183, 60);
+            this.txtID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID.Location = new System.Drawing.Point(170, 53);
             this.txtID.MaxLength = 30;
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(205, 27);
-            this.txtID.TabIndex = 6;
+            this.txtID.Size = new System.Drawing.Size(205, 29);
+            this.txtID.TabIndex = 1;
             // 
             // txtMainPhone
             // 
             this.txtMainPhone.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtMainPhone.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMainPhone.Location = new System.Drawing.Point(610, 60);
+            this.txtMainPhone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMainPhone.Location = new System.Drawing.Point(604, 53);
             this.txtMainPhone.MaxLength = 11;
             this.txtMainPhone.Name = "txtMainPhone";
-            this.txtMainPhone.Size = new System.Drawing.Size(205, 27);
-            this.txtMainPhone.TabIndex = 7;
+            this.txtMainPhone.Size = new System.Drawing.Size(207, 29);
+            this.txtMainPhone.TabIndex = 6;
             this.txtMainPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMainPhone_KeyPress);
             // 
             // txtFullName
             // 
             this.txtFullName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtFullName.BackColor = System.Drawing.SystemColors.Window;
-            this.txtFullName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFullName.Location = new System.Drawing.Point(183, 96);
+            this.txtFullName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFullName.Location = new System.Drawing.Point(170, 94);
             this.txtFullName.MaxLength = 150;
             this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(261, 27);
-            this.txtFullName.TabIndex = 10;
+            this.txtFullName.Size = new System.Drawing.Size(261, 29);
+            this.txtFullName.TabIndex = 2;
             // 
             // txtAdditionalPhone
             // 
             this.txtAdditionalPhone.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtAdditionalPhone.BackColor = System.Drawing.SystemColors.Window;
-            this.txtAdditionalPhone.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAdditionalPhone.Location = new System.Drawing.Point(610, 96);
+            this.txtAdditionalPhone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAdditionalPhone.Location = new System.Drawing.Point(604, 94);
             this.txtAdditionalPhone.MaxLength = 11;
             this.txtAdditionalPhone.Name = "txtAdditionalPhone";
-            this.txtAdditionalPhone.Size = new System.Drawing.Size(205, 27);
-            this.txtAdditionalPhone.TabIndex = 11;
+            this.txtAdditionalPhone.Size = new System.Drawing.Size(207, 29);
+            this.txtAdditionalPhone.TabIndex = 7;
             this.txtAdditionalPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAdditionalPhone_KeyPress);
             // 
             // txtEmail
@@ -180,21 +180,21 @@
             this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtEmail.BackColor = System.Drawing.SystemColors.Window;
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(181, 135);
+            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(170, 134);
             this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(261, 27);
-            this.txtEmail.TabIndex = 12;
+            this.txtEmail.Size = new System.Drawing.Size(261, 29);
+            this.txtEmail.TabIndex = 3;
             // 
             // lblVehicleList
             // 
             this.lblVehicleList.AutoSize = true;
             this.lblVehicleList.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVehicleList.Location = new System.Drawing.Point(16, 313);
+            this.lblVehicleList.Location = new System.Drawing.Point(24, 291);
             this.lblVehicleList.Name = "lblVehicleList";
             this.lblVehicleList.Size = new System.Drawing.Size(129, 20);
-            this.lblVehicleList.TabIndex = 14;
+            this.lblVehicleList.TabIndex = 33;
             this.lblVehicleList.Text = "Lista de Vehículos";
             // 
             // btnAddVehicle
@@ -205,11 +205,11 @@
             this.btnAddVehicle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddVehicle.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddVehicle.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAddVehicle.Location = new System.Drawing.Point(674, 624);
+            this.btnAddVehicle.Location = new System.Drawing.Point(170, 283);
             this.btnAddVehicle.Name = "btnAddVehicle";
             this.btnAddVehicle.Size = new System.Drawing.Size(144, 34);
-            this.btnAddVehicle.TabIndex = 16;
-            this.btnAddVehicle.Text = "Guardar Vehículo";
+            this.btnAddVehicle.TabIndex = 9;
+            this.btnAddVehicle.Text = "Agregar Vehículo";
             this.btnAddVehicle.UseVisualStyleBackColor = false;
             this.btnAddVehicle.Click += new System.EventHandler(this.btnAddVehicle_Click);
             // 
@@ -221,11 +221,11 @@
             this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddClient.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddClient.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAddClient.Location = new System.Drawing.Point(22, 624);
+            this.btnAddClient.Location = new System.Drawing.Point(28, 611);
             this.btnAddClient.Name = "btnAddClient";
             this.btnAddClient.Size = new System.Drawing.Size(141, 34);
-            this.btnAddClient.TabIndex = 17;
-            this.btnAddClient.Text = "Aceptar";
+            this.btnAddClient.TabIndex = 11;
+            this.btnAddClient.Text = "Confirmar";
             this.btnAddClient.UseVisualStyleBackColor = false;
             this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
             // 
@@ -237,10 +237,10 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnClose.Location = new System.Drawing.Point(187, 624);
+            this.btnClose.Location = new System.Drawing.Point(670, 611);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(141, 34);
-            this.btnClose.TabIndex = 18;
+            this.btnClose.TabIndex = 12;
             this.btnClose.Text = "Cancelar";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -249,32 +249,32 @@
             // 
             this.cbState.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbState.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbState.FormattingEnabled = true;
             this.cbState.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cbState.Location = new System.Drawing.Point(181, 174);
+            this.cbState.Location = new System.Drawing.Point(170, 176);
             this.cbState.Name = "cbState";
-            this.cbState.Size = new System.Drawing.Size(205, 28);
-            this.cbState.TabIndex = 19;
+            this.cbState.Size = new System.Drawing.Size(205, 29);
+            this.cbState.TabIndex = 4;
             // 
             // lblState
             // 
             this.lblState.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblState.AutoSize = true;
-            this.lblState.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblState.Location = new System.Drawing.Point(11, 177);
+            this.lblState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblState.Location = new System.Drawing.Point(24, 179);
             this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(54, 20);
-            this.lblState.TabIndex = 20;
+            this.lblState.Size = new System.Drawing.Size(56, 21);
+            this.lblState.TabIndex = 28;
             this.lblState.Text = "Estado";
             // 
             // dgvVehicles
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvVehicles.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            this.dgvVehicles.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvVehicles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -284,52 +284,52 @@
             this.dgvVehicles.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvVehicles.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvVehicles.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVehicles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVehicles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvVehicles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVehicles.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvVehicles.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvVehicles.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvVehicles.GridColor = System.Drawing.Color.White;
-            this.dgvVehicles.Location = new System.Drawing.Point(20, 338);
+            this.dgvVehicles.Location = new System.Drawing.Point(28, 323);
             this.dgvVehicles.Name = "dgvVehicles";
             this.dgvVehicles.ReadOnly = true;
             this.dgvVehicles.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVehicles.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVehicles.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvVehicles.RowHeadersVisible = false;
             this.dgvVehicles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVehicles.Size = new System.Drawing.Size(798, 265);
-            this.dgvVehicles.TabIndex = 23;
+            this.dgvVehicles.Size = new System.Drawing.Size(783, 265);
+            this.dgvVehicles.TabIndex = 10;
             this.dgvVehicles.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvVehicles_CellMouseDoubleClick);
             // 
             // txtAddresse
             // 
             this.txtAddresse.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtAddresse.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddresse.Location = new System.Drawing.Point(610, 139);
+            this.txtAddresse.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddresse.Location = new System.Drawing.Point(604, 134);
             this.txtAddresse.MaxLength = 150;
             this.txtAddresse.Name = "txtAddresse";
             this.txtAddresse.Size = new System.Drawing.Size(207, 93);
-            this.txtAddresse.TabIndex = 24;
+            this.txtAddresse.TabIndex = 8;
             this.txtAddresse.Text = "";
             // 
             // panel
@@ -385,7 +385,18 @@
             // 
             this.panelCB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelCB.Controls.Add(this.cbPriceList);
+            this.panelCB.Controls.Add(this.txtFullName);
+            this.panelCB.Controls.Add(this.txtAddresse);
             this.panelCB.Controls.Add(this.label1);
+            this.panelCB.Controls.Add(this.txtAdditionalPhone);
+            this.panelCB.Controls.Add(this.txtID);
+            this.panelCB.Controls.Add(this.txtMainPhone);
+            this.panelCB.Controls.Add(this.lblFullName);
+            this.panelCB.Controls.Add(this.btnAddVehicle);
+            this.panelCB.Controls.Add(this.lblID);
+            this.panelCB.Controls.Add(this.btnClose);
+            this.panelCB.Controls.Add(this.dgvVehicles);
+            this.panelCB.Controls.Add(this.btnAddClient);
             this.panelCB.Controls.Add(this.lblAddresse);
             this.panelCB.Controls.Add(this.lblAdditionalNum);
             this.panelCB.Controls.Add(this.lblNumPrincipal);
@@ -400,30 +411,30 @@
             this.panelCB.Size = new System.Drawing.Size(840, 670);
             this.panelCB.TabIndex = 26;
             // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(11, 220);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 20);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Lista de precios";
-            // 
             // cbPriceList
             // 
             this.cbPriceList.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbPriceList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbPriceList.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPriceList.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPriceList.FormattingEnabled = true;
             this.cbPriceList.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cbPriceList.Location = new System.Drawing.Point(181, 217);
+            this.cbPriceList.Location = new System.Drawing.Point(170, 219);
             this.cbPriceList.Name = "cbPriceList";
-            this.cbPriceList.Size = new System.Drawing.Size(205, 28);
-            this.cbPriceList.TabIndex = 22;
+            this.cbPriceList.Size = new System.Drawing.Size(205, 29);
+            this.cbPriceList.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(24, 222);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(117, 21);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "Lista de precios";
             // 
             // frmUpsert_Client
             // 
@@ -432,17 +443,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(840, 670);
             this.Controls.Add(this.panel);
-            this.Controls.Add(this.txtAddresse);
-            this.Controls.Add(this.dgvVehicles);
-            this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnAddClient);
-            this.Controls.Add(this.btnAddVehicle);
-            this.Controls.Add(this.txtAdditionalPhone);
-            this.Controls.Add(this.txtFullName);
-            this.Controls.Add(this.txtMainPhone);
-            this.Controls.Add(this.txtID);
-            this.Controls.Add(this.lblFullName);
-            this.Controls.Add(this.lblID);
             this.Controls.Add(this.panelCB);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -458,7 +458,6 @@
             this.panelCB.ResumeLayout(false);
             this.panelCB.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

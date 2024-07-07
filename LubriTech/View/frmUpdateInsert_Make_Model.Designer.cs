@@ -51,11 +51,11 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnClose.Location = new System.Drawing.Point(275, 210);
+            this.btnClose.Location = new System.Drawing.Point(264, 210);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(141, 34);
-            this.btnClose.TabIndex = 35;
-            this.btnClose.Text = "Cerrar";
+            this.btnClose.TabIndex = 5;
+            this.btnClose.Text = "Cancelar";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -67,10 +67,10 @@
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfirm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirm.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnConfirm.Location = new System.Drawing.Point(16, 210);
+            this.btnConfirm.Location = new System.Drawing.Point(41, 210);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(141, 34);
-            this.btnConfirm.TabIndex = 34;
+            this.btnConfirm.TabIndex = 4;
             this.btnConfirm.Text = "Confirmar";
             this.btnConfirm.UseVisualStyleBackColor = false;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click_1);
@@ -88,7 +88,7 @@
             this.cbState.Margin = new System.Windows.Forms.Padding(4);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(205, 29);
-            this.cbState.TabIndex = 33;
+            this.cbState.TabIndex = 2;
             // 
             // label3
             // 
@@ -111,7 +111,7 @@
             this.txtName.MaxLength = 100;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(205, 29);
-            this.txtName.TabIndex = 31;
+            this.txtName.TabIndex = 1;
             // 
             // label2
             // 
@@ -135,7 +135,7 @@
             this.cbMakes.Margin = new System.Windows.Forms.Padding(4);
             this.cbMakes.Name = "cbMakes";
             this.cbMakes.Size = new System.Drawing.Size(205, 29);
-            this.cbMakes.TabIndex = 37;
+            this.cbMakes.TabIndex = 3;
             // 
             // lblMake
             // 
@@ -169,9 +169,9 @@
             this.lblForm.ForeColor = System.Drawing.Color.White;
             this.lblForm.Location = new System.Drawing.Point(12, 6);
             this.lblForm.Name = "lblForm";
-            this.lblForm.Size = new System.Drawing.Size(75, 21);
-            this.lblForm.TabIndex = 10;
-            this.lblForm.Text = "Modelos";
+            this.lblForm.Size = new System.Drawing.Size(172, 21);
+            this.lblForm.TabIndex = 15;
+            this.lblForm.Text = "Dato Maestro Modelo";
             // 
             // pbClose
             // 

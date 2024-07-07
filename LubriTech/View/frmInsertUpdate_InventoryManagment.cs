@@ -1,11 +1,20 @@
-﻿using LubriTech.Controller;
+﻿using iTextSharp.text.pdf;
+using iTextSharp.text;
+using iTextSharp.tool.xml;
+using LubriTech.Controller;
 using LubriTech.Model.Branch_Information;
+using LubriTech.Model.Client_Information;
 using LubriTech.Model.InventoryManagment_Information;
 using LubriTech.Model.Item_Information;
 using LubriTech.Model.Supplier_Information;
+using LubriTech.Model.Vehicle_Information;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using static System.Windows.Forms.AxHost;
@@ -22,6 +31,7 @@ namespace LubriTech.View
         private List<DetailLine> detailLines;
         private InventoryManagment existingInventoryManagment = null;
         private Boolean clickedAddDetail = false;
+        decimal TotalAmount;
 
         public frmInsertUpdate_InventoryManagment()
         {
@@ -185,6 +195,7 @@ namespace LubriTech.View
                         tbSupplierId.Text = selectedSupplier.id;
                     }
                     existingInventoryManagment.Id = insertedId;
+
                     OnDataChanged(EventArgs.Empty);
                     this.Dispose();
                 }
@@ -347,7 +358,7 @@ namespace LubriTech.View
                         {
                             MessageBox.Show("Debe seleccionar un artículo");
                         }
-                        else if (cbDocumentType.Text.Trim() == "Salida" && !validateItemStock(selectedItem.code, frmLogin.branch, Convert.ToDouble(tbQuantity.Text.Trim())))
+                        else if (cbDocumentType.Text.Trim() == "Salida" && !validateItemStock(selectedItem.code, Convert.ToInt32(cbBranch.SelectedValue.ToString()), Convert.ToDouble(tbQuantity.Text.Trim())))
                         {
                             MessageBox.Show("La cantidad de artículos ingresada excede la cantidad disponible en la sucursal");
                         }
@@ -403,7 +414,7 @@ namespace LubriTech.View
                 {
                     MessageBox.Show("Debe seleccionar un artículo");
                 }
-                else if (cbDocumentType.Text.Trim() == "Salida" && !validateItemStock(selectedItem.code, frmLogin.branch, Convert.ToDouble(tbQuantity.Text.Trim())))
+                else if (cbDocumentType.Text.Trim() == "Salida" && !validateItemStock(selectedItem.code, Convert.ToInt32(cbBranch.SelectedValue.ToString()), Convert.ToDouble(tbQuantity.Text.Trim())))
                 {
                     MessageBox.Show("La cantidad de artículos ingresada excede la cantidad disponible en la sucursal");
                 }
@@ -466,9 +477,23 @@ namespace LubriTech.View
             {
                 Item item = new Item_Controller().get(code);
 
-                if (item != null)
+                ItemType_Controller itemTypeController = new ItemType_Controller();
+                List<ItemType> itemTypes = itemTypeController.loadAllItemTypes();
+                if (itemTypes.Count != 0)
                 {
-                    SelectItem(item);
+                    int itemTypeId = -1;
+                    foreach (ItemType itemType in itemTypes)
+                    {
+                        if (itemType.Name.Equals("Servicio"))
+                        {
+                            itemTypeId = itemType.Id;
+                        }
+                    }
+
+                    if (item != null && item.itemType.Id != itemTypeId)
+                    {
+                        SelectItem(item);
+                    }
                 }
             }
         }
@@ -613,8 +638,8 @@ namespace LubriTech.View
                 {
                     foreach (var detailLine in detailLines)
                     {
-                        newQuantity = ((new Item_Controller().getItemStock(detailLine.Item.code, frmLogin.branch)) + detailLine.Quantity);
-                        if (!new Item_Controller().updateQuantity(detailLine.Item.code, frmLogin.branch, newQuantity))
+                        newQuantity = ((new Item_Controller().getItemStock(detailLine.Item.code, Convert.ToInt32(cbBranch.SelectedValue.ToString()))) + detailLine.Quantity);
+                        if (!new Item_Controller().updateQuantity(detailLine.Item.code, Convert.ToInt32(cbBranch.SelectedValue.ToString()), newQuantity))
                         {
                             return "No se pudo actualizar la cantidad del artículo: " + detailLine.Item.name + " - Código: " + detailLine.Item.code;
                         }
@@ -629,8 +654,8 @@ namespace LubriTech.View
                 {
                     foreach (var detailLine in detailLines)
                     {
-                        newQuantity = ((new Item_Controller().getItemStock(detailLine.Item.code, frmLogin.branch)) + detailLine.Quantity);
-                        if (!new Item_Controller().updateQuantity(detailLine.Item.code, frmLogin.branch, newQuantity))
+                        newQuantity = ((new Item_Controller().getItemStock(detailLine.Item.code, Convert.ToInt32(cbBranch.SelectedValue.ToString()))) + detailLine.Quantity);
+                        if (!new Item_Controller().updateQuantity(detailLine.Item.code, Convert.ToInt32(cbBranch.SelectedValue.ToString()), newQuantity))
                         {
                             return "No se pudo actualizar la cantidad del artículo: " + detailLine.Item.name + " - Código: " + detailLine.Item.code;
                         }
@@ -645,15 +670,15 @@ namespace LubriTech.View
                 {
                     foreach (var detailLine in detailLines)
                     {
-                        if (!validateItemStock(detailLine.Item.code, frmLogin.branch, Convert.ToDouble(detailLine.Quantity)))
+                        if (!validateItemStock(detailLine.Item.code, Convert.ToInt32(cbBranch.SelectedValue.ToString()), Convert.ToDouble(detailLine.Quantity)))
                         {
                             return "No hay suficientes artículos de: " + detailLine.Item.name + " - Código: " + detailLine.Item.code + " disponibles en la sucursal";
                         }
                     }
                     foreach (var detailLine in detailLines)
                     {
-                        newQuantity = ((new Item_Controller().getItemStock(detailLine.Item.code, frmLogin.branch)) - detailLine.Quantity);
-                        if (!new Item_Controller().updateQuantity(detailLine.Item.code, frmLogin.branch, newQuantity))
+                        newQuantity = ((new Item_Controller().getItemStock(detailLine.Item.code, Convert.ToInt32(cbBranch.SelectedValue.ToString()))) - detailLine.Quantity);
+                        if (!new Item_Controller().updateQuantity(detailLine.Item.code, Convert.ToInt32(cbBranch.SelectedValue.ToString()), newQuantity))
                         {
                             return "No se pudo actualizar la cantidad del artículo: " + detailLine.Item.name + " - Código: " + detailLine.Item.code;
                         }
@@ -728,6 +753,118 @@ namespace LubriTech.View
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void generatePdf()
+        {
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.Filter = "Archivos de Pdf|*.pdf";
+            savefile.FileName = string.Format(DateTime.Now.ToString("ddMMyyyyHHmmss"));
+
+            string PaginaHTML_Texto = Properties.Resources.Template2.ToString();
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@BRANCH", cbBranch.Text);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DATE", dtpDate.Text);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TYPE", cbDocumentType.Text);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@STATE", cbState.Text);
+
+            if (selectedSupplier != null)
+            {
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ID", selectedSupplier.id);
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NAME", selectedSupplier.name);
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MAINPHONE", selectedSupplier.phone.ToString());
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@EMAIL", selectedSupplier.email);
+            }
+            else
+            {
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ID", "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NAME", "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MAINPHONE", "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@EMAIL", "N/A");
+            }
+
+
+            string htmlTable = "<table class='inventory-managment-table' style='border-collapse: collapse; width: 100%;'>";
+
+            DataGridView dgvDetails;
+            if (dgvDetailLines.Columns.Count > 0)
+            {
+                dgvDetails = dgvDetailLines;
+                dgvDetails.Columns["Item"].HeaderText = "Articulo";
+                dgvDetails.Columns["Quantity"].HeaderText = "Cantidad";
+                dgvDetails.Columns["Amount"].HeaderText = "Monto";
+
+                dgvDetails.Columns.Remove("deleteImageColumn");
+                dgvDetails.Columns.Remove("InventoryManagment");
+
+                htmlTable += "<tr>";
+                foreach (DataGridViewColumn column in dgvDetails.Columns)
+                {
+                    htmlTable += "<th>" + column.HeaderText + "</th>";
+                }
+                htmlTable += "</tr>";
+
+                foreach (DataGridViewRow row in dgvDetails.Rows)
+                {
+                    htmlTable += "<tr>";
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        htmlTable += "<td>" + cell.Value?.ToString() + "</td>";
+                    }
+
+                    htmlTable += "</tr>";
+                }
+            }
+
+            htmlTable += "<tr>";
+            htmlTable += "<td colspan='" + ((dgvDetailLines.Columns.Count > 0) ? (dgvDetailLines.Columns.Count - 1) : 0) + "' style='text-align: center; font-weight: bold; font-size: 15px; padding-left: 105px;'>MontoTotal:</td>";
+            htmlTable += "<td>" + ((tbTotalAmount.Text.Trim().Equals("")) ? "0" : tbTotalAmount.Text) + "</td>";
+            htmlTable += "</tr>";
+
+            htmlTable += "</table>";
+
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@INVENTORYMANAGEMENT", htmlTable);
+
+            if (savefile.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = savefile.FileName;
+
+                using (FileStream stream = new FileStream(savefile.FileName, FileMode.Create))
+                {
+                    Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
+
+                    PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+                    pdfDoc.Open();
+                    pdfDoc.Add(new Phrase(""));
+
+                    using (StringReader sr = new StringReader(PaginaHTML_Texto))
+                    {
+                        XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+                    }
+
+                    pdfDoc.Close();
+                    stream.Close();
+                }
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            InventoryManagment_Controller inventoryManagmentController = new InventoryManagment_Controller();
+
+            if (cbBranch.Text.Trim() == ""
+            || cbDocumentType.Text.Trim() == ""
+            || cbState.Text.Trim() == "")
+            {
+                MessageBox.Show("Por favor llene todos los campos");
+            }
+            else if (tbSupplierName.Text.Trim() == "" && cbDocumentType.Text.Equals("Compra"))
+            {
+                MessageBox.Show("Al ser una compra debe seleccionar un proveedor");
+            }
+            else
+            {
+                generatePdf();
+            }
         }
     }
 }

@@ -84,6 +84,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvObservation = new System.Windows.Forms.DataGridView();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWorkOrderDetails)).BeginInit();
@@ -705,12 +706,23 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(483, 566);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 52;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmWorkOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(723, 642);
+            this.ClientSize = new System.Drawing.Size(723, 600);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.cbBranch);
             this.Controls.Add(this.cbState);
@@ -791,5 +803,6 @@
         private System.Windows.Forms.Label lblClient;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridView dgvObservation;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -120,13 +120,38 @@ namespace LubriTech.Model.WorkOrder_Information
             try
             {
                 conn.Open();
-                String deleteQuery = "DELETE FROM Observacion WHERE CodigoObservacion = @id";
-                SqlCommand cmd = new SqlCommand(deleteQuery, conn);
-                cmd.Parameters.AddWithValue("@id", observationId);
-                cmd.ExecuteNonQuery();
-                return true;
+
+                // Crear una transacción para asegurar la atomicidad de las operaciones
+                using (SqlTransaction transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        // Eliminar las fotos asociadas a la observación
+                        String deletePhotosQuery = "DELETE FROM FotosObservacion WHERE CodigoObservacion = @id";
+                        SqlCommand cmdDeletePhotos = new SqlCommand(deletePhotosQuery, conn, transaction);
+                        cmdDeletePhotos.Parameters.AddWithValue("@id", observationId);
+                        cmdDeletePhotos.ExecuteNonQuery();
+
+                        // Eliminar la observación
+                        String deleteObservationQuery = "DELETE FROM Observacion WHERE CodigoObservacion = @id";
+                        SqlCommand cmdDeleteObservation = new SqlCommand(deleteObservationQuery, conn, transaction);
+                        cmdDeleteObservation.Parameters.AddWithValue("@id", observationId);
+                        cmdDeleteObservation.ExecuteNonQuery();
+
+                        // Confirmar la transacción
+                        transaction.Commit();
+
+                        return true;
+                    }
+                    catch (Exception)
+                    {
+                        // Revertir la transacción en caso de error
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

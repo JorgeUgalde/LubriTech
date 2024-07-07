@@ -56,7 +56,7 @@
             this.panelBorder.Location = new System.Drawing.Point(0, 0);
             this.panelBorder.Name = "panelBorder";
             this.panelBorder.Size = new System.Drawing.Size(823, 36);
-            this.panelBorder.TabIndex = 8;
+            this.panelBorder.TabIndex = 18;
             // 
             // lblForm
             // 
@@ -66,7 +66,7 @@
             this.lblForm.Location = new System.Drawing.Point(12, 6);
             this.lblForm.Name = "lblForm";
             this.lblForm.Size = new System.Drawing.Size(72, 21);
-            this.lblForm.TabIndex = 10;
+            this.lblForm.TabIndex = 25;
             this.lblForm.Text = "Usuarios";
             // 
             // pbClose
@@ -92,7 +92,7 @@
             this.cbBranch.Name = "cbBranch";
             this.cbBranch.Size = new System.Drawing.Size(205, 29);
             this.cbBranch.Sorted = true;
-            this.cbBranch.TabIndex = 38;
+            this.cbBranch.TabIndex = 1;
             // 
             // txtNewPass
             // 
@@ -101,8 +101,9 @@
             this.txtNewPass.Margin = new System.Windows.Forms.Padding(2, 2, 6, 6);
             this.txtNewPass.MaxLength = 50;
             this.txtNewPass.Name = "txtNewPass";
+            this.txtNewPass.PasswordChar = '*';
             this.txtNewPass.Size = new System.Drawing.Size(205, 29);
-            this.txtNewPass.TabIndex = 36;
+            this.txtNewPass.TabIndex = 5;
             // 
             // txtEmail
             // 
@@ -112,13 +113,13 @@
             this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(205, 29);
-            this.txtEmail.TabIndex = 35;
+            this.txtEmail.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(17, 86);
+            this.label5.Location = new System.Drawing.Point(36, 86);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 21);
@@ -129,7 +130,7 @@
             // 
             this.lblNewPass.AutoSize = true;
             this.lblNewPass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNewPass.Location = new System.Drawing.Point(428, 133);
+            this.lblNewPass.Location = new System.Drawing.Point(443, 133);
             this.lblNewPass.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNewPass.Name = "lblNewPass";
             this.lblNewPass.Size = new System.Drawing.Size(138, 21);
@@ -140,7 +141,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(428, 86);
+            this.label3.Location = new System.Drawing.Point(443, 86);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 21);
@@ -151,7 +152,7 @@
             // 
             this.lblCode.AutoSize = true;
             this.lblCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCode.Location = new System.Drawing.Point(17, 133);
+            this.lblCode.Location = new System.Drawing.Point(36, 133);
             this.lblCode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCode.Name = "lblCode";
             this.lblCode.Size = new System.Drawing.Size(138, 21);
@@ -160,7 +161,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -169,23 +170,23 @@
             this.btnClose.Location = new System.Drawing.Point(649, 217);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(141, 34);
-            this.btnClose.TabIndex = 44;
-            this.btnClose.Text = "Cerrar";
+            this.btnClose.TabIndex = 7;
+            this.btnClose.Text = "Cancelar";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnConfirm
             // 
-            this.btnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            this.btnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
             this.btnConfirm.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConfirm.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfirm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirm.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnConfirm.Location = new System.Drawing.Point(21, 217);
+            this.btnConfirm.Location = new System.Drawing.Point(40, 217);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(141, 34);
-            this.btnConfirm.TabIndex = 43;
+            this.btnConfirm.TabIndex = 6;
             this.btnConfirm.Text = "Confirmar";
             this.btnConfirm.UseVisualStyleBackColor = false;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
@@ -197,12 +198,13 @@
             this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 6, 6);
             this.txtPassword.MaxLength = 50;
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(205, 29);
-            this.txtPassword.TabIndex = 45;
+            this.txtPassword.TabIndex = 4;
             // 
             // btnAdd
             // 
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdd.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -212,7 +214,7 @@
             this.btnAdd.Location = new System.Drawing.Point(387, 83);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(28, 29);
-            this.btnAdd.TabIndex = 46;
+            this.btnAdd.TabIndex = 2;
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
             // 

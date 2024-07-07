@@ -31,6 +31,7 @@ namespace LubriTech.View
             this.components = new System.ComponentModel.Container();
             this.sideBarTimer = new System.Windows.Forms.Timer(this.components);
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnVehicleMasterData = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panelParametersSubmenu = new System.Windows.Forms.Panel();
             this.btnItemTypes = new System.Windows.Forms.Button();
@@ -43,19 +44,17 @@ namespace LubriTech.View
             this.btnArticles = new System.Windows.Forms.Button();
             this.panelInventorySubmenu = new System.Windows.Forms.Panel();
             this.btnSuppliers = new System.Windows.Forms.Button();
-            this.btnGoodsIssue = new System.Windows.Forms.Button();
-            this.btnGoodsReceipt = new System.Windows.Forms.Button();
             this.btnPurchaseOrder = new System.Windows.Forms.Button();
             this.btnInventory = new System.Windows.Forms.Button();
             this.btnWorkOrders = new System.Windows.Forms.Button();
             this.btnAppointments = new System.Windows.Forms.Button();
             this.panelClientsSubmenu = new System.Windows.Forms.Panel();
-            this.btnVehicleMasterData = new System.Windows.Forms.Button();
             this.btnClientMasterData = new System.Windows.Forms.Button();
             this.btnClients = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelParametersSubmenu.SuspendLayout();
             this.panelInventorySubmenu.SuspendLayout();
@@ -74,6 +73,7 @@ namespace LubriTech.View
             // 
             this.panelMenu.AutoScroll = true;
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            this.panelMenu.Controls.Add(this.btnVehicleMasterData);
             this.panelMenu.Controls.Add(this.button1);
             this.panelMenu.Controls.Add(this.panelParametersSubmenu);
             this.panelMenu.Controls.Add(this.btnParamConfig);
@@ -87,10 +87,28 @@ namespace LubriTech.View
             this.panelMenu.Controls.Add(this.panel2);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(319, 609);
+            this.panelMenu.Size = new System.Drawing.Size(425, 1055);
             this.panelMenu.TabIndex = 5;
+            // 
+            // btnVehicleMasterData
+            // 
+            this.btnVehicleMasterData.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnVehicleMasterData.FlatAppearance.BorderSize = 0;
+            this.btnVehicleMasterData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVehicleMasterData.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.btnVehicleMasterData.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnVehicleMasterData.Location = new System.Drawing.Point(0, 1122);
+            this.btnVehicleMasterData.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnVehicleMasterData.Name = "btnVehicleMasterData";
+            this.btnVehicleMasterData.Padding = new System.Windows.Forms.Padding(17, 0, 0, 0);
+            this.btnVehicleMasterData.Size = new System.Drawing.Size(404, 68);
+            this.btnVehicleMasterData.TabIndex = 15;
+            this.btnVehicleMasterData.Text = "Vehículos";
+            this.btnVehicleMasterData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVehicleMasterData.UseVisualStyleBackColor = true;
+            this.btnVehicleMasterData.Click += new System.EventHandler(this.btnVehicleMasterData_Click);
             // 
             // button1
             // 
@@ -99,11 +117,11 @@ namespace LubriTech.View
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(0, 1017);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(0, 1190);
+            this.button1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(302, 55);
+            this.button1.Padding = new System.Windows.Forms.Padding(17, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(404, 68);
             this.button1.TabIndex = 14;
             this.button1.Text = "Cerrar sesión";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -113,6 +131,7 @@ namespace LubriTech.View
             // panelParametersSubmenu
             // 
             this.panelParametersSubmenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(45)))), ((int)(((byte)(92)))));
+            this.panelParametersSubmenu.Controls.Add(this.button3);
             this.panelParametersSubmenu.Controls.Add(this.btnItemTypes);
             this.panelParametersSubmenu.Controls.Add(this.btnSchedules);
             this.panelParametersSubmenu.Controls.Add(this.button2);
@@ -120,10 +139,10 @@ namespace LubriTech.View
             this.panelParametersSubmenu.Controls.Add(this.button12);
             this.panelParametersSubmenu.Controls.Add(this.button13);
             this.panelParametersSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelParametersSubmenu.Location = new System.Drawing.Point(0, 722);
-            this.panelParametersSubmenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelParametersSubmenu.Location = new System.Drawing.Point(0, 691);
+            this.panelParametersSubmenu.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.panelParametersSubmenu.Name = "panelParametersSubmenu";
-            this.panelParametersSubmenu.Size = new System.Drawing.Size(302, 295);
+            this.panelParametersSubmenu.Size = new System.Drawing.Size(404, 431);
             this.panelParametersSubmenu.TabIndex = 13;
             // 
             // btnItemTypes
@@ -133,11 +152,11 @@ namespace LubriTech.View
             this.btnItemTypes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnItemTypes.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.btnItemTypes.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnItemTypes.Location = new System.Drawing.Point(0, 245);
-            this.btnItemTypes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnItemTypes.Location = new System.Drawing.Point(0, 300);
+            this.btnItemTypes.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnItemTypes.Name = "btnItemTypes";
-            this.btnItemTypes.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnItemTypes.Size = new System.Drawing.Size(302, 49);
+            this.btnItemTypes.Padding = new System.Windows.Forms.Padding(63, 0, 0, 0);
+            this.btnItemTypes.Size = new System.Drawing.Size(404, 60);
             this.btnItemTypes.TabIndex = 13;
             this.btnItemTypes.Text = "Catálogo tipos de artículos";
             this.btnItemTypes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -151,11 +170,11 @@ namespace LubriTech.View
             this.btnSchedules.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSchedules.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.btnSchedules.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSchedules.Location = new System.Drawing.Point(0, 196);
-            this.btnSchedules.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSchedules.Location = new System.Drawing.Point(0, 240);
+            this.btnSchedules.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnSchedules.Name = "btnSchedules";
-            this.btnSchedules.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnSchedules.Size = new System.Drawing.Size(302, 49);
+            this.btnSchedules.Padding = new System.Windows.Forms.Padding(63, 0, 0, 0);
+            this.btnSchedules.Size = new System.Drawing.Size(404, 60);
             this.btnSchedules.TabIndex = 12;
             this.btnSchedules.Text = "Horarios";
             this.btnSchedules.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -169,11 +188,11 @@ namespace LubriTech.View
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.Location = new System.Drawing.Point(0, 147);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Location = new System.Drawing.Point(0, 180);
+            this.button2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.button2.Size = new System.Drawing.Size(302, 49);
+            this.button2.Padding = new System.Windows.Forms.Padding(63, 0, 0, 0);
+            this.button2.Size = new System.Drawing.Size(404, 60);
             this.button2.TabIndex = 11;
             this.button2.Text = "Catálogo de modelos";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -187,11 +206,11 @@ namespace LubriTech.View
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.button10.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button10.Location = new System.Drawing.Point(0, 98);
-            this.button10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button10.Location = new System.Drawing.Point(0, 120);
+            this.button10.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.button10.Name = "button10";
-            this.button10.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.button10.Size = new System.Drawing.Size(302, 49);
+            this.button10.Padding = new System.Windows.Forms.Padding(63, 0, 0, 0);
+            this.button10.Size = new System.Drawing.Size(404, 60);
             this.button10.TabIndex = 10;
             this.button10.Text = "Sucursales";
             this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -205,11 +224,11 @@ namespace LubriTech.View
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.button12.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button12.Location = new System.Drawing.Point(0, 49);
-            this.button12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button12.Location = new System.Drawing.Point(0, 60);
+            this.button12.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.button12.Name = "button12";
-            this.button12.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.button12.Size = new System.Drawing.Size(302, 49);
+            this.button12.Padding = new System.Windows.Forms.Padding(63, 0, 0, 0);
+            this.button12.Size = new System.Drawing.Size(404, 60);
             this.button12.TabIndex = 7;
             this.button12.Text = "Catálogo de marcas";
             this.button12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -224,10 +243,10 @@ namespace LubriTech.View
             this.button13.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.button13.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button13.Location = new System.Drawing.Point(0, 0);
-            this.button13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button13.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.button13.Name = "button13";
-            this.button13.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.button13.Size = new System.Drawing.Size(302, 49);
+            this.button13.Padding = new System.Windows.Forms.Padding(63, 0, 0, 0);
+            this.button13.Size = new System.Drawing.Size(404, 60);
             this.button13.TabIndex = 6;
             this.button13.Text = "Lista de precios de artículos";
             this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -241,11 +260,11 @@ namespace LubriTech.View
             this.btnParamConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnParamConfig.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.btnParamConfig.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnParamConfig.Location = new System.Drawing.Point(0, 667);
-            this.btnParamConfig.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnParamConfig.Location = new System.Drawing.Point(0, 623);
+            this.btnParamConfig.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnParamConfig.Name = "btnParamConfig";
-            this.btnParamConfig.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnParamConfig.Size = new System.Drawing.Size(302, 55);
+            this.btnParamConfig.Padding = new System.Windows.Forms.Padding(17, 0, 0, 0);
+            this.btnParamConfig.Size = new System.Drawing.Size(404, 68);
             this.btnParamConfig.TabIndex = 12;
             this.btnParamConfig.Text = "Configurar parámetros";
             this.btnParamConfig.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -259,11 +278,11 @@ namespace LubriTech.View
             this.btnArticles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnArticles.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.btnArticles.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnArticles.Location = new System.Drawing.Point(0, 612);
-            this.btnArticles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnArticles.Location = new System.Drawing.Point(0, 555);
+            this.btnArticles.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnArticles.Name = "btnArticles";
-            this.btnArticles.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnArticles.Size = new System.Drawing.Size(302, 55);
+            this.btnArticles.Padding = new System.Windows.Forms.Padding(17, 0, 0, 0);
+            this.btnArticles.Size = new System.Drawing.Size(404, 68);
             this.btnArticles.TabIndex = 11;
             this.btnArticles.Text = "Artículos";
             this.btnArticles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -274,14 +293,12 @@ namespace LubriTech.View
             // 
             this.panelInventorySubmenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(45)))), ((int)(((byte)(92)))));
             this.panelInventorySubmenu.Controls.Add(this.btnSuppliers);
-            this.panelInventorySubmenu.Controls.Add(this.btnGoodsIssue);
-            this.panelInventorySubmenu.Controls.Add(this.btnGoodsReceipt);
             this.panelInventorySubmenu.Controls.Add(this.btnPurchaseOrder);
             this.panelInventorySubmenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelInventorySubmenu.Location = new System.Drawing.Point(0, 402);
-            this.panelInventorySubmenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelInventorySubmenu.Location = new System.Drawing.Point(0, 433);
+            this.panelInventorySubmenu.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.panelInventorySubmenu.Name = "panelInventorySubmenu";
-            this.panelInventorySubmenu.Size = new System.Drawing.Size(302, 210);
+            this.panelInventorySubmenu.Size = new System.Drawing.Size(404, 122);
             this.panelInventorySubmenu.TabIndex = 10;
             // 
             // btnSuppliers
@@ -291,50 +308,16 @@ namespace LubriTech.View
             this.btnSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSuppliers.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.btnSuppliers.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSuppliers.Location = new System.Drawing.Point(0, 147);
-            this.btnSuppliers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSuppliers.Location = new System.Drawing.Point(0, 60);
+            this.btnSuppliers.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnSuppliers.Name = "btnSuppliers";
-            this.btnSuppliers.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnSuppliers.Size = new System.Drawing.Size(302, 49);
+            this.btnSuppliers.Padding = new System.Windows.Forms.Padding(63, 0, 0, 0);
+            this.btnSuppliers.Size = new System.Drawing.Size(404, 60);
             this.btnSuppliers.TabIndex = 10;
             this.btnSuppliers.Text = "Proveedores";
             this.btnSuppliers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSuppliers.UseVisualStyleBackColor = true;
             this.btnSuppliers.Click += new System.EventHandler(this.btnSuppliers_Click);
-            // 
-            // btnGoodsIssue
-            // 
-            this.btnGoodsIssue.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnGoodsIssue.FlatAppearance.BorderSize = 0;
-            this.btnGoodsIssue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGoodsIssue.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.btnGoodsIssue.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnGoodsIssue.Location = new System.Drawing.Point(0, 98);
-            this.btnGoodsIssue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnGoodsIssue.Name = "btnGoodsIssue";
-            this.btnGoodsIssue.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnGoodsIssue.Size = new System.Drawing.Size(302, 49);
-            this.btnGoodsIssue.TabIndex = 8;
-            this.btnGoodsIssue.Text = "Salida de mercancía";
-            this.btnGoodsIssue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGoodsIssue.UseVisualStyleBackColor = true;
-            // 
-            // btnGoodsReceipt
-            // 
-            this.btnGoodsReceipt.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnGoodsReceipt.FlatAppearance.BorderSize = 0;
-            this.btnGoodsReceipt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGoodsReceipt.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.btnGoodsReceipt.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnGoodsReceipt.Location = new System.Drawing.Point(0, 49);
-            this.btnGoodsReceipt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnGoodsReceipt.Name = "btnGoodsReceipt";
-            this.btnGoodsReceipt.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnGoodsReceipt.Size = new System.Drawing.Size(302, 49);
-            this.btnGoodsReceipt.TabIndex = 7;
-            this.btnGoodsReceipt.Text = "Entrada de mercancía";
-            this.btnGoodsReceipt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGoodsReceipt.UseVisualStyleBackColor = true;
             // 
             // btnPurchaseOrder
             // 
@@ -344,14 +327,15 @@ namespace LubriTech.View
             this.btnPurchaseOrder.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.btnPurchaseOrder.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnPurchaseOrder.Location = new System.Drawing.Point(0, 0);
-            this.btnPurchaseOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPurchaseOrder.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnPurchaseOrder.Name = "btnPurchaseOrder";
-            this.btnPurchaseOrder.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnPurchaseOrder.Size = new System.Drawing.Size(302, 49);
+            this.btnPurchaseOrder.Padding = new System.Windows.Forms.Padding(63, 0, 0, 0);
+            this.btnPurchaseOrder.Size = new System.Drawing.Size(404, 60);
             this.btnPurchaseOrder.TabIndex = 6;
-            this.btnPurchaseOrder.Text = "Orden de compra";
+            this.btnPurchaseOrder.Text = "Gestión inventario";
             this.btnPurchaseOrder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPurchaseOrder.UseVisualStyleBackColor = true;
+            this.btnPurchaseOrder.Click += new System.EventHandler(this.btnPurchaseOrder_Click);
             // 
             // btnInventory
             // 
@@ -360,11 +344,11 @@ namespace LubriTech.View
             this.btnInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInventory.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.btnInventory.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnInventory.Location = new System.Drawing.Point(0, 347);
-            this.btnInventory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnInventory.Location = new System.Drawing.Point(0, 365);
+            this.btnInventory.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnInventory.Name = "btnInventory";
-            this.btnInventory.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnInventory.Size = new System.Drawing.Size(302, 55);
+            this.btnInventory.Padding = new System.Windows.Forms.Padding(17, 0, 0, 0);
+            this.btnInventory.Size = new System.Drawing.Size(404, 68);
             this.btnInventory.TabIndex = 9;
             this.btnInventory.Text = "Inventario";
             this.btnInventory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -378,11 +362,11 @@ namespace LubriTech.View
             this.btnWorkOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnWorkOrders.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.btnWorkOrders.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnWorkOrders.Location = new System.Drawing.Point(0, 292);
-            this.btnWorkOrders.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnWorkOrders.Location = new System.Drawing.Point(0, 297);
+            this.btnWorkOrders.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnWorkOrders.Name = "btnWorkOrders";
-            this.btnWorkOrders.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnWorkOrders.Size = new System.Drawing.Size(302, 55);
+            this.btnWorkOrders.Padding = new System.Windows.Forms.Padding(17, 0, 0, 0);
+            this.btnWorkOrders.Size = new System.Drawing.Size(404, 68);
             this.btnWorkOrders.TabIndex = 8;
             this.btnWorkOrders.Text = "Órdenes de trabajo";
             this.btnWorkOrders.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -396,11 +380,11 @@ namespace LubriTech.View
             this.btnAppointments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAppointments.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.btnAppointments.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnAppointments.Location = new System.Drawing.Point(0, 237);
-            this.btnAppointments.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAppointments.Location = new System.Drawing.Point(0, 229);
+            this.btnAppointments.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnAppointments.Name = "btnAppointments";
-            this.btnAppointments.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnAppointments.Size = new System.Drawing.Size(302, 55);
+            this.btnAppointments.Padding = new System.Windows.Forms.Padding(17, 0, 0, 0);
+            this.btnAppointments.Size = new System.Drawing.Size(404, 68);
             this.btnAppointments.TabIndex = 7;
             this.btnAppointments.Text = "Citas";
             this.btnAppointments.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -410,32 +394,13 @@ namespace LubriTech.View
             // panelClientsSubmenu
             // 
             this.panelClientsSubmenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(45)))), ((int)(((byte)(92)))));
-            this.panelClientsSubmenu.Controls.Add(this.btnVehicleMasterData);
             this.panelClientsSubmenu.Controls.Add(this.btnClientMasterData);
             this.panelClientsSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelClientsSubmenu.Location = new System.Drawing.Point(0, 135);
-            this.panelClientsSubmenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelClientsSubmenu.Location = new System.Drawing.Point(0, 166);
+            this.panelClientsSubmenu.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.panelClientsSubmenu.Name = "panelClientsSubmenu";
-            this.panelClientsSubmenu.Size = new System.Drawing.Size(302, 102);
+            this.panelClientsSubmenu.Size = new System.Drawing.Size(404, 63);
             this.panelClientsSubmenu.TabIndex = 3;
-            // 
-            // btnVehicleMasterData
-            // 
-            this.btnVehicleMasterData.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnVehicleMasterData.FlatAppearance.BorderSize = 0;
-            this.btnVehicleMasterData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVehicleMasterData.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.btnVehicleMasterData.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnVehicleMasterData.Location = new System.Drawing.Point(0, 49);
-            this.btnVehicleMasterData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnVehicleMasterData.Name = "btnVehicleMasterData";
-            this.btnVehicleMasterData.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnVehicleMasterData.Size = new System.Drawing.Size(302, 49);
-            this.btnVehicleMasterData.TabIndex = 7;
-            this.btnVehicleMasterData.Text = "Vehículos";
-            this.btnVehicleMasterData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVehicleMasterData.UseVisualStyleBackColor = true;
-            this.btnVehicleMasterData.Click += new System.EventHandler(this.btnVehicleMasterData_Click);
             // 
             // btnClientMasterData
             // 
@@ -445,10 +410,10 @@ namespace LubriTech.View
             this.btnClientMasterData.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.btnClientMasterData.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnClientMasterData.Location = new System.Drawing.Point(0, 0);
-            this.btnClientMasterData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClientMasterData.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnClientMasterData.Name = "btnClientMasterData";
-            this.btnClientMasterData.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnClientMasterData.Size = new System.Drawing.Size(302, 49);
+            this.btnClientMasterData.Padding = new System.Windows.Forms.Padding(63, 0, 0, 0);
+            this.btnClientMasterData.Size = new System.Drawing.Size(404, 60);
             this.btnClientMasterData.TabIndex = 6;
             this.btnClientMasterData.Text = "Clientes";
             this.btnClientMasterData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -462,11 +427,11 @@ namespace LubriTech.View
             this.btnClients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClients.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.btnClients.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnClients.Location = new System.Drawing.Point(0, 80);
-            this.btnClients.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClients.Location = new System.Drawing.Point(0, 98);
+            this.btnClients.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnClients.Name = "btnClients";
-            this.btnClients.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnClients.Size = new System.Drawing.Size(302, 55);
+            this.btnClients.Padding = new System.Windows.Forms.Padding(17, 0, 0, 0);
+            this.btnClients.Size = new System.Drawing.Size(404, 68);
             this.btnClients.TabIndex = 6;
             this.btnClients.Text = "Clientes";
             this.btnClients.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -478,9 +443,9 @@ namespace LubriTech.View
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(302, 80);
+            this.panel2.Size = new System.Drawing.Size(404, 98);
             this.panel2.TabIndex = 6;
             // 
             // label1
@@ -490,11 +455,12 @@ namespace LubriTech.View
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(28, 10);
-            this.label1.MaximumSize = new System.Drawing.Size(233, 45);
+            this.label1.Location = new System.Drawing.Point(37, 12);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.MaximumSize = new System.Drawing.Size(311, 55);
             this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label1.Size = new System.Drawing.Size(233, 45);
+            this.label1.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.label1.Size = new System.Drawing.Size(311, 55);
             this.label1.TabIndex = 9;
             this.label1.Text = "Lubricentro Santa Teresita";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -503,27 +469,45 @@ namespace LubriTech.View
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::LubriTech.Properties.Resources.menu1;
-            this.pictureBox1.Location = new System.Drawing.Point(322, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(429, 12);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox1.Size = new System.Drawing.Size(53, 49);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // button3
+            // 
+            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.button3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button3.Location = new System.Drawing.Point(0, 360);
+            this.button3.Margin = new System.Windows.Forms.Padding(5);
+            this.button3.Name = "button3";
+            this.button3.Padding = new System.Windows.Forms.Padding(63, 0, 0, 0);
+            this.button3.Size = new System.Drawing.Size(404, 60);
+            this.button3.TabIndex = 14;
+            this.button3.Text = "Catálogo tipos de motor";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // MDI_View
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(694, 609);
+            this.ClientSize = new System.Drawing.Size(925, 1055);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panelMenu);
             this.DoubleBuffered = true;
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "MDI_View";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LubriTech";
@@ -543,13 +527,10 @@ namespace LubriTech.View
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panelClientsSubmenu;
         private System.Windows.Forms.Button btnClients;
-        private System.Windows.Forms.Button btnVehicleMasterData;
         private System.Windows.Forms.Button btnClientMasterData;
         private System.Windows.Forms.Button btnWorkOrders;
         private System.Windows.Forms.Button btnAppointments;
         private System.Windows.Forms.Panel panelInventorySubmenu;
-        private System.Windows.Forms.Button btnGoodsIssue;
-        private System.Windows.Forms.Button btnGoodsReceipt;
         private System.Windows.Forms.Button btnPurchaseOrder;
         private System.Windows.Forms.Button btnInventory;
         private System.Windows.Forms.Button btnSuppliers;
@@ -566,6 +547,8 @@ namespace LubriTech.View
         private System.Windows.Forms.Button btnSchedules;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnItemTypes;
+        private System.Windows.Forms.Button btnVehicleMasterData;
+        private System.Windows.Forms.Button button3;
     }
 }
 

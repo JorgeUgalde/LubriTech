@@ -32,19 +32,14 @@ namespace LubriTech.View
 
             if (mode == "Make")
             {
-                this.Text = "Gestion de Marca";
+                lblForm.Text = "Dato Maestro Marca";
                 lblMake.Visible = false;
                 cbMakes.Visible = false;
 
-                //Point point = cbState.Location;
-                //point.Y += 70;
-                //btnConfirm.Location = point;
-                //btnClose.Location = new Point(point.X, point.Y += 70);
-                //this.Size = new Size(this.MaximumSize.Width, this.MaximumSize.Height - 98);
             }
             else
             {
-                this.Text = "Gestion de Modelo";
+                lblForm.Text = "Dato Maestro Modelo";
                 cbMakes.DataSource = null;
                 loadMakes();
             }
@@ -56,7 +51,7 @@ namespace LubriTech.View
         public frmUpsert_Make_Model(Make make, string action)
         {
             InitializeComponent();
-            this.Text = "Gestion de Marca";
+            lblForm.Text = "Dato Maestro Marca";
 
             lblMake.Visible = false;
             cbMakes.Visible = false;
@@ -74,7 +69,7 @@ namespace LubriTech.View
         public frmUpsert_Make_Model(CarModel carModel, string action)
         {
             InitializeComponent();
-            this.Text = "Gestion de Modelo";
+            lblForm.Text = "Dato Maestro Modelo";
             mode = "Model";
             this.action = action;
             this.carModel = carModel;
@@ -110,6 +105,7 @@ namespace LubriTech.View
             cbMakes.DataSource = makes;
             cbMakes.DisplayMember = "Name";
             cbMakes.ValueMember = "Id";
+            cbMakes.SelectedIndex = -1;
         }
 
         private void btnConfirm_Click_1(object sender, EventArgs e)

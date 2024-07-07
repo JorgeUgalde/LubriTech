@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>Orden de Recepción</title>
+    <title>GestiÃ³n de Inventario</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -38,6 +38,12 @@
                 margin: 0;
             }
 
+        h3 {
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
         .content {
             padding: 20px;
             background-color: #ffffff;
@@ -45,41 +51,28 @@
             border: 1px solid #ccc;
         }
 
-        .work-order-table {
+        .inventory-magament-table {
             border-collapse: collapse;
             width: 100%;
         }
 
-            .work-order-table th, .work-order-table td {
+            .inventory-magament-table th, .inventory-magament-table td {
                 border: 1px solid #ccc;
                 padding: 5px;
                 font-size: 13px;
             }
 
-            .work-order-table thead th {
+            .inventory-magament-table thead th {
                 font-size: larger;
             }
 
-            .work-order-table tbody tr {
+            .inventory-magament-table tbody tr {
                 border-bottom: 1px solid #ccc;
             }
 
-                .work-order-table tbody tr:last-child {
+                .inventory-magament-table tbody tr:last-child {
                     border-bottom: none;
                 }
-
-        .observations-list {
-            list-style-type: disc; 
-            padding: 0 20px; 
-        }
-
-            .observations-list li {
-                background-color: #ffffff;
-                border: 1px solid #ccc;
-                margin-bottom: 10px;
-                padding: 10px;
-                border-radius: 5px;
-            }
 
         .tittle {
             background-color: #003366;
@@ -116,7 +109,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>ORDEN DE RECEPCIÓN</h1>
+            <h1>GESTIÃ“N DE INVENTARIO</h1>
             <h2>LubriTech</h2>
         </div>
         <div class="section">
@@ -126,12 +119,16 @@
                         <td style="width: 100%;">
                             <table>
                                 <tr>
+                                    <td>Fecha:</td>
+                                    <td>@DATE</td>
+                                </tr>
+                                <tr>
                                     <td>Sucursal:</td>
                                     <td>@BRANCH</td>
                                 </tr>
                                 <tr>
-                                    <td>Fecha:</td>
-                                    <td>@DATE</td>
+                                    <td>Tipo:</td>
+                                    <td>@TYPE</td>
                                 </tr>
                                 <tr>
                                     <td>Estado:</td>
@@ -145,36 +142,13 @@
         </div>
         <div class="section">
             <div class="content">
+                <h3>Proveedor</h3>
                 <table>
                     <tr>
                         <td style="width: 100%; vertical-align: top;">
-                            <table>
-                                <tr>
-                                    <td>Placa:</td>
-                                    <td>@LICENSEPLATE</td>
-                                </tr>
-                                <tr>
-                                    <td>Marca:</td>
-                                    <td>@MAKE</td>
-                                </tr>
-                                <tr>
-                                    <td>Modelo:</td>
-                                    <td>@MODEL</td>
-                                </tr>
-                                <tr>
-                                    <td>Kilometraje:</td>
-                                    <td>@MILEAGE</td>
-                                </tr>
-                                <tr>
-                                    <td>Kilometraje Actual:</td>
-                                    <td>@CURRENTMILEAGE</td>
-                                </tr>
-                            </table>
-                        </td>
-                        <td style="width: 100%; vertical-align: top;">
                             <table style="width: 100%;">
                                 <tr>
-                                    <td>Identificación:</td>
+                                    <td>IdentificaciÃ³n:</td>
                                     <td>@ID</td>
                                 </tr>
                                 <tr>
@@ -182,15 +156,11 @@
                                     <td>@NAME</td>
                                 </tr>
                                 <tr>
-                                    <td>Teléfono:</td>
+                                    <td>TelÃ©fono:</td>
                                     <td>@MAINPHONE</td>
                                 </tr>
                                 <tr>
-                                    <td>Teléfono adicional:</td>
-                                    <td>@ADDITIONALPHONE</td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 40%;">Correo electrónico:</td>
+                                    <td style="width: 40%;">Correo electrÃ³nico:</td>
                                     <td style="width: 60%; word-wrap: break-word;">@EMAIL</td>
                                 </tr>
                             </table>
@@ -201,13 +171,8 @@
         </div>
         <div class="section">
             <div class="content">
-                @WORKORDERLINE
-            </div>
-        </div>
-        <div class="section">
-            <div class="tittle">Observaciones</div>
-            <div class="content">
-                @OBSERVATIONS
+                <h3>Detalle</h3>
+                @INVENTORYMANAGEMENT
             </div>
         </div>
     </div>

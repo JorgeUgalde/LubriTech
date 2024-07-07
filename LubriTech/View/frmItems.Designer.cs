@@ -54,12 +54,12 @@ namespace LubriTech.View
             // 
             this.lblSubtitle.AutoSize = true;
             this.lblSubtitle.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubtitle.Location = new System.Drawing.Point(18, 66);
+            this.lblSubtitle.Location = new System.Drawing.Point(18, 68);
             this.lblSubtitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSubtitle.Name = "lblSubtitle";
             this.lblSubtitle.Size = new System.Drawing.Size(135, 21);
-            this.lblSubtitle.TabIndex = 2;
-            this.lblSubtitle.Text = "Lista de Articulos";
+            this.lblSubtitle.TabIndex = 17;
+            this.lblSubtitle.Text = "Lista de Artículos";
             // 
             // btnAddItem
             // 
@@ -73,7 +73,7 @@ namespace LubriTech.View
             this.btnAddItem.Location = new System.Drawing.Point(22, 469);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Size = new System.Drawing.Size(141, 34);
-            this.btnAddItem.TabIndex = 3;
+            this.btnAddItem.TabIndex = 4;
             this.btnAddItem.Text = "Crear";
             this.btnAddItem.UseVisualStyleBackColor = false;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
@@ -82,23 +82,23 @@ namespace LubriTech.View
             // 
             this.txtFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFilter.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFilter.Location = new System.Drawing.Point(558, 61);
+            this.txtFilter.Location = new System.Drawing.Point(558, 65);
             this.txtFilter.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtFilter.Name = "txtFilter";
             this.txtFilter.Size = new System.Drawing.Size(218, 29);
-            this.txtFilter.TabIndex = 4;
+            this.txtFilter.TabIndex = 2;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(472, 65);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(475, 68);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 21);
-            this.label1.TabIndex = 5;
+            this.label1.Size = new System.Drawing.Size(79, 21);
+            this.label1.TabIndex = 17;
             this.label1.Text = "Filtrar por";
             // 
             // btnClose
@@ -112,7 +112,7 @@ namespace LubriTech.View
             this.btnClose.Location = new System.Drawing.Point(635, 469);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(141, 34);
-            this.btnClose.TabIndex = 7;
+            this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Cerrar";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -128,7 +128,7 @@ namespace LubriTech.View
             this.panelBorder.Location = new System.Drawing.Point(0, 0);
             this.panelBorder.Name = "panelBorder";
             this.panelBorder.Size = new System.Drawing.Size(805, 36);
-            this.panelBorder.TabIndex = 8;
+            this.panelBorder.TabIndex = 16;
             this.panelBorder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBorder_MouseDown);
             // 
             // lblForm
@@ -139,8 +139,8 @@ namespace LubriTech.View
             this.lblForm.Location = new System.Drawing.Point(12, 6);
             this.lblForm.Name = "lblForm";
             this.lblForm.Size = new System.Drawing.Size(75, 21);
-            this.lblForm.TabIndex = 10;
-            this.lblForm.Text = "Articulos";
+            this.lblForm.TabIndex = 15;
+            this.lblForm.Text = "Artículos";
             // 
             // pbMaximize
             // 
@@ -215,7 +215,7 @@ namespace LubriTech.View
             this.dgvItems.RowHeadersWidth = 51;
             this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvItems.Size = new System.Drawing.Size(756, 345);
-            this.dgvItems.TabIndex = 11;
+            this.dgvItems.TabIndex = 3;
             this.dgvItems.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvItems_CellMouseDoubleClick);
             // 
             // cbBranch
@@ -223,20 +223,20 @@ namespace LubriTech.View
             this.cbBranch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbBranch.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbBranch.FormattingEnabled = true;
-            this.cbBranch.Location = new System.Drawing.Point(244, 65);
+            this.cbBranch.Location = new System.Drawing.Point(247, 67);
             this.cbBranch.Name = "cbBranch";
             this.cbBranch.Size = new System.Drawing.Size(217, 27);
-            this.cbBranch.TabIndex = 66;
+            this.cbBranch.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(173, 66);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(173, 68);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 21);
+            this.label2.Size = new System.Drawing.Size(69, 21);
             this.label2.TabIndex = 67;
             this.label2.Text = "Sucursal";
             // 

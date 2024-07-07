@@ -92,7 +92,7 @@ namespace LubriTech.View.Appointment_View
             this.panel1.Location = new System.Drawing.Point(0, 30);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(281, 833);
+            this.panel1.Size = new System.Drawing.Size(281, 687);
             this.panel1.TabIndex = 1;
             // 
             // cbBranch
@@ -103,7 +103,7 @@ namespace LubriTech.View.Appointment_View
             this.cbBranch.Location = new System.Drawing.Point(21, 306);
             this.cbBranch.Name = "cbBranch";
             this.cbBranch.Size = new System.Drawing.Size(233, 27);
-            this.cbBranch.TabIndex = 64;
+            this.cbBranch.TabIndex = 2;
             this.cbBranch.SelectedIndexChanged += new System.EventHandler(this.cbBranch_SelectedIndexChanged);
             // 
             // label13
@@ -127,7 +127,7 @@ namespace LubriTech.View.Appointment_View
             this.cbPLate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbPLate.Name = "cbPLate";
             this.cbPLate.Size = new System.Drawing.Size(238, 27);
-            this.cbPLate.TabIndex = 0;
+            this.cbPLate.TabIndex = 8;
             this.cbPLate.SelectedIndexChanged += new System.EventHandler(this.cbPLate_SelectedIndexChanged);
             this.cbPLate.TextUpdate += new System.EventHandler(this.cbPLate_TextUpdate);
             // 
@@ -166,21 +166,22 @@ namespace LubriTech.View.Appointment_View
             this.txtModel.Multiline = true;
             this.txtModel.Name = "txtModel";
             this.txtModel.Size = new System.Drawing.Size(238, 27);
-            this.txtModel.TabIndex = 52;
+            this.txtModel.TabIndex = 7;
             // 
             // btnSearchVehicle
             // 
+            this.btnSearchVehicle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSearchVehicle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))));
             this.btnSearchVehicle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearchVehicle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSearchVehicle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearchVehicle.ForeColor = System.Drawing.Color.White;
-            this.btnSearchVehicle.Location = new System.Drawing.Point(197, 500);
+            this.btnSearchVehicle.Image = global::LubriTech.Properties.Resources.searching_car;
+            this.btnSearchVehicle.Location = new System.Drawing.Point(165, 497);
             this.btnSearchVehicle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSearchVehicle.Name = "btnSearchVehicle";
-            this.btnSearchVehicle.Size = new System.Drawing.Size(64, 22);
-            this.btnSearchVehicle.TabIndex = 53;
-            this.btnSearchVehicle.Text = "Buscar";
+            this.btnSearchVehicle.Size = new System.Drawing.Size(32, 29);
+            this.btnSearchVehicle.TabIndex = 6;
             this.btnSearchVehicle.UseVisualStyleBackColor = false;
             this.btnSearchVehicle.Click += new System.EventHandler(this.btnSearchVehicle_Click);
             // 
@@ -218,7 +219,7 @@ namespace LubriTech.View.Appointment_View
             this.txtId.Multiline = true;
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(236, 27);
-            this.txtId.TabIndex = 50;
+            this.txtId.TabIndex = 5;
             this.txtId.TextChanged += new System.EventHandler(this.txtId_TextChanged);
             // 
             // label8
@@ -243,21 +244,22 @@ namespace LubriTech.View.Appointment_View
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(238, 27);
-            this.txtName.TabIndex = 0;
+            this.txtName.TabIndex = 4;
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))));
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(194, 342);
+            this.button1.Image = global::LubriTech.Properties.Resources.searchClient;
+            this.button1.Location = new System.Drawing.Point(165, 340);
             this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(64, 22);
-            this.button1.TabIndex = 48;
-            this.button1.Text = "Buscar";
+            this.button1.Size = new System.Drawing.Size(32, 29);
+            this.button1.TabIndex = 3;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -457,8 +459,8 @@ namespace LubriTech.View.Appointment_View
             this.pnlAppointments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlAppointments.MinimumSize = new System.Drawing.Size(454, 504);
             this.pnlAppointments.Name = "pnlAppointments";
-            this.pnlAppointments.Size = new System.Drawing.Size(738, 787);
-            this.pnlAppointments.TabIndex = 2;
+            this.pnlAppointments.Size = new System.Drawing.Size(738, 651);
+            this.pnlAppointments.TabIndex = 9;
             // 
             // lblDaySelected
             // 
@@ -522,7 +524,7 @@ namespace LubriTech.View.Appointment_View
             this.lblForm.Location = new System.Drawing.Point(53, 6);
             this.lblForm.Name = "lblForm";
             this.lblForm.Size = new System.Drawing.Size(45, 21);
-            this.lblForm.TabIndex = 10;
+            this.lblForm.TabIndex = 25;
             this.lblForm.Text = "Citas";
             // 
             // frmAppointment
@@ -530,7 +532,7 @@ namespace LubriTech.View.Appointment_View
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1026, 788);
+            this.ClientSize = new System.Drawing.Size(1026, 718);
             this.Controls.Add(this.panelBorder);
             this.Controls.Add(this.lblDaySelected);
             this.Controls.Add(this.pnlAppointments);

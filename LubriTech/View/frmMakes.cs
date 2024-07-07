@@ -100,11 +100,6 @@ namespace LubriTech.View
 
         private void btnAddMake_Click_1(object sender, EventArgs e)
         {
-            //frmInsertUpdate_Make frmUpsertMake = new frmInsertUpdate_Make();
-            //frmUpsertMake.MdiParent = this.MdiParent;
-            //frmUpsertMake.DataChanged += ChildFormDataChangedHandler;
-            //frmUpsertMake.Show();
-
             frmUpsert_Make_Model frmUpsertMake = new frmUpsert_Make_Model("Insert", "Make");
             frmUpsertMake.MdiParent = this.MdiParent;
             this.WindowState = FormWindowState.Normal;
@@ -147,10 +142,6 @@ namespace LubriTech.View
             if (e.RowIndex >= 0)
             {
                 Make make = makes[e.RowIndex];
-                //frmInsertUpdate_Make frmUpsertMake = new frmInsertUpdate_Make(make);
-                //frmUpsertMake.MdiParent = this.MdiParent;
-                //frmUpsertMake.DataChanged += ChildFormDataChangedHandler;
-                //frmUpsertMake.Show();
 
                 frmUpsert_Make_Model frmUpsertMake = new frmUpsert_Make_Model(make, "Modify");
                 frmUpsertMake.MdiParent = this.MdiParent;

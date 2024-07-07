@@ -413,6 +413,36 @@ namespace LubriTech.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap searching_car {
+            get {
+                object obj = ResourceManager.GetObject("searching-car", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SearchVehicle {
+            get {
+                object obj = ResourceManager.GetObject("SearchVehicle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SelectVehicle {
+            get {
+                object obj = ResourceManager.GetObject("SelectVehicle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap services {
             get {
                 object obj = ResourceManager.GetObject("services", resourceCulture);
@@ -431,11 +461,64 @@ namespace LubriTech.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+        ///&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+        ///
+        ///&lt;head&gt;
+        ///    &lt;title&gt;Orden de Recepción&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///        body {
+        ///            font-family: Arial, sans-serif;
+        ///            margin: 0;
+        ///            padding: 0;
+        ///            background-color: #ffffff;
+        ///            font-size: 13px;
+        ///        }
+        ///
+        ///        .container {
+        ///            width: 100%;
+        ///            margin: 30px auto;
+        ///            background-color: #ffffff;
+        ///            padding: 20px;
+        ///        }
+        ///
+        ///        .header {
+        ///            bac [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Template {
             get {
                 return ResourceManager.GetString("Template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+        ///&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+        ///
+        ///&lt;head&gt;
+        ///    &lt;title&gt;Gestión de Inventario&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///        body {
+        ///            font-family: Arial, sans-serif;
+        ///            margin: 0;
+        ///            padding: 0;
+        ///            background-color: #ffffff;
+        ///            font-size: 13px;
+        ///        }
+        ///
+        ///        .container {
+        ///            width: 100%;
+        ///            margin: 30px auto;
+        ///            background-color: #ffffff;
+        ///            padding: 20px;
+        ///        }
+        ///
+        ///        .header {
+        ///             [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Template2 {
+            get {
+                return ResourceManager.GetString("Template2", resourceCulture);
             }
         }
         

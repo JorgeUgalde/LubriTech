@@ -18,5 +18,11 @@ namespace LubriTech.Controller
         {
             return new Observation_Model().upsertObservation(observation);
         }
+
+        public bool Delete(int observationId) 
+        { 
+            return new Observation_Model().deleteObservation(observationId);
+        
+        }
     }
 }

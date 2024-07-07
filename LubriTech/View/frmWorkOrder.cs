@@ -26,6 +26,8 @@ using System.Windows.Forms;
 using Image = System.Drawing.Image;
 using Rectangle = System.Drawing.Rectangle;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Net.Mail;
+using System.Net;
 using LubriTech.Model.InventoryManagment_Information;
 
 namespace LubriTech.View
@@ -47,6 +49,7 @@ namespace LubriTech.View
         Vehicle vehicle = new Vehicle();
         WorkOrder workOrderTemplate = new WorkOrder();
         List<Observation> observations;
+        decimal totalA;
 
         private int previousSelectedStateValue;
 
@@ -243,6 +246,8 @@ namespace LubriTech.View
             }
 
             txtTotalAmount.Text = totalAmount.ToString("N2"); // Formatear el número como decimal
+
+            totalA = totalAmount;
         }
 
         private void HandleItemSelected(Item item)
@@ -719,12 +724,28 @@ namespace LubriTech.View
             dgvObservation.Columns["Description"].HeaderText = "Descripcion";
             dgvObservation.Columns["WorkOrderId"].Visible = false;
 
+                
+    
+
             SetColumnOrderObservation();
         }
+
         private void SetColumnOrderObservation()
         {
+            if (!dgvObservation.Columns.Contains("btnDelete"))
+            {
+                // Agregar columna de botón de eliminar
+                DataGridViewButtonColumn btnDelete = new DataGridViewButtonColumn();
+                btnDelete.HeaderText = "Eliminar";
+                btnDelete.Name = "btnDelete";
+                btnDelete.Text = "Eliminar";
+                btnDelete.UseColumnTextForButtonValue = true;
+
+                dgvObservation.Columns.Add(btnDelete);
+            }
             dgvObservation.Columns["Code"].DisplayIndex = 0;
             dgvObservation.Columns["Description"].DisplayIndex = 1;
+            dgvObservation.Columns["btnDelete"].DisplayIndex = 2;
         }
 
         private void FrmInsertObservation_ObservationChanged(object sender, EventArgs e)
@@ -734,8 +755,27 @@ namespace LubriTech.View
 
         private void dgvObservation_CellMouseDoubleClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (e.ColumnIndex == dgvObservation.Columns["btnDelete"].Index && e.RowIndex >= 0)
             {
+                // Obtener el ID de la observación a eliminar
+                var observationId = (int)dgvObservation.Rows[e.RowIndex].Cells["Code"].Value;
+
+                // Lógica para eliminar la observación
+                if (new Observation_Controller().Delete(observationId))
+                {
+                    MessageBox.Show("Observación eliminada correctamente.");
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar la observación.");
+                }
+
+                // Recargar las observaciones
+                load_Observation();
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex != dgvObservation.Columns["btnDelete"].Index)
+            {
+                // Obtener el código de la observación seleccionada
                 string observationCode = dgvObservation.Rows[e.RowIndex].Cells["Code"].Value.ToString();
                 List<Observation> observations = new Observation_Controller().GetObservation(workOrderTemplate.Id);
                 Observation selectedObservation = observations.FirstOrDefault(observation => observation.Code.ToString() == observationCode);
@@ -802,6 +842,11 @@ namespace LubriTech.View
                         double lineQuantity = Convert.ToDouble(dgvWorkOrderDetails.Rows[e.RowIndex].Cells["Quantity"].Value);
                         double currentStock = new Item_Controller().getItemStock(dgvWorkOrderDetails.Rows[e.RowIndex].Cells["ItemCode"].Value.ToString(), (int)cbBranch.SelectedValue);
                         double newQuantity = currentStock + lineQuantity;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.Filter = "Archivos de Pdf|*.pdf";
+            savefile.FileName = string.Format(DateTime.Now.ToString("ddMMyyyyHHmmss"));
 
                         // Actualizar la cantidad en la base de datos
                         if (!new Item_Controller().updateQuantity(dgvWorkOrderDetails.Rows[e.RowIndex].Cells["ItemCode"].Value.ToString(), (int)cbBranch.SelectedValue, newQuantity))
@@ -823,6 +868,10 @@ namespace LubriTech.View
                 {
                     DialogResult result = MessageBox.Show("Eliminar esta línea no actualizará ninguna entrada o salida de inventario ya que la orden no se encuentra en proceso." +
                         "\n¿Desea eliminar esta línea de detalle?", "Confirmar selección", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            string PaginaHTML_Texto = Properties.Resources.Template.ToString();
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@BRANCH", workOrderTemplate?.Branch?.Name ?? "N/A");
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DATE", workOrderTemplate?.Date.ToString() ?? "N/A");
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@STATE", cbState.Text ?? "N/A");
 
                     if (result == DialogResult.Yes)
                     {
@@ -838,97 +887,180 @@ namespace LubriTech.View
                 }
             }
         }
+            if (client != null)
+            {
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ID", client.Id);
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NAME", client.FullName);
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MAINPHONE", client.MainPhoneNum?.ToString() ?? "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ADDITIONALPHONE", client.AdditionalPhoneNum?.ToString() ?? "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@EMAIL", client.Email ?? "N/A");
+            }
+            else
+            {
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ID", "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NAME", "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MAINPHONE", "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ADDITIONALPHONE", "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@EMAIL", "N/A");
+            }
+
+            if (vehicle != null)
+            {
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@LICENSEPLATE", vehicle.LicensePlate ?? "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MAKE", workOrderTemplate?.Vehicle?.Model?.Make?.ToString() ?? "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MODEL", vehicle.Model + " " + vehicle.Year ?? "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MILEAGE", vehicle.Mileage.ToString() ?? "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CURRENTMILEAGE", workOrderTemplate?.CurrentMileage.ToString() ?? "N/A");
+            }
+            else
+            {
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@LICENSEPLATE", "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MAKE", "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MODEL", "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MILEAGE", "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CURRENTMILEAGE", "N/A");
+            }
+
+            if (dgvWorkOrderDetails.Columns.Count > 0)
+            {
+                DataGridView dgvWorkOrderLine;
+                dgvWorkOrderLine = dgvWorkOrderDetails;
+                dgvWorkOrderLine.Columns["ItemName"].HeaderText = "Articulo";
+                dgvWorkOrderLine.Columns["Quantity"].HeaderText = "Cantidad";
+                dgvWorkOrderLine.Columns["UnitPrice"].HeaderText = "Precio Unitario";
+                dgvWorkOrderLine.Columns["Amount"].HeaderText = "Monto";
+
+                dgvWorkOrderLine.Columns.Remove("Id");
+                dgvWorkOrderLine.Columns.Remove("WorkOrderId");
+                dgvWorkOrderLine.Columns.Remove("Item");
+            }
+
+            string htmlTable = "<table class='work-order-table' style='border-collapse: collapse; width: 100%;'>";
+
+            htmlTable += "<tr>";
+            foreach (DataGridViewColumn column in dgvWorkOrderDetails.Columns)
+            {
+                htmlTable += "<th>" + column.HeaderText + "</th>";
+            }
+            htmlTable += "</tr>";
+
+            foreach (DataGridViewRow row in dgvWorkOrderDetails.Rows)
+            {
+                htmlTable += "<tr>";
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    htmlTable += "<td>" + (cell.Value?.ToString() ?? "N/A") + "</td>";
+                }
+                htmlTable += "</tr>";
+            }
+
+            htmlTable += "<tr>";
+            htmlTable += "<td colspan='" + (dgvWorkOrderDetails.Columns.Count - 1) + "' style='text-align: right; font-weight: bold;'>MontoTotal:</td>";
+            htmlTable += "<td>" + totalA.ToString() + "</td>";
+            htmlTable += "</tr>";
+
+            htmlTable += "</table>";
+
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@WORKORDERLINE", htmlTable);
+
+            string observacionesHTML = "<ul class='observations-list'>";
+            foreach (var observation in workOrderTemplate.Observations ?? Enumerable.Empty<Observation>())
+            {
+                observacionesHTML += $"<li>{observation.Description ?? "N/A"}";
+
+                // Obtener las imágenes asociadas a la observación desde el controlador
+                var observationPhotos = new ObservationPhotos_Controller().GetAll(observation.Code);
+
+                if (observationPhotos != null && observationPhotos.Any())
+                {
+                    observacionesHTML += "<br/><div class='observation-images'>";
+
+                    foreach (var photo in observationPhotos)
+                    {
+                        if (photo.Photo != null && photo.Photo.Length > 0)
+                        {
+                            string base64Image = Convert.ToBase64String(photo.Photo);
+                            observacionesHTML += $"<img src=\"data:image/png;base64,{base64Image}\" alt=\"Observation Photo\" style=\"width:200px;height:150px;\" />";
+                        }
+                    }
+
+                    observacionesHTML += "</div>";
+                }
+
+                observacionesHTML += "</li>";
+            }
+            observacionesHTML += "</ul>";
+
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@OBSERVATIONS", observacionesHTML);
+
+            if (savefile.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = savefile.FileName;
+
+                using (FileStream stream = new FileStream(savefile.FileName, FileMode.Create))
+                {
+                    Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
+
+                    PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+                    pdfDoc.Open();
+                    pdfDoc.Add(new Phrase(""));
+
+                    using (StringReader sr = new StringReader(PaginaHTML_Texto))
+                    {
+                        XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+                    }
+
+                    pdfDoc.Close();
+                    stream.Close();
+                }
+
+                if (!string.IsNullOrEmpty(client?.Email))
+                {
+                    SendEmail(client.Email, filePath);
+                }
+                else
+                {
+                    MessageBox.Show("El cliente no tiene una dirección de correo electrónico válida.");
+                }
+            }
+        }
 
 
-        //private void btnPrint_Click(object sender, EventArgs e)
-        //{
-        //    SaveFileDialog savefile = new SaveFileDialog();
-        //    savefile.Filter = "Archivos de Pdf|*.pdf";
-        //    savefile.FileName = string.Format(DateTime.Now.ToString("ddMMyyyyHHmmss"));
 
-        //    string PaginaHTML_Texto = Properties.Resources.Template.ToString();
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@BRANCH", workOrderTemplate.Branch.Name);
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DATE", workOrderTemplate.Date.ToString());
+        private void SendEmail(string email, string pdfFilePath)
+        {
+            try
+            {
+                MailAddress addressFrom = new MailAddress("soportelubritech@gmail.com", "LubriTech");
+                MailAddress addressTo = new MailAddress(email);
+                MailMessage message = new MailMessage(addressFrom, addressTo);
 
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ID", client.Id);
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NAME", client.FullName);
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MAINPHONE", client.MainPhoneNum.ToString());
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ADDITIONALPHONE", client.AdditionalPhoneNum.ToString());
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@EMAIL", client.Email);
-
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@LICENSEPLATE", vehicle.LicensePlate);
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MAKE", workOrderTemplate.Vehicle.Model.Make.ToString());
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MODEL", vehicle.Model + " " + vehicle.Year);
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MILEAGE", vehicle.Mileage.ToString());
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CURRENTMILEAGE", workOrderTemplate.CurrentMileage.ToString());
-
-        //    string htmlTable = "<table border='1'><tr>";
-
-        //    // Agrega las cabeceras de las columnas
-        //    foreach (DataGridViewColumn column in dataGridView1.Columns)
-        //    {
-        //        htmlTable += "<th>" + column.HeaderText + "</th>";
-        //    }
-        //    htmlTable += "</tr>";
-
-        //    // Agrega las filas y celdas de datos
-        //    foreach (DataGridViewRow row in dataGridView1.Rows)
-        //    {
-        //        htmlTable += "<tr>";
-        //        foreach (DataGridViewCell cell in row.Cells)
-        //        {
-        //            htmlTable += "<td>" + cell.Value?.ToString() + "</td>"; // Agrega el valor de la celda como contenido de <td>
-        //        }
-        //        htmlTable += "</tr>";
-        //    }
-
-        //    // Cierra la tabla HTML
-        //    htmlTable += "</table>";
-
-        //    // Reemplaza @TABLA_PRODUCTOS en PaginaHTML_Texto con la tabla HTML generada
-        //    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TABLA_PRODUCTOS", htmlTable);
+                message.Subject = "Orden de Trabajo";
+                message.Body = "Estimado cliente,\n\nAdjunto encontrará la Orden de Trabajo en formato PDF.\n\nAtentamente,\nLubricentro Santa Teresita";
 
 
+                Attachment pdfAttachment = new Attachment(pdfFilePath);
+                message.Attachments.Add(pdfAttachment);
 
+                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com")
+                {
+                    Port = 587,
+                    EnableSsl = true,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential("soportelubritech@gmail.com", "puux hwyd enia dmrr")
+                };
 
-        //string imagenesHTML = string.Empty;
+                smtpClient.Send(message);
 
-        //foreach (var photo in observationPhotos2)
-        //{
-        //    string base64Image = Convert.ToBase64String(photo.Photo);
-        //    imagenesHTML += $"<img src=\"data:image/png;base64,{base64Image}\" alt=\"Observation Photo\" />";
-        //}
+                pdfAttachment.Dispose();
+                message.Dispose();
 
-        //// Ahora reemplazamos @IMAGENES en PaginaHTML_Texto con imagenesHTML
-        //PaginaHTML_Texto = PaginaHTML_Texto.Replace("@IMAGENES", imagenesHTML);
-
-        //< img src = "data:image/png;base64,@image" alt = "Observation Photo" />
-
-
-
-        //    if (savefile.ShowDialog() == DialogResult.OK)
-        //    {
-        //        using (FileStream stream = new FileStream(savefile.FileName, FileMode.Create))
-        //        {
-        //            //Creamos un nuevo documento y lo definimos como PDF
-        //            Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
-
-        //            PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
-        //            pdfDoc.Open();
-        //            pdfDoc.Add(new Phrase(""));
-
-        //            //pdfDoc.Add(new Phrase("Hola Mundo"));
-        //            using (StringReader sr = new StringReader(PaginaHTML_Texto))
-        //            {
-        //                XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
-        //            }
-
-        //            pdfDoc.Close();
-        //            stream.Close();
-        //        }
-
-
-        //    }
-        //}
+                MessageBox.Show("Correo enviado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al enviar el correo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -22,23 +22,12 @@ namespace LubriTech.View
             InitializeComponent();
         }
 
-        public frmInsertUpdate_Engine(Engine engine, string action)
+        public frmInsertUpdate_Engine(Engine engine)
         {
             InitializeComponent();
             this.engine = engine;
             txtEngineType.Text = engine.EngineType;
             cbState.SelectedIndex = cbState.FindStringExact(engine.State);
-
-            if (action == "Details")
-            {
-                txtEngineType.Enabled = false;
-                cbState.Enabled = false;
-
-                txtEngineType.BackColor = Color.FromArgb(249, 252, 255);
-                cbState.BackColor = Color.FromArgb(249, 252, 255);
-
-                btnConfirm.Hide();
-            }
         }
 
         // Define a custom event
@@ -81,8 +70,7 @@ namespace LubriTech.View
             engine.State = cbState.Text;
 
             if (new Engine_Controller().upsert(engine))
-            {
-                MessageBox.Show("Tipo de motor registrado", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            { 
                 OnDataChanged(EventArgs.Empty);
                 this.Close();
             }
