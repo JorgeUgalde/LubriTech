@@ -90,6 +90,7 @@ namespace LubriTech.View
                 {
                     new User_Controller().Upsert(user, newPassword);
                     MessageBox.Show("Usuario creado con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Dispose();
  
                 }
                 else

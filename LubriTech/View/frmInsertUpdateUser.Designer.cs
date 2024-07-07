@@ -101,6 +101,7 @@
             this.txtNewPass.Margin = new System.Windows.Forms.Padding(2, 2, 6, 6);
             this.txtNewPass.MaxLength = 50;
             this.txtNewPass.Name = "txtNewPass";
+            this.txtNewPass.PasswordChar = '*';
             this.txtNewPass.Size = new System.Drawing.Size(205, 29);
             this.txtNewPass.TabIndex = 5;
             // 
@@ -197,6 +198,7 @@
             this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 6, 6);
             this.txtPassword.MaxLength = 50;
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(205, 29);
             this.txtPassword.TabIndex = 4;
             // 
