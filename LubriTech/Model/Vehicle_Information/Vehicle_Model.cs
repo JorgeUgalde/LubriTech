@@ -23,33 +23,51 @@ namespace LubriTech.Model.Vehicle_Information
         /// Carga todos los vehículos desde la base de datos.
         /// </summary>
         /// <returns>Una lista de vehículos.</returns>
+
         public List<Vehicle> loadAllVehicles()
         {
             List<Vehicle> vehicles = new List<Vehicle>();
 
+            Dictionary<int, Engine> engines = new Engine_Controller().getAll().ToDictionary(e => e.Id, e => e);
+
+            Dictionary<int, CarModel> carModels = new CarModel_Controller().getAll().ToDictionary(m => m.Id, m => m);
+
+            Dictionary<int, Transmission> transmissions = new Transmission_Controller().getAll().ToDictionary(t => t.Id, t => t);
+
+            Dictionary<string, Client> clients = new Clients_Controller().getAll().ToDictionary(c => c.Id, c => c);
+
             try
             {
-                conn.Open();
-                String selectQuery = "SELECT * FROM Vehiculo";
-                SqlCommand cmd = new SqlCommand(selectQuery, conn);
+
+                // Cargar todos los vehículos
+                string selectQuery = "SELECT * FROM Vehiculo";
                 DataTable tblVehicles = new DataTable();
-                SqlDataAdapter adp = new SqlDataAdapter();
+                using (SqlCommand cmd = new SqlCommand(selectQuery, conn))
+                using (SqlDataAdapter adp = new SqlDataAdapter(cmd))
+                {
+                    adp.Fill(tblVehicles);
+                }
 
-                adp.SelectCommand = cmd;
-
-                adp.Fill(tblVehicles);
-
+                // Procesar los datos de vehículos
                 foreach (DataRow dr in tblVehicles.Rows)
                 {
-                    vehicles.Add(new Vehicle(dr["Placa"].ToString(),
-                                                (new Engine_Controller().getEngine(Convert.ToInt32(dr["IdentificacionMotor"].ToString()))),
-                                                Convert.ToInt32(dr["Kilometraje"]),
-                                                (new CarModel_Controller().getModel(Convert.ToInt32(dr["IdentificacionModelo"]))),
-                                                Convert.ToInt32(dr["Anio"]),
-                                                (new Transmission_Controller().getTransmission(Convert.ToInt32(dr["IdentificacionTransmision"].ToString()))),
-                                                (new Clients_Controller().getClient((string)dr["IdentificacionCliente"])),
-                                                (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo"));
+                    int engineId = Convert.ToInt32(dr["IdentificacionMotor"]);
+                    int modelId = Convert.ToInt32(dr["IdentificacionModelo"]);
+                    int transmissionId = Convert.ToInt32(dr["IdentificacionTransmision"]);
+                    string clientId = dr["IdentificacionCliente"].ToString();
+
+                    vehicles.Add(new Vehicle(
+                        dr["Placa"].ToString(),
+                        engines.ContainsKey(engineId) ? engines[engineId] : null,
+                        Convert.ToInt32(dr["Kilometraje"]),
+                        carModels.ContainsKey(modelId) ? carModels[modelId] : null,
+                        Convert.ToInt32(dr["Anio"]),
+                        transmissions.ContainsKey(transmissionId) ? transmissions[transmissionId] : null,
+                        clients.ContainsKey(clientId) ? clients[clientId] : null,
+                        (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo"));
                 }
+
+
                 return vehicles;
             }
             catch (Exception ex)
@@ -59,11 +77,14 @@ namespace LubriTech.Model.Vehicle_Information
             }
             finally
             {
-                conn.Close();
+                //verify if conn is close
+                if (conn.State != System.Data.ConnectionState.Closed)
+                    conn.Close();
             }
         }
 
-       
+
+
 
         /// <summary>
         /// Actualiza o inserta un vehículo en la base de datos.

@@ -92,7 +92,7 @@ namespace LubriTech.View.Appointment_View
             this.panel1.Location = new System.Drawing.Point(0, 37);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(375, 1025);
+            this.panel1.Size = new System.Drawing.Size(375, 846);
             this.panel1.TabIndex = 1;
             // 
             // cbBranch
@@ -445,7 +445,7 @@ namespace LubriTech.View.Appointment_View
             this.pnlAppointments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlAppointments.MinimumSize = new System.Drawing.Size(605, 620);
             this.pnlAppointments.Name = "pnlAppointments";
-            this.pnlAppointments.Size = new System.Drawing.Size(984, 969);
+            this.pnlAppointments.Size = new System.Drawing.Size(984, 801);
             this.pnlAppointments.TabIndex = 2;
             // 
             // lblDaySelected
@@ -521,7 +521,7 @@ namespace LubriTech.View.Appointment_View
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1368, 970);
+            this.ClientSize = new System.Drawing.Size(1368, 884);
             this.Controls.Add(this.panelBorder);
             this.Controls.Add(this.lblDaySelected);
             this.Controls.Add(this.pnlAppointments);
