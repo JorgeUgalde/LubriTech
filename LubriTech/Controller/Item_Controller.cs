@@ -53,5 +53,10 @@ namespace LubriTech.Controller
         {
             return new Item_Model().updateItemQuantity(itemCode, branch, quantity);
         }
+
+        public bool IsItemService(string code)
+        {
+            return new Item_Model().IsItemService(code);
+        }
     }
 }

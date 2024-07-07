@@ -12,15 +12,15 @@ namespace LubriTech.Model.PricesList_Information
         public int id { get; set; }
         public int priceList { get; set; }
         public Item Item { get; set; }
-        public decimal factor { get; set; }
-        public decimal price { get; set; }
+        public double factor { get; set; }
+        public double price { get; set; }
 
         public Prices()
         {
 
         }
 
-        public Prices(int id, int priceList, Item item, decimal factor, decimal price)
+        public Prices(int id, int priceList, Item item, double factor, double price)
         {
             this.id = id;
             this.priceList = priceList;
@@ -29,7 +29,7 @@ namespace LubriTech.Model.PricesList_Information
             this.price = price;
         }
 
-        public Prices(int priceList, Item item, decimal factor, decimal price)
+        public Prices(int priceList, Item item, double factor, double price)
         {
             this.priceList = priceList;
             Item = item;
