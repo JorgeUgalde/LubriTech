@@ -142,7 +142,7 @@ namespace LubriTech.View
             o.Description = description;
             o = new Observation_Controller().Upsert(o);
             ObservationChanged?.Invoke(this, EventArgs.Empty);
-
+            this.Dispose();
 
         }
 

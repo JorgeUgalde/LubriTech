@@ -512,12 +512,28 @@ namespace LubriTech.View
             dgvObservation.Columns["Description"].HeaderText = "Descripcion";
             dgvObservation.Columns["WorkOrderId"].Visible = false;
 
+                
+    
+
             SetColumnOrderObservation();
         }
+
         private void SetColumnOrderObservation()
         {
+            if (!dgvObservation.Columns.Contains("btnDelete"))
+            {
+                // Agregar columna de botón de eliminar
+                DataGridViewButtonColumn btnDelete = new DataGridViewButtonColumn();
+                btnDelete.HeaderText = "Eliminar";
+                btnDelete.Name = "btnDelete";
+                btnDelete.Text = "Eliminar";
+                btnDelete.UseColumnTextForButtonValue = true;
+
+                dgvObservation.Columns.Add(btnDelete);
+            }
             dgvObservation.Columns["Code"].DisplayIndex = 0;
             dgvObservation.Columns["Description"].DisplayIndex = 1;
+            dgvObservation.Columns["btnDelete"].DisplayIndex = 2;
         }
 
         private void FrmInsertObservation_ObservationChanged(object sender, EventArgs e)
@@ -527,8 +543,27 @@ namespace LubriTech.View
 
         private void dgvObservation_CellMouseDoubleClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (e.ColumnIndex == dgvObservation.Columns["btnDelete"].Index && e.RowIndex >= 0)
             {
+                // Obtener el ID de la observación a eliminar
+                var observationId = (int)dgvObservation.Rows[e.RowIndex].Cells["Code"].Value;
+
+                // Lógica para eliminar la observación
+                if (new Observation_Controller().Delete(observationId))
+                {
+                    MessageBox.Show("Observación eliminada correctamente.");
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar la observación.");
+                }
+
+                // Recargar las observaciones
+                load_Observation();
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex != dgvObservation.Columns["btnDelete"].Index)
+            {
+                // Obtener el código de la observación seleccionada
                 string observationCode = dgvObservation.Rows[e.RowIndex].Cells["Code"].Value.ToString();
                 List<Observation> observations = new Observation_Controller().GetObservation(workOrderTemplate.Id);
                 Observation selectedObservation = observations.FirstOrDefault(observation => observation.Code.ToString() == observationCode);
