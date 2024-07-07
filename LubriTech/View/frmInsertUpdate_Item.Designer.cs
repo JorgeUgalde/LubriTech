@@ -65,7 +65,8 @@
             this.cbMeasureUnit.Items.AddRange(new object[] {
             "Unidad",
             "Litro",
-            "Kilo"});
+            "Kilo",
+            "Servicio"});
             this.cbMeasureUnit.Location = new System.Drawing.Point(244, 248);
             this.cbMeasureUnit.Margin = new System.Windows.Forms.Padding(5);
             this.cbMeasureUnit.Name = "cbMeasureUnit";
@@ -101,7 +102,7 @@
             // txtFact
             // 
             this.txtFact.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFact.Location = new System.Drawing.Point(857, 252);
+            this.txtFact.Location = new System.Drawing.Point(857, 248);
             this.txtFact.Margin = new System.Windows.Forms.Padding(3, 2, 8, 7);
             this.txtFact.MaxLength = 3;
             this.txtFact.Name = "txtFact";
@@ -144,7 +145,7 @@
             // 
             this.lblSellPrice.AutoSize = true;
             this.lblSellPrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSellPrice.Location = new System.Drawing.Point(567, 256);
+            this.lblSellPrice.Location = new System.Drawing.Point(567, 251);
             this.lblSellPrice.Name = "lblSellPrice";
             this.lblSellPrice.Size = new System.Drawing.Size(212, 28);
             this.lblSellPrice.TabIndex = 16;
@@ -223,7 +224,7 @@
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfirm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirm.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnConfirm.Location = new System.Drawing.Point(34, 384);
+            this.btnConfirm.Location = new System.Drawing.Point(34, 325);
             this.btnConfirm.Margin = new System.Windows.Forms.Padding(4);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(188, 42);
@@ -240,7 +241,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnClose.Location = new System.Drawing.Point(940, 384);
+            this.btnClose.Location = new System.Drawing.Point(940, 325);
             this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(188, 42);
@@ -252,7 +253,7 @@
             // tbStock
             // 
             this.tbStock.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbStock.Location = new System.Drawing.Point(244, 306);
+            this.tbStock.Location = new System.Drawing.Point(857, 245);
             this.tbStock.Margin = new System.Windows.Forms.Padding(3, 2, 8, 7);
             this.tbStock.MaxLength = 10;
             this.tbStock.Name = "tbStock";
@@ -263,7 +264,7 @@
             // 
             this.lblStock.AutoSize = true;
             this.lblStock.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStock.Location = new System.Drawing.Point(25, 312);
+            this.lblStock.Location = new System.Drawing.Point(567, 251);
             this.lblStock.Name = "lblStock";
             this.lblStock.Size = new System.Drawing.Size(197, 28);
             this.lblStock.TabIndex = 35;
@@ -347,7 +348,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(1167, 449);
+            this.ClientSize = new System.Drawing.Size(1167, 382);
             this.Controls.Add(this.lblPercentage);
             this.Controls.Add(this.panelBorder);
             this.Controls.Add(this.txtRecommended);

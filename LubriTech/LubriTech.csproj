@@ -562,6 +562,9 @@
     <Content Include="Images\people.png" />
     <Content Include="Images\products.png" />
     <None Include="Images\searchClient.png" />
+    <None Include="Images\SearchVehicle.png" />
+    <None Include="Images\SelectVehicle.png" />
+    <None Include="Images\searching-car.png" />
     <Content Include="Images\services.png" />
     <Content Include="Images\suppliers.png" />
     <Content Include="Images\vehicle.png" />
