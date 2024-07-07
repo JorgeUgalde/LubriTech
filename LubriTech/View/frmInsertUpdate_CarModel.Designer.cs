@@ -140,9 +140,9 @@
             this.lblForm.Location = new System.Drawing.Point(9, 5);
             this.lblForm.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblForm.Name = "lblForm";
-            this.lblForm.Size = new System.Drawing.Size(179, 21);
+            this.lblForm.Size = new System.Drawing.Size(172, 21);
             this.lblForm.TabIndex = 50;
-            this.lblForm.Text = "Dato Maestro Modelos";
+            this.lblForm.Text = "Dato Maestro Modelo";
             this.lblForm.Click += new System.EventHandler(this.lblForm_Click);
             // 
             // pbClose

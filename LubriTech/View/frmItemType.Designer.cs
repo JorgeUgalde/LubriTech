@@ -69,9 +69,9 @@
             this.lblForm.ForeColor = System.Drawing.Color.White;
             this.lblForm.Location = new System.Drawing.Point(12, 6);
             this.lblForm.Name = "lblForm";
-            this.lblForm.Size = new System.Drawing.Size(142, 21);
+            this.lblForm.Size = new System.Drawing.Size(135, 21);
             this.lblForm.TabIndex = 15;
-            this.lblForm.Text = "Tipos de Artículos";
+            this.lblForm.Text = "Tipos de Artículo";
             this.lblForm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblForm_MouseDown);
             // 
             // pbMaximize
@@ -197,7 +197,7 @@
             this.txtFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFilter.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFilter.Location = new System.Drawing.Point(529, 50);
-            this.txtFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFilter.Margin = new System.Windows.Forms.Padding(2);
             this.txtFilter.Name = "txtFilter";
             this.txtFilter.Size = new System.Drawing.Size(258, 29);
             this.txtFilter.TabIndex = 1;
@@ -210,9 +210,9 @@
             this.label2.Location = new System.Drawing.Point(14, 53);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(202, 21);
+            this.label2.Size = new System.Drawing.Size(195, 21);
             this.label2.TabIndex = 17;
-            this.label2.Text = "Lista de Tipos de Artículos";
+            this.label2.Text = "Lista de Tipos de Artículo";
             // 
             // frmItemType
             // 
@@ -228,7 +228,7 @@
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmItemType";
             this.Text = "frmItemType";
             this.panelBorder.ResumeLayout(false);

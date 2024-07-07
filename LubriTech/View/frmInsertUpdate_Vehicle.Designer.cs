@@ -309,9 +309,9 @@ namespace LubriTech.View
             this.lblForm.ForeColor = System.Drawing.Color.White;
             this.lblForm.Location = new System.Drawing.Point(12, 6);
             this.lblForm.Name = "lblForm";
-            this.lblForm.Size = new System.Drawing.Size(183, 21);
+            this.lblForm.Size = new System.Drawing.Size(176, 21);
             this.lblForm.TabIndex = 45;
-            this.lblForm.Text = "Dato Maestro Vehículos";
+            this.lblForm.Text = "Dato Maestro Vehículo";
             // 
             // pbClose
             // 

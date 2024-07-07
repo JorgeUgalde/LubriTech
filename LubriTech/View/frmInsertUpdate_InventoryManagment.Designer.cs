@@ -434,20 +434,20 @@
             // lblDetailLine
             // 
             this.lblDetailLine.AutoSize = true;
-            this.lblDetailLine.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetailLine.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.lblDetailLine.Location = new System.Drawing.Point(35, 201);
             this.lblDetailLine.Name = "lblDetailLine";
-            this.lblDetailLine.Size = new System.Drawing.Size(110, 21);
+            this.lblDetailLine.Size = new System.Drawing.Size(103, 21);
             this.lblDetailLine.TabIndex = 76;
             this.lblDetailLine.Text = "Línea Detalle";
             // 
             // lblInventoryManagment
             // 
             this.lblInventoryManagment.AutoSize = true;
-            this.lblInventoryManagment.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInventoryManagment.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.lblInventoryManagment.Location = new System.Drawing.Point(35, 42);
             this.lblInventoryManagment.Name = "lblInventoryManagment";
-            this.lblInventoryManagment.Size = new System.Drawing.Size(151, 21);
+            this.lblInventoryManagment.Size = new System.Drawing.Size(144, 21);
             this.lblInventoryManagment.TabIndex = 77;
             this.lblInventoryManagment.Text = "Gestión Inventario";
             // 
