@@ -144,6 +144,7 @@ namespace LubriTech.View
                     else
                     {
                         frmUpsert_Client frmInsertClient = new frmUpsert_Client(selectedClient);
+                        this.WindowState = FormWindowState.Normal;
                         frmInsertClient.MdiParent = this.MdiParent;
                         frmInsertClient.DataChanged += ChildFormDataChangedHandler;
                         frmInsertClient.Show();
@@ -191,6 +192,7 @@ namespace LubriTech.View
         private void btnAddClient_Click_1(object sender, EventArgs e)
         {
             frmUpsert_Client frmInsert_Client = new frmUpsert_Client();
+            this.WindowState = FormWindowState.Normal;
             frmInsert_Client.MdiParent = this.MdiParent;
             frmInsert_Client.DataChanged += ChildFormDataChangedHandler;
             frmInsert_Client.Show();

@@ -26,8 +26,6 @@ namespace LubriTech.Model.Client_Information
             try
             {
                 List<Client> clients = new List<Client>();
-                Dictionary<int, Engine> engines = new Engine_Controller().getAll().ToDictionary(e => e.Id, e => e);
-
                 Dictionary<int, PriceList> priceLists = new PriceList_Controller().getPriceLists().ToDictionary(pl => pl.id, pl => pl);
                 {
                     conn.Open();

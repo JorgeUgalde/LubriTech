@@ -113,6 +113,7 @@ namespace LubriTech.View
         private void btnAddEngine_Click(object sender, EventArgs e)
         {
             frmInsertUpdate_Engine frmUpsertEngine = new frmInsertUpdate_Engine();
+            this.WindowState = FormWindowState.Normal;
             frmUpsertEngine.MdiParent = this.MdiParent;
             frmUpsertEngine.DataChanged += ChildFormDataChangedHandler;
             frmUpsertEngine.Show();
@@ -136,6 +137,7 @@ namespace LubriTech.View
 
                 string action = "Modify";
                 frmInsertUpdate_Engine frmInsertEngine = new frmInsertUpdate_Engine(selectedEngine, action);
+                this.WindowState = FormWindowState.Normal;
                 frmInsertEngine.MdiParent = this.MdiParent;
                 frmInsertEngine.DataChanged += ChildFormDataChangedHandler;
                 frmInsertEngine.Show();
@@ -157,6 +159,7 @@ namespace LubriTech.View
                 }
                 string action = "Details";
                 frmInsertUpdate_Engine frmInsertEngine = new frmInsertUpdate_Engine(selectedEngine, action);
+                this.WindowState = FormWindowState.Normal;
                 frmInsertEngine.MdiParent = this.MdiParent;
                 frmInsertEngine.DataChanged += ChildFormDataChangedHandler;
                 frmInsertEngine.Show();

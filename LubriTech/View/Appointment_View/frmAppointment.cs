@@ -409,6 +409,10 @@ namespace LubriTech.View.Appointment_View
                 appointment.State = "Activo";
             }
             frmInsertUpdate_Appointment frmAppointmentDetails = new frmInsertUpdate_Appointment(appointment);
+
+            // set this form and the child form in window mode normal
+            frmAppointmentDetails.WindowState = FormWindowState.Normal;
+            this.WindowState = FormWindowState.Normal;
             frmAppointmentDetails.DataChanged += ChildFormDataChangedHandler;
             frmAppointmentDetails.MdiParent = this.MdiParent;
             frmAppointmentDetails.Show();

@@ -111,5 +111,10 @@ namespace LubriTech.View.Appointment_View
                 MessageBox.Show("Error al realizar la acción", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
