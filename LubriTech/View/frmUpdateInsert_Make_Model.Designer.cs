@@ -169,9 +169,9 @@
             this.lblForm.ForeColor = System.Drawing.Color.White;
             this.lblForm.Location = new System.Drawing.Point(12, 6);
             this.lblForm.Name = "lblForm";
-            this.lblForm.Size = new System.Drawing.Size(179, 21);
+            this.lblForm.Size = new System.Drawing.Size(172, 21);
             this.lblForm.TabIndex = 15;
-            this.lblForm.Text = "Dato Maestro Modelos";
+            this.lblForm.Text = "Dato Maestro Modelo";
             // 
             // pbClose
             // 
