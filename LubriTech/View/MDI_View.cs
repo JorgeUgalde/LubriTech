@@ -233,5 +233,12 @@ namespace LubriTech.View
             OpenChildForm(frmItemType);
             frmItemType.BringToFront();
         }
+
+        private void btnPurchaseOrder_Click(object sender, EventArgs e)
+        {
+            frmInventoryManagment frmInventoryManagment = new frmInventoryManagment();
+            OpenChildForm(frmInventoryManagment);
+            frmInventoryManagment.BringToFront();
+        }
     }
 }
