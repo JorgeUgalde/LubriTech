@@ -52,12 +52,12 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(434, 62);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(437, 62);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 21);
-            this.label3.TabIndex = 12;
+            this.label3.Size = new System.Drawing.Size(79, 21);
+            this.label3.TabIndex = 17;
             this.label3.Text = "Filtrar por";
             // 
             // txtFilter
@@ -68,18 +68,18 @@
             this.txtFilter.Margin = new System.Windows.Forms.Padding(2);
             this.txtFilter.Name = "txtFilter";
             this.txtFilter.Size = new System.Drawing.Size(258, 29);
-            this.txtFilter.TabIndex = 11;
+            this.txtFilter.TabIndex = 1;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(18, 67);
+            this.label2.Location = new System.Drawing.Point(18, 62);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(122, 21);
-            this.label2.TabIndex = 8;
+            this.label2.TabIndex = 15;
             this.label2.Text = "Lista de Marcas";
             // 
             // dgvMakes
@@ -131,7 +131,7 @@
             this.dgvMakes.RowHeadersWidth = 51;
             this.dgvMakes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMakes.Size = new System.Drawing.Size(756, 345);
-            this.dgvMakes.TabIndex = 13;
+            this.dgvMakes.TabIndex = 2;
             this.dgvMakes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMakes_CellDoubleClick);
             // 
             // btnAddMake
@@ -145,7 +145,7 @@
             this.btnAddMake.Location = new System.Drawing.Point(22, 472);
             this.btnAddMake.Name = "btnAddMake";
             this.btnAddMake.Size = new System.Drawing.Size(141, 34);
-            this.btnAddMake.TabIndex = 14;
+            this.btnAddMake.TabIndex = 3;
             this.btnAddMake.Text = "Crear";
             this.btnAddMake.UseVisualStyleBackColor = false;
             this.btnAddMake.Click += new System.EventHandler(this.btnAddMake_Click_1);
@@ -161,7 +161,7 @@
             this.button1.Location = new System.Drawing.Point(637, 472);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(141, 34);
-            this.button1.TabIndex = 15;
+            this.button1.TabIndex = 4;
             this.button1.Text = "Cerrar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -188,7 +188,7 @@
             this.lblForm.Location = new System.Drawing.Point(12, 6);
             this.lblForm.Name = "lblForm";
             this.lblForm.Size = new System.Drawing.Size(62, 21);
-            this.lblForm.TabIndex = 10;
+            this.lblForm.TabIndex = 16;
             this.lblForm.Text = "Marcas";
             // 
             // pbMaximize
@@ -231,7 +231,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmMakes";
-            this.Text = "Marcas";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.frmMakes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMakes)).EndInit();
             this.panelBorder.ResumeLayout(false);

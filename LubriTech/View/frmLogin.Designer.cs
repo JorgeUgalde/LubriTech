@@ -70,7 +70,7 @@
             this.btLogin.MinimumSize = new System.Drawing.Size(348, 41);
             this.btLogin.Name = "btLogin";
             this.btLogin.Size = new System.Drawing.Size(348, 41);
-            this.btLogin.TabIndex = 0;
+            this.btLogin.TabIndex = 3;
             this.btLogin.Text = "Iniciar sesión";
             this.btLogin.UseVisualStyleBackColor = false;
             this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
@@ -85,8 +85,8 @@
             this.txtEmail.Location = new System.Drawing.Point(556, 230);
             this.txtEmail.MinimumSize = new System.Drawing.Size(348, 34);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(348, 34);
-            this.txtEmail.TabIndex = 2;
+            this.txtEmail.Size = new System.Drawing.Size(348, 28);
+            this.txtEmail.TabIndex = 1;
             this.txtEmail.MouseEnter += new System.EventHandler(this.txtEmail_MouseEnter);
             this.txtEmail.MouseLeave += new System.EventHandler(this.txtEmail_MouseLeave);
             // 
@@ -101,8 +101,8 @@
             this.txtPassword.MinimumSize = new System.Drawing.Size(348, 34);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(348, 34);
-            this.txtPassword.TabIndex = 3;
+            this.txtPassword.Size = new System.Drawing.Size(348, 28);
+            this.txtPassword.TabIndex = 2;
             this.txtPassword.MouseEnter += new System.EventHandler(this.txtPassword_MouseEnter);
             this.txtPassword.MouseLeave += new System.EventHandler(this.txtPassword_MouseLeave);
             // 
@@ -115,7 +115,7 @@
             this.label1.Location = new System.Drawing.Point(551, 192);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(210, 26);
-            this.label1.TabIndex = 4;
+            this.label1.TabIndex = 17;
             this.label1.Text = "Correo electrónico";
             // 
             // label2
@@ -127,7 +127,7 @@
             this.label2.Location = new System.Drawing.Point(551, 277);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(136, 26);
-            this.label2.TabIndex = 5;
+            this.label2.TabIndex = 18;
             this.label2.Text = "Contraseña";
             // 
             // panel1
@@ -149,7 +149,7 @@
             this.panel6.Location = new System.Drawing.Point(61, 0);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(21, 500);
-            this.panel6.TabIndex = 10;
+            this.panel6.TabIndex = 15;
             // 
             // panel7
             // 
@@ -166,7 +166,7 @@
             this.panel4.Location = new System.Drawing.Point(36, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(21, 512);
-            this.panel4.TabIndex = 10;
+            this.panel4.TabIndex = 15;
             // 
             // panel5
             // 
@@ -202,7 +202,7 @@
             this.panel2.Location = new System.Drawing.Point(10, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(21, 500);
-            this.panel2.TabIndex = 9;
+            this.panel2.TabIndex = 15;
             // 
             // lblAdd
             // 
@@ -213,7 +213,7 @@
             this.lblAdd.Location = new System.Drawing.Point(829, 350);
             this.lblAdd.Name = "lblAdd";
             this.lblAdd.Size = new System.Drawing.Size(75, 17);
-            this.lblAdd.TabIndex = 10;
+            this.lblAdd.TabIndex = 5;
             this.lblAdd.Text = "Registrarse";
             this.lblAdd.Click += new System.EventHandler(this.lblAdd_Click);
             // 
@@ -226,7 +226,7 @@
             this.lblRecoverPassword.Location = new System.Drawing.Point(553, 350);
             this.lblRecoverPassword.Name = "lblRecoverPassword";
             this.lblRecoverPassword.Size = new System.Drawing.Size(148, 17);
-            this.lblRecoverPassword.TabIndex = 11;
+            this.lblRecoverPassword.TabIndex = 4;
             this.lblRecoverPassword.Text = "Restablecer contraseña";
             this.lblRecoverPassword.Click += new System.EventHandler(this.lblRecoverPassword_Click);
             // 

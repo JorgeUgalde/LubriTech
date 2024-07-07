@@ -71,7 +71,7 @@
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(141, 34);
-            this.btnClose.TabIndex = 17;
+            this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Cerrar";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -88,7 +88,7 @@
             this.btnAddCarModel.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddCarModel.Name = "btnAddCarModel";
             this.btnAddCarModel.Size = new System.Drawing.Size(141, 34);
-            this.btnAddCarModel.TabIndex = 16;
+            this.btnAddCarModel.TabIndex = 3;
             this.btnAddCarModel.Text = "Crear";
             this.btnAddCarModel.UseVisualStyleBackColor = false;
             this.btnAddCarModel.Click += new System.EventHandler(this.btnAddCarModel_Click);
@@ -97,11 +97,11 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(439, 57);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(436, 57);
             this.label3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 21);
+            this.label3.Size = new System.Drawing.Size(79, 21);
             this.label3.TabIndex = 19;
             this.label3.Text = "Filtrar por";
             // 
@@ -113,7 +113,7 @@
             this.txtFilter.Margin = new System.Windows.Forms.Padding(1);
             this.txtFilter.Name = "txtFilter";
             this.txtFilter.Size = new System.Drawing.Size(258, 29);
-            this.txtFilter.TabIndex = 18;
+            this.txtFilter.TabIndex = 1;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
             // dgvCarModels
@@ -166,7 +166,7 @@
             this.dgvCarModels.RowHeadersWidth = 51;
             this.dgvCarModels.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCarModels.Size = new System.Drawing.Size(752, 341);
-            this.dgvCarModels.TabIndex = 20;
+            this.dgvCarModels.TabIndex = 2;
             this.dgvCarModels.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCarModels_CellDoubleClick);
             // 
             // panelBorder

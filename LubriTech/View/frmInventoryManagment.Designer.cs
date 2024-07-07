@@ -59,7 +59,7 @@
             this.button1.Location = new System.Drawing.Point(637, 466);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(141, 34);
-            this.button1.TabIndex = 15;
+            this.button1.TabIndex = 4;
             this.button1.Text = "Cerrar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -73,7 +73,7 @@
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 21);
-            this.label1.TabIndex = 14;
+            this.label1.TabIndex = 17;
             this.label1.Text = "Filtrar por";
             // 
             // txtFilter
@@ -84,7 +84,7 @@
             this.txtFilter.Margin = new System.Windows.Forms.Padding(2);
             this.txtFilter.Name = "txtFilter";
             this.txtFilter.Size = new System.Drawing.Size(248, 29);
-            this.txtFilter.TabIndex = 13;
+            this.txtFilter.TabIndex = 1;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
             // btnAddInventoryManagment
@@ -98,7 +98,7 @@
             this.btnAddInventoryManagment.Location = new System.Drawing.Point(22, 466);
             this.btnAddInventoryManagment.Name = "btnAddInventoryManagment";
             this.btnAddInventoryManagment.Size = new System.Drawing.Size(141, 34);
-            this.btnAddInventoryManagment.TabIndex = 12;
+            this.btnAddInventoryManagment.TabIndex = 3;
             this.btnAddInventoryManagment.Text = "Crear";
             this.btnAddInventoryManagment.UseVisualStyleBackColor = false;
             this.btnAddInventoryManagment.Click += new System.EventHandler(this.btnAddInventoryManagment_Click);
@@ -113,7 +113,7 @@
             this.lblInventoryManagmentList.Location = new System.Drawing.Point(18, 69);
             this.lblInventoryManagmentList.Name = "lblInventoryManagmentList";
             this.lblInventoryManagmentList.Size = new System.Drawing.Size(243, 21);
-            this.lblInventoryManagmentList.TabIndex = 11;
+            this.lblInventoryManagmentList.TabIndex = 16;
             this.lblInventoryManagmentList.Text = "Lista de Gestiones de Inventario";
             // 
             // dgvInventoryManagments
@@ -164,7 +164,7 @@
             this.dgvInventoryManagments.RowHeadersVisible = false;
             this.dgvInventoryManagments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInventoryManagments.Size = new System.Drawing.Size(756, 345);
-            this.dgvInventoryManagments.TabIndex = 10;
+            this.dgvInventoryManagments.TabIndex = 2;
             this.dgvInventoryManagments.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvInventoryManagments_CellMouseDoubleClick);
             // 
             // panelBorder
@@ -189,7 +189,7 @@
             this.lblForm.Location = new System.Drawing.Point(12, 6);
             this.lblForm.Name = "lblForm";
             this.lblForm.Size = new System.Drawing.Size(84, 21);
-            this.lblForm.TabIndex = 10;
+            this.lblForm.TabIndex = 18;
             this.lblForm.Text = "Inventario";
             // 
             // pbMaximize

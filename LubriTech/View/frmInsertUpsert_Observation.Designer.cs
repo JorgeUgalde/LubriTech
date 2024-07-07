@@ -51,12 +51,12 @@
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnCancel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnCancel.Location = new System.Drawing.Point(649, 401);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(141, 34);
-            this.btnCancel.TabIndex = 52;
+            this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancelar";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -67,13 +67,13 @@
             this.btnAccept.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
             this.btnAccept.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAccept.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAccept.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccept.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnAccept.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAccept.Location = new System.Drawing.Point(15, 401);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(141, 34);
-            this.btnAccept.TabIndex = 51;
-            this.btnAccept.Text = "Aceptar";
+            this.btnAccept.TabIndex = 3;
+            this.btnAccept.Text = "Confirmar";
             this.btnAccept.UseVisualStyleBackColor = false;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
@@ -81,11 +81,11 @@
             // 
             this.txtDescription.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescription.Location = new System.Drawing.Point(118, 52);
+            this.txtDescription.Location = new System.Drawing.Point(119, 64);
             this.txtDescription.MaxLength = 150;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(260, 83);
-            this.txtDescription.TabIndex = 50;
+            this.txtDescription.TabIndex = 1;
             this.txtDescription.Text = "";
             // 
             // lblAddresse
@@ -93,7 +93,7 @@
             this.lblAddresse.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblAddresse.AutoSize = true;
             this.lblAddresse.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddresse.Location = new System.Drawing.Point(21, 52);
+            this.lblAddresse.Location = new System.Drawing.Point(22, 64);
             this.lblAddresse.Name = "lblAddresse";
             this.lblAddresse.Size = new System.Drawing.Size(91, 21);
             this.lblAddresse.TabIndex = 41;
@@ -128,7 +128,7 @@
             this.btnAdd.Location = new System.Drawing.Point(762, 172);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(28, 28);
-            this.btnAdd.TabIndex = 56;
+            this.btnAdd.TabIndex = 2;
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 

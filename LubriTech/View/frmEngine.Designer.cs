@@ -58,11 +58,10 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnClose.Location = new System.Drawing.Point(848, 569);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Location = new System.Drawing.Point(636, 462);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(188, 42);
-            this.btnClose.TabIndex = 21;
+            this.btnClose.Size = new System.Drawing.Size(141, 34);
+            this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Cerrar";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -75,11 +74,10 @@
             this.btnAddEngine.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddEngine.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddEngine.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAddEngine.Location = new System.Drawing.Point(33, 569);
-            this.btnAddEngine.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddEngine.Location = new System.Drawing.Point(25, 462);
             this.btnAddEngine.Name = "btnAddEngine";
-            this.btnAddEngine.Size = new System.Drawing.Size(188, 42);
-            this.btnAddEngine.TabIndex = 20;
+            this.btnAddEngine.Size = new System.Drawing.Size(141, 34);
+            this.btnAddEngine.TabIndex = 3;
             this.btnAddEngine.Text = "Crear";
             this.btnAddEngine.UseVisualStyleBackColor = false;
             this.btnAddEngine.Click += new System.EventHandler(this.btnAddEngine_Click);
@@ -117,8 +115,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvEngines.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvEngines.GridColor = System.Drawing.Color.White;
-            this.dgvEngines.Location = new System.Drawing.Point(33, 121);
-            this.dgvEngines.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvEngines.Location = new System.Drawing.Point(25, 98);
             this.dgvEngines.Name = "dgvEngines";
             this.dgvEngines.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -131,18 +128,19 @@
             this.dgvEngines.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvEngines.RowHeadersVisible = false;
             this.dgvEngines.RowHeadersWidth = 51;
-            this.dgvEngines.Size = new System.Drawing.Size(1003, 420);
-            this.dgvEngines.TabIndex = 19;
+            this.dgvEngines.Size = new System.Drawing.Size(752, 341);
+            this.dgvEngines.TabIndex = 2;
             this.dgvEngines.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEngines_CellContentClick);
             // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(577, 76);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(436, 62);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 28);
+            this.label3.Size = new System.Drawing.Size(79, 21);
             this.label3.TabIndex = 18;
             this.label3.Text = "Filtrar por";
             // 
@@ -150,20 +148,21 @@
             // 
             this.txtFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFilter.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFilter.Location = new System.Drawing.Point(692, 73);
-            this.txtFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFilter.Location = new System.Drawing.Point(519, 59);
+            this.txtFilter.Margin = new System.Windows.Forms.Padding(2);
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(343, 34);
-            this.txtFilter.TabIndex = 17;
+            this.txtFilter.Size = new System.Drawing.Size(258, 29);
+            this.txtFilter.TabIndex = 1;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(28, 76);
+            this.label2.Location = new System.Drawing.Point(21, 62);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(228, 28);
+            this.label2.Size = new System.Drawing.Size(184, 21);
             this.label2.TabIndex = 16;
             this.label2.Text = "Lista de Tipos de Motor";
             // 
@@ -176,22 +175,20 @@
             this.panelBorder.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panelBorder.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBorder.Location = new System.Drawing.Point(0, 0);
-            this.panelBorder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelBorder.Name = "panelBorder";
-            this.panelBorder.Size = new System.Drawing.Size(1073, 44);
+            this.panelBorder.Size = new System.Drawing.Size(805, 36);
             this.panelBorder.TabIndex = 22;
             this.panelBorder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBorder_MouseDown);
             // 
             // lblForm
             // 
             this.lblForm.AutoSize = true;
-            this.lblForm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblForm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.lblForm.ForeColor = System.Drawing.Color.White;
-            this.lblForm.Location = new System.Drawing.Point(16, 7);
-            this.lblForm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblForm.Location = new System.Drawing.Point(12, 6);
             this.lblForm.Name = "lblForm";
-            this.lblForm.Size = new System.Drawing.Size(146, 28);
-            this.lblForm.TabIndex = 10;
+            this.lblForm.Size = new System.Drawing.Size(123, 21);
+            this.lblForm.TabIndex = 15;
             this.lblForm.Text = "Tipos de motor";
             // 
             // pbMaximize
@@ -199,10 +196,9 @@
             this.pbMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMaximize.Image = global::LubriTech.Properties.Resources.maximize;
-            this.pbMaximize.Location = new System.Drawing.Point(981, 7);
-            this.pbMaximize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbMaximize.Location = new System.Drawing.Point(736, 6);
             this.pbMaximize.Name = "pbMaximize";
-            this.pbMaximize.Size = new System.Drawing.Size(40, 37);
+            this.pbMaximize.Size = new System.Drawing.Size(30, 30);
             this.pbMaximize.TabIndex = 8;
             this.pbMaximize.TabStop = false;
             this.pbMaximize.Click += new System.EventHandler(this.pbMaximize_Click);
@@ -212,10 +208,9 @@
             this.pbClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::LubriTech.Properties.Resources.closeIco2;
-            this.pbClose.Location = new System.Drawing.Point(1029, 7);
-            this.pbClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbClose.Location = new System.Drawing.Point(772, 6);
             this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(40, 37);
+            this.pbClose.Size = new System.Drawing.Size(30, 30);
             this.pbClose.TabIndex = 7;
             this.pbClose.TabStop = false;
             this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
@@ -227,10 +222,10 @@
             // 
             // frmEngine
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1073, 646);
+            this.ClientSize = new System.Drawing.Size(805, 525);
             this.Controls.Add(this.panelBorder);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnAddEngine);
@@ -239,7 +234,6 @@
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmEngine";
             this.Text = "Tipos de Motor";
             ((System.ComponentModel.ISupportInitialize)(this.dgvEngines)).EndInit();

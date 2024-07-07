@@ -81,7 +81,7 @@
             this.cbBranch.Location = new System.Drawing.Point(110, 113);
             this.cbBranch.Name = "cbBranch";
             this.cbBranch.Size = new System.Drawing.Size(296, 29);
-            this.cbBranch.TabIndex = 41;
+            this.cbBranch.TabIndex = 2;
             this.cbBranch.Tag = "";
             // 
             // cbDocumentType
@@ -96,7 +96,7 @@
             this.cbDocumentType.Location = new System.Drawing.Point(110, 150);
             this.cbDocumentType.Name = "cbDocumentType";
             this.cbDocumentType.Size = new System.Drawing.Size(130, 29);
-            this.cbDocumentType.TabIndex = 39;
+            this.cbDocumentType.TabIndex = 3;
             this.cbDocumentType.Tag = "";
             this.cbDocumentType.SelectedIndexChanged += new System.EventHandler(this.cbDocumentType_SelectedIndexChanged);
             // 
@@ -118,7 +118,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(54, 81);
+            this.lblDate.Location = new System.Drawing.Point(35, 80);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(50, 21);
             this.lblDate.TabIndex = 40;
@@ -139,7 +139,7 @@
             // 
             this.lblDocumentType.AutoSize = true;
             this.lblDocumentType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDocumentType.Location = new System.Drawing.Point(64, 153);
+            this.lblDocumentType.Location = new System.Drawing.Point(35, 153);
             this.lblDocumentType.Name = "lblDocumentType";
             this.lblDocumentType.Size = new System.Drawing.Size(40, 21);
             this.lblDocumentType.TabIndex = 32;
@@ -166,7 +166,7 @@
             this.btnClose.Location = new System.Drawing.Point(747, 646);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(141, 34);
-            this.btnClose.TabIndex = 46;
+            this.btnClose.TabIndex = 14;
             this.btnClose.Text = "Cancelar";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -179,11 +179,11 @@
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfirm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirm.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnConfirm.Location = new System.Drawing.Point(52, 646);
+            this.btnConfirm.Location = new System.Drawing.Point(39, 646);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(141, 34);
-            this.btnConfirm.TabIndex = 45;
-            this.btnConfirm.Text = "Aceptar";
+            this.btnConfirm.TabIndex = 12;
+            this.btnConfirm.Text = "Confirmar";
             this.btnConfirm.UseVisualStyleBackColor = false;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
@@ -204,7 +204,7 @@
             this.tbSupplierName.MaxLength = 150;
             this.tbSupplierName.Name = "tbSupplierName";
             this.tbSupplierName.Size = new System.Drawing.Size(240, 29);
-            this.tbSupplierName.TabIndex = 35;
+            this.tbSupplierName.TabIndex = 90;
             // 
             // tbSupplierId
             // 
@@ -213,7 +213,7 @@
             this.tbSupplierId.MaxLength = 150;
             this.tbSupplierId.Name = "tbSupplierId";
             this.tbSupplierId.Size = new System.Drawing.Size(240, 29);
-            this.tbSupplierId.TabIndex = 47;
+            this.tbSupplierId.TabIndex = 4;
             this.tbSupplierId.TextChanged += new System.EventHandler(this.tbSupplierId_TextChanged);
             // 
             // cbState
@@ -228,7 +228,7 @@
             this.cbState.Location = new System.Drawing.Point(610, 150);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(130, 29);
-            this.cbState.TabIndex = 49;
+            this.cbState.TabIndex = 6;
             this.cbState.Tag = "";
             this.cbState.SelectedIndexChanged += new System.EventHandler(this.cbState_SelectedIndexChanged);
             // 
@@ -236,7 +236,7 @@
             // 
             this.lblState.AutoSize = true;
             this.lblState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblState.Location = new System.Drawing.Point(548, 150);
+            this.lblState.Location = new System.Drawing.Point(426, 153);
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(56, 21);
             this.lblState.TabIndex = 48;
@@ -290,7 +290,7 @@
             this.dgvDetailLines.RowHeadersVisible = false;
             this.dgvDetailLines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDetailLines.Size = new System.Drawing.Size(849, 297);
-            this.dgvDetailLines.TabIndex = 56;
+            this.dgvDetailLines.TabIndex = 11;
             this.dgvDetailLines.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDetailLines_CellMouseDoubleClick);
             // 
             // btnSelectSupplier
@@ -305,7 +305,7 @@
             this.btnSelectSupplier.Location = new System.Drawing.Point(856, 77);
             this.btnSelectSupplier.Name = "btnSelectSupplier";
             this.btnSelectSupplier.Size = new System.Drawing.Size(32, 29);
-            this.btnSelectSupplier.TabIndex = 37;
+            this.btnSelectSupplier.TabIndex = 5;
             this.btnSelectSupplier.UseVisualStyleBackColor = false;
             this.btnSelectSupplier.Click += new System.EventHandler(this.btnSelectSupplier_Click);
             // 
@@ -313,7 +313,7 @@
             // 
             this.lblSupplierName.AutoSize = true;
             this.lblSupplierName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSupplierName.Location = new System.Drawing.Point(460, 115);
+            this.lblSupplierName.Location = new System.Drawing.Point(426, 116);
             this.lblSupplierName.Name = "lblSupplierName";
             this.lblSupplierName.Size = new System.Drawing.Size(144, 21);
             this.lblSupplierName.TabIndex = 65;
@@ -330,7 +330,7 @@
             this.btnAddDetailLine.Location = new System.Drawing.Point(747, 269);
             this.btnAddDetailLine.Name = "btnAddDetailLine";
             this.btnAddDetailLine.Size = new System.Drawing.Size(141, 30);
-            this.btnAddDetailLine.TabIndex = 66;
+            this.btnAddDetailLine.TabIndex = 10;
             this.btnAddDetailLine.Text = "Agregar detalle";
             this.btnAddDetailLine.UseVisualStyleBackColor = false;
             this.btnAddDetailLine.Click += new System.EventHandler(this.btnAddDetailLine_Click);
@@ -367,7 +367,7 @@
             this.btnSelectItem.Location = new System.Drawing.Point(378, 236);
             this.btnSelectItem.Name = "btnSelectItem";
             this.btnSelectItem.Size = new System.Drawing.Size(32, 29);
-            this.btnSelectItem.TabIndex = 69;
+            this.btnSelectItem.TabIndex = 8;
             this.btnSelectItem.UseVisualStyleBackColor = false;
             this.btnSelectItem.Click += new System.EventHandler(this.btnSelectItem_Click);
             // 
@@ -378,14 +378,14 @@
             this.tbItemCode.MaxLength = 150;
             this.tbItemCode.Name = "tbItemCode";
             this.tbItemCode.Size = new System.Drawing.Size(205, 29);
-            this.tbItemCode.TabIndex = 68;
+            this.tbItemCode.TabIndex = 7;
             this.tbItemCode.TextChanged += new System.EventHandler(this.tbItemCode_TextChanged);
             // 
             // lblItem
             // 
             this.lblItem.AutoSize = true;
             this.lblItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblItem.Location = new System.Drawing.Point(43, 239);
+            this.lblItem.Location = new System.Drawing.Point(35, 239);
             this.lblItem.Name = "lblItem";
             this.lblItem.Size = new System.Drawing.Size(118, 21);
             this.lblItem.TabIndex = 67;
@@ -398,7 +398,7 @@
             this.tbQuantity.MaxLength = 9;
             this.tbQuantity.Name = "tbQuantity";
             this.tbQuantity.Size = new System.Drawing.Size(205, 29);
-            this.tbQuantity.TabIndex = 74;
+            this.tbQuantity.TabIndex = 9;
             this.tbQuantity.TextChanged += new System.EventHandler(this.tbQuantity_TextChanged);
             this.tbQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNumeric_KeyPress);
             // 
@@ -425,7 +425,7 @@
             // 
             this.lblAmount.AutoSize = true;
             this.lblAmount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAmount.Location = new System.Drawing.Point(474, 273);
+            this.lblAmount.Location = new System.Drawing.Point(458, 273);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(56, 21);
             this.lblAmount.TabIndex = 73;
@@ -458,7 +458,7 @@
             this.dtpDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(296, 29);
-            this.dtpDate.TabIndex = 78;
+            this.dtpDate.TabIndex = 1;
             // 
             // panelBorder
             // 
@@ -481,9 +481,9 @@
             this.lblForm.ForeColor = System.Drawing.Color.White;
             this.lblForm.Location = new System.Drawing.Point(12, 6);
             this.lblForm.Name = "lblForm";
-            this.lblForm.Size = new System.Drawing.Size(167, 21);
-            this.lblForm.TabIndex = 10;
-            this.lblForm.Text = "Gestión de Inventario";
+            this.lblForm.Size = new System.Drawing.Size(271, 21);
+            this.lblForm.TabIndex = 91;
+            this.lblForm.Text = "Dato Maestro Gestión de Inventario";
             // 
             // pbMaximize
             // 
@@ -520,7 +520,7 @@
             this.btnPrint.Location = new System.Drawing.Point(199, 646);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(141, 34);
-            this.btnPrint.TabIndex = 80;
+            this.btnPrint.TabIndex = 13;
             this.btnPrint.Text = "Imprimir";
             this.btnPrint.UseVisualStyleBackColor = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);

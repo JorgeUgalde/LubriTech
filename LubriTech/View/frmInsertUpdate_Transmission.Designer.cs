@@ -49,11 +49,11 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnClose.Location = new System.Drawing.Point(275, 200);
+            this.btnClose.Location = new System.Drawing.Point(264, 200);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(141, 34);
-            this.btnClose.TabIndex = 47;
-            this.btnClose.Text = "Cerrar";
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "Cancelar";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -65,10 +65,10 @@
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfirm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirm.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnConfirm.Location = new System.Drawing.Point(16, 200);
+            this.btnConfirm.Location = new System.Drawing.Point(27, 200);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(141, 34);
-            this.btnConfirm.TabIndex = 46;
+            this.btnConfirm.TabIndex = 3;
             this.btnConfirm.Text = "Confirmar";
             this.btnConfirm.UseVisualStyleBackColor = false;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
@@ -81,17 +81,17 @@
             this.cbState.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cbState.Location = new System.Drawing.Point(200, 116);
+            this.cbState.Location = new System.Drawing.Point(200, 127);
             this.cbState.Margin = new System.Windows.Forms.Padding(4);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(205, 29);
-            this.cbState.TabIndex = 45;
+            this.cbState.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(37, 119);
+            this.label3.Location = new System.Drawing.Point(37, 130);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 21);
@@ -101,18 +101,18 @@
             // txtTransmissionType
             // 
             this.txtTransmissionType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTransmissionType.Location = new System.Drawing.Point(200, 57);
+            this.txtTransmissionType.Location = new System.Drawing.Point(200, 68);
             this.txtTransmissionType.Margin = new System.Windows.Forms.Padding(2, 2, 6, 6);
             this.txtTransmissionType.MaxLength = 50;
             this.txtTransmissionType.Name = "txtTransmissionType";
             this.txtTransmissionType.Size = new System.Drawing.Size(205, 29);
-            this.txtTransmissionType.TabIndex = 43;
+            this.txtTransmissionType.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(37, 60);
+            this.label2.Location = new System.Drawing.Point(37, 71);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(149, 21);
@@ -140,8 +140,8 @@
             this.lblForm.Location = new System.Drawing.Point(12, 6);
             this.lblForm.Name = "lblForm";
             this.lblForm.Size = new System.Drawing.Size(200, 21);
-            this.lblForm.TabIndex = 10;
-            this.lblForm.Text = "Dato Maestro Transmision";
+            this.lblForm.TabIndex = 35;
+            this.lblForm.Text = "Dato Maestro Transmisión";
             // 
             // pbClose
             // 

@@ -48,6 +48,7 @@ namespace LubriTech.View
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.cbState = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.panelName.SuspendLayout();
             this.panelPhone.SuspendLayout();
             this.panelBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -60,7 +61,7 @@ namespace LubriTech.View
             this.label2.Location = new System.Drawing.Point(22, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 21);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 56;
             this.label2.Text = "Código";
             // 
             // label3
@@ -70,7 +71,7 @@ namespace LubriTech.View
             this.label3.Location = new System.Drawing.Point(22, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 21);
-            this.label3.TabIndex = 2;
+            this.label3.TabIndex = 54;
             this.label3.Text = "Nombre";
             // 
             // label4
@@ -80,7 +81,7 @@ namespace LubriTech.View
             this.label4.Location = new System.Drawing.Point(411, 111);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(138, 21);
-            this.label4.TabIndex = 3;
+            this.label4.TabIndex = 36;
             this.label4.Text = "Correo electrónico";
             // 
             // label5
@@ -90,7 +91,7 @@ namespace LubriTech.View
             this.label5.Location = new System.Drawing.Point(411, 68);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(140, 21);
-            this.label5.TabIndex = 4;
+            this.label5.TabIndex = 42;
             this.label5.Text = "Número telefónico";
             // 
             // txtId
@@ -100,7 +101,7 @@ namespace LubriTech.View
             this.txtId.MaxLength = 30;
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(205, 29);
-            this.txtId.TabIndex = 6;
+            this.txtId.TabIndex = 1;
             this.txtId.TextChanged += new System.EventHandler(this.txtId_TextChanged);
             // 
             // panelId
@@ -118,7 +119,7 @@ namespace LubriTech.View
             this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(205, 29);
-            this.txtEmail.TabIndex = 11;
+            this.txtEmail.TabIndex = 5;
             // 
             // panelEmail
             // 
@@ -131,28 +132,29 @@ namespace LubriTech.View
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(154, 105);
+            this.txtName.Location = new System.Drawing.Point(0, -3);
             this.txtName.MaxLength = 50;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(205, 29);
-            this.txtName.TabIndex = 13;
+            this.txtName.TabIndex = 2;
             // 
             // panelName
             // 
+            this.panelName.Controls.Add(this.txtName);
             this.panelName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelName.Location = new System.Drawing.Point(154, 108);
             this.panelName.Name = "panelName";
             this.panelName.Size = new System.Drawing.Size(205, 29);
-            this.panelName.TabIndex = 14;
+            this.panelName.TabIndex = 18;
             // 
             // txtPhone
             // 
             this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhone.Location = new System.Drawing.Point(3, -3);
+            this.txtPhone.Location = new System.Drawing.Point(-2, -4);
             this.txtPhone.MaxLength = 11;
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(204, 29);
-            this.txtPhone.TabIndex = 15;
+            this.txtPhone.Size = new System.Drawing.Size(207, 29);
+            this.txtPhone.TabIndex = 4;
             this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // panelPhone
@@ -178,12 +180,12 @@ namespace LubriTech.View
             this.btnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
             this.btnConfirm.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnConfirm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnConfirm.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnConfirm.Location = new System.Drawing.Point(26, 240);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(141, 34);
-            this.btnConfirm.TabIndex = 19;
+            this.btnConfirm.TabIndex = 6;
             this.btnConfirm.Text = "Confirmar";
             this.btnConfirm.UseVisualStyleBackColor = false;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click_1);
@@ -194,13 +196,13 @@ namespace LubriTech.View
             this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnClose.Location = new System.Drawing.Point(623, 240);
+            this.btnClose.Location = new System.Drawing.Point(621, 240);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(141, 34);
-            this.btnClose.TabIndex = 20;
-            this.btnClose.Text = "Cerrar";
+            this.btnClose.TabIndex = 7;
+            this.btnClose.Text = "Cancelar";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -225,7 +227,7 @@ namespace LubriTech.View
             this.lblForm.Location = new System.Drawing.Point(12, 6);
             this.lblForm.Name = "lblForm";
             this.lblForm.Size = new System.Drawing.Size(191, 21);
-            this.lblForm.TabIndex = 10;
+            this.lblForm.TabIndex = 25;
             this.lblForm.Text = "Dato Maestro Proveedor";
             // 
             // pbClose
@@ -252,7 +254,7 @@ namespace LubriTech.View
             this.cbState.Margin = new System.Windows.Forms.Padding(4);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(205, 29);
-            this.cbState.TabIndex = 47;
+            this.cbState.TabIndex = 3;
             // 
             // label1
             // 
@@ -271,7 +273,6 @@ namespace LubriTech.View
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(789, 312);
-            this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.cbState);
             this.Controls.Add(this.label1);
@@ -292,6 +293,8 @@ namespace LubriTech.View
             this.Name = "frmInsertUpdateSupplier";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dato Maestro Proveedor";
+            this.panelName.ResumeLayout(false);
+            this.panelName.PerformLayout();
             this.panelPhone.ResumeLayout(false);
             this.panelPhone.PerformLayout();
             this.panelBorder.ResumeLayout(false);
