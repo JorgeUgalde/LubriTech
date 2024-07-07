@@ -52,9 +52,9 @@ namespace LubriTech.View
             this.lblForm = new System.Windows.Forms.Label();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.panelBorder = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.cbState = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.panelControlBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.panelBorder.SuspendLayout();
@@ -155,7 +155,7 @@ namespace LubriTech.View
             // tbMileage
             // 
             this.tbMileage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbMileage.Location = new System.Drawing.Point(126, 156);
+            this.tbMileage.Location = new System.Drawing.Point(180, 156);
             this.tbMileage.MaxLength = 6;
             this.tbMileage.Name = "tbMileage";
             this.tbMileage.Size = new System.Drawing.Size(205, 29);
@@ -165,7 +165,7 @@ namespace LubriTech.View
             // tbLicensePlate
             // 
             this.tbLicensePlate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbLicensePlate.Location = new System.Drawing.Point(126, 63);
+            this.tbLicensePlate.Location = new System.Drawing.Point(180, 63);
             this.tbLicensePlate.MaxLength = 6;
             this.tbLicensePlate.Name = "tbLicensePlate";
             this.tbLicensePlate.Size = new System.Drawing.Size(205, 29);
@@ -174,7 +174,7 @@ namespace LubriTech.View
             // tbYear
             // 
             this.tbYear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbYear.Location = new System.Drawing.Point(126, 111);
+            this.tbYear.Location = new System.Drawing.Point(180, 111);
             this.tbYear.MaxLength = 4;
             this.tbYear.Name = "tbYear";
             this.tbYear.Size = new System.Drawing.Size(205, 29);
@@ -355,6 +355,16 @@ namespace LubriTech.View
             this.panelBorder.Size = new System.Drawing.Size(789, 386);
             this.panelBorder.TabIndex = 27;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(20, 203);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(154, 21);
+            this.label1.TabIndex = 48;
+            this.label1.Text = "Identificación Cliente";
+            // 
             // cbState
             // 
             this.cbState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -379,16 +389,6 @@ namespace LubriTech.View
             this.label3.Size = new System.Drawing.Size(56, 21);
             this.label3.TabIndex = 46;
             this.label3.Text = "Estado";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(20, 203);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 21);
-            this.label1.TabIndex = 48;
-            this.label1.Text = "Identificación Cliente";
             // 
             // frmInsertUpdate_Vehicle
             // 
