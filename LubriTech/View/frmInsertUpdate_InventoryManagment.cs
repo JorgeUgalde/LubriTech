@@ -477,9 +477,23 @@ namespace LubriTech.View
             {
                 Item item = new Item_Controller().get(code);
 
-                if (item != null)
+                ItemType_Controller itemTypeController = new ItemType_Controller();
+                List<ItemType> itemTypes = itemTypeController.loadAllItemTypes();
+                if (itemTypes.Count != 0)
                 {
-                    SelectItem(item);
+                    int itemTypeId = -1;
+                    foreach (ItemType itemType in itemTypes)
+                    {
+                        if (itemType.Name.Equals("Servicio"))
+                        {
+                            itemTypeId = itemType.Id;
+                        }
+                    }
+
+                    if (item != null && item.itemType.Id != itemTypeId)
+                    {
+                        SelectItem(item);
+                    }
                 }
             }
         }

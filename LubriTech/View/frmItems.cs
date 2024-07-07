@@ -24,6 +24,7 @@ namespace LubriTech.View
         private List<Item> items;
         private Form parentForm;
         public event Action<Item> ItemSelected;
+        private List<ItemType> itemTypes;
 
         public frmItems()
         {
@@ -77,6 +78,32 @@ namespace LubriTech.View
                 {
                     MessageBox.Show("No hay artículos resgistrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
+                }
+                if (parentForm is frmInsertUpdate_InventoryManagment)
+                {
+                    ItemType_Controller itemTypeController = new ItemType_Controller();
+                    itemTypes = itemTypeController.loadAllItemTypes();
+                    if (itemTypes.Count == 0)
+                    {
+                        MessageBox.Show("No hay artículos resgistrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    int itemTypeId = -1;
+                    foreach (ItemType itemType in itemTypes)
+                    {
+                        if(itemType.Name.Equals("Servicio"))
+                        {
+                            itemTypeId = itemType.Id;
+                        }
+                    }
+
+                    for (int i = items.Count - 1; i >= 0; i--)
+                    {
+                        if (itemTypeId != -1 && items[i].itemType.Id == itemTypeId)
+                        {
+                            items.RemoveAt(i);
+                        }
+                    }
                 }
                 dgvItems.DataSource = items;
             }

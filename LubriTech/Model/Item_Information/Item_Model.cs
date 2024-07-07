@@ -45,7 +45,7 @@ namespace LubriTech.Model.items_Information
                         dr["UnidadMedida"].ToString(),
                         Convert.ToInt32(dr["Estado"]) == 1 ? "Activo": "Inactivo",
                         Convert.ToDouble(dr["PrecioCompra"]),
-                        Convert.ToDouble(dr["RecorridoRecomendado"]),
+                        (dr["RecorridoRecomendado"] != DBNull.Value ? Convert.ToDouble(dr["RecorridoRecomendado"]) : 0),
                         new ItemType_Model().getItemType(Convert.ToInt32(dr["IdentificacionTipoArticulo"]))
                         ));
                 }
@@ -72,6 +72,7 @@ namespace LubriTech.Model.items_Information
                 }
             }
         }
+
 
         public double getItemStock(string itemCode,  int branch)
         {
@@ -161,7 +162,7 @@ namespace LubriTech.Model.items_Information
                         dr["UnidadMedida"].ToString(),
                         Convert.ToInt32(dr["Estado"]) == 1 ? "Activo" : "Inactivo",
                         Convert.ToDouble(dr["PrecioCompra"]),
-                        Convert.ToDouble(dr["RecorridoRecomendado"]),
+                        (dr["RecorridoRecomendado"] != DBNull.Value ? Convert.ToDouble(dr["RecorridoRecomendado"]) : 0),
                         new ItemType_Model().getItemType(Convert.ToInt32(dr["IdentificacionTipoArticulo"]))
                         );
                 }
@@ -219,7 +220,15 @@ namespace LubriTech.Model.items_Information
                 cmd.Parameters.AddWithValue("@measureUnit", items.measureUnit);
                 cmd.Parameters.AddWithValue("@state", (items.state.Equals("Activo")) ? 1 : 0  );
                 cmd.Parameters.AddWithValue("@purchasePrice", items.purchasePrice);
-                cmd.Parameters.AddWithValue("@recommended", items.recommendedServiceInterval);
+
+                if(items.recommendedServiceInterval == 0)
+                {
+                    cmd.Parameters.AddWithValue("@recommended", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@recommended", items.recommendedServiceInterval);
+                }
                 cmd.Parameters.AddWithValue("@type", items.itemType.Id);
 
 

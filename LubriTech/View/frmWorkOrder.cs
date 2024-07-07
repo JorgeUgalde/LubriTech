@@ -598,53 +598,74 @@ namespace LubriTech.View
             savefile.FileName = string.Format(DateTime.Now.ToString("ddMMyyyyHHmmss"));
 
             string PaginaHTML_Texto = Properties.Resources.Template.ToString();
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@BRANCH", workOrderTemplate.Branch.Name);
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DATE", workOrderTemplate.Date.ToString());
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@BRANCH", workOrderTemplate?.Branch?.Name ?? "N/A");
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DATE", workOrderTemplate?.Date.ToString() ?? "N/A");
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@STATE", cbState.Text ?? "N/A");
 
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ID", client.Id);
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NAME", client.FullName);
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MAINPHONE", client.MainPhoneNum.ToString());
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ADDITIONALPHONE", client.AdditionalPhoneNum.ToString());
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@EMAIL", client.Email);
+            if (client != null)
+            {
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ID", client.Id);
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NAME", client.FullName);
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MAINPHONE", client.MainPhoneNum?.ToString() ?? "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ADDITIONALPHONE", client.AdditionalPhoneNum?.ToString() ?? "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@EMAIL", client.Email ?? "N/A");
+            }
+            else
+            {
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ID", "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NAME", "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MAINPHONE", "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ADDITIONALPHONE", "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@EMAIL", "N/A");
+            }
 
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@LICENSEPLATE", vehicle.LicensePlate);
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MAKE", workOrderTemplate.Vehicle.Model.Make.ToString());
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MODEL", vehicle.Model + " " + vehicle.Year);
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MILEAGE", vehicle.Mileage.ToString());
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CURRENTMILEAGE", workOrderTemplate.CurrentMileage.ToString());
+            if (vehicle != null)
+            {
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@LICENSEPLATE", vehicle.LicensePlate ?? "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MAKE", workOrderTemplate?.Vehicle?.Model?.Make?.ToString() ?? "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MODEL", vehicle.Model + " " + vehicle.Year ?? "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MILEAGE", vehicle.Mileage.ToString() ?? "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CURRENTMILEAGE", workOrderTemplate?.CurrentMileage.ToString() ?? "N/A");
+            }
+            else
+            {
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@LICENSEPLATE", "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MAKE", "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MODEL", "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@MILEAGE", "N/A");
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CURRENTMILEAGE", "N/A");
+            }
 
-            
-            DataGridView dgvWorkOrderLine;
-            dgvWorkOrderLine = dgvWorkOrderDetails;
-            dgvWorkOrderLine.Columns["ItemName"].HeaderText = "Articulo";
-            dgvWorkOrderLine.Columns["Quantity"].HeaderText = "Cantidad";
-            dgvWorkOrderLine.Columns["UnitPrice"].HeaderText = "Precio Unitario";
-            dgvWorkOrderLine.Columns["Amount"].HeaderText = "Monto";
+            if (dgvWorkOrderDetails.Columns.Count > 0)
+            {
+                DataGridView dgvWorkOrderLine;
+                dgvWorkOrderLine = dgvWorkOrderDetails;
+                dgvWorkOrderLine.Columns["ItemName"].HeaderText = "Articulo";
+                dgvWorkOrderLine.Columns["Quantity"].HeaderText = "Cantidad";
+                dgvWorkOrderLine.Columns["UnitPrice"].HeaderText = "Precio Unitario";
+                dgvWorkOrderLine.Columns["Amount"].HeaderText = "Monto";
 
-            dgvWorkOrderLine.Columns.Remove("Id");
-            dgvWorkOrderLine.Columns.Remove("WorkOrderId");
-            dgvWorkOrderLine.Columns.Remove("Item");
+                dgvWorkOrderLine.Columns.Remove("Id");
+                dgvWorkOrderLine.Columns.Remove("WorkOrderId");
+                dgvWorkOrderLine.Columns.Remove("Item");
+            }
 
             string htmlTable = "<table class='work-order-table' style='border-collapse: collapse; width: 100%;'>";
-            
+
             htmlTable += "<tr>";
             foreach (DataGridViewColumn column in dgvWorkOrderDetails.Columns)
             {
                 htmlTable += "<th>" + column.HeaderText + "</th>";
             }
             htmlTable += "</tr>";
-            
 
-
-            
             foreach (DataGridViewRow row in dgvWorkOrderDetails.Rows)
             {
                 htmlTable += "<tr>";
                 foreach (DataGridViewCell cell in row.Cells)
                 {
-                    htmlTable += "<td>" + cell.Value?.ToString() + "</td>";
+                    htmlTable += "<td>" + (cell.Value?.ToString() ?? "N/A") + "</td>";
                 }
-
                 htmlTable += "</tr>";
             }
 
@@ -658,9 +679,9 @@ namespace LubriTech.View
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@WORKORDERLINE", htmlTable);
 
             string observacionesHTML = "<ul class='observations-list'>";
-            foreach (var observation in workOrderTemplate.Observations)
+            foreach (var observation in workOrderTemplate.Observations ?? Enumerable.Empty<Observation>())
             {
-                observacionesHTML += $"<li>{observation.Description}";
+                observacionesHTML += $"<li>{observation.Description ?? "N/A"}";
 
                 // Obtener las imágenes asociadas a la observación desde el controlador
                 var observationPhotos = new ObservationPhotos_Controller().GetAll(observation.Code);
@@ -708,7 +729,14 @@ namespace LubriTech.View
                     stream.Close();
                 }
 
-                SendEmail(client.Email, filePath);
+                if (!string.IsNullOrEmpty(client?.Email))
+                {
+                    SendEmail(client.Email, filePath);
+                }
+                else
+                {
+                    MessageBox.Show("El cliente no tiene una dirección de correo electrónico válida.");
+                }
             }
         }
 
