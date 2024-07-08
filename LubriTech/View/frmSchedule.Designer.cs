@@ -42,6 +42,7 @@
             this.txtFilter = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvSchedules = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panelBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -214,6 +215,15 @@
             this.dgvSchedules.TabIndex = 2;
             this.dgvSchedules.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSchedules_CellDoubleClick);
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(807, 525);
+            this.panel1.TabIndex = 44;
+            // 
             // frmSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -228,6 +238,7 @@
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panelBorder);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmSchedule";
@@ -253,5 +264,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pbMaximize;
         private System.Windows.Forms.DataGridView dgvSchedules;
+        private System.Windows.Forms.Panel panel1;
     }
 }

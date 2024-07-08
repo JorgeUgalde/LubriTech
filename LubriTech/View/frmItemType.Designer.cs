@@ -42,6 +42,7 @@
             this.txtFilter = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvItemTypes = new System.Windows.Forms.DataGridView();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -215,6 +216,15 @@
             this.dgvItemTypes.TabIndex = 24;
             this.dgvItemTypes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemTypes_CellDoubleClick);
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(805, 525);
+            this.flowLayoutPanel1.TabIndex = 25;
+            // 
             // frmItemType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -228,6 +238,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmItemType";
@@ -254,5 +265,6 @@
         private System.Windows.Forms.TextBox txtFilter;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvItemTypes;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

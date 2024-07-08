@@ -48,6 +48,7 @@ namespace LubriTech.View
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.cbState = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panelName.SuspendLayout();
             this.panelPhone.SuspendLayout();
             this.panelBorder.SuspendLayout();
@@ -267,6 +268,15 @@ namespace LubriTech.View
             this.label1.TabIndex = 46;
             this.label1.Text = "Estado";
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(789, 312);
+            this.panel1.TabIndex = 57;
+            // 
             // frmInsertUpdateSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -289,6 +299,7 @@ namespace LubriTech.View
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panelId);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmInsertUpdateSupplier";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -326,5 +337,6 @@ namespace LubriTech.View
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.ComboBox cbState;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
     }
 }

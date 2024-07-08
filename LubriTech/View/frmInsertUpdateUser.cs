@@ -5,6 +5,7 @@ using LubriTech.Model.User_Information;
 using System.Collections.Generic;
 using LubriTech.Model.Branch_Information;
 using System.Drawing;
+using System.Runtime.InteropServices;
 
 namespace LubriTech.View
 {
@@ -27,10 +28,6 @@ namespace LubriTech.View
 
             if (mode == 0)
             {
-                panelBorder.BackColor = Color.FromArgb(27, 27, 27);
-                btnAdd.BackColor = Color.FromArgb(27, 27, 27);
-                btnClose.BackColor = Color.FromArgb(27, 27, 27);
-                btnConfirm.BackColor = Color.FromArgb(27, 27, 27);
                 btnAdd.Visible = false;
                 txtNewPass.Visible = false;
                 lblNewPass.Visible=false;
@@ -143,6 +140,18 @@ namespace LubriTech.View
             frmInsertUpdate_Branch.MdiParent = this.MdiParent;
             frmInsertUpdate_Branch.DataChanged += ChildFormDataChangedHandler;
             frmInsertUpdate_Branch.Show();
+        }
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        private void panelBorder_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }

@@ -53,6 +53,7 @@
             this.btnConfirm = new System.Windows.Forms.Button();
             this.cbState = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.panelBorder.SuspendLayout();
             this.SuspendLayout();
@@ -396,7 +397,7 @@
             this.btnAddSchedule.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddSchedule.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAddSchedule.Location = new System.Drawing.Point(197, 437);
-            this.btnAddSchedule.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddSchedule.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddSchedule.Name = "btnAddSchedule";
             this.btnAddSchedule.Size = new System.Drawing.Size(141, 34);
             this.btnAddSchedule.TabIndex = 11;
@@ -413,7 +414,7 @@
             this.btnConfirm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirm.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnConfirm.Location = new System.Drawing.Point(36, 437);
-            this.btnConfirm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnConfirm.Margin = new System.Windows.Forms.Padding(2);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(141, 34);
             this.btnConfirm.TabIndex = 10;
@@ -430,7 +431,7 @@
             "Activo",
             "Inactivo"});
             this.cbState.Location = new System.Drawing.Point(125, 175);
-            this.cbState.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbState.Margin = new System.Windows.Forms.Padding(4);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(213, 29);
             this.cbState.TabIndex = 3;
@@ -445,6 +446,15 @@
             this.label10.Size = new System.Drawing.Size(56, 21);
             this.label10.TabIndex = 61;
             this.label10.Text = "Estado";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(375, 496);
+            this.flowLayoutPanel1.TabIndex = 62;
             // 
             // frmInsertUpdate_Schedule
             // 
@@ -475,9 +485,10 @@
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.lblFullName);
             this.Controls.Add(this.panelBorder);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(338, 414);
             this.Name = "frmInsertUpdate_Schedule";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -517,5 +528,6 @@
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.ComboBox cbState;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

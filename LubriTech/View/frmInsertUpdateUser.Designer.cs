@@ -42,6 +42,7 @@
             this.btnConfirm = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +58,7 @@
             this.panelBorder.Name = "panelBorder";
             this.panelBorder.Size = new System.Drawing.Size(823, 36);
             this.panelBorder.TabIndex = 18;
+            this.panelBorder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBorder_MouseDown);
             // 
             // lblForm
             // 
@@ -218,6 +220,15 @@
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(823, 290);
+            this.flowLayoutPanel1.TabIndex = 43;
+            // 
             // frmInsertUpdateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -236,6 +247,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblCode);
             this.Controls.Add(this.panelBorder);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmInsertUpdateUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -264,5 +276,6 @@
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

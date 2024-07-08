@@ -35,6 +35,7 @@
             this.panelBorder = new System.Windows.Forms.Panel();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.lblForm = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.SuspendLayout();
@@ -103,6 +104,7 @@
             this.panelBorder.Name = "panelBorder";
             this.panelBorder.Size = new System.Drawing.Size(526, 36);
             this.panelBorder.TabIndex = 36;
+            this.panelBorder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBorder_MouseDown);
             // 
             // pbClose
             // 
@@ -127,6 +129,15 @@
             this.lblForm.TabIndex = 15;
             this.lblForm.Text = "Restablecer Contraseña";
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(526, 227);
+            this.flowLayoutPanel1.TabIndex = 37;
+            // 
             // frmResetPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -138,6 +149,7 @@
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.lblEmail);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmResetPassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -159,5 +171,6 @@
         private System.Windows.Forms.Panel panelBorder;
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.Label lblForm;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

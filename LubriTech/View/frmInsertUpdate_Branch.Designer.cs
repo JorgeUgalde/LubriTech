@@ -46,6 +46,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbSchedule = new System.Windows.Forms.ComboBox();
             this.btnAddSchedulle = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panelBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.SuspendLayout();
@@ -270,6 +271,15 @@
             this.btnAddSchedulle.UseVisualStyleBackColor = false;
             this.btnAddSchedulle.Click += new System.EventHandler(this.btnAddSchedulle_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 36);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(740, 282);
+            this.panel1.TabIndex = 40;
+            // 
             // frmInsertUpdate_Branch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,6 +287,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(740, 318);
             this.ControlBox = false;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnAddSchedulle);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbSchedule);
@@ -297,7 +308,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmInsertUpdate_Branch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmInsertUpdate_Branch";
+            this.Text = "9";
             this.panelBorder.ResumeLayout(false);
             this.panelBorder.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
@@ -326,5 +337,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbSchedule;
         private System.Windows.Forms.Button btnAddSchedulle;
+        private System.Windows.Forms.Panel panel1;
     }
 }

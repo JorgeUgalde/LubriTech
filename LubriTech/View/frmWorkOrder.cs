@@ -695,7 +695,9 @@ namespace LubriTech.View
                         if (photo.Photo != null && photo.Photo.Length > 0)
                         {
                             string base64Image = Convert.ToBase64String(photo.Photo);
-                            observacionesHTML += $"<img src=\"data:image/png;base64,{base64Image}\" alt=\"Observation Photo\" style=\"width:200px;height:150px;\" />";
+                            //observacionesHTML += $"<img src=\"data:image/png;base64,{base64Image}\" alt=\"Observation Photo\" style=\"width:200px;height:150px;\" />";
+                            observacionesHTML += $"data:image/{photo};base64,{base64Image}\" alt=\"Observation Photo\" style=\"width:200px;height:150px;\" />";
+
                         }
                     }
 
