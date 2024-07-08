@@ -1,4 +1,5 @@
-﻿using LubriTech.Controller;
+﻿using iTextSharp.text;
+using LubriTech.Controller;
 using LubriTech.Model.Client_Information;
 using LubriTech.Model.Vehicle_Information;
 using LubriTech.View.Appointment_View;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -19,6 +21,12 @@ namespace LubriTech.View
     {
         private List<Engine> engine;
         private Form parentForm;
+
+        private int currentPage = 1;
+        private int pageSize = 20; // Puedes ajustar este valor según sea necesario
+        private int totalRecords = 0;
+        private int totalPages = 0;
+
 
         public frmEngine()
         {
@@ -36,30 +44,34 @@ namespace LubriTech.View
         {
             if (filteredList != null)
             {
-                if (filteredList.Count == 0)
-                {
-                    dgvEngines.DataSource = engine;
-
-                }
-                else
-                {
-                    dgvEngines.DataSource = filteredList;
-                }
+                engine = filteredList;
             }
             else
             {
                 engine = new Engine_Controller().getAll();
-                if (engine == null)
-                {
-                    MessageBox.Show("No hay tipos de motor registrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                dgvEngines.DataSource = engine;
             }
-            dgvEngines.Columns["Id"].Visible = false;
-            dgvEngines.Columns["EngineType"].HeaderText = "Tipo Motor";
-            dgvEngines.Columns["State"].HeaderText = "Estado";
+
+            if (engine.Count == 0)
+            {
+                MessageBox.Show("No hay motores registrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            totalRecords = engine.Count;
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+
+            LoadPage();
             SetColumnOrder();
+        }
+
+        private void LoadPage()
+        {
+            int startRecord = (currentPage - 1) * pageSize;
+            int endRecord = Math.Min(currentPage * pageSize, totalRecords);
+
+            var pageClients = engine.Skip(startRecord).Take(endRecord - startRecord).ToList();
+            dgvEngines.DataSource = pageClients;
+
+            lblPageNumber.Text = $"Página {currentPage} de {totalPages}";
         }
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
@@ -70,6 +82,11 @@ namespace LubriTech.View
         private void ApplyFilter()
         {
             string filterValue = txtFilter.Text.ToLower();
+            if (filterValue == "")
+            {
+                load_Engines(null);
+                return;
+            }
 
             // Filtrar la lista de tipos de motor
             var filteredList = engine.Where(p =>
@@ -78,8 +95,15 @@ namespace LubriTech.View
                 p.State.ToLower().Contains(filterValue)
             ).ToList();
 
-            // Refrescar el DataGridView
-            dgvEngines.DataSource = null;
+            currentPage = 1;
+            totalRecords = filteredList.Count;
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+            
+            if (filteredList.Count == 0)
+            {
+                load_Engines(null);
+                return;
+            }
             load_Engines(filteredList);
         }
 
@@ -90,6 +114,10 @@ namespace LubriTech.View
 
         private void SetColumnOrder()
         {
+            dgvEngines.Columns["Id"].Visible = false;
+            dgvEngines.Columns["EngineType"].HeaderText = "Tipo Motor";
+            dgvEngines.Columns["State"].HeaderText = "Estado";
+
             dgvEngines.Columns["Id"].DisplayIndex = 0;
             dgvEngines.Columns["EngineType"].DisplayIndex = 1;
             dgvEngines.Columns["State"].DisplayIndex = 2;
@@ -156,6 +184,26 @@ namespace LubriTech.View
                     frmInsertEngine.Show();
 
                 }
+            }
+        }
+
+    
+
+        private void btnNext_Click_1(object sender, EventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                LoadPage();
+            }
+        }
+
+        private void btnPrevious_Click_1(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                LoadPage();
             }
         }
     }

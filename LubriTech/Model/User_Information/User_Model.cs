@@ -150,7 +150,7 @@ namespace LubriTech.Model.User_Information
                 else
                 {
                     
-                    query = "UPDATE Usuario SET Contrasena = @password WHERE CorreoElectronico = @email AND IdentificacionSucursal = @branchId";
+                    query = "UPDATE Usuario SET Contrasena = @password, IdentificacionSucursal = @branchId WHERE CorreoElectronico = @email";
                 }
 
                 SqlCommand cmd = new SqlCommand(query, conn);

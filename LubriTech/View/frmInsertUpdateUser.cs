@@ -13,18 +13,23 @@ namespace LubriTech.View
     {
         private List<Branch> branches;
 
+        private User existingUser;
         private User user;
-        public frmInsertUpdateUser()
+        public frmInsertUpdateUser(User paramUser)
         {
             InitializeComponent();
             LoadBranches();
-            user = new User();
-
+            this.user = new User();
+            existingUser = paramUser;
+            txtEmail.Text = existingUser.email;
+            setComboBoxBranch();
+            cbBranch.SelectedValue = existingUser.branchID;
         }
         public frmInsertUpdateUser(int mode)
         {
             InitializeComponent();
             LoadBranches();
+            user = new User();
 
             if (mode == 0)
             {
@@ -38,9 +43,10 @@ namespace LubriTech.View
 
         private void LoadBranches()
         {
+
             branches = new Branch_Controller().getAll();
             setComboBoxBranch();
-            user = new User(); 
+            existingUser = new User();
 
         }
 
@@ -80,10 +86,9 @@ namespace LubriTech.View
                 Branch selectedBranch = (Branch)cbBranch.SelectedItem;
                 user.branchID = selectedBranch.Id;
 
-                //bool isNewUser = new User_Controller().GetUser(user) == null;
-                User existingUser = new User_Controller().GetUser(user);
+                User isNewUser = new User_Controller().GetUser(user);
 
-                if (existingUser == null && string.IsNullOrEmpty(txtNewPass.Text))
+                if (user == null && string.IsNullOrEmpty(txtNewPass.Text))
                 {
                     new User_Controller().Upsert(user, newPassword);
                     MessageBox.Show("Usuario creado con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -92,7 +97,7 @@ namespace LubriTech.View
                 }
                 else
                 {
-                    if (existingUser == null)
+                    if (user == null)
                     {
                         MessageBox.Show("Revise que los datos sean correctos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -101,7 +106,10 @@ namespace LubriTech.View
                         if (!string.IsNullOrEmpty(txtNewPass.Text))
                         {
                             new User_Controller().Upsert(user, newPassword);
-                            MessageBox.Show("La contraseña se cambió con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            existingUser.email = user.email;
+                            existingUser.branchID = user.branchID;
+                            MessageBox.Show("Los datos se actualizaron con exito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Dispose();
                         }
                         else
                         {

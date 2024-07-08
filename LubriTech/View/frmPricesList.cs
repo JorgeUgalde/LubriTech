@@ -1,4 +1,6 @@
-﻿using LubriTech.Controller;
+﻿using iTextSharp.text;
+using LubriTech.Controller;
+using LubriTech.Model.Client_Information;
 using LubriTech.Model.InventoryManagment_Information;
 using LubriTech.Model.PricesList_Information;
 using LubriTech.View.Appointment_View;
@@ -7,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -20,6 +23,10 @@ namespace LubriTech.View
         private Form parentForm;
         public event Action<PriceList> PriceListSelected;
         private List<PriceList> priceLists;
+        private int currentPage = 1;
+        private int pageSize = 20; // Puedes ajustar este valor según sea necesario
+        private int totalRecords = 0;
+        private int totalPages = 0;
 
         public frmPricesList()
         {
@@ -37,15 +44,8 @@ namespace LubriTech.View
         {
             if (filteredList != null)
             {
-                if (filteredList.Count == 0)
-                {
-                    dgvPricesList.DataSource = priceLists;
+                    priceLists = filteredList;
 
-                }
-                else
-                {
-                    dgvPricesList.DataSource = filteredList;
-                }
             }
             else
             {
@@ -55,14 +55,30 @@ namespace LubriTech.View
                     MessageBox.Show("No hay listas de precios registradas", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                dgvPricesList.DataSource = priceLists;
             }
+
+            totalRecords = priceLists.Count;
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+
+            LoadPage();
             dgvPricesList.Columns["id"].HeaderText = "Identificación";
             dgvPricesList.Columns["description"].HeaderText = "Descripción";
             dgvPricesList.Columns["state"].HeaderText = "Estado";
             //dgvPricesList.Columns["prices"].Visible = false;
 
             SetColumnOrder();
+        }
+
+
+        private void LoadPage()
+        {
+            int startRecord = (currentPage - 1) * pageSize;
+            int endRecord = Math.Min(currentPage * pageSize, totalRecords);
+
+            var pageClients = priceLists.Skip(startRecord).Take(endRecord - startRecord).ToList();
+            dgvPricesList.DataSource = pageClients;
+
+            lblPageNumber.Text = $"Página {currentPage} de {totalPages}";
         }
 
         private void SetColumnOrder()
@@ -159,17 +175,42 @@ namespace LubriTech.View
         private void ApplyFilter()
         {
             string filterValue = txtFilter.Text.ToLower();
-
+            if (filterValue == "")
+            {
+                LoadPricesList(null);
+                return;
+            }
             // Filtrar la lista de precios
             var filteredList = priceLists.Where(p =>
-                p.id.ToString().ToLower().Contains(filterValue) ||
                 p.description.ToLower().Contains(filterValue) ||
                 p.state.ToString().ToLower().Contains(filterValue)
             ).ToList();
 
-            // Refrescar el DataGridView
-            dgvPricesList.DataSource = null;
+            if (filteredList.Count == 0)
+            {
+                LoadPricesList(null);
+                return;
+            }
+            
             LoadPricesList(filteredList);
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                LoadPage();
+            }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                LoadPage();
+            }
         }
     }
 }

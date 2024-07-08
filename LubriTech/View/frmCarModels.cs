@@ -1,10 +1,13 @@
-﻿using LubriTech.Controller;
+﻿using iTextSharp.text;
+using LubriTech.Controller;
+using LubriTech.Model.Client_Information;
 using LubriTech.Model.Vehicle_Information;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
@@ -16,14 +19,17 @@ namespace LubriTech.View
 {
     public partial class frmCarModels : Form
     {
+        int currentPage = 1;
+        int pageSize = 20; // Puedes ajustar este valor según sea necesario
+        int totalRecords = 0;
+        int totalPages = 0;
+
 
         private List<CarModel> models;
         public frmCarModels()
         {
             InitializeComponent();
-            SetupDataGridView();
-            load_CarModels(null);
-            
+            load_CarModels(null);            
         }
 
 
@@ -34,43 +40,44 @@ namespace LubriTech.View
 
         private void load_CarModels(List<CarModel> filteredList)
         {
-            
+
             if (filteredList != null)
             {
-                if (filteredList.Count == 0)
-                {
-                    dgvCarModels.DataSource = models;
-                }
-                else
-                {
-                    dgvCarModels.DataSource = filteredList;
-                }
-                SetColumnOrder();
+                models = filteredList;
+
             }
             else
             {
                 models = new CarModel_Controller().getAll();
-                if (models.Count == 0)
-                {
-                    MessageBox.Show("No hay modelos registrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                dgvCarModels.DataSource = models;
-
-
             }
+            if (models.Count == 0)
+            {
+                MessageBox.Show("No hay modelos registrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            totalRecords = models.Count;
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+
+            LoadPage();
             dgvCarModels.Columns["Id"].Visible = false;
             dgvCarModels.Columns["Make"].HeaderText = "Marca";
             dgvCarModels.Columns["Name"].HeaderText = "Nombre";
             dgvCarModels.Columns["State"].HeaderText = "Estado";
-
             SetColumnOrder();
+
 
         }
 
-        private void SetupDataGridView()
+        private void LoadPage()
         {
-            
+            int startRecord = (currentPage - 1) * pageSize;
+            int endRecord = Math.Min(currentPage * pageSize, totalRecords);
+
+            var pageClients = models.Skip(startRecord).Take(endRecord - startRecord).ToList();
+            dgvCarModels.DataSource = pageClients;
+
+            lblPageNumber.Text = $"Página {currentPage} de {totalPages}";
         }
 
         private void SetColumnOrder()
@@ -101,6 +108,11 @@ namespace LubriTech.View
         private void ApplyFilter()
         {
             string filterValue = txtFilter.Text.ToLower();
+            if (filterValue == "")
+            {
+                load_CarModels(null);
+                return;
+            }
 
             var filteredList = models.Where(p =>
                            p.Name.ToLower().Contains(filterValue) ||
@@ -108,7 +120,12 @@ namespace LubriTech.View
                            p.State.ToLower().Contains(filterValue)
                            ).ToList();
 
-            dgvCarModels.DataSource = null;
+
+            if (filteredList.Count == 0)
+            {
+                load_CarModels(null);
+                return;
+            }
             load_CarModels(filteredList);
         }
 
@@ -160,6 +177,29 @@ namespace LubriTech.View
             this.WindowState = FormWindowState.Normal;
             frmUpsertCarModel.DataChanged += ChildFormDataChangedHandler;
             frmUpsertCarModel.Show();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                LoadPage();
+            }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                LoadPage();
+            }
         }
     }
 }

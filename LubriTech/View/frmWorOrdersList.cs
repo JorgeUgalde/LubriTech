@@ -1,4 +1,5 @@
-﻿using LubriTech.Controller;
+﻿using iTextSharp.text;
+using LubriTech.Controller;
 using LubriTech.Model.Client_Information;
 using LubriTech.Model.WorkOrder_Information;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -17,6 +19,11 @@ namespace LubriTech.View
 {
     public partial class frmWorOrdersList : Form
     {
+        private int currentPage = 1;
+        private int pageSize = 20; // Puedes ajustar este valor según sea necesario
+        private int totalRecords = 0;
+        private int totalPages = 0;
+
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
 
@@ -37,34 +44,35 @@ namespace LubriTech.View
         {
             if (filteredList != null)
             {
-                if (filteredList.Count == 0)
-                {
-                    dgvWorkOrders.DataSource = workorders;
-
-                }
-                else
-                {
-                    dgvWorkOrders.DataSource = filteredList;
-                }
+               workorders = filteredList;
+                
             }
             else
             {
                 workorders = new Work_Order_Controller().loadWorkOrders();
-                if (workorders.Count == 0)
-                {
-                    MessageBox.Show("No hay ordenes de trabajo registradas", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                dgvWorkOrders.DataSource = workorders;
+               
             }
+            if (workorders.Count == 0)
+            {
+                MessageBox.Show("No hay ordenes de trabajo registradas", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            totalRecords = workorders.Count;
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+
+            LoadPage();
             SetColumns();
 
-            typeof(DataGridView).InvokeMember(
-            "DoubleBuffered",
-            BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
-            null,
-            dgvWorkOrders,
-            new object[] { true });
+        }
+        private void LoadPage()
+        {
+            int startRecord = (currentPage - 1) * pageSize;
+            int endRecord = Math.Min(currentPage * pageSize, totalRecords);
+
+            var pageClients = workorders.Skip(startRecord).Take(endRecord - startRecord).ToList();
+            dgvWorkOrders.DataSource = pageClients;
+
+            lblPageNumber.Text = $"Página {currentPage} de {totalPages}";
         }
 
         private void SetColumns()
@@ -98,10 +106,24 @@ namespace LubriTech.View
         private void ApplyFilter()
         {
             string filterValue = txtFilter.Text.ToLower();
+            if (filterValue == "")
+            {
+                LoadWorkOrders(null);
+                return;
+            }
 
             var filteredList = workorders.Where(c =>
-                c.Client.FullName.ToLower().Contains(filterValue)
+                c.Client.FullName.ToLower().Contains(filterValue) ||
+                //if vehicle exist filter by vehicle
+                (c.Vehicle != null && c.Vehicle.LicensePlate.ToLower().Contains(filterValue)
+                || c.State.ToString().ToLower().Contains(filterValue))
             ).ToList();
+
+            if (filteredList.Count == 0)
+            {
+                LoadWorkOrders(null);
+                return;
+            }
 
             LoadWorkOrders(filteredList);
         }
@@ -189,9 +211,23 @@ namespace LubriTech.View
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
 
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                LoadPage();
+            }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                LoadPage();
+            }
         }
     }
 }

@@ -1,10 +1,13 @@
-﻿using LubriTech.Controller;
+﻿using iTextSharp.text;
+using LubriTech.Controller;
 using LubriTech.Model.Branch_Information;
+using LubriTech.Model.Client_Information;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -16,6 +19,11 @@ namespace LubriTech.View
 {
     public partial class frmSchedule : Form
     {
+        private int currentPage = 1;
+        private int pageSize = 20; // Puedes ajustar este valor según sea necesario
+        private int totalRecords = 0;
+        private int totalPages = 0;
+
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
 
@@ -34,14 +42,7 @@ namespace LubriTech.View
         {
             if (filteredList != null)
             {
-                if(filteredList.Count > 0)
-                {
-                    dgvSchedules.DataSource = filteredList;
-                }
-                else
-                {
-                    dgvSchedules.DataSource = schedules;
-                }
+                schedules = filteredList;
             }
             else
             {
@@ -51,8 +52,11 @@ namespace LubriTech.View
                     MessageBox.Show("No hay horarios registrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                dgvSchedules.DataSource = schedules;
             }
+            totalRecords = schedules.Count;
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+
+            LoadPage();
 
             dgvSchedules.Columns["ScheduleID"].Visible = false;
             dgvSchedules.Columns["AppointmentDuration"].Visible = false;
@@ -61,14 +65,17 @@ namespace LubriTech.View
             dgvSchedules.Columns["StartHour"].HeaderText = "Hora de Inicio";
             dgvSchedules.Columns["EndHour"].HeaderText = "Hora de Salida";
             dgvSchedules.Columns["State"].HeaderText = "Estado";
+        }
 
-            SetColumnOrder();
-            typeof(DataGridView).InvokeMember(
-                "DoubleBuffered",
-                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
-                null,
-                dgvSchedules,
-                new object[] { true });
+        private void LoadPage()
+        {
+            int startRecord = (currentPage - 1) * pageSize;
+            int endRecord = Math.Min(currentPage * pageSize, totalRecords);
+
+            var pageClients = schedules.Skip(startRecord).Take(endRecord - startRecord).ToList();
+            dgvSchedules.DataSource = pageClients;
+
+            lblPageNumber.Text = $"Página {currentPage} de {totalPages}";
         }
 
         private void SetColumnOrder()
@@ -93,13 +100,26 @@ namespace LubriTech.View
         private void ApplyFilter()
         {
             string filterValue = txtFilter.Text.ToLower();
-
+            if (filterValue == "")
+            {
+                load_Schedules(null);
+                return;
+            }
             var filteredList = schedules.Where(p =>
                            p.Branch.Name.ToLower().Contains(filterValue) ||
                            p.Title.ToLower().Contains(filterValue)
                            ).ToList();
 
-            dgvSchedules.DataSource = null;
+            currentPage = 1;
+            totalRecords = filteredList.Count;
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+            if (filteredList.Count == 0)
+            {
+                load_Schedules(null);
+                return;
+            }
+
+
             load_Schedules(filteredList);
         }
 
@@ -155,6 +175,29 @@ namespace LubriTech.View
                 frmUpsert_Schedule.MdiParent = this.MdiParent;
                 frmUpsert_Schedule.DataChanged += ChildFormDataChangedHandler;
                 frmUpsert_Schedule.Show();
+            }
+        }
+
+        private void dgvSchedules_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                LoadPage();
+            }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                LoadPage();
             }
         }
     }

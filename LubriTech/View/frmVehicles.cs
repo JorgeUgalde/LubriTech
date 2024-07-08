@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp.text;
 using LubriTech.Controller;
 using LubriTech.Model.Client_Information;
 using LubriTech.Model.Vehicle_Information;
@@ -22,6 +24,12 @@ namespace LubriTech.View
         private Form parentForm;
         public event Action<Vehicle> VehicleSelected;
         string clientId = "";
+
+        private int currentPage = 1;
+        private int pageSize = 20; // Puedes ajustar este valor según sea necesario
+        private int totalRecords = 0;
+        private int totalPages = 0;
+
 
         public frmVehicles()
         {
@@ -51,15 +59,7 @@ namespace LubriTech.View
         {
             if (filteredList != null)
             {
-                if (filteredList.Count == 0)
-                {
-                    dgvVehicles.DataSource = vehicles;
-
-                }
-                else
-                {
-                    dgvVehicles.DataSource = filteredList;
-                }
+                vehicles = filteredList;  
             }
             else
             {
@@ -71,26 +71,34 @@ namespace LubriTech.View
                 {
                     vehicles = new Vehicle_Controller().getVehiclesByClient(this.clientId);
                 }
-                if (vehicles == null)
-                {
-                    MessageBox.Show("No hay vehículos registrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                dgvVehicles.DataSource = vehicles;
             }
+
+            if (vehicles == null)
+            {
+                MessageBox.Show("No hay vehículos registrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            totalRecords = vehicles.Count;
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+
+            LoadPage();
+
+
             dgvVehicles.Columns["LicensePlate"].HeaderText = "Placa";
             dgvVehicles.Columns["Model"].HeaderText = "Modelo";
             dgvVehicles.Columns["Year"].HeaderText = "Año";
             dgvVehicles.Columns["TransmissionType"].HeaderText = "Transmisión";
             dgvVehicles.Columns["State"].HeaderText = "Estado";
             dgvVehicles.Columns["Client"].HeaderText = "Cliente";
+
+
             
             foreach (DataGridViewColumn column in dgvVehicles.Columns)
             {
                 if (this.clientId == "")
                 {
                     if (column.Name != "LicensePlate" && column.Name != "Year" && column.Name != "State" &&
-                    column.Name != "Client" && column.Name != "Model" && column.Name != "ModifyImageColumn" && column.Name != "DetailImageColumn")
+                    column.Name != "Client" && column.Name != "Model")
                     {
                         column.Visible = false;
                     }
@@ -98,13 +106,24 @@ namespace LubriTech.View
                 else
                 {
                     if (column.Name != "LicensePlate" && column.Name != "Year" && column.Name != "State" 
-                       && column.Name != "Model" && column.Name != "ModifyImageColumn" && column.Name != "DetailImageColumn")
+                       && column.Name != "Model" )
                     {
                         column.Visible = false;
                     }
                 }
             }
             SetColumnOrder();
+        }
+
+        private void LoadPage()
+        {
+            int startRecord = (currentPage - 1) * pageSize;
+            int endRecord = Math.Min(currentPage * pageSize, totalRecords);
+
+            var pageClients = vehicles.Skip(startRecord).Take(endRecord - startRecord).ToList();
+            dgvVehicles.DataSource = pageClients;
+
+            lblPageNumber.Text = $"Página {currentPage} de {totalPages}";
         }
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
@@ -115,11 +134,15 @@ namespace LubriTech.View
         private void ApplyFilter()
         {
             string filterValue = txtFilter.Text.ToLower();
+            if (filterValue == "")
+            {
+                load_Vehicles(null);
+                return;
+            }
 
             // Filtrar la lista de vehiculos
             var filteredList = vehicles.Where(p =>
                 p.LicensePlate.ToLower().Contains(filterValue) ||
-                p.EngineType.EngineType.ToLower().Contains(filterValue) ||
                 p.Mileage.ToString().ToLower().Contains(filterValue) ||
                 p.Model.Make.Name.ToLower().Contains(filterValue) ||
                 p.Model.Name.ToLower().Contains(filterValue) ||
@@ -128,8 +151,11 @@ namespace LubriTech.View
                 p.Client.FullName.ToLower().Contains(filterValue)
             ).ToList();
 
-            // Refrescar el DataGridView
-            dgvVehicles.DataSource = null;
+            if (filteredList.Count == 0 ) {
+                load_Vehicles(null);
+                return;
+            }
+
             load_Vehicles(filteredList);
         }
 
@@ -231,5 +257,24 @@ namespace LubriTech.View
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                LoadPage();
+            }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                LoadPage();
+            }
+        }
+
     }
 }

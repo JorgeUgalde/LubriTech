@@ -15,6 +15,9 @@ using LubriTech.View.Appointment_View;
 using LubriTech.Model.InventoryManagment_Information;
 using System.Reflection;
 using LubriTech.Model.Branch_Information;
+using iTextSharp.text;
+using LubriTech.Model.Client_Information;
+using System.Drawing.Printing;
 
 namespace LubriTech.View
 {
@@ -25,6 +28,11 @@ namespace LubriTech.View
         private Form parentForm;
         public event Action<Item> ItemSelected;
         private List<ItemType> itemTypes;
+
+        private int currentPage = 1;
+        private int pageSize = 20; // Puedes ajustar este valor según sea necesario
+        private int totalRecords = 0;
+        private int totalPages = 0;
 
         public frmItems()
         {
@@ -51,7 +59,7 @@ namespace LubriTech.View
             cbBranch.ValueMember = "Id";
             cbBranch.SelectedValue = frmLogin.branch;
         }
-      
+
         private void frmItems_Load(object sender, EventArgs e)
         {
             txtFilter.TextChanged += new EventHandler(txtFilter_TextChanged);
@@ -61,15 +69,11 @@ namespace LubriTech.View
         {
             if (filteredList != null)
             {
-                if (filteredList.Count == 0)
-                {
-                    dgvItems.DataSource = items;
+                
+                    items = filteredList;
 
-                }
-                else
-                {
-                    dgvItems.DataSource = filteredList;
-                }
+                
+                
             }
             else
             {
@@ -91,7 +95,7 @@ namespace LubriTech.View
                     int itemTypeId = -1;
                     foreach (ItemType itemType in itemTypes)
                     {
-                        if(itemType.Name.Equals("Servicio"))
+                        if (itemType.Name.Equals("Servicio"))
                         {
                             itemTypeId = itemType.Id;
                         }
@@ -105,8 +109,13 @@ namespace LubriTech.View
                         }
                     }
                 }
-                dgvItems.DataSource = items;
             }
+            totalRecords = items.Count;
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+
+            LoadPage();
+            SetColumnOrder();
+
             dgvItems.Columns["code"].HeaderText = "Código";
             dgvItems.Columns["name"].HeaderText = "Nombre";
             dgvItems.Columns["purchasePrice"].HeaderText = "Precio Compra";
@@ -125,9 +134,20 @@ namespace LubriTech.View
                 new object[] { true });
         }
 
+        private void LoadPage()
+        {
+            int startRecord = (currentPage - 1) * pageSize;
+            int endRecord = Math.Min(currentPage * pageSize, totalRecords);
+
+            var pageClients = items.Skip(startRecord).Take(endRecord - startRecord).ToList();
+            dgvItems.DataSource = pageClients;
+
+            lblPageNumber.Text = $"Página {currentPage} de {totalPages}";
+        }
+
         private void ChildFormDataChangedHandler(object sender, EventArgs e)
         {
-            
+
             load_Items(null);
         }
 
@@ -148,7 +168,11 @@ namespace LubriTech.View
         private void ApplyFilter()
         {
             string filterValue = txtFilter.Text.ToLower();
-
+            if (filterValue == "")
+            {
+                load_Items(null);
+                return;
+            }
             // Filtrar la lista de artículos
             var filteredList = items.Where(p =>
                 p.code.ToString().ToLower().Contains(filterValue) ||
@@ -158,8 +182,14 @@ namespace LubriTech.View
                 p.itemType.ToString().ToLower().Contains(filterValue)
             ).ToList();
 
-            // Refrescar el DataGridView
-            dgvItems.DataSource = null;
+            currentPage = 1;
+            totalRecords = filteredList.Count;
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+            if (filteredList.Count == 0)
+            {
+                load_Items(null);
+                return;
+            }
             load_Items(filteredList);
         }
 
@@ -190,7 +220,8 @@ namespace LubriTech.View
                     {
                         ((frmInsertUpdate_InventoryManagment)parentForm).ShowItemInDetailLine(selectedItem);
                         this.Close();
-                    }else if (parentForm is frmWorkOrder)
+                    }
+                    else if (parentForm is frmWorkOrder)
                     {
                         ((frmWorkOrder)parentForm).ShowItemInWorkOrder(selectedItem);
                         this.Close();
@@ -212,7 +243,7 @@ namespace LubriTech.View
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-            
+
         }
 
 
@@ -245,5 +276,23 @@ namespace LubriTech.View
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                LoadPage();
+            }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                LoadPage();
+            }
+
+        }
     }
 }

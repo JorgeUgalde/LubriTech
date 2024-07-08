@@ -33,13 +33,9 @@ namespace LubriTech.View
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.panelId = new System.Windows.Forms.Panel();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.panelEmail = new System.Windows.Forms.Panel();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.panelName = new System.Windows.Forms.Panel();
             this.txtPhone = new System.Windows.Forms.TextBox();
-            this.panelPhone = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
@@ -49,19 +45,19 @@ namespace LubriTech.View
             this.cbState = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panelName.SuspendLayout();
-            this.panelPhone.SuspendLayout();
             this.panelBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(22, 68);
+            this.label2.Location = new System.Drawing.Point(29, 84);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 21);
+            this.label2.Size = new System.Drawing.Size(77, 28);
             this.label2.TabIndex = 56;
             this.label2.Text = "Código";
             // 
@@ -69,9 +65,10 @@ namespace LubriTech.View
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(22, 108);
+            this.label3.Location = new System.Drawing.Point(29, 133);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 21);
+            this.label3.Size = new System.Drawing.Size(85, 28);
             this.label3.TabIndex = 54;
             this.label3.Text = "Nombre";
             // 
@@ -79,9 +76,10 @@ namespace LubriTech.View
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(411, 111);
+            this.label4.Location = new System.Drawing.Point(532, 137);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(138, 21);
+            this.label4.Size = new System.Drawing.Size(174, 28);
             this.label4.TabIndex = 36;
             this.label4.Text = "Correo electrónico";
             // 
@@ -89,91 +87,63 @@ namespace LubriTech.View
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(411, 68);
+            this.label5.Location = new System.Drawing.Point(532, 84);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(140, 21);
+            this.label5.Size = new System.Drawing.Size(176, 28);
             this.label5.TabIndex = 42;
             this.label5.Text = "Número telefónico";
             // 
             // txtId
             // 
             this.txtId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtId.Location = new System.Drawing.Point(154, 65);
+            this.txtId.Location = new System.Drawing.Point(203, 132);
+            this.txtId.Margin = new System.Windows.Forms.Padding(4);
             this.txtId.MaxLength = 30;
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(205, 29);
+            this.txtId.Size = new System.Drawing.Size(272, 34);
             this.txtId.TabIndex = 1;
             this.txtId.TextChanged += new System.EventHandler(this.txtId_TextChanged);
-            // 
-            // panelId
-            // 
-            this.panelId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelId.Location = new System.Drawing.Point(154, 65);
-            this.panelId.Name = "panelId";
-            this.panelId.Size = new System.Drawing.Size(205, 29);
-            this.panelId.TabIndex = 10;
             // 
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(557, 108);
+            this.txtEmail.Location = new System.Drawing.Point(740, 128);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(205, 29);
+            this.txtEmail.Size = new System.Drawing.Size(272, 34);
             this.txtEmail.TabIndex = 5;
-            // 
-            // panelEmail
-            // 
-            this.panelEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelEmail.Location = new System.Drawing.Point(557, 105);
-            this.panelEmail.Name = "panelEmail";
-            this.panelEmail.Size = new System.Drawing.Size(205, 29);
-            this.panelEmail.TabIndex = 12;
             // 
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(0, -3);
+            this.txtName.Location = new System.Drawing.Point(203, 82);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4);
             this.txtName.MaxLength = 50;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(205, 29);
+            this.txtName.Size = new System.Drawing.Size(272, 34);
             this.txtName.TabIndex = 2;
-            // 
-            // panelName
-            // 
-            this.panelName.Controls.Add(this.txtName);
-            this.panelName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelName.Location = new System.Drawing.Point(154, 108);
-            this.panelName.Name = "panelName";
-            this.panelName.Size = new System.Drawing.Size(205, 29);
-            this.panelName.TabIndex = 18;
             // 
             // txtPhone
             // 
             this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhone.Location = new System.Drawing.Point(-2, -4);
+            this.txtPhone.Location = new System.Drawing.Point(740, 79);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtPhone.MaxLength = 11;
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(207, 29);
+            this.txtPhone.Size = new System.Drawing.Size(275, 34);
             this.txtPhone.TabIndex = 4;
             this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
-            // 
-            // panelPhone
-            // 
-            this.panelPhone.Controls.Add(this.txtPhone);
-            this.panelPhone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelPhone.Location = new System.Drawing.Point(557, 68);
-            this.panelPhone.Name = "panelPhone";
-            this.panelPhone.Size = new System.Drawing.Size(202, 28);
-            this.panelPhone.TabIndex = 16;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(338, 171);
+            this.label7.Location = new System.Drawing.Point(451, 210);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(0, 21);
+            this.label7.Size = new System.Drawing.Size(0, 28);
             this.label7.TabIndex = 18;
             // 
             // btnConfirm
@@ -183,9 +153,10 @@ namespace LubriTech.View
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfirm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnConfirm.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnConfirm.Location = new System.Drawing.Point(26, 240);
+            this.btnConfirm.Location = new System.Drawing.Point(35, 295);
+            this.btnConfirm.Margin = new System.Windows.Forms.Padding(4);
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(141, 34);
+            this.btnConfirm.Size = new System.Drawing.Size(188, 42);
             this.btnConfirm.TabIndex = 6;
             this.btnConfirm.Text = "Confirmar";
             this.btnConfirm.UseVisualStyleBackColor = false;
@@ -199,9 +170,10 @@ namespace LubriTech.View
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnClose.Location = new System.Drawing.Point(621, 240);
+            this.btnClose.Location = new System.Drawing.Point(828, 295);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(141, 34);
+            this.btnClose.Size = new System.Drawing.Size(188, 42);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Cancelar";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -215,8 +187,9 @@ namespace LubriTech.View
             this.panelBorder.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panelBorder.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBorder.Location = new System.Drawing.Point(0, 0);
+            this.panelBorder.Margin = new System.Windows.Forms.Padding(4);
             this.panelBorder.Name = "panelBorder";
-            this.panelBorder.Size = new System.Drawing.Size(789, 36);
+            this.panelBorder.Size = new System.Drawing.Size(1052, 44);
             this.panelBorder.TabIndex = 21;
             this.panelBorder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBorder_MouseDown);
             // 
@@ -225,9 +198,10 @@ namespace LubriTech.View
             this.lblForm.AutoSize = true;
             this.lblForm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblForm.ForeColor = System.Drawing.Color.White;
-            this.lblForm.Location = new System.Drawing.Point(12, 6);
+            this.lblForm.Location = new System.Drawing.Point(16, 7);
+            this.lblForm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblForm.Name = "lblForm";
-            this.lblForm.Size = new System.Drawing.Size(191, 21);
+            this.lblForm.Size = new System.Drawing.Size(235, 28);
             this.lblForm.TabIndex = 25;
             this.lblForm.Text = "Dato Maestro Proveedor";
             // 
@@ -236,9 +210,10 @@ namespace LubriTech.View
             this.pbClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::LubriTech.Properties.Resources.closeIco2;
-            this.pbClose.Location = new System.Drawing.Point(756, 6);
+            this.pbClose.Location = new System.Drawing.Point(1008, 7);
+            this.pbClose.Margin = new System.Windows.Forms.Padding(4);
             this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(30, 30);
+            this.pbClose.Size = new System.Drawing.Size(40, 37);
             this.pbClose.TabIndex = 7;
             this.pbClose.TabStop = false;
             this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
@@ -251,66 +226,63 @@ namespace LubriTech.View
             this.cbState.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cbState.Location = new System.Drawing.Point(154, 146);
-            this.cbState.Margin = new System.Windows.Forms.Padding(4);
+            this.cbState.Location = new System.Drawing.Point(205, 180);
+            this.cbState.Margin = new System.Windows.Forms.Padding(5);
             this.cbState.Name = "cbState";
-            this.cbState.Size = new System.Drawing.Size(205, 29);
+            this.cbState.Size = new System.Drawing.Size(272, 36);
             this.cbState.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(22, 149);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(29, 183);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 21);
+            this.label1.Size = new System.Drawing.Size(71, 28);
             this.label1.TabIndex = 46;
             this.label1.Text = "Estado";
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.txtEmail);
+            this.panel1.Controls.Add(this.txtPhone);
+            this.panel1.Controls.Add(this.txtName);
+            this.panel1.Controls.Add(this.txtId);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(789, 312);
+            this.panel1.Size = new System.Drawing.Size(1052, 384);
             this.panel1.TabIndex = 57;
             // 
             // frmInsertUpdateSupplier
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(789, 312);
-            this.Controls.Add(this.txtEmail);
+            this.ClientSize = new System.Drawing.Size(1052, 384);
             this.Controls.Add(this.cbState);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panelBorder);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.panelPhone);
-            this.Controls.Add(this.panelName);
-            this.Controls.Add(this.panelEmail);
-            this.Controls.Add(this.txtId);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.panelId);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmInsertUpdateSupplier";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dato Maestro Proveedor";
-            this.panelName.ResumeLayout(false);
-            this.panelName.PerformLayout();
-            this.panelPhone.ResumeLayout(false);
-            this.panelPhone.PerformLayout();
             this.panelBorder.ResumeLayout(false);
             this.panelBorder.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -322,13 +294,9 @@ namespace LubriTech.View
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.Panel panelId;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Panel panelEmail;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Panel panelName;
         private System.Windows.Forms.TextBox txtPhone;
-        private System.Windows.Forms.Panel panelPhone;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.Button btnClose;

@@ -1,4 +1,5 @@
-﻿using LubriTech.Controller;
+﻿using iTextSharp.text;
+using LubriTech.Controller;
 using LubriTech.Model.Client_Information;
 using LubriTech.Model.Supplier_Information;
 using LubriTech.View.Appointment_View;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -21,6 +23,11 @@ namespace LubriTech.View
         private List<Supplier> suppliers;
         private Form parentForm;
         public event Action<Supplier> SupplierSelected;
+
+        private int currentPage = 1;
+        private int pageSize = 20; // Puedes ajustar este valor según sea necesario
+        private int totalRecords = 0;
+        private int totalPages = 0;
 
         public frmSuppliers()
         {
@@ -49,15 +56,9 @@ namespace LubriTech.View
         {
             if (filteredList != null)
             {
-                if (filteredList.Count == 0)
-                {
-                    dgvSuppliers.DataSource = suppliers;
+              suppliers = filteredList;
 
-                }
-                else
-                {
-                    dgvSuppliers.DataSource = filteredList;
-                }
+               
             }
             else
             {
@@ -67,21 +68,27 @@ namespace LubriTech.View
                     MessageBox.Show("No hay proveedores registrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                dgvSuppliers.DataSource = suppliers;
-
             }
+
+            totalRecords = suppliers.Count;
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+
+            LoadPage();
             dgvSuppliers.Columns["id"].HeaderText = "Codigo";
             dgvSuppliers.Columns["name"].HeaderText = "Nombre";
             dgvSuppliers.Columns["email"].HeaderText = "Correo electrónico";
             dgvSuppliers.Columns["phone"].HeaderText = "Teléfono";
             SetColumnOrder();
+        }
+        private void LoadPage()
+        {
+            int startRecord = (currentPage - 1) * pageSize;
+            int endRecord = Math.Min(currentPage * pageSize, totalRecords);
 
-            typeof(DataGridView).InvokeMember(
-                "DoubleBuffered",
-                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
-                null,
-                dgvSuppliers,
-                new object[] { true });
+            var pageClients = suppliers.Skip(startRecord).Take(endRecord - startRecord).ToList();
+            dgvSuppliers.DataSource = pageClients;
+
+            lblPageNumber.Text = $"Página {currentPage} de {totalPages}";
         }
 
 
@@ -110,6 +117,11 @@ namespace LubriTech.View
         private void ApplyFilter()
         {
             string filterValue = txtFilter.Text.ToLower();
+            if (filterValue == "")
+            {
+                load_Suppliers(null);
+                return;
+            }
 
             // Filtrar la lista de proveedores
             var filteredList = suppliers.Where(p =>
@@ -119,8 +131,11 @@ namespace LubriTech.View
             p.phone.ToString().Contains(filterValue)
             ).ToList();
 
-            // Refrescar el DataGridView
-            dgvSuppliers.DataSource = null;
+            if  (filteredList.Count == 0)
+            {
+                load_Suppliers(null);
+                return;
+            }
             load_Suppliers(filteredList);
         }
 
@@ -220,6 +235,22 @@ namespace LubriTech.View
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-       
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if(currentPage < totalPages)
+            {
+                currentPage++;
+                LoadPage();
+            }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                LoadPage();
+            }
+        }
     }
 }

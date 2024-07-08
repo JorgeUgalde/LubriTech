@@ -1,8 +1,11 @@
-﻿using LubriTech.Controller;
+﻿using iTextSharp.text;
+using LubriTech.Controller;
 using LubriTech.Model.Branch_Information;
+using LubriTech.Model.Client_Information;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -13,6 +16,11 @@ namespace LubriTech.View
     public partial class frmManage_Branch : Form
     {
         List <Branch> branches;
+        private int currentPage = 1;
+        private int pageSize = 20; // Puedes ajustar este valor según sea necesario
+        private int totalRecords = 0;
+        private int totalPages = 0;
+
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
 
@@ -28,14 +36,7 @@ namespace LubriTech.View
         {
             if (filteredList != null)
             {
-                if (filteredList.Count == 0)
-                {
-                    dgvBranch.DataSource = branches;
-                }
-                else
-                {
-                    dgvBranch.DataSource = filteredList;
-                }
+                branches = filteredList;             
             }
             else
             {
@@ -45,9 +46,12 @@ namespace LubriTech.View
                     MessageBox.Show("No hay Sucursales registradas", "Sin sucursales registradas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                dgvBranch.DataSource = branches;
             }
-            dgvBranch.Columns["Id"].HeaderText = "Identificacion";
+
+            totalRecords = branches.Count;
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+
+            LoadPage();
             dgvBranch.Columns["Name"].HeaderText = "Nombre";
             dgvBranch.Columns["Address"].HeaderText = "Dirección";
             dgvBranch.Columns["Phone"].HeaderText = "Teléfono";
@@ -55,13 +59,6 @@ namespace LubriTech.View
             dgvBranch.Columns["State"].HeaderText = "Estado";
 
             SetColumnOrder();
-
-            typeof(DataGridView).InvokeMember(
-                "DoubleBuffered",
-                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
-                null,
-                dgvBranch,
-                new object[] { true });
 
         }
 
@@ -99,6 +96,17 @@ namespace LubriTech.View
             }
         }
 
+        private void LoadPage()
+        {
+            int startRecord = (currentPage - 1) * pageSize;
+            int endRecord = Math.Min(currentPage * pageSize, totalRecords);
+
+            var pageClients = branches.Skip(startRecord).Take(endRecord - startRecord).ToList();
+            dgvBranch.DataSource = pageClients;
+
+            lblPageNumber.Text = $"Página {currentPage} de {totalPages}";
+        }
+
         private void pbMaximize_Click_1(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Normal)
@@ -129,8 +137,23 @@ namespace LubriTech.View
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {
-            string filter = txtFilter.Text;
-            List<Branch> filteredList = branches.Where(branch => branch.Name.ToLower().Contains(filter.ToLower())).ToList();
+            string filterValue = txtFilter.Text.ToLower();
+            if (filterValue == "")
+            {
+                load_Branches(null);
+                return;
+            }
+
+            List<Branch> filteredList = branches.Where(branch =>
+            branch.Name.ToLower().Contains(filterValue.ToLower())).ToList();
+
+            if (filteredList.Count == 0)
+            {
+                load_Branches(null);
+                return;
+            }
+
+
             load_Branches(filteredList);
 
         }
@@ -151,5 +174,22 @@ namespace LubriTech.View
             this.Dispose();
         }
 
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                LoadPage();
+            }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                LoadPage();
+            }
+        }
     }
 }
