@@ -4,6 +4,7 @@ using LubriTech.Model.Client_Information;
 using LubriTech.Model.Vehicle_Information;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -27,42 +28,36 @@ namespace LubriTech.Model.WorkOrder_Information
                    ot.PlacaVehiculo, ot.KilometrajeActual, ot.Monto, ot.Estado
             FROM OrdenTrabajo ot";
 
-            SqlConnection conn = new SqlConnection(LubriTech.Properties.Settings.Default.connString);
-
             try
             {
+                Dictionary<string,Client> clientDictionary = new Clients_Controller().getAll().ToDictionary(c => c.Id,c => c);
+                Dictionary<int, Branch> branchDictionary = new Branch_Model().loadAllBranches().ToDictionary(b => b.Id, b => b);
+                Dictionary<string, Vehicle> vehicleDictionary = new Vehicle_Model().loadAllVehicles().ToDictionary(v => v.LicensePlate, v => v);
+
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand(selectQuery, conn))
                 {
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    DataTable dataTable = new DataTable();
+                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                    adp.Fill(dataTable);
+                    foreach (DataRow row in dataTable.Rows)
                     {
-                        while (reader.Read())
+                        int branchId = Convert.ToInt32(row["IdentificacionSucursal"]);
+                        WorkOrder workOrder = new WorkOrder
                         {
-                            WorkOrder workOrder = new WorkOrder
-                            {
-                                Id = reader.GetInt32(reader.GetOrdinal("Identificacion")),
-                                Date = reader.GetDateTime(reader.GetOrdinal("Fecha")),
-                                Branch = new Branch_Model().GetBranch(reader.GetInt32(reader.GetOrdinal("IdentificacionSucursal"))),
-                                Client = new Client_Model().getClient(reader.GetString(reader.GetOrdinal("IdentificacionCliente"))),
-                                CurrentMileage = reader.GetInt32(reader.GetOrdinal("KilometrajeActual")),
-                                Amount = reader.GetDecimal(reader.GetOrdinal("Monto")),
-                                State = reader.GetInt16(reader.GetOrdinal("Estado")),
-                                //workOrderLines = new WorkOrderLine_Model().LoadWorkOrderLines(reader.GetInt32(reader.GetOrdinal("Identificacion"))),
-                                Observations = new Observation_Model().LoadObservations(reader.GetInt32(reader.GetOrdinal("Identificacion")))
-                            };
+                            Id = Convert.ToInt32(row["Identificacion"]),
+                            Date = Convert.ToDateTime(row["Fecha"]),
+                            Branch = branchDictionary.ContainsKey(branchId)? branchDictionary[branchId] : null,
+                            Client = clientDictionary[row["IdentificacionCliente"].ToString()],
+                            Vehicle = vehicleDictionary.ContainsKey(row["PlacaVehiculo"].ToString()) ? vehicleDictionary[row["PlacaVehiculo"].ToString()] : null,
+                            CurrentMileage = Convert.ToInt32(row["KilometrajeActual"]),
+                            Amount = Convert.ToDecimal(row["Monto"]),
+                            State = Convert.ToInt16(row["Estado"]),
+                            //workOrderLines = new WorkOrderLine_Model().LoadWorkOrderLines(reader.GetInt32(reader.GetOrdinal("Identificacion"))),
+                            Observations = new Observation_Model().LoadObservations(Convert.ToInt32(row["Identificacion"]))
+                        };
 
-                            // Validar si "PlacaVehiculo" es nulo
-                            if (!reader.IsDBNull(reader.GetOrdinal("PlacaVehiculo")))
-                            {
-                                workOrder.Vehicle = new Vehicle_Model().getVehicle(reader.GetString(reader.GetOrdinal("PlacaVehiculo")));
-                            }
-                            else
-                            {
-                                workOrder.Vehicle = null; // Manejar el caso cuando "PlacaVehiculo" es nulo
-                            }
-
-                            workOrders.Add(workOrder);
-                        }
+                        workOrders.Add(workOrder);
                     }
                 }
             }

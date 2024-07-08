@@ -563,6 +563,8 @@
     <None Include="Resources\edit.png" />
     <Content Include="Resources\EditIco.png" />
     <None Include="Resources\EditIco1.png" />
+    <None Include="Resources\icons8-búsqueda-30.png" />
+    <None Include="Resources\icons8-menos-25.png" />
     <Content Include="Resources\inventory.png" />
     <Content Include="Resources\logo1.jpg" />
     <Content Include="Resources\logoCrop.jpg" />

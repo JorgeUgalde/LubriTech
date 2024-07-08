@@ -55,6 +55,7 @@ namespace LubriTech.View
             this.label1 = new System.Windows.Forms.Label();
             this.cbState = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelControlBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.panelBorder.SuspendLayout();
@@ -349,6 +350,7 @@ namespace LubriTech.View
             this.panelBorder.Controls.Add(this.tbYear);
             this.panelBorder.Controls.Add(this.lblMileage);
             this.panelBorder.Controls.Add(this.lblYear);
+            this.panelBorder.Controls.Add(this.flowLayoutPanel1);
             this.panelBorder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBorder.Location = new System.Drawing.Point(0, 0);
             this.panelBorder.Name = "panelBorder";
@@ -389,6 +391,15 @@ namespace LubriTech.View
             this.label3.Size = new System.Drawing.Size(56, 21);
             this.label3.TabIndex = 46;
             this.label3.Text = "Estado";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(785, 382);
+            this.flowLayoutPanel1.TabIndex = 88;
             // 
             // frmInsertUpdate_Vehicle
             // 
@@ -443,5 +454,6 @@ namespace LubriTech.View
         private System.Windows.Forms.ComboBox cbState;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

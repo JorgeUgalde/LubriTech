@@ -242,6 +242,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmEngine";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

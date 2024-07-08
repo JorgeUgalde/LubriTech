@@ -44,6 +44,7 @@
             // pbImage
             // 
             this.pbImage.BackColor = System.Drawing.Color.White;
+            this.pbImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pbImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbImage.Location = new System.Drawing.Point(0, 0);
             this.pbImage.Name = "pbImage";

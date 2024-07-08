@@ -44,6 +44,7 @@ namespace LubriTech.View
             this.dgvItems = new System.Windows.Forms.DataGridView();
             this.cbBranch = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panelBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -245,6 +246,15 @@ namespace LubriTech.View
             this.label2.TabIndex = 67;
             this.label2.Text = "Sucursal";
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(805, 525);
+            this.panel1.TabIndex = 68;
+            // 
             // frmItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -260,6 +270,7 @@ namespace LubriTech.View
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.btnAddItem);
             this.Controls.Add(this.lblSubtitle);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.Name = "frmItems";
@@ -288,5 +299,6 @@ namespace LubriTech.View
         private System.Windows.Forms.DataGridView dgvItems;
         private System.Windows.Forms.ComboBox cbBranch;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel1;
     }
 }

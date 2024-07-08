@@ -52,6 +52,7 @@
             this.lblForm = new System.Windows.Forms.Label();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.lblPercentage = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.SuspendLayout();
@@ -68,7 +69,7 @@
             "Kilo",
             "Servicio"});
             this.cbMeasureUnit.Location = new System.Drawing.Point(183, 202);
-            this.cbMeasureUnit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbMeasureUnit.Margin = new System.Windows.Forms.Padding(4);
             this.cbMeasureUnit.Name = "cbMeasureUnit";
             this.cbMeasureUnit.Size = new System.Drawing.Size(205, 29);
             this.cbMeasureUnit.TabIndex = 4;
@@ -83,7 +84,7 @@
             "Activo",
             "Inactivo"});
             this.cbState.Location = new System.Drawing.Point(642, 62);
-            this.cbState.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbState.Margin = new System.Windows.Forms.Padding(4);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(205, 29);
             this.cbState.Sorted = true;
@@ -205,7 +206,7 @@
             this.cbType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbType.FormattingEnabled = true;
             this.cbType.Location = new System.Drawing.Point(643, 107);
-            this.cbType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbType.Margin = new System.Windows.Forms.Padding(4);
             this.cbType.Name = "cbType";
             this.cbType.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cbType.Size = new System.Drawing.Size(205, 29);
@@ -346,6 +347,15 @@
             this.lblPercentage.TabIndex = 40;
             this.lblPercentage.Text = "%";
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(875, 310);
+            this.flowLayoutPanel1.TabIndex = 91;
+            // 
             // frmInsertUpdate_Item
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -376,8 +386,9 @@
             this.Controls.Add(this.lblSellPrice);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblCode);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frmInsertUpdate_Item";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -416,5 +427,6 @@
         private System.Windows.Forms.Label lblForm;
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.Label lblPercentage;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

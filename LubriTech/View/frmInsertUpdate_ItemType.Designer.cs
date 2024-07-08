@@ -37,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtItemType = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.panelBorder.SuspendLayout();
             this.SuspendLayout();
@@ -123,6 +124,8 @@
             this.cbState.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
+            this.cbState.Location = new System.Drawing.Point(200, 118);
+            this.cbState.Margin = new System.Windows.Forms.Padding(4);
             this.cbState.Location = new System.Drawing.Point(267, 145);
             this.cbState.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.cbState.Name = "cbState";
@@ -159,6 +162,15 @@
             this.label2.TabIndex = 38;
             this.label2.Text = "Nombre";
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(444, 266);
+            this.panel1.TabIndex = 41;
+            // 
             // frmInsertUpdate_ItemType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -172,8 +184,9 @@
             this.Controls.Add(this.txtItemType);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panelBorder);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmInsertUpdate_ItemType";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmInsertUpdate_ItemType";
@@ -195,5 +208,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtItemType;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel1;
     }
 }

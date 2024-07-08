@@ -135,6 +135,7 @@ namespace LubriTech.View
             frmWorkOrder frmWorkOrder = new frmWorkOrder(null);
             this.WindowState = FormWindowState.Normal;
             frmWorkOrder.MdiParent = this.MdiParent;
+            frmWorkOrder.DataChanged += ChildFormDataChangedHandler;
             frmWorkOrder.Show();
         }
 
@@ -183,8 +184,14 @@ namespace LubriTech.View
                 frmWorkOrder frmWorkOrderDetails = new frmWorkOrder(workOrder.Id);
                 this.WindowState = FormWindowState.Normal;
                 frmWorkOrderDetails.MdiParent = this.MdiParent;
+                frmWorkOrderDetails.DataChanged += ChildFormDataChangedHandler;
                 frmWorkOrderDetails.Show();
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

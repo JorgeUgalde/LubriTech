@@ -39,6 +39,7 @@
             this.pbMaximize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.lblForm = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.panelBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
@@ -181,6 +182,15 @@
             this.lblForm.TabIndex = 10;
             this.lblForm.Text = "Observación";
             // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(805, 466);
+            this.panel3.TabIndex = 58;
+            // 
             // frmInsertUpsert_Observation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -194,6 +204,7 @@
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.lblAddresse);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmInsertUpsert_Observation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -220,5 +231,6 @@
         private System.Windows.Forms.PictureBox pbMaximize;
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.Label lblForm;
+        private System.Windows.Forms.Panel panel3;
     }
 }

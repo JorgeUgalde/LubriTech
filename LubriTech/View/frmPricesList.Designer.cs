@@ -42,6 +42,7 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnAddPricesList = new System.Windows.Forms.Button();
             this.dgvPricesList = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panelBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -209,6 +210,15 @@
             this.dgvPricesList.TabIndex = 2;
             this.dgvPricesList.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPricesList_CellMouseDoubleClick);
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(549, 425);
+            this.panel1.TabIndex = 81;
+            // 
             // frmPricesList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -222,6 +232,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmPricesList";
             this.Text = "Lista de precios";
@@ -248,5 +259,6 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnAddPricesList;
         private System.Windows.Forms.DataGridView dgvPricesList;
+        private System.Windows.Forms.Panel panel1;
     }
 }

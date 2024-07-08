@@ -38,9 +38,9 @@ namespace LubriTech.Model.PricesList_Information
             return dt;
         }
 
-        public decimal getPriceByItem(string itemCode, int priceListId)
+        public double getPriceByItem(string itemCode, int priceListId)
         {
-            decimal price = 0;
+            double price;
             try
             {
                 using (SqlCommand cmd = new SqlCommand("SELECT PrecioVenta FROM EstablecePrecio WHERE CodigoArticulo = @itemCode AND IdentificacionListaPrecios = @priceListId", conn))
@@ -48,7 +48,7 @@ namespace LubriTech.Model.PricesList_Information
                     cmd.Parameters.AddWithValue("@itemCode", itemCode);
                     cmd.Parameters.AddWithValue("@priceListId", priceListId);
                     conn.Open();
-                    price = (decimal)cmd.ExecuteScalar();
+                    price = Convert.ToDouble(cmd.ExecuteScalar());
                 }
             }
             catch (Exception e)
@@ -75,8 +75,8 @@ namespace LubriTech.Model.PricesList_Information
                     price.id = reader.GetInt32(reader.GetOrdinal("Identificacion"));
                     price.priceList = reader.GetInt32(reader.GetOrdinal("IdentificacionListaPrecios"));
                     price.Item = new Item_Model().getItem(reader.GetString(reader.GetOrdinal("CodigoArticulo")));
-                    price.factor = reader.GetDecimal(reader.GetOrdinal("Factor"));
-                    price.price = reader.GetDecimal(reader.GetOrdinal("PrecioVenta"));
+                    price.factor = reader.GetDouble(reader.GetOrdinal("Factor"));
+                    price.price = reader.GetDouble(reader.GetOrdinal("PrecioVenta"));
                     prices.Add(price);
                 }
                 conn.Close();
