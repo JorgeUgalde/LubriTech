@@ -323,6 +323,7 @@ namespace LubriTech.View
         private void btnSelectClient_Click(object sender, EventArgs e)
         {
             frmClients frmClients = new frmClients(this);
+            this.WindowState = FormWindowState.Normal;
             frmClients.ClientSelected += HandleClientSelected;
             frmClients.MdiParent = this.MdiParent;
             frmClients.Show();
@@ -381,6 +382,7 @@ namespace LubriTech.View
                 return;
             }
             frmVehicles frmVehicles = new frmVehicles(this,this.client.Id);
+            this.WindowState = FormWindowState.Normal;
             frmVehicles.VehicleSelected += HandleVehicleSelected;
             frmVehicles.MdiParent = this.MdiParent;
             frmVehicles.Show();
@@ -545,6 +547,7 @@ namespace LubriTech.View
         private void btnSelectItem_Click(object sender, EventArgs e)
         {
             frmItems frmItems = new frmItems(this);
+            this.WindowState = FormWindowState.Normal;
             frmItems.ItemSelected += HandleItemSelected;
             frmItems.MdiParent = this.MdiParent;
             frmItems.Show();
@@ -787,6 +790,7 @@ namespace LubriTech.View
                 if (selectedObservation != null)
                 {
                     frmInsertUpsert_Observation frmInsertObservation = new frmInsertUpsert_Observation(selectedObservation);
+                    this.WindowState = FormWindowState.Normal;
                     frmInsertObservation.ObservationChanged += FrmInsertObservation_ObservationChanged;
                     frmInsertObservation.MdiParent = this.MdiParent;
                     frmInsertObservation.Show();

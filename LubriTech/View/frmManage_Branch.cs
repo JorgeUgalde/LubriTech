@@ -89,6 +89,7 @@ namespace LubriTech.View
 
                 if (selectedBranch != null)
                 {
+                    this.WindowState = FormWindowState.Normal;
                     frmInsertUpdate_Branch frmupsertBranch = new frmInsertUpdate_Branch(selectedBranch);
                     frmupsertBranch.MdiParent = this.MdiParent;
                     frmupsertBranch.DataChanged += ChildFormDataChangedHandler;
@@ -138,6 +139,7 @@ namespace LubriTech.View
         private void btnAddClient_Click(object sender, EventArgs e)
         {
             frmInsertUpdate_Branch frmUpsert_Branch = new frmInsertUpdate_Branch();
+            this.WindowState = FormWindowState.Normal;
             frmUpsert_Branch.MdiParent = this.MdiParent;
             frmUpsert_Branch.DataChanged += ChildFormDataChangedHandler;
             this.WindowState = FormWindowState.Normal;
