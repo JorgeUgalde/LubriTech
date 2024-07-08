@@ -46,7 +46,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.panel8 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -61,12 +60,12 @@
             // 
             this.btLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.btLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
             this.btLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.btLogin.Location = new System.Drawing.Point(556, 403);
+            this.btLogin.Location = new System.Drawing.Point(527, 405);
             this.btLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btLogin.MinimumSize = new System.Drawing.Size(348, 41);
             this.btLogin.Name = "btLogin";
@@ -83,7 +82,7 @@
             this.txtEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(556, 230);
+            this.txtEmail.Location = new System.Drawing.Point(527, 232);
             this.txtEmail.MinimumSize = new System.Drawing.Size(348, 34);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(348, 28);
@@ -98,7 +97,7 @@
             this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(556, 316);
+            this.txtPassword.Location = new System.Drawing.Point(527, 318);
             this.txtPassword.MinimumSize = new System.Drawing.Size(348, 34);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
@@ -113,7 +112,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(551, 192);
+            this.label1.Location = new System.Drawing.Point(522, 194);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(210, 26);
             this.label1.TabIndex = 17;
@@ -125,7 +124,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(551, 277);
+            this.label2.Location = new System.Drawing.Point(522, 279);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(136, 26);
             this.label2.TabIndex = 18;
@@ -145,7 +144,7 @@
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.Gold;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(249)))), ((int)(((byte)(1)))));
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Location = new System.Drawing.Point(61, 0);
             this.panel6.Name = "panel6";
@@ -162,7 +161,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.Crimson;
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.panel4.Controls.Add(this.panel5);
             this.panel4.Location = new System.Drawing.Point(36, 0);
             this.panel4.Name = "panel4";
@@ -198,7 +197,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(110)))), ((int)(((byte)(213)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(219)))));
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Location = new System.Drawing.Point(10, 0);
             this.panel2.Name = "panel2";
@@ -210,8 +209,8 @@
             this.lblAdd.AutoSize = true;
             this.lblAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblAdd.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdd.ForeColor = System.Drawing.Color.Blue;
-            this.lblAdd.Location = new System.Drawing.Point(829, 350);
+            this.lblAdd.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblAdd.Location = new System.Drawing.Point(800, 352);
             this.lblAdd.Name = "lblAdd";
             this.lblAdd.Size = new System.Drawing.Size(75, 17);
             this.lblAdd.TabIndex = 5;
@@ -223,8 +222,8 @@
             this.lblRecoverPassword.AutoSize = true;
             this.lblRecoverPassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblRecoverPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecoverPassword.ForeColor = System.Drawing.Color.Blue;
-            this.lblRecoverPassword.Location = new System.Drawing.Point(553, 350);
+            this.lblRecoverPassword.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblRecoverPassword.Location = new System.Drawing.Point(524, 352);
             this.lblRecoverPassword.Name = "lblRecoverPassword";
             this.lblRecoverPassword.Size = new System.Drawing.Size(148, 17);
             this.lblRecoverPassword.TabIndex = 4;
@@ -234,7 +233,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::LubriTech.Properties.Resources.logo1;
-            this.pictureBox1.Location = new System.Drawing.Point(672, 21);
+            this.pictureBox1.Location = new System.Drawing.Point(643, 23);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 150);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -244,8 +243,8 @@
             // pictureBox3
             // 
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox3.Image = global::LubriTech.Properties.Resources.close1;
-            this.pictureBox3.Location = new System.Drawing.Point(966, 6);
+            this.pictureBox3.Image = global::LubriTech.Properties.Resources.closeLogin;
+            this.pictureBox3.Location = new System.Drawing.Point(926, 7);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(25, 25);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -256,8 +255,8 @@
             // pictureBox2
             // 
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Image = global::LubriTech.Properties.Resources.minimize;
-            this.pictureBox2.Location = new System.Drawing.Point(935, 6);
+            this.pictureBox2.Image = global::LubriTech.Properties.Resources.minimizeLogin;
+            this.pictureBox2.Location = new System.Drawing.Point(895, 7);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(25, 25);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -265,21 +264,12 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
-            // panel8
-            // 
-            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(0, 0);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1000, 500);
-            this.panel8.TabIndex = 19;
-            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
-            this.ClientSize = new System.Drawing.Size(1000, 500);
+            this.ClientSize = new System.Drawing.Size(959, 500);
             this.Controls.Add(this.lblRecoverPassword);
             this.Controls.Add(this.lblAdd);
             this.Controls.Add(this.panel2);
@@ -292,7 +282,6 @@
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.btLogin);
-            this.Controls.Add(this.panel8);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmLogin";
@@ -332,7 +321,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblAdd;
         private System.Windows.Forms.Label lblRecoverPassword;
-        private System.Windows.Forms.Panel panel8;
     }
 }
 

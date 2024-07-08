@@ -133,6 +133,16 @@ namespace LubriTech.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap closeLogin {
+            get {
+                object obj = ResourceManager.GetObject("closeLogin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap DeleteIco {
             get {
                 object obj = ResourceManager.GetObject("DeleteIco", resourceCulture);
@@ -226,6 +236,16 @@ namespace LubriTech.Properties {
         internal static System.Drawing.Bitmap Flecha_Calendario_Izquierda {
             get {
                 object obj = ResourceManager.GetObject("Flecha Calendario Izquierda", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconoMenu {
+            get {
+                object obj = ResourceManager.GetObject("IconoMenu", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -343,6 +363,16 @@ namespace LubriTech.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap minFrm {
+            get {
+                object obj = ResourceManager.GetObject("minFrm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap minimize {
             get {
                 object obj = ResourceManager.GetObject("minimize", resourceCulture);
@@ -373,9 +403,39 @@ namespace LubriTech.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap minimizeForm {
+            get {
+                object obj = ResourceManager.GetObject("minimizeForm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap minimizeFrm {
+            get {
+                object obj = ResourceManager.GetObject("minimizeFrm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap minimizeIco {
             get {
                 object obj = ResourceManager.GetObject("minimizeIco", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap minimizeLogin {
+            get {
+                object obj = ResourceManager.GetObject("minimizeLogin", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

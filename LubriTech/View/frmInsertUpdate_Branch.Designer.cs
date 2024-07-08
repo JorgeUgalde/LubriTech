@@ -275,9 +275,9 @@
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 36);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(740, 282);
+            this.panel1.Size = new System.Drawing.Size(740, 318);
             this.panel1.TabIndex = 40;
             // 
             // frmInsertUpdate_Branch
@@ -287,7 +287,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(740, 318);
             this.ControlBox = false;
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnAddSchedulle);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbSchedule);
@@ -304,6 +303,7 @@
             this.Controls.Add(this.lblAdditionalNum);
             this.Controls.Add(this.lblFullName);
             this.Controls.Add(this.lblAddresse);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmInsertUpdate_Branch";
