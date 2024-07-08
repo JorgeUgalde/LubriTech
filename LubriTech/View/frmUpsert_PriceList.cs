@@ -42,6 +42,7 @@ namespace LubriTech.View.Appointment_View
             else
             {
                 dataGridView1.DataSource = new DataTable();
+                loadPrices(new PriceList());
             }
         }
 
@@ -50,6 +51,12 @@ namespace LubriTech.View.Appointment_View
             txtDescription.Text = priceList.description;
             cbState.SelectedIndex = priceList.state;
             dataGridView1.DataSource = new PriceList_Controller().getPricesByPriceListDT(priceList.id);
+            dataGridView1.Columns["Identificacion"].Visible = false;
+            dataGridView1.Columns["IdentificacionListaPrecios"].Visible = false;
+            dataGridView1.Columns["CodigoArticulo"].ReadOnly = true;
+            dataGridView1.Columns["CodigoArticulo"].HeaderText = "Código Artículo";
+            dataGridView1.Columns["PrecioVenta"].ReadOnly = true;
+            dataGridView1.Columns["PrecioVenta"].HeaderText = "Precio Venta";
         }
 
         /// <summary>
@@ -103,6 +110,13 @@ namespace LubriTech.View.Appointment_View
 
                         if (hasValidValues)
                         {
+                            //update the PrecioVenta to be the result of the Factor * PrecioCompra of the item
+                            Item item = new Item_Controller().get(rowView["CodigoArticulo"].ToString());
+                            if (item != null)
+                            {
+                                rowView["PrecioVenta"] = Convert.ToDouble(item.purchasePrice) * Convert.ToDouble(rowView["Factor"]);
+                            }
+
                             // Hacer el upsert solo si es una fila nueva y tiene todos los valores requeridos
                             bool success = new PriceList_Controller().upsertPrice(rowView.Row);
                             if (!success)
@@ -126,92 +140,31 @@ namespace LubriTech.View.Appointment_View
             MessageBox.Show("Error: " + errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
-        {
-            if (e.ColumnIndex == dataGridView1.Columns["CodigoArticulo"].Index && e.RowIndex >= 0)
-            {
-                //Validate if the cell already has a button
-                if (e.Value != null && e.Value.ToString() == "...")
-                {
-                    e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-                    e.Handled = true;
-                    return;
-                }
-                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-
-                // Crear el botón
-                Button btn = new Button();
-                btn.Text = "...";
-                btn.Size = new Size(13, e.CellBounds.Height - 8);
-
-                // Calcular la posición del botón
-                var buttonWidth = btn.Width;
-                var buttonHeight = btn.Height;
-                var x = e.CellBounds.Left + e.CellBounds.Width - buttonWidth - 5;
-                var y = e.CellBounds.Top + (e.CellBounds.Height - buttonHeight) / 2;
-
-
-                // Dibujar el botón en la celda
-                e.Graphics.FillRectangle(Brushes.AntiqueWhite, x, y, buttonWidth, buttonHeight);
-                e.Graphics.DrawRectangle(Pens.Black, x, y, buttonWidth, buttonHeight);
-                TextRenderer.DrawText(e.Graphics, "...", btn.Font, new Rectangle(x, y, buttonWidth, buttonHeight), btn.ForeColor);
-
-                e.Handled = true;
-            }
-        }
-
-        private void HandleItemSelected(Item item)
-        {
-            ShowItemInPriceList(item);
-        }
-
-        public void ShowItemInPriceList(Item item)
-        {
-            if (item != null)
-            {
-                //validate if the cell in the new row is selected
-                int newRowIndex = dataGridView1.NewRowIndex;
-                // Obtener la fila actualmente seleccionada
-                int rowIndex = dataGridView1.CurrentCell.RowIndex;
-                if(rowIndex + 1 == newRowIndex)
-                {
-                    DataGridViewRow row = dataGridView1.Rows[newRowIndex];
-                    // Asignar los valores del artículo seleccionado a la fila actual
-                    row.Cells["CodigoArticulo"].Value = item.code;
-                }
-                else
-                {
-                    DataGridViewRow row = dataGridView1.Rows[rowIndex];
-                    // Asignar los valores del artículo seleccionado a la fila actual
-                    row.Cells["CodigoArticulo"].Value = item.code;
-                }
-            }
-        }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dataGridView1.Columns["CodigoArticulo"].Index && e.RowIndex >= 0)
-            {
-                // Verificar si el clic ocurrió en el botón
-                var rect = dataGridView1.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
-                var buttonWidth = 20;
-                var x = rect.Right - buttonWidth - 2;
-
-                if (dataGridView1.PointToClient(Cursor.Position).X >= x)
-                {
-                    dataGridView1.EndEdit(); // Finalizar la edición de la celda actual
-
-                    frmItems frmItems = new frmItems(this);
-                    frmItems.ItemSelected += HandleItemSelected;
-                    frmItems.MdiParent = this.MdiParent;
-                    frmItems.Show();
-                }
-            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
+            PriceList priceList = new PriceList()
+            {
+                id = priceListId ?? 0,
+                description = txtDescription.Text.ToString(),
+                state = ((KeyValuePair<int, string>)cbState.SelectedItem).Key
+            };
+
+            bool success = new PriceList_Controller().upsertPriceList(priceList);
+            if (success)
+            {
+                OnDataChanged(EventArgs.Empty);
+                MessageBox.Show("Cambios guardados exitosamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Dispose();
+            }
+            else
+            {
+                MessageBox.Show("Error al guardar los cambios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -253,5 +206,29 @@ namespace LubriTech.View.Appointment_View
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            //show Activa for 1 and Inactiva for 0
+            if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Estado" && e.Value != null)
+            {
+                int originalValue;
+                // Try to convert the cell value to an integer
+                if (int.TryParse(e.Value.ToString(), out originalValue))
+                {
+                    // Change the displayed value according to the original value
+                    switch (originalValue)
+                    {
+                        case 0:
+                            e.Value = "Inactiva";
+                            break;
+                        case 1:
+                            e.Value = "Activa";
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
     }
 }

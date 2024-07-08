@@ -56,10 +56,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(45, 176);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(34, 143);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 28);
+            this.label1.Size = new System.Drawing.Size(61, 21);
             this.label1.TabIndex = 18;
             this.label1.Text = "Detalle";
             // 
@@ -67,10 +66,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(45, 75);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(34, 61);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(153, 28);
+            this.label2.Size = new System.Drawing.Size(124, 21);
             this.label2.TabIndex = 17;
             this.label2.Text = "Lista de precios";
             // 
@@ -78,10 +76,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label3.Location = new System.Drawing.Point(45, 129);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(34, 105);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 28);
+            this.label3.Size = new System.Drawing.Size(91, 21);
             this.label3.TabIndex = 16;
             this.label3.Text = "Descripción";
             // 
@@ -89,30 +86,27 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label4.Location = new System.Drawing.Point(743, 129);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(557, 105);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 28);
+            this.label4.Size = new System.Drawing.Size(56, 21);
             this.label4.TabIndex = 19;
             this.label4.Text = "Estado";
             // 
             // txtDescription
             // 
             this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtDescription.Location = new System.Drawing.Point(175, 126);
-            this.txtDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDescription.Location = new System.Drawing.Point(131, 102);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(269, 34);
+            this.txtDescription.Size = new System.Drawing.Size(203, 29);
             this.txtDescription.TabIndex = 1;
             // 
             // cbState
             // 
             this.cbState.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.cbState.FormattingEnabled = true;
-            this.cbState.Location = new System.Drawing.Point(825, 126);
-            this.cbState.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbState.Location = new System.Drawing.Point(619, 102);
             this.cbState.Name = "cbState";
-            this.cbState.Size = new System.Drawing.Size(160, 36);
+            this.cbState.Size = new System.Drawing.Size(121, 29);
             this.cbState.TabIndex = 2;
             // 
             // btnClose
@@ -123,10 +117,9 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnClose.Location = new System.Drawing.Point(799, 553);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Location = new System.Drawing.Point(599, 449);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(188, 42);
+            this.btnClose.Size = new System.Drawing.Size(141, 34);
             this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Cancelar";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -140,10 +133,9 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSave.Location = new System.Drawing.Point(51, 553);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Location = new System.Drawing.Point(38, 449);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(188, 42);
+            this.btnSave.Size = new System.Drawing.Size(141, 34);
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Confirmar";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -182,8 +174,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.Color.White;
-            this.dataGridView1.Location = new System.Drawing.Point(51, 206);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(38, 167);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -197,11 +188,11 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(936, 320);
+            this.dataGridView1.Size = new System.Drawing.Size(702, 260);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
-            this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
+            this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
             this.dataGridView1.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView1_DefaultValuesNeeded);
@@ -216,9 +207,8 @@
             this.panelBorder.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panelBorder.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBorder.Location = new System.Drawing.Point(0, 0);
-            this.panelBorder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelBorder.Name = "panelBorder";
-            this.panelBorder.Size = new System.Drawing.Size(1043, 44);
+            this.panelBorder.Size = new System.Drawing.Size(782, 36);
             this.panelBorder.TabIndex = 80;
             this.panelBorder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBorder_MouseDown);
             // 
@@ -227,10 +217,9 @@
             this.lblForm.AutoSize = true;
             this.lblForm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblForm.ForeColor = System.Drawing.Color.White;
-            this.lblForm.Location = new System.Drawing.Point(16, 7);
-            this.lblForm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblForm.Location = new System.Drawing.Point(12, 6);
             this.lblForm.Name = "lblForm";
-            this.lblForm.Size = new System.Drawing.Size(282, 28);
+            this.lblForm.Size = new System.Drawing.Size(227, 21);
             this.lblForm.TabIndex = 15;
             this.lblForm.Text = "Dato Maestro Lista de Precios";
             // 
@@ -239,10 +228,9 @@
             this.pbMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMaximize.Image = global::LubriTech.Properties.Resources.maximize;
-            this.pbMaximize.Location = new System.Drawing.Point(951, 7);
-            this.pbMaximize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbMaximize.Location = new System.Drawing.Point(713, 6);
             this.pbMaximize.Name = "pbMaximize";
-            this.pbMaximize.Size = new System.Drawing.Size(40, 37);
+            this.pbMaximize.Size = new System.Drawing.Size(30, 30);
             this.pbMaximize.TabIndex = 8;
             this.pbMaximize.TabStop = false;
             this.pbMaximize.Click += new System.EventHandler(this.pbMaximize_Click);
@@ -252,10 +240,9 @@
             this.pbClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::LubriTech.Properties.Resources.closeIco2;
-            this.pbClose.Location = new System.Drawing.Point(999, 7);
-            this.pbClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbClose.Location = new System.Drawing.Point(749, 6);
             this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(40, 37);
+            this.pbClose.Size = new System.Drawing.Size(30, 30);
             this.pbClose.TabIndex = 7;
             this.pbClose.TabStop = false;
             this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
@@ -265,16 +252,17 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(782, 504);
             this.panel1.TabIndex = 81;
             // 
             // frmUpsert_PriceList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1043, 620);
+            this.ClientSize = new System.Drawing.Size(782, 504);
             this.Controls.Add(this.panelBorder);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnClose);
@@ -287,7 +275,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmUpsert_PriceList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmUpsert_PriceList";
