@@ -75,6 +75,7 @@ namespace LubriTech.View
                 // Initialize a new work order
                 InitializeNewWorkOrder();
             }
+            txtLineAmount.Enabled = false;
             load_Observation();
         }
 
@@ -254,7 +255,7 @@ namespace LubriTech.View
             DataGridViewImageColumn deleteImageColumn = new DataGridViewImageColumn();
             deleteImageColumn.Name = "deleteImageColumn";
             deleteImageColumn.HeaderText = "";
-            deleteImageColumn.Image = Properties.Resources.remove;
+            deleteImageColumn.Image = Properties.Resources.DeleteIco1;
             //set the color of the background of the image
             deleteImageColumn.DefaultCellStyle.BackColor = Color.FromArgb(4, 55, 111);
             deleteImageColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -384,6 +385,7 @@ namespace LubriTech.View
                 txtModel.Text = vehicle.Model.ToString() + " " + vehicle.Year;
                 txtMileage.Text = vehicle.Mileage.ToString();
                 txtCurrentMileage.Text = vehicle.Mileage.ToString();
+                this.vehicle = vehicle;
             }
 
             if (client != null)
@@ -460,8 +462,13 @@ namespace LubriTech.View
                 {
 
                     workOrder.CurrentMileage = Convert.ToInt32(txtCurrentMileage.Text);
-                    this.vehicle.Mileage = Convert.ToInt32(txtCurrentMileage.Text);
-                    new Vehicle_Controller().upsert(this.vehicle);
+                    if(this.vehicle.Mileage != Convert.ToInt32(txtCurrentMileage.Text))
+                    {
+                        this.vehicle.Mileage = Convert.ToInt32(txtCurrentMileage.Text);
+                        new Vehicle_Controller().upsert(this.vehicle);
+                    }
+                    //this.vehicle.Mileage = Convert.ToInt32(txtCurrentMileage.Text);
+                    //new Vehicle_Controller().upsert(this.vehicle);
                 }
 
                 string errorMessage = AdjustInventory((short)cbState.SelectedIndex, this.previousSelectedStateValue);
@@ -805,7 +812,7 @@ namespace LubriTech.View
                 DataGridViewImageColumn deleteImageColumn = new DataGridViewImageColumn();
                 deleteImageColumn.Name = "btnDelete";
                 deleteImageColumn.HeaderText = "";
-                deleteImageColumn.Image = Properties.Resources.remove;
+                deleteImageColumn.Image = Properties.Resources.DeleteIco1;
                 //set the color of the background of the image
                 deleteImageColumn.DefaultCellStyle.BackColor = Color.FromArgb(4, 55, 111);
                 deleteImageColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;

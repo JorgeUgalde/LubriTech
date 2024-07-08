@@ -612,7 +612,7 @@ namespace LubriTech.View
             DataGridViewImageColumn deleteImageColumn = new DataGridViewImageColumn();
             deleteImageColumn.Name = "deleteImageColumn";
             deleteImageColumn.HeaderText = "";
-            deleteImageColumn.Image = Properties.Resources.remove;
+            deleteImageColumn.Image = Properties.Resources.DeleteIco1;
             //set the color of the background of the image
             deleteImageColumn.DefaultCellStyle.BackColor = Color.FromArgb(4, 55, 111);
             deleteImageColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
