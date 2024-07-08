@@ -499,6 +499,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmWorOrdersList.resx">
       <DependentUpon>frmWorOrdersList.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MDI_View.resx">
       <DependentUpon>MDI_View.cs</DependentUpon>
