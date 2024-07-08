@@ -136,7 +136,7 @@ namespace LubriTech.View
                 }
                 else
                 {
-                    MessageBox.Show("Vehículo no agregado");
+                    MessageBox.Show("Vehículo no insertado");
                 }
             }
         }

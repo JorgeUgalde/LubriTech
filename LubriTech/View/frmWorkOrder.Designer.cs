@@ -905,7 +905,7 @@
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(141, 30);
             this.btnSaveChanges.TabIndex = 96;
-            this.btnSaveChanges.Text = "Confirmar";
+            this.btnSaveChanges.Text = "Aceptar";
             this.btnSaveChanges.UseVisualStyleBackColor = false;
             this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
             // 

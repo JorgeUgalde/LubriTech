@@ -75,7 +75,6 @@ namespace LubriTech.View
                 // Initialize a new work order
                 InitializeNewWorkOrder();
             }
-            txtLineAmount.Enabled = false;
             load_Observation();
         }
 
