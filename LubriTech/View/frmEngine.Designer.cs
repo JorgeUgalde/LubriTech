@@ -44,6 +44,7 @@
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.dgvEngines = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panelBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -229,6 +230,15 @@
             this.dgvEngines.TabIndex = 23;
             this.dgvEngines.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEngines_CellDoubleClick);
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(805, 525);
+            this.panel1.TabIndex = 24;
+            // 
             // frmEngine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,7 +252,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmEngine";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -271,5 +281,6 @@
         private System.Windows.Forms.PictureBox pbClose;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.DataGridView dgvEngines;
+        private System.Windows.Forms.Panel panel1;
     }
 }
