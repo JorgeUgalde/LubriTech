@@ -48,6 +48,7 @@ namespace LubriTech.View
             /// </summary>
             existingClient = client;
             txtID.Text = client.Id;
+            txtID.Enabled = false;
             txtFullName.Text = client.FullName;
             txtMainPhone.Text = client.MainPhoneNum.ToString();
             txtAdditionalPhone.Text = client.AdditionalPhoneNum.ToString();

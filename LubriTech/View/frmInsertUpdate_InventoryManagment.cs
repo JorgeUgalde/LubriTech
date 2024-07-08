@@ -18,6 +18,7 @@ using System.Net;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using static System.Windows.Forms.AxHost;
+using System.Globalization;
 
 namespace LubriTech.View
 {
@@ -67,7 +68,7 @@ namespace LubriTech.View
                 tbSupplierName.Text = inventoryManagment.Supplier.name;
                 tbSupplierId.Text = inventoryManagment.Supplier.id;
             }
-            cbBranch.Text = inventoryManagment.Branch.Name;
+            cbBranch.SelectedValue = inventoryManagment.Branch.Id;
             dtpDate.Value = inventoryManagment.DocumentDate;
             cbDocumentType.Text = inventoryManagment.DocumentType;
             cbState.Text = inventoryManagment.State;
@@ -253,7 +254,7 @@ namespace LubriTech.View
             cbBranch.DataSource = branches;
             cbBranch.ValueMember = "Id";
             cbBranch.DisplayMember = "Name";
-            cbBranch.SelectedIndex = -1;
+            cbBranch.SelectedValue = frmLogin.branch;
         }
 
         private void btnSelectSupplier_Click(object sender, EventArgs e)
@@ -761,9 +762,14 @@ namespace LubriTech.View
             savefile.Filter = "Archivos de Pdf|*.pdf";
             savefile.FileName = string.Format(DateTime.Now.ToString("ddMMyyyyHHmmss"));
 
+            CultureInfo spanishCulture = new CultureInfo("es-ES");
+            DateTime selectedDate = dtpDate.Value;
+            string formattedDate = selectedDate.ToString("dddd, d 'de' MMMM 'de' yyyy", spanishCulture);
+            formattedDate = char.ToUpper(formattedDate[0]) + formattedDate.Substring(1);
+
             string PaginaHTML_Texto = Properties.Resources.Template2.ToString();
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@BRANCH", cbBranch.Text);
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DATE", dtpDate.Text);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DATE", formattedDate);
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TYPE", cbDocumentType.Text);
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@STATE", cbState.Text);
 
