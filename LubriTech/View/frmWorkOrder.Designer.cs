@@ -780,6 +780,7 @@
             this.dgvObservation.RowHeadersWidth = 51;
             this.dgvObservation.Size = new System.Drawing.Size(890, 425);
             this.dgvObservation.TabIndex = 53;
+            this.dgvObservation.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvObservation_CellMouseDoubleClick_1);
             // 
             // panelBorder
             // 
