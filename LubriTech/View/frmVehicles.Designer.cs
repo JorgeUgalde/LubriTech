@@ -43,6 +43,9 @@
             this.pbMaximize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.panelBorder = new System.Windows.Forms.Panel();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnPrevious = new System.Windows.Forms.Button();
+            this.lblPageNumber = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVehicles)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
@@ -84,7 +87,7 @@
             this.dgvVehicles.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvVehicles.GridColor = System.Drawing.Color.White;
             this.dgvVehicles.Location = new System.Drawing.Point(29, 123);
-            this.dgvVehicles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvVehicles.Margin = new System.Windows.Forms.Padding(4);
             this.dgvVehicles.Name = "dgvVehicles";
             this.dgvVehicles.ReadOnly = true;
             this.dgvVehicles.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -148,7 +151,7 @@
             this.btnAddProduct.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddProduct.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAddProduct.Location = new System.Drawing.Point(27, 575);
-            this.btnAddProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddProduct.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(188, 42);
             this.btnAddProduct.TabIndex = 3;
@@ -165,7 +168,7 @@
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button1.Location = new System.Drawing.Point(847, 575);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(188, 42);
             this.button1.TabIndex = 4;
@@ -182,7 +185,7 @@
             this.panel2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1073, 44);
             this.panel2.TabIndex = 17;
@@ -206,7 +209,7 @@
             this.pbMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMaximize.Image = global::LubriTech.Properties.Resources.maximize;
             this.pbMaximize.Location = new System.Drawing.Point(981, 7);
-            this.pbMaximize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbMaximize.Margin = new System.Windows.Forms.Padding(4);
             this.pbMaximize.Name = "pbMaximize";
             this.pbMaximize.Size = new System.Drawing.Size(40, 37);
             this.pbMaximize.TabIndex = 8;
@@ -219,7 +222,7 @@
             this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::LubriTech.Properties.Resources.closeIco2;
             this.pbClose.Location = new System.Drawing.Point(1029, 7);
-            this.pbClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbClose.Margin = new System.Windows.Forms.Padding(4);
             this.pbClose.Name = "pbClose";
             this.pbClose.Size = new System.Drawing.Size(40, 37);
             this.pbClose.TabIndex = 7;
@@ -229,16 +232,72 @@
             // panelBorder
             // 
             this.panelBorder.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelBorder.Controls.Add(this.btnNext);
+            this.panelBorder.Controls.Add(this.btnPrevious);
+            this.panelBorder.Controls.Add(this.lblPageNumber);
             this.panelBorder.Controls.Add(this.label1);
             this.panelBorder.Controls.Add(this.button1);
             this.panelBorder.Controls.Add(this.btnAddProduct);
             this.panelBorder.Controls.Add(this.lblVehicleList);
             this.panelBorder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBorder.Location = new System.Drawing.Point(0, 0);
-            this.panelBorder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelBorder.Margin = new System.Windows.Forms.Padding(4);
             this.panelBorder.Name = "panelBorder";
             this.panelBorder.Size = new System.Drawing.Size(1073, 646);
             this.panelBorder.TabIndex = 11;
+            // 
+            // btnNext
+            // 
+            this.btnNext.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
+            this.btnNext.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNext.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(45)))), ((int)(((byte)(92)))));
+            this.btnNext.FlatAppearance.BorderSize = 0;
+            this.btnNext.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnNext.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnNext.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnNext.ForeColor = System.Drawing.Color.Transparent;
+            this.btnNext.Image = global::LubriTech.Properties.Resources.Flecha_Calendario_Derecha;
+            this.btnNext.Location = new System.Drawing.Point(643, 554);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(35, 32);
+            this.btnNext.TabIndex = 72;
+            this.btnNext.UseVisualStyleBackColor = false;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnPrevious
+            // 
+            this.btnPrevious.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnPrevious.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
+            this.btnPrevious.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrevious.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(45)))), ((int)(((byte)(92)))));
+            this.btnPrevious.FlatAppearance.BorderSize = 0;
+            this.btnPrevious.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPrevious.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnPrevious.ForeColor = System.Drawing.Color.Transparent;
+            this.btnPrevious.Image = global::LubriTech.Properties.Resources.Flecha_Calendario_Izquierda;
+            this.btnPrevious.Location = new System.Drawing.Point(390, 554);
+            this.btnPrevious.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPrevious.Name = "btnPrevious";
+            this.btnPrevious.Size = new System.Drawing.Size(35, 32);
+            this.btnPrevious.TabIndex = 73;
+            this.btnPrevious.UseVisualStyleBackColor = false;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
+            // 
+            // lblPageNumber
+            // 
+            this.lblPageNumber.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblPageNumber.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.lblPageNumber.Location = new System.Drawing.Point(457, 555);
+            this.lblPageNumber.Name = "lblPageNumber";
+            this.lblPageNumber.Size = new System.Drawing.Size(151, 28);
+            this.lblPageNumber.TabIndex = 71;
+            this.lblPageNumber.Text = "Página 10 de 10";
+            this.lblPageNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmVehicles
             // 
@@ -252,7 +311,7 @@
             this.Controls.Add(this.dgvVehicles);
             this.Controls.Add(this.panelBorder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmVehicles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vehículos";
@@ -282,5 +341,8 @@
         private System.Windows.Forms.PictureBox pbMaximize;
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.Panel panelBorder;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Button btnPrevious;
+        private System.Windows.Forms.Label lblPageNumber;
     }
 }

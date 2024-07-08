@@ -1,4 +1,6 @@
-﻿using LubriTech.Controller;
+﻿using iTextSharp.text;
+using LubriTech.Controller;
+using LubriTech.Model.Client_Information;
 using LubriTech.Model.Vehicle_Information;
 using System;
 using System.Collections.Generic;
@@ -16,6 +18,10 @@ namespace LubriTech.View
     public partial class frmTransmissions : Form
     {
         private List<Transmission> transmissions;
+        private int currentPage = 1;
+        private int pageSize = 20; // Puedes ajustar este valor según sea necesario
+        private int totalRecords = 0;
+        private int totalPages = 0;
 
         public frmTransmissions()
         {
@@ -34,30 +40,38 @@ namespace LubriTech.View
         {
             if (filteredList != null)
             {
-                if (filteredList.Count == 0)
-                {
-                    dgvTransmissions.DataSource = transmissions;
-
-                }
-                else
-                {
-                    dgvTransmissions.DataSource = filteredList;
-                }
+               transmissions = filteredList;               
             }
             else
             {
                 transmissions = new Transmission_Controller().getAll();
-                if (transmissions == null)
-                {
-                    MessageBox.Show("No hay tipos de transmisión registrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                dgvTransmissions.DataSource = transmissions;
             }
+            if (transmissions == null)
+            {
+                MessageBox.Show("No hay tipos de transmisión registrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            totalRecords = transmissions.Count;
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+            currentPage = 1;
+            LoadPage();
+
             dgvTransmissions.Columns["Id"].Visible = false;
             dgvTransmissions.Columns["TransmissionType"].HeaderText = "Tipo Transmisión";
             dgvTransmissions.Columns["State"].HeaderText = "Estado";
             SetColumnOrder();
+        }
+
+        private void LoadPage()
+        {
+            int startRecord = (currentPage - 1) * pageSize;
+            int endRecord = Math.Min(currentPage * pageSize, totalRecords);
+
+            var pageClients = transmissions.Skip(startRecord).Take(endRecord - startRecord).ToList();
+            dgvTransmissions.DataSource = pageClients;
+
+            lblPageNumber.Text = $"Página {currentPage} de {totalPages}";
         }
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
@@ -68,16 +82,21 @@ namespace LubriTech.View
         private void ApplyFilter()
         {
             string filterValue = txtFilter.Text.ToLower();
-
+            if (filterValue == "")
+            {
+                load_Transmissions(null);
+                return;
+            }
             // Filtrar la lista de tipos de motor
             var filteredList = transmissions.Where(p =>
-                p.Id.ToString().Contains(filterValue) ||
                 p.TransmissionType.ToLower().Contains(filterValue) ||
                 p.State.ToLower().Contains(filterValue)
             ).ToList();
-
-            // Refrescar el DataGridView
-            dgvTransmissions.DataSource = null;
+            if( filteredList.Count == 0)
+            {
+                load_Transmissions(null);
+                return;
+            }
             load_Transmissions(filteredList);
         }
 
@@ -198,6 +217,23 @@ namespace LubriTech.View
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                LoadPage();
+            }
+        }
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                LoadPage();
+            }
         }
     }
 }

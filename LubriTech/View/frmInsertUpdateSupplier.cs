@@ -60,34 +60,27 @@ namespace LubriTech.View
         {
             bool isValid = true;
 
-            // Clear previous errors
-            ClearErrorBorders();
-
             // Validate ID (not empty)
             if (string.IsNullOrWhiteSpace(txtId.Text))
             {
-                SetErrorBorder(panelId);
                 isValid = false;
             }
 
             // Validate Name (not empty)
             if (string.IsNullOrWhiteSpace(txtName.Text))
             {
-                SetErrorBorder(panelName);
                 isValid = false;
             }
 
             // Validate Email (simple format check)
             if (!IsValidEmail(txtEmail.Text))
             {
-                SetErrorBorder(panelEmail);
                 isValid = false;
             }
 
             // Validate Phone (only numbers and minimum length)
             if (!long.TryParse(txtPhone.Text, out long phone) || txtPhone.Text.Length < 8)
             {
-                SetErrorBorder(panelPhone);
                 isValid = false;
             }
 
@@ -109,16 +102,8 @@ namespace LubriTech.View
             }
             else
             {
-                MessageBox.Show("Por favor, corrija los campos en rojo.");
+                MessageBox.Show("Por favor, llene los datos solicitados.");
             }
-        }
-
-        private void ClearErrorBorders()
-        {
-            panelId.BackColor = SystemColors.Control;
-            panelName.BackColor = SystemColors.Control;
-            panelEmail.BackColor = SystemColors.Control;
-            panelPhone.BackColor = SystemColors.Control;
         }
 
         private void SetErrorBorder(Panel panel)

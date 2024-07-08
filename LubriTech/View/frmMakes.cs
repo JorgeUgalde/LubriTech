@@ -1,10 +1,13 @@
-﻿using LubriTech.Controller;
+﻿using iTextSharp.text;
+using LubriTech.Controller;
+using LubriTech.Model.Client_Information;
 using LubriTech.Model.Vehicle_Information;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -16,10 +19,14 @@ namespace LubriTech.View
     public partial class frmMakes : Form
     {
         private List<Make> makes;
+        private int currentPage = 1;
+        private int pageSize = 20; // Puedes ajustar este valor según sea necesario
+        private int totalRecords = 0;
+        private int totalPages = 0;
+
         public frmMakes()
         {
             InitializeComponent();
-            SetupDataGridView();
             load_Makes(null);
         }
 
@@ -36,16 +43,8 @@ namespace LubriTech.View
         private void load_Makes(List<Make> filteredList)
         {
             if (filteredList != null)
-            {
-                if (filteredList.Count == 0)
-                {
-                    dgvMakes.DataSource = makes;
-
-                }
-                else
-                {
-                    dgvMakes.DataSource = filteredList;
-                }
+            {               
+                  makes =  filteredList;               
             }
             else
             {
@@ -55,9 +54,12 @@ namespace LubriTech.View
                     MessageBox.Show("No hay marcas registradas", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                dgvMakes.DataSource = makes;
 
             }
+            totalRecords = makes.Count;
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+
+            LoadPage();
             dgvMakes.Columns["Id"].Visible = false;
             dgvMakes.Columns["Name"].HeaderText = "Nombre";
             dgvMakes.Columns["State"].HeaderText = "Estado";
@@ -70,9 +72,15 @@ namespace LubriTech.View
             dgvMakes.Columns["State"].DisplayIndex = 1;
         }
 
-
-        private void SetupDataGridView()
+        private void LoadPage()
         {
+            int startRecord = (currentPage - 1) * pageSize;
+            int endRecord = Math.Min(currentPage * pageSize, totalRecords);
+
+            var pageClients = makes.Skip(startRecord).Take(endRecord - startRecord).ToList();
+            dgvMakes.DataSource = pageClients;
+
+            lblPageNumber.Text = $"Página {currentPage} de {totalPages}";
         }
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
@@ -83,13 +91,25 @@ namespace LubriTech.View
         private void ApplyFilter()
         {
             string filterValue = txtFilter.Text.ToLower();
+            if (filterValue == "")
+            {
+                load_Makes(null);
+                return;
+            }
 
             var filteredList = makes.Where(p =>
                            p.Name.ToLower().Contains(filterValue) ||
                            p.State.ToLower().Contains(filterValue)
                            ).ToList();
 
-            dgvMakes.DataSource = null;
+            currentPage = 1;
+            totalRecords = filteredList.Count;
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+            if (filteredList.Count == 0)
+            {
+                load_Makes(null);
+                return;
+            }
             load_Makes(filteredList);
         }
 
@@ -148,6 +168,25 @@ namespace LubriTech.View
                 this.WindowState = FormWindowState.Normal;
                 frmUpsertMake.DataChanged += ChildFormDataChangedHandler;
                 frmUpsertMake.Show(); 
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                LoadPage();
+            }
+
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                LoadPage();
             }
         }
     }

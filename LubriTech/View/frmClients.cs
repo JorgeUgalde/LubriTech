@@ -13,6 +13,12 @@ namespace LubriTech.View
 {
     public partial class frmClients : Form
     {
+        private int currentPage = 1;
+        private int pageSize = 20; // Puedes ajustar este valor según sea necesario
+        private int totalRecords = 0;
+        private int totalPages = 0;
+
+
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
 
@@ -29,7 +35,6 @@ namespace LubriTech.View
             clients = new List<Client>();
             InitializeComponent();
             load_Clients(null);
-
         }
 
         //Para manejar el cliente seleccionado
@@ -41,32 +46,81 @@ namespace LubriTech.View
             load_Clients(null);
             
         }
-        
+
         private void load_Clients(List<Client> filteredList)
         {
             if (filteredList != null)
             {
-                if (filteredList.Count == 0)
-                {
-                    dgvClients.DataSource = clients;
-
-                }
-                else
-                {
-                    dgvClients.DataSource = filteredList;
-                }
+                clients = filteredList;
             }
             else
             {
                 clients = new Clients_Controller().getAll();
-                if (clients.Count == 0)
-                {
-                    MessageBox.Show("No hay clientes registrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                dgvClients.DataSource = clients;
-
             }
+
+            if (clients.Count == 0)
+            {
+                MessageBox.Show("No hay clientes registrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            totalRecords = clients.Count;
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+
+            LoadPage();
+            SetColumnOrder();
+        }
+
+        private void LoadPage()
+        {
+            int startRecord = (currentPage - 1) * pageSize;
+            int endRecord = Math.Min(currentPage * pageSize, totalRecords);
+
+            var pageClients = clients.Skip(startRecord).Take(endRecord - startRecord).ToList();
+            dgvClients.DataSource = pageClients;
+
+            lblPageNumber.Text = $"Página {currentPage} de {totalPages}";
+        }
+
+
+        private void ChildFormDataChangedHandler(object sender, EventArgs e)
+        {
+            load_Clients(null);
+        }
+
+        private void txtFilter_TextChanged(object sender, EventArgs e)
+        {
+            ApplyFilter();
+        }
+
+        private void ApplyFilter()
+        {
+            string filterValue = txtFilter.Text.ToLower();
+            if (filterValue == "")
+            {
+                load_Clients(null);
+                return;
+            }
+
+            var filteredList = clients.Where(c =>
+                c.Id.ToLower().Contains(filterValue) ||
+                c.FullName.ToLower().Contains(filterValue)
+            ).ToList();
+
+            currentPage = 1;
+            totalRecords = filteredList.Count;
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+            if (filteredList.Count == 0)
+            {
+                load_Clients(null);
+                return;
+            }
+               load_Clients(filteredList);       
+
+        }
+
+        private void SetColumnOrder()
+        {
             dgvClients.Columns["Id"].HeaderText = "Identificación";
             dgvClients.Columns["FullName"].HeaderText = "Nombre Completo";
             dgvClients.Columns["State"].HeaderText = "  Estado";
@@ -76,43 +130,12 @@ namespace LubriTech.View
             dgvClients.Columns["Email"].Visible = false;
             dgvClients.Columns["Address"].Visible = false;
 
-            SetColumnOrder();
-        }
-
-       
-        private void ChildFormDataChangedHandler(object sender, EventArgs e)
-        {
-            load_Clients(null);
-        }
-
-        
-        private void txtFilter_TextChanged(object sender, EventArgs e)
-        {
-            ApplyFilter();
-        }
-      
-        private void ApplyFilter()
-        {
-            string filterValue = txtFilter.Text.ToLower();
-
-            var filteredList = clients.Where(c =>
-                c.Id.ToLower().Contains(filterValue) ||
-                c.FullName.ToLower().Contains(filterValue) 
-            ).ToList();
-
-            load_Clients(filteredList);
-        }
-
-        
-        private void SetColumnOrder()
-        {
             dgvClients.Columns["Id"].DisplayIndex = 0;
             dgvClients.Columns["FullName"].DisplayIndex = 1;
             dgvClients.Columns["State"].DisplayIndex = 2;
             dgvClients.Columns["PriceList"].DisplayIndex = 3;
         }
 
-     
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Dispose();
@@ -138,7 +161,7 @@ namespace LubriTech.View
                         ((frmAppointment)parentForm).SelectClientAppointment(selectedClient);
                         this.Close();
                     }
-                    else if(parentForm is frmWorkOrder)
+                    else if (parentForm is frmWorkOrder)
                     {
                         ((frmWorkOrder)parentForm).SelectClientWorkOrder(selectedClient);
                         this.Close();
@@ -171,24 +194,17 @@ namespace LubriTech.View
             {
                 this.WindowState = FormWindowState.Normal;
             }
-
         }
 
         private void pbMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
-
         }
 
         private void panel2_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-        private void panelControlBox_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void btnAddClient_Click_1(object sender, EventArgs e)
@@ -198,6 +214,24 @@ namespace LubriTech.View
             frmInsert_Client.MdiParent = this.MdiParent;
             frmInsert_Client.DataChanged += ChildFormDataChangedHandler;
             frmInsert_Client.Show();
+        }
+
+        private void btnNext_Click_1(object sender, EventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                LoadPage();
+            }
+        }
+
+        private void btnPrevious_Click_1(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                LoadPage();
+            }
         }
     }
 }
