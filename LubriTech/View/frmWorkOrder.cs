@@ -385,6 +385,7 @@ namespace LubriTech.View
                 txtModel.Text = vehicle.Model.ToString() + " " + vehicle.Year;
                 txtMileage.Text = vehicle.Mileage.ToString();
                 txtCurrentMileage.Text = vehicle.Mileage.ToString();
+                this.vehicle = vehicle;
             }
 
             if (client != null)
@@ -461,8 +462,13 @@ namespace LubriTech.View
                 {
 
                     workOrder.CurrentMileage = Convert.ToInt32(txtCurrentMileage.Text);
-                    this.vehicle.Mileage = Convert.ToInt32(txtCurrentMileage.Text);
-                    new Vehicle_Controller().upsert(this.vehicle);
+                    if(this.vehicle.Mileage != Convert.ToInt32(txtCurrentMileage.Text))
+                    {
+                        this.vehicle.Mileage = Convert.ToInt32(txtCurrentMileage.Text);
+                        new Vehicle_Controller().upsert(this.vehicle);
+                    }
+                    //this.vehicle.Mileage = Convert.ToInt32(txtCurrentMileage.Text);
+                    //new Vehicle_Controller().upsert(this.vehicle);
                 }
 
                 string errorMessage = AdjustInventory((short)cbState.SelectedIndex, this.previousSelectedStateValue);
