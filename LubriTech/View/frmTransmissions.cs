@@ -27,7 +27,6 @@ namespace LubriTech.View
         {
             transmissions = new List<Transmission>();
             InitializeComponent();
-            SetupDataGridView();
             load_Transmissions(null);
         }
 
@@ -105,28 +104,12 @@ namespace LubriTech.View
             load_Transmissions(null);
         }
 
-        private void SetupDataGridView()
-        {
-            DataGridViewImageColumn modifyImageColumn = new DataGridViewImageColumn();
-            modifyImageColumn.Name = "ModifyImageColumn";
-            modifyImageColumn.HeaderText = "Modificar";
-            modifyImageColumn.Image = Properties.Resources.edit;
-            dgvTransmissions.Columns.Add(modifyImageColumn);
-
-            DataGridViewImageColumn detailImageColumn = new DataGridViewImageColumn();
-            detailImageColumn.Name = "DetailImageColumn";
-            detailImageColumn.HeaderText = "Detalles";
-            detailImageColumn.Image = Properties.Resources.detail;
-            dgvTransmissions.Columns.Add(detailImageColumn);
-        }
 
         private void SetColumnOrder()
         {
             dgvTransmissions.Columns["Id"].DisplayIndex = 0;
             dgvTransmissions.Columns["TransmissionType"].DisplayIndex = 1;
             dgvTransmissions.Columns["State"].DisplayIndex = 2;
-            dgvTransmissions.Columns["DetailImageColumn"].DisplayIndex = 3;
-            dgvTransmissions.Columns["ModifyImageColumn"].DisplayIndex = 4;
         }
 
         private void btnAddTransmission_Click(object sender, EventArgs e)
@@ -137,53 +120,6 @@ namespace LubriTech.View
             frmUpsertTransmission.Show();
         }
 
-        private void dgvTransmission_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dgvTransmissions.Columns["ModifyImageColumn"].Index && e.RowIndex >= 0)
-            {
-                int selectedTransmissionId = Convert.ToInt32(dgvTransmissions.Rows[e.RowIndex].Cells["Id"].Value.ToString());
-                List<Transmission> transmissions = new Transmission_Controller().getAll();
-                Transmission selectedTransmission = null;
-                foreach (Transmission transmission in transmissions)
-                {
-                    if (transmission.Id == selectedTransmissionId)
-                    {
-                        selectedTransmission = transmission;
-                        break;
-                    }
-                }
-
-                string action = "Modify";
-                frmInsertUpdate_Transmission frmInsertTransmission = new frmInsertUpdate_Transmission(selectedTransmission, action);
-                this.WindowState = FormWindowState.Normal;
-                frmInsertTransmission.MdiParent = this.MdiParent;
-                frmInsertTransmission.DataChanged += ChildFormDataChangedHandler;
-                frmInsertTransmission.Show();
-                return;
-            }
-
-            if (e.ColumnIndex == dgvTransmissions.Columns["DetailImageColumn"].Index && e.RowIndex >= 0)
-            {
-                int selectedTransmissionId = Convert.ToInt32(dgvTransmissions.Rows[e.RowIndex].Cells["Id"].Value.ToString());
-                List<Transmission> transmissions = new Transmission_Controller().getAll();
-                Transmission selectedTransmission = null;
-                foreach (Transmission transmission in transmissions)
-                {
-                    if (transmission.Id == selectedTransmissionId)
-                    {
-                        selectedTransmission = transmission;
-                        break;
-                    }
-                }
-                string action = "Details";
-                frmInsertUpdate_Transmission frmInsertTransmission = new frmInsertUpdate_Transmission(selectedTransmission, action);
-                this.WindowState = FormWindowState.Normal;
-                frmInsertTransmission.MdiParent = this.MdiParent;
-                frmInsertTransmission.DataChanged += ChildFormDataChangedHandler;
-                frmInsertTransmission.Show();
-                return;
-            }
-        }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -234,6 +170,27 @@ namespace LubriTech.View
                 currentPage--;
                 LoadPage();
             }
+        }
+
+        private void dgvTransmissions_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                int transmissionId = Convert.ToInt32(dgvTransmissions.Rows[e.RowIndex].Cells["Id"].Value.ToString());
+                List<Transmission> transmissions = new Transmission_Controller().getAll();
+                Transmission selectedTransmission = transmissions.FirstOrDefault(transmission => transmission.Id == transmissionId);
+                if (selectedTransmission != null)
+                {
+                    frmInsertUpdate_Transmission frmUpsert = new frmInsertUpdate_Transmission(selectedTransmission);
+                    this.WindowState = FormWindowState.Normal;
+                    frmUpsert.MdiParent = this.MdiParent;
+                    frmUpsert.DataChanged += ChildFormDataChangedHandler;
+                    frmUpsert.Show();
+
+
+                }
+            }
+
         }
     }
 }

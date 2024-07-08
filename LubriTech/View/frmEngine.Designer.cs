@@ -28,11 +28,11 @@ namespace LubriTech.View
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle76 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle77 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle78 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle79 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle80 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnAddEngine = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,7 +46,6 @@ namespace LubriTech.View
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.lblPageNumber = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panelBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -175,9 +174,9 @@ namespace LubriTech.View
             // dgvEngines
             // 
             this.dgvEngines.AllowUserToAddRows = false;
-            dataGridViewCellStyle76.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle76.BackColor = System.Drawing.Color.White;
-            this.dgvEngines.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle76;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            this.dgvEngines.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvEngines.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -187,48 +186,101 @@ namespace LubriTech.View
             this.dgvEngines.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvEngines.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvEngines.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle77.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle77.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle77.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle77.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle77.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle77.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle77.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEngines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle77;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEngines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvEngines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEngines.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle78.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle78.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle78.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle78.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle78.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
-            dataGridViewCellStyle78.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle78.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEngines.DefaultCellStyle = dataGridViewCellStyle78;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEngines.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvEngines.GridColor = System.Drawing.Color.White;
             this.dgvEngines.Location = new System.Drawing.Point(33, 126);
             this.dgvEngines.Margin = new System.Windows.Forms.Padding(0);
             this.dgvEngines.Name = "dgvEngines";
             this.dgvEngines.ReadOnly = true;
             this.dgvEngines.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle79.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle79.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle79.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle79.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle79.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle79.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle79.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEngines.RowHeadersDefaultCellStyle = dataGridViewCellStyle79;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEngines.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvEngines.RowHeadersVisible = false;
             this.dgvEngines.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle80.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvEngines.RowsDefaultCellStyle = dataGridViewCellStyle80;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvEngines.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvEngines.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvEngines.RowTemplate.Height = 35;
             this.dgvEngines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEngines.Size = new System.Drawing.Size(1003, 420);
             this.dgvEngines.TabIndex = 23;
             this.dgvEngines.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEngines_CellDoubleClick);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
+            this.btnNext.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNext.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(45)))), ((int)(((byte)(92)))));
+            this.btnNext.FlatAppearance.BorderSize = 0;
+            this.btnNext.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnNext.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnNext.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnNext.ForeColor = System.Drawing.Color.Transparent;
+            this.btnNext.Image = global::LubriTech.Properties.Resources.Flecha_Calendario_Derecha;
+            this.btnNext.Location = new System.Drawing.Point(645, 554);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(35, 32);
+            this.btnNext.TabIndex = 63;
+            this.btnNext.UseVisualStyleBackColor = false;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click_1);
+            // 
+            // btnPrevious
+            // 
+            this.btnPrevious.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnPrevious.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
+            this.btnPrevious.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrevious.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(45)))), ((int)(((byte)(92)))));
+            this.btnPrevious.FlatAppearance.BorderSize = 0;
+            this.btnPrevious.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPrevious.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnPrevious.ForeColor = System.Drawing.Color.Transparent;
+            this.btnPrevious.Image = global::LubriTech.Properties.Resources.Flecha_Calendario_Izquierda;
+            this.btnPrevious.Location = new System.Drawing.Point(392, 554);
+            this.btnPrevious.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPrevious.Name = "btnPrevious";
+            this.btnPrevious.Size = new System.Drawing.Size(35, 32);
+            this.btnPrevious.TabIndex = 64;
+            this.btnPrevious.UseVisualStyleBackColor = false;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click_1);
+            // 
+            // lblPageNumber
+            // 
+            this.lblPageNumber.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lblPageNumber.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.lblPageNumber.Location = new System.Drawing.Point(459, 555);
+            this.lblPageNumber.Name = "lblPageNumber";
+            this.lblPageNumber.Size = new System.Drawing.Size(151, 28);
+            this.lblPageNumber.TabIndex = 62;
+            this.lblPageNumber.Text = "Página 10 de 10";
+            this.lblPageNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmEngine
             // 
@@ -246,7 +298,6 @@ namespace LubriTech.View
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmEngine";
@@ -274,5 +325,8 @@ namespace LubriTech.View
         private System.Windows.Forms.PictureBox pbMaximize;
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.DataGridView dgvEngines;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Button btnPrevious;
+        private System.Windows.Forms.Label lblPageNumber;
     }
 }

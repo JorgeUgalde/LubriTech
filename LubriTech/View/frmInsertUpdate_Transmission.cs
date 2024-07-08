@@ -21,23 +21,12 @@ namespace LubriTech.View
             InitializeComponent();
         }
 
-        public frmInsertUpdate_Transmission(Transmission transmission, string action)
+        public frmInsertUpdate_Transmission(Transmission transmission)
         {
             InitializeComponent();
             this.transmissions = transmission;
             txtTransmissionType.Text = transmission.TransmissionType;
             cbState.SelectedIndex = cbState.FindStringExact(transmission.State);
-
-            if (action == "Details")
-            {
-                txtTransmissionType.Enabled = false;
-                cbState.Enabled = false;
-
-                txtTransmissionType.BackColor = Color.FromArgb(249, 252, 255);
-                cbState.BackColor = Color.FromArgb(249, 252, 255);
-
-                btnConfirm.Hide();
-            }
         }
 
         // Define a custom event

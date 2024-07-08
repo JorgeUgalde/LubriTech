@@ -187,7 +187,9 @@ namespace LubriTech.View
             }
         }
 
-        private void btnNext_Click(object sender, EventArgs e)
+    
+
+        private void btnNext_Click_1(object sender, EventArgs e)
         {
             if (currentPage < totalPages)
             {
@@ -195,8 +197,8 @@ namespace LubriTech.View
                 LoadPage();
             }
         }
-    
-        private void btnPrevious_Click(object sender, EventArgs e)
+
+        private void btnPrevious_Click_1(object sender, EventArgs e)
         {
             if (currentPage > 1)
             {

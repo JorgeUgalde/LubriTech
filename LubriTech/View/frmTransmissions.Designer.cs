@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnAddTransmission = new System.Windows.Forms.Button();
             this.dgvTransmissions = new System.Windows.Forms.DataGridView();
@@ -61,7 +61,7 @@
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnClose.Location = new System.Drawing.Point(849, 575);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(188, 42);
             this.btnClose.TabIndex = 27;
@@ -78,7 +78,7 @@
             this.btnAddTransmission.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddTransmission.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAddTransmission.Location = new System.Drawing.Point(29, 575);
-            this.btnAddTransmission.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddTransmission.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddTransmission.Name = "btnAddTransmission";
             this.btnAddTransmission.Size = new System.Drawing.Size(188, 42);
             this.btnAddTransmission.TabIndex = 26;
@@ -88,9 +88,9 @@
             // 
             // dgvTransmissions
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
-            this.dgvTransmissions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvTransmissions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTransmissions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -100,42 +100,42 @@
             this.dgvTransmissions.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvTransmissions.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvTransmissions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTransmissions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTransmissions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTransmissions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTransmissions.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTransmissions.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTransmissions.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTransmissions.GridColor = System.Drawing.Color.White;
             this.dgvTransmissions.Location = new System.Drawing.Point(29, 123);
-            this.dgvTransmissions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvTransmissions.Margin = new System.Windows.Forms.Padding(4);
             this.dgvTransmissions.Name = "dgvTransmissions";
             this.dgvTransmissions.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTransmissions.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTransmissions.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvTransmissions.RowHeadersVisible = false;
             this.dgvTransmissions.RowHeadersWidth = 51;
             this.dgvTransmissions.Size = new System.Drawing.Size(1008, 425);
             this.dgvTransmissions.TabIndex = 25;
-            this.dgvTransmissions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTransmission_CellContentClick);
+            this.dgvTransmissions.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTransmissions_CellMouseDoubleClick);
             // 
             // label3
             // 
@@ -178,7 +178,7 @@
             this.panelBorder.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panelBorder.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBorder.Location = new System.Drawing.Point(0, 0);
-            this.panelBorder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelBorder.Margin = new System.Windows.Forms.Padding(4);
             this.panelBorder.Name = "panelBorder";
             this.panelBorder.Size = new System.Drawing.Size(1073, 44);
             this.panelBorder.TabIndex = 28;
@@ -202,7 +202,7 @@
             this.pbMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMaximize.Image = global::LubriTech.Properties.Resources.maximize;
             this.pbMaximize.Location = new System.Drawing.Point(981, 7);
-            this.pbMaximize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbMaximize.Margin = new System.Windows.Forms.Padding(4);
             this.pbMaximize.Name = "pbMaximize";
             this.pbMaximize.Size = new System.Drawing.Size(40, 37);
             this.pbMaximize.TabIndex = 8;
@@ -215,7 +215,7 @@
             this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::LubriTech.Properties.Resources.closeIco2;
             this.pbClose.Location = new System.Drawing.Point(1029, 7);
-            this.pbClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbClose.Margin = new System.Windows.Forms.Padding(4);
             this.pbClose.Name = "pbClose";
             this.pbClose.Size = new System.Drawing.Size(40, 37);
             this.pbClose.TabIndex = 7;
@@ -227,7 +227,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1073, 646);
             this.panel1.TabIndex = 29;
@@ -303,7 +303,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmTransmissions";
             this.Text = "Tipos de Transmisión";
             ((System.ComponentModel.ISupportInitialize)(this.dgvTransmissions)).EndInit();
