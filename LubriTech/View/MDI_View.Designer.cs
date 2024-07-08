@@ -28,6 +28,7 @@ namespace LubriTech.View
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MDI_View));
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnUserSettings = new System.Windows.Forms.Button();
             this.panelParametersSubmenu = new System.Windows.Forms.Panel();
@@ -98,7 +99,7 @@ namespace LubriTech.View
             this.btnUserSettings.Margin = new System.Windows.Forms.Padding(4);
             this.btnUserSettings.Name = "btnUserSettings";
             this.btnUserSettings.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnUserSettings.Size = new System.Drawing.Size(302, 55);
+            this.btnUserSettings.Size = new System.Drawing.Size(298, 55);
             this.btnUserSettings.TabIndex = 15;
             this.btnUserSettings.Text = "Configurar cuenta";
             this.btnUserSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -121,7 +122,7 @@ namespace LubriTech.View
             this.panelParametersSubmenu.Location = new System.Drawing.Point(0, 520);
             this.panelParametersSubmenu.Margin = new System.Windows.Forms.Padding(4);
             this.panelParametersSubmenu.Name = "panelParametersSubmenu";
-            this.panelParametersSubmenu.Size = new System.Drawing.Size(302, 397);
+            this.panelParametersSubmenu.Size = new System.Drawing.Size(298, 397);
             this.panelParametersSubmenu.TabIndex = 13;
             // 
             // button2
@@ -135,7 +136,7 @@ namespace LubriTech.View
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.button2.Size = new System.Drawing.Size(302, 49);
+            this.button2.Size = new System.Drawing.Size(298, 49);
             this.button2.TabIndex = 16;
             this.button2.Text = "Catálogo tipos de artículo";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -153,7 +154,7 @@ namespace LubriTech.View
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(302, 49);
+            this.button1.Size = new System.Drawing.Size(298, 49);
             this.button1.TabIndex = 15;
             this.button1.Text = "Catálogo tipos de transmisión";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -171,7 +172,7 @@ namespace LubriTech.View
             this.btnEngineCatalog.Margin = new System.Windows.Forms.Padding(4);
             this.btnEngineCatalog.Name = "btnEngineCatalog";
             this.btnEngineCatalog.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnEngineCatalog.Size = new System.Drawing.Size(302, 49);
+            this.btnEngineCatalog.Size = new System.Drawing.Size(298, 49);
             this.btnEngineCatalog.TabIndex = 14;
             this.btnEngineCatalog.Text = "Catálogo tipos de motor";
             this.btnEngineCatalog.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -189,7 +190,7 @@ namespace LubriTech.View
             this.btnModelsCatalog.Margin = new System.Windows.Forms.Padding(4);
             this.btnModelsCatalog.Name = "btnModelsCatalog";
             this.btnModelsCatalog.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnModelsCatalog.Size = new System.Drawing.Size(302, 49);
+            this.btnModelsCatalog.Size = new System.Drawing.Size(298, 49);
             this.btnModelsCatalog.TabIndex = 11;
             this.btnModelsCatalog.Text = "Catálogo de modelos";
             this.btnModelsCatalog.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -207,7 +208,7 @@ namespace LubriTech.View
             this.btnMakeCatalog.Margin = new System.Windows.Forms.Padding(4);
             this.btnMakeCatalog.Name = "btnMakeCatalog";
             this.btnMakeCatalog.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnMakeCatalog.Size = new System.Drawing.Size(302, 49);
+            this.btnMakeCatalog.Size = new System.Drawing.Size(298, 49);
             this.btnMakeCatalog.TabIndex = 7;
             this.btnMakeCatalog.Text = "Catálogo de marcas";
             this.btnMakeCatalog.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -225,7 +226,7 @@ namespace LubriTech.View
             this.btnPriceLists.Margin = new System.Windows.Forms.Padding(4);
             this.btnPriceLists.Name = "btnPriceLists";
             this.btnPriceLists.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnPriceLists.Size = new System.Drawing.Size(302, 49);
+            this.btnPriceLists.Size = new System.Drawing.Size(298, 49);
             this.btnPriceLists.TabIndex = 6;
             this.btnPriceLists.Text = "Lista de precios de artículos";
             this.btnPriceLists.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -260,7 +261,7 @@ namespace LubriTech.View
             this.btnSchedules.Margin = new System.Windows.Forms.Padding(4);
             this.btnSchedules.Name = "btnSchedules";
             this.btnSchedules.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnSchedules.Size = new System.Drawing.Size(302, 49);
+            this.btnSchedules.Size = new System.Drawing.Size(298, 49);
             this.btnSchedules.TabIndex = 12;
             this.btnSchedules.Text = "Horarios";
             this.btnSchedules.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -278,7 +279,7 @@ namespace LubriTech.View
             this.btnBranches.Margin = new System.Windows.Forms.Padding(4);
             this.btnBranches.Name = "btnBranches";
             this.btnBranches.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnBranches.Size = new System.Drawing.Size(302, 49);
+            this.btnBranches.Size = new System.Drawing.Size(298, 49);
             this.btnBranches.TabIndex = 10;
             this.btnBranches.Text = "Sucursales";
             this.btnBranches.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -296,7 +297,7 @@ namespace LubriTech.View
             this.btnParamConfig.Margin = new System.Windows.Forms.Padding(4);
             this.btnParamConfig.Name = "btnParamConfig";
             this.btnParamConfig.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnParamConfig.Size = new System.Drawing.Size(302, 55);
+            this.btnParamConfig.Size = new System.Drawing.Size(298, 55);
             this.btnParamConfig.TabIndex = 12;
             this.btnParamConfig.Text = "Configurar parámetros";
             this.btnParamConfig.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -314,7 +315,7 @@ namespace LubriTech.View
             this.btnSuppliers.Margin = new System.Windows.Forms.Padding(4);
             this.btnSuppliers.Name = "btnSuppliers";
             this.btnSuppliers.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnSuppliers.Size = new System.Drawing.Size(302, 55);
+            this.btnSuppliers.Size = new System.Drawing.Size(298, 55);
             this.btnSuppliers.TabIndex = 12;
             this.btnSuppliers.Text = "Proveedores";
             this.btnSuppliers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -332,7 +333,7 @@ namespace LubriTech.View
             this.btnInventory.Margin = new System.Windows.Forms.Padding(4);
             this.btnInventory.Name = "btnInventory";
             this.btnInventory.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnInventory.Size = new System.Drawing.Size(302, 55);
+            this.btnInventory.Size = new System.Drawing.Size(298, 55);
             this.btnInventory.TabIndex = 9;
             this.btnInventory.Text = "Inventario";
             this.btnInventory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -350,7 +351,7 @@ namespace LubriTech.View
             this.btnArticles.Margin = new System.Windows.Forms.Padding(4);
             this.btnArticles.Name = "btnArticles";
             this.btnArticles.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnArticles.Size = new System.Drawing.Size(302, 55);
+            this.btnArticles.Size = new System.Drawing.Size(298, 55);
             this.btnArticles.TabIndex = 11;
             this.btnArticles.Text = "Artículos";
             this.btnArticles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -368,7 +369,7 @@ namespace LubriTech.View
             this.btnLogout.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnLogout.Size = new System.Drawing.Size(302, 55);
+            this.btnLogout.Size = new System.Drawing.Size(298, 55);
             this.btnLogout.TabIndex = 14;
             this.btnLogout.Text = "Cerrar sesión";
             this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -386,7 +387,7 @@ namespace LubriTech.View
             this.btnWorkOrders.Margin = new System.Windows.Forms.Padding(4);
             this.btnWorkOrders.Name = "btnWorkOrders";
             this.btnWorkOrders.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnWorkOrders.Size = new System.Drawing.Size(302, 55);
+            this.btnWorkOrders.Size = new System.Drawing.Size(298, 55);
             this.btnWorkOrders.TabIndex = 8;
             this.btnWorkOrders.Text = "Ordenes de trabajo";
             this.btnWorkOrders.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -404,7 +405,7 @@ namespace LubriTech.View
             this.btnAppointments.Margin = new System.Windows.Forms.Padding(4);
             this.btnAppointments.Name = "btnAppointments";
             this.btnAppointments.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnAppointments.Size = new System.Drawing.Size(302, 55);
+            this.btnAppointments.Size = new System.Drawing.Size(298, 55);
             this.btnAppointments.TabIndex = 7;
             this.btnAppointments.Text = "Citas";
             this.btnAppointments.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -422,7 +423,7 @@ namespace LubriTech.View
             this.btnVehicles.Margin = new System.Windows.Forms.Padding(4);
             this.btnVehicles.Name = "btnVehicles";
             this.btnVehicles.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnVehicles.Size = new System.Drawing.Size(302, 55);
+            this.btnVehicles.Size = new System.Drawing.Size(298, 55);
             this.btnVehicles.TabIndex = 7;
             this.btnVehicles.Text = "Vehículos";
             this.btnVehicles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -440,7 +441,7 @@ namespace LubriTech.View
             this.btnClients.Margin = new System.Windows.Forms.Padding(4);
             this.btnClients.Name = "btnClients";
             this.btnClients.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnClients.Size = new System.Drawing.Size(302, 55);
+            this.btnClients.Size = new System.Drawing.Size(298, 55);
             this.btnClients.TabIndex = 6;
             this.btnClients.Text = "Clientes";
             this.btnClients.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -455,7 +456,7 @@ namespace LubriTech.View
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(302, 80);
+            this.panel2.Size = new System.Drawing.Size(298, 80);
             this.panel2.TabIndex = 6;
             // 
             // label1
@@ -523,7 +524,7 @@ namespace LubriTech.View
             this.lblForm.ForeColor = System.Drawing.Color.White;
             this.lblForm.Location = new System.Drawing.Point(12, 6);
             this.lblForm.Name = "lblForm";
-            this.lblForm.Size = new System.Drawing.Size(80, 21);
+            this.lblForm.Size = new System.Drawing.Size(99, 28);
             this.lblForm.TabIndex = 10;
             this.lblForm.Text = "LubriTech";
             // 
@@ -551,6 +552,7 @@ namespace LubriTech.View
             this.Controls.Add(this.btnMenu);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MDI_View";

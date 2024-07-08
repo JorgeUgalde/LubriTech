@@ -50,6 +50,9 @@
   <PropertyGroup>
     <StartupObject>LubriTech.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icono.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
       <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net472\BCrypt.Net-Next.dll</HintPath>
@@ -522,6 +525,7 @@
     <Content Include="bin\Debug\LubriTech.exe" />
     <Content Include="bin\Debug\LubriTech.pdb" />
     <None Include="Images\add.png" />
+    <Content Include="Icono.ico" />
     <Content Include="Images\appointment.png" />
     <Content Include="Images\Back.png" />
     <None Include="Images\close.png" />
@@ -572,6 +576,7 @@
     <None Include="Resources\icons8-minimizar-24 %281%29.png" />
     <None Include="Resources\icons8-minimizar-24 %282%29.png" />
     <None Include="Resources\icons8-cerrar-ventana-24.png" />
+    <Content Include="Resources\Icono.ico" />
     <Content Include="Resources\inventory.png" />
     <Content Include="Resources\logo1.jpg" />
     <Content Include="Resources\logoCrop.jpg" />
@@ -594,7 +599,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
