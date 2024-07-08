@@ -24,6 +24,7 @@ namespace LubriTech
         public frmLogin()
         {
             InitializeComponent();
+            user = new User();
         }
 
         private void btLogin_Click(object sender, EventArgs e)

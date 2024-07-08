@@ -233,7 +233,7 @@ namespace LubriTech.View
 
         private void btnUserSettings_Click(object sender, EventArgs e)
         {
-            frmInsertUpdateUser frmInsertUpdateUser = new frmInsertUpdateUser();
+            frmInsertUpdateUser frmInsertUpdateUser = new frmInsertUpdateUser(frmLogin.user);
             OpenChildForm(frmInsertUpdateUser);
             frmInsertUpdateUser.BringToFront();
             frmInsertUpdateUser.Focus();
