@@ -50,15 +50,16 @@
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(637, 466);
+            this.button1.Location = new System.Drawing.Point(849, 574);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(141, 34);
+            this.button1.Size = new System.Drawing.Size(188, 42);
             this.button1.TabIndex = 4;
             this.button1.Text = "Cerrar";
             this.button1.UseVisualStyleBackColor = false;
@@ -69,10 +70,9 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(444, 64);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(592, 79);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 21);
+            this.label1.Size = new System.Drawing.Size(100, 28);
             this.label1.TabIndex = 17;
             this.label1.Text = "Filtrar por";
             // 
@@ -80,10 +80,10 @@
             // 
             this.txtFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFilter.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFilter.Location = new System.Drawing.Point(530, 61);
-            this.txtFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFilter.Location = new System.Drawing.Point(707, 75);
+            this.txtFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(248, 29);
+            this.txtFilter.Size = new System.Drawing.Size(329, 34);
             this.txtFilter.TabIndex = 1;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
@@ -95,9 +95,10 @@
             this.btnAddInventoryManagment.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddInventoryManagment.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddInventoryManagment.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAddInventoryManagment.Location = new System.Drawing.Point(22, 466);
+            this.btnAddInventoryManagment.Location = new System.Drawing.Point(29, 574);
+            this.btnAddInventoryManagment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddInventoryManagment.Name = "btnAddInventoryManagment";
-            this.btnAddInventoryManagment.Size = new System.Drawing.Size(141, 34);
+            this.btnAddInventoryManagment.Size = new System.Drawing.Size(188, 42);
             this.btnAddInventoryManagment.TabIndex = 3;
             this.btnAddInventoryManagment.Text = "Crear";
             this.btnAddInventoryManagment.UseVisualStyleBackColor = false;
@@ -110,9 +111,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblInventoryManagmentList.AutoSize = true;
             this.lblInventoryManagmentList.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInventoryManagmentList.Location = new System.Drawing.Point(18, 69);
+            this.lblInventoryManagmentList.Location = new System.Drawing.Point(24, 85);
+            this.lblInventoryManagmentList.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInventoryManagmentList.Name = "lblInventoryManagmentList";
-            this.lblInventoryManagmentList.Size = new System.Drawing.Size(243, 21);
+            this.lblInventoryManagmentList.Size = new System.Drawing.Size(305, 28);
             this.lblInventoryManagmentList.TabIndex = 16;
             this.lblInventoryManagmentList.Text = "Lista de Gestiones de Inventario";
             // 
@@ -149,7 +151,8 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvInventoryManagments.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvInventoryManagments.GridColor = System.Drawing.Color.White;
-            this.dgvInventoryManagments.Location = new System.Drawing.Point(22, 100);
+            this.dgvInventoryManagments.Location = new System.Drawing.Point(29, 123);
+            this.dgvInventoryManagments.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvInventoryManagments.Name = "dgvInventoryManagments";
             this.dgvInventoryManagments.ReadOnly = true;
             this.dgvInventoryManagments.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -162,8 +165,9 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvInventoryManagments.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvInventoryManagments.RowHeadersVisible = false;
+            this.dgvInventoryManagments.RowHeadersWidth = 51;
             this.dgvInventoryManagments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInventoryManagments.Size = new System.Drawing.Size(756, 345);
+            this.dgvInventoryManagments.Size = new System.Drawing.Size(1008, 425);
             this.dgvInventoryManagments.TabIndex = 2;
             this.dgvInventoryManagments.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvInventoryManagments_CellMouseDoubleClick);
             // 
@@ -176,8 +180,9 @@
             this.panelBorder.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panelBorder.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBorder.Location = new System.Drawing.Point(0, 0);
+            this.panelBorder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelBorder.Name = "panelBorder";
-            this.panelBorder.Size = new System.Drawing.Size(805, 36);
+            this.panelBorder.Size = new System.Drawing.Size(1073, 44);
             this.panelBorder.TabIndex = 16;
             this.panelBorder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBorder_MouseDown);
             // 
@@ -186,9 +191,10 @@
             this.lblForm.AutoSize = true;
             this.lblForm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblForm.ForeColor = System.Drawing.Color.White;
-            this.lblForm.Location = new System.Drawing.Point(12, 6);
+            this.lblForm.Location = new System.Drawing.Point(16, 7);
+            this.lblForm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblForm.Name = "lblForm";
-            this.lblForm.Size = new System.Drawing.Size(84, 21);
+            this.lblForm.Size = new System.Drawing.Size(104, 28);
             this.lblForm.TabIndex = 18;
             this.lblForm.Text = "Inventario";
             // 
@@ -197,9 +203,10 @@
             this.pbMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMaximize.Image = global::LubriTech.Properties.Resources.maximize;
-            this.pbMaximize.Location = new System.Drawing.Point(736, 6);
+            this.pbMaximize.Location = new System.Drawing.Point(981, 7);
+            this.pbMaximize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbMaximize.Name = "pbMaximize";
-            this.pbMaximize.Size = new System.Drawing.Size(30, 30);
+            this.pbMaximize.Size = new System.Drawing.Size(40, 37);
             this.pbMaximize.TabIndex = 8;
             this.pbMaximize.TabStop = false;
             this.pbMaximize.Click += new System.EventHandler(this.pbMaximize_Click);
@@ -209,19 +216,20 @@
             this.pbClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::LubriTech.Properties.Resources.closeIco2;
-            this.pbClose.Location = new System.Drawing.Point(772, 6);
+            this.pbClose.Location = new System.Drawing.Point(1029, 7);
+            this.pbClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(30, 30);
+            this.pbClose.Size = new System.Drawing.Size(40, 37);
             this.pbClose.TabIndex = 7;
             this.pbClose.TabStop = false;
             this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
             // 
             // frmInventoryManagment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(805, 525);
+            this.ClientSize = new System.Drawing.Size(1073, 646);
             this.Controls.Add(this.panelBorder);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
@@ -230,6 +238,7 @@
             this.Controls.Add(this.lblInventoryManagmentList);
             this.Controls.Add(this.dgvInventoryManagments);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmInventoryManagment";
             this.Text = "frmInventoryManagment";
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventoryManagments)).EndInit();

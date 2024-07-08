@@ -139,6 +139,7 @@ namespace LubriTech.View
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             frmInsertUpdate_Item frmInsertUpdateItem = new frmInsertUpdate_Item();
+            this.WindowState = FormWindowState.Normal;
             frmInsertUpdateItem.MdiParent = this.MdiParent;
             frmInsertUpdateItem.DataChanged += ChildFormDataChangedHandler;
             frmInsertUpdateItem.Show();
@@ -197,6 +198,7 @@ namespace LubriTech.View
                     else
                     {
                         frmInsertUpdate_Item frmInsertUpdateItem = new frmInsertUpdate_Item(selectedItem, (int)cbBranch.SelectedValue);
+                        this.WindowState = FormWindowState.Normal;
                         frmInsertUpdateItem.MdiParent = this.MdiParent;
                         frmInsertUpdateItem.DataChanged += ChildFormDataChangedHandler;
                         frmInsertUpdateItem.Show();

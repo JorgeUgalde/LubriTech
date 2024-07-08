@@ -403,6 +403,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmInsertUpdate_Appointment";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmInsertUpdate_Appointment";
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             this.panelBorder.ResumeLayout(false);

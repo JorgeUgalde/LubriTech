@@ -136,6 +136,7 @@ namespace LubriTech.View
 
                 string action = "Modify";
                 frmInsertUpdate_Transmission frmInsertTransmission = new frmInsertUpdate_Transmission(selectedTransmission, action);
+                this.WindowState = FormWindowState.Normal;
                 frmInsertTransmission.MdiParent = this.MdiParent;
                 frmInsertTransmission.DataChanged += ChildFormDataChangedHandler;
                 frmInsertTransmission.Show();
@@ -157,6 +158,7 @@ namespace LubriTech.View
                 }
                 string action = "Details";
                 frmInsertUpdate_Transmission frmInsertTransmission = new frmInsertUpdate_Transmission(selectedTransmission, action);
+                this.WindowState = FormWindowState.Normal;
                 frmInsertTransmission.MdiParent = this.MdiParent;
                 frmInsertTransmission.DataChanged += ChildFormDataChangedHandler;
                 frmInsertTransmission.Show();

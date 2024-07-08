@@ -103,21 +103,6 @@ namespace LubriTech.View
             load_Schedules(filteredList);
         }
 
-        private void dgvSchedules_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                int scheduleID = Convert.ToInt32(dgvSchedules.Rows[e.RowIndex].Cells["ScheduleID"].Value);
-
-                Schedule schedule = schedules.Where(p => p.ScheduleID == scheduleID).FirstOrDefault();
-                frmInsertUpdate_Schedule frmUpsert_Schedule = new frmInsertUpdate_Schedule(schedule);
-
-                frmUpsert_Schedule.MdiParent = this.MdiParent;
-                frmUpsert_Schedule.DataChanged += ChildFormDataChangedHandler;
-                frmUpsert_Schedule.Show();
-            }
-
-        }
 
         private void pbClose_Click(object sender, EventArgs e)
         {
@@ -145,6 +130,7 @@ namespace LubriTech.View
         private void btnAddSchedule_Click(object sender, EventArgs e)
         {
             frmInsertUpdate_Schedule frmUpsert_Schedule = new frmInsertUpdate_Schedule();
+            this.WindowState = FormWindowState.Normal;
             frmUpsert_Schedule.MdiParent = this.MdiParent;
             frmUpsert_Schedule.DataChanged += ChildFormDataChangedHandler;
             frmUpsert_Schedule.Show();
@@ -154,6 +140,22 @@ namespace LubriTech.View
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+
+        private void dgvSchedules_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                int scheduleID = Convert.ToInt32(dgvSchedules.Rows[e.RowIndex].Cells["ScheduleID"].Value);
+
+                Schedule schedule = schedules.Where(p => p.ScheduleID == scheduleID).FirstOrDefault();
+                frmInsertUpdate_Schedule frmUpsert_Schedule = new frmInsertUpdate_Schedule(schedule);
+                this.WindowState = FormWindowState.Normal;
+                frmUpsert_Schedule.MdiParent = this.MdiParent;
+                frmUpsert_Schedule.DataChanged += ChildFormDataChangedHandler;
+                frmUpsert_Schedule.Show();
+            }
         }
     }
 }

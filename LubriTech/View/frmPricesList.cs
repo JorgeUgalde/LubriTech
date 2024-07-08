@@ -86,6 +86,7 @@ namespace LubriTech.View
         private void btnAddPricesList_Click(object sender, EventArgs e)
         {
             frmUpsert_PriceList frmUpsert_PriceList = new frmUpsert_PriceList(null);
+            this.WindowState = FormWindowState.Normal;
             frmUpsert_PriceList.MdiParent = this.MdiParent;
             frmUpsert_PriceList.DataChanged += ChildFormDataChangedHandler;
             frmUpsert_PriceList.Show();
@@ -141,6 +142,7 @@ namespace LubriTech.View
                 else
                 {
                     frmUpsert_PriceList frmUpsert_PriceList = new frmUpsert_PriceList(priceListId);
+                    this.WindowState = FormWindowState.Normal;
                     frmUpsert_PriceList.MdiParent = this.MdiParent;
                     frmUpsert_PriceList.DataChanged += ChildFormDataChangedHandler;
                     frmUpsert_PriceList.Show();
