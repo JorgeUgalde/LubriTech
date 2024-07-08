@@ -1,4 +1,5 @@
 ﻿using LubriTech.Controller;
+using LubriTech.Model.Client_Information;
 using LubriTech.Model.User_Information;
 using LubriTech.View;
 using System;
@@ -7,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -18,6 +20,7 @@ namespace LubriTech
     {
         private bool isLogged = false;
         public static int branch = -1;
+        public static User user;
         public frmLogin()
         {
             InitializeComponent();
@@ -59,6 +62,8 @@ namespace LubriTech
                     MessageBox.Show("Usuario o contraseña incorrectos.");
                     return false;
                 }
+                user.email = u.email;
+                user.branchID = u.branchID;
                 branch = u.branchID;
                 this.Close();
                 return true;                

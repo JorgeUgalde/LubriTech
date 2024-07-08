@@ -1,4 +1,4 @@
-﻿namespace LubriTech.View
+namespace LubriTech.View
 {
     partial class frmEngine
     {
@@ -46,6 +46,7 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.lblPageNumber = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panelBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -229,59 +230,6 @@
             this.dgvEngines.TabIndex = 23;
             this.dgvEngines.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEngines_CellDoubleClick);
             // 
-            // btnNext
-            // 
-            this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
-            this.btnNext.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNext.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(45)))), ((int)(((byte)(92)))));
-            this.btnNext.FlatAppearance.BorderSize = 0;
-            this.btnNext.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnNext.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnNext.ForeColor = System.Drawing.Color.Transparent;
-            this.btnNext.Image = global::LubriTech.Properties.Resources.Flecha_Calendario_Derecha;
-            this.btnNext.Location = new System.Drawing.Point(641, 552);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(35, 32);
-            this.btnNext.TabIndex = 63;
-            this.btnNext.UseVisualStyleBackColor = false;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // btnPrevious
-            // 
-            this.btnPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnPrevious.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(55)))), ((int)(((byte)(111)))));
-            this.btnPrevious.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPrevious.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(45)))), ((int)(((byte)(92)))));
-            this.btnPrevious.FlatAppearance.BorderSize = 0;
-            this.btnPrevious.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnPrevious.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnPrevious.ForeColor = System.Drawing.Color.Transparent;
-            this.btnPrevious.Image = global::LubriTech.Properties.Resources.Flecha_Calendario_Izquierda;
-            this.btnPrevious.Location = new System.Drawing.Point(388, 552);
-            this.btnPrevious.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(35, 32);
-            this.btnPrevious.TabIndex = 64;
-            this.btnPrevious.UseVisualStyleBackColor = false;
-            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
-            // 
-            // lblPageNumber
-            // 
-            this.lblPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblPageNumber.AutoSize = true;
-            this.lblPageNumber.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.lblPageNumber.Location = new System.Drawing.Point(455, 552);
-            this.lblPageNumber.Name = "lblPageNumber";
-            this.lblPageNumber.Size = new System.Drawing.Size(151, 28);
-            this.lblPageNumber.TabIndex = 62;
-            this.lblPageNumber.Text = "Página 10 de 10";
-            // 
             // frmEngine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -298,6 +246,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmEngine";
@@ -325,8 +274,5 @@
         private System.Windows.Forms.PictureBox pbMaximize;
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.DataGridView dgvEngines;
-        private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.Button btnPrevious;
-        private System.Windows.Forms.Label lblPageNumber;
     }
 }

@@ -50,6 +50,8 @@ namespace LubriTech.View
         WorkOrder workOrderTemplate = new WorkOrder();
         List<Observation> observations;
         decimal totalA;
+        DataGridView dgvWorkOrderLine;
+
 
         private int previousSelectedStateValue;
 
@@ -945,28 +947,29 @@ namespace LubriTech.View
 
             if (dgvWorkOrderDetails.Columns.Count > 0)
             {
-                DataGridView dgvWorkOrderLine;
                 dgvWorkOrderLine = dgvWorkOrderDetails;
-                dgvWorkOrderLine.Columns["ItemName"].HeaderText = "Articulo";
+                dgvWorkOrderLine.Columns["item"].HeaderText = "Articulo";
                 dgvWorkOrderLine.Columns["Quantity"].HeaderText = "Cantidad";
                 dgvWorkOrderLine.Columns["UnitPrice"].HeaderText = "Precio Unitario";
                 dgvWorkOrderLine.Columns["Amount"].HeaderText = "Monto";
 
                 dgvWorkOrderLine.Columns.Remove("Id");
                 dgvWorkOrderLine.Columns.Remove("WorkOrderId");
-                dgvWorkOrderLine.Columns.Remove("Item");
+                dgvWorkOrderLine.Columns.Remove("ItemCode");
+                dgvWorkOrderLine.Columns.Remove("deleteImageColumn");
+                
             }
 
             string htmlTable = "<table class='work-order-table' style='border-collapse: collapse; width: 100%;'>";
 
             htmlTable += "<tr>";
-            foreach (DataGridViewColumn column in dgvWorkOrderDetails.Columns)
+            foreach (DataGridViewColumn column in dgvWorkOrderLine.Columns)
             {
                 htmlTable += "<th>" + column.HeaderText + "</th>";
             }
             htmlTable += "</tr>";
 
-            foreach (DataGridViewRow row in dgvWorkOrderDetails.Rows)
+            foreach (DataGridViewRow row in dgvWorkOrderLine.Rows)
             {
                 htmlTable += "<tr>";
                 foreach (DataGridViewCell cell in row.Cells)
@@ -977,7 +980,7 @@ namespace LubriTech.View
             }
 
             htmlTable += "<tr>";
-            htmlTable += "<td colspan='" + (dgvWorkOrderDetails.Columns.Count - 1) + "' style='text-align: right; font-weight: bold;'>MontoTotal:</td>";
+            htmlTable += "<td colspan='" + (dgvWorkOrderLine.Columns.Count - 1) + "' style='text-align: right; font-weight: bold;'>MontoTotal:</td>";
             htmlTable += "<td>" + totalA.ToString() + "</td>";
             htmlTable += "</tr>";
 
@@ -1001,9 +1004,8 @@ namespace LubriTech.View
                     {
                         if (photo.Photo != null && photo.Photo.Length > 0)
                         {
-                            string base64Image = Convert.ToBase64String(photo.Photo);
+                            //string base64Image = Convert.ToBase64String(photo.Photo);
                             //observacionesHTML += $"<img src=\"data:image/png;base64,{base64Image}\" alt=\"Observation Photo\" style=\"width:200px;height:150px;\" />";
-                            observacionesHTML += $"data:image/{photo};base64,{base64Image}\" alt=\"Observation Photo\" style=\"width:200px;height:150px;\" />";
 
                         }
                     }
