@@ -95,13 +95,33 @@ namespace LubriTech.Model.Vehicle_Information
         {
             try
             {
+                Boolean updateResult = false;
+                Boolean insertResult = false;
                 if (getVehicle(vehicle.LicensePlate) != null)
                 {
-                    return updateVehicle(vehicle);
+                    updateResult = updateVehicle(vehicle);
+                    if (updateResult)
+                    {
+                        MessageBox.Show("El Vehículo se ha modificado correctamente");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo modificar el Vehículo.");
+                    }
+                    return updateResult;
                 }
                 else
                 {
-                    return addVehicle(vehicle);
+                    insertResult = addVehicle(vehicle);
+                    if (insertResult)
+                    {
+                        MessageBox.Show("El Vehículo se ha creado correctamente");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo modificar el Vehículo.");
+                    }
+                    return insertResult;
                 }
             }
             catch (Exception ex)
