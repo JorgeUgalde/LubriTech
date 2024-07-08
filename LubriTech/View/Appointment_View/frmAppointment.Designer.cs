@@ -90,7 +90,7 @@ namespace LubriTech.View.Appointment_View
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.pnlCalendar);
             this.panel1.Location = new System.Drawing.Point(0, 30);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(281, 687);
             this.panel1.TabIndex = 1;
@@ -124,7 +124,7 @@ namespace LubriTech.View.Appointment_View
             this.cbPLate.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPLate.FormattingEnabled = true;
             this.cbPLate.Location = new System.Drawing.Point(18, 617);
-            this.cbPLate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbPLate.Margin = new System.Windows.Forms.Padding(2);
             this.cbPLate.Name = "cbPLate";
             this.cbPLate.Size = new System.Drawing.Size(238, 27);
             this.cbPLate.TabIndex = 8;
@@ -162,7 +162,7 @@ namespace LubriTech.View.Appointment_View
             this.txtModel.Enabled = false;
             this.txtModel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtModel.Location = new System.Drawing.Point(18, 555);
-            this.txtModel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtModel.Margin = new System.Windows.Forms.Padding(2);
             this.txtModel.Multiline = true;
             this.txtModel.Name = "txtModel";
             this.txtModel.Size = new System.Drawing.Size(238, 27);
@@ -178,7 +178,7 @@ namespace LubriTech.View.Appointment_View
             this.btnSearchVehicle.ForeColor = System.Drawing.Color.White;
             this.btnSearchVehicle.Image = global::LubriTech.Properties.Resources.searching_car;
             this.btnSearchVehicle.Location = new System.Drawing.Point(165, 497);
-            this.btnSearchVehicle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSearchVehicle.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearchVehicle.Name = "btnSearchVehicle";
             this.btnSearchVehicle.Size = new System.Drawing.Size(32, 29);
             this.btnSearchVehicle.TabIndex = 6;
@@ -215,7 +215,7 @@ namespace LubriTech.View.Appointment_View
             // 
             this.txtId.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtId.Location = new System.Drawing.Point(18, 462);
-            this.txtId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtId.Margin = new System.Windows.Forms.Padding(2);
             this.txtId.Multiline = true;
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(236, 27);
@@ -240,7 +240,7 @@ namespace LubriTech.View.Appointment_View
             this.txtName.Enabled = false;
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(18, 401);
-            this.txtName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(238, 27);
@@ -256,7 +256,7 @@ namespace LubriTech.View.Appointment_View
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = global::LubriTech.Properties.Resources.searchClient;
             this.button1.Location = new System.Drawing.Point(165, 340);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(32, 29);
             this.button1.TabIndex = 3;
@@ -291,7 +291,7 @@ namespace LubriTech.View.Appointment_View
             this.pnlCalendar.Controls.Add(this.lblSunday);
             this.pnlCalendar.Controls.Add(this.dayContainer);
             this.pnlCalendar.Location = new System.Drawing.Point(18, 11);
-            this.pnlCalendar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlCalendar.Margin = new System.Windows.Forms.Padding(2);
             this.pnlCalendar.Name = "pnlCalendar";
             this.pnlCalendar.Size = new System.Drawing.Size(244, 265);
             this.pnlCalendar.TabIndex = 1;
@@ -309,7 +309,7 @@ namespace LubriTech.View.Appointment_View
             this.btnNext.ForeColor = System.Drawing.Color.White;
             this.btnNext.Image = global::LubriTech.Properties.Resources.Flecha_Calendario_Derecha;
             this.btnNext.Location = new System.Drawing.Point(202, 0);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(2);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(26, 26);
             this.btnNext.TabIndex = 37;
@@ -329,7 +329,7 @@ namespace LubriTech.View.Appointment_View
             this.btnPrevious.ForeColor = System.Drawing.Color.White;
             this.btnPrevious.Image = global::LubriTech.Properties.Resources.Flecha_Calendario_Izquierda;
             this.btnPrevious.Location = new System.Drawing.Point(16, 0);
-            this.btnPrevious.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(26, 26);
             this.btnPrevious.TabIndex = 38;
@@ -441,7 +441,7 @@ namespace LubriTech.View.Appointment_View
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dayContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.dayContainer.Location = new System.Drawing.Point(3, 56);
-            this.dayContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dayContainer.Margin = new System.Windows.Forms.Padding(2);
             this.dayContainer.MinimumSize = new System.Drawing.Size(238, 205);
             this.dayContainer.Name = "dayContainer";
             this.dayContainer.Size = new System.Drawing.Size(238, 205);
@@ -456,7 +456,7 @@ namespace LubriTech.View.Appointment_View
             this.pnlAppointments.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pnlAppointments.BackColor = System.Drawing.Color.White;
             this.pnlAppointments.Location = new System.Drawing.Point(286, 67);
-            this.pnlAppointments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlAppointments.Margin = new System.Windows.Forms.Padding(2);
             this.pnlAppointments.MinimumSize = new System.Drawing.Size(454, 504);
             this.pnlAppointments.Name = "pnlAppointments";
             this.pnlAppointments.Size = new System.Drawing.Size(738, 651);
@@ -538,7 +538,7 @@ namespace LubriTech.View.Appointment_View
             this.Controls.Add(this.pnlAppointments);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(1026, 718);
             this.Name = "frmAppointment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
