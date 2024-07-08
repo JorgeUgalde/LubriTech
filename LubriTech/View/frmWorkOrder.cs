@@ -216,7 +216,9 @@ namespace LubriTech.View
             DataGridViewImageColumn deleteImageColumn = new DataGridViewImageColumn();
             deleteImageColumn.Name = "deleteImageColumn";
             deleteImageColumn.HeaderText = "";
-            deleteImageColumn.Image = Properties.Resources.DeleteIco1;
+            deleteImageColumn.Image = Properties.Resources.remove;
+            //set the color of the background of the image
+            deleteImageColumn.DefaultCellStyle.BackColor = Color.FromArgb(4, 55, 111);
             deleteImageColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             //deleteImageColumn.Width = Properties.Resources.DeleteIco1.Width * 2;
             dgvWorkOrderDetails.Columns.Add(deleteImageColumn);
@@ -816,7 +818,8 @@ namespace LubriTech.View
 
             if (e.RowIndex >= 0)
             {
-                if (new Item_Controller().IsItemService(dgvWorkOrderDetails.Rows[e.RowIndex].Cells["ItemCode"].Value.ToString()))
+                if (new Item_Controller().IsItemService(dgvWorkOrderDetails.Rows[e.RowIndex].Cells["ItemCode"].Value.ToString())
+                    && e.ColumnIndex == dgvWorkOrderDetails.Columns["deleteImageColumn"].Index)
                 {
                     DialogResult result = MessageBox.Show("¿Desea eliminar la linea de detalle?", "Confirmar selección", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
@@ -831,6 +834,10 @@ namespace LubriTech.View
                             MessageBox.Show("No se pudo eliminar la línea de detalle.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
+                    else
+                    {
+                        return;
+                    }
                 }
                 if (e.ColumnIndex == dgvWorkOrderDetails.Columns["deleteImageColumn"].Index && workOrder.State == 2)
                 {
@@ -842,11 +849,6 @@ namespace LubriTech.View
                         double lineQuantity = Convert.ToDouble(dgvWorkOrderDetails.Rows[e.RowIndex].Cells["Quantity"].Value);
                         double currentStock = new Item_Controller().getItemStock(dgvWorkOrderDetails.Rows[e.RowIndex].Cells["ItemCode"].Value.ToString(), (int)cbBranch.SelectedValue);
                         double newQuantity = currentStock + lineQuantity;
-        private void button1_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog savefile = new SaveFileDialog();
-            savefile.Filter = "Archivos de Pdf|*.pdf";
-            savefile.FileName = string.Format(DateTime.Now.ToString("ddMMyyyyHHmmss"));
 
                         // Actualizar la cantidad en la base de datos
                         if (!new Item_Controller().updateQuantity(dgvWorkOrderDetails.Rows[e.RowIndex].Cells["ItemCode"].Value.ToString(), (int)cbBranch.SelectedValue, newQuantity))
@@ -863,15 +865,15 @@ namespace LubriTech.View
                             MessageBox.Show("No se pudo eliminar la línea de detalle.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
+                    else
+                    {
+                        return;
+                    }
                 }
                 else if (e.ColumnIndex == dgvWorkOrderDetails.Columns["deleteImageColumn"].Index && workOrder.State != 2)
                 {
                     DialogResult result = MessageBox.Show("Eliminar esta línea no actualizará ninguna entrada o salida de inventario ya que la orden no se encuentra en proceso." +
                         "\n¿Desea eliminar esta línea de detalle?", "Confirmar selección", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            string PaginaHTML_Texto = Properties.Resources.Template.ToString();
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@BRANCH", workOrderTemplate?.Branch?.Name ?? "N/A");
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DATE", workOrderTemplate?.Date.ToString() ?? "N/A");
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@STATE", cbState.Text ?? "N/A");
 
                     if (result == DialogResult.Yes)
                     {
@@ -884,9 +886,25 @@ namespace LubriTech.View
                             MessageBox.Show("No se pudo eliminar la línea de detalle.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
+                    else
+                    {
+                        return;
+                    }
                 }
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.Filter = "Archivos de Pdf|*.pdf";
+            savefile.FileName = string.Format(DateTime.Now.ToString("ddMMyyyyHHmmss"));
+
+            string PaginaHTML_Texto = Properties.Resources.Template.ToString();
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@BRANCH", workOrderTemplate?.Branch?.Name ?? "N/A");
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DATE", workOrderTemplate?.Date.ToString() ?? "N/A");
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@STATE", cbState.Text ?? "N/A");
+
             if (client != null)
             {
                 PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ID", client.Id);
