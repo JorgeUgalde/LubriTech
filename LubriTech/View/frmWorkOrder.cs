@@ -103,7 +103,7 @@ namespace LubriTech.View
             txtTotalAmount.Text = workOrder.Amount.ToString();
 
             client = workOrder.Client;
-            txtClientId.Enabled = false;
+            txtClientId.Enabled = true;
             txtClientId.Text = workOrder.Client.Id.ToString();
             txtClientName.Enabled = false;
             txtClientName.Text = workOrder.Client.FullName.ToString();
@@ -117,7 +117,7 @@ namespace LubriTech.View
             if (workOrder.Vehicle != null)
             {
                 vehicle = workOrder.Vehicle;
-                txtLicensePlate.Enabled = false;
+                txtLicensePlate.Enabled = true;
                 txtLicensePlate.Text = workOrder.Vehicle.LicensePlate.ToString();
                 txtMake.Enabled = false;
                 txtMake.Text = workOrder.Vehicle.Model.Make.ToString();
@@ -129,6 +129,33 @@ namespace LubriTech.View
             }
             setDeleteColumnDGV();
             loadWorkOrderLines(workOrder.Id);
+
+            if(workOrder.State == 3)
+            {
+                SetFormDisabled();
+            }
+        }
+
+        //set every control to disabled
+        private void SetFormDisabled()
+        {
+            dateTimePicker.Enabled = false;
+            cbState.Enabled = false;
+            txtClientId.Enabled = false;
+            txtLicensePlate.Enabled = false;
+            txtCurrentMileage.Enabled = false;
+            btnSelectClient.Enabled = false;
+            btnAddVehicle.Enabled = false;
+            btnSelectItem.Enabled = false;
+            txtItemCode.Enabled = false;
+            txtQuantity.Enabled = false;
+            txtLineAmount.Enabled = false;
+            btnSaveChanges.Enabled = false;
+            btnAddWorkOrderLine.Enabled = false;
+            txtTotalAmount.Enabled = false;
+            btnAdd.Enabled = false;
+            dgvObservation.Enabled = false;
+            dgvWorkOrderDetails.Enabled = false;
         }
 
         protected virtual void OnDataChanged(EventArgs e)
@@ -163,19 +190,19 @@ namespace LubriTech.View
             txtTotalAmount.Text = "0";
             txtClientId.Enabled = true;
             txtClientId.Text = "";
-            txtClientName.Enabled = true;
+            txtClientName.Enabled = false;
             txtClientName.Text = "";
-            txtCellphone.Enabled = true;
+            txtCellphone.Enabled = false;
             txtCellphone.Text = "";
-            txtCellphone2.Enabled = true;
+            txtCellphone2.Enabled = false;
             txtCellphone2.Text = "";
-            txtEmail.Enabled = true;
+            txtEmail.Enabled = false;
             txtEmail.Text = "";
-            txtMake.Enabled = true;
+            txtMake.Enabled = false;
             txtMake.Text = "";
-            txtModel.Enabled = true;
+            txtModel.Enabled = false;
             txtModel.Text = "";
-            txtMileage.Enabled = true;
+            txtMileage.Enabled = false;
             txtMileage.Text = "";
 
             txtCurrentMileage.Text = "";
@@ -189,7 +216,11 @@ namespace LubriTech.View
             dgvWorkOrderDetails.Columns["Quantity"].HeaderText = "Cantidad";
             dgvWorkOrderDetails.Columns["UnitPrice"].HeaderText = "Precio Unitario";
             dgvWorkOrderDetails.Columns["Amount"].HeaderText = "Monto";
-
+            //set to read only
+            dgvWorkOrderDetails.Columns["item"].ReadOnly = true;
+            dgvWorkOrderDetails.Columns["Quantity"].ReadOnly = true;
+            dgvWorkOrderDetails.Columns["UnitPrice"].ReadOnly = true;
+            dgvWorkOrderDetails.Columns["Amount"].ReadOnly = true;
             SetColumnOrder();
         }
 
@@ -209,6 +240,11 @@ namespace LubriTech.View
             dgvWorkOrderDetails.Columns["UnitPrice"].HeaderText = "Precio Unitario";
             dgvWorkOrderDetails.Columns["Quantity"].HeaderText = "Cantidad";
             dgvWorkOrderDetails.Columns["Amount"].HeaderText = "Monto";
+
+            dgvWorkOrderDetails.Columns["item"].ReadOnly = true;
+            dgvWorkOrderDetails.Columns["Quantity"].ReadOnly = true;
+            dgvWorkOrderDetails.Columns["UnitPrice"].ReadOnly = true;
+            dgvWorkOrderDetails.Columns["Amount"].ReadOnly = true;
 
             SetColumnOrder();
         }
@@ -293,6 +329,9 @@ namespace LubriTech.View
             {
                 return;
             }
+            //
+            //llamar al workordertemplate
+            //
             if (workOrderId.HasValue)
             {
                 WorkOrder existingWorkOrder = new WorkOrder();
@@ -344,6 +383,7 @@ namespace LubriTech.View
                 txtMake.Text = vehicle.Model.Make.Name.ToString();
                 txtModel.Text = vehicle.Model.ToString() + " " + vehicle.Year;
                 txtMileage.Text = vehicle.Mileage.ToString();
+                txtCurrentMileage.Text = vehicle.Mileage.ToString();
             }
 
             if (client != null)
@@ -676,36 +716,56 @@ namespace LubriTech.View
 
             bool isQuantityValid = double.TryParse(txtQuantity.Text.Trim(), out quantity);
 
-            if (!string.IsNullOrEmpty(txtQuantity.Text.Trim()) &&
-                !string.IsNullOrEmpty(txtItemName.Text.Trim()) &&
-                isQuantityValid)
+            if (txtItemCode.Text.ToString() != "")
             {
-                sellingPrice = new PriceList_Controller().getPriceByItem(txtItemCode.Text.ToString(), client.PriceList.id);
-                double calc = quantity * sellingPrice;
+                if (!string.IsNullOrEmpty(txtQuantity.Text.Trim()) &&
+                    !string.IsNullOrEmpty(txtItemName.Text.Trim()) &&
+                    isQuantityValid && client.Id != null)
+                {
+                    sellingPrice = new PriceList_Controller().getPriceByItem(txtItemCode.Text.ToString(), client.PriceList.id);
+                    double calc = quantity * sellingPrice;
 
-                txtLineAmount.Text = calc.ToString();
+                    txtLineAmount.Text = calc.ToString();
+                }
+                else
+                {
+                    txtLineAmount.Text = "";
+                }
             }
             else
             {
-                txtLineAmount.Text = "";
+                if (txtItemName.Text.ToString() == "")
+                {
+                    return;
+                }
+                MessageBox.Show("Por favor seleccione un artículo primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void txtItemCode_Leave(object sender, EventArgs e)
         {
-            if (txtItemCode.Text != "")
+            if (client.Id != null)
             {
-                Item item = new Item_Controller().get(txtItemCode.Text.ToString());
-                if (item != null)
+                if (txtItemCode.Text != "")
                 {
-                    txtItemName.Text = item.name;
+                    Item item = new Item_Controller().get(txtItemCode.Text.ToString());
+                    if (item != null)
+                    {
+                        txtItemName.Text = item.name;
+                    }
+                    else
+                    {
+                        MessageBox.Show("El artículo no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtItemCode.Text = "";
+                        txtItemName.Text = "";
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("El artículo no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtItemCode.Text = "";
-                    txtItemName.Text = "";
-                }
+            }
+            else
+            {
+                txtItemCode.Text = "";
+                txtItemName.Text = "";
+                MessageBox.Show("Por favor seleccione un cliente primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -727,8 +787,8 @@ namespace LubriTech.View
             observations = new Observation_Controller().GetObservation(workOrderTemplate.Id);
             dgvObservation.DataSource = observations;
 
-            dgvObservation.Columns["Code"].HeaderText = "Codigo";
-            dgvObservation.Columns["Description"].HeaderText = "Descripcion";
+            dgvObservation.Columns["Code"].HeaderText = "Código";
+            dgvObservation.Columns["Description"].HeaderText = "Descripción";
             dgvObservation.Columns["WorkOrderId"].Visible = false;
 
                 
@@ -742,13 +802,15 @@ namespace LubriTech.View
             if (!dgvObservation.Columns.Contains("btnDelete"))
             {
                 // Agregar columna de botón de eliminar
-                DataGridViewButtonColumn btnDelete = new DataGridViewButtonColumn();
-                btnDelete.HeaderText = "Eliminar";
-                btnDelete.Name = "btnDelete";
-                btnDelete.Text = "Eliminar";
-                btnDelete.UseColumnTextForButtonValue = true;
+                DataGridViewImageColumn deleteImageColumn = new DataGridViewImageColumn();
+                deleteImageColumn.Name = "btnDelete";
+                deleteImageColumn.HeaderText = "";
+                deleteImageColumn.Image = Properties.Resources.remove;
+                //set the color of the background of the image
+                deleteImageColumn.DefaultCellStyle.BackColor = Color.FromArgb(4, 55, 111);
+                deleteImageColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-                dgvObservation.Columns.Add(btnDelete);
+                dgvObservation.Columns.Add(deleteImageColumn);
             }
             dgvObservation.Columns["Code"].DisplayIndex = 0;
             dgvObservation.Columns["Description"].DisplayIndex = 1;
@@ -801,21 +863,27 @@ namespace LubriTech.View
 
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
-            if (client != null)
+            if (client.Id != null && this.workOrderId.HasValue)
             {
                 string mode = "";
                 Observation newObservation = new Observation();
                 newObservation.Description = "";
-                newObservation.WorkOrderId = workOrderTemplate.Id;
+                newObservation.WorkOrderId = this.workOrderId.Value;
                 frmInsertUpsert_Observation frmInsertUpsertObservation = new frmInsertUpsert_Observation(newObservation, mode);
                 frmInsertUpsertObservation.ObservationChanged += FrmInsertObservation_ObservationChanged;
                 frmInsertUpsertObservation.MdiParent = this.MdiParent;
                 frmInsertUpsertObservation.Show();
+                load_Observation();
             }
             else
             {
                 MessageBox.Show("Por favor seleccione un cliente primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void ChildFormDataChangedHandler(object sender, EventArgs e)
+        {
+            load_Observation();
         }
 
         private void dgvWorkOrderDetails_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -1086,6 +1154,79 @@ namespace LubriTech.View
             catch (Exception ex)
             {
                 MessageBox.Show("Error al enviar el correo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pbClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void panelBorder_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void txtClientId_Leave(object sender, EventArgs e)
+        {
+            if (txtClientId.Text != "")
+            {
+                client = new Clients_Controller().getClient(txtClientId.Text.ToString());
+                if (client != null)
+                {
+                    SelectClientWorkOrder(client);
+                }
+                else
+                {
+                    MessageBox.Show("El cliente no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtClientId.Text = "";
+                    txtClientName.Text = "";
+                    txtCellphone.Text = "";
+                    txtCellphone2.Text = "";
+                    txtEmail.Text = "";
+                }
+            }
+        }
+
+        private void txtLicensePlate_Leave(object sender, EventArgs e)
+        {
+            if(txtLicensePlate.Text != "")
+            {
+                if (txtClientId.Text != "")
+                {
+                    vehicle = new Vehicle_Controller().getVehicleByClientId(txtLicensePlate.Text.ToString(), this.client.Id.ToString());
+                    if (vehicle != null)
+                    {
+                        SelectVehicleWorkOrder(vehicle);
+                    }
+                    else
+                    {
+                        MessageBox.Show("El vehículo no existe o no pertenece al cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtLicensePlate.Text = "";
+                        txtMake.Text = "";
+                        txtModel.Text = "";
+                        txtMileage.Text = "";
+                    }
+                } 
+                else
+                {
+                    MessageBox.Show("Por favor seleccione un cliente primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtLicensePlate.Text = "";
+                }
+            }
+        }
+
+        private void txtCurrentMileage_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
             }
         }
     }

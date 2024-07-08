@@ -292,6 +292,53 @@ namespace LubriTech.Model.Vehicle_Information
                 conn.Close();
             }
         }
+
+        public Vehicle getVehicleByClientId(string licensePlate, string clientId)
+        {
+            Vehicle vehicle = null;
+
+            try
+            {
+                conn.Open();
+                String selectQuery = "SELECT * FROM Vehiculo where Placa = @licensePlate and IdentificacionCliente = @clientId";
+                SqlCommand cmd = new SqlCommand(selectQuery, conn);
+                DataTable tblVehicles = new DataTable();
+                SqlDataAdapter adp = new SqlDataAdapter();
+                cmd.Parameters.AddWithValue("@licensePlate", licensePlate);
+                cmd.Parameters.AddWithValue("@clientId", clientId);
+
+                adp.SelectCommand = cmd;
+
+                adp.Fill(tblVehicles);
+
+                if(tblVehicles.Rows.Count == 0)
+                {
+                    return null;
+                }
+
+                DataRow dr = tblVehicles.Rows[0];
+
+                vehicle = new Vehicle(dr["Placa"].ToString(),
+                (new Engine_Controller().getEngine(Convert.ToInt32(dr["IdentificacionMotor"].ToString()))),
+                Convert.ToInt32(dr["Kilometraje"]),
+                (new CarModel_Controller().getModel(Convert.ToInt32(dr["IdentificacionModelo"]))),
+                Convert.ToInt32(dr["Anio"]),
+                (new Transmission_Controller().getTransmission(Convert.ToInt32(dr["IdentificacionTransmision"].ToString()))),
+                (new Clients_Controller().getClient((string)dr["IdentificacionCliente"])),
+                (Convert.ToInt32(dr["Estado"]) == 1) ? "Activo" : "Inactivo");
+
+                return vehicle;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }
 

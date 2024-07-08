@@ -165,7 +165,7 @@ namespace LubriTech.View
                             e.Value = "En proceso";
                             break;
                         case 3:
-                            e.Value = "Terminada";
+                            e.Value = "Finalizado";
                             break;
                         default:
                             // Si hay algún otro valor que no se espera, se deja como está

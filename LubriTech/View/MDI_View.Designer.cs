@@ -29,6 +29,7 @@ namespace LubriTech.View
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnUserSettings = new System.Windows.Forms.Button();
             this.panelParametersSubmenu = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -55,7 +56,6 @@ namespace LubriTech.View
             this.pbMaximize = new System.Windows.Forms.PictureBox();
             this.lblForm = new System.Windows.Forms.Label();
             this.pbClose = new System.Windows.Forms.PictureBox();
-            this.btnUserSettings = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelParametersSubmenu.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -86,6 +86,24 @@ namespace LubriTech.View
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(319, 573);
             this.panelMenu.TabIndex = 5;
+            // 
+            // btnUserSettings
+            // 
+            this.btnUserSettings.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnUserSettings.FlatAppearance.BorderSize = 0;
+            this.btnUserSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUserSettings.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.btnUserSettings.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnUserSettings.Location = new System.Drawing.Point(0, 917);
+            this.btnUserSettings.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUserSettings.Name = "btnUserSettings";
+            this.btnUserSettings.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.btnUserSettings.Size = new System.Drawing.Size(302, 55);
+            this.btnUserSettings.TabIndex = 15;
+            this.btnUserSettings.Text = "Configurar cuenta";
+            this.btnUserSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUserSettings.UseVisualStyleBackColor = true;
+            this.btnUserSettings.Click += new System.EventHandler(this.btnUserSettings_Click);
             // 
             // panelParametersSubmenu
             // 
@@ -458,7 +476,7 @@ namespace LubriTech.View
             // 
             // btnMenu
             // 
-            this.btnMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            this.btnMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
             this.btnMenu.BackgroundImage = global::LubriTech.Properties.Resources.IconoMenu;
             this.btnMenu.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
             this.btnMenu.FlatAppearance.BorderSize = 0;
@@ -483,6 +501,7 @@ namespace LubriTech.View
             this.panelBorder.Name = "panelBorder";
             this.panelBorder.Size = new System.Drawing.Size(865, 36);
             this.panelBorder.TabIndex = 54;
+            this.panelBorder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelBorder_MouseDown);
             // 
             // pbMaximize
             // 
@@ -519,24 +538,6 @@ namespace LubriTech.View
             this.pbClose.TabIndex = 7;
             this.pbClose.TabStop = false;
             this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
-            // 
-            // btnUserSettings
-            // 
-            this.btnUserSettings.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnUserSettings.FlatAppearance.BorderSize = 0;
-            this.btnUserSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUserSettings.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
-            this.btnUserSettings.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnUserSettings.Location = new System.Drawing.Point(0, 917);
-            this.btnUserSettings.Margin = new System.Windows.Forms.Padding(4);
-            this.btnUserSettings.Name = "btnUserSettings";
-            this.btnUserSettings.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnUserSettings.Size = new System.Drawing.Size(302, 55);
-            this.btnUserSettings.TabIndex = 15;
-            this.btnUserSettings.Text = "Configurar cuenta";
-            this.btnUserSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUserSettings.UseVisualStyleBackColor = true;
-            this.btnUserSettings.Click += new System.EventHandler(this.btnUserSettings_Click);
             // 
             // MDI_View
             // 

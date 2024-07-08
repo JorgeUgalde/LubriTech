@@ -52,5 +52,10 @@ namespace LubriTech.Controller
         {
             return vehicleModel.getVehiclesByClient(clientId);
         }
+
+        public Vehicle getVehicleByClientId(string plate, string clientId)
+        {
+            return vehicleModel.getVehicleByClientId(plate, clientId);
+        }
     }
 }

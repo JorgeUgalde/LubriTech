@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +16,14 @@ namespace LubriTech.View
     public partial class MDI_View : Form
     {
         private int childFormNumber = 0;
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+
+        public event EventHandler DataChanged;
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
         public MDI_View()
         {
@@ -54,6 +63,19 @@ namespace LubriTech.View
         private void MDI_View_Load(object sender, EventArgs e)
         {
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            foreach (Control control in this.Controls)
+            {
+                // #2
+                MdiClient client = control as MdiClient;
+                if (!(client == null))
+                {
+                    // #3
+                    client.BackColor = Color.FromArgb(237,237,237);
+                    // 4#
+                    break;
+                }
+            }
+            this.MinimumSize = WindowState == FormWindowState.Maximized ? Size : new Size(800, 600);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -219,6 +241,8 @@ namespace LubriTech.View
 
         private void pbMaximize_Click_1(object sender, EventArgs e)
         {
+            //minimize the form
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void pbClose_Click(object sender, EventArgs e)
@@ -237,6 +261,12 @@ namespace LubriTech.View
             OpenChildForm(frmInsertUpdateUser);
             frmInsertUpdateUser.BringToFront();
             frmInsertUpdateUser.Focus();
+        }
+
+        private void panelBorder_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }
