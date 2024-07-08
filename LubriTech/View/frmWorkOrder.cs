@@ -28,6 +28,7 @@ using Rectangle = System.Drawing.Rectangle;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Net.Mail;
 using System.Net;
+using LubriTech.Model.InventoryManagment_Information;
 
 namespace LubriTech.View
 {
@@ -37,6 +38,7 @@ namespace LubriTech.View
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
 
+        public event EventHandler DataChanged;
 
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
@@ -48,6 +50,8 @@ namespace LubriTech.View
         WorkOrder workOrderTemplate = new WorkOrder();
         List<Observation> observations;
         decimal totalA;
+
+        private int previousSelectedStateValue;
 
         public frmWorkOrder(int? workOrderId)
         {
@@ -80,16 +84,18 @@ namespace LubriTech.View
                 new KeyValuePair<short, string>(0, "Inactiva"),
                 new KeyValuePair<short, string>(1, "Activa"),
                 new KeyValuePair<short, string>(2, "En proceso"),
-                new KeyValuePair<short, string>(3, "Terminada")
+                new KeyValuePair<short, string>(3, "Finalizado")
             };
             cbState.DisplayMember = "Value";
             cbState.ValueMember = "Key";
             cbState.SelectedIndex = workOrder.State;
-            
+            this.previousSelectedStateValue = workOrder.State;
+
             cbBranch.DataSource = new Branch_Model().loadAllBranches();
             cbBranch.DisplayMember = "Name";
             cbBranch.ValueMember = "Id";
             cbBranch.SelectedValue = workOrder.Branch.Id;
+            cbBranch.Enabled = false;
 
             dateTimePicker.Value = workOrder.Date;
             txtTotalAmount.Text = workOrder.Amount.ToString();
@@ -117,9 +123,15 @@ namespace LubriTech.View
                 txtModel.Text = workOrder.Vehicle.Model.ToString() + " " + workOrder.Vehicle.Year;
                 txtMileage.Enabled = false;
                 txtMileage.Text = workOrder.Vehicle.Mileage.ToString();
-                txtCurrentMileage.Text = workOrder.CurrentMileage.ToString();
+                txtCurrentMileage.Text = workOrder.Vehicle.Mileage.ToString();
             }
+            setDeleteColumnDGV();
             loadWorkOrderLines(workOrder.Id);
+        }
+
+        protected virtual void OnDataChanged(EventArgs e)
+        {
+            DataChanged?.Invoke(this, e);
         }
 
         //Initialize a new work order
@@ -136,11 +148,13 @@ namespace LubriTech.View
             cbState.DisplayMember = "Value";
             cbState.ValueMember = "Key";
             cbState.SelectedIndex = 1;
+            this.previousSelectedStateValue = 1;
 
             cbBranch.DataSource = new Branch_Model().loadAllBranches();
             cbBranch.DisplayMember = "Name";
             cbBranch.ValueMember = "Id";
-            cbBranch.SelectedIndex = 0;
+            cbBranch.SelectedValue = frmLogin.branch;
+            cbBranch.Enabled = false;
 
             dateTimePicker.Value = DateTime.Now;
             //txtDate.Text = DateTime.Now.ToString();
@@ -164,11 +178,12 @@ namespace LubriTech.View
 
             txtCurrentMileage.Text = "";
 
+            setDeleteColumnDGV();
             dgvWorkOrderDetails.DataSource = new List<WorkOrderLine>();
             dgvWorkOrderDetails.Columns["Id"].Visible = false;
             dgvWorkOrderDetails.Columns["WorkOrderId"].Visible = false;
-            dgvWorkOrderDetails.Columns["item"].Visible = false;
-            dgvWorkOrderDetails.Columns["ItemName"].HeaderText = "Descripción";
+            dgvWorkOrderDetails.Columns["ItemCode"].Visible = false;
+            dgvWorkOrderDetails.Columns["item"].HeaderText = "Descripción";
             dgvWorkOrderDetails.Columns["Quantity"].HeaderText = "Cantidad";
             dgvWorkOrderDetails.Columns["UnitPrice"].HeaderText = "Precio Unitario";
             dgvWorkOrderDetails.Columns["Amount"].HeaderText = "Monto";
@@ -178,16 +193,17 @@ namespace LubriTech.View
 
         private void frmWorkOrder_Load(object sender, EventArgs e)
         {
-
+            SetColumnOrder();
         }
 
         private void loadWorkOrderLines(int workOrderId)
         {
             dgvWorkOrderDetails.DataSource = new WorkOrderLine_Model().LoadWorkOrderLines(workOrderId, client.PriceList.id);
+
             dgvWorkOrderDetails.Columns["Id"].Visible = false;
             dgvWorkOrderDetails.Columns["WorkOrderId"].Visible = false;
-            dgvWorkOrderDetails.Columns["item"].Visible = false;
-            dgvWorkOrderDetails.Columns["ItemName"].HeaderText = "Descripción";
+            dgvWorkOrderDetails.Columns["item"].HeaderText = "Descripción";
+            dgvWorkOrderDetails.Columns["ItemCode"].Visible = false;
             dgvWorkOrderDetails.Columns["UnitPrice"].HeaderText = "Precio Unitario";
             dgvWorkOrderDetails.Columns["Quantity"].HeaderText = "Cantidad";
             dgvWorkOrderDetails.Columns["Amount"].HeaderText = "Monto";
@@ -195,15 +211,30 @@ namespace LubriTech.View
             SetColumnOrder();
         }
 
+        public void setDeleteColumnDGV()
+        {
+            DataGridViewImageColumn deleteImageColumn = new DataGridViewImageColumn();
+            deleteImageColumn.Name = "deleteImageColumn";
+            deleteImageColumn.HeaderText = "";
+            deleteImageColumn.Image = Properties.Resources.remove;
+            //set the color of the background of the image
+            deleteImageColumn.DefaultCellStyle.BackColor = Color.FromArgb(4, 55, 111);
+            deleteImageColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            //deleteImageColumn.Width = Properties.Resources.DeleteIco1.Width * 2;
+            dgvWorkOrderDetails.Columns.Add(deleteImageColumn);
+        }
+
         private void SetColumnOrder()
         {
+
             dgvWorkOrderDetails.Columns["Id"].DisplayIndex = 0;
             dgvWorkOrderDetails.Columns["WorkOrderId"].DisplayIndex = 1;
-            dgvWorkOrderDetails.Columns["item"].DisplayIndex = 2;
-            dgvWorkOrderDetails.Columns["ItemName"].DisplayIndex = 3;
+            dgvWorkOrderDetails.Columns["ItemCode"].DisplayIndex = 2;
+            dgvWorkOrderDetails.Columns["item"].DisplayIndex = 3;
             dgvWorkOrderDetails.Columns["UnitPrice"].DisplayIndex = 4;
             dgvWorkOrderDetails.Columns["Quantity"].DisplayIndex = 5;
             dgvWorkOrderDetails.Columns["Amount"].DisplayIndex = 6;
+            dgvWorkOrderDetails.Columns["deleteImageColumn"].DisplayIndex = 7;
         }
 
         private void UpdateTotalAmount()
@@ -359,6 +390,18 @@ namespace LubriTech.View
             this.Dispose();
         }
 
+        private Boolean validateItemStock(string itemCode, int branchId, double quantity)
+        {
+            if (new Item_Controller().getItemStock(itemCode, branchId) < quantity)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
             if (this.workOrderId.HasValue && this.client != null)
@@ -376,8 +419,18 @@ namespace LubriTech.View
                     this.vehicle.Mileage = Convert.ToInt32(txtCurrentMileage.Text);
                     new Vehicle_Controller().upsert(this.vehicle);
                 }
-                if(new Work_Order_Controller().UpdateWorkOrder(workOrder))
+
+                string errorMessage = AdjustInventory((short)cbState.SelectedIndex, this.previousSelectedStateValue);
+                if (errorMessage != "")
                 {
+                    MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cbState.SelectedIndex = this.previousSelectedStateValue;
+                    return;
+                }
+
+                if (new Work_Order_Controller().UpdateWorkOrder(workOrder))
+                {
+                    OnDataChanged(EventArgs.Empty);
                     this.Dispose();
                     MessageBox.Show("Cambios guardados exitosamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -386,6 +439,105 @@ namespace LubriTech.View
             {
                 MessageBox.Show("Por favor seleccione un cliente primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private string AdjustInventory(short currentState, int previousState)
+        {
+            double lineQuantity;
+            double currentStock;
+            double newQuantity;
+
+            if (previousState == 0 && (currentState == 2 || currentState == 3))
+            {
+                foreach (DataGridViewRow row in dgvWorkOrderDetails.Rows)
+                {
+                    if (!new Item_Controller().IsItemService(row.Cells["ItemCode"].Value.ToString()))
+                    {
+                        lineQuantity = Convert.ToDouble(row.Cells["Quantity"].Value);
+                        if (!validateItemStock(row.Cells["ItemCode"].Value.ToString(), (int)cbBranch.SelectedValue, lineQuantity))
+                        {
+                            return "No hay suficientes artículos de: " + row.Cells["item"].Value + " - Código: " + row.Cells["ItemCode"].Value + " disponibles en la sucursal." +
+                                "\nCantidad disponible en inventario: " + new Item_Controller().getItemStock(row.Cells["ItemCode"].Value.ToString(), (int)cbBranch.SelectedValue) + "." +
+                                "\nNo se puede la orden a estado " + cbState.Text.ToString() + ".";
+                        }
+                    }
+                }
+
+                foreach (DataGridViewRow row in dgvWorkOrderDetails.Rows)
+                {
+                    if (!new Item_Controller().IsItemService(row.Cells["ItemCode"].Value.ToString()))
+                    {
+                        lineQuantity = Convert.ToDouble(row.Cells["Quantity"].Value);
+                        currentStock = new Item_Controller().getItemStock(row.Cells["ItemCode"].Value.ToString(), (int)cbBranch.SelectedValue);
+                        newQuantity = currentStock - lineQuantity;
+
+                        // Actualizar la cantidad en la base de datos
+                        if (!new Item_Controller().updateQuantity(row.Cells["ItemCode"].Value.ToString(), (int)cbBranch.SelectedValue, newQuantity))
+                        {
+                            return "No se pudo actualizar la cantidad del artículo: " + row.Cells["item"].Value + " - Código: " + row.Cells["ItemCode"].Value;
+                        }
+                    }
+                }
+                return "";
+            }
+            else if (previousState == 1 && (currentState == 3 || currentState == 2))
+            {
+                foreach (DataGridViewRow row in dgvWorkOrderDetails.Rows)
+                {
+                    if (!new Item_Controller().IsItemService(row.Cells["ItemCode"].Value.ToString()))
+                    {
+                        lineQuantity = Convert.ToDouble(row.Cells["Quantity"].Value);
+                        if (!validateItemStock(row.Cells["ItemCode"].Value.ToString(), (int)cbBranch.SelectedValue, lineQuantity))
+                        {
+                            return "No hay suficientes artículos de: " + row.Cells["item"].Value + " - Código: " + row.Cells["ItemCode"].Value + " disponibles en la sucursal." +
+                                "\nCantidad disponible: " + new Item_Controller().getItemStock(row.Cells["ItemCode"].Value.ToString(), (int)cbBranch.SelectedValue) + "." +
+                                "\nNo se puede la orden a estado " + cbState.Text.ToString() + ".";
+                        }
+                    }
+                }
+
+                foreach (DataGridViewRow row in dgvWorkOrderDetails.Rows)
+                {
+                    if (!new Item_Controller().IsItemService(row.Cells["ItemCode"].Value.ToString()))
+                    {
+                        lineQuantity = Convert.ToDouble(row.Cells["Quantity"].Value);
+                        currentStock = new Item_Controller().getItemStock(row.Cells["ItemCode"].Value.ToString(), (int)cbBranch.SelectedValue);
+                        newQuantity = currentStock - lineQuantity;
+
+                        // Actualizar la cantidad en la base de datos
+                        if (!new Item_Controller().updateQuantity(row.Cells["ItemCode"].Value.ToString(), (int)cbBranch.SelectedValue, newQuantity))
+                        {
+                            return "No se pudo actualizar la cantidad del artículo: " + row.Cells["item"].Value + " - Código: " + row.Cells["ItemCode"].Value;
+                        }
+                    }
+                }
+                return "";
+            }
+            else if (previousState == 2 && (currentState == 0 || currentState == 1))
+            {
+
+                foreach (DataGridViewRow row in dgvWorkOrderDetails.Rows)
+                {
+                    if (!new Item_Controller().IsItemService(row.Cells["ItemCode"].Value.ToString()))
+                    {
+                        lineQuantity = Convert.ToDouble(row.Cells["Quantity"].Value);
+                        currentStock = new Item_Controller().getItemStock(row.Cells["ItemCode"].Value.ToString(), (int)cbBranch.SelectedValue);
+                        newQuantity = currentStock + lineQuantity;
+
+                        // Actualizar la cantidad en la base de datos
+                        if (!new Item_Controller().updateQuantity(row.Cells["ItemCode"].Value.ToString(), (int)cbBranch.SelectedValue, newQuantity))
+                        {
+                            return "No se pudo actualizar la cantidad del artículo: " + row.Cells["item"].Value + " - Código: " + row.Cells["ItemCode"].Value;
+                        }
+                    }
+                }
+                return "";
+            }
+            else if ((previousState == 0 && currentState == 1) || previousState == 1 && currentState == 0)
+            {
+                return "";
+            }
+            return "";
         }
 
         private void btnSelectItem_Click(object sender, EventArgs e)
@@ -400,10 +552,10 @@ namespace LubriTech.View
         {
             try
             {
-                bool hasValidValues = txtItemCode.ToString() != "" &&
-                                          txtItemName.ToString() != "" &&
-                                          txtQuantity.ToString() != "" &&
-                                          txtLineAmount.ToString() != "";
+                bool hasValidValues = txtItemCode.Text.ToString() != "" &&
+                                          txtItemName.Text.ToString() != "" &&
+                                          txtQuantity.Text.ToString() != "" &&
+                                          txtLineAmount.Text.ToString() != "";
 
                 if (hasValidValues)
                 {
@@ -416,13 +568,63 @@ namespace LubriTech.View
                         workOrderLine.Quantity = quantity;
                         decimal amount = Convert.ToDecimal(txtLineAmount.Text);
                         workOrderLine.Amount = amount;
-                        if (new WorkOrderLine_Model().UpsertWorkOrderLine(workOrderLine))
+
+                        WorkOrder workOrder = new Work_Order_Controller().LoadWorkOrder(workOrderId.Value);
+
+                        if (workOrder.State == 2)
                         {
-                            txtItemCode.Text = "";
-                            txtItemName.Text = "";
-                            txtQuantity.Text = "";
-                            txtLineAmount.Text = "";
-                            loadWorkOrderLines(workOrderId.Value);
+                            double newQuantity;
+                            if (!new Item_Controller().IsItemService(txtItemCode.Text.ToString()))
+                            {
+                                //!validateItemStock(detailLine.Item.code, frmLogin.branch, Convert.ToDouble(detailLine.Quantity))
+                                if (!validateItemStock(txtItemCode.Text.ToString(), (int)cbBranch.SelectedValue, (double)workOrderLine.Quantity))
+                                {
+                                    MessageBox.Show("No hay suficientes artículos de: " + workOrderLine.item + " - Código: " + workOrderLine.item.code + " disponibles en la sucursal");
+                                    return;
+                                }
+
+
+                                double lineQuantity = Convert.ToDouble(workOrderLine.Quantity);
+                                double currentStock = new Item_Controller().getItemStock(txtItemCode.Text.ToString(), (int)cbBranch.SelectedValue);
+                                newQuantity = currentStock - lineQuantity;
+
+                                // Actualizar la cantidad en la base de datos
+                                if (!new Item_Controller().updateQuantity(txtItemCode.Text.ToString(), (int)cbBranch.SelectedValue, newQuantity))
+                                {
+                                    MessageBox.Show("No se pudo actualizar la cantidad del artículo: " + txtItemName.Text.ToString() + " - Código: " + txtItemCode.Text.ToString());
+                                    return;
+                                }
+                            }
+
+                            if (new WorkOrderLine_Model().UpsertWorkOrderLine(workOrderLine))
+                            {
+
+                                txtItemCode.Text = "";
+                                txtItemName.Text = "";
+                                txtQuantity.Text = "";
+                                txtLineAmount.Text = "";
+                                loadWorkOrderLines(workOrderId.Value);
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se pudo agregar la línea a la orden de trabajo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else if(workOrder.State == 0 || workOrder.State == 1)
+                        {
+                            if (new WorkOrderLine_Model().UpsertWorkOrderLine(workOrderLine))
+                            {
+
+                                txtItemCode.Text = "";
+                                txtItemName.Text = "";
+                                txtQuantity.Text = "";
+                                txtLineAmount.Text = "";
+                                loadWorkOrderLines(workOrderId.Value);
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se pudo agregar la línea a la orden de trabajo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                     else
@@ -464,6 +666,24 @@ namespace LubriTech.View
 
         private void txtQuantity_TextChanged(object sender, EventArgs e)
         {
+            double quantity;
+            double sellingPrice;
+
+            bool isQuantityValid = double.TryParse(txtQuantity.Text.Trim(), out quantity);
+
+            if (!string.IsNullOrEmpty(txtQuantity.Text.Trim()) &&
+                !string.IsNullOrEmpty(txtItemName.Text.Trim()) &&
+                isQuantityValid)
+            {
+                sellingPrice = new PriceList_Controller().getPriceByItem(txtItemCode.Text.ToString(), client.PriceList.id);
+                double calc = quantity * sellingPrice;
+
+                txtLineAmount.Text = calc.ToString();
+            }
+            else
+            {
+                txtLineAmount.Text = "";
+            }
         }
 
         private void txtItemCode_Leave(object sender, EventArgs e)
@@ -484,22 +704,16 @@ namespace LubriTech.View
             }
         }
 
-        private void txtQuantity_Enter(object sender, EventArgs e)
+        private void tbNumeric_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (txtQuantity.Text == "0")
+            System.Windows.Forms.TextBox textBox = sender as System.Windows.Forms.TextBox;
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != ',')
             {
-                txtQuantity.Text = "";
+                e.Handled = true;
             }
-        }
-
-        private void txtQuantity_Leave(object sender, EventArgs e)
-        {
-            if (ValidateWorkOrderLine() == true && client != null)
+            if (e.KeyChar == ',' && textBox.Text.Contains(","))
             {
-                decimal quantity = Convert.ToDecimal(txtQuantity.Text);
-                decimal unitPrice = new PriceList_Controller().getPriceByItem(txtItemCode.Text.ToString(), client.PriceList.id);
-                txtQuantity.Text = quantity.ToString("N2");
-                txtLineAmount.Text = (Convert.ToDecimal(txtQuantity.Text) * unitPrice).ToString();
+                e.Handled = true;
             }
         }
 
@@ -581,14 +795,103 @@ namespace LubriTech.View
 
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
-            string mode = "";
-            Observation newObservation = new Observation();
-            newObservation.Description = "";
-            newObservation.WorkOrderId = workOrderTemplate.Id;
-            frmInsertUpsert_Observation frmInsertUpsertObservation = new frmInsertUpsert_Observation(newObservation, mode);
-            frmInsertUpsertObservation.ObservationChanged += FrmInsertObservation_ObservationChanged;
-            frmInsertUpsertObservation.MdiParent = this.MdiParent;
-            frmInsertUpsertObservation.Show();
+            if (client != null)
+            {
+                string mode = "";
+                Observation newObservation = new Observation();
+                newObservation.Description = "";
+                newObservation.WorkOrderId = workOrderTemplate.Id;
+                frmInsertUpsert_Observation frmInsertUpsertObservation = new frmInsertUpsert_Observation(newObservation, mode);
+                frmInsertUpsertObservation.ObservationChanged += FrmInsertObservation_ObservationChanged;
+                frmInsertUpsertObservation.MdiParent = this.MdiParent;
+                frmInsertUpsertObservation.Show();
+            }
+            else
+            {
+                MessageBox.Show("Por favor seleccione un cliente primero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvWorkOrderDetails_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            WorkOrder workOrder = new Work_Order_Controller().LoadWorkOrder(this.workOrderId.Value);
+
+            if (e.RowIndex >= 0)
+            {
+                if (new Item_Controller().IsItemService(dgvWorkOrderDetails.Rows[e.RowIndex].Cells["ItemCode"].Value.ToString())
+                    && e.ColumnIndex == dgvWorkOrderDetails.Columns["deleteImageColumn"].Index)
+                {
+                    DialogResult result = MessageBox.Show("¿Desea eliminar la linea de detalle?", "Confirmar selección", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        if (new WorkOrderLine_Model().DeleteWorkOrderLine(Convert.ToInt32(dgvWorkOrderDetails.Rows[e.RowIndex].Cells["Id"].Value)))
+                        {
+                            loadWorkOrderLines(workOrderId.Value);
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo eliminar la línea de detalle.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                if (e.ColumnIndex == dgvWorkOrderDetails.Columns["deleteImageColumn"].Index && workOrder.State == 2)
+                {
+                    DialogResult result = MessageBox.Show("La orden se encuentra en proceso. Si elimina esta línea se restablecerán " + dgvWorkOrderDetails.Rows[e.RowIndex].Cells["Quantity"].Value.ToString() +
+                        " unidades de " + dgvWorkOrderDetails.Rows[e.RowIndex].Cells["item"].Value.ToString() + " al inventario. \n¿Desea eliminar esta línea de detalle?", "Confirmar selección", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        double lineQuantity = Convert.ToDouble(dgvWorkOrderDetails.Rows[e.RowIndex].Cells["Quantity"].Value);
+                        double currentStock = new Item_Controller().getItemStock(dgvWorkOrderDetails.Rows[e.RowIndex].Cells["ItemCode"].Value.ToString(), (int)cbBranch.SelectedValue);
+                        double newQuantity = currentStock + lineQuantity;
+
+                        // Actualizar la cantidad en la base de datos
+                        if (!new Item_Controller().updateQuantity(dgvWorkOrderDetails.Rows[e.RowIndex].Cells["ItemCode"].Value.ToString(), (int)cbBranch.SelectedValue, newQuantity))
+                        {
+                            MessageBox.Show("No se pudo actualizar la cantidad del artículo: " + txtItemName.Text.ToString() + " - Código: " + txtItemCode.Text.ToString());
+                            return;
+                        }
+                        if (new WorkOrderLine_Model().DeleteWorkOrderLine(Convert.ToInt32(dgvWorkOrderDetails.Rows[e.RowIndex].Cells["Id"].Value)))
+                        {
+                            loadWorkOrderLines(workOrderId.Value);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo eliminar la línea de detalle.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                else if (e.ColumnIndex == dgvWorkOrderDetails.Columns["deleteImageColumn"].Index && workOrder.State != 2)
+                {
+                    DialogResult result = MessageBox.Show("Eliminar esta línea no actualizará ninguna entrada o salida de inventario ya que la orden no se encuentra en proceso." +
+                        "\n¿Desea eliminar esta línea de detalle?", "Confirmar selección", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        if (new WorkOrderLine_Model().DeleteWorkOrderLine(Convert.ToInt32(dgvWorkOrderDetails.Rows[e.RowIndex].Cells["Id"].Value)))
+                        {
+                            loadWorkOrderLines(workOrderId.Value);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo eliminar la línea de detalle.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

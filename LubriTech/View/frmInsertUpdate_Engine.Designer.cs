@@ -182,6 +182,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmInsertUpdate_Engine";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dato Maestro Tipo de Motor";
             this.panelBorder.ResumeLayout(false);
             this.panelBorder.PerformLayout();

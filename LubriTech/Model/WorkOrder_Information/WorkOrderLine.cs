@@ -8,11 +8,11 @@ namespace LubriTech.Model.WorkOrder_Information
         public int WorkOrderId { get; set; }
         public Item item { get; set; }
 
-        public string ItemName
+        public string ItemCode
         {
             get
             {
-                return item.name;
+                return item.code;
             }
         }
         public decimal Quantity { get; set; }

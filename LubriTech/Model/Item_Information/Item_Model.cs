@@ -88,7 +88,7 @@ namespace LubriTech.Model.items_Information
                 SqlCommand cmd = new SqlCommand(selectQuery, conn);
                 cmd.Parameters.AddWithValue("@item", itemCode);
                 cmd.Parameters.AddWithValue("@branch", branch);
-
+                conn.Open();
                 DataTable tblitems = new DataTable();
                 SqlDataAdapter adp = new SqlDataAdapter();
                 adp.SelectCommand = cmd;
@@ -97,10 +97,12 @@ namespace LubriTech.Model.items_Information
                 // verify if there is a row
                 if (tblitems.Rows.Count == 0)
                 {
+                    conn.Close();
                     return 0;
                 }
                 DataRow dr = tblitems.Rows[0];
 
+                conn.Close();
                 return Convert.ToDouble(dr["CantidadAlmacen"]);
             }
             catch (Exception ex)
@@ -264,6 +266,34 @@ namespace LubriTech.Model.items_Information
             }
         }
 
+        public bool IsItemService(string code)
+        {
+            try
+            {
+                string query = "SELECT TipoArticulo FROM Articulo" +
+                    "\r\nINNER JOIN CatalogoTipoArticulo ON Articulo.IdentificacionTipoArticulo = CatalogoTipoArticulo.Identificacion" +
+                    "\r\nWHERE Codigo = @itemCode";
 
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@itemCode", code);
+
+                DataTable tblitems = new DataTable();
+                SqlDataAdapter adp = new SqlDataAdapter();
+                adp.SelectCommand = cmd;
+
+                adp.Fill(tblitems);
+
+                if (tblitems.Rows.Count == 0)
+                {
+                    return false;
+                }
+                DataRow dr = tblitems.Rows[0];
+                return dr["TipoArticulo"].ToString() == "Servicio";
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }
