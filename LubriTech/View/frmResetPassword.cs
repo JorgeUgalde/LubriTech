@@ -23,6 +23,7 @@ namespace LubriTech.View
         {
             InitializeComponent();
             user = new User();
+            this.WindowState = FormWindowState.Normal;
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)

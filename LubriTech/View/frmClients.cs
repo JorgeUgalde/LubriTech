@@ -68,8 +68,9 @@ namespace LubriTech.View
 
             }
             dgvClients.Columns["Id"].HeaderText = "Identificación";
-            dgvClients.Columns["FullName"].HeaderText = "  Nombre Completo";
+            dgvClients.Columns["FullName"].HeaderText = "Nombre Completo";
             dgvClients.Columns["State"].HeaderText = "  Estado";
+            dgvClients.Columns["PriceList"].HeaderText = " Lista de precios";
             dgvClients.Columns["MainPhoneNum"].Visible = false;
             dgvClients.Columns["AdditionalPhoneNum"].Visible = false;
             dgvClients.Columns["Email"].Visible = false;
@@ -108,6 +109,7 @@ namespace LubriTech.View
             dgvClients.Columns["Id"].DisplayIndex = 0;
             dgvClients.Columns["FullName"].DisplayIndex = 1;
             dgvClients.Columns["State"].DisplayIndex = 2;
+            dgvClients.Columns["PriceList"].DisplayIndex = 3;
         }
 
      

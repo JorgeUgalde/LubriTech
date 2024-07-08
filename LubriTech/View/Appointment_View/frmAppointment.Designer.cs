@@ -540,6 +540,7 @@ namespace LubriTech.View.Appointment_View
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(1026, 718);
             this.Name = "frmAppointment";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Citas";
             this.Load += new System.EventHandler(this.frmAppointment_Load);
             this.panel1.ResumeLayout(false);

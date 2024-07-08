@@ -33,6 +33,8 @@ namespace LubriTech.View
             cbPriceList.ValueMember = "Id";
             cbPriceList.SelectedValue = 1;
             cbState.SelectedIndex = 0;
+            // get screen size and set form in the middle of the screen
+
 
 
         }
@@ -84,9 +86,6 @@ namespace LubriTech.View
         /// <param name="e">Argumentos del evento.</param>
         private void frmUpsert_Client_Load(object sender, EventArgs e)
         {
-
-            //List<Vehicle> vehicles = new List<Vehicle>();
-
             if (existingClient != null)
             {
                 LoadVehicles(sender,e);
@@ -328,5 +327,6 @@ namespace LubriTech.View
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
     }
 }

@@ -125,6 +125,7 @@ namespace LubriTech.View
 
                 string action = "Modify";
                 frmInsertUpdate_InventoryManagment frmInsertInventoryManagment = new frmInsertUpdate_InventoryManagment(selectedInventoryManagment);
+                this.WindowState = FormWindowState.Normal;
                 frmInsertInventoryManagment.MdiParent = this.MdiParent;
                 frmInsertInventoryManagment.DataChanged += ChildFormDataChangedHandler;
                 frmInsertInventoryManagment.Show();
@@ -135,6 +136,7 @@ namespace LubriTech.View
         private void btnAddInventoryManagment_Click(object sender, EventArgs e)
         {
             frmInsertUpdate_InventoryManagment frmUpsert_InventoryManagment = new frmInsertUpdate_InventoryManagment();
+            this.WindowState = FormWindowState.Normal;
             frmUpsert_InventoryManagment.MdiParent = this.MdiParent;
             frmUpsert_InventoryManagment.DataChanged += ChildFormDataChangedHandler;
             frmUpsert_InventoryManagment.Show();

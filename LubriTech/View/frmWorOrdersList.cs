@@ -133,6 +133,7 @@ namespace LubriTech.View
         private void button2_Click_1(object sender, EventArgs e)
         {
             frmWorkOrder frmWorkOrder = new frmWorkOrder(null);
+            this.WindowState = FormWindowState.Normal;
             frmWorkOrder.MdiParent = this.MdiParent;
             frmWorkOrder.DataChanged += ChildFormDataChangedHandler;
             frmWorkOrder.Show();
@@ -181,6 +182,7 @@ namespace LubriTech.View
                 DataGridViewRow row = dgvWorkOrders.Rows[e.RowIndex];
                 WorkOrder workOrder = (WorkOrder)row.DataBoundItem;
                 frmWorkOrder frmWorkOrderDetails = new frmWorkOrder(workOrder.Id);
+                this.WindowState = FormWindowState.Normal;
                 frmWorkOrderDetails.MdiParent = this.MdiParent;
                 frmWorkOrderDetails.DataChanged += ChildFormDataChangedHandler;
                 frmWorkOrderDetails.Show();

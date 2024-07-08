@@ -136,6 +136,7 @@ namespace LubriTech.View
         private void btnNewVehicle_Click(object sender, EventArgs e)
         {
             frmInsertUpdate_Vehicle frmUpsertVehicle = new frmInsertUpdate_Vehicle();
+            this.WindowState = FormWindowState.Normal;
             frmUpsertVehicle.MdiParent = this.MdiParent;
             frmUpsertVehicle.DataChanged += ChildFormDataChangedHandler;
             frmUpsertVehicle.Show();
@@ -193,6 +194,7 @@ namespace LubriTech.View
 
                 //string action = "Modify";
                 frmInsertUpdate_Vehicle frmInsertVehicle = new frmInsertUpdate_Vehicle(selectedVehicle);
+                this.WindowState = FormWindowState.Normal;
                 frmInsertVehicle.MdiParent = this.MdiParent;
                 frmInsertVehicle.DataChanged += ChildFormDataChangedHandler;
                 frmInsertVehicle.Show();
