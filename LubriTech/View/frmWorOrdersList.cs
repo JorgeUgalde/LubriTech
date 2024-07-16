@@ -80,7 +80,7 @@ namespace LubriTech.View
             dgvWorkOrders.Columns["Branch"].Visible = false;
             dgvWorkOrders.Columns["CurrentMileage"].Visible = false;
             dgvWorkOrders.Columns["Amount"].Visible = false;
-            dgvWorkOrders.Columns["Id"].Visible = false;
+            dgvWorkOrders.Columns["Id"].HeaderText = "No Orden";
             dgvWorkOrders.Columns["Date"].HeaderText = "Fecha";
             dgvWorkOrders.Columns["Client"].HeaderText = "Cliente";
             dgvWorkOrders.Columns["Vehicle"].HeaderText = "Placa Vehículo";

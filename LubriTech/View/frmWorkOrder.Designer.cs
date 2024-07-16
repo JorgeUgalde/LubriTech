@@ -94,6 +94,8 @@
             this.btnSaveChanges = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtWorkOrderId = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWorkOrderDetails)).BeginInit();
@@ -872,7 +874,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(743, 54);
+            this.label4.Location = new System.Drawing.Point(728, 94);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 21);
             this.label4.TabIndex = 58;
@@ -887,7 +889,7 @@
             "Activo",
             "Inactivo",
             "Finalizado"});
-            this.cbState.Location = new System.Drawing.Point(825, 51);
+            this.cbState.Location = new System.Drawing.Point(825, 91);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(130, 29);
             this.cbState.TabIndex = 59;
@@ -941,12 +943,37 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label25
+            // 
+            this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(728, 54);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(79, 21);
+            this.label25.TabIndex = 99;
+            this.label25.Text = "No Orden";
+            this.label25.Click += new System.EventHandler(this.label25_Click);
+            // 
+            // txtWorkOrderId
+            // 
+            this.txtWorkOrderId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtWorkOrderId.Location = new System.Drawing.Point(825, 51);
+            this.txtWorkOrderId.MaxLength = 150;
+            this.txtWorkOrderId.Name = "txtWorkOrderId";
+            this.txtWorkOrderId.Size = new System.Drawing.Size(131, 29);
+            this.txtWorkOrderId.TabIndex = 96;
+            // 
             // frmWorkOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(968, 732);
+            this.Controls.Add(this.txtWorkOrderId);
+            this.Controls.Add(this.label25);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnSaveChanges);
@@ -1039,5 +1066,7 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.DataGridView dgvObservation;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox txtWorkOrderId;
     }
 }

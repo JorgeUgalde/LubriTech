@@ -103,6 +103,9 @@ namespace LubriTech.View
             dateTimePicker.Value = workOrder.Date;
             txtTotalAmount.Text = workOrder.Amount.ToString();
 
+            txtWorkOrderId.Text = workOrder.Id.ToString();
+            txtWorkOrderId.Enabled = false;
+
             client = workOrder.Client;
             txtClientId.Enabled = true;
             txtClientId.Text = workOrder.Client.Id.ToString();
@@ -142,6 +145,7 @@ namespace LubriTech.View
         {
             dateTimePicker.Enabled = false;
             cbState.Enabled = false;
+            txtWorkOrderId.Enabled = false;
             txtClientId.Enabled = false;
             txtLicensePlate.Enabled = false;
             txtCurrentMileage.Enabled = false;
@@ -187,7 +191,10 @@ namespace LubriTech.View
             cbBranch.Enabled = false;
 
             dateTimePicker.Value = DateTime.Now;
-            //txtDate.Text = DateTime.Now.ToString();
+
+            txtWorkOrderId.Text = "0";
+            txtWorkOrderId.Enabled = false;
+
             txtTotalAmount.Text = "0";
             txtClientId.Enabled = true;
             txtClientId.Text = "";
@@ -356,6 +363,7 @@ namespace LubriTech.View
 
                 this.workOrderId = workOrderController.UpsertWorkOrder(workOrder);
                 loadWorkOrderLines(workOrderId.Value);
+                txtWorkOrderId.Text = workOrderId.ToString();
                 dgvWorkOrderDetails.Refresh();
             }
         }
@@ -466,7 +474,7 @@ namespace LubriTech.View
                     {
                         this.vehicle.Mileage = Convert.ToInt32(txtCurrentMileage.Text);
                         new Vehicle_Controller().upsert(this.vehicle);
-                    }
+                      }
                     //this.vehicle.Mileage = Convert.ToInt32(txtCurrentMileage.Text);
                     //new Vehicle_Controller().upsert(this.vehicle);
                 }
@@ -698,22 +706,6 @@ namespace LubriTech.View
             {
                 UpdateTotalAmount();
             }
-        }
-
-        private bool ValidateWorkOrderLine()
-        {
-            if (txtItemCode.Text == "")
-            {
-                MessageBox.Show("Por favor seleccione un artículo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtQuantity.Text = "";
-                return false;
-            }
-            if (txtQuantity.Text == "")
-            {
-                MessageBox.Show("Por favor ingrese una cantidad.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            return true;
         }
 
         private void txtQuantity_TextChanged(object sender, EventArgs e)
@@ -982,6 +974,7 @@ namespace LubriTech.View
             savefile.FileName = string.Format(DateTime.Now.ToString("ddMMyyyyHHmmss"));
 
             string PaginaHTML_Texto = Properties.Resources.Template.ToString();
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@WORKORDERID", workOrderTemplate?.Id.ToString() ?? "N/A");
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@BRANCH", workOrderTemplate?.Branch?.Name ?? "N/A");
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DATE", workOrderTemplate?.Date.ToString() ?? "N/A");
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@STATE", cbState.Text ?? "N/A");
@@ -1235,6 +1228,11 @@ namespace LubriTech.View
             {
                 e.Handled = true;
             }
+        }
+
+        private void label25_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
