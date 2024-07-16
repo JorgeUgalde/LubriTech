@@ -115,7 +115,14 @@ namespace LubriTech.Model.items_Information
         {
             try
             {
-                string query = "UPDATE SeAlmacena SET  CantidadAlmacen = @quantity WHERE CodigoArticulo = @itemCode and IdentificacionSucursal = @branchId;";
+                string query = "MERGE INTO SeAlmacena AS target\r\n" +
+                    "USING (SELECT @itemCode AS CodigoArticulo, @branchId AS IdentificacionSucursal, @quantity AS CantidadAlmacen) AS source\r\n" +
+                    "ON (target.CodigoArticulo = source.CodigoArticulo AND target.IdentificacionSucursal = source.IdentificacionSucursal)\r\n" +
+                    "WHEN MATCHED THEN \r\n" +
+                    "    UPDATE SET CantidadAlmacen = source.CantidadAlmacen\r\n" +
+                    "WHEN NOT MATCHED THEN \r\n" +
+                    "    INSERT (CodigoArticulo, IdentificacionSucursal, CantidadAlmacen)\r\n" +
+                    "    VALUES (source.CodigoArticulo, source.IdentificacionSucursal, source.CantidadAlmacen);";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@itemCode", item);
                 cmd.Parameters.AddWithValue("@branchId", branch);
