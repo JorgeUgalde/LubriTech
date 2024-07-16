@@ -29,6 +29,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Net.Mail;
 using System.Net;
 using LubriTech.Model.InventoryManagment_Information;
+using System.Text.RegularExpressions;
 
 namespace LubriTech.View
 {
@@ -771,11 +772,19 @@ namespace LubriTech.View
         private void tbNumeric_KeyPress(object sender, KeyPressEventArgs e)
         {
             System.Windows.Forms.TextBox textBox = sender as System.Windows.Forms.TextBox;
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != ',')
+            string input = textBox.Text.Insert(textBox.SelectionStart, e.KeyChar.ToString());
+
+            // Regular expression to match a number with up to two decimal places
+            Regex regex = new Regex(@"^\d*(\,\d{0,2})?$");
+
+            // Allow control keys (backspace, delete, arrow keys, etc.)
+            if (char.IsControl(e.KeyChar))
             {
-                e.Handled = true;
+                return;
             }
-            if (e.KeyChar == ',' && textBox.Text.Contains(","))
+
+            // Validate input
+            if (!regex.IsMatch(input))
             {
                 e.Handled = true;
             }
