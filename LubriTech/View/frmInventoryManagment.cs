@@ -59,9 +59,8 @@ namespace LubriTech.View
             LoadPage();
             SetColumnOrder();
 
-           
-            dgvInventoryManagments.Columns["Id"].Visible = false;
             dgvInventoryManagments.Columns["TotalAmount"].Visible = false;
+            dgvInventoryManagments.Columns["Id"].HeaderText = "Código";
             dgvInventoryManagments.Columns["DocumentDate"].HeaderText = "Fecha";
             dgvInventoryManagments.Columns["Supplier"].HeaderText = "Proveedor";
             dgvInventoryManagments.Columns["State"].HeaderText = "Estado";
@@ -97,6 +96,7 @@ namespace LubriTech.View
             }
             // Filtrar la lista de gestiones de inventario
             var filteredList = inventoryManagments.Where(p =>
+                p.Id.ToString().ToLower().Contains(filterValue) ||
                 p.DocumentDate.ToString().ToLower().Contains(filterValue) ||
                 p.Supplier != null && p.Supplier.name.ToLower().Contains(filterValue) ||
                 p.State.ToLower().Contains(filterValue) ||
@@ -122,11 +122,12 @@ namespace LubriTech.View
 
         private void SetColumnOrder()
         {
-            dgvInventoryManagments.Columns["DocumentDate"].DisplayIndex = 0;
-            dgvInventoryManagments.Columns["DocumentType"].DisplayIndex = 1;
-            dgvInventoryManagments.Columns["Supplier"].DisplayIndex = 2;
-            dgvInventoryManagments.Columns["Branch"].DisplayIndex = 3;
-            dgvInventoryManagments.Columns["State"].DisplayIndex = 4;
+            dgvInventoryManagments.Columns["Id"].DisplayIndex = 0;
+            dgvInventoryManagments.Columns["DocumentDate"].DisplayIndex = 1;
+            dgvInventoryManagments.Columns["DocumentType"].DisplayIndex = 2;
+            dgvInventoryManagments.Columns["Supplier"].DisplayIndex = 3;
+            dgvInventoryManagments.Columns["Branch"].DisplayIndex = 4;
+            dgvInventoryManagments.Columns["State"].DisplayIndex = 5;
         }
 
         private void button1_Click(object sender, EventArgs e)

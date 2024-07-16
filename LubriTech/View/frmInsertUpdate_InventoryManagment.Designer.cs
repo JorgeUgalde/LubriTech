@@ -70,6 +70,8 @@
             this.txtUnitCost = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSelectItem = new System.Windows.Forms.Button();
+            this.txtCode = new System.Windows.Forms.TextBox();
+            this.lblCode = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetailLines)).BeginInit();
             this.panelBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
@@ -603,6 +605,27 @@
             this.btnSelectItem.UseVisualStyleBackColor = false;
             this.btnSelectItem.Click += new System.EventHandler(this.btnSelectItem_Click);
             // 
+            // txtCode
+            // 
+            this.txtCode.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtCode.Location = new System.Drawing.Point(108, 78);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(143, 29);
+            this.txtCode.TabIndex = 49;
+            // 
+            // lblCode
+            // 
+            this.lblCode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCode.AutoSize = true;
+            this.lblCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCode.Location = new System.Drawing.Point(33, 81);
+            this.lblCode.Name = "lblCode";
+            this.lblCode.Size = new System.Drawing.Size(60, 21);
+            this.lblCode.TabIndex = 50;
+            this.lblCode.Text = "Código";
+            // 
             // frmInsertUpdate_InventoryManagment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -611,7 +634,6 @@
             this.ClientSize = new System.Drawing.Size(1239, 860);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.panelBorder);
-            this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.lblInventoryManagment);
             this.Controls.Add(this.lblDetailLine);
             this.Controls.Add(this.lblItemName);
@@ -619,21 +641,12 @@
             this.Controls.Add(this.tbItemCode);
             this.Controls.Add(this.lblItem);
             this.Controls.Add(this.btnAddDetailLine);
-            this.Controls.Add(this.lblSupplierName);
-            this.Controls.Add(this.cbState);
-            this.Controls.Add(this.lblState);
             this.Controls.Add(this.tbSupplierId);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.btnSelectSupplier);
-            this.Controls.Add(this.cbBranch);
-            this.Controls.Add(this.cbDocumentType);
             this.Controls.Add(this.tbTotalAmount);
-            this.Controls.Add(this.tbSupplierName);
-            this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lblTotalAmount);
-            this.Controls.Add(this.lblDocumentType);
-            this.Controls.Add(this.lblBranch);
             this.Controls.Add(this.lblSupplierId);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
