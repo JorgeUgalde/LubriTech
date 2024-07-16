@@ -67,8 +67,6 @@ namespace LubriTech.View
             // 
             // panelMenu
             // 
-            this.panelMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.panelMenu.AutoScroll = true;
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
             this.panelMenu.Controls.Add(this.btnUserSettings);
@@ -83,6 +81,7 @@ namespace LubriTech.View
             this.panelMenu.Controls.Add(this.btnVehicles);
             this.panelMenu.Controls.Add(this.btnClients);
             this.panelMenu.Controls.Add(this.panel2);
+            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 36);
             this.panelMenu.Margin = new System.Windows.Forms.Padding(4);
             this.panelMenu.Name = "panelMenu";
