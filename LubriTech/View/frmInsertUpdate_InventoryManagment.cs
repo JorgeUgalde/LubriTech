@@ -43,6 +43,7 @@ namespace LubriTech.View
             InitializeComponent();
             SetupDetailLinesDGV();
             setComboBox();
+            txtCode.Enabled = false;
             tbSupplierName.Enabled = false;
             tbTotalAmount.Enabled = false;
             tbItemName.Enabled = false;
@@ -61,6 +62,7 @@ namespace LubriTech.View
             InitializeComponent();
             setComboBox();
 
+            txtCode.Enabled = false;
             tbSupplierName.Enabled = false;
             tbItemName.Enabled = false;
             tbAmount.Enabled = false;
@@ -69,6 +71,7 @@ namespace LubriTech.View
                 tbSupplierName.Text = inventoryManagment.Supplier.name;
                 tbSupplierId.Text = inventoryManagment.Supplier.id;
             }
+            txtCode.Text = inventoryManagment.Id.ToString();
             cbBranch.SelectedValue = inventoryManagment.Branch.Id;
             dtpDate.Value = inventoryManagment.DocumentDate;
             cbDocumentType.Text = inventoryManagment.DocumentType;
@@ -382,6 +385,7 @@ namespace LubriTech.View
 
                     if (insertedId != -1)
                     {
+                        txtCode.Text = insertedId.ToString();
                         clickedAddDetail = true;
                         existingInventoryManagment.Id = insertedId;
                         if (tbQuantity.Text.Trim() == "")
