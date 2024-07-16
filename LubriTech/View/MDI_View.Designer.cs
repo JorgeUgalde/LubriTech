@@ -28,6 +28,7 @@ namespace LubriTech.View
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MDI_View));
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnUserSettings = new System.Windows.Forms.Button();
             this.panelParametersSubmenu = new System.Windows.Forms.Panel();
@@ -66,6 +67,8 @@ namespace LubriTech.View
             // 
             // panelMenu
             // 
+            this.panelMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.panelMenu.AutoScroll = true;
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
             this.panelMenu.Controls.Add(this.btnUserSettings);
@@ -80,7 +83,6 @@ namespace LubriTech.View
             this.panelMenu.Controls.Add(this.btnVehicles);
             this.panelMenu.Controls.Add(this.btnClients);
             this.panelMenu.Controls.Add(this.panel2);
-            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 36);
             this.panelMenu.Margin = new System.Windows.Forms.Padding(4);
             this.panelMenu.Name = "panelMenu";
@@ -551,6 +553,7 @@ namespace LubriTech.View
             this.Controls.Add(this.btnMenu);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MDI_View";

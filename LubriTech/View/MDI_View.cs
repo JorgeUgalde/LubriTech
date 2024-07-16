@@ -103,8 +103,8 @@ namespace LubriTech.View
             childForm.MdiParent = this;
             childForm.WindowState = FormWindowState.Normal;
             childForm.StartPosition = FormStartPosition.CenterScreen;
+            childForm.TopMost = true;
             childForm.Show();
-
 
         }
 
