@@ -19,6 +19,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using static System.Windows.Forms.AxHost;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace LubriTech.View
 {
@@ -42,6 +43,7 @@ namespace LubriTech.View
             InitializeComponent();
             SetupDetailLinesDGV();
             setComboBox();
+            txtCode.Enabled = false;
             tbSupplierName.Enabled = false;
             tbTotalAmount.Enabled = false;
             tbItemName.Enabled = false;
@@ -60,6 +62,7 @@ namespace LubriTech.View
             InitializeComponent();
             setComboBox();
 
+            txtCode.Enabled = false;
             tbSupplierName.Enabled = false;
             tbItemName.Enabled = false;
             tbAmount.Enabled = false;
@@ -68,6 +71,7 @@ namespace LubriTech.View
                 tbSupplierName.Text = inventoryManagment.Supplier.name;
                 tbSupplierId.Text = inventoryManagment.Supplier.id;
             }
+            txtCode.Text = inventoryManagment.Id.ToString();
             cbBranch.SelectedValue = inventoryManagment.Branch.Id;
             dtpDate.Value = inventoryManagment.DocumentDate;
             cbDocumentType.Text = inventoryManagment.DocumentType;
@@ -230,14 +234,50 @@ namespace LubriTech.View
         private void tbNumeric_KeyPress(object sender, KeyPressEventArgs e)
         {
             TextBox textBox = sender as TextBox;
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != ',')
+
+            if (e.KeyChar != 8)
             {
-                e.Handled = true;
+
+
+                string input = textBox.Text.Insert(textBox.SelectionStart, e.KeyChar.ToString());
+                Regex regex = new Regex(@"^\d*(\,\d{0,2})?$");
+                if (char.IsControl(e.KeyChar))
+                {
+                    return;
+                }
+
+                if (!regex.IsMatch(input))
+                {
+                    e.Handled = true;
+                    return;
+                }
             }
-            if (e.KeyChar == ',' && textBox.Text.Contains(","))
+
+            double quantity = 0;
+            double unitCost = 0;
+
+            if (double.TryParse(txtUnitCost.Text, out unitCost))
             {
-                e.Handled = true;
+                string text = textBox.Text;
+
+                if (e.KeyChar == 8) // Backspace
+                {
+                    text = text.Length > 0 ? text.Remove(text.Length - 1) : "0";
+                    text = text.Length > 0 ? text : "0";
+                }
+                else
+                {
+                    text += e.KeyChar;
+                }
+
+                quantity = Convert.ToDouble(text);
+                {
+                    tbAmount.Text = (quantity * unitCost).ToString();
+                }
             }
+
+
+          
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -345,6 +385,7 @@ namespace LubriTech.View
 
                     if (insertedId != -1)
                     {
+                        txtCode.Text = insertedId.ToString();
                         clickedAddDetail = true;
                         existingInventoryManagment.Id = insertedId;
                         if (tbQuantity.Text.Trim() == "")
@@ -447,29 +488,7 @@ namespace LubriTech.View
             }
         }
 
-        private void tbQuantity_TextChanged(object sender, EventArgs e)
-        {
-            double quantity;
-            double purchasePrice;
-
-            bool isQuantityValid = double.TryParse(tbQuantity.Text.Trim(), out quantity);
-
-            if (!string.IsNullOrEmpty(tbQuantity.Text.Trim()) &&
-                !string.IsNullOrEmpty(tbItemName.Text.Trim()) &&
-                isQuantityValid)
-            {
-                tbItemCode.Text = selectedItem.code;
-                purchasePrice = new Item_Controller().get(tbItemCode.Text.Trim()).purchasePrice;
-                double calc = quantity * purchasePrice;
-
-                tbAmount.Text = calc.ToString();
-            }
-            else
-            {
-                tbAmount.Text = "";
-            }
-        }
-
+       
         private void tbItemCode_TextChanged(object sender, EventArgs e)
         {
             string code = tbItemCode.Text;
@@ -873,5 +892,60 @@ namespace LubriTech.View
                 generatePdf();
             }
         }
+
+        private void txtUnitCost_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            TextBox textBox = sender as TextBox;
+            if (e.KeyChar != 8)
+            {
+
+                string input = textBox.Text.Insert(textBox.SelectionStart, e.KeyChar.ToString());
+
+                Regex regex = new Regex(@"^\d*(\,\d{0,2})?$");
+
+                if (char.IsControl(e.KeyChar))
+                {
+                    return;
+                }
+
+                if (!regex.IsMatch(input))
+                {
+                    e.Handled = true;
+                    return;
+                }
+            }
+
+            double quantity = 0;
+            double unitCost = 0;
+
+            if (double.TryParse(tbQuantity.Text.Trim(), out quantity))
+            {
+                string text = textBox.Text;
+
+                if (e.KeyChar == 8) // Backspace
+                {
+                    text = text.Length > 0 ? text.Remove(text.Length - 1) : "0";
+                    text = text.Length > 0 ? text : "0";
+                }
+                else
+                {
+                    text += e.KeyChar;
+                }
+
+                unitCost = Convert.ToDouble(text);
+                {
+                    tbAmount.Text = (quantity * unitCost).ToString();
+                }
+            }
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+
     }
 }

@@ -142,7 +142,7 @@
             this.txtID.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.Location = new System.Drawing.Point(228, 65);
-            this.txtID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtID.Margin = new System.Windows.Forms.Padding(4);
             this.txtID.MaxLength = 30;
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(272, 34);
@@ -153,7 +153,7 @@
             this.txtMainPhone.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtMainPhone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMainPhone.Location = new System.Drawing.Point(806, 65);
-            this.txtMainPhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMainPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtMainPhone.MaxLength = 11;
             this.txtMainPhone.Name = "txtMainPhone";
             this.txtMainPhone.Size = new System.Drawing.Size(275, 34);
@@ -166,7 +166,7 @@
             this.txtFullName.BackColor = System.Drawing.SystemColors.Window;
             this.txtFullName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFullName.Location = new System.Drawing.Point(228, 116);
-            this.txtFullName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFullName.Margin = new System.Windows.Forms.Padding(4);
             this.txtFullName.MaxLength = 150;
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(347, 34);
@@ -178,7 +178,7 @@
             this.txtAdditionalPhone.BackColor = System.Drawing.SystemColors.Window;
             this.txtAdditionalPhone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAdditionalPhone.Location = new System.Drawing.Point(806, 116);
-            this.txtAdditionalPhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAdditionalPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtAdditionalPhone.MaxLength = 11;
             this.txtAdditionalPhone.Name = "txtAdditionalPhone";
             this.txtAdditionalPhone.Size = new System.Drawing.Size(275, 34);
@@ -192,7 +192,7 @@
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(228, 165);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(347, 34);
@@ -218,7 +218,7 @@
             this.btnAddVehicle.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddVehicle.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAddVehicle.Location = new System.Drawing.Point(228, 349);
-            this.btnAddVehicle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddVehicle.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddVehicle.Name = "btnAddVehicle";
             this.btnAddVehicle.Size = new System.Drawing.Size(192, 42);
             this.btnAddVehicle.TabIndex = 9;
@@ -235,7 +235,7 @@
             this.btnAddClient.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddClient.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAddClient.Location = new System.Drawing.Point(37, 753);
-            this.btnAddClient.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddClient.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddClient.Name = "btnAddClient";
             this.btnAddClient.Size = new System.Drawing.Size(188, 42);
             this.btnAddClient.TabIndex = 11;
@@ -252,7 +252,7 @@
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnClose.Location = new System.Drawing.Point(893, 753);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(188, 42);
             this.btnClose.TabIndex = 12;
@@ -270,7 +270,7 @@
             "Activo",
             "Inactivo"});
             this.cbState.Location = new System.Drawing.Point(228, 217);
-            this.cbState.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbState.Margin = new System.Windows.Forms.Padding(4);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(272, 36);
             this.cbState.TabIndex = 4;
@@ -321,7 +321,7 @@
             this.dgvVehicles.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvVehicles.GridColor = System.Drawing.Color.White;
             this.dgvVehicles.Location = new System.Drawing.Point(37, 398);
-            this.dgvVehicles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvVehicles.Margin = new System.Windows.Forms.Padding(4);
             this.dgvVehicles.Name = "dgvVehicles";
             this.dgvVehicles.ReadOnly = true;
             this.dgvVehicles.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -345,7 +345,7 @@
             this.txtAddresse.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtAddresse.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddresse.Location = new System.Drawing.Point(806, 165);
-            this.txtAddresse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAddresse.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddresse.MaxLength = 150;
             this.txtAddresse.Name = "txtAddresse";
             this.txtAddresse.Size = new System.Drawing.Size(275, 114);
@@ -361,7 +361,7 @@
             this.panel.Controls.Add(this.pbMaximize);
             this.panel.Controls.Add(this.pbClose);
             this.panel.Location = new System.Drawing.Point(-3, 0);
-            this.panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel.Margin = new System.Windows.Forms.Padding(4);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(1124, 44);
             this.panel.TabIndex = 25;
@@ -385,7 +385,7 @@
             this.pbMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMaximize.Image = global::LubriTech.Properties.Resources.maximize;
             this.pbMaximize.Location = new System.Drawing.Point(1032, 7);
-            this.pbMaximize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbMaximize.Margin = new System.Windows.Forms.Padding(4);
             this.pbMaximize.Name = "pbMaximize";
             this.pbMaximize.Size = new System.Drawing.Size(40, 37);
             this.pbMaximize.TabIndex = 8;
@@ -398,7 +398,7 @@
             this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::LubriTech.Properties.Resources.closeIco2;
             this.pbClose.Location = new System.Drawing.Point(1080, 7);
-            this.pbClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbClose.Margin = new System.Windows.Forms.Padding(4);
             this.pbClose.Name = "pbClose";
             this.pbClose.Size = new System.Drawing.Size(40, 37);
             this.pbClose.TabIndex = 7;
@@ -431,7 +431,7 @@
             this.panelCB.Controls.Add(this.txtEmail);
             this.panelCB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCB.Location = new System.Drawing.Point(0, 0);
-            this.panelCB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelCB.Margin = new System.Windows.Forms.Padding(4);
             this.panelCB.Name = "panelCB";
             this.panelCB.Size = new System.Drawing.Size(1120, 825);
             this.panelCB.TabIndex = 26;
@@ -446,7 +446,7 @@
             "Activo",
             "Inactivo"});
             this.cbPriceList.Location = new System.Drawing.Point(228, 270);
-            this.cbPriceList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbPriceList.Margin = new System.Windows.Forms.Padding(4);
             this.cbPriceList.Name = "cbPriceList";
             this.cbPriceList.Size = new System.Drawing.Size(272, 36);
             this.cbPriceList.TabIndex = 5;
@@ -473,7 +473,7 @@
             this.Controls.Add(this.panelCB);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmUpsert_Client";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dato maestro cliente";
