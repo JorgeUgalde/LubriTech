@@ -681,6 +681,7 @@ namespace LubriTech.View
             }
             else if (cbDocumentType.Text.Equals("Compra"))
             {
+                cbState.Refresh();
                 if (cbState.Text.Equals("Finalizado"))
                 {
                     foreach (var detailLine in detailLines)

@@ -146,34 +146,28 @@ namespace LubriTech.Model.PricesList_Information
 
         public bool updateSellPrice(string itemID)
         {
-            // only refresh all the prices in the price list table
             try
             {
-                // first get all the pricelist 
-
                 List<PriceList> priceLists = new PriceList_Model().getPriceLists();
                 foreach (PriceList priceList in priceLists)
                 {
                     List<Prices> prices = getPricesByPriceList(priceList.id);
                     double cost = new PriceList_Model().ItemAverageCost(new Item_Model().getItem(itemID).code);
-                    foreach (Prices price in prices)
-                    {
-                        if (price.Item.code == itemID)
-                        {
-                            price.price = cost + (cost * price.factor);
-                            string query = "UPDATE EstablecePrecio SET PrecioVenta = @price WHERE Identificacion = @id";
-                            SqlCommand cmd = new SqlCommand(query, conn);
-                            cmd.Parameters.AddWithValue("@price", price.price);
-                            cmd.Parameters.AddWithValue("@id", price.id);
-                            conn.Open();
-                            cmd.ExecuteNonQuery();
-                            conn.Close();
-                            return true;
-                        }
+                    Prices price = prices.Find(p => p.Item.code == itemID);
 
-                    }
+                    if (price != null)
+                    {
+                        price.price = cost + (cost * price.factor);
+                        string query = "UPDATE EstablecePrecio SET PrecioVenta = @price WHERE Identificacion = @id";
+                        SqlCommand cmd = new SqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@price", price.price);
+                        cmd.Parameters.AddWithValue("@id", price.id);
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }                    
                 }
-                return false;
+                return true;
             }
             catch (Exception e)
             {

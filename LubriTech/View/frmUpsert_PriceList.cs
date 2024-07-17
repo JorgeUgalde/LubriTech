@@ -18,6 +18,7 @@ namespace LubriTech.View.Appointment_View
     public partial class frmUpsert_PriceList : Form
     {
         private int? priceListId;
+        private PriceList globalList;
 
         public event EventHandler DataChanged;
 
@@ -37,22 +38,31 @@ namespace LubriTech.View.Appointment_View
             if (priceListId.HasValue)
             {
                 PriceList priceList = new PriceList_Controller().getPriceList(priceListId.Value);
-                loadPrices(priceList);
+                globalList = priceList;
+                loadPrices(priceList, null);
             }
             else
             {
                 this.priceListId = 0;
                 dgvPrices.DataSource = new DataTable();
-                loadPrices(new PriceList());
+                globalList = new PriceList();
+                loadPrices(globalList, null);
                 cbState.SelectedIndex = 1;
             }
         }
 
-        private void loadPrices(PriceList priceList)
+        private void loadPrices(PriceList priceList, DataTable prices)
         {
-            txtDescription.Text = priceList.description;
-            cbState.SelectedIndex = priceList.state;
-            dgvPrices.DataSource = new PriceList_Controller().getPricesByPriceListDT(priceList.id);
+            if (prices != null)
+            {
+                dgvPrices.DataSource = prices;
+            }
+            else
+            {
+                txtDescription.Text = priceList.description;
+                cbState.SelectedIndex = priceList.state;
+                dgvPrices.DataSource = new PriceList_Controller().getPricesByPriceListDT(priceList.id);
+            }            
             dgvPrices.Columns["Identificacion"].Visible = false;
             dgvPrices.Columns["IdentificacionListaPrecios"].Visible = false;
             dgvPrices.Columns["CodigoArticulo"].ReadOnly = true;
@@ -117,13 +127,14 @@ namespace LubriTech.View.Appointment_View
                             if (item != null)
                             {
                                 double price = new PriceList_Controller().ItemAverageCost(item.code);
-                                rowView["PrecioVenta"] = price + ( price  * Convert.ToDouble(rowView["Factor"]));
+                                //calculate the new price using only 2 decimals
+                                rowView["PrecioVenta"] = Math.Round(price + (price * Convert.ToDouble(rowView["Factor"])), 2);
                             }
                             // Hacer el upsert solo si es una fila nueva y tiene todos los valores requeridos
                             bool success = new PriceList_Controller().upsertPrice(rowView.Row);
                             if (!success)
                             {
-                                MessageBox.Show("Failed to save changes.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Error al realizar la acción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                     }
@@ -251,7 +262,7 @@ namespace LubriTech.View.Appointment_View
                     if (new Item_Controller().insertItemsInPriceList(id, new Item_Controller().getAll()))
                     {
                         DataChanged?.Invoke(this, EventArgs.Empty);
-                        loadPrices(new PriceList_Controller().getPriceList(id));
+                        loadPrices(new PriceList_Controller().getPriceList(id), null);
                         dgvPrices.Refresh();
                         MessageBox.Show("Acción realizada con exito.", "LubriTech Informa:", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -266,6 +277,35 @@ namespace LubriTech.View.Appointment_View
                     MessageBox.Show("Error al realizar la acción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+       
+        private void ApplyFilter()
+        {
+            string filterValue = txtFilter.Text.ToLower();
+            // if dgvPrices is empty return
+            if (dgvPrices.Rows.Count == 0)
+            {
+                return;
+            }
+
+            if (filterValue == "" )
+            {
+                loadPrices(globalList, null);
+            }
+            else
+            {
+                DataTable dt = new PriceList_Controller().getPricesByPriceListDT(priceListId.Value);
+                dt.DefaultView.RowFilter = $"CodigoArticulo LIKE '%{filterValue}%'";
+                loadPrices(null, dt);
+
+            }
+        }
+
+        private void txtFilter_TextChanged(object sender, EventArgs e)
+        {
+            ApplyFilter();
+
         }
     }
 }
