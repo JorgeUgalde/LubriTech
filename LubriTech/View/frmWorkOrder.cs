@@ -975,6 +975,7 @@ namespace LubriTech.View
             savefile.FileName = string.Format(DateTime.Now.ToString("ddMMyyyyHHmmss"));
 
             string PaginaHTML_Texto = Properties.Resources.Template.ToString();
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@ID", (workOrderTemplate?.Id.ToString() ?? "N/A"));
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@BRANCH", workOrderTemplate?.Branch?.Name ?? "N/A");
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DATE", workOrderTemplate?.Date.ToString() ?? "N/A");
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@STATE", cbState.Text ?? "N/A");
