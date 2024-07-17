@@ -42,6 +42,7 @@ namespace LubriTech.View
             detailLines = new List<DetailLine>();
             InitializeComponent();
             SetupDetailLinesDGV();
+            txtCode.Enabled = false;
             setComboBox();
             tbSupplierName.Enabled = false;
             tbTotalAmount.Enabled = false;
@@ -54,11 +55,13 @@ namespace LubriTech.View
 
         public frmInsertUpdate_InventoryManagment(InventoryManagment inventoryManagment)
         {
+            InitializeComponent();
+            txtCode.Enabled = false;
+            txtCode.Text = inventoryManagment.Id.ToString();
             suppliers = new List<Supplier>();
             branches = new Branch_Controller().getAll();
             detailLines = new DetailLine_Controller().getDetailLines(inventoryManagment.Id);
             existingInventoryManagment = inventoryManagment;
-            InitializeComponent();
             setComboBox();
 
             tbSupplierName.Enabled = false;
@@ -382,6 +385,7 @@ namespace LubriTech.View
 
                     if (insertedId != -1)
                     {
+                        txtCode.Text = insertedId.ToString();
                         clickedAddDetail = true;
                         existingInventoryManagment.Id = insertedId;
                         if (tbQuantity.Text.Trim() == "")

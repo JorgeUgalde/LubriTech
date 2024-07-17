@@ -70,6 +70,8 @@
             this.txtUnitCost = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSelectItem = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtCode = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetailLines)).BeginInit();
             this.panelBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
@@ -82,7 +84,7 @@
             this.cbBranch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbBranch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbBranch.FormattingEnabled = true;
-            this.cbBranch.Location = new System.Drawing.Point(147, 139);
+            this.cbBranch.Location = new System.Drawing.Point(149, 191);
             this.cbBranch.Margin = new System.Windows.Forms.Padding(4);
             this.cbBranch.Name = "cbBranch";
             this.cbBranch.Size = new System.Drawing.Size(393, 36);
@@ -98,7 +100,7 @@
             "Compra",
             "Entrada",
             "Salida"});
-            this.cbDocumentType.Location = new System.Drawing.Point(147, 185);
+            this.cbDocumentType.Location = new System.Drawing.Point(625, 191);
             this.cbDocumentType.Margin = new System.Windows.Forms.Padding(4);
             this.cbDocumentType.Name = "cbDocumentType";
             this.cbDocumentType.Size = new System.Drawing.Size(172, 36);
@@ -124,7 +126,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(47, 98);
+            this.lblDate.Location = new System.Drawing.Point(49, 139);
             this.lblDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(62, 28);
@@ -147,7 +149,7 @@
             // 
             this.lblDocumentType.AutoSize = true;
             this.lblDocumentType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDocumentType.Location = new System.Drawing.Point(47, 188);
+            this.lblDocumentType.Location = new System.Drawing.Point(566, 199);
             this.lblDocumentType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDocumentType.Name = "lblDocumentType";
             this.lblDocumentType.Size = new System.Drawing.Size(51, 28);
@@ -158,7 +160,7 @@
             // 
             this.lblBranch.AutoSize = true;
             this.lblBranch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBranch.Location = new System.Drawing.Point(47, 143);
+            this.lblBranch.Location = new System.Drawing.Point(49, 194);
             this.lblBranch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBranch.Name = "lblBranch";
             this.lblBranch.Size = new System.Drawing.Size(84, 28);
@@ -240,7 +242,7 @@
             "Activo",
             "Inactivo",
             "Finalizado"});
-            this.cbState.Location = new System.Drawing.Point(813, 185);
+            this.cbState.Location = new System.Drawing.Point(958, 191);
             this.cbState.Margin = new System.Windows.Forms.Padding(4);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(172, 36);
@@ -252,7 +254,7 @@
             // 
             this.lblState.AutoSize = true;
             this.lblState.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblState.Location = new System.Drawing.Point(568, 188);
+            this.lblState.Location = new System.Drawing.Point(879, 194);
             this.lblState.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(71, 28);
@@ -469,7 +471,7 @@
             // dtpDate
             // 
             this.dtpDate.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.dtpDate.Location = new System.Drawing.Point(147, 94);
+            this.dtpDate.Location = new System.Drawing.Point(149, 134);
             this.dtpDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(393, 34);
@@ -548,14 +550,24 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.txtCode);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtUnitCost);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.dtpDate);
             this.panel1.Controls.Add(this.btnSelectItem);
             this.panel1.Controls.Add(this.dgvDetailLines);
             this.panel1.Controls.Add(this.tbAmount);
             this.panel1.Controls.Add(this.tbQuantity);
             this.panel1.Controls.Add(this.lblAmount);
             this.panel1.Controls.Add(this.lblQuantity);
+            this.panel1.Controls.Add(this.cbState);
+            this.panel1.Controls.Add(this.lblState);
+            this.panel1.Controls.Add(this.lblDocumentType);
+            this.panel1.Controls.Add(this.cbDocumentType);
+            this.panel1.Controls.Add(this.lblBranch);
+            this.panel1.Controls.Add(this.lblDate);
+            this.panel1.Controls.Add(this.cbBranch);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -603,6 +615,30 @@
             this.btnSelectItem.UseVisualStyleBackColor = false;
             this.btnSelectItem.Click += new System.EventHandler(this.btnSelectItem_Click);
             // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(49, 85);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 28);
+            this.label2.TabIndex = 76;
+            this.label2.Text = "Código";
+            // 
+            // txtCode
+            // 
+            this.txtCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCode.Location = new System.Drawing.Point(149, 82);
+            this.txtCode.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCode.MaxLength = 150;
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(230, 34);
+            this.txtCode.TabIndex = 92;
+            // 
             // frmInsertUpdate_InventoryManagment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -611,7 +647,6 @@
             this.ClientSize = new System.Drawing.Size(1239, 860);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.panelBorder);
-            this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.lblInventoryManagment);
             this.Controls.Add(this.lblDetailLine);
             this.Controls.Add(this.lblItemName);
@@ -620,20 +655,13 @@
             this.Controls.Add(this.lblItem);
             this.Controls.Add(this.btnAddDetailLine);
             this.Controls.Add(this.lblSupplierName);
-            this.Controls.Add(this.cbState);
-            this.Controls.Add(this.lblState);
             this.Controls.Add(this.tbSupplierId);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.btnSelectSupplier);
-            this.Controls.Add(this.cbBranch);
-            this.Controls.Add(this.cbDocumentType);
             this.Controls.Add(this.tbTotalAmount);
             this.Controls.Add(this.tbSupplierName);
-            this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lblTotalAmount);
-            this.Controls.Add(this.lblDocumentType);
-            this.Controls.Add(this.lblBranch);
             this.Controls.Add(this.lblSupplierId);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -693,5 +721,7 @@
         private System.Windows.Forms.Button btnSelectItem;
         private System.Windows.Forms.TextBox txtUnitCost;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtCode;
+        private System.Windows.Forms.Label label2;
     }
 }

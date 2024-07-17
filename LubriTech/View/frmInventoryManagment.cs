@@ -60,7 +60,7 @@ namespace LubriTech.View
             SetColumnOrder();
 
            
-            dgvInventoryManagments.Columns["Id"].Visible = false;
+            dgvInventoryManagments.Columns["Id"].HeaderText = "Codigo";
             dgvInventoryManagments.Columns["TotalAmount"].Visible = false;
             dgvInventoryManagments.Columns["DocumentDate"].HeaderText = "Fecha";
             dgvInventoryManagments.Columns["Supplier"].HeaderText = "Proveedor";
