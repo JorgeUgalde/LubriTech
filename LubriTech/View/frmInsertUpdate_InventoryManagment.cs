@@ -87,6 +87,7 @@ namespace LubriTech.View
             SetupDetailLinesDGV();
             load_DetailLines(detailLines);
             checkState(inventoryManagment.State);
+
         }
 
         private void frmInsertUpdateInventoryManagment_Load(object sender, EventArgs e)
@@ -374,7 +375,6 @@ namespace LubriTech.View
 
                     existingInventoryManagment = inventoryManagment;
                     int insertedId = inventoryManagmentController.upsert(inventoryManagment);
-
                     if (insertedId != -1)
                     {
                         txtCode.Text = insertedId.ToString();
@@ -490,9 +490,10 @@ namespace LubriTech.View
                     }
                 }
             }
+
         }
 
-       
+
         private void tbItemCode_TextChanged(object sender, EventArgs e)
         {
             string code = tbItemCode.Text;
@@ -794,6 +795,8 @@ namespace LubriTech.View
             formattedDate = char.ToUpper(formattedDate[0]) + formattedDate.Substring(1);
 
             string PaginaHTML_Texto = Properties.Resources.Template2.ToString();
+
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@INVENTORYID", existingInventoryManagment.Id.ToString());
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@BRANCH", cbBranch.Text);
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DATE", formattedDate);
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TYPE", cbDocumentType.Text);
