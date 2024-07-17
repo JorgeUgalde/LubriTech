@@ -42,7 +42,7 @@ namespace LubriTech.View.Appointment_View
             else
             {
                 this.priceListId = 0;
-                dataGridView1.DataSource = new DataTable();
+                dgvPrices.DataSource = new DataTable();
                 loadPrices(new PriceList());
                 cbState.SelectedIndex = 1;
             }
@@ -52,13 +52,13 @@ namespace LubriTech.View.Appointment_View
         {
             txtDescription.Text = priceList.description;
             cbState.SelectedIndex = priceList.state;
-            dataGridView1.DataSource = new PriceList_Controller().getPricesByPriceListDT(priceList.id);
-            dataGridView1.Columns["Identificacion"].Visible = false;
-            dataGridView1.Columns["IdentificacionListaPrecios"].Visible = false;
-            dataGridView1.Columns["CodigoArticulo"].ReadOnly = true;
-            dataGridView1.Columns["CodigoArticulo"].HeaderText = "Código Artículo";
-            dataGridView1.Columns["PrecioVenta"].ReadOnly = true;
-            dataGridView1.Columns["PrecioVenta"].HeaderText = "Precio Venta";
+            dgvPrices.DataSource = new PriceList_Controller().getPricesByPriceListDT(priceList.id);
+            dgvPrices.Columns["Identificacion"].Visible = false;
+            dgvPrices.Columns["IdentificacionListaPrecios"].Visible = false;
+            dgvPrices.Columns["CodigoArticulo"].ReadOnly = true;
+            dgvPrices.Columns["CodigoArticulo"].HeaderText = "Código Artículo";
+            dgvPrices.Columns["PrecioVenta"].ReadOnly = true;
+            dgvPrices.Columns["PrecioVenta"].HeaderText = "Precio Venta";
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace LubriTech.View.Appointment_View
             {
                 if (e.RowIndex >= 0)
                 {
-                    DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                    DataGridViewRow row = dgvPrices.Rows[e.RowIndex];
                     DataRowView rowView = row.DataBoundItem as DataRowView;
 
                     if (rowView != null)
@@ -116,9 +116,9 @@ namespace LubriTech.View.Appointment_View
                             Item item = new Item_Controller().get(rowView["CodigoArticulo"].ToString());
                             if (item != null)
                             {
-                                //rowView["PrecioVenta"] = Convert.ToDouble(item.purchasePrice) * Convert.ToDouble(rowView["Factor"]);
+                                double price = new PriceList_Controller().ItemAverageCost(item.code);
+                                rowView["PrecioVenta"] = price + ( price  * Convert.ToDouble(rowView["Factor"]));
                             }
-
                             // Hacer el upsert solo si es una fila nueva y tiene todos los valores requeridos
                             bool success = new PriceList_Controller().upsertPrice(rowView.Row);
                             if (!success)
@@ -157,7 +157,7 @@ namespace LubriTech.View.Appointment_View
             };
 
             int id = new PriceList_Controller().upsertPriceList(priceList);
-            if (id > 0)
+            if (id >= 0)
             {
                 OnDataChanged(EventArgs.Empty);
                 MessageBox.Show("Cambios guardados exitosamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -171,10 +171,10 @@ namespace LubriTech.View.Appointment_View
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dataGridView1.Columns["CodigoArticulo"].Index)
+            if (e.ColumnIndex == dgvPrices.Columns["CodigoArticulo"].Index)
             {
                 // Forzar la validación de la fila para guardar los cambios
-                dataGridView1.NotifyCurrentCellDirty(true);
+                dgvPrices.NotifyCurrentCellDirty(true);
             }
         }
 
@@ -211,7 +211,7 @@ namespace LubriTech.View.Appointment_View
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             //show Activa for 1 and Inactiva for 0
-            if (dataGridView1.Columns[e.ColumnIndex].HeaderText == "Estado" && e.Value != null)
+            if (dgvPrices.Columns[e.ColumnIndex].HeaderText == "Estado" && e.Value != null)
             {
                 int originalValue;
                 // Try to convert the cell value to an integer
@@ -248,11 +248,22 @@ namespace LubriTech.View.Appointment_View
                 if (id > 0)
                 {
                     this.priceListId = id;
-                    new Item_Controller().insertItemsInPriceList(id, new Item_Controller().getAll());
+                    if (new Item_Controller().insertItemsInPriceList(id, new Item_Controller().getAll()))
+                    {
+                        DataChanged?.Invoke(this, EventArgs.Empty);
+                        loadPrices(new PriceList_Controller().getPriceList(id));
+                        dgvPrices.Refresh();
+                        MessageBox.Show("Acción realizada con exito.", "LubriTech Informa:", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al realizar la acción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
                 else
                 {
-                    MessageBox.Show("Error al guardar los cambios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error al realizar la acción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

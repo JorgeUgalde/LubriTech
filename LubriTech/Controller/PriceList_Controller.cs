@@ -55,5 +55,10 @@ namespace LubriTech.Controller
         {
             return new PriceList_Model().ItemAverageCost(itemCode);
         }
+
+        public bool updateSellPrice(string itemCode)
+        {
+            return new Prices_Model().updateSellPrice(itemCode);
+        }
     }
 }

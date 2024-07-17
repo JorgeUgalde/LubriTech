@@ -129,7 +129,7 @@ namespace LubriTech.Model.PricesList_Information
                 }
                 int id = Convert.ToInt32(cmd.ExecuteScalar());
                 conn.Close();
-                if(id > 0)
+                if(id >= 0)
                 {
                     return id;
                 }
@@ -137,8 +137,9 @@ namespace LubriTech.Model.PricesList_Information
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                return -1;
             }
-            return 0;
+            return -1;
         }
 
         //delete a price list by id
@@ -164,48 +165,43 @@ namespace LubriTech.Model.PricesList_Information
         {
             try
             {
-                PriceList generalList = getPriceList(0, "General");
-
-                if (generalList == null )
+                // add item to all price lists 
+                List<PriceList> priceLists = getPriceLists();
+                foreach (PriceList priceList in priceLists)
                 {
-                    return false;
-                }
-
-                //check if the item is already in the general list
-                Prices prices = generalList.prices.Find(x => x.Item.code == item.code);
-
-                if (fact < 0)
-                {
-                    if (prices != null)
+                    Prices prices = priceList.prices.Find(x => x.Item.code == item.code);
+                    double price = ItemAverageCost(item.code);
+                    string query = "INSERT INTO EstablecePrecio" +
+                       " (IdentificacionListaPrecios, CodigoArticulo, Factor,  PrecioVenta) " +
+                       "VALUES (@id, @code, @fact,  @price)";
+                    if (prices == null)
                     {
-                        fact = Convert.ToDouble(prices.factor);
-                    }           
-                }
+                        prices = new Prices();
+                        prices.Item = item;
+                        prices.factor = fact;
+                        prices.price = price + (fact * price);
+                        priceList.prices.Add(prices);
+                    }
+                    else
+                    {
+                        prices.price = price + (fact * price);
+                        query = "UPDATE EstablecePrecio SET Factor = @fact, PrecioVenta = @price " +
+                           "WHERE IdentificacionListaPrecios = @id AND CodigoArticulo = @code";
+                    }
 
-                string query = "INSERT INTO EstablecePrecio" +
-                    " (IdentificacionListaPrecios, CodigoArticulo, Factor,  PrecioVenta) " +
-                    "VALUES (@id, @code, @fact,  @price)";
-
-                if (prices != null)
-                {
-                    query = "UPDATE EstablecePrecio SET Factor = @fact, PrecioVenta = @price " +
-                        "WHERE IdentificacionListaPrecios = @id AND CodigoArticulo = @code";
-                }
-
-                
-                   
-                SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@id", generalList.id);
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@id", priceList.id);
                     cmd.Parameters.AddWithValue("@code", item.code);
-                    cmd.Parameters.AddWithValue("@fact", fact);                
-                    //cmd.Parameters.AddWithValue("@price", item.purchasePrice + (fact * item.purchasePrice));
+                    cmd.Parameters.AddWithValue("@fact", fact);
+                    cmd.Parameters.AddWithValue("@price",price + (fact * price));
 
-                if (conn.State != System.Data.ConnectionState.Open)
-                {
-                    conn.Open();
+                    if (conn.State != System.Data.ConnectionState.Open)
+                    {
+                        conn.Open();
+                    }
+                    cmd.ExecuteNonQuery();
+
                 }
-                cmd.ExecuteNonQuery();
-
                 return true;
             }
             catch (Exception e)

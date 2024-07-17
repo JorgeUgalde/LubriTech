@@ -38,9 +38,7 @@ namespace LubriTech.View
             tbStock.Text = new Item_Controller().getItemStock(item.code, branchId).ToString();
 
             tbStock.Enabled = false;
-            txtFact.Visible = false;
-            lblSellPrice.Visible = false;
-            lblPercentage.Visible = false;
+
 
             this.globalItem = item;
             txtCode.Enabled = false;
@@ -71,11 +69,6 @@ namespace LubriTech.View
 
         private void btnConfirm_Click_1(object sender, EventArgs e)
         {
-            if (txtFact.Visible == true && txtFact.Text.Trim() == "" )
-            {
-                MessageBox.Show("Debe llenar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
             
             if (txtCode.Text.Trim() == "" ||
                txtName.Text.Trim() == "" ||
@@ -106,18 +99,10 @@ namespace LubriTech.View
             globalItem.name = txtName.Text;
             globalItem.measureUnit = cbMeasureUnit.Text;
             globalItem.state = cbState.Text;
-            globalItem.state = cbState.Text;
             globalItem.itemType = (ItemType)cbType.SelectedItem;
 
-            Double fact = -1;
 
-            if (txtFact.Visible == true)
-            {
-                fact = Convert.ToDouble(txtFact.Text) / 100;
-            }
-
-
-            if (new Item_Controller().UpSert(globalItem, fact))
+                if (new Item_Controller().UpSert(globalItem, 1))
             {
                 MessageBox.Show("Producto registrado", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 OnDataChanged(EventArgs.Empty);

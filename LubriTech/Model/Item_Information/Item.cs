@@ -57,7 +57,6 @@ namespace LubriTech.Model.Item_Information
         /// <param name="sellPrice">El precio de venta del artículo.</param>
         /// <param name="measureUnit">La unidad de medida del artículo.</param>
         /// <param name="state">El estado del artículo (activo o inactivo).</param>
-        /// <param name="purchasePrice">El precio de compra del artículo.</param>
         /// <param name="type">El tipo del artículo (producto o servicio).</param>
         /// param name="recommendedServiceInterval">El recorrido recomendado para el artículo.</param>
         public Item(string code, string name, string measureUnit, string state, double recommendedServiceInterval, ItemType itemType)

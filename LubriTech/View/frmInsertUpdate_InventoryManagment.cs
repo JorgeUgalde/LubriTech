@@ -20,6 +20,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.AxHost;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using LubriTech.Model.PricesList_Information;
 
 namespace LubriTech.View
 {
@@ -187,7 +188,7 @@ namespace LubriTech.View
                 string quantityUpdated = updateItemsQuantity();
 
                 if (insertedId != -1 && quantityUpdated.Equals(""))
-                {
+                    {
                     if (selectedSupplier != null)
                     {
                         tbSupplierId.Text = selectedSupplier.id;
@@ -670,7 +671,7 @@ namespace LubriTech.View
                     {
                         newQuantity = ((new Item_Controller().getItemStock(detailLine.Item.code, Convert.ToInt32(cbBranch.SelectedValue.ToString()))) + detailLine.Quantity);
                         if (!new Item_Controller().updateQuantity(detailLine.Item.code, Convert.ToInt32(cbBranch.SelectedValue.ToString()), newQuantity))
-                        {
+                        {                            
                             return "No se pudo actualizar la cantidad del artículo: " + detailLine.Item.name + " - Código: " + detailLine.Item.code;
                         }
                     }
@@ -689,6 +690,7 @@ namespace LubriTech.View
                         {
                             return "No se pudo actualizar la cantidad del artículo: " + detailLine.Item.name + " - Código: " + detailLine.Item.code;
                         }
+                        new Prices_Model().updateSellPrice(detailLine.Item.code);
                     }
                     return "";
                 }

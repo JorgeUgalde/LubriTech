@@ -75,8 +75,8 @@ namespace LubriTech.Model.PricesList_Information
                     price.id = reader.GetInt32(reader.GetOrdinal("Identificacion"));
                     price.priceList = reader.GetInt32(reader.GetOrdinal("IdentificacionListaPrecios"));
                     price.Item = new Item_Model().getItem(reader.GetString(reader.GetOrdinal("CodigoArticulo")));
-                    price.factor = reader.GetDouble(reader.GetOrdinal("Factor"));
-                    price.price = reader.GetDouble(reader.GetOrdinal("PrecioVenta"));
+                    price.factor = Convert.ToDouble(reader["Factor"]);
+                    price.price = Convert.ToDouble(reader["PrecioVenta"]); ;
                     prices.Add(price);
                 }
                 conn.Close();
@@ -142,6 +142,44 @@ namespace LubriTech.Model.PricesList_Information
                 Console.WriteLine(e.Message);
             }
             return false;
+        }
+
+        public bool updateSellPrice(string itemID)
+        {
+            // only refresh all the prices in the price list table
+            try
+            {
+                // first get all the pricelist 
+
+                List<PriceList> priceLists = new PriceList_Model().getPriceLists();
+                foreach (PriceList priceList in priceLists)
+                {
+                    List<Prices> prices = getPricesByPriceList(priceList.id);
+                    double cost = new PriceList_Model().ItemAverageCost(new Item_Model().getItem(itemID).code);
+                    foreach (Prices price in prices)
+                    {
+                        if (price.Item.code == itemID)
+                        {
+                            price.price = cost + (cost * price.factor);
+                            string query = "UPDATE EstablecePrecio SET PrecioVenta = @price WHERE Identificacion = @id";
+                            SqlCommand cmd = new SqlCommand(query, conn);
+                            cmd.Parameters.AddWithValue("@price", price.price);
+                            cmd.Parameters.AddWithValue("@id", price.id);
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                            return true;
+                        }
+
+                    }
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
         }
     }
 }
