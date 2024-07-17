@@ -38,6 +38,11 @@ namespace LubriTech.Model.InventoryManagment_Information
         public double Amount { get; set; }
 
         /// <summary>
+        /// Unit cost of the item in the detail line.
+        /// </summary>
+        public double UnitCost { get; set; }
+
+        /// <summary>
         /// Default constructor from the DetailLine class.
         /// </summary>
         public DetailLine() { }
@@ -49,12 +54,13 @@ namespace LubriTech.Model.InventoryManagment_Information
         /// <param name="inventoryManagment">The inventory managment document related to the detail line.</param>
         /// <param name="quantity">The quantity of items in the detail line.</param>
         /// <param name="totalAmount">The total amount of the detail line.</param>
-        public DetailLine(Item item, InventoryManagment inventoryManagment, double quantity, double totalAmount)
+        public DetailLine(Item item, InventoryManagment inventoryManagment, double quantity, double totalAmount, double unitCost)
         {
             this.Item = item;
             this.InventoryManagment = inventoryManagment;
             this.Quantity = quantity;
             this.Amount = totalAmount;
+            this.UnitCost = unitCost;
         }
 
         /// <summary>

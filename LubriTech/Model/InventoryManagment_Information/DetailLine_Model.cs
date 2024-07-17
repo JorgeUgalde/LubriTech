@@ -43,7 +43,8 @@ namespace LubriTech.Model.InventoryManagment_Information
                     detailLines.Add(new DetailLine((new Item_Controller().get((dr["CodigoArticulo"].ToString()))),
                                                 (new InventoryManagment_Controller().getInventoryManagment(Convert.ToInt32(dr["IdentificacionGestionInventario"]))),
                                                 Convert.ToDouble(dr["Cantidad"]),
-                                                Convert.ToDouble(dr["Monto"])));
+                                                Convert.ToDouble(dr["Monto"]),
+                                                Convert.ToDouble(dr["CostoUnitario"])));
                 }
                 return detailLines;
             }
@@ -133,7 +134,8 @@ namespace LubriTech.Model.InventoryManagment_Information
                 DetailLine detailLine = new DetailLine((new Item_Controller().get((dr["CodigoArticulo"].ToString()))),
                                                 (new InventoryManagment_Controller().getInventoryManagment(Convert.ToInt32(dr["IdentificacionGestionInventario"]))),
                                                 Convert.ToDouble(dr["Cantidad"]),
-                                                Convert.ToDouble(dr["Monto"]));
+                                                Convert.ToDouble(dr["Monto"]),
+                                                Convert.ToDouble(dr["CostoUnitario"]));
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -204,12 +206,13 @@ namespace LubriTech.Model.InventoryManagment_Information
         {
             try
             {
-                string updateQuery = "UPDATE LineaDetalle SET Cantidad = @quantity, Monto = @totalAmount WHERE CodigoArticulo = @itemCode AND IdentificacionGestionInventario = @inventoryManagmentId";
+                string updateQuery = "UPDATE LineaDetalle SET Cantidad = @quantity, Monto = @totalAmount, CostoUnitario =@cu WHERE CodigoArticulo = @itemCode AND IdentificacionGestionInventario = @inventoryManagmentId";
                 SqlCommand cmd = new SqlCommand(updateQuery, conn);
                 cmd.Parameters.AddWithValue("@itemCode", detailLine.getItemCode());
                 cmd.Parameters.AddWithValue("@inventoryManagmentId", detailLine.getInventoryManagmentId());
                 cmd.Parameters.AddWithValue("@quantity", detailLine.Quantity);
                 cmd.Parameters.AddWithValue("@totalAmount", detailLine.Amount);
+                cmd.Parameters.AddWithValue("@cu", detailLine.UnitCost);
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -242,12 +245,13 @@ namespace LubriTech.Model.InventoryManagment_Information
         {
             try
             {
-                string query = "INSERT INTO LineaDetalle (CodigoArticulo, IdentificacionGestionInventario, Cantidad, Monto) VALUES (@itemCode, @inventoryManagmentId, @quantity, @totalAmount)";
+                string query = "INSERT INTO LineaDetalle (CodigoArticulo, IdentificacionGestionInventario, Cantidad, Monto, CostoUnitario) VALUES (@itemCode, @inventoryManagmentId, @quantity, @totalAmount, @cu)";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@itemCode", detailLine.getItemCode());
                 cmd.Parameters.AddWithValue("@inventoryManagmentId", detailLine.getInventoryManagmentId());
                 cmd.Parameters.AddWithValue("@quantity", detailLine.Quantity);
                 cmd.Parameters.AddWithValue("@totalAmount", detailLine.Amount);
+                cmd.Parameters.AddWithValue("@cu", detailLine.UnitCost);
 
 
                 if (conn.State != System.Data.ConnectionState.Open)
@@ -301,7 +305,8 @@ namespace LubriTech.Model.InventoryManagment_Information
                     detailLines.Add(new DetailLine((new Item_Controller().get(dr["CodigoArticulo"].ToString())),
                                                 (new InventoryManagment_Controller().getInventoryManagment(Convert.ToInt32(dr["IdentificacionGestionInventario"]))),
                                                 Convert.ToDouble(dr["Cantidad"]),
-                                                Convert.ToDouble(dr["Monto"])));
+                                                Convert.ToDouble(dr["Monto"]),
+                                                Convert.ToDouble(dr["CostoUnitario"])));
                 }
                 return detailLines;
             }

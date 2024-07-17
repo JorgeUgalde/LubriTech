@@ -19,6 +19,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using static System.Windows.Forms.AxHost;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace LubriTech.View
 {
@@ -41,6 +42,7 @@ namespace LubriTech.View
             detailLines = new List<DetailLine>();
             InitializeComponent();
             SetupDetailLinesDGV();
+            txtCode.Enabled = false;
             setComboBox();
             tbSupplierName.Enabled = false;
             tbTotalAmount.Enabled = false;
@@ -53,11 +55,13 @@ namespace LubriTech.View
 
         public frmInsertUpdate_InventoryManagment(InventoryManagment inventoryManagment)
         {
+            InitializeComponent();
+            txtCode.Enabled = false;
+            txtCode.Text = inventoryManagment.Id.ToString();
             suppliers = new List<Supplier>();
             branches = new Branch_Controller().getAll();
             detailLines = new DetailLine_Controller().getDetailLines(inventoryManagment.Id);
             existingInventoryManagment = inventoryManagment;
-            InitializeComponent();
             setComboBox();
 
             tbSupplierName.Enabled = false;
@@ -97,19 +101,10 @@ namespace LubriTech.View
 
         private void load_DetailLines(List<DetailLine> filteredList)
         {
-            if (filteredList != null)
-            {
-                if (filteredList.Count == 0)
-                {
-                    dgvDetailLines.DataSource = detailLines;
 
-                }
-                else
-                {
-                    dgvDetailLines.DataSource = filteredList;
-                }
-            }
+            dgvDetailLines.DataSource = filteredList;
             dgvDetailLines.Columns["InventoryManagment"].Visible = false;
+            dgvDetailLines.Columns["UnitCost"].HeaderText = "Costo unitario";
             dgvDetailLines.Columns["Item"].HeaderText = "Artículo";
             dgvDetailLines.Columns["Quantity"].HeaderText = "Cantidad";
             dgvDetailLines.Columns["Amount"].HeaderText = "Monto";
@@ -122,7 +117,8 @@ namespace LubriTech.View
             dgvDetailLines.Columns["Item"].DisplayIndex = 0;
             dgvDetailLines.Columns["Quantity"].DisplayIndex = 1;
             dgvDetailLines.Columns["Amount"].DisplayIndex = 2;
-            dgvDetailLines.Columns["deleteImageColumn"].DisplayIndex = 3;
+            dgvDetailLines.Columns["UnitCost"].DisplayIndex = 3;
+            dgvDetailLines.Columns["deleteImageColumn"].DisplayIndex = 4;
         }
 
         private void checkState(string state)
@@ -230,14 +226,50 @@ namespace LubriTech.View
         private void tbNumeric_KeyPress(object sender, KeyPressEventArgs e)
         {
             TextBox textBox = sender as TextBox;
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != ',')
+
+            if (e.KeyChar != 8)
             {
-                e.Handled = true;
+
+
+                string input = textBox.Text.Insert(textBox.SelectionStart, e.KeyChar.ToString());
+                Regex regex = new Regex(@"^\d*(\,\d{0,2})?$");
+                if (char.IsControl(e.KeyChar))
+                {
+                    return;
+                }
+
+                if (!regex.IsMatch(input))
+                {
+                    e.Handled = true;
+                    return;
+                }
             }
-            if (e.KeyChar == ',' && textBox.Text.Contains(","))
+
+            double quantity = 0;
+            double unitCost = 0;
+
+            if (double.TryParse(txtUnitCost.Text, out unitCost))
             {
-                e.Handled = true;
+                string text = textBox.Text;
+
+                if (e.KeyChar == 8) // Backspace
+                {
+                    text = text.Length > 0 ? text.Remove(text.Length - 1) : "0";
+                    text = text.Length > 0 ? text : "0";
+                }
+                else
+                {
+                    text += e.KeyChar;
+                }
+
+                quantity = Convert.ToDouble(text);
+                {
+                    tbAmount.Text = (quantity * unitCost).ToString();
+                }
             }
+
+
+          
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -345,15 +377,20 @@ namespace LubriTech.View
 
                     if (insertedId != -1)
                     {
+                        txtCode.Text = insertedId.ToString();
                         clickedAddDetail = true;
                         existingInventoryManagment.Id = insertedId;
                         if (tbQuantity.Text.Trim() == "")
                         {
                             MessageBox.Show("Por favor llene todos los campos");
                         }
-                        else if (tbQuantity.Text.Trim() == "0")
+                        else if (tbQuantity.Text.Trim() == "0" )
                         {
                             MessageBox.Show("La cantidad de artículos debe ser mayor a 0");
+                        }
+                        else if (txtUnitCost.Text.Trim() == "0" || txtUnitCost.Text.Trim() == "")
+                        {
+                            MessageBox.Show("El costo unitario debe ser mayor a 0");
                         }
                         else if (tbItemName.Text.Trim() == "")
                         {
@@ -372,6 +409,7 @@ namespace LubriTech.View
                             detailLine.InventoryManagment = existingInventoryManagment;
                             detailLine.Item = selectedItem;
                             detailLine.Quantity = Convert.ToDouble(tbQuantity.Text.Trim());
+                            detailLine.UnitCost = Convert.ToDouble(txtUnitCost.Text.Trim());
                             detailLine.Amount = Convert.ToDouble(tbAmount.Text.Trim());
 
                             if (detailLineController.upsert(detailLine))
@@ -381,6 +419,7 @@ namespace LubriTech.View
                                 tbItemCode.Text = "";
                                 tbItemName.Text = "";
                                 tbQuantity.Text = "";
+                                txtUnitCost.Text = "";
                                 tbAmount.Text = "";
                             }
                             else
@@ -411,6 +450,10 @@ namespace LubriTech.View
                 {
                     MessageBox.Show("La cantidad de artículos debe ser mayor a 0");
                 }
+                else if (txtUnitCost.Text.Trim() == "0" || txtUnitCost.Text.Trim() == "")
+                {
+                    MessageBox.Show("El costo unitario debe ser mayor a 0");
+                }
                 else if (tbItemName.Text.Trim() == "")
                 {
                     MessageBox.Show("Debe seleccionar un artículo");
@@ -428,6 +471,7 @@ namespace LubriTech.View
                     detailLine.InventoryManagment = existingInventoryManagment;
                     detailLine.Item = selectedItem;
                     detailLine.Quantity = Convert.ToDouble(tbQuantity.Text.Trim());
+                    detailLine.UnitCost = Convert.ToDouble(txtUnitCost.Text.Trim());
                     detailLine.Amount = Convert.ToDouble(tbAmount.Text.Trim());
 
                     if (detailLineController.upsert(detailLine))
@@ -437,6 +481,7 @@ namespace LubriTech.View
                         tbItemCode.Text = "";
                         tbItemName.Text = "";
                         tbQuantity.Text = "";
+                        txtUnitCost.Text = "";
                         tbAmount.Text = "";
                     }
                     else
@@ -447,29 +492,7 @@ namespace LubriTech.View
             }
         }
 
-        private void tbQuantity_TextChanged(object sender, EventArgs e)
-        {
-            double quantity;
-            double purchasePrice;
-
-            bool isQuantityValid = double.TryParse(tbQuantity.Text.Trim(), out quantity);
-
-            if (!string.IsNullOrEmpty(tbQuantity.Text.Trim()) &&
-                !string.IsNullOrEmpty(tbItemName.Text.Trim()) &&
-                isQuantityValid)
-            {
-                tbItemCode.Text = selectedItem.code;
-                purchasePrice = new Item_Controller().get(tbItemCode.Text.Trim()).purchasePrice;
-                double calc = quantity * purchasePrice;
-
-                tbAmount.Text = calc.ToString();
-            }
-            else
-            {
-                tbAmount.Text = "";
-            }
-        }
-
+       
         private void tbItemCode_TextChanged(object sender, EventArgs e)
         {
             string code = tbItemCode.Text;
@@ -554,6 +577,7 @@ namespace LubriTech.View
                 tbItemCode.Text = selectedDetailLine.Item.code;
                 tbItemName.Text = selectedDetailLine.Item.name;
                 tbQuantity.Text = selectedDetailLine.Quantity.ToString();
+                txtUnitCost.Text = selectedDetailLine.UnitCost.ToString();
                 tbAmount.Text = selectedDetailLine.Amount.ToString();
 
 
@@ -570,6 +594,7 @@ namespace LubriTech.View
                             tbItemCode.Text = "";
                             tbItemName.Text = "";
                             tbQuantity.Text = "";
+                            txtUnitCost.Text = "";
                             tbAmount.Text = "";
                         }
                         else
@@ -612,7 +637,7 @@ namespace LubriTech.View
             DataGridViewImageColumn deleteImageColumn = new DataGridViewImageColumn();
             deleteImageColumn.Name = "deleteImageColumn";
             deleteImageColumn.HeaderText = "";
-            deleteImageColumn.Image = Properties.Resources.remove;
+            deleteImageColumn.Image = Properties.Resources.DeleteIco1;
             //set the color of the background of the image
             deleteImageColumn.DefaultCellStyle.BackColor = Color.FromArgb(4, 55, 111);
             deleteImageColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -873,5 +898,60 @@ namespace LubriTech.View
                 generatePdf();
             }
         }
+
+        private void txtUnitCost_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            TextBox textBox = sender as TextBox;
+            if (e.KeyChar != 8)
+            {
+
+                string input = textBox.Text.Insert(textBox.SelectionStart, e.KeyChar.ToString());
+
+                Regex regex = new Regex(@"^\d*(\,\d{0,2})?$");
+
+                if (char.IsControl(e.KeyChar))
+                {
+                    return;
+                }
+
+                if (!regex.IsMatch(input))
+                {
+                    e.Handled = true;
+                    return;
+                }
+            }
+
+            double quantity = 0;
+            double unitCost = 0;
+
+            if (double.TryParse(tbQuantity.Text.Trim(), out quantity))
+            {
+                string text = textBox.Text;
+
+                if (e.KeyChar == 8) // Backspace
+                {
+                    text = text.Length > 0 ? text.Remove(text.Length - 1) : "0";
+                    text = text.Length > 0 ? text : "0";
+                }
+                else
+                {
+                    text += e.KeyChar;
+                }
+
+                unitCost = Convert.ToDouble(text);
+                {
+                    tbAmount.Text = (quantity * unitCost).ToString();
+                }
+            }
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+
     }
 }

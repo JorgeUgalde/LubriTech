@@ -1,6 +1,7 @@
 ﻿using LubriTech.Controller;
 using LubriTech.Model.Branch_Information;
 using LubriTech.Model.Client_Information;
+using LubriTech.Model.Vehicle_Information;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -129,6 +130,11 @@ namespace LubriTech.Model.Appointment_Information
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@id", appointment.AppointmentID);
                 cmd.Parameters.AddWithValue("@client", appointment.client.Id);
+                
+                if (appointment.Vehicle == null)
+                {
+                    appointment.Vehicle = new Vehicle();
+                }
                 cmd.Parameters.AddWithValue("@plate", (object) appointment.Vehicle.LicensePlate ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@date", appointment.AppointmentDate);
                 cmd.Parameters.AddWithValue("@state", appointment.State == "Activo"? 1 : 0);

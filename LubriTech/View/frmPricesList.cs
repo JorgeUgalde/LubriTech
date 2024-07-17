@@ -64,7 +64,7 @@ namespace LubriTech.View
             dgvPricesList.Columns["id"].HeaderText = "Identificación";
             dgvPricesList.Columns["description"].HeaderText = "Descripción";
             dgvPricesList.Columns["state"].HeaderText = "Estado";
-            //dgvPricesList.Columns["prices"].Visible = false;
+            dgvPricesList.Columns["state"].DefaultCellStyle.Format = "Activo;Inactivo";
 
             SetColumnOrder();
         }
