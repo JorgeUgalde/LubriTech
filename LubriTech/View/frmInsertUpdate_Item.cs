@@ -49,7 +49,6 @@ namespace LubriTech.View
             txtName.Text = item.name;
             cbMeasureUnit.Text = item.measureUnit.ToString();
             cbState.Text = item.state;
-            tbPurchasePrice.Text = item.purchasePrice.ToString();
             cbType.Text = item.itemType.ToString();
             txtRecommended.Text = item.recommendedServiceInterval.ToString();
 
@@ -82,7 +81,6 @@ namespace LubriTech.View
                txtName.Text.Trim() == "" ||
                cbMeasureUnit.Text.Trim() == "" ||
                cbState.Text.Trim() == "" ||
-               tbPurchasePrice.Text.Trim() == "" ||
                cbType.Text.Trim() == "")
 
             {
@@ -108,7 +106,6 @@ namespace LubriTech.View
             globalItem.name = txtName.Text;
             globalItem.measureUnit = cbMeasureUnit.Text;
             globalItem.state = cbState.Text;
-            globalItem.purchasePrice = Convert.ToDouble(tbPurchasePrice.Text);
             globalItem.state = cbState.Text;
             globalItem.itemType = (ItemType)cbType.SelectedItem;
 
@@ -145,13 +142,6 @@ namespace LubriTech.View
         private void tbStock_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
-        }
-
-        private void tbPurchasePrice_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // only numbers and backspace
-            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8 && e.KeyChar != 46;
-
         }
 
         private void txtRecommended_KeyPress(object sender, KeyPressEventArgs e)

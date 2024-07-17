@@ -118,7 +118,6 @@ namespace LubriTech.View
 
             dgvItems.Columns["code"].HeaderText = "Código";
             dgvItems.Columns["name"].HeaderText = "Nombre";
-            dgvItems.Columns["purchasePrice"].HeaderText = "Precio Compra";
             dgvItems.Columns["measureUnit"].HeaderText = "Unidad Medida";
             dgvItems.Columns["state"].HeaderText = "Estado";
             dgvItems.Columns["itemType"].HeaderText = "Tipo";
@@ -200,8 +199,7 @@ namespace LubriTech.View
             dgvItems.Columns["name"].DisplayIndex = 1;
             dgvItems.Columns["measureUnit"].DisplayIndex = 2;
             dgvItems.Columns["itemType"].DisplayIndex = 3;
-            dgvItems.Columns["purchasePrice"].DisplayIndex = 4;
-            dgvItems.Columns["state"].DisplayIndex = 5;
+            dgvItems.Columns["state"].DisplayIndex = 4;
 
         }
 

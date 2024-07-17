@@ -41,8 +41,10 @@ namespace LubriTech.View.Appointment_View
             }
             else
             {
+                this.priceListId = 0;
                 dataGridView1.DataSource = new DataTable();
                 loadPrices(new PriceList());
+                cbState.SelectedIndex = 1;
             }
         }
 
@@ -114,7 +116,7 @@ namespace LubriTech.View.Appointment_View
                             Item item = new Item_Controller().get(rowView["CodigoArticulo"].ToString());
                             if (item != null)
                             {
-                                rowView["PrecioVenta"] = Convert.ToDouble(item.purchasePrice) * Convert.ToDouble(rowView["Factor"]);
+                                //rowView["PrecioVenta"] = Convert.ToDouble(item.purchasePrice) * Convert.ToDouble(rowView["Factor"]);
                             }
 
                             // Hacer el upsert solo si es una fila nueva y tiene todos los valores requeridos
@@ -154,8 +156,8 @@ namespace LubriTech.View.Appointment_View
                 state = ((KeyValuePair<int, string>)cbState.SelectedItem).Key
             };
 
-            bool success = new PriceList_Controller().upsertPriceList(priceList);
-            if (success)
+            int id = new PriceList_Controller().upsertPriceList(priceList);
+            if (id > 0)
             {
                 OnDataChanged(EventArgs.Empty);
                 MessageBox.Show("Cambios guardados exitosamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -227,6 +229,30 @@ namespace LubriTech.View.Appointment_View
                         default:
                             break;
                     }
+                }
+            }
+        }
+
+        private void txtDescription_Leave(object sender, EventArgs e)
+        {
+            if(!txtDescription.Text.ToString().Equals("") && priceListId == 0)
+            {
+                PriceList priceList = new PriceList()
+                {
+                    id = priceListId ?? 0,
+                    description = txtDescription.Text.ToString(),
+                    state = ((KeyValuePair<int, string>)cbState.SelectedItem).Key
+                };
+
+                int id = new PriceList_Controller().upsertPriceList(priceList);
+                if (id > 0)
+                {
+                    this.priceListId = id;
+                    new Item_Controller().insertItemsInPriceList(id, new Item_Controller().getAll());
+                }
+                else
+                {
+                    MessageBox.Show("Error al guardar los cambios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

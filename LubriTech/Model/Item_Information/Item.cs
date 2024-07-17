@@ -33,11 +33,6 @@ namespace LubriTech.Model.Item_Information
         public string state { set; get; }
 
         /// <summary>
-        /// Precio de compra del artículo, es decir, el monto por el cuál se compra el artículo.
-        /// </summary>
-        public double purchasePrice { set; get; }
-
-        /// <summary>
         /// Recorrido recomendado para el artículo.
         /// </summary>
         public double recommendedServiceInterval { set; get; }
@@ -65,13 +60,12 @@ namespace LubriTech.Model.Item_Information
         /// <param name="purchasePrice">El precio de compra del artículo.</param>
         /// <param name="type">El tipo del artículo (producto o servicio).</param>
         /// param name="recommendedServiceInterval">El recorrido recomendado para el artículo.</param>
-        public Item(string code, string name, string measureUnit, string state,  double purchasePrice, double recommendedServiceInterval, ItemType itemType)
+        public Item(string code, string name, string measureUnit, string state, double recommendedServiceInterval, ItemType itemType)
         {
             this.code = code;
             this.name = name;
             this.measureUnit = measureUnit;
             this.state = state;
-            this.purchasePrice = purchasePrice;
             this.itemType = itemType;
             this.recommendedServiceInterval = recommendedServiceInterval;
         }

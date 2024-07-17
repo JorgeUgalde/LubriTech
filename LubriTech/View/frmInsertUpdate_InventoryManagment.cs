@@ -115,9 +115,9 @@ namespace LubriTech.View
         private void SetColumnOrder()
         {
             dgvDetailLines.Columns["Item"].DisplayIndex = 0;
-            dgvDetailLines.Columns["Quantity"].DisplayIndex = 1;
-            dgvDetailLines.Columns["Amount"].DisplayIndex = 2;
-            dgvDetailLines.Columns["UnitCost"].DisplayIndex = 3;
+            dgvDetailLines.Columns["Quantity"].DisplayIndex = 2;
+            dgvDetailLines.Columns["Amount"].DisplayIndex = 3;
+            dgvDetailLines.Columns["UnitCost"].DisplayIndex = 1;
             dgvDetailLines.Columns["deleteImageColumn"].DisplayIndex = 4;
         }
 
@@ -244,6 +244,8 @@ namespace LubriTech.View
                     return;
                 }
             }
+
+            if (e.KeyChar == ',' && textBox.Text.Length == 0) return;
 
             double quantity = 0;
             double unitCost = 0;
@@ -921,6 +923,8 @@ namespace LubriTech.View
                     return;
                 }
             }
+
+            if (e.KeyChar == ',' && textBox.Text.Length == 0) return;
 
             double quantity = 0;
             double unitCost = 0;

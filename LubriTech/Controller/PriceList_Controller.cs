@@ -21,7 +21,7 @@ namespace LubriTech.Controller
             return new PriceList_Model().getPriceList(id, "");
         }
 
-        public bool upsertPriceList(PriceList priceList)
+        public int upsertPriceList(PriceList priceList)
         {
             return new PriceList_Model().upsertPriceList(priceList);
         }
@@ -49,6 +49,11 @@ namespace LubriTech.Controller
         public double getPriceByItem(string itemCode, int priceListId)
         {
             return new Prices_Model().getPriceByItem(itemCode, priceListId);
+        }
+
+        public double ItemAverageCost(string itemCode)
+        {
+            return new PriceList_Model().ItemAverageCost(itemCode);
         }
     }
 }

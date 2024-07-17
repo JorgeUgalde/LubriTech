@@ -1,4 +1,6 @@
-﻿using LubriTech.Model.Item_Information;
+﻿using LubriTech.Controller;
+using LubriTech.Model.InventoryManagment_Information;
+using LubriTech.Model.Item_Information;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,6 +8,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace LubriTech.Model.PricesList_Information
 {
@@ -102,7 +105,7 @@ namespace LubriTech.Model.PricesList_Information
         }
 
         //upsert a price list
-        public bool upsertPriceList(PriceList priceList)
+        public int upsertPriceList(PriceList priceList)
         {
             try
             {
@@ -119,19 +122,23 @@ namespace LubriTech.Model.PricesList_Information
                 }
                 else
                 {
-                    cmd = new SqlCommand("INSERT INTO ListaPrecios(Descripcion, Estado) VALUES (@description, @state)", conn);
+                    cmd = new SqlCommand("INSERT INTO ListaPrecios(Descripcion, Estado) VALUES (@description, @state);" +
+                        "SELECT SCOPE_IDENTITY();", conn);
                     cmd.Parameters.AddWithValue("@description", priceList.description);
                     cmd.Parameters.AddWithValue("@state", priceList.state);
                 }
-                cmd.ExecuteNonQuery();
+                int id = Convert.ToInt32(cmd.ExecuteScalar());
                 conn.Close();
-                return true;
+                if(id > 0)
+                {
+                    return id;
+                }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
-            return false;
+            return 0;
         }
 
         //delete a price list by id
@@ -191,7 +198,7 @@ namespace LubriTech.Model.PricesList_Information
                     cmd.Parameters.AddWithValue("@id", generalList.id);
                     cmd.Parameters.AddWithValue("@code", item.code);
                     cmd.Parameters.AddWithValue("@fact", fact);                
-                    cmd.Parameters.AddWithValue("@price", item.purchasePrice + (fact * item.purchasePrice));
+                    //cmd.Parameters.AddWithValue("@price", item.purchasePrice + (fact * item.purchasePrice));
 
                 if (conn.State != System.Data.ConnectionState.Open)
                 {
@@ -213,6 +220,58 @@ namespace LubriTech.Model.PricesList_Information
                     conn.Close();
                 }
             }
+        }
+
+        public double ItemAverageCost(string itemCode)
+        {
+            string query = "SELECT Monto FROM LineaDetalle WHERE CodigoArticulo = @ItemCode";
+
+            try
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@ItemCode", itemCode);
+                DataTable dataTable = new DataTable();
+                SqlDataAdapter adp = new SqlDataAdapter();
+                adp.SelectCommand = cmd;
+                adp.Fill(dataTable);
+
+                if(dataTable.Rows.Count == 0)
+                {
+                    return 0;
+                }
+
+                Double amount = 0;
+
+                foreach (DataRow dr in dataTable.Rows)
+                {
+                    amount += Convert.ToDouble(dr["Monto"]);
+                }
+                double inventoryQuantity = new Item_Controller().getItemStock(itemCode, frmLogin.branch);
+                if(inventoryQuantity == 0)
+                {
+                    return 0;
+                }
+                double sellingPrice = amount / inventoryQuantity;
+
+                return sellingPrice;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                if (conn.State == System.Data.ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+            return 0;
         }
 
 

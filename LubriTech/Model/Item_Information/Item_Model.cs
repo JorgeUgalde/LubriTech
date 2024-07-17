@@ -50,7 +50,6 @@ namespace LubriTech.Model.items_Information
                         dr["Nombre"].ToString(),
                         dr["UnidadMedida"].ToString(),
                         Convert.ToInt32(dr["Estado"]) == 1 ? "Activo" : "Inactivo",
-                        Convert.ToDouble(dr["PrecioCompra"]),
                         (dr["RecorridoRecomendado"] != DBNull.Value ? Convert.ToDouble(dr["RecorridoRecomendado"]) : 0),
                         itemTypes.ContainsKey(idType) ? itemTypes[idType] : null
                         )) ;
@@ -176,7 +175,6 @@ namespace LubriTech.Model.items_Information
                         dr["Nombre"].ToString(),
                         dr["UnidadMedida"].ToString(),
                         Convert.ToInt32(dr["Estado"]) == 1 ? "Activo" : "Inactivo",
-                        Convert.ToDouble(dr["PrecioCompra"]),
                         (dr["RecorridoRecomendado"] != DBNull.Value ? Convert.ToDouble(dr["RecorridoRecomendado"]) : 0),
                         new ItemType_Model().getItemType(Convert.ToInt32(dr["IdentificacionTipoArticulo"]))
                         );
@@ -219,13 +217,13 @@ namespace LubriTech.Model.items_Information
             try
             {
                 string query = "update Articulo set  Nombre = @name, UnidadMedida = @measureUnit, Estado = @state, " +
-                    " PrecioCompra = @purchasePrice, IdentificacionTipoArticulo = @type, RecorridoRecomendado = @recommended " +
+                    " IdentificacionTipoArticulo = @type, RecorridoRecomendado = @recommended " +
                     "where Codigo = @code";
                 if (getItem(items.code) == null)
                 {
                     query = "Insert into Articulo " +
-                        "(Codigo, Nombre, UnidadMedida, Estado, PrecioCompra, RecorridoRecomendado, IdentificacionTipoArticulo)" +
-                        " values (@code, @name, @measureUnit, @state, @purchasePrice, @recommended, @type)";
+                        "(Codigo, Nombre, UnidadMedida, Estado, RecorridoRecomendado, IdentificacionTipoArticulo)" +
+                        " values (@code, @name, @measureUnit, @state, @recommended, @type)";
 
                 }
                 SqlCommand cmd = new SqlCommand(query, conn);
@@ -234,7 +232,6 @@ namespace LubriTech.Model.items_Information
                 cmd.Parameters.AddWithValue("@name", items.name);
                 cmd.Parameters.AddWithValue("@measureUnit", items.measureUnit);
                 cmd.Parameters.AddWithValue("@state", (items.state.Equals("Activo")) ? 1 : 0  );
-                cmd.Parameters.AddWithValue("@purchasePrice", items.purchasePrice);
 
                 if(items.recommendedServiceInterval == 0)
                 {
@@ -300,6 +297,50 @@ namespace LubriTech.Model.items_Information
             catch (Exception ex)
             {
                 return false;
+            }
+        }
+
+        //insert all items to a price list
+        public bool insertItemsInPriceList(int priceListId, List<Item> items)
+        {
+            try
+            {
+                foreach (Item item in items)
+                {
+                    string query = "MERGE INTO EstablecePrecio AS target\r\n" +
+                                    "USING (SELECT @priceListId AS IdentificacionListaPrecios, @itemCode AS CodigoArticulo, @factor AS Factor, @price AS PrecioVenta) AS source\r\n" +
+                                    "ON (target.CodigoArticulo = source.CodigoArticulo AND target.IdentificacionListaPrecios = source.IdentificacionListaPrecios)\r\n" +
+                                    "WHEN MATCHED THEN \r\n" +
+                                    "    UPDATE SET PrecioVenta = source.PrecioVenta\r\n" +
+                                    "WHEN NOT MATCHED THEN \r\n" +
+                                    "    INSERT (IdentificacionListaPrecios, CodigoArticulo, Factor, PrecioVenta)\r\n" +
+                                    "    VALUES (source.IdentificacionListaPrecios, source.CodigoArticulo, source.Factor, source.PrecioVenta);";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@priceListId", priceListId);
+                    cmd.Parameters.AddWithValue("@itemCode", item.code);
+                    cmd.Parameters.AddWithValue("@factor", 1);
+                    cmd.Parameters.AddWithValue("@price",(new PriceList_Controller().ItemAverageCost(item.code)) * 1);
+
+                    if (conn.State != System.Data.ConnectionState.Open)
+                    {
+                        conn.Open();
+                    }
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            finally
+            {
+                if (conn.State != System.Data.ConnectionState.Closed)
+                {
+                    conn.Close();
+                }
             }
         }
     }
