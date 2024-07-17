@@ -101,19 +101,10 @@ namespace LubriTech.View
 
         private void load_DetailLines(List<DetailLine> filteredList)
         {
-            if (filteredList != null)
-            {
-                if (filteredList.Count == 0)
-                {
-                    dgvDetailLines.DataSource = detailLines;
 
-                }
-                else
-                {
-                    dgvDetailLines.DataSource = filteredList;
-                }
-            }
+            dgvDetailLines.DataSource = filteredList;
             dgvDetailLines.Columns["InventoryManagment"].Visible = false;
+            dgvDetailLines.Columns["UnitCost"].HeaderText = "Costo unitario";
             dgvDetailLines.Columns["Item"].HeaderText = "Artículo";
             dgvDetailLines.Columns["Quantity"].HeaderText = "Cantidad";
             dgvDetailLines.Columns["Amount"].HeaderText = "Monto";
@@ -126,7 +117,8 @@ namespace LubriTech.View
             dgvDetailLines.Columns["Item"].DisplayIndex = 0;
             dgvDetailLines.Columns["Quantity"].DisplayIndex = 1;
             dgvDetailLines.Columns["Amount"].DisplayIndex = 2;
-            dgvDetailLines.Columns["deleteImageColumn"].DisplayIndex = 3;
+            dgvDetailLines.Columns["UnitCost"].DisplayIndex = 3;
+            dgvDetailLines.Columns["deleteImageColumn"].DisplayIndex = 4;
         }
 
         private void checkState(string state)
@@ -392,9 +384,13 @@ namespace LubriTech.View
                         {
                             MessageBox.Show("Por favor llene todos los campos");
                         }
-                        else if (tbQuantity.Text.Trim() == "0")
+                        else if (tbQuantity.Text.Trim() == "0" )
                         {
                             MessageBox.Show("La cantidad de artículos debe ser mayor a 0");
+                        }
+                        else if (txtUnitCost.Text.Trim() == "0" || txtUnitCost.Text.Trim() == "")
+                        {
+                            MessageBox.Show("El costo unitario debe ser mayor a 0");
                         }
                         else if (tbItemName.Text.Trim() == "")
                         {
@@ -413,6 +409,7 @@ namespace LubriTech.View
                             detailLine.InventoryManagment = existingInventoryManagment;
                             detailLine.Item = selectedItem;
                             detailLine.Quantity = Convert.ToDouble(tbQuantity.Text.Trim());
+                            detailLine.UnitCost = Convert.ToDouble(txtUnitCost.Text.Trim());
                             detailLine.Amount = Convert.ToDouble(tbAmount.Text.Trim());
 
                             if (detailLineController.upsert(detailLine))
@@ -422,6 +419,7 @@ namespace LubriTech.View
                                 tbItemCode.Text = "";
                                 tbItemName.Text = "";
                                 tbQuantity.Text = "";
+                                txtUnitCost.Text = "";
                                 tbAmount.Text = "";
                             }
                             else
@@ -452,6 +450,10 @@ namespace LubriTech.View
                 {
                     MessageBox.Show("La cantidad de artículos debe ser mayor a 0");
                 }
+                else if (txtUnitCost.Text.Trim() == "0" || txtUnitCost.Text.Trim() == "")
+                {
+                    MessageBox.Show("El costo unitario debe ser mayor a 0");
+                }
                 else if (tbItemName.Text.Trim() == "")
                 {
                     MessageBox.Show("Debe seleccionar un artículo");
@@ -469,6 +471,7 @@ namespace LubriTech.View
                     detailLine.InventoryManagment = existingInventoryManagment;
                     detailLine.Item = selectedItem;
                     detailLine.Quantity = Convert.ToDouble(tbQuantity.Text.Trim());
+                    detailLine.UnitCost = Convert.ToDouble(txtUnitCost.Text.Trim());
                     detailLine.Amount = Convert.ToDouble(tbAmount.Text.Trim());
 
                     if (detailLineController.upsert(detailLine))
@@ -478,6 +481,7 @@ namespace LubriTech.View
                         tbItemCode.Text = "";
                         tbItemName.Text = "";
                         tbQuantity.Text = "";
+                        txtUnitCost.Text = "";
                         tbAmount.Text = "";
                     }
                     else
@@ -573,6 +577,7 @@ namespace LubriTech.View
                 tbItemCode.Text = selectedDetailLine.Item.code;
                 tbItemName.Text = selectedDetailLine.Item.name;
                 tbQuantity.Text = selectedDetailLine.Quantity.ToString();
+                txtUnitCost.Text = selectedDetailLine.UnitCost.ToString();
                 tbAmount.Text = selectedDetailLine.Amount.ToString();
 
 
@@ -589,6 +594,7 @@ namespace LubriTech.View
                             tbItemCode.Text = "";
                             tbItemName.Text = "";
                             tbQuantity.Text = "";
+                            txtUnitCost.Text = "";
                             tbAmount.Text = "";
                         }
                         else
