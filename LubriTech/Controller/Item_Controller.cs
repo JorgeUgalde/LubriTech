@@ -59,9 +59,9 @@ namespace LubriTech.Controller
             return new Item_Model().IsItemService(code);
         }
 
-        public bool insertItemsInPriceList(int priceListId, List<Item> items)
+        public bool insertItemsInPriceList(int priceListId, List<Item> items, double factor)
         {
-            return new Item_Model().insertItemsInPriceList(priceListId, items);
+            return new Item_Model().insertItemsInPriceList(priceListId, items, factor);
         }
     }
 }

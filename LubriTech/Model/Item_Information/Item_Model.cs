@@ -301,7 +301,7 @@ namespace LubriTech.Model.items_Information
         }
 
         //insert all items to a price list
-        public bool insertItemsInPriceList(int priceListId, List<Item> items)
+        public bool insertItemsInPriceList(int priceListId, List<Item> items, double factor)
         {
             try
             {
@@ -318,7 +318,7 @@ namespace LubriTech.Model.items_Information
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@priceListId", priceListId);
                     cmd.Parameters.AddWithValue("@itemCode", item.code);
-                    cmd.Parameters.AddWithValue("@factor", 1);
+                    cmd.Parameters.AddWithValue("@factor", factor);
                     cmd.Parameters.AddWithValue("@price",(new PriceList_Controller().ItemAverageCost(item.code)) * 1);
 
                     if (conn.State != System.Data.ConnectionState.Open)

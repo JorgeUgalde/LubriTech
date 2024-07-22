@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -40,6 +41,10 @@ namespace LubriTech.View.Appointment_View
                 PriceList priceList = new PriceList_Controller().getPriceList(priceListId.Value);
                 globalList = priceList;
                 loadPrices(priceList, null);
+                lblFactor.Visible = false;
+                txtFactor.Visible = false;
+                dgvPrices.Size = new Size(701, 303);
+                dgvPrices.Location = new Point(37, 136);
             }
             else
             {
@@ -48,6 +53,10 @@ namespace LubriTech.View.Appointment_View
                 globalList = new PriceList();
                 loadPrices(globalList, null);
                 cbState.SelectedIndex = 1;
+                lblFactor.Visible = true;
+                txtFactor.Visible = true;
+                dgvPrices.Size = new Size(701, 271);
+                dgvPrices.Location = new Point(37, 170);
             }
         }
 
@@ -246,37 +255,6 @@ namespace LubriTech.View.Appointment_View
 
         private void txtDescription_Leave(object sender, EventArgs e)
         {
-            if(!txtDescription.Text.ToString().Equals("") && priceListId == 0)
-            {
-                PriceList priceList = new PriceList()
-                {
-                    id = priceListId ?? 0,
-                    description = txtDescription.Text.ToString(),
-                    state = ((KeyValuePair<int, string>)cbState.SelectedItem).Key
-                };
-
-                int id = new PriceList_Controller().upsertPriceList(priceList);
-                if (id > 0)
-                {
-                    this.priceListId = id;
-                    if (new Item_Controller().insertItemsInPriceList(id, new Item_Controller().getAll()))
-                    {
-                        DataChanged?.Invoke(this, EventArgs.Empty);
-                        loadPrices(new PriceList_Controller().getPriceList(id), null);
-                        dgvPrices.Refresh();
-                        MessageBox.Show("Acción realizada con exito.", "LubriTech Informa:", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error al realizar la acción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Error al realizar la acción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
         }
 
        
@@ -306,6 +284,72 @@ namespace LubriTech.View.Appointment_View
         {
             ApplyFilter();
 
+        }
+
+        private void txtFactor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+
+            if (e.KeyChar != 8)
+            {
+
+
+                string input = textBox.Text.Insert(textBox.SelectionStart, e.KeyChar.ToString());
+                Regex regex = new Regex(@"^\d*(\,\d{0,2})?$");
+                if (char.IsControl(e.KeyChar))
+                {
+                    return;
+                }
+
+                if (!regex.IsMatch(input))
+                {
+                    e.Handled = true;
+                    return;
+                }
+            }
+
+            if (e.KeyChar == ',' && textBox.Text.Length == 0) return;
+        }
+
+        private void txtFactor_Leave(object sender, EventArgs e)
+        {
+            if (!txtDescription.Text.ToString().Equals("") && priceListId == 0)
+            {
+                PriceList priceList = new PriceList()
+                {
+                    id = priceListId ?? 0,
+                    description = txtDescription.Text.ToString(),
+                    state = ((KeyValuePair<int, string>)cbState.SelectedItem).Key
+                };
+
+                int id = new PriceList_Controller().upsertPriceList(priceList);
+                if (id > 0)
+                {
+                    if (!txtFactor.Text.ToString().Equals(""))
+                    {
+                        this.priceListId = id;
+                        double factor = Convert.ToDouble(txtFactor.Text);
+
+                        if (new Item_Controller().insertItemsInPriceList(id, new Item_Controller().getAll(), factor))
+                        {
+                            DataChanged?.Invoke(this, EventArgs.Empty);
+                            loadPrices(new PriceList_Controller().getPriceList(id), null);
+                            dgvPrices.Refresh();
+                            txtFactor.Enabled = false;
+                            MessageBox.Show("Acción realizada con exito.", "LubriTech Informa:", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al realizar la acción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Error al realizar la acción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
