@@ -64,14 +64,20 @@ namespace LubriTech.View.Appointment_View
         {
             if (prices != null)
             {
+                // Invertir el orden de las filas
+                prices = prices.AsEnumerable().Reverse().CopyToDataTable();
                 dgvPrices.DataSource = prices;
             }
             else
             {
                 txtDescription.Text = priceList.description;
                 cbState.SelectedIndex = priceList.state;
-                dgvPrices.DataSource = new PriceList_Controller().getPricesByPriceListDT(priceList.id);
-            }            
+                DataTable dtPrices = new PriceList_Controller().getPricesByPriceListDT(priceList.id);
+
+                // Invertir el orden de las filas
+                dgvPrices.DataSource = dtPrices;
+            }
+
             dgvPrices.Columns["Identificacion"].Visible = false;
             dgvPrices.Columns["IdentificacionListaPrecios"].Visible = false;
             dgvPrices.Columns["CodigoArticulo"].ReadOnly = true;
@@ -99,19 +105,7 @@ namespace LubriTech.View.Appointment_View
             e.Row.Cells["IdentificacionListaPrecios"].Value = priceListId;
         }
 
-        private void dataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
-            DataRowView rowView = e.Row.DataBoundItem as DataRowView;
-            if (rowView != null)
-            {
-                bool success = new PriceList_Controller().deletePrice((int)rowView["Identificacion"]);
-                if (!success)
-                {
-                    MessageBox.Show("Failed to delete row.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    e.Cancel = true; // Cancel the deletion if the delete operation failed
-                }
-            }
-        }
+        
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {

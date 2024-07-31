@@ -48,27 +48,18 @@ namespace LubriTech.Model.PricesList_Information
         }
 
         //get a price list by id
-        public PriceList getPriceList(int id, string description)
+        public PriceList getPriceList(int id)
         {
             PriceList priceList = new PriceList();
             try
             {
                 string query = "SELECT * FROM ListaPrecios WHERE Identificacion = @id";
-                if (description.Length > 0)
-                {
-                    query = "SELECT * FROM ListaPrecios WHERE Descripcion = @description";
-                }
-                
+
+
                 SqlCommand cmd = new SqlCommand(query, conn);
 
-                if (description.Length > 0)
-                {
-                    cmd.Parameters.AddWithValue("@description", description);
-                }
-                else
-                {
-                    cmd.Parameters.AddWithValue("@id", id);
-                }
+                cmd.Parameters.AddWithValue("@id", id);
+
 
                 if (conn.State == System.Data.ConnectionState.Closed)
                 {
@@ -142,24 +133,6 @@ namespace LubriTech.Model.PricesList_Information
             return -1;
         }
 
-        //delete a price list by id
-        public bool deletePriceList(int id)
-        {
-            try
-            {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("DELETE FROM ListaPrecios WHERE Identificacion = @id", conn);
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                return true;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            return false;
-        }
 
         public bool insertInLists(Item item, double fact)
         {

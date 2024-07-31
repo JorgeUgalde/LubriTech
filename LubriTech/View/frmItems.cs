@@ -28,6 +28,7 @@ namespace LubriTech.View
         private Form parentForm;
         public event Action<Item> ItemSelected;
         private List<ItemType> itemTypes;
+        
 
         private int currentPage = 1;
         private int pageSize = 20; // Puedes ajustar este valor según sea necesario
@@ -69,11 +70,7 @@ namespace LubriTech.View
         {
             if (filteredList != null)
             {
-                
-                    items = filteredList;
-
-                
-                
+                items = filteredList;
             }
             else
             {

@@ -18,17 +18,12 @@ namespace LubriTech.Controller
 
         public PriceList getPriceList(int id)
         {
-            return new PriceList_Model().getPriceList(id, "");
+            return new PriceList_Model().getPriceList(id);
         }
 
         public int upsertPriceList(PriceList priceList)
         {
             return new PriceList_Model().upsertPriceList(priceList);
-        }
-
-        public bool deletePriceList(int id)
-        {
-            return new PriceList_Model().deletePriceList(id);
         }
 
         public DataTable getPricesByPriceListDT(int id)
@@ -41,10 +36,7 @@ namespace LubriTech.Controller
             return new Prices_Model().upsertPrice(row);
         }
 
-        public bool deletePrice(int id)
-        {
-            return new Prices_Model().deletePrice(id);
-        }
+
 
         public double getPriceByItem(string itemCode, int priceListId)
         {

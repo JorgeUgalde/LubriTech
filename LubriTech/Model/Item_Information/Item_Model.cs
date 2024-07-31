@@ -319,7 +319,7 @@ namespace LubriTech.Model.items_Information
                     cmd.Parameters.AddWithValue("@priceListId", priceListId);
                     cmd.Parameters.AddWithValue("@itemCode", item.code);
                     cmd.Parameters.AddWithValue("@factor", factor);
-                    cmd.Parameters.AddWithValue("@price",(new PriceList_Controller().ItemAverageCost(item.code)) * 1);
+                    cmd.Parameters.AddWithValue("@price",(new PriceList_Controller().ItemAverageCost(item.code)) * factor);
 
                     if (conn.State != System.Data.ConnectionState.Open)
                     {

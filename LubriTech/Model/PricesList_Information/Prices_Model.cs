@@ -126,23 +126,6 @@ namespace LubriTech.Model.PricesList_Information
             return false;
         }
 
-        public bool deletePrice(int id)
-        {
-            try
-            {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("DELETE FROM EstablecePrecio WHERE Identificacion = @id", conn);
-                cmd.Parameters.AddWithValue("@id", id);
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                return true;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            return false;
-        }
 
         public bool updateSellPrice(string itemID)
         {
