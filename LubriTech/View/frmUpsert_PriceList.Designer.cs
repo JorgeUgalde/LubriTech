@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,10 +45,12 @@
             this.pbMaximize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblFactor = new System.Windows.Forms.Label();
+            this.txtFactor = new System.Windows.Forms.TextBox();
             this.txtFilter = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtFactor = new System.Windows.Forms.TextBox();
-            this.lblFactor = new System.Windows.Forms.Label();
+            this.txtTax = new System.Windows.Forms.TextBox();
+            this.lblTax = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrices)).BeginInit();
             this.panelBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMaximize)).BeginInit();
@@ -62,7 +64,7 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.label2.Location = new System.Drawing.Point(34, 61);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 21);
+            this.label2.Size = new System.Drawing.Size(153, 28);
             this.label2.TabIndex = 17;
             this.label2.Text = "Lista de precios";
             // 
@@ -72,7 +74,7 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label3.Location = new System.Drawing.Point(34, 105);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 21);
+            this.label3.Size = new System.Drawing.Size(114, 28);
             this.label3.TabIndex = 16;
             this.label3.Text = "Descripción";
             // 
@@ -82,7 +84,7 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label4.Location = new System.Drawing.Point(558, 59);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 21);
+            this.label4.Size = new System.Drawing.Size(71, 28);
             this.label4.TabIndex = 19;
             this.label4.Text = "Estado";
             // 
@@ -91,7 +93,7 @@
             this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtDescription.Location = new System.Drawing.Point(131, 102);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(203, 29);
+            this.txtDescription.Size = new System.Drawing.Size(203, 34);
             this.txtDescription.TabIndex = 1;
             this.txtDescription.Leave += new System.EventHandler(this.txtDescription_Leave);
             // 
@@ -101,7 +103,7 @@
             this.cbState.FormattingEnabled = true;
             this.cbState.Location = new System.Drawing.Point(617, 53);
             this.cbState.Name = "cbState";
-            this.cbState.Size = new System.Drawing.Size(121, 29);
+            this.cbState.Size = new System.Drawing.Size(121, 36);
             this.cbState.TabIndex = 2;
             // 
             // btnClose
@@ -138,9 +140,9 @@
             // 
             // dgvPrices
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvPrices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            this.dgvPrices.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvPrices.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -150,43 +152,41 @@
             this.dgvPrices.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvPrices.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvPrices.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvPrices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPrices.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPrices.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(238)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPrices.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgvPrices.GridColor = System.Drawing.Color.White;
             this.dgvPrices.Location = new System.Drawing.Point(37, 170);
             this.dgvPrices.Name = "dgvPrices";
             this.dgvPrices.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPrices.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(38)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrices.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvPrices.RowHeadersVisible = false;
             this.dgvPrices.RowHeadersWidth = 51;
             this.dgvPrices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPrices.Size = new System.Drawing.Size(701, 271);
             this.dgvPrices.TabIndex = 3;
-            this.dgvPrices.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dgvPrices.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dgvPrices.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dgvPrices.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             this.dgvPrices.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
@@ -213,7 +213,7 @@
             this.lblForm.ForeColor = System.Drawing.Color.White;
             this.lblForm.Location = new System.Drawing.Point(12, 6);
             this.lblForm.Name = "lblForm";
-            this.lblForm.Size = new System.Drawing.Size(227, 21);
+            this.lblForm.Size = new System.Drawing.Size(282, 28);
             this.lblForm.TabIndex = 15;
             this.lblForm.Text = "Dato Maestro Lista de Precios";
             // 
@@ -244,6 +244,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.lblTax);
+            this.panel1.Controls.Add(this.txtTax);
             this.panel1.Controls.Add(this.lblFactor);
             this.panel1.Controls.Add(this.txtFactor);
             this.panel1.Controls.Add(this.txtFilter);
@@ -253,17 +255,37 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(782, 504);
             this.panel1.TabIndex = 81;
+            // 
+            // lblFactor
+            // 
+            this.lblFactor.AutoSize = true;
+            this.lblFactor.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.lblFactor.Location = new System.Drawing.Point(32, 138);
+            this.lblFactor.Name = "lblFactor";
+            this.lblFactor.Size = new System.Drawing.Size(66, 28);
+            this.lblFactor.TabIndex = 82;
+            this.lblFactor.Text = "Factor";
+            // 
+            // txtFactor
+            // 
+            this.txtFactor.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtFactor.Location = new System.Drawing.Point(129, 135);
+            this.txtFactor.Name = "txtFactor";
+            this.txtFactor.Size = new System.Drawing.Size(203, 34);
+            this.txtFactor.TabIndex = 82;
+            this.txtFactor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFactor_KeyPress);
+            this.txtFactor.Leave += new System.EventHandler(this.txtFactor_Leave);
             // 
             // txtFilter
             // 
             this.txtFilter.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFilter.Location = new System.Drawing.Point(482, 101);
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(258, 29);
+            this.txtFilter.Size = new System.Drawing.Size(258, 34);
             this.txtFilter.TabIndex = 18;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
@@ -273,29 +295,30 @@
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(401, 106);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 21);
+            this.label5.Size = new System.Drawing.Size(99, 28);
             this.label5.TabIndex = 19;
             this.label5.Text = "Filtrar por";
             // 
-            // txtFactor
+            // txtTax
             // 
-            this.txtFactor.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtFactor.Location = new System.Drawing.Point(129, 135);
-            this.txtFactor.Name = "txtFactor";
-            this.txtFactor.Size = new System.Drawing.Size(203, 29);
-            this.txtFactor.TabIndex = 82;
-            this.txtFactor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFactor_KeyPress);
-            this.txtFactor.Leave += new System.EventHandler(this.txtFactor_Leave);
+            this.txtTax.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtTax.Location = new System.Drawing.Point(483, 135);
+            this.txtTax.MaxLength = 4;
+            this.txtTax.Name = "txtTax";
+            this.txtTax.Size = new System.Drawing.Size(256, 34);
+            this.txtTax.TabIndex = 83;
+            this.txtTax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTax_KeyPress);
             // 
-            // lblFactor
+            // lblTax
             // 
-            this.lblFactor.AutoSize = true;
-            this.lblFactor.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.lblFactor.Location = new System.Drawing.Point(32, 138);
-            this.lblFactor.Name = "lblFactor";
-            this.lblFactor.Size = new System.Drawing.Size(52, 21);
-            this.lblFactor.TabIndex = 82;
-            this.lblFactor.Text = "Factor";
+            this.lblTax.AutoSize = true;
+            this.lblTax.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.lblTax.Location = new System.Drawing.Point(401, 138);
+            this.lblTax.Name = "lblTax";
+            this.lblTax.Size = new System.Drawing.Size(118, 35);
+            this.lblTax.TabIndex = 84;
+            this.lblTax.Text = "Impuesto";
+            this.lblTax.Click += new System.EventHandler(this.label1_Click);
             // 
             // frmUpsert_PriceList
             // 
@@ -344,5 +367,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblFactor;
         private System.Windows.Forms.TextBox txtFactor;
+        private System.Windows.Forms.Label lblTax;
+        private System.Windows.Forms.TextBox txtTax;
     }
 }

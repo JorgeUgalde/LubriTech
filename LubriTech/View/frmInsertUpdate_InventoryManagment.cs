@@ -691,7 +691,7 @@ namespace LubriTech.View
                         {
                             return "No se pudo actualizar la cantidad del artículo: " + detailLine.Item.name + " - Código: " + detailLine.Item.code;
                         }
-                        new PriceList_Controller().updateSellPrice(detailLine.Item.code);
+                        new PriceList_Controller().updateSellPrice(detailLine.Item.code, 0);
                     }
                     return "";
                 }

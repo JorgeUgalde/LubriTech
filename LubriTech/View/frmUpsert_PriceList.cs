@@ -26,6 +26,8 @@ namespace LubriTech.View.Appointment_View
         public frmUpsert_PriceList(int? priceListId)
         {
             InitializeComponent();
+            txtFactor.Enabled = false;
+            txtTax.Text = "0,13";
             this.priceListId = priceListId;
 
             cbState.DataSource = new List<KeyValuePair<int, string>>()
@@ -82,8 +84,15 @@ namespace LubriTech.View.Appointment_View
             dgvPrices.Columns["IdentificacionListaPrecios"].Visible = false;
             dgvPrices.Columns["CodigoArticulo"].ReadOnly = true;
             dgvPrices.Columns["CodigoArticulo"].HeaderText = "Código Artículo";
-            dgvPrices.Columns["PrecioVenta"].ReadOnly = true;
             dgvPrices.Columns["PrecioVenta"].HeaderText = "Precio Venta";
+
+            // order the columns
+            dgvPrices.Columns["CodigoArticulo"].DisplayIndex = 0;
+            dgvPrices.Columns["Factor"].DisplayIndex = 1;
+            dgvPrices.Columns["IVA"].DisplayIndex = 2;
+            dgvPrices.Columns["PrecioVenta"].DisplayIndex = 3;
+
+
         }
 
         /// <summary>
@@ -116,23 +125,34 @@ namespace LubriTech.View.Appointment_View
                     DataGridViewRow row = dgvPrices.Rows[e.RowIndex];
                     DataRowView rowView = row.DataBoundItem as DataRowView;
 
+                    // check which column was changed
+                   
+
+
                     if (rowView != null)
                     {
                         // Verificar si los valores requeridos no son DBNull
                         bool hasValidValues = rowView["CodigoArticulo"] != DBNull.Value &&
                                           rowView["Factor"] != DBNull.Value &&
-                                          rowView["PrecioVenta"] != DBNull.Value;
+                                          rowView["PrecioVenta"] != DBNull.Value &&
+                                          rowView["IVA"] != DBNull.Value;
+
 
                         if (hasValidValues)
                         {
-                            //update the PrecioVenta to be the result of the Factor * PrecioCompra of the item
                             Item item = new Item_Controller().get(rowView["CodigoArticulo"].ToString());
-                            if (item != null)
+
+                            if (dgvPrices.Columns[e.ColumnIndex].HeaderText == "Factor")
                             {
-                                double price = new PriceList_Controller().ItemAverageCost(item.code);
-                                //calculate the new price using only 2 decimals
-                                rowView["PrecioVenta"] = Math.Round(price + (price * Convert.ToDouble(rowView["Factor"])), 2);
-                            }
+                                //update the PrecioVenta to be the result of the Factor * PrecioCompra of the item
+                                if (item != null)
+                                {
+                                    double price = new PriceList_Controller().ItemAverageCost(item.code);
+                                    //calculate the new price using only 2 decimals
+                                    rowView["PrecioVenta"] = Math.Round(price + (price * Convert.ToDouble(rowView["Factor"])), 2);
+                                }
+                            }                            
+
                             // Hacer el upsert solo si es una fila nueva y tiene todos los valores requeridos
                             bool success = new PriceList_Controller().upsertPrice(rowView.Row);
                             if (!success)
@@ -157,10 +177,6 @@ namespace LubriTech.View.Appointment_View
         }
 
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             PriceList priceList = new PriceList()
@@ -180,15 +196,6 @@ namespace LubriTech.View.Appointment_View
             else
             {
                 MessageBox.Show("Error al guardar los cambios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dgvPrices.Columns["CodigoArticulo"].Index)
-            {
-                // Forzar la validación de la fila para guardar los cambios
-                dgvPrices.NotifyCurrentCellDirty(true);
             }
         }
 
@@ -247,10 +254,6 @@ namespace LubriTech.View.Appointment_View
             }
         }
 
-        private void txtDescription_Leave(object sender, EventArgs e)
-        {
-        }
-
        
         private void ApplyFilter()
         {
@@ -307,8 +310,13 @@ namespace LubriTech.View.Appointment_View
 
         private void txtFactor_Leave(object sender, EventArgs e)
         {
-            if (!txtDescription.Text.ToString().Equals("") && priceListId == 0)
+            if (!txtDescription.Text.ToString().Equals("") && priceListId == 0 )
             {
+                if (txtTax.Text.Trim() == "")
+                {
+                    MessageBox.Show("Debe indicar el impuesto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 PriceList priceList = new PriceList()
                 {
                     id = priceListId ?? 0,
@@ -323,8 +331,9 @@ namespace LubriTech.View.Appointment_View
                     {
                         this.priceListId = id;
                         double factor = Convert.ToDouble(txtFactor.Text);
+                        double impuesto = Convert.ToDouble(txtTax.Text);
 
-                        if (new Item_Controller().insertItemsInPriceList(id, new Item_Controller().getAll(), factor))
+                        if (new Item_Controller().insertItemsInPriceList(id, new Item_Controller().getAll(), factor, impuesto))
                         {
                             DataChanged?.Invoke(this, EventArgs.Empty);
                             loadPrices(new PriceList_Controller().getPriceList(id), null);
@@ -344,6 +353,51 @@ namespace LubriTech.View.Appointment_View
                     MessageBox.Show("Error al realizar la acción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void txtDescription_Leave(object sender, EventArgs e)
+        {
+            if (txtDescription.Text.Trim() != "")
+            {
+                txtFactor.Enabled = true;
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTax_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            TextBox textBox = sender as TextBox;
+
+            if (e.KeyChar != 8)
+            {
+
+                //verify if the field contains 3 characters and dont contain a comma    
+                if (textBox.Text.Length == 3 && !textBox.Text.Contains(","))
+                {
+                    e.Handled = true;
+                    return;
+                }
+
+                string input = textBox.Text.Insert(textBox.SelectionStart, e.KeyChar.ToString());
+
+                Regex regex = new Regex(@"^\d*(\,\d{0,2})?$");
+                if (char.IsControl(e.KeyChar))
+                {
+                    return;
+                }
+
+                if (!regex.IsMatch(input))
+                {
+                    e.Handled = true;
+                    return;
+                }
+            }
+            if (e.KeyChar == ',' && textBox.Text.Length == 0) return;
         }
     }
 }

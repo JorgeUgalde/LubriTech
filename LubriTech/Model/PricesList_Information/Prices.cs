@@ -15,26 +15,30 @@ namespace LubriTech.Model.PricesList_Information
         public double factor { get; set; }
         public double price { get; set; }
 
+        public double IVA { get; set; }
+
         public Prices()
         {
 
         }
 
-        public Prices(int id, int priceList, Item item, double factor, double price)
+        public Prices(int id, int priceList, Item item, double factor, double price, double IVA)
         {
             this.id = id;
             this.priceList = priceList;
             Item = item;
             this.factor = factor;
             this.price = price;
+            this.IVA = IVA;
         }
 
-        public Prices(int priceList, Item item, double factor, double price)
+        public Prices(int priceList, Item item, double factor, double price, double IVA)
         {
             this.priceList = priceList;
-            Item = item;
+            this.Item = item;
             this.factor = factor;
             this.price = price;
+            this.IVA = IVA;
         }
 
         public override string ToString()

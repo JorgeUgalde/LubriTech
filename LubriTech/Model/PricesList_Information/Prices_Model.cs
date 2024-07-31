@@ -77,6 +77,7 @@ namespace LubriTech.Model.PricesList_Information
                     price.Item = new Item_Model().getItem(reader.GetString(reader.GetOrdinal("CodigoArticulo")));
                     price.factor = Convert.ToDouble(reader["Factor"]);
                     price.price = Convert.ToDouble(reader["PrecioVenta"]); ;
+                    price.IVA = Convert.ToDouble(reader["IVA"]);
                     prices.Add(price);
                 }
                 conn.Close();
@@ -126,8 +127,9 @@ namespace LubriTech.Model.PricesList_Information
             return false;
         }
 
+       
 
-        public bool updateSellPrice(string itemID)
+        public bool updateSellPrice(string itemID, double manualPrice)
         {
             try
             {
@@ -140,7 +142,14 @@ namespace LubriTech.Model.PricesList_Information
 
                     if (price != null)
                     {
-                        price.price = cost + (cost * price.factor);
+                        if (manualPrice == 0)
+                        {
+                            price.price = cost + (cost * price.factor);
+                        }
+                        else
+                        {
+                            price.price = manualPrice;
+                        }
                         string query = "UPDATE EstablecePrecio SET PrecioVenta = @price WHERE Identificacion = @id";
                         SqlCommand cmd = new SqlCommand(query, conn);
                         cmd.Parameters.AddWithValue("@price", price.price);

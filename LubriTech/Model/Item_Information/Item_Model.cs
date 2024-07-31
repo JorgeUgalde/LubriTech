@@ -301,25 +301,31 @@ namespace LubriTech.Model.items_Information
         }
 
         //insert all items to a price list
-        public bool insertItemsInPriceList(int priceListId, List<Item> items, double factor)
+        public bool insertItemsInPriceList(int priceListId, List<Item> items, double factor, double impuesto)
         {
             try
             {
                 foreach (Item item in items)
                 {
                     string query = "MERGE INTO EstablecePrecio AS target\r\n" +
-                                    "USING (SELECT @priceListId AS IdentificacionListaPrecios, @itemCode AS CodigoArticulo, @factor AS Factor, @price AS PrecioVenta) AS source\r\n" +
+                                    "USING (SELECT @priceListId AS IdentificacionListaPrecios, @itemCode AS CodigoArticulo, @factor AS Factor, @price AS PrecioVenta, @IVA as IVA) AS source\r\n" +
                                     "ON (target.CodigoArticulo = source.CodigoArticulo AND target.IdentificacionListaPrecios = source.IdentificacionListaPrecios)\r\n" +
                                     "WHEN MATCHED THEN \r\n" +
                                     "    UPDATE SET PrecioVenta = source.PrecioVenta\r\n" +
                                     "WHEN NOT MATCHED THEN \r\n" +
-                                    "    INSERT (IdentificacionListaPrecios, CodigoArticulo, Factor, PrecioVenta)\r\n" +
-                                    "    VALUES (source.IdentificacionListaPrecios, source.CodigoArticulo, source.Factor, source.PrecioVenta);";
+                                    "    INSERT (IdentificacionListaPrecios, CodigoArticulo, Factor, PrecioVenta, IVA)\r\n" +
+                                    "    VALUES (source.IdentificacionListaPrecios, source.CodigoArticulo, source.Factor, source.PrecioVenta, source.IVA);";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@priceListId", priceListId);
                     cmd.Parameters.AddWithValue("@itemCode", item.code);
                     cmd.Parameters.AddWithValue("@factor", factor);
-                    cmd.Parameters.AddWithValue("@price",(new PriceList_Controller().ItemAverageCost(item.code)) * factor);
+                    double AvgCosts = new PriceList_Controller().ItemAverageCost(item.code);
+                    double price = AvgCosts + (AvgCosts * factor);
+                    double finalPrice = price + (price * impuesto);
+                    // final price round to 2 decimals
+                    finalPrice = Math.Round(finalPrice, 2);
+                    cmd.Parameters.AddWithValue("@price", finalPrice);
+                    cmd.Parameters.AddWithValue("@IVA", impuesto);
 
                     if (conn.State != System.Data.ConnectionState.Open)
                     {
